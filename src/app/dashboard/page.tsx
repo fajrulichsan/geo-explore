@@ -1,3 +1,5 @@
+import { logoutAction } from "@/app/actions";
+
 const learningPath = [
   {
     status: "available" as const,
@@ -35,6 +37,18 @@ export default function DashboardPage() {
       <div className="fixed top-0 left-0 w-full h-full pointer-events-none z-0 overflow-hidden">
         <div className="absolute -top-40 -right-40 w-96 h-96 bg-primary-light rounded-full mix-blend-multiply filter blur-3xl opacity-10" />
         <div className="absolute top-40 -left-20 w-72 h-72 bg-accent-light rounded-full mix-blend-multiply filter blur-3xl opacity-10" />
+      </div>
+
+      <div className="relative z-10 max-w-6xl mx-auto w-full flex justify-end pt-6 px-4">
+        <form action={logoutAction}>
+          <button
+            type="submit"
+            className="text-sm font-semibold text-slate-500 hover:text-primary transition-colors flex items-center gap-1"
+          >
+            <span className="material-symbols-outlined text-base">logout</span>
+            Keluar
+          </button>
+        </form>
       </div>
 
       <main className="relative z-10 flex-1 max-w-6xl mx-auto w-full flex flex-col gap-8">

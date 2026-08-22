@@ -5,5 +5,6 @@ create table users (
   password text not null,
   kelas text not null,
   nama_sekolah text not null,
+  sudah_baca_petunjuk boolean not null default false,
   created_at timestamptz not null default now()
 );

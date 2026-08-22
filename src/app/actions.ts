@@ -2,6 +2,11 @@
 
 import { supabase } from "@/lib/supabase";
 import { redirect } from "next/navigation";
+import {
+  clearSessionCookie,
+  getSessionUserId,
+  setSessionCookie,
+} from "@/lib/session";
 
 export type FormState = {
   error?: string;
@@ -57,7 +62,7 @@ export async function loginAction(
 
   const { data, error } = await supabase
     .from("users")
-    .select("id")
+    .select("id, sudah_baca_petunjuk")
     .eq("email", email)
     .eq("password", password)
     .maybeSingle();
@@ -66,5 +71,27 @@ export async function loginAction(
     return { error: "Email atau password salah." };
   }
 
-  redirect("/");
+  await setSessionCookie(data.id);
+
+  redirect(data.sudah_baca_petunjuk ? "/dashboard" : "/petunjuk-1");
+}
+
+export async function logoutAction() {
+  await clearSessionCookie();
+  redirect("/login");
+}
+
+export async function selesaiPetunjukAction() {
+  const userId = await getSessionUserId();
+
+  if (!userId) {
+    redirect("/login");
+  }
+
+  await supabase
+    .from("users")
+    .update({ sudah_baca_petunjuk: true })
+    .eq("id", userId);
+
+  redirect("/dashboard");
 }
