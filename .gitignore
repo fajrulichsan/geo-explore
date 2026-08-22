@@ -39,6 +39,9 @@ yarn-error.log*
 # graphify output
 graphify-out/
 
+# MCP Playwright
+.playwright-mcp/
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
