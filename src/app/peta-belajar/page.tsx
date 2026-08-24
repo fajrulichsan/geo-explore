@@ -129,11 +129,11 @@ export default async function PetaBelajarPage() {
                   key={card.peta}
                   className={`relative z-10 flex flex-col md:flex-row items-center w-full mb-8 ${alignRight ? "md:justify-end" : "md:justify-start"}`}
                 >
-                  {!alignRight && <div className="hidden md:block w-5/12" />}
+                  {!alignRight && <div className="hidden md:block w-1/2" />}
                   <div className="absolute left-0 md:left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-14 h-14 bg-gradient-to-br from-[#e6f4ea] to-[#ceead6] rounded-full border-4 border-white flex items-center justify-center text-[#137333] shadow-lg">
                     <span className="material-symbols-outlined text-[28px]">{card.info.icon}</span>
                   </div>
-                  <div className={`w-full md:w-5/12 pl-16 md:pl-0 ${alignRight ? "md:pr-12 md:text-right" : "md:pl-12"}`}>
+                  <div className={`w-full md:w-1/2 pl-16 md:pl-0 ${alignRight ? "md:pr-12 md:text-right" : "md:pl-12"}`}>
                     <Link href={`/belajar/${MATERI}/${card.peta}/1`} className="block">
                       <div className="bg-white rounded-3xl shadow-[0_8px_30px_rgba(0,0,0,0.04)] p-6 border border-[#c3c6d6]/30 hover:-translate-y-2 hover:shadow-[0_12px_40px_rgba(0,51,138,0.1)] transition-all duration-300">
                         <div className={`flex flex-col mb-3 ${alignRight ? "md:items-end" : "items-start"}`}>
@@ -151,7 +151,7 @@ export default async function PetaBelajarPage() {
                       </div>
                     </Link>
                   </div>
-                  {alignRight && <div className="hidden md:block w-5/12" />}
+                  {alignRight && <div className="hidden md:block w-1/2" />}
                 </div>
               );
             }
@@ -159,7 +159,7 @@ export default async function PetaBelajarPage() {
             if (card.active) {
               return (
                 <div key={card.peta} className="relative z-10 flex flex-col md:flex-row items-center md:justify-end w-full mb-8 group">
-                  <div className="w-full md:w-5/12 pl-16 md:pl-0 md:pr-12 md:text-right">
+                  <div className="w-full md:w-1/2 pl-16 md:pl-0 md:pr-12 md:text-right">
                     <div className="bg-white rounded-3xl shadow-[0_12px_40px_rgba(0,51,138,0.15)] p-6 border-4 border-[#00338a] relative overflow-hidden hover:scale-[1.02] transition-transform duration-300">
                       <div className="absolute -top-10 -right-10 w-32 h-32 bg-[#b3c5ff] rounded-full opacity-30 blur-2xl -z-10" />
                       <div className="flex flex-col md:items-end mb-3">
@@ -190,7 +190,7 @@ export default async function PetaBelajarPage() {
                   >
                     <span className="material-symbols-outlined text-[32px]">{card.info.icon}</span>
                   </div>
-                  <div className="hidden md:block w-5/12" />
+                  <div className="hidden md:block w-1/2" />
                 </div>
               );
             }
@@ -200,11 +200,11 @@ export default async function PetaBelajarPage() {
                 key={card.peta}
                 className={`relative z-10 flex flex-col md:flex-row items-center w-full mb-8 opacity-70 hover:opacity-100 transition-opacity ${alignRight ? "md:justify-end" : "md:justify-start"}`}
               >
-                {!alignRight && <div className="hidden md:block w-5/12" />}
+                {!alignRight && <div className="hidden md:block w-1/2" />}
                 <div className="absolute left-0 md:left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 bg-[#e0e3e5] rounded-full border-4 border-white flex items-center justify-center text-[#737685] shadow-inner">
                   <span className="material-symbols-outlined">lock</span>
                 </div>
-                <div className={`w-full md:w-5/12 pl-16 md:pl-0 ${alignRight ? "md:pr-12 md:text-right" : "md:pl-12"}`}>
+                <div className={`w-full md:w-1/2 pl-16 md:pl-0 ${alignRight ? "md:pr-12 md:text-right" : "md:pl-12"}`}>
                   <div className="bg-[#eceef0] rounded-3xl p-6 border-2 border-dashed border-[#c3c6d6]/50">
                     <div className={`flex flex-col mb-3 ${alignRight ? "md:items-end" : "items-start"}`}>
                       <span className="inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-[#e0e3e5] text-[#737685] text-sm mb-3 font-bold">
@@ -220,7 +220,7 @@ export default async function PetaBelajarPage() {
                     </p>
                   </div>
                 </div>
-                {alignRight && <div className="hidden md:block w-5/12" />}
+                {alignRight && <div className="hidden md:block w-1/2" />}
               </div>
             );
           })}
