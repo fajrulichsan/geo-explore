@@ -60,7 +60,11 @@ import Peta7Step2RefleksiPengalaman from "./steps/Peta7/Peta7Step2RefleksiPengal
 import Peta7Step3KeyakinanDiriku from "./steps/Peta7/Peta7Step3KeyakinanDiriku";
 import Peta7Step4KotakMotivasi from "./steps/Peta7/Peta7Step4KotakMotivasi";
 
-export type StepComponentProps = { materi: string; peta: string };
+export type StepComponentProps = {
+  materi: string;
+  peta: string;
+  initialAnswers?: Record<string, unknown>;
+};
 
 export const stepRegistry: Record<string, ComponentType<StepComponentProps>> = {
   "1-1-1": Step1Amati,

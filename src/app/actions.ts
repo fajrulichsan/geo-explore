@@ -62,7 +62,7 @@ export async function loginAction(
 
   const { data, error } = await supabase
     .from("users")
-    .select("id, sudah_baca_petunjuk")
+    .select("id, sudah_baca_petunjuk, role")
     .eq("email", email)
     .eq("password", password)
     .maybeSingle();
@@ -72,6 +72,10 @@ export async function loginAction(
   }
 
   await setSessionCookie(data.id);
+
+  if (data.role === "guru") {
+    redirect("/dashboard-guru");
+  }
 
   redirect(data.sudah_baca_petunjuk ? "/dashboard" : "/petunjuk-1");
 }
