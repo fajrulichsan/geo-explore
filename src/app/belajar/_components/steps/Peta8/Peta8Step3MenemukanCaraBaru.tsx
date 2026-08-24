@@ -2,6 +2,7 @@ import Link from "next/link";
 import PhotoUpload from "@/components/PhotoUpload";
 import { submitStepAction } from "@/app/belajar/actions";
 import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
+import SubmitStepButton from "@/app/belajar/_components/SubmitStepButton";
 
 export default function Peta8Step3MenemukanCaraBaru({
   materi,
@@ -45,6 +46,7 @@ export default function Peta8Step3MenemukanCaraBaru({
             defaultValue={getValue("dasar_klasifikasi_baru")}
             rows={2}
             placeholder="Tuliskan dasar klasifikasimu di sini..."
+            required
             className="w-full bg-[#F9FAFB] border border-[#E5E7EB] rounded-xl focus:ring-2 focus:ring-[#2563EB]/20 focus:border-[#2563EB] outline-none p-4 text-sm text-[#374151] resize-none"
           />
         </div>
@@ -57,6 +59,7 @@ export default function Peta8Step3MenemukanCaraBaru({
             defaultValue={getValue("hasil_pengelompokan_alasan")}
             rows={4}
             placeholder="Jelaskan kelompok yang terbentuk dan alasan matematisnya..."
+            required
             className="w-full bg-[#F9FAFB] border border-[#E5E7EB] rounded-xl focus:ring-2 focus:ring-[#2563EB]/20 focus:border-[#2563EB] outline-none p-4 text-sm text-[#374151] resize-none"
           />
         </div>
@@ -90,15 +93,12 @@ export default function Peta8Step3MenemukanCaraBaru({
           </svg>
           Kembali
         </Link>
-        <button
-          type="submit"
-          className="flex items-center gap-2 bg-[#2563EB] text-white border-none rounded-full py-3.5 px-7 text-sm font-bold font-inherit shadow-[0_4px_10px_rgba(37,99,235,0.3)] cursor-pointer"
-        >
+        <SubmitStepButton className="flex items-center gap-2 bg-[#2563EB] text-white border-none rounded-full py-3.5 px-7 text-sm font-bold font-inherit shadow-[0_4px_10px_rgba(37,99,235,0.3)] cursor-pointer">
           LANJUTKAN
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.4">
             <path d="M5 12h14M13 5l7 7-7 7" />
           </svg>
-        </button>
+        </SubmitStepButton>
       </div>
     </form>
   );

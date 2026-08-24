@@ -2,6 +2,7 @@ import Link from "next/link";
 import PhotoUpload from "@/components/PhotoUpload";
 import { submitStepAction } from "@/app/belajar/actions";
 import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
+import SubmitStepButton from "@/app/belajar/_components/SubmitStepButton";
 
 export default function Peta6Step2LengkapiKesimpulan({ materi, peta, initialAnswers }: StepComponentProps) {
   const answers = initialAnswers ?? {};
@@ -49,6 +50,7 @@ export default function Peta6Step2LengkapiKesimpulan({ materi, peta, initialAnsw
               name="answers.dasar_pengelompokan"
               defaultValue={getValue("dasar_pengelompokan")}
               placeholder="..."
+              required
               className="border-b-2 border-[#B3C5FF] bg-transparent text-center text-[#2563EB] font-bold min-w-[120px] px-2 focus:outline-none focus:border-[#2563EB]"
             />
             .
@@ -67,6 +69,7 @@ export default function Peta6Step2LengkapiKesimpulan({ materi, peta, initialAnsw
               name="answers.alasan_lebih_dari_satu_kelompok"
               defaultValue={getValue("alasan_lebih_dari_satu_kelompok")}
               placeholder="..."
+              required
               className="border-b-2 border-[#B3C5FF] bg-transparent text-center text-[#2563EB] font-bold min-w-[120px] px-2 focus:outline-none focus:border-[#2563EB]"
             />
             .
@@ -85,6 +88,7 @@ export default function Peta6Step2LengkapiKesimpulan({ materi, peta, initialAnsw
               name="answers.syarat_dasar"
               defaultValue={getValue("syarat_dasar")}
               placeholder="..."
+              required
               className="border-b-2 border-[#B3C5FF] bg-transparent text-center text-[#2563EB] font-bold w-24 px-2 focus:outline-none focus:border-[#2563EB]"
             />
             , diterapkan secara{" "}
@@ -94,6 +98,7 @@ export default function Peta6Step2LengkapiKesimpulan({ materi, peta, initialAnsw
               name="answers.syarat_penerapan"
               defaultValue={getValue("syarat_penerapan")}
               placeholder="..."
+              required
               className="border-b-2 border-[#B3C5FF] bg-transparent text-center text-[#2563EB] font-bold w-24 px-2 focus:outline-none focus:border-[#2563EB]"
             />
             , dan didukung oleh alasan matematis yang{" "}
@@ -103,6 +108,7 @@ export default function Peta6Step2LengkapiKesimpulan({ materi, peta, initialAnsw
               name="answers.syarat_alasan"
               defaultValue={getValue("syarat_alasan")}
               placeholder="..."
+              required
               className="border-b-2 border-[#B3C5FF] bg-transparent text-center text-[#2563EB] font-bold w-24 px-2 focus:outline-none focus:border-[#2563EB]"
             />
             .
@@ -128,15 +134,12 @@ export default function Peta6Step2LengkapiKesimpulan({ materi, peta, initialAnsw
           </svg>
           Kembali
         </Link>
-        <button
-          type="submit"
-          className="flex items-center gap-2 bg-[#2563EB] text-white border-none rounded-full py-3.5 px-7 text-sm font-bold font-inherit shadow-[0_4px_10px_rgba(37,99,235,0.3)] cursor-pointer"
-        >
+        <SubmitStepButton className="flex items-center gap-2 bg-[#2563EB] text-white border-none rounded-full py-3.5 px-7 text-sm font-bold font-inherit shadow-[0_4px_10px_rgba(37,99,235,0.3)] cursor-pointer">
           LANJUTKAN
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.4">
             <path d="M5 12h14M13 5l7 7-7 7" />
           </svg>
-        </button>
+        </SubmitStepButton>
       </div>
     </form>
   );

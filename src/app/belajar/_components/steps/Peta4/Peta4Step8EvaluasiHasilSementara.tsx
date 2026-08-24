@@ -2,6 +2,7 @@ import Link from "next/link";
 import PhotoUpload from "@/components/PhotoUpload";
 import { submitStepAction } from "@/app/belajar/actions";
 import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
+import SubmitStepButton from "@/app/belajar/_components/SubmitStepButton";
 
 const evaluasi = [
   "Apakah ada kesulitan dalam menemukan pola geometri?",
@@ -60,6 +61,7 @@ export default function Peta4Step8EvaluasiHasilSementara({ materi, peta, initial
                     rows={2}
                     name={`answers.evaluasi_${i}`}
                     defaultValue={getValue(`evaluasi_${i}`)}
+                    required
                     placeholder="Tuliskan jawaban kelompokmu di sini..."
                     className="w-full rounded-lg border border-[#E5E7EB] bg-white px-4 py-3 text-sm text-[#374151] placeholder:text-[#9CA3AF] focus:border-[#2563EB] focus:outline-none transition-colors resize-y"
                   />
@@ -85,6 +87,7 @@ export default function Peta4Step8EvaluasiHasilSementara({ materi, peta, initial
                 rows={5}
                 name="answers.kesimpulan_sementara"
                 defaultValue={getValue("kesimpulan_sementara")}
+                required
                 placeholder="Kesimpulan sementara..."
                 className="w-full flex-grow rounded-lg border border-[#E5E7EB] bg-white px-4 py-3 text-sm text-[#374151] placeholder:text-[#9CA3AF] focus:border-[#2563EB] focus:outline-none transition-colors resize-y min-h-[120px]"
               />
@@ -98,6 +101,7 @@ export default function Peta4Step8EvaluasiHasilSementara({ materi, peta, initial
                         name={`answers.checklist_${i}`}
                         value="true"
                         defaultChecked={getValue(`checklist_${i}`) === "true"}
+                        data-require-group="peta4step8"
                         className="w-4 h-4 rounded border-[#E5E7EB] text-[#2563EB]"
                       />
                       {c}
@@ -127,15 +131,12 @@ export default function Peta4Step8EvaluasiHasilSementara({ materi, peta, initial
           </svg>
           Kembali
         </Link>
-        <button
-          type="submit"
-          className="flex items-center gap-2 bg-[#2563EB] text-white border-none rounded-full py-3.5 px-7 text-sm font-bold font-inherit shadow-[0_4px_10px_rgba(37,99,235,0.3)] cursor-pointer"
-        >
-          Lanjut ke Tahap 5
+        <SubmitStepButton className="flex items-center gap-2 bg-[#2563EB] text-white border-none rounded-full py-3.5 px-7 text-sm font-bold font-inherit shadow-[0_4px_10px_rgba(37,99,235,0.3)] cursor-pointer">
+          Selesai
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.4">
-            <path d="M5 12h14M13 5l7 7-7 7" />
+            <path d="M5 13l4 4L19 7" />
           </svg>
-        </button>
+        </SubmitStepButton>
       </div>
     </form>
   );

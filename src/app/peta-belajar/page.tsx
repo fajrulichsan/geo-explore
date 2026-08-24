@@ -130,7 +130,7 @@ export default async function PetaBelajarPage() {
                   className={`relative z-10 flex flex-col md:flex-row items-center w-full mb-8 ${alignRight ? "md:justify-end" : "md:justify-start"}`}
                 >
                   {!alignRight && <div className="hidden md:block w-5/12" />}
-                  <div className="absolute left-0 md:left-1/2 -translate-x-1/2 w-14 h-14 bg-gradient-to-br from-[#e6f4ea] to-[#ceead6] rounded-full border-4 border-white flex items-center justify-center text-[#137333] shadow-lg">
+                  <div className="absolute left-0 md:left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-14 h-14 bg-gradient-to-br from-[#e6f4ea] to-[#ceead6] rounded-full border-4 border-white flex items-center justify-center text-[#137333] shadow-lg">
                     <span className="material-symbols-outlined text-[28px]">{card.info.icon}</span>
                   </div>
                   <div className={`w-full md:w-5/12 pl-16 md:pl-0 ${alignRight ? "md:pr-12 md:text-right" : "md:pl-12"}`}>
@@ -185,7 +185,7 @@ export default async function PetaBelajarPage() {
                     </div>
                   </div>
                   <div
-                    className="absolute left-0 md:left-1/2 -translate-x-1/2 w-16 h-16 bg-gradient-to-br from-[#fdc003] to-[#ffdf9e] rounded-full border-4 border-white flex items-center justify-center text-[#6c5000] shadow-[0_0_20px_rgba(253,192,3,0.5)] z-20 animate-bounce"
+                    className="absolute left-0 md:left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 bg-gradient-to-br from-[#fdc003] to-[#ffdf9e] rounded-full border-4 border-white flex items-center justify-center text-[#6c5000] shadow-[0_0_20px_rgba(253,192,3,0.5)] z-20 animate-bounce"
                     style={{ animationDuration: "2s" }}
                   >
                     <span className="material-symbols-outlined text-[32px]">{card.info.icon}</span>
@@ -201,7 +201,7 @@ export default async function PetaBelajarPage() {
                 className={`relative z-10 flex flex-col md:flex-row items-center w-full mb-8 opacity-70 hover:opacity-100 transition-opacity ${alignRight ? "md:justify-end" : "md:justify-start"}`}
               >
                 {!alignRight && <div className="hidden md:block w-5/12" />}
-                <div className="absolute left-0 md:left-1/2 -translate-x-1/2 w-12 h-12 bg-[#e0e3e5] rounded-full border-4 border-white flex items-center justify-center text-[#737685] shadow-inner">
+                <div className="absolute left-0 md:left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 bg-[#e0e3e5] rounded-full border-4 border-white flex items-center justify-center text-[#737685] shadow-inner">
                   <span className="material-symbols-outlined">lock</span>
                 </div>
                 <div className={`w-full md:w-5/12 pl-16 md:pl-0 ${alignRight ? "md:pr-12 md:text-right" : "md:pl-12"}`}>

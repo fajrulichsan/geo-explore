@@ -1,6 +1,7 @@
 import PhotoUpload from "@/components/PhotoUpload";
 import { submitStepAction } from "@/app/belajar/actions";
 import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
+import SubmitStepButton from "@/app/belajar/_components/SubmitStepButton";
 
 const checklist = [
   { key: "paham_cara_mengelompokkan", text: "Saya dapat menjelaskan berbagai cara mengelompokkan bangun ruang sisi datar." },
@@ -66,6 +67,7 @@ export default function Peta7Step1RefleksiPemahaman({ materi, peta, initialAnswe
               name={`answers.${c.key}`}
               value="true"
               defaultChecked={getValue(c.key) === "true"}
+              data-require-group="peta7step1"
               className="peer sr-only"
             />
             <span className="w-6 h-6 rounded-md border-2 border-[#D1D5DB] flex items-center justify-center flex-shrink-0 peer-checked:bg-[#2563EB] peer-checked:border-[#2563EB] transition-colors">
@@ -100,15 +102,12 @@ export default function Peta7Step1RefleksiPemahaman({ materi, peta, initialAnswe
       </div>
 
       <div className="flex justify-end">
-        <button
-          type="submit"
-          className="flex items-center gap-2 bg-[#2563EB] text-white border-none rounded-full py-3.5 px-7 text-sm font-bold font-inherit shadow-[0_4px_10px_rgba(37,99,235,0.3)] cursor-pointer"
-        >
+        <SubmitStepButton className="flex items-center gap-2 bg-[#2563EB] text-white border-none rounded-full py-3.5 px-7 text-sm font-bold font-inherit shadow-[0_4px_10px_rgba(37,99,235,0.3)] cursor-pointer">
           LANJUTKAN
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.4">
             <path d="M5 12h14M13 5l7 7-7 7" />
           </svg>
-        </button>
+        </SubmitStepButton>
       </div>
     </form>
   );

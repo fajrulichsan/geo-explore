@@ -3,7 +3,7 @@
 import { redirect } from "next/navigation";
 import { supabase } from "@/lib/supabase";
 import { getSessionUserId } from "@/lib/session";
-import { getPetaStructure, getPetaOrder } from "@/lib/learningStructure";
+import { getPetaStructure } from "@/lib/learningStructure";
 import { isStepUnlocked } from "@/lib/progress";
 
 /** Reads every `answers.<field>` entry a step form submitted into one JSON object. */
@@ -24,17 +24,11 @@ function collectAnswers(formData: FormData): Record<string, unknown> {
 
 function getNextStepUrl(materi: string, peta: string, step: string): string {
   const structure = getPetaStructure();
-  const petaOrder = getPetaOrder(structure);
   const stepNum = Number(step);
   const totalInPeta = structure[peta] ?? 0;
 
   if (stepNum < totalInPeta) {
     return `/belajar/${materi}/${peta}/${stepNum + 1}`;
-  }
-
-  const nextPeta = petaOrder[petaOrder.indexOf(peta) + 1];
-  if (nextPeta) {
-    return `/belajar/${materi}/${nextPeta}/1`;
   }
 
   return "/peta-belajar";

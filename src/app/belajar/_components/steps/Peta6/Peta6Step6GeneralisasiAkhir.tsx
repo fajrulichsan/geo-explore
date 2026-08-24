@@ -2,6 +2,7 @@ import Link from "next/link";
 import PhotoUpload from "@/components/PhotoUpload";
 import { submitStepAction } from "@/app/belajar/actions";
 import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
+import SubmitStepButton from "@/app/belajar/_components/SubmitStepButton";
 
 export default function Peta6Step6GeneralisasiAkhir({ materi, peta, initialAnswers }: StepComponentProps) {
   const answers = initialAnswers ?? {};
@@ -57,6 +58,7 @@ export default function Peta6Step6GeneralisasiAkhir({ materi, peta, initialAnswe
           defaultValue={getValue("kesimpulan_akhir")}
           rows={8}
           placeholder="Menurut pengamatanku, bangun ruang sisi datar dapat diklasifikasikan menjadi..."
+          required
           className="w-full p-6 bg-white border-none resize-none focus:outline-none text-[15px] text-[#374151] leading-[1.8]"
         />
         <div className="px-6 pb-6">
@@ -79,15 +81,12 @@ export default function Peta6Step6GeneralisasiAkhir({ materi, peta, initialAnswe
             Kamu telah menyelesaikan 6 Tahap Discovery Learning dengan sangat baik!
           </p>
         </div>
-        <button
-          type="submit"
-          className="flex items-center gap-2 bg-[#2563EB] text-white border-none rounded-full py-4 px-7 text-sm font-bold shadow-[0_4px_10px_rgba(37,99,235,0.3)] cursor-pointer flex-shrink-0"
-        >
-          Lanjut ke Refleksi Diri
+        <SubmitStepButton className="flex items-center gap-2 bg-[#2563EB] text-white border-none rounded-full py-4 px-7 text-sm font-bold shadow-[0_4px_10px_rgba(37,99,235,0.3)] cursor-pointer flex-shrink-0">
+          Selesai
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.4">
-            <path d="M5 12h14M13 5l7 7-7 7" />
+            <path d="M5 13l4 4L19 7" />
           </svg>
-        </button>
+        </SubmitStepButton>
       </div>
 
       <div className="flex justify-start items-center">

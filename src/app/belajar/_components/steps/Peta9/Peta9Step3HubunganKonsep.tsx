@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { submitStepAction } from "@/app/belajar/actions";
 import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
+import SubmitStepButton from "@/app/belajar/_components/SubmitStepButton";
 
 const alur = [
   { label: "Mengamati", desc: "Mengamati bangun ruang sisi datar dan sifat-sifatnya.", color: "#2563EB", bg: "#EFF6FF" },
@@ -113,6 +114,7 @@ export default function Peta9Step3HubunganKonsep({ materi, peta, initialAnswers 
                   name={`answers.kemampuan_${i}`}
                   value="true"
                   defaultChecked={getValue(`kemampuan_${i}`) === "true"}
+                  data-require-group="peta9step3"
                   className="w-4 h-4 rounded border-[#D1D5DB] text-[#16A34A] flex-shrink-0"
                 />
                 <span className="text-sm text-[#374151] font-medium">{k}</span>
@@ -132,15 +134,12 @@ export default function Peta9Step3HubunganKonsep({ materi, peta, initialAnswers 
           </svg>
           Kembali
         </Link>
-        <button
-          type="submit"
-          className="flex items-center gap-2 bg-[#2563EB] text-white border-none rounded-full py-3.5 px-7 text-sm font-bold font-inherit shadow-[0_4px_10px_rgba(37,99,235,0.3)] cursor-pointer"
-        >
+        <SubmitStepButton className="flex items-center gap-2 bg-[#2563EB] text-white border-none rounded-full py-3.5 px-7 text-sm font-bold font-inherit shadow-[0_4px_10px_rgba(37,99,235,0.3)] cursor-pointer">
           LANJUTKAN
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.4">
             <path d="M5 12h14M13 5l7 7-7 7" />
           </svg>
-        </button>
+        </SubmitStepButton>
       </div>
     </form>
   );

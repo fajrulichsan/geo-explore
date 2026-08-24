@@ -2,6 +2,7 @@ import Link from "next/link";
 import PhotoUpload from "@/components/PhotoUpload";
 import { submitStepAction } from "@/app/belajar/actions";
 import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
+import SubmitStepButton from "@/app/belajar/_components/SubmitStepButton";
 
 export default function Peta8Step2SatuBangunBanyakKelompok({
   materi,
@@ -61,6 +62,7 @@ export default function Peta8Step2SatuBangunBanyakKelompok({
                 name="answers.kubus_kelompok_lain"
                 defaultValue={getValue("kubus_kelompok_lain")}
                 placeholder="Tuliskan jawabanmu di sini..."
+                required
                 className="w-full bg-transparent border-0 border-b border-dashed border-[#D1D5DB] focus:ring-0 focus:border-[#2563EB] outline-none px-0 py-2 text-sm text-[#2563EB]"
               />
               <input
@@ -68,6 +70,7 @@ export default function Peta8Step2SatuBangunBanyakKelompok({
                 name="answers.kubus_alasan"
                 defaultValue={getValue("kubus_alasan")}
                 placeholder="Tuliskan alasanmu di sini..."
+                required
                 className="w-full bg-transparent border-0 border-b border-dashed border-[#D1D5DB] focus:ring-0 focus:border-[#2563EB] outline-none px-0 py-2 text-sm text-[#2563EB]"
               />
             </div>
@@ -90,6 +93,7 @@ export default function Peta8Step2SatuBangunBanyakKelompok({
               defaultValue={getValue("bangun_lain_jawaban")}
               rows={3}
               placeholder="Ketik jawaban dan alasanmu di sini..."
+              required
               className="w-full bg-[#F9FAFB] border border-[#E5E7EB] rounded-xl focus:ring-2 focus:ring-[#2563EB]/20 focus:border-[#2563EB] outline-none p-4 text-sm text-[#374151] resize-none min-h-[100px]"
             />
             <div className="flex justify-end">
@@ -119,15 +123,12 @@ export default function Peta8Step2SatuBangunBanyakKelompok({
           </svg>
           Kembali
         </Link>
-        <button
-          type="submit"
-          className="flex items-center gap-2 bg-[#2563EB] text-white border-none rounded-full py-3.5 px-7 text-sm font-bold font-inherit shadow-[0_4px_10px_rgba(37,99,235,0.3)] cursor-pointer"
-        >
+        <SubmitStepButton className="flex items-center gap-2 bg-[#2563EB] text-white border-none rounded-full py-3.5 px-7 text-sm font-bold font-inherit shadow-[0_4px_10px_rgba(37,99,235,0.3)] cursor-pointer">
           LANJUTKAN
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.4">
             <path d="M5 12h14M13 5l7 7-7 7" />
           </svg>
-        </button>
+        </SubmitStepButton>
       </div>
     </form>
   );

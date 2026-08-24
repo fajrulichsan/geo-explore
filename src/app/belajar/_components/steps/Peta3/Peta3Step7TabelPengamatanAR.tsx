@@ -2,6 +2,7 @@ import Link from "next/link";
 import PhotoUpload from "@/components/PhotoUpload";
 import { submitStepAction } from "@/app/belajar/actions";
 import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
+import SubmitStepButton from "@/app/belajar/_components/SubmitStepButton";
 
 const baris = [
   { key: "bentuk-sisi", label: "Bentuk sisi", type: "text" as const },
@@ -50,6 +51,7 @@ export default function Peta3Step7TabelPengamatanAR({ materi, peta, initialAnswe
           <select
             name="answers.model_diamati"
             defaultValue={getValue("model_diamati")}
+            required
             className="bg-[#EFF4FF] text-[#2563EB] text-xs font-bold rounded-full py-1 px-3 border-none focus:outline-none cursor-pointer"
           >
             <option>Prisma Segitiga</option>
@@ -91,6 +93,7 @@ export default function Peta3Step7TabelPengamatanAR({ materi, peta, initialAnswe
                         defaultValue={getValue(b.key.replace(/-/g, "_"))}
                         rows={2}
                         placeholder="Catatan lain..."
+                        required
                         className="w-full rounded-md border border-[#E5E7EB] bg-[#F9FAFB] px-3 py-2 text-sm text-[#374151] placeholder:text-[#9CA3AF] focus:border-[#2563EB] focus:outline-none focus:bg-white transition-colors resize-y"
                       />
                     ) : (
@@ -99,6 +102,7 @@ export default function Peta3Step7TabelPengamatanAR({ materi, peta, initialAnswe
                         name={`answers.${b.key.replace(/-/g, "_")}`}
                         defaultValue={getValue(b.key.replace(/-/g, "_"))}
                         placeholder={b.type === "number" ? "0" : "Ketik hasil pengamatan..."}
+                        required
                         className="w-full rounded-md border border-[#E5E7EB] bg-[#F9FAFB] px-3 py-2 text-sm text-[#374151] placeholder:text-[#9CA3AF] focus:border-[#2563EB] focus:outline-none focus:bg-white transition-colors"
                       />
                     )}
@@ -127,15 +131,12 @@ export default function Peta3Step7TabelPengamatanAR({ materi, peta, initialAnswe
           </svg>
           Kembali
         </Link>
-        <button
-          type="submit"
-          className="flex items-center gap-2 bg-[#2563EB] text-white border-none rounded-full py-3.5 px-7 text-sm font-bold font-inherit shadow-[0_4px_10px_rgba(37,99,235,0.3)] cursor-pointer"
-        >
+        <SubmitStepButton className="flex items-center gap-2 bg-[#2563EB] text-white border-none rounded-full py-3.5 px-7 text-sm font-bold font-inherit shadow-[0_4px_10px_rgba(37,99,235,0.3)] cursor-pointer">
           LANJUTKAN
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.4">
             <path d="M5 12h14M13 5l7 7-7 7" />
           </svg>
-        </button>
+        </SubmitStepButton>
       </div>
     </form>
   );

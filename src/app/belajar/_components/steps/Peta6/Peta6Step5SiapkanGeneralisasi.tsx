@@ -2,6 +2,7 @@ import Link from "next/link";
 import PhotoUpload from "@/components/PhotoUpload";
 import { submitStepAction } from "@/app/belajar/actions";
 import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
+import SubmitStepButton from "@/app/belajar/_components/SubmitStepButton";
 
 const checklist = [
   { key: "checklist_dasar_pengelompokan", label: "Dasar pengelompokan yang dapat digunakan" },
@@ -67,6 +68,7 @@ export default function Peta6Step5SiapkanGeneralisasi({ materi, peta, initialAns
                   name={`answers.${c.key}`}
                   value="true"
                   defaultChecked={getValue(c.key) === "true"}
+                  data-require-group="peta6step5"
                   className="mt-1 w-4 h-4 rounded border-[#E5E7EB] text-[#2563EB]"
                 />
                 <span className="text-sm text-[#374151]">{c.label}</span>
@@ -92,6 +94,7 @@ export default function Peta6Step5SiapkanGeneralisasi({ materi, peta, initialAns
             defaultValue={getValue("catatan_kesepakatan")}
             className="w-full flex-1 min-h-[200px] resize-none rounded-lg border border-[#E5E7EB] bg-[#F9FAFB] p-4 text-sm text-[#374151] placeholder:text-[#9CA3AF] focus:border-[#2563EB] focus:outline-none transition-colors"
             placeholder="Tuliskan poin-poin kesepakatan kelompokmu di sini..."
+            required
           />
 
           <div className="pt-2 border-t border-[#E5E7EB]">
@@ -114,15 +117,12 @@ export default function Peta6Step5SiapkanGeneralisasi({ materi, peta, initialAns
           </svg>
           Kembali
         </Link>
-        <button
-          type="submit"
-          className="flex items-center gap-2 bg-[#2563EB] text-white border-none rounded-full py-3.5 px-7 text-sm font-bold font-inherit shadow-[0_4px_10px_rgba(37,99,235,0.3)] cursor-pointer"
-        >
+        <SubmitStepButton className="flex items-center gap-2 bg-[#2563EB] text-white border-none rounded-full py-3.5 px-7 text-sm font-bold font-inherit shadow-[0_4px_10px_rgba(37,99,235,0.3)] cursor-pointer">
           LANJUTKAN
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.4">
             <path d="M5 12h14M13 5l7 7-7 7" />
           </svg>
-        </button>
+        </SubmitStepButton>
       </div>
     </form>
   );

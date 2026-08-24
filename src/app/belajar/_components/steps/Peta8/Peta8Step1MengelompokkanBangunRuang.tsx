@@ -2,6 +2,7 @@ import Link from "next/link";
 import PhotoUpload from "@/components/PhotoUpload";
 import { submitStepAction } from "@/app/belajar/actions";
 import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
+import SubmitStepButton from "@/app/belajar/_components/SubmitStepButton";
 
 const bangun = [
   { n: 1, label: "Kubus" },
@@ -117,6 +118,7 @@ export default function Peta8Step1MengelompokkanBangunRuang({
                         name={`answers.baris_${n}_dasar`}
                         defaultValue={getValue(`baris_${n}_dasar`)}
                         placeholder="Ketik di sini..."
+                        required
                         className="w-full bg-transparent border-none focus:ring-0 outline-none p-1 text-sm text-[#374151] placeholder:text-[#9CA3AF]"
                       />
                     </td>
@@ -126,6 +128,7 @@ export default function Peta8Step1MengelompokkanBangunRuang({
                         name={`answers.baris_${n}_kelompok`}
                         defaultValue={getValue(`baris_${n}_kelompok`)}
                         placeholder="Ketik di sini..."
+                        required
                         className="w-full bg-transparent border-none focus:ring-0 outline-none p-1 text-sm text-[#374151] placeholder:text-[#9CA3AF]"
                       />
                     </td>
@@ -135,6 +138,7 @@ export default function Peta8Step1MengelompokkanBangunRuang({
                         name={`answers.baris_${n}_alasan`}
                         defaultValue={getValue(`baris_${n}_alasan`)}
                         placeholder="Ketik di sini..."
+                        required
                         className="w-full bg-transparent border-none focus:ring-0 outline-none p-1 text-sm text-[#374151] placeholder:text-[#9CA3AF]"
                       />
                     </td>
@@ -174,15 +178,12 @@ export default function Peta8Step1MengelompokkanBangunRuang({
           </svg>
           Kembali
         </Link>
-        <button
-          type="submit"
-          className="flex items-center gap-2 bg-[#2563EB] text-white border-none rounded-full py-3.5 px-7 text-sm font-bold font-inherit shadow-[0_4px_10px_rgba(37,99,235,0.3)] cursor-pointer"
-        >
+        <SubmitStepButton className="flex items-center gap-2 bg-[#2563EB] text-white border-none rounded-full py-3.5 px-7 text-sm font-bold font-inherit shadow-[0_4px_10px_rgba(37,99,235,0.3)] cursor-pointer">
           LANJUTKAN
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.4">
             <path d="M5 12h14M13 5l7 7-7 7" />
           </svg>
-        </button>
+        </SubmitStepButton>
       </div>
     </form>
   );
