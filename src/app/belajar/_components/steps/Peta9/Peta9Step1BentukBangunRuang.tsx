@@ -1,4 +1,5 @@
-import Link from "next/link";
+import { submitStepAction } from "@/app/belajar/actions";
+import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
 
 const shapes = [
   {
@@ -41,9 +42,13 @@ const shapes = [
   },
 ];
 
-export default function Peta9Step1BentukBangunRuang({ materi, peta }: { materi: string; peta: string }) {
+export default function Peta9Step1BentukBangunRuang({ materi, peta }: StepComponentProps) {
   return (
-    <>
+    <form action={submitStepAction} className="flex flex-col gap-8">
+      <input type="hidden" name="materi" value={materi} />
+      <input type="hidden" name="peta" value={peta} />
+      <input type="hidden" name="step" value="1" />
+
       <div className="flex flex-col gap-4">
         <div className="inline-flex items-center gap-1.5 bg-[#1E3A8A] text-white rounded-full py-1.5 px-3.5 text-xs font-bold tracking-[0.04em] w-fit">
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2">
@@ -118,16 +123,16 @@ export default function Peta9Step1BentukBangunRuang({ materi, peta }: { materi: 
       </div>
 
       <div className="flex justify-end">
-        <Link
-          href={`/belajar/${materi}/${peta}/2`}
+        <button
+          type="submit"
           className="flex items-center gap-2 bg-[#2563EB] text-white border-none rounded-full py-3.5 px-7 text-sm font-bold font-inherit shadow-[0_4px_10px_rgba(37,99,235,0.3)] cursor-pointer"
         >
           LANJUTKAN
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.4">
             <path d="M5 12h14M13 5l7 7-7 7" />
           </svg>
-        </Link>
+        </button>
       </div>
-    </>
+    </form>
   );
 }

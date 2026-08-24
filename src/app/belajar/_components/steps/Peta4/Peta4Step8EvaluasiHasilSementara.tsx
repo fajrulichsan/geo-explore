@@ -1,4 +1,7 @@
 import Link from "next/link";
+import PhotoUpload from "@/components/PhotoUpload";
+import { submitStepAction } from "@/app/belajar/actions";
+import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
 
 const evaluasi = [
   "Apakah ada kesulitan dalam menemukan pola geometri?",
@@ -8,9 +11,16 @@ const evaluasi = [
 
 const checklist = ["Sesuai dengan data pengamatan", "Telah didiskusikan bersama"];
 
-export default function Peta4Step8EvaluasiHasilSementara({ materi, peta }: { materi: string; peta: string }) {
+export default function Peta4Step8EvaluasiHasilSementara({ materi, peta, initialAnswers }: StepComponentProps) {
+  const answers = initialAnswers ?? {};
+  const getValue = (key: string) => (typeof answers[key] === "string" ? (answers[key] as string) : "");
+
   return (
-    <>
+    <form action={submitStepAction} className="flex flex-col gap-8">
+      <input type="hidden" name="materi" value={materi} />
+      <input type="hidden" name="peta" value={peta} />
+      <input type="hidden" name="step" value="8" />
+
       <div className="flex flex-col gap-4">
         <div className="inline-flex items-center gap-1.5 bg-[#1E3A8A] text-white rounded-full py-1.5 px-3.5 text-xs font-bold tracking-[0.04em] w-fit">
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2">
@@ -48,6 +58,8 @@ export default function Peta4Step8EvaluasiHasilSementara({ materi, peta }: { mat
                   </label>
                   <textarea
                     rows={2}
+                    name={`answers.evaluasi_${i}`}
+                    defaultValue={getValue(`evaluasi_${i}`)}
                     placeholder="Tuliskan jawaban kelompokmu di sini..."
                     className="w-full rounded-lg border border-[#E5E7EB] bg-white px-4 py-3 text-sm text-[#374151] placeholder:text-[#9CA3AF] focus:border-[#2563EB] focus:outline-none transition-colors resize-y"
                   />
@@ -71,19 +83,34 @@ export default function Peta4Step8EvaluasiHasilSementara({ materi, peta }: { mat
               </p>
               <textarea
                 rows={5}
+                name="answers.kesimpulan_sementara"
+                defaultValue={getValue("kesimpulan_sementara")}
                 placeholder="Kesimpulan sementara..."
                 className="w-full flex-grow rounded-lg border border-[#E5E7EB] bg-white px-4 py-3 text-sm text-[#374151] placeholder:text-[#9CA3AF] focus:border-[#2563EB] focus:outline-none transition-colors resize-y min-h-[120px]"
               />
               <div className="bg-[#F9FAFB] border border-[#E5E7EB] rounded-xl p-4">
                 <h3 className="m-0 mb-2 text-sm font-bold text-[#111827]">Pastikan hasilmu:</h3>
                 <ul className="m-0 p-0 flex flex-col gap-2 list-none">
-                  {checklist.map((c) => (
+                  {checklist.map((c, i) => (
                     <li key={c} className="flex items-center gap-2 text-sm text-[#374151]">
-                      <input type="checkbox" className="w-4 h-4 rounded border-[#E5E7EB] text-[#2563EB]" />
+                      <input
+                        type="checkbox"
+                        name={`answers.checklist_${i}`}
+                        value="true"
+                        defaultChecked={getValue(`checklist_${i}`) === "true"}
+                        className="w-4 h-4 rounded border-[#E5E7EB] text-[#2563EB]"
+                      />
                       {c}
                     </li>
                   ))}
                 </ul>
+              </div>
+              <div className="mt-2 pt-4 border-t border-[#E5E7EB]">
+                <PhotoUpload
+                  name="answers.foto_bukti"
+                  label="Unggah foto hasil kerja (opsional)"
+                  defaultValue={getValue("foto_bukti")}
+                />
               </div>
             </div>
           </div>
@@ -100,16 +127,16 @@ export default function Peta4Step8EvaluasiHasilSementara({ materi, peta }: { mat
           </svg>
           Kembali
         </Link>
-        <Link
-          href={`/belajar/${materi}/5/1`}
+        <button
+          type="submit"
           className="flex items-center gap-2 bg-[#2563EB] text-white border-none rounded-full py-3.5 px-7 text-sm font-bold font-inherit shadow-[0_4px_10px_rgba(37,99,235,0.3)] cursor-pointer"
         >
           Lanjut ke Tahap 5
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.4">
             <path d="M5 12h14M13 5l7 7-7 7" />
           </svg>
-        </Link>
+        </button>
       </div>
-    </>
+    </form>
   );
 }

@@ -1,4 +1,7 @@
 import Link from "next/link";
+import PhotoUpload from "@/components/PhotoUpload";
+import { submitStepAction } from "@/app/belajar/actions";
+import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
 
 const verifikasi = [
   { key: "bentuk_sisi", aspek: "Bentuk sisi" },
@@ -6,9 +9,16 @@ const verifikasi = [
   { key: "pasangan_sisi", aspek: "Pasangan bidang sisi sejajar" },
 ];
 
-export default function Peta5Step1PeriksaKembali({ materi, peta }: { materi: string; peta: string }) {
+export default function Peta5Step1PeriksaKembali({ materi, peta, initialAnswers }: StepComponentProps) {
+  const answers = initialAnswers ?? {};
+  const getValue = (key: string) => (typeof answers[key] === "string" ? (answers[key] as string) : "");
+
   return (
-    <>
+    <form action={submitStepAction} className="flex flex-col gap-8">
+      <input type="hidden" name="materi" value={materi} />
+      <input type="hidden" name="peta" value={peta} />
+      <input type="hidden" name="step" value="1" />
+
       <div className="flex flex-col gap-4">
         <div className="inline-flex items-center gap-1.5 bg-[#1E3A8A] text-white rounded-full py-1.5 px-3.5 text-xs font-bold tracking-[0.04em] w-fit">
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2">
@@ -67,6 +77,8 @@ export default function Peta5Step1PeriksaKembali({ materi, peta }: { materi: str
                       <td className="py-3 px-4 align-top">
                         <input
                           type="text"
+                          name={`answers.bukti_${v.key}`}
+                          defaultValue={getValue(`bukti_${v.key}`)}
                           placeholder="Tulis bukti..."
                           className="w-full rounded-lg border border-[#E5E7EB] bg-white px-3 py-2 text-sm text-[#374151] placeholder:text-[#9CA3AF] focus:border-[#2563EB] focus:outline-none"
                         />
@@ -74,11 +86,23 @@ export default function Peta5Step1PeriksaKembali({ materi, peta }: { materi: str
                       <td className="py-3 px-4 align-top">
                         <div className="flex flex-col gap-1.5 items-center">
                           <label className="inline-flex items-center gap-1.5 text-xs text-[#374151]">
-                            <input type="radio" name={v.key} className="w-4 h-4 text-[#2563EB]" />
+                            <input
+                              type="radio"
+                              name={`answers.sesuai_${v.key}`}
+                              value="ya"
+                              defaultChecked={getValue(`sesuai_${v.key}`) === "ya"}
+                              className="w-4 h-4 text-[#2563EB]"
+                            />
                             Ya
                           </label>
                           <label className="inline-flex items-center gap-1.5 text-xs text-[#374151]">
-                            <input type="radio" name={v.key} className="w-4 h-4 text-[#DC2626]" />
+                            <input
+                              type="radio"
+                              name={`answers.sesuai_${v.key}`}
+                              value="belum"
+                              defaultChecked={getValue(`sesuai_${v.key}`) === "belum"}
+                              className="w-4 h-4 text-[#DC2626]"
+                            />
                             Belum
                           </label>
                         </div>
@@ -86,6 +110,8 @@ export default function Peta5Step1PeriksaKembali({ materi, peta }: { materi: str
                       <td className="py-3 px-4 align-top">
                         <textarea
                           rows={2}
+                          name={`answers.perbaikan_${v.key}`}
+                          defaultValue={getValue(`perbaikan_${v.key}`)}
                           placeholder="Catatan perbaikan..."
                           className="w-full rounded-lg border border-[#E5E7EB] bg-white px-3 py-2 text-sm text-[#374151] placeholder:text-[#9CA3AF] focus:border-[#2563EB] focus:outline-none resize-none"
                         />
@@ -94,6 +120,13 @@ export default function Peta5Step1PeriksaKembali({ materi, peta }: { materi: str
                   ))}
                 </tbody>
               </table>
+            </div>
+            <div className="p-6 pt-0">
+              <PhotoUpload
+                name="answers.foto_bukti"
+                label="Unggah foto hasil verifikasi (opsional)"
+                defaultValue={getValue("foto_bukti")}
+              />
             </div>
           </div>
         </div>
@@ -109,16 +142,16 @@ export default function Peta5Step1PeriksaKembali({ materi, peta }: { materi: str
           </svg>
           Kembali
         </Link>
-        <Link
-          href={`/belajar/${materi}/${peta}/2`}
+        <button
+          type="submit"
           className="flex items-center gap-2 bg-[#2563EB] text-white border-none rounded-full py-3.5 px-7 text-sm font-bold font-inherit shadow-[0_4px_10px_rgba(37,99,235,0.3)] cursor-pointer"
         >
           Simpan &amp; Lanjutkan
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.4">
             <path d="M5 12h14M13 5l7 7-7 7" />
           </svg>
-        </Link>
+        </button>
       </div>
-    </>
+    </form>
   );
 }

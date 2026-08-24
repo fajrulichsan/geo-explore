@@ -1,8 +1,18 @@
 import Link from "next/link";
+import PhotoUpload from "@/components/PhotoUpload";
+import { submitStepAction } from "@/app/belajar/actions";
+import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
 
-export default function Peta6Step2LengkapiKesimpulan({ materi, peta }: { materi: string; peta: string }) {
+export default function Peta6Step2LengkapiKesimpulan({ materi, peta, initialAnswers }: StepComponentProps) {
+  const answers = initialAnswers ?? {};
+  const getValue = (key: string) => (typeof answers[key] === "string" ? (answers[key] as string) : "");
+
   return (
-    <>
+    <form action={submitStepAction} className="flex flex-col gap-8">
+      <input type="hidden" name="materi" value={materi} />
+      <input type="hidden" name="peta" value={peta} />
+      <input type="hidden" name="step" value="2" />
+
       <div className="flex flex-col gap-4">
         <div className="inline-flex items-center gap-1.5 bg-[#1E3A8A] text-white rounded-full py-1.5 px-3.5 text-xs font-bold tracking-[0.04em] w-fit">
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2">
@@ -36,6 +46,8 @@ export default function Peta6Step2LengkapiKesimpulan({ materi, peta }: { materi:
             <input
               aria-label="Jawaban 1"
               type="text"
+              name="answers.dasar_pengelompokan"
+              defaultValue={getValue("dasar_pengelompokan")}
               placeholder="..."
               className="border-b-2 border-[#B3C5FF] bg-transparent text-center text-[#2563EB] font-bold min-w-[120px] px-2 focus:outline-none focus:border-[#2563EB]"
             />
@@ -52,6 +64,8 @@ export default function Peta6Step2LengkapiKesimpulan({ materi, peta }: { materi:
             <input
               aria-label="Jawaban 2"
               type="text"
+              name="answers.alasan_lebih_dari_satu_kelompok"
+              defaultValue={getValue("alasan_lebih_dari_satu_kelompok")}
               placeholder="..."
               className="border-b-2 border-[#B3C5FF] bg-transparent text-center text-[#2563EB] font-bold min-w-[120px] px-2 focus:outline-none focus:border-[#2563EB]"
             />
@@ -68,6 +82,8 @@ export default function Peta6Step2LengkapiKesimpulan({ materi, peta }: { materi:
             <input
               aria-label="Jawaban 3a"
               type="text"
+              name="answers.syarat_dasar"
+              defaultValue={getValue("syarat_dasar")}
               placeholder="..."
               className="border-b-2 border-[#B3C5FF] bg-transparent text-center text-[#2563EB] font-bold w-24 px-2 focus:outline-none focus:border-[#2563EB]"
             />
@@ -75,6 +91,8 @@ export default function Peta6Step2LengkapiKesimpulan({ materi, peta }: { materi:
             <input
               aria-label="Jawaban 3b"
               type="text"
+              name="answers.syarat_penerapan"
+              defaultValue={getValue("syarat_penerapan")}
               placeholder="..."
               className="border-b-2 border-[#B3C5FF] bg-transparent text-center text-[#2563EB] font-bold w-24 px-2 focus:outline-none focus:border-[#2563EB]"
             />
@@ -82,12 +100,22 @@ export default function Peta6Step2LengkapiKesimpulan({ materi, peta }: { materi:
             <input
               aria-label="Jawaban 3c"
               type="text"
+              name="answers.syarat_alasan"
+              defaultValue={getValue("syarat_alasan")}
               placeholder="..."
               className="border-b-2 border-[#B3C5FF] bg-transparent text-center text-[#2563EB] font-bold w-24 px-2 focus:outline-none focus:border-[#2563EB]"
             />
             .
           </p>
         </div>
+      </div>
+
+      <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-6 shadow-[0_1px_2px_rgba(0,0,0,0.04)]">
+        <PhotoUpload
+          name="answers.foto_bukti"
+          label="Unggah foto hasil kerja (opsional)"
+          defaultValue={getValue("foto_bukti")}
+        />
       </div>
 
       <div className="flex justify-between items-center">
@@ -100,16 +128,16 @@ export default function Peta6Step2LengkapiKesimpulan({ materi, peta }: { materi:
           </svg>
           Kembali
         </Link>
-        <Link
-          href={`/belajar/${materi}/${peta}/3`}
+        <button
+          type="submit"
           className="flex items-center gap-2 bg-[#2563EB] text-white border-none rounded-full py-3.5 px-7 text-sm font-bold font-inherit shadow-[0_4px_10px_rgba(37,99,235,0.3)] cursor-pointer"
         >
           LANJUTKAN
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.4">
             <path d="M5 12h14M13 5l7 7-7 7" />
           </svg>
-        </Link>
+        </button>
       </div>
-    </>
+    </form>
   );
 }

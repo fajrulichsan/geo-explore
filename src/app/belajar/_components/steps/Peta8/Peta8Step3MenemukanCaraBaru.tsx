@@ -1,14 +1,22 @@
 import Link from "next/link";
+import PhotoUpload from "@/components/PhotoUpload";
+import { submitStepAction } from "@/app/belajar/actions";
+import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
 
 export default function Peta8Step3MenemukanCaraBaru({
   materi,
   peta,
-}: {
-  materi: string;
-  peta: string;
-}) {
+  initialAnswers,
+}: StepComponentProps) {
+  const answers = initialAnswers ?? {};
+  const getValue = (key: string) => (typeof answers[key] === "string" ? (answers[key] as string) : "");
+
   return (
-    <>
+    <form action={submitStepAction} className="flex flex-col gap-8">
+      <input type="hidden" name="materi" value={materi} />
+      <input type="hidden" name="peta" value={peta} />
+      <input type="hidden" name="step" value="3" />
+
       <div className="flex flex-col gap-4">
         <div className="inline-flex items-center gap-1.5 bg-[#1E3A8A] text-white rounded-full py-1.5 px-3.5 text-xs font-bold tracking-[0.04em] w-fit">
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="1.8">
@@ -33,6 +41,8 @@ export default function Peta8Step3MenemukanCaraBaru({
         <div className="flex flex-col gap-2">
           <label className="text-sm font-bold text-[#111827]">Dasar Klasifikasi Baru</label>
           <textarea
+            name="answers.dasar_klasifikasi_baru"
+            defaultValue={getValue("dasar_klasifikasi_baru")}
             rows={2}
             placeholder="Tuliskan dasar klasifikasimu di sini..."
             className="w-full bg-[#F9FAFB] border border-[#E5E7EB] rounded-xl focus:ring-2 focus:ring-[#2563EB]/20 focus:border-[#2563EB] outline-none p-4 text-sm text-[#374151] resize-none"
@@ -43,6 +53,8 @@ export default function Peta8Step3MenemukanCaraBaru({
             Hasil Pengelompokan &amp; Alasan Matematis
           </label>
           <textarea
+            name="answers.hasil_pengelompokan_alasan"
+            defaultValue={getValue("hasil_pengelompokan_alasan")}
             rows={4}
             placeholder="Jelaskan kelompok yang terbentuk dan alasan matematisnya..."
             className="w-full bg-[#F9FAFB] border border-[#E5E7EB] rounded-xl focus:ring-2 focus:ring-[#2563EB]/20 focus:border-[#2563EB] outline-none p-4 text-sm text-[#374151] resize-none"
@@ -58,6 +70,14 @@ export default function Peta8Step3MenemukanCaraBaru({
             harus sama dengan temanmu selama logis dan diterapkan secara konsisten.
           </p>
         </div>
+
+        <div className="pt-2 border-t border-[#E5E7EB]">
+          <PhotoUpload
+            name="answers.foto_bukti"
+            label="Unggah foto hasil kerja (opsional)"
+            defaultValue={getValue("foto_bukti")}
+          />
+        </div>
       </div>
 
       <div className="flex justify-between items-center">
@@ -70,16 +90,16 @@ export default function Peta8Step3MenemukanCaraBaru({
           </svg>
           Kembali
         </Link>
-        <Link
-          href={`/belajar/${materi}/${peta}/4`}
+        <button
+          type="submit"
           className="flex items-center gap-2 bg-[#2563EB] text-white border-none rounded-full py-3.5 px-7 text-sm font-bold font-inherit shadow-[0_4px_10px_rgba(37,99,235,0.3)] cursor-pointer"
         >
           LANJUTKAN
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.4">
             <path d="M5 12h14M13 5l7 7-7 7" />
           </svg>
-        </Link>
+        </button>
       </div>
-    </>
+    </form>
   );
 }

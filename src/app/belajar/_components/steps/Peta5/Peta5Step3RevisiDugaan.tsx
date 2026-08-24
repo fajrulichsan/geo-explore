@@ -1,4 +1,7 @@
 import Link from "next/link";
+import PhotoUpload from "@/components/PhotoUpload";
+import { submitStepAction } from "@/app/belajar/actions";
+import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
 
 const panduan = [
   "Bandingkan dugaan awalmu (Tahap 2) dengan temuan eksperimen.",
@@ -6,9 +9,16 @@ const panduan = [
   "Gunakan konsep geometri yang relevan sebagai bukti pendukung utama.",
 ];
 
-export default function Peta5Step3RevisiDugaan({ materi, peta }: { materi: string; peta: string }) {
+export default function Peta5Step3RevisiDugaan({ materi, peta, initialAnswers }: StepComponentProps) {
+  const answers = initialAnswers ?? {};
+  const getValue = (key: string) => (typeof answers[key] === "string" ? (answers[key] as string) : "");
+
   return (
-    <>
+    <form action={submitStepAction} className="flex flex-col gap-8">
+      <input type="hidden" name="materi" value={materi} />
+      <input type="hidden" name="peta" value={peta} />
+      <input type="hidden" name="step" value="3" />
+
       <div className="flex flex-col gap-4">
         <div className="inline-flex items-center gap-1.5 bg-[#1E3A8A] text-white rounded-full py-1.5 px-3.5 text-xs font-bold tracking-[0.04em] w-fit">
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2">
@@ -68,6 +78,8 @@ export default function Peta5Step3RevisiDugaan({ materi, peta }: { materi: strin
                       <td className="py-3 px-3 align-top">
                         <textarea
                           rows={3}
+                          name={`answers.revisi_${i}_bagian`}
+                          defaultValue={getValue(`revisi_${i}_bagian`)}
                           placeholder="Misal: Sudut A tidak sama dengan Sudut B..."
                           className="w-full rounded-lg border border-[#E5E7EB] bg-white px-3 py-2 text-sm text-[#374151] placeholder:text-[#9CA3AF] focus:border-[#2563EB] focus:outline-none resize-none"
                         />
@@ -75,6 +87,8 @@ export default function Peta5Step3RevisiDugaan({ materi, peta }: { materi: strin
                       <td className="py-3 px-3 align-top">
                         <textarea
                           rows={3}
+                          name={`answers.revisi_${i}_alasan`}
+                          defaultValue={getValue(`revisi_${i}_alasan`)}
                           placeholder="Jelaskan mengapa dugaan awal salah..."
                           className="w-full rounded-lg border border-[#E5E7EB] bg-white px-3 py-2 text-sm text-[#374151] placeholder:text-[#9CA3AF] focus:border-[#2563EB] focus:outline-none resize-none"
                         />
@@ -82,6 +96,8 @@ export default function Peta5Step3RevisiDugaan({ materi, peta }: { materi: strin
                       <td className="py-3 px-3 align-top">
                         <textarea
                           rows={3}
+                          name={`answers.revisi_${i}_bukti`}
+                          defaultValue={getValue(`revisi_${i}_bukti`)}
                           placeholder="Tuliskan perhitungan atau teorema yang mendukung..."
                           className="w-full rounded-lg border border-[#E5E7EB] bg-white px-3 py-2 text-sm text-[#374151] placeholder:text-[#9CA3AF] focus:border-[#2563EB] focus:outline-none resize-none"
                         />
@@ -90,6 +106,13 @@ export default function Peta5Step3RevisiDugaan({ materi, peta }: { materi: strin
                   ))}
                 </tbody>
               </table>
+            </div>
+            <div className="mt-4 pt-4 border-t border-[#E5E7EB]">
+              <PhotoUpload
+                name="answers.foto_bukti"
+                label="Unggah foto hasil kerja (opsional)"
+                defaultValue={getValue("foto_bukti")}
+              />
             </div>
           </div>
 
@@ -143,16 +166,16 @@ export default function Peta5Step3RevisiDugaan({ materi, peta }: { materi: strin
           </svg>
           Sebelumnya
         </Link>
-        <Link
-          href={`/belajar/${materi}/${peta}/4`}
+        <button
+          type="submit"
           className="flex items-center gap-2 bg-[#2563EB] text-white border-none rounded-full py-3.5 px-7 text-sm font-bold font-inherit shadow-[0_4px_10px_rgba(37,99,235,0.3)] cursor-pointer"
         >
           Selanjutnya
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.4">
             <path d="M5 12h14M13 5l7 7-7 7" />
           </svg>
-        </Link>
+        </button>
       </div>
-    </>
+    </form>
   );
 }

@@ -1,14 +1,27 @@
 import Link from "next/link";
+import PhotoUpload from "@/components/PhotoUpload";
+import { submitStepAction } from "@/app/belajar/actions";
+import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
 
 const checklist = [
-  "Dasar pengelompokan yang dapat digunakan",
-  "Alasan mengapa satu bangun dapat masuk lebih dari satu kelompok",
-  "Syarat agar klasifikasi dapat diterima",
+  { key: "checklist_dasar_pengelompokan", label: "Dasar pengelompokan yang dapat digunakan" },
+  {
+    key: "checklist_alasan_lebih_dari_satu_kelompok",
+    label: "Alasan mengapa satu bangun dapat masuk lebih dari satu kelompok",
+  },
+  { key: "checklist_syarat_klasifikasi_diterima", label: "Syarat agar klasifikasi dapat diterima" },
 ];
 
-export default function Peta6Step5SiapkanGeneralisasi({ materi, peta }: { materi: string; peta: string }) {
+export default function Peta6Step5SiapkanGeneralisasi({ materi, peta, initialAnswers }: StepComponentProps) {
+  const answers = initialAnswers ?? {};
+  const getValue = (key: string) => (typeof answers[key] === "string" ? (answers[key] as string) : "");
+
   return (
-    <>
+    <form action={submitStepAction} className="flex flex-col gap-8">
+      <input type="hidden" name="materi" value={materi} />
+      <input type="hidden" name="peta" value={peta} />
+      <input type="hidden" name="step" value="5" />
+
       <div className="flex flex-col gap-4">
         <div className="inline-flex items-center gap-1.5 bg-[#1E3A8A] text-white rounded-full py-1.5 px-3.5 text-xs font-bold tracking-[0.04em] w-fit">
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2">
@@ -46,11 +59,17 @@ export default function Peta6Step5SiapkanGeneralisasi({ materi, peta }: { materi
           <div className="flex flex-col gap-2">
             {checklist.map((c) => (
               <label
-                key={c}
+                key={c.key}
                 className="flex items-start gap-3 p-3 rounded-lg border border-transparent hover:border-[#B3C5FF] hover:bg-[#F9FAFB] cursor-pointer transition-all"
               >
-                <input type="checkbox" className="mt-1 w-4 h-4 rounded border-[#E5E7EB] text-[#2563EB]" />
-                <span className="text-sm text-[#374151]">{c}</span>
+                <input
+                  type="checkbox"
+                  name={`answers.${c.key}`}
+                  value="true"
+                  defaultChecked={getValue(c.key) === "true"}
+                  className="mt-1 w-4 h-4 rounded border-[#E5E7EB] text-[#2563EB]"
+                />
+                <span className="text-sm text-[#374151]">{c.label}</span>
               </label>
             ))}
           </div>
@@ -69,9 +88,19 @@ export default function Peta6Step5SiapkanGeneralisasi({ materi, peta }: { materi
             <span className="text-xs text-[#9CA3AF] px-2 py-1 bg-[#F9FAFB] rounded">Draft Tersimpan</span>
           </div>
           <textarea
+            name="answers.catatan_kesepakatan"
+            defaultValue={getValue("catatan_kesepakatan")}
             className="w-full flex-1 min-h-[200px] resize-none rounded-lg border border-[#E5E7EB] bg-[#F9FAFB] p-4 text-sm text-[#374151] placeholder:text-[#9CA3AF] focus:border-[#2563EB] focus:outline-none transition-colors"
             placeholder="Tuliskan poin-poin kesepakatan kelompokmu di sini..."
           />
+
+          <div className="pt-2 border-t border-[#E5E7EB]">
+            <PhotoUpload
+              name="answers.foto_bukti"
+              label="Unggah foto hasil kerja (opsional)"
+              defaultValue={getValue("foto_bukti")}
+            />
+          </div>
         </div>
       </div>
 
@@ -85,16 +114,16 @@ export default function Peta6Step5SiapkanGeneralisasi({ materi, peta }: { materi
           </svg>
           Kembali
         </Link>
-        <Link
-          href={`/belajar/${materi}/${peta}/6`}
+        <button
+          type="submit"
           className="flex items-center gap-2 bg-[#2563EB] text-white border-none rounded-full py-3.5 px-7 text-sm font-bold font-inherit shadow-[0_4px_10px_rgba(37,99,235,0.3)] cursor-pointer"
         >
           LANJUTKAN
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.4">
             <path d="M5 12h14M13 5l7 7-7 7" />
           </svg>
-        </Link>
+        </button>
       </div>
-    </>
+    </form>
   );
 }

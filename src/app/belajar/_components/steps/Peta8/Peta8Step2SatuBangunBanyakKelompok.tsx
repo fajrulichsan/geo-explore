@@ -1,14 +1,22 @@
 import Link from "next/link";
+import PhotoUpload from "@/components/PhotoUpload";
+import { submitStepAction } from "@/app/belajar/actions";
+import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
 
 export default function Peta8Step2SatuBangunBanyakKelompok({
   materi,
   peta,
-}: {
-  materi: string;
-  peta: string;
-}) {
+  initialAnswers,
+}: StepComponentProps) {
+  const answers = initialAnswers ?? {};
+  const getValue = (key: string) => (typeof answers[key] === "string" ? (answers[key] as string) : "");
+
   return (
-    <>
+    <form action={submitStepAction} className="flex flex-col gap-8">
+      <input type="hidden" name="materi" value={materi} />
+      <input type="hidden" name="peta" value={peta} />
+      <input type="hidden" name="step" value="2" />
+
       <div className="flex flex-col gap-4">
         <div className="inline-flex items-center gap-1.5 bg-[#1E3A8A] text-white rounded-full py-1.5 px-3.5 text-xs font-bold tracking-[0.04em] w-fit">
           <svg width="12" height="12" viewBox="0 0 24 24" fill="#fff">
@@ -50,11 +58,15 @@ export default function Peta8Step2SatuBangunBanyakKelompok({
             <div className="flex-grow flex flex-col gap-3">
               <input
                 type="text"
+                name="answers.kubus_kelompok_lain"
+                defaultValue={getValue("kubus_kelompok_lain")}
                 placeholder="Tuliskan jawabanmu di sini..."
                 className="w-full bg-transparent border-0 border-b border-dashed border-[#D1D5DB] focus:ring-0 focus:border-[#2563EB] outline-none px-0 py-2 text-sm text-[#2563EB]"
               />
               <input
                 type="text"
+                name="answers.kubus_alasan"
+                defaultValue={getValue("kubus_alasan")}
                 placeholder="Tuliskan alasanmu di sini..."
                 className="w-full bg-transparent border-0 border-b border-dashed border-[#D1D5DB] focus:ring-0 focus:border-[#2563EB] outline-none px-0 py-2 text-sm text-[#2563EB]"
               />
@@ -74,6 +86,8 @@ export default function Peta8Step2SatuBangunBanyakKelompok({
           </div>
           <div className="mt-auto flex flex-col gap-4">
             <textarea
+              name="answers.bangun_lain_jawaban"
+              defaultValue={getValue("bangun_lain_jawaban")}
               rows={3}
               placeholder="Ketik jawaban dan alasanmu di sini..."
               className="w-full bg-[#F9FAFB] border border-[#E5E7EB] rounded-xl focus:ring-2 focus:ring-[#2563EB]/20 focus:border-[#2563EB] outline-none p-4 text-sm text-[#374151] resize-none min-h-[100px]"
@@ -87,6 +101,14 @@ export default function Peta8Step2SatuBangunBanyakKelompok({
         </div>
       </div>
 
+      <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-6 shadow-[0_1px_2px_rgba(0,0,0,0.04)]">
+        <PhotoUpload
+          name="answers.foto_bukti"
+          label="Unggah foto hasil kerja (opsional)"
+          defaultValue={getValue("foto_bukti")}
+        />
+      </div>
+
       <div className="flex justify-between items-center">
         <Link
           href={`/belajar/${materi}/${peta}/1`}
@@ -97,16 +119,16 @@ export default function Peta8Step2SatuBangunBanyakKelompok({
           </svg>
           Kembali
         </Link>
-        <Link
-          href={`/belajar/${materi}/${peta}/3`}
+        <button
+          type="submit"
           className="flex items-center gap-2 bg-[#2563EB] text-white border-none rounded-full py-3.5 px-7 text-sm font-bold font-inherit shadow-[0_4px_10px_rgba(37,99,235,0.3)] cursor-pointer"
         >
           LANJUTKAN
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.4">
             <path d="M5 12h14M13 5l7 7-7 7" />
           </svg>
-        </Link>
+        </button>
       </div>
-    </>
+    </form>
   );
 }

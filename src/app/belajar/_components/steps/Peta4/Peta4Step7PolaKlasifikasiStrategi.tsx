@@ -1,8 +1,18 @@
 import Link from "next/link";
+import PhotoUpload from "@/components/PhotoUpload";
+import { submitStepAction } from "@/app/belajar/actions";
+import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
 
-export default function Peta4Step7PolaKlasifikasiStrategi({ materi, peta }: { materi: string; peta: string }) {
+export default function Peta4Step7PolaKlasifikasiStrategi({ materi, peta, initialAnswers }: StepComponentProps) {
+  const answers = initialAnswers ?? {};
+  const getValue = (key: string) => (typeof answers[key] === "string" ? (answers[key] as string) : "");
+
   return (
-    <>
+    <form action={submitStepAction} className="flex flex-col gap-8">
+      <input type="hidden" name="materi" value={materi} />
+      <input type="hidden" name="peta" value={peta} />
+      <input type="hidden" name="step" value="7" />
+
       <div className="flex flex-col gap-4">
         <div className="inline-flex items-center gap-1.5 bg-[#1E3A8A] text-white rounded-full py-1.5 px-3.5 text-xs font-bold tracking-[0.04em] w-fit">
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2">
@@ -47,6 +57,8 @@ export default function Peta4Step7PolaKlasifikasiStrategi({ materi, peta }: { ma
             <textarea
               id="pola-input"
               rows={3}
+              name="answers.pola_ditemukan"
+              defaultValue={getValue("pola_ditemukan")}
               placeholder="Tuliskan pola yang kamu temukan di sini..."
               className="w-full rounded-lg border border-[#E5E7EB] bg-[#F9FAFB] px-4 py-3 text-sm text-[#374151] placeholder:text-[#9CA3AF] focus:border-[#2563EB] focus:outline-none focus:bg-white transition-colors resize-y"
             />
@@ -98,6 +110,13 @@ export default function Peta4Step7PolaKlasifikasiStrategi({ materi, peta }: { ma
               </p>
             </div>
           </div>
+          <div className="mt-2 pt-4 border-t border-[#E5E7EB]">
+            <PhotoUpload
+              name="answers.foto_bukti"
+              label="Unggah foto hasil kerja (opsional)"
+              defaultValue={getValue("foto_bukti")}
+            />
+          </div>
         </div>
       </div>
 
@@ -111,16 +130,16 @@ export default function Peta4Step7PolaKlasifikasiStrategi({ materi, peta }: { ma
           </svg>
           Kembali
         </Link>
-        <Link
-          href={`/belajar/${materi}/${peta}/8`}
+        <button
+          type="submit"
           className="flex items-center gap-2 bg-[#2563EB] text-white border-none rounded-full py-3.5 px-7 text-sm font-bold font-inherit shadow-[0_4px_10px_rgba(37,99,235,0.3)] cursor-pointer"
         >
           LANJUTKAN
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.4">
             <path d="M5 12h14M13 5l7 7-7 7" />
           </svg>
-        </Link>
+        </button>
       </div>
-    </>
+    </form>
   );
 }

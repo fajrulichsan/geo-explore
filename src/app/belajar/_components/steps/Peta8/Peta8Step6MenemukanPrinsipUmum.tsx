@@ -1,34 +1,44 @@
 import Link from "next/link";
+import PhotoUpload from "@/components/PhotoUpload";
+import { submitStepAction } from "@/app/belajar/actions";
+import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
 
 const pertanyaan = [
-  { n: 1, label: "Apa syarat agar suatu cara klasifikasi dapat diterima?" },
+  { n: 1, key: "syarat_klasifikasi_diterima", label: "Apa syarat agar suatu cara klasifikasi dapat diterima?" },
   {
     n: 2,
+    key: "alasan_lebih_dari_satu_kelompok",
     label: "Mengapa satu bangun ruang dapat berada pada lebih dari satu kelompok?",
   },
   {
     n: 3,
+    key: "hubungan_dasar_kelompok_terbentuk",
     label: "Bagaimana hubungan antara dasar klasifikasi dengan kelompok yang terbentuk?",
   },
 ];
 
 const checklist = [
-  "menggunakan lebih dari satu dasar klasifikasi.",
-  "memberikan alasan matematis.",
-  "membandingkan beberapa strategi.",
-  "memilih strategi yang paling sesuai.",
-  "menerapkan konsep klasifikasi pada situasi baru.",
+  { key: "bekal_lebih_dari_satu_dasar", text: "menggunakan lebih dari satu dasar klasifikasi." },
+  { key: "bekal_alasan_matematis", text: "memberikan alasan matematis." },
+  { key: "bekal_bandingkan_strategi", text: "membandingkan beberapa strategi." },
+  { key: "bekal_memilih_strategi", text: "memilih strategi yang paling sesuai." },
+  { key: "bekal_terapkan_situasi_baru", text: "menerapkan konsep klasifikasi pada situasi baru." },
 ];
 
 export default function Peta8Step6MenemukanPrinsipUmum({
   materi,
   peta,
-}: {
-  materi: string;
-  peta: string;
-}) {
+  initialAnswers,
+}: StepComponentProps) {
+  const answers = initialAnswers ?? {};
+  const getValue = (key: string) => (typeof answers[key] === "string" ? (answers[key] as string) : "");
+
   return (
-    <>
+    <form action={submitStepAction} className="flex flex-col gap-8">
+      <input type="hidden" name="materi" value={materi} />
+      <input type="hidden" name="peta" value={peta} />
+      <input type="hidden" name="step" value="6" />
+
       <div className="flex flex-col gap-4">
         <div className="inline-flex items-center gap-1.5 bg-[#1E3A8A] text-white rounded-full py-1.5 px-3.5 text-xs font-bold tracking-[0.04em] w-fit">
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="1.8">
@@ -64,6 +74,8 @@ export default function Peta8Step6MenemukanPrinsipUmum({
               <div className="flex-grow flex flex-col gap-3">
                 <label className="text-sm font-bold text-[#111827]">{p.label}</label>
                 <textarea
+                  name={`answers.${p.key}`}
+                  defaultValue={getValue(p.key)}
                   rows={3}
                   placeholder="Tuliskan jawabanmu di sini..."
                   className="w-full bg-[#F9FAFB] border border-[#E5E7EB] rounded-xl focus:ring-2 focus:ring-[#2563EB]/20 focus:border-[#2563EB] outline-none p-4 text-sm text-[#374151] resize-none"
@@ -87,16 +99,27 @@ export default function Peta8Step6MenemukanPrinsipUmum({
             <div className="flex flex-col gap-2">
               {checklist.map((item) => (
                 <label
-                  key={item}
+                  key={item.key}
                   className="flex items-center gap-3 p-3 rounded-xl hover:bg-[#F9FAFB] transition-colors cursor-pointer border border-transparent hover:border-[#E5E7EB]"
                 >
                   <input
                     type="checkbox"
+                    name={`answers.${item.key}`}
+                    value="true"
+                    defaultChecked={getValue(item.key) === "true"}
                     className="w-4 h-4 rounded border-[#D1D5DB] text-[#2563EB] focus:ring-[#2563EB]"
                   />
-                  <span className="text-sm text-[#374151] flex-grow">{item}</span>
+                  <span className="text-sm text-[#374151] flex-grow">{item.text}</span>
                 </label>
               ))}
+            </div>
+
+            <div className="pt-4 border-t border-[#E5E7EB]">
+              <PhotoUpload
+                name="answers.foto_bukti"
+                label="Unggah foto hasil kerja (opsional)"
+                defaultValue={getValue("foto_bukti")}
+              />
             </div>
           </div>
         </div>
@@ -112,16 +135,16 @@ export default function Peta8Step6MenemukanPrinsipUmum({
           </svg>
           Kembali
         </Link>
-        <Link
-          href={`/belajar/${materi}/${Number(peta) + 1}/1`}
+        <button
+          type="submit"
           className="flex items-center gap-2 bg-[#2563EB] text-white border-none rounded-full py-3.5 px-7 text-sm font-bold font-inherit shadow-[0_4px_10px_rgba(37,99,235,0.3)] cursor-pointer"
         >
           LANJUT KE RANGKUMAN
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.4">
             <path d="M5 12h14M13 5l7 7-7 7" />
           </svg>
-        </Link>
+        </button>
       </div>
-    </>
+    </form>
   );
 }
