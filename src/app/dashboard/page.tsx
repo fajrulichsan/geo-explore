@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { logoutAction } from "@/app/actions";
 
 const learningPath = [
@@ -110,17 +111,16 @@ export default function DashboardPage() {
             </a>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {learningPath.map((item) => (
-              <div
-                key={item.title}
-                className={`rounded-2xl border overflow-hidden flex flex-col relative ${
-                  item.status === "locked"
-                    ? "bg-slate-50 border-slate-200/50 opacity-75"
-                    : item.status === "active"
-                    ? "bg-white border-primary/30 shadow-card"
-                    : "bg-white border-slate-200/60 shadow-sm"
-                }`}
-              >
+            {learningPath.map((item) => {
+              const cardClassName = `rounded-2xl border overflow-hidden flex flex-col relative ${
+                item.status === "locked"
+                  ? "bg-slate-50 border-slate-200/50 opacity-75"
+                  : item.status === "active"
+                  ? "bg-white border-primary/30 shadow-card"
+                  : "bg-white border-slate-200/60 shadow-sm"
+              }`;
+              const cardContent = (
+                <>
                 {item.status === "available" && (
                   <div className="absolute top-4 right-4 bg-accent-light/40 text-accent px-2 py-1 rounded text-xs font-bold z-10 flex items-center gap-1">
                     <span className="material-symbols-outlined text-[14px]">check_circle</span>
@@ -203,8 +203,18 @@ export default function DashboardPage() {
                     </div>
                   )}
                 </div>
-              </div>
-            ))}
+                </>
+              );
+              return item.status === "locked" ? (
+                <div key={item.title} className={cardClassName}>
+                  {cardContent}
+                </div>
+              ) : (
+                <Link key={item.title} href="/peta-belajar" className={cardClassName}>
+                  {cardContent}
+                </Link>
+              );
+            })}
           </div>
         </section>
       </main>

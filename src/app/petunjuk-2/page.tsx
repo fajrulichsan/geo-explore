@@ -1,5 +1,5 @@
 import { Fragment } from "react";
-import { selesaiPetunjukAction } from "@/app/actions";
+import Link from "next/link";
 
 const glass =
   "bg-white/80 backdrop-blur-[10px] border border-white/50 shadow-[0_4px_20px_rgba(0,51,138,0.06)]";
@@ -392,17 +392,15 @@ export default function Petunjuk2Page() {
               </span>
             </div>
           </div>
-          <form action={selesaiPetunjukAction}>
-            <button
-              type="submit"
-              className="bg-[#00338a] text-white hover:bg-[#0048ba] transition-all duration-200 shadow-md rounded-full px-8 py-4 flex items-center gap-3 flex-shrink-0 group"
-            >
-              <span className="text-2xl font-bold">LANJUTKAN</span>
-              <span className="material-symbols-outlined bg-white text-[#00338a] rounded-full p-1 group-hover:translate-x-1 transition-transform">
-                arrow_forward
-              </span>
-            </button>
-          </form>
+          <Link
+            href="/kata-pengantar"
+            className="bg-[#00338a] text-white hover:bg-[#0048ba] transition-all duration-200 shadow-md rounded-full px-8 py-4 flex items-center gap-3 flex-shrink-0 group"
+          >
+            <span className="text-2xl font-bold">LANJUTKAN</span>
+            <span className="material-symbols-outlined bg-white text-[#00338a] rounded-full p-1 group-hover:translate-x-1 transition-transform">
+              arrow_forward
+            </span>
+          </Link>
         </div>
       </main>
 
