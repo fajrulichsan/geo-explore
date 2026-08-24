@@ -1,7 +1,14 @@
 "use client";
 
 import Script from "next/script";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
+import ShapeDropdown from "./ShapeDropdown";
+import { SHAPES, type ShapeId } from "./shapes";
+
+type GgbApi = {
+  evalCommand: (cmd: string) => void;
+  newConstruction: () => void;
+};
 
 declare global {
   interface Window {
@@ -12,25 +19,44 @@ declare global {
   }
 }
 
-export default function GeogebraCube() {
-  const injected = useRef(false);
+function buildShape(api: GgbApi, shapeId: ShapeId) {
+  api.newConstruction();
+  const shape = SHAPES.find((s) => s.id === shapeId);
+  shape?.commands.forEach((command) => api.evalCommand(command));
+}
 
-  function handleLoad() {
-    if (injected.current) return;
-    injected.current = true;
+export default function GeogebraCube() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const scriptLoaded = useRef(false);
+  const apiRef = useRef<GgbApi | null>(null);
+  const [shapeId, setShapeId] = useState<ShapeId>("kubus");
+  const shapeIdRef = useRef(shapeId);
+  shapeIdRef.current = shapeId;
+
+  function injectApplet() {
+    const container = containerRef.current;
+    if (!container) return;
+
+    container.innerHTML = "";
+    const mount = document.createElement("div");
+    mount.id = "geogebra-cube-applet";
+    container.appendChild(mount);
 
     const applet = new window.GGBApplet(
       {
         appName: "3d",
-        width: 900,
-        height: 506,
+        width: container.clientWidth,
+        height: container.clientHeight,
         showToolBar: false,
         showAlgebraInput: false,
         showMenuBar: false,
         showResetIcon: true,
         enableRightClick: true,
-        appletOnLoad: (api: { evalCommand: (cmd: string) => void }) => {
-          api.evalCommand("Cube((0,0,0),(4,0,0),(0,4,0))");
+        perspective: "T",
+        language: "en",
+        appletOnLoad: (api: GgbApi) => {
+          apiRef.current = api;
+          buildShape(api, shapeIdRef.current);
         },
       },
       "6.0"
@@ -38,14 +64,33 @@ export default function GeogebraCube() {
     applet.inject("geogebra-cube-applet");
   }
 
+  function handleScriptLoad() {
+    scriptLoaded.current = true;
+    injectApplet();
+  }
+
+  function handleSelectShape(id: ShapeId) {
+    setShapeId(id);
+    if (apiRef.current) buildShape(apiRef.current, id);
+  }
+
+  useEffect(() => {
+    function handleResize() {
+      if (scriptLoaded.current) injectApplet();
+    }
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
-    <>
+    <div className="relative w-full h-full">
       <Script
         src="https://www.geogebra.org/apps/deployggb.js"
         strategy="afterInteractive"
-        onLoad={handleLoad}
+        onLoad={handleScriptLoad}
       />
-      <div id="geogebra-cube-applet" className="w-full h-full" />
-    </>
+      <ShapeDropdown selected={shapeId} onSelect={handleSelectShape} />
+      <div ref={containerRef} className="w-full h-full" />
+    </div>
   );
 }
