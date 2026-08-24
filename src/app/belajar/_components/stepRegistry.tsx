@@ -10,6 +10,10 @@ import Peta2Step1Pengelompokan from "./steps/Peta2Step1Pengelompokan";
 import Peta2Step2BandingkanDugaan from "./steps/Peta2Step2BandingkanDugaan";
 import Peta2Step3PertanyaanDiskusi from "./steps/Peta2Step3PertanyaanDiskusi";
 import Peta2Step4RumusanMasalah from "./steps/Peta2Step4RumusanMasalah";
+import Peta2Step5MenyiapkanEksplorasi from "./steps/Peta2Step5MenyiapkanEksplorasi";
+import Peta2Step6DugaanKelompokku from "./steps/Peta2Step6DugaanKelompokku";
+import Peta2Step7CatatanHasilDiskusi from "./steps/Peta2Step7CatatanHasilDiskusi";
+import Peta2Step8BersiapKeTahapBerikutnya from "./steps/Peta2Step8BersiapKeTahapBerikutnya";
 
 export type StepComponentProps = { materi: string; peta: string };
 
@@ -25,6 +29,10 @@ export const stepRegistry: Record<string, ComponentType<StepComponentProps>> = {
   "1-2-2": Peta2Step2BandingkanDugaan,
   "1-2-3": Peta2Step3PertanyaanDiskusi,
   "1-2-4": Peta2Step4RumusanMasalah,
+  "1-2-5": Peta2Step5MenyiapkanEksplorasi,
+  "1-2-6": Peta2Step6DugaanKelompokku,
+  "1-2-7": Peta2Step7CatatanHasilDiskusi,
+  "1-2-8": Peta2Step8BersiapKeTahapBerikutnya,
 };
 
 export function getStepComponent(materi: string, peta: string, step: string) {
