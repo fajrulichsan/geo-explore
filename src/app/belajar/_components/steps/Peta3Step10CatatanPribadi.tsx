@@ -89,7 +89,7 @@ export default function Peta3Step10CatatanPribadi({ materi, peta }: { materi: st
           Kembali
         </Link>
         <Link
-          href="/peta-belajar"
+          href={`/belajar/${materi}/4/1`}
           className="flex items-center gap-2 bg-[#2563EB] text-white border-none rounded-full py-3.5 px-7 text-sm font-bold font-inherit shadow-[0_4px_10px_rgba(37,99,235,0.3)] cursor-pointer"
         >
           Lanjut ke Tahap 4 – Ayo Mengolah Informasi

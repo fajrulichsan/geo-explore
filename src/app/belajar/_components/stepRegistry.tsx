@@ -24,6 +24,14 @@ import Peta3Step7TabelPengamatanAR from "./steps/Peta3Step7TabelPengamatanAR";
 import Peta3Step8CatatanHasilEksplorasi from "./steps/Peta3Step8CatatanHasilEksplorasi";
 import Peta3Step9BersiapTahapBerikutnya from "./steps/Peta3Step9BersiapTahapBerikutnya";
 import Peta3Step10CatatanPribadi from "./steps/Peta3Step10CatatanPribadi";
+import Peta4Step1TinjauKembaliData from "./steps/Peta4Step1TinjauKembaliData";
+import Peta4Step2OrganisasikanData from "./steps/Peta4Step2OrganisasikanData";
+import Peta4Step3TemuanEksplorasi from "./steps/Peta4Step3TemuanEksplorasi";
+import Peta4Step4TemukanPolanya from "./steps/Peta4Step4TemukanPolanya";
+import Peta4Step5SiapKlasifikasi from "./steps/Peta4Step5SiapKlasifikasi";
+import Peta4Step6BandingkanKelompok from "./steps/Peta4Step6BandingkanKelompok";
+import Peta4Step7PolaKlasifikasiStrategi from "./steps/Peta4Step7PolaKlasifikasiStrategi";
+import Peta4Step8EvaluasiHasilSementara from "./steps/Peta4Step8EvaluasiHasilSementara";
 
 export type StepComponentProps = { materi: string; peta: string };
 
@@ -53,6 +61,14 @@ export const stepRegistry: Record<string, ComponentType<StepComponentProps>> = {
   "1-3-8": Peta3Step8CatatanHasilEksplorasi,
   "1-3-9": Peta3Step9BersiapTahapBerikutnya,
   "1-3-10": Peta3Step10CatatanPribadi,
+  "1-4-1": Peta4Step1TinjauKembaliData,
+  "1-4-2": Peta4Step2OrganisasikanData,
+  "1-4-3": Peta4Step3TemuanEksplorasi,
+  "1-4-4": Peta4Step4TemukanPolanya,
+  "1-4-5": Peta4Step5SiapKlasifikasi,
+  "1-4-6": Peta4Step6BandingkanKelompok,
+  "1-4-7": Peta4Step7PolaKlasifikasiStrategi,
+  "1-4-8": Peta4Step8EvaluasiHasilSementara,
 };
 
 export function getStepComponent(materi: string, peta: string, step: string) {

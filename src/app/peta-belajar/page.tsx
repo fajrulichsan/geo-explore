@@ -123,9 +123,12 @@ export default function PetaBelajarPage() {
                   Olah dan analisis hasil eksplorasi untuk menemukan pola, hubungan, atau konsep.
                 </p>
                 <div className="flex justify-start md:justify-end">
-                  <button className="bg-gradient-to-r from-[#00338a] to-[#0048ba] text-white px-8 py-4 rounded-2xl text-sm shadow-xl hover:shadow-2xl hover:scale-105 transition-all flex items-center gap-2 font-extrabold uppercase tracking-wide">
+                  <Link
+                    href="/belajar/1/4/1"
+                    className="bg-gradient-to-r from-[#00338a] to-[#0048ba] text-white px-8 py-4 rounded-2xl text-sm shadow-xl hover:shadow-2xl hover:scale-105 transition-all flex items-center gap-2 font-extrabold uppercase tracking-wide"
+                  >
                     Lanjut Mengerjakan <span className="material-symbols-outlined text-[24px]">arrow_forward</span>
-                  </button>
+                  </Link>
                 </div>
               </div>
             </div>
