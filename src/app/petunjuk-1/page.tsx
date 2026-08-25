@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Footer from "@/app/_components/Footer";
 
 const sebelumMemulai = [
   {
@@ -75,26 +76,21 @@ export default function Petunjuk1Page() {
           "radial-gradient(circle at top right, #ffffff, transparent 50%), radial-gradient(circle at bottom left, #ffffff, transparent 50%)",
       }}
     >
-      <main className="max-w-7xl mx-auto bg-surface-container rounded-8xl overflow-hidden shadow-2xl border-4 border-white flex flex-col relative w-full">
-        <div
-          className="absolute top-0 right-0 w-full h-64 bg-blue-50/50 -z-10"
-          style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 80%)" }}
-        />
-
+      <main className="max-w-6xl mx-auto w-full flex flex-col relative flex-1">
         {/* Header */}
-        <header className="p-8 md:p-12 pb-16 flex flex-col md:flex-row items-center justify-between gap-8 relative z-10">
-          <div className="flex-1 flex items-start gap-6">
-            <div className="w-20 h-20 md:w-24 md:h-24 bg-primary text-white rounded-full flex items-center justify-center text-4xl shadow-lg shrink-0">
+        <header className="p-4 md:p-8 pb-10 md:pb-14 flex flex-col md:flex-row items-center justify-between gap-6 md:gap-8 relative z-10">
+          <div className="flex-1 flex items-start gap-4 md:gap-6">
+            <div className="w-14 h-14 md:w-24 md:h-24 bg-primary text-white rounded-full flex items-center justify-center text-2xl md:text-4xl shadow-lg shrink-0">
               <i className="fa-solid fa-clipboard-question" />
             </div>
             <div>
-              <h1 className="text-4xl md:text-5xl font-extrabold text-primary mb-2 tracking-tight leading-tight">
+              <h1 className="text-2xl md:text-5xl font-extrabold text-primary mb-1 md:mb-2 tracking-tight leading-tight">
                 PETUNJUK <br />
-                <span className="text-3xl md:text-4xl font-bold text-slate-700">
+                <span className="text-xl md:text-4xl font-bold text-slate-700">
                   PENGGUNAAN E-MODULE
                 </span>
               </h1>
-              <p className="text-lg text-slate-600 font-medium">
+              <p className="text-sm md:text-lg text-slate-600 font-medium">
                 Kenali cara menggunakan e-module sebelum memulai perjalanan belajarmu.
               </p>
             </div>
@@ -104,18 +100,13 @@ export default function Petunjuk1Page() {
             <img
               alt="Ilustrasi siswa belajar geometri"
               className="w-full h-auto object-contain drop-shadow-xl rounded-xl"
-              src="https://lh3.googleusercontent.com/aida/AP1WRLv09-We-drNRshQ9MzRZEda17qTvtyZckpDUDoMjFgJ_riXEdMJF9AB-HxAs49fHPkip_xM5SuP-qpYNKYXofyi4kY4F9XY8dHb_6wsG7ZDPVTLp3LdHHSMmMQS1ETqOmgovnh9mxZTcahiJuRnBWRhFBFZeU1aUOUWLQvKzB5INdSiCn8Fqnkj63YZ8bKxiMlqc5BVirZOldU45AFXrSTb_k9Nt9d6315Ht2fkp2k5phyYSphlxHEeM6gM"
+              src="https://is3.cloudhost.id/assets-geo/home-1.webp"
             />
-          </div>
-          <div className="absolute top-8 right-8 bg-primary text-white p-4 rounded-2xl text-center shadow-lg transform rotate-3">
-            <p className="text-xs font-bold uppercase tracking-wider mb-1">Halaman</p>
-            <p className="text-3xl font-extrabold leading-none mb-1">1</p>
-            <p className="text-xs">dari 2</p>
           </div>
         </header>
 
         {/* Content Grid */}
-        <section className="p-6 md:p-10 pt-0 grid grid-cols-1 lg:grid-cols-3 gap-8 md:gap-6 relative z-10">
+        <section className="p-4 md:p-8 pt-4 grid grid-cols-1 lg:grid-cols-3 gap-10 md:gap-6 relative z-10">
           {/* Column A */}
           <div className="bg-blue-50 rounded-3xl p-6 pt-10 relative border border-blue-100 flex flex-col shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1),0_2px_4px_-1px_rgba(0,0,0,0.06),0_10px_15px_-3px_rgba(0,72,186,0.1)]">
             <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-11/12 bg-primary text-white py-2 px-4 rounded-full flex items-center gap-3 shadow-md">
@@ -215,54 +206,31 @@ export default function Petunjuk1Page() {
         </section>
 
         {/* CTA */}
-        <div className="px-6 md:px-10 pb-6 mt-4 flex flex-col md:flex-row items-center justify-between gap-6 relative z-10">
-          <div className="w-24 h-24 md:w-32 md:h-32 shrink-0 overflow-hidden rounded-full border-4 border-white shadow-xl bg-white z-20 relative md:-mr-4">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="https://lh3.googleusercontent.com/aida/AP1WRLv09-We-drNRshQ9MzRZEda17qTvtyZckpDUDoMjFgJ_riXEdMJF9AB-HxAs49fHPkip_xM5SuP-qpYNKYXofyi4kY4F9XY8dHb_6wsG7ZDPVTLp3LdHHSMmMQS1ETqOmgovnh9mxZTcahiJuRnBWRhFBFZeU1aUOUWLQvKzB5INdSiCn8Fqnkj63YZ8bKxiMlqc5BVirZOldU45AFXrSTb_k9Nt9d6315Ht2fkp2k5phyYSphlxHEeM6gM"
-              alt="Student Character"
-              className="w-full h-full object-cover"
-            />
-          </div>
-          <div className="flex items-center gap-4 bg-blue-50/80 px-6 py-4 rounded-full border border-blue-100 pl-10">
-            <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center text-primary shadow-sm">
+        <div className="px-4 md:px-8 pb-10 mt-4 flex flex-col md:flex-row items-center justify-between gap-6 relative z-10">
+          <div className="flex flex-col sm:flex-row items-center gap-4 bg-blue-50/80 px-6 py-4 rounded-3xl sm:rounded-full border border-blue-100 text-center sm:text-left">
+            <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center text-primary shadow-sm shrink-0">
               <i className="fa-solid fa-check-circle text-2xl" />
             </div>
             <div>
               <p className="text-sm text-slate-600">Sudah mengenal tombol dan petunjuknya?</p>
               <p className="font-bold text-primary">
-                Yuk, kenali perjalanan belajarmu
-                <br />
+                Yuk, kenali perjalanan belajarmu{" "}
+                <br className="hidden sm:block" />
                 pada halaman berikutnya!
               </p>
             </div>
           </div>
           <Link
             href="/petunjuk-2"
-            className="bg-primary hover:bg-primary-dark text-white font-bold py-4 px-10 rounded-full text-xl shadow-[0_8px_0_#003380] active:shadow-[0_0px_0_#003380] active:translate-y-2 transition-all flex items-center gap-4 group"
+            className="w-full sm:w-auto justify-center inline-flex items-center gap-3 bg-primary hover:bg-primary-dark text-white font-bold py-3 md:py-4 px-6 md:px-8 rounded-2xl text-sm md:text-lg shadow-[0_8px_20px_-5px_rgba(0,72,186,0.4)] hover:shadow-[0_12px_25px_-5px_rgba(0,72,186,0.5)] hover:-translate-y-1 active:translate-y-0 transition-all group"
           >
-            LANJUTKAN
-            <i className="fa-solid fa-circle-arrow-right text-2xl group-hover:translate-x-1 transition-transform" />
+            <span className="tracking-wide">LANJUTKAN</span>
+            <i className="fa-solid fa-arrow-right-long group-hover:translate-x-2 transition-transform" />
           </Link>
         </div>
-
-        {/* Footer */}
-        <footer className="bg-primary text-white p-4 md:px-10 flex items-center justify-between mt-auto">
-          <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-full border-2 border-white flex items-center justify-center">
-              <i className="fa-solid fa-book text-sm" />
-            </div>
-            <p className="text-sm font-semibold tracking-wider uppercase">
-              E-Module Geometri <span className="mx-2 opacity-50">•</span> Bangun Ruang Sisi Datar
-            </p>
-          </div>
-          <div className="flex gap-1 opacity-50">
-            {Array.from({ length: 5 }).map((_, i) => (
-              <div key={i} className="w-1.5 h-1.5 bg-white rounded-full" />
-            ))}
-          </div>
-        </footer>
       </main>
+
+      <Footer />
     </div>
   );
 }

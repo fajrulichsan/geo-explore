@@ -7,8 +7,6 @@ import {
   getSessionUserId,
   setSessionCookie,
 } from "@/lib/session";
-import { hashPassword, verifyPassword } from "@/lib/password";
-
 export type FormState = {
   error?: string;
   values?: Record<string, string>;
@@ -35,14 +33,10 @@ export async function registerAction(
     return { error: "Konfirmasi password tidak cocok.", values };
   }
 
-  if (password.length < 8) {
-    return { error: "Password minimal 8 karakter.", values };
-  }
-
   const { error } = await supabase.from("users").insert({
     nama_lengkap: namaLengkap,
     email,
-    password: hashPassword(password),
+    password,
     kelas,
     nama_sekolah: namaSekolah,
   });
@@ -71,11 +65,12 @@ export async function loginAction(
 
   const { data, error } = await supabase
     .from("users")
-    .select("id, password, sudah_baca_petunjuk, role")
+    .select("id, sudah_baca_petunjuk, role")
     .eq("email", email)
+    .eq("password", password)
     .maybeSingle();
 
-  if (error || !data || !verifyPassword(password, data.password)) {
+  if (error || !data) {
     return { error: "Email atau password salah.", values };
   }
 

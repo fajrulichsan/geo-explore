@@ -1,4 +1,6 @@
 import Link from "next/link";
+import Image from "next/image";
+import Footer from "@/app/_components/Footer";
 
 export default function KataPengantarPage() {
   return (
@@ -31,40 +33,19 @@ export default function KataPengantarPage() {
         </div>
       </div>
 
-      <nav className="bg-[#f7f9fb]/80 backdrop-blur-md border-b border-[#c3c6d6] shadow-sm sticky top-0 z-50">
-        <div className="flex justify-between items-center w-full px-6 py-4 max-w-[1200px] mx-auto">
-          <div className="font-extrabold text-2xl text-[#00338a] flex items-center gap-2">
-            <span className="material-symbols-outlined" style={{ fontVariationSettings: "'FILL' 1" }}>
-              extension
-            </span>
-            E-Module Geometri
-          </div>
-          <div className="hidden md:flex gap-8 items-center text-sm font-semibold">
-            <a className="text-[#00338a] font-bold border-b-2 border-[#00338a] pb-1" href="#">
-              Modul
-            </a>
-            <a className="text-[#434653] hover:text-[#00338a] transition-colors px-3 py-2 rounded-lg" href="#">
-              Aktivitas
-            </a>
-            <a className="text-[#434653] hover:text-[#00338a] transition-colors px-3 py-2 rounded-lg" href="#">
-              Progres
-            </a>
-            <a className="text-[#434653] hover:text-[#00338a] transition-colors px-3 py-2 rounded-lg" href="#">
-              Bantuan
-            </a>
-          </div>
-        </div>
-      </nav>
-
-      <main className="flex-grow w-full max-w-[1200px] mx-auto px-6 py-8 lg:py-16 flex flex-col md:flex-row gap-8 lg:gap-12 items-stretch relative z-10">
-        <div className="w-full md:w-5/12 lg:w-1/2 flex items-center justify-center">
+      <main className="flex-grow w-full max-w-[1200px] mx-auto px-4 md:px-6 py-8 lg:py-16 flex flex-col md:flex-row gap-8 lg:gap-12 items-stretch relative z-10">
+        <div className="hidden md:flex w-full md:w-5/12 lg:w-1/2 items-center justify-center">
           <div className="relative w-full aspect-square max-w-[500px]">
             <div className="absolute -top-4 -left-4 w-24 h-24 bg-[#ffdf9e] rounded-full opacity-50 mix-blend-multiply blur-xl animate-pulse" />
             <div className="absolute -bottom-8 -right-8 w-32 h-32 bg-[#dbe1ff] rounded-full opacity-60 mix-blend-multiply blur-xl" />
-            <div className="bg-white/95 backdrop-blur-[10px] border border-white/20 shadow-[0_10px_30px_-10px_rgba(0,51,138,0.08)] w-full h-full rounded-2xl overflow-hidden relative z-10 border-4 border-white flex items-center justify-center">
-              <span className="material-symbols-outlined text-[160px] text-[#00338a] opacity-30">
-                school
-              </span>
+            <div className="bg-white/95 backdrop-blur-[10px] border border-white/20 shadow-[0_10px_30px_-10px_rgba(0,51,138,0.08)] w-full h-full rounded-2xl overflow-hidden relative z-10 border-4 border-white">
+              <Image
+                src="https://is3.cloudhost.id/assets-geo/home-1.webp"
+                alt="Ilustrasi siswa belajar geometri"
+                fill
+                sizes="(min-width: 768px) 40vw, 90vw"
+                className="object-cover"
+              />
             </div>
             <div
               className="absolute bottom-12 -left-6 bg-white p-4 rounded-2xl shadow-lg border border-[#dbe1ff] z-20 flex items-center gap-3 animate-bounce"
@@ -135,17 +116,17 @@ export default function KataPengantarPage() {
             <div className="mt-8 pt-6 border-t border-[#e6e8ea] flex justify-end">
               <Link
                 href="/daftar-isi"
-                className="bg-[#00338a] hover:bg-[#003fa5] text-white text-sm font-semibold px-8 py-4 rounded-xl shadow-lg shadow-[#00338a]/25 transition-all duration-300 hover:-translate-y-1 hover:shadow-[#00338a]/40 flex items-center gap-3 group"
+                className="w-full sm:w-auto justify-center inline-flex items-center gap-3 bg-primary hover:bg-primary-dark text-white font-bold py-3 md:py-4 px-6 md:px-8 rounded-2xl text-sm md:text-lg shadow-[0_8px_20px_-5px_rgba(0,72,186,0.4)] hover:shadow-[0_12px_25px_-5px_rgba(0,72,186,0.5)] hover:-translate-y-1 active:translate-y-0 transition-all group"
               >
-                Lanjutkan ke Daftar Isi
-                <span className="material-symbols-outlined group-hover:translate-x-1 transition-transform">
-                  arrow_forward
-                </span>
+                <span className="tracking-wide">Lanjutkan ke Daftar Isi</span>
+                <i className="fa-solid fa-arrow-right-long group-hover:translate-x-2 transition-transform" />
               </Link>
             </div>
           </div>
         </div>
       </main>
+
+      <Footer />
     </div>
   );
 }

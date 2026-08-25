@@ -1,8 +1,10 @@
 "use client";
 
 import { useActionState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { registerAction, type FormState } from "@/app/actions";
+import Footer from "@/app/_components/Footer";
 
 const initialState: FormState = {};
 
@@ -10,38 +12,20 @@ export default function RegistrasiPage() {
   const [state, formAction, pending] = useActionState(registerAction, initialState);
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-[#f7f9fb] bg-[radial-gradient(circle_at_100%_0%,rgba(219,225,255,0.4)_0%,transparent_50%),radial-gradient(circle_at_0%_100%,rgba(255,223,158,0.2)_0%,transparent_50%)] relative overflow-hidden">
+    <div className="min-h-screen flex flex-col bg-[#f7f9fb] bg-[radial-gradient(circle_at_100%_0%,rgba(219,225,255,0.4)_0%,transparent_50%),radial-gradient(circle_at_0%_100%,rgba(255,223,158,0.2)_0%,transparent_50%)] relative overflow-hidden">
       {/* Decorative Background Shapes */}
       <div className="absolute top-0 left-0 w-full h-64 bg-[#00338a]/5 rounded-b-[100px] -z-10" />
       <div className="absolute -top-24 -right-24 w-96 h-96 bg-[#b3c5ff]/20 rounded-full blur-3xl -z-10" />
-      <div className="absolute bottom-0 left-0 w-full h-32 bg-[#00338a] z-0 flex items-center px-8">
-        <div className="flex items-center gap-3 text-white max-w-[1200px] mx-auto w-full">
-          <span className="material-symbols-outlined" style={{ fontVariationSettings: "'FILL' 1" }}>
-            menu_book
-          </span>
-          <span className="text-sm font-semibold tracking-wider">
-            E-MODULE GEOMETRI • BANGUN RUANG SISI DATAR
-          </span>
-        </div>
-      </div>
 
       {/* Main Container */}
-      <main className="w-full max-w-[1200px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center relative z-10 mb-20">
+      <main className="flex-1 w-full max-w-[1200px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center relative z-10 px-4 sm:px-6 py-10 md:py-16">
         {/* Left Side: Welcome & Illustration */}
-        <div className="flex flex-col gap-8 order-2 lg:order-1">
+        <div className="flex flex-col gap-8">
           <div className="flex flex-col gap-4">
-            <div className="inline-flex items-center gap-3 bg-[#dbe1ff] px-4 py-2 rounded-full w-max">
-              <div className="bg-[#00338a] text-white w-8 h-8 rounded-full flex items-center justify-center">
-                <span className="material-symbols-outlined" style={{ fontVariationSettings: "'FILL' 1" }}>
-                  person
-                </span>
-              </div>
-              <span className="text-sm font-semibold text-[#00338a]">Identitas Siswa</span>
-            </div>
-            <h1 className="text-4xl md:text-[56px] font-extrabold leading-tight text-[#00338a]">
+            <h1 className="text-3xl sm:text-4xl md:text-[56px] font-extrabold leading-tight text-[#00338a]">
               Selamat Datang! <span className="text-[#fabd00]">✨</span>
             </h1>
-            <p className="text-lg text-[#434653] max-w-md leading-relaxed">
+            <p className="text-base md:text-lg text-[#434653] max-w-md leading-relaxed">
               Lengkapi identitasmu sebelum memulai petualangan belajar geometri.
             </p>
           </div>
@@ -63,19 +47,20 @@ export default function RegistrasiPage() {
           </div>
 
           {/* Illustration */}
-          <div className="relative w-full aspect-[4/3] rounded-3xl overflow-hidden shadow-[0_8px_30px_-4px_rgba(0,51,138,0.12)] mt-4">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              alt="Elementary students exploring geometry shapes"
-              className="w-full h-full object-cover"
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuC4G22tH-HKc0AuTvv_cWXe3jJwu89BEnsQ1Xsg7U6y-b2_8vlERTQ8hp28bKq_VhYR9Add1wC_Bm9aq2CycQR3HGMDWwkuSmSX-t7OqlBWDa7nEUpwwLaw8gyjKnnW15MmT2xfkCL8mvZ8EmLZQ7t6_lcyPOMcnPZGclFrcCYnepPgL20WdngfxD5mU-AbHkzzjvpkdovGNrbR5LLnuUPgioezfLJht6I70sRNdRG5gXVjPS17wuA8Sw"
+          <div className="relative w-full aspect-[16/9] rounded-3xl overflow-hidden shadow-[0_8px_30px_-4px_rgba(0,51,138,0.12)] mt-4">
+            <Image
+              src="https://is3.cloudhost.id/assets-geo/home-1.webp"
+              alt="Belajar bersama, eksplorasi bangun ruang"
+              fill
+              sizes="(min-width: 1024px) 50vw, 100vw"
+              className="object-cover"
             />
           </div>
         </div>
 
         {/* Right Side: Form Card */}
-        <div className="order-1 lg:order-2">
-          <div className="bg-white rounded-[32px] shadow-[0_8px_30px_-4px_rgba(0,51,138,0.12)] p-8 md:p-10 border border-[#e0e3e5] relative mt-8 lg:mt-0">
+        <div>
+          <div className="bg-white rounded-[32px] shadow-[0_8px_30px_-4px_rgba(0,51,138,0.12)] p-6 sm:p-8 md:p-10 border border-[#e0e3e5] relative">
             <form action={formAction} className="flex flex-col gap-6">
               <Field
                 label="Nama Lengkap"
@@ -153,6 +138,8 @@ export default function RegistrasiPage() {
           </div>
         </div>
       </main>
+
+      <Footer />
     </div>
   );
 }
