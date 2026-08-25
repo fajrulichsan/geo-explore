@@ -7,9 +7,11 @@ import {
   getSessionUserId,
   setSessionCookie,
 } from "@/lib/session";
+import { hashPassword, verifyPassword } from "@/lib/password";
 
 export type FormState = {
   error?: string;
+  values?: Record<string, string>;
 };
 
 export async function registerAction(
@@ -23,27 +25,33 @@ export async function registerAction(
   const kelas = String(formData.get("kelas") ?? "").trim();
   const namaSekolah = String(formData.get("nama_sekolah") ?? "").trim();
 
+  const values = { nama_lengkap: namaLengkap, email, kelas, nama_sekolah: namaSekolah };
+
   if (!namaLengkap || !email || !password || !confirmPassword || !kelas || !namaSekolah) {
-    return { error: "Semua field wajib diisi." };
+    return { error: "Semua field wajib diisi.", values };
   }
 
   if (password !== confirmPassword) {
-    return { error: "Konfirmasi password tidak cocok." };
+    return { error: "Konfirmasi password tidak cocok.", values };
+  }
+
+  if (password.length < 8) {
+    return { error: "Password minimal 8 karakter.", values };
   }
 
   const { error } = await supabase.from("users").insert({
     nama_lengkap: namaLengkap,
     email,
-    password,
+    password: hashPassword(password),
     kelas,
     nama_sekolah: namaSekolah,
   });
 
   if (error) {
     if (error.code === "23505") {
-      return { error: "Email sudah terdaftar." };
+      return { error: "Email sudah terdaftar.", values };
     }
-    return { error: "Gagal mendaftar. Silakan coba lagi." };
+    return { error: "Gagal mendaftar. Silakan coba lagi.", values };
   }
 
   redirect("/login");
@@ -55,20 +63,20 @@ export async function loginAction(
 ): Promise<FormState> {
   const email = String(formData.get("email") ?? "").trim();
   const password = String(formData.get("password") ?? "");
+  const values = { email };
 
   if (!email || !password) {
-    return { error: "Email dan password wajib diisi." };
+    return { error: "Email dan password wajib diisi.", values };
   }
 
   const { data, error } = await supabase
     .from("users")
-    .select("id, sudah_baca_petunjuk, role")
+    .select("id, password, sudah_baca_petunjuk, role")
     .eq("email", email)
-    .eq("password", password)
     .maybeSingle();
 
-  if (error || !data) {
-    return { error: "Email atau password salah." };
+  if (error || !data || !verifyPassword(password, data.password)) {
+    return { error: "Email atau password salah.", values };
   }
 
   await setSessionCookie(data.id);

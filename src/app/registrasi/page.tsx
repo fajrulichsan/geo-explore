@@ -82,6 +82,7 @@ export default function RegistrasiPage() {
                 name="nama_lengkap"
                 icon="person"
                 placeholder="Tuliskan nama lengkapmu"
+                defaultValue={state.values?.nama_lengkap}
               />
               <Field
                 label="Email"
@@ -89,6 +90,7 @@ export default function RegistrasiPage() {
                 type="email"
                 icon="mail"
                 placeholder="nama@email.com"
+                defaultValue={state.values?.email}
               />
               <Field
                 label="Password"
@@ -109,12 +111,14 @@ export default function RegistrasiPage() {
                 name="kelas"
                 icon="group"
                 placeholder="Contoh: VIII-A"
+                defaultValue={state.values?.kelas}
               />
               <Field
                 label="Sekolah"
                 name="nama_sekolah"
                 icon="school"
                 placeholder="Tuliskan nama sekolahmu"
+                defaultValue={state.values?.nama_sekolah}
               />
 
               {state.error && (
@@ -159,12 +163,14 @@ function Field({
   icon,
   type = "text",
   placeholder,
+  defaultValue,
 }: {
   label: string;
   name: string;
   icon: string;
   type?: string;
   placeholder: string;
+  defaultValue?: string;
 }) {
   return (
     <div className="flex flex-col gap-2">
@@ -181,6 +187,7 @@ function Field({
           type={type}
           required
           placeholder={placeholder}
+          defaultValue={defaultValue}
           className="w-full pl-12 pr-4 py-3 bg-transparent border-none rounded-xl text-[#191c1e] focus:ring-0 focus:outline-none placeholder:text-[#c3c6d6]"
         />
       </div>
