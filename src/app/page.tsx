@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 const steps = [
@@ -46,10 +47,10 @@ const steps = [
 ];
 
 const shapes = [
-  { name: "KUBUS", color: "bg-green-400", rotate: "rotate-6" },
-  { name: "BALOK", color: "bg-blue-400", rotate: "-rotate-6" },
-  { name: "PRISMA", color: "bg-accent", rotate: "rotate-3" },
-  { name: "LIMAS", color: "bg-purple-400", rotate: "-rotate-3" },
+  { name: "KUBUS", image: "https://is3.cloudhost.id/assets-geo/kubus.png", scale: 1.15 },
+  { name: "BALOK", image: "https://is3.cloudhost.id/assets-geo/balok.png", scale: 0.65 },
+  { name: "PRISMA", image: "https://is3.cloudhost.id/assets-geo/prima.png", scale: 1 },
+  { name: "LIMAS", image: "https://is3.cloudhost.id/assets-geo/limas-segitiga.png", scale: 1.3 },
 ];
 
 const stats = [
@@ -67,12 +68,16 @@ export default function Home() {
       <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-green-100 rounded-full blur-3xl opacity-40 -z-10" />
 
       {/* Header */}
-      <header className="p-6 md:px-16 md:pt-10 flex flex-col md:flex-row justify-between items-start md:items-center gap-6 relative z-10">
+      <header className="p-6 md:px-16 md:pt-10 flex flex-col md:flex-row justify-between items-start md:items-center gap-6 relative z-10 max-w-6xl w-full mx-auto">
         <div className="flex items-center gap-4">
-          <div className="w-14 h-14 md:w-16 md:h-16 bg-white rounded-full flex items-center justify-center shadow-glass border border-slate-100 p-1">
-            <svg className="w-9 h-9 md:w-10 md:h-10 text-primary" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M12 2L2 7l10 5 10-5-10-5zm0 14l-10-5v5l10 5 10-5v-5l-10 5z" />
-            </svg>
+          <div className="w-14 h-14 md:w-16 md:h-16 bg-white rounded-full flex items-center justify-center shadow-glass border border-slate-100 p-1 relative overflow-hidden">
+            <Image
+              src="https://is3.cloudhost.id/assets-geo/logo-kampus.png"
+              alt="Logo Universitas Pendidikan Indonesia"
+              fill
+              sizes="64px"
+              className="object-contain p-1.5"
+            />
           </div>
           <div className="flex flex-col">
             <h1 className="text-lg md:text-2xl font-bold tracking-tight text-slate-900">
@@ -86,18 +91,10 @@ export default function Home() {
             </h3>
           </div>
         </div>
-
-        <Link
-          href="/login"
-          className="inline-flex items-center gap-2 text-sm font-bold text-primary hover:text-primary-dark transition-colors"
-        >
-          <i className="fa-solid fa-right-to-bracket" />
-          Masuk
-        </Link>
       </header>
 
       {/* Main content */}
-      <main className="flex-1 flex flex-col relative z-10 px-6 md:px-16 pb-16 gap-14">
+      <main className="flex-1 flex flex-col relative z-10 px-6 md:px-16 pb-16 gap-14 max-w-6xl w-full mx-auto">
         {/* Hero */}
         <div className="flex flex-col items-center text-center relative z-20 mx-auto max-w-3xl pt-6 md:pt-10">
           <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-blue-100 text-primary font-bold text-sm mb-6 shadow-sm">
@@ -167,20 +164,25 @@ export default function Home() {
             </div>
 
             {/* Shapes showcase */}
-            <div className="bg-white rounded-[2rem] p-8 shadow-card border border-slate-100">
-              <p className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-6 text-center">
+            <div className="bg-white rounded-[2rem] p-5 shadow-card border border-slate-100">
+              <p className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-3 text-center">
                 Jelajahi Bangun Ruang
               </p>
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-6">
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
                 {shapes.map((shape) => (
                   <div key={shape.name} className="flex flex-col items-center group">
-                    <div
-                      className={`w-16 h-16 md:w-20 md:h-20 ${shape.color} rounded-xl shadow-glass border border-white transform ${shape.rotate} flex items-center justify-center relative overflow-hidden group-hover:scale-110 transition-transform`}
-                    >
-                      <div className="absolute inset-0 border-t-2 border-white/50" />
-                      <div className="absolute inset-0 border-l-2 border-white/30" />
+                    <div className="w-32 h-32 md:w-40 md:h-40 flex items-center justify-center relative overflow-visible group-hover:-translate-y-1 transition-all duration-300">
+                      <Image
+                        src={shape.image}
+                        alt={shape.name}
+                        width={128}
+                        height={128}
+                        sizes="160px"
+                        style={{ transform: `scale(${shape.scale})` }}
+                        className="w-full h-full object-contain drop-shadow-md transition-transform duration-300 group-hover:!scale-[1.15]"
+                      />
                     </div>
-                    <span className="mt-3 font-bold text-[10px] md:text-xs tracking-widest text-slate-700">
+                    <span className="mt-0.5 font-bold text-[10px] md:text-xs tracking-widest text-slate-700 group-hover:text-primary transition-colors">
                       {shape.name}
                     </span>
                   </div>
@@ -189,43 +191,14 @@ export default function Home() {
             </div>
 
             {/* Illustration: kids learning */}
-            <div className="bg-gradient-to-br from-blue-50 to-orange-50 rounded-[2rem] p-6 shadow-card border border-slate-100 flex flex-col items-center overflow-hidden">
-              <svg viewBox="0 0 320 180" className="w-full max-w-xs h-auto" aria-hidden="true">
-                {/* ground */}
-                <ellipse cx="160" cy="168" rx="140" ry="10" fill="#e2e8f0" />
-                {/* desk */}
-                <rect x="60" y="120" width="200" height="12" rx="4" fill="#0048ba" />
-                <rect x="72" y="132" width="10" height="30" rx="2" fill="#003380" />
-                <rect x="238" y="132" width="10" height="30" rx="2" fill="#003380" />
-                {/* open book */}
-                <path d="M130 118 L160 110 L190 118 L190 100 L160 92 L130 100 Z" fill="#ffffff" stroke="#cbd5e1" strokeWidth="2" />
-                <line x1="160" y1="92" x2="160" y2="110" stroke="#cbd5e1" strokeWidth="2" />
-                {/* cube on desk */}
-                <g transform="translate(200,90) rotate(-8)">
-                  <rect width="26" height="26" rx="3" fill="#4ade80" />
-                  <rect width="26" height="8" rx="2" fill="#ffffff" opacity="0.4" />
-                </g>
-                {/* child 1 */}
-                <circle cx="105" cy="80" r="18" fill="#fdba74" />
-                <path d="M87 78 a18 14 0 0 1 36 0" fill="#334155" />
-                <rect x="90" y="96" width="30" height="26" rx="10" fill="#0048ba" />
-                {/* child 2 */}
-                <circle cx="215" cy="78" r="18" fill="#fdba74" />
-                <path d="M197 76 a18 14 0 0 1 36 0" fill="#1e293b" />
-                <rect x="200" y="94" width="30" height="28" rx="10" fill="#f97316" />
-                {/* speech bubble */}
-                <g transform="translate(150,40)">
-                  <rect width="46" height="30" rx="10" fill="#ffffff" stroke="#e2e8f0" strokeWidth="2" />
-                  <path d="M14 30 L10 40 L22 30 Z" fill="#ffffff" stroke="#e2e8f0" strokeWidth="2" />
-                  <text x="23" y="20" textAnchor="middle" fontSize="16" fontWeight="700" fill="#0048ba">?</text>
-                </g>
-              </svg>
-              <p className="mt-2 text-sm font-bold text-slate-700 text-center">
-                Belajar bersama, eksplorasi bangun ruang
-              </p>
-              <p className="text-xs text-slate-500 text-center">
-                Cocok untuk pembelajaran mandiri maupun berkelompok
-              </p>
+            <div className="relative w-full aspect-[16/9] rounded-[2rem] shadow-card border border-slate-100 overflow-hidden">
+              <Image
+                src="https://is3.cloudhost.id/assets-geo/home-1.webp"
+                alt="Belajar bersama, eksplorasi bangun ruang"
+                fill
+                sizes="(min-width: 1024px) 50vw, 100vw"
+                className="object-cover"
+              />
             </div>
           </div>
 
@@ -237,27 +210,45 @@ export default function Home() {
                 <br />
                 DISCOVERY LEARNING
               </div>
-              <div className="flex flex-col relative gap-2 pt-4">
+              <div className="flex flex-col flex-1 relative gap-2 pt-4">
                 <div className="absolute left-6 top-6 bottom-6 w-0.5 bg-slate-200 -z-10" />
 
                 {steps.map(({ step, bg, title, titleColor, desc }) => (
                   <div
                     key={step}
-                    className="flex items-start gap-3 rounded-xl p-2 relative group hover:bg-slate-50 transition-colors"
+                    className="flex items-start gap-3 rounded-xl p-3 relative group hover:bg-slate-50 transition-colors"
                   >
                     <div
-                      className={`w-8 h-8 rounded-full ${bg} text-white flex items-center justify-center font-bold text-base flex-shrink-0 shadow-sm relative z-10`}
+                      className={`w-9 h-9 rounded-full ${bg} text-white flex items-center justify-center font-bold text-base flex-shrink-0 shadow-sm relative z-10 group-hover:scale-110 transition-transform`}
                     >
                       {step}
                     </div>
-                    <div className="pt-0.5">
-                      <h4 className={`font-bold ${titleColor} text-xs md:text-sm mb-0.5`}>
+                    <div className="pt-1">
+                      <h4 className={`font-bold ${titleColor} text-sm md:text-base mb-0.5`}>
                         {title}
                       </h4>
-                      <p className="text-[10px] text-slate-600 leading-tight">{desc}</p>
+                      <p className="text-xs text-slate-600 leading-relaxed">{desc}</p>
                     </div>
                   </div>
                 ))}
+              </div>
+
+              <div className="mt-auto pt-6">
+                <div className="bg-gradient-to-r from-blue-50 to-orange-50 rounded-2xl p-5 flex items-center justify-between gap-4 border border-slate-100">
+                  <div>
+                    <p className="text-sm font-bold text-slate-800">Siap memulai eksplorasimu?</p>
+                    <p className="text-xs text-slate-500 mt-0.5">
+                      Ikuti keenam tahap secara berurutan.
+                    </p>
+                  </div>
+                  <Link
+                    href="/login"
+                    className="inline-flex items-center gap-2 bg-primary hover:bg-primary-dark text-white font-bold py-2.5 px-5 rounded-xl text-sm shadow-sm hover:-translate-y-0.5 transition-all flex-shrink-0"
+                  >
+                    Mulai
+                    <i className="fa-solid fa-arrow-right-long" />
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
@@ -265,7 +256,8 @@ export default function Home() {
       </main>
 
       {/* Footer */}
-      <footer className="text-white p-5 md:px-12 flex items-center justify-between mt-auto shadow-[0_-10px_30px_rgba(0,0,0,0.1)] bg-primary-dark">
+      <footer className="text-white p-5 md:px-12 mt-auto shadow-[0_-10px_30px_rgba(0,0,0,0.1)] bg-primary-dark">
+      <div className="max-w-6xl w-full mx-auto flex items-center justify-between">
         <div className="flex items-center gap-4">
           <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center backdrop-blur-sm">
             <i className="fa-solid fa-graduation-cap text-white" />
@@ -283,6 +275,7 @@ export default function Home() {
           </p>
           <p className="text-sm font-bold text-white/90">2026</p>
         </div>
+      </div>
       </footer>
     </div>
   );
