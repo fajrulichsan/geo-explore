@@ -93,7 +93,7 @@ export default function BelajarShell({
       <div className="relative z-[1] flex flex-col min-h-screen">
         <Navbar userName={userName} />
 
-        <div className="flex justify-center px-8 pt-10 pb-20 flex-1">
+        <div className="flex justify-center px-4 sm:px-8 pt-10 pb-20 flex-1">
           <div className="w-full max-w-[1040px] py-6 px-2 pb-12 flex flex-col gap-8">{children}</div>
         </div>
 
