@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Footer from "@/app/_components/Footer";
+import { getPageImage } from "@/lib/pageImages";
 
 const sebelumMemulai = [
   {
@@ -66,7 +67,8 @@ const tanda = [
   },
 ];
 
-export default function Petunjuk1Page() {
+export default async function Petunjuk1Page() {
+  const heroImage = await getPageImage("home-hero");
   return (
     <div
       className="min-h-screen flex flex-col p-4 md:p-8 text-slate-800 antialiased font-sans"
@@ -100,7 +102,7 @@ export default function Petunjuk1Page() {
             <img
               alt="Ilustrasi siswa belajar geometri"
               className="w-full h-auto object-contain drop-shadow-xl rounded-xl"
-              src="https://is3.cloudhost.id/assets-geo/home-1.webp"
+              src={heroImage}
             />
           </div>
         </header>

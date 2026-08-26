@@ -1,6 +1,14 @@
 import type { ReactNode } from "react";
+import Navbar from "@/app/_components/Navbar";
+import Footer from "@/app/_components/Footer";
 
-export default function BelajarShell({ children }: { children: ReactNode }) {
+export default function BelajarShell({
+  children,
+  userName,
+}: {
+  children: ReactNode;
+  userName: string;
+}) {
   return (
     <div
       className="font-[family-name:var(--font-plus-jakarta-sans)] min-h-screen relative overflow-hidden"
@@ -82,41 +90,14 @@ export default function BelajarShell({ children }: { children: ReactNode }) {
         <path d="M12 82 L50 58 L88 82" />
       </svg>
 
-      <div className="relative z-[1]">
-        <nav className="h-[72px] bg-white border-b border-[#E5E7EB] flex items-center justify-between px-8">
-          <div className="flex items-center gap-8">
-            <div className="flex items-center gap-2.5">
-              <div className="w-8 h-8 rounded-[9px] bg-[#1E3A8A] flex items-center justify-center">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                  <path
-                    d="M3 3h8v8H3V3zm10 0h8v8h-8V3zM3 13h8v8H3v-8zm10 0h8v8h-8v-8z"
-                    fill="#fff"
-                  />
-                </svg>
-              </div>
-              <span className="font-extrabold text-lg text-[#111827]">Geometrika</span>
-            </div>
-            <div className="flex items-center gap-7 text-sm font-semibold">
-              <span className="text-[#2563EB] border-b-2 border-[#2563EB] pb-6">Modul</span>
-              <span className="text-[#6B7280]">Aktivitas</span>
-              <span className="text-[#6B7280]">Progres</span>
-              <span className="text-[#6B7280]">Bantuan</span>
-            </div>
-          </div>
-          <div className="flex items-center gap-[18px]">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#6B7280" strokeWidth="2">
-              <path d="M18 8a6 6 0 10-12 0c0 7-3 9-3 9h18s-3-2-3-9" />
-              <path d="M13.7 21a2 2 0 01-3.4 0" />
-            </svg>
-            <div className="w-8 h-8 rounded-full bg-[#2563EB] text-white flex items-center justify-center font-bold text-sm">
-              S
-            </div>
-          </div>
-        </nav>
+      <div className="relative z-[1] flex flex-col min-h-screen">
+        <Navbar userName={userName} />
 
-        <div className="flex justify-center px-8 pt-10 pb-20">
+        <div className="flex justify-center px-8 pt-10 pb-20 flex-1">
           <div className="w-full max-w-[1040px] py-6 px-2 pb-12 flex flex-col gap-8">{children}</div>
         </div>
+
+        <Footer />
       </div>
     </div>
   );

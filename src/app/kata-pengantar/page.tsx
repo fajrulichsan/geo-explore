@@ -1,8 +1,10 @@
 import Link from "next/link";
 import Image from "next/image";
 import Footer from "@/app/_components/Footer";
+import { getPageImage } from "@/lib/pageImages";
 
-export default function KataPengantarPage() {
+export default async function KataPengantarPage() {
+  const heroImage = await getPageImage("home-hero");
   return (
     <div
       className="min-h-screen text-[#191c1e] antialiased overflow-x-hidden relative flex flex-col"
@@ -40,7 +42,7 @@ export default function KataPengantarPage() {
             <div className="absolute -bottom-8 -right-8 w-32 h-32 bg-[#dbe1ff] rounded-full opacity-60 mix-blend-multiply blur-xl" />
             <div className="bg-white/95 backdrop-blur-[10px] border border-white/20 shadow-[0_10px_30px_-10px_rgba(0,51,138,0.08)] w-full h-full rounded-2xl overflow-hidden relative z-10 border-4 border-white">
               <Image
-                src="https://is3.cloudhost.id/assets-geo/home-1.webp"
+                src={heroImage}
                 alt="Ilustrasi siswa belajar geometri"
                 fill
                 sizes="(min-width: 768px) 40vw, 90vw"

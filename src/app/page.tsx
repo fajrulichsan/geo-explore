@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import Footer from "@/app/_components/Footer";
+import { getPageImages } from "@/lib/pageImages";
 
 const steps = [
   {
@@ -47,20 +48,21 @@ const steps = [
   },
 ];
 
-const shapes = [
-  { name: "KUBUS", image: "https://is3.cloudhost.id/assets-geo/kubus.png", scale: 1.15 },
-  { name: "BALOK", image: "https://is3.cloudhost.id/assets-geo/balok.png", scale: 0.65 },
-  { name: "PRISMA", image: "https://is3.cloudhost.id/assets-geo/prima.png", scale: 1 },
-  { name: "LIMAS", image: "https://is3.cloudhost.id/assets-geo/limas-segitiga.png", scale: 1.3 },
-];
-
 const stats = [
   { value: "4+", label: "Bangun Ruang" },
   { value: "6", label: "Tahap Discovery Learning" },
   { value: "3D", label: "Visualisasi GeoGebra & AR" },
 ];
 
-export default function Home() {
+export default async function Home() {
+  const images = await getPageImages();
+  const shapes = [
+    { name: "KUBUS", image: images["shape-kubus"], scale: 1.15 },
+    { name: "BALOK", image: images["shape-balok"], scale: 0.65 },
+    { name: "PRISMA", image: images["shape-prisma"], scale: 1 },
+    { name: "LIMAS", image: images["shape-limas"], scale: 1.3 },
+  ];
+
   return (
     <div className="w-full min-h-screen bg-surface-container flex flex-col relative overflow-hidden">
       {/* Decorative background */}
@@ -73,7 +75,7 @@ export default function Home() {
         <div className="flex items-center gap-4">
           <div className="w-14 h-14 md:w-16 md:h-16 bg-white rounded-full flex items-center justify-center shadow-glass border border-slate-100 p-1 relative overflow-hidden">
             <Image
-              src="https://is3.cloudhost.id/assets-geo/logo-kampus.png"
+              src={images["logo-kampus"]}
               alt="Logo Universitas Pendidikan Indonesia"
               fill
               sizes="64px"
@@ -194,7 +196,7 @@ export default function Home() {
             {/* Illustration: kids learning */}
             <div className="relative w-full aspect-[16/9] rounded-[2rem] shadow-card border border-slate-100 overflow-hidden">
               <Image
-                src="https://is3.cloudhost.id/assets-geo/home-1.webp"
+                src={images["home-hero"]}
                 alt="Belajar bersama, eksplorasi bangun ruang"
                 fill
                 sizes="(min-width: 1024px) 50vw, 100vw"
