@@ -33,11 +33,19 @@ export default function Step1Amati({ materi, peta }: StepComponentProps) {
           SUBMATERI 1
         </div>
         <div className="flex items-center gap-3.5">
-          <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#2563EB" strokeWidth="2.4">
+          <svg
+            width="30"
+            height="30"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="#2563EB"
+            strokeWidth="2.4"
+            className="flex-shrink-0"
+          >
             <circle cx="11" cy="11" r="7" />
             <path d="M21 21l-4.3-4.3" />
           </svg>
-          <h1 className="m-0 text-[32px] font-extrabold text-[#111827]">
+          <h1 className="m-0 text-2xl sm:text-[32px] font-extrabold text-[#111827]">
             Ayo Mengamati dan Berpikir
           </h1>
         </div>
@@ -78,7 +86,7 @@ export default function Step1Amati({ materi, peta }: StepComponentProps) {
           </div>
         </div>
 
-        <div className="grid grid-cols-5 gap-4">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
           {thumbnails.map((t) => (
             <div
               key={t.n}
@@ -112,7 +120,7 @@ export default function Step1Amati({ materi, peta }: StepComponentProps) {
             Langkah 1 – Amati
           </div>
         </div>
-        <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-7 flex items-center gap-7 justify-between shadow-[0_1px_2px_rgba(0,0,0,0.04)]">
+        <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-5 sm:p-7 flex flex-col sm:flex-row items-start sm:items-center gap-5 sm:gap-7 sm:justify-between shadow-[0_1px_2px_rgba(0,0,0,0.04)]">
           <div className="flex gap-4 items-start">
             <div className="w-11 h-11 rounded-xl bg-[#EFF4FF] flex items-center justify-center flex-shrink-0">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2563EB" strokeWidth="2">
@@ -131,14 +139,14 @@ export default function Step1Amati({ materi, peta }: StepComponentProps) {
               </p>
             </div>
           </div>
-          <div className="w-[180px] h-[120px] flex-shrink-0 rounded-[14px] bg-[#F3F4F6] flex items-center justify-center text-xs text-[#9CA3AF]">
+          <div className="w-full sm:w-[180px] h-[120px] flex-shrink-0 rounded-[14px] bg-[#F3F4F6] flex items-center justify-center text-xs text-[#9CA3AF]">
             Ilustrasi
           </div>
         </div>
       </div>
 
       <div className="flex justify-end">
-        <SubmitStepButton className="flex items-center gap-2 bg-[#2563EB] text-white border-none rounded-full py-3.5 px-7 text-sm font-bold font-inherit shadow-[0_4px_10px_rgba(37,99,235,0.3)] cursor-pointer">
+        <SubmitStepButton className="flex items-center gap-2 bg-[#2563EB] text-white border-none rounded-full py-3.5 px-7 text-sm font-bold font-inherit shadow-[0_4px_10px_rgba(37,99,235,0.3)] cursor-pointer w-full sm:w-auto justify-center">
           LANJUTKAN
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.4">
             <path d="M5 12h14M13 5l7 7-7 7" />
