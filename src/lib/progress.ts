@@ -44,16 +44,26 @@ export async function isStepUnlocked(
   const totalStepsInPeta = structure[peta];
   const stepNum = Number(step);
   const petaNum = Number(peta);
+  const materiNum = Number(materi);
 
   if (!totalStepsInPeta || !Number.isFinite(stepNum) || stepNum < 1 || stepNum > totalStepsInPeta) {
     return false;
   }
 
-  if (!(await isMateriUnlocked(userId, materi))) return false;
+  const skipPetaCheck = petaNum === 1 && stepNum === 1;
 
-  if (petaNum === 1 && stepNum === 1) return true;
+  // Fetch the materi-unlock check and this materi's progress concurrently — they're
+  // independent queries (different materi rows) and were previously awaited in sequence.
+  const [materiUnlocked, rows] = await Promise.all([
+    Number.isFinite(materiNum) && materiNum > 1
+      ? isMateriFullyComplete(userId, String(materiNum - 1))
+      : Promise.resolve(true),
+    skipPetaCheck ? Promise.resolve<ProgressRow[]>([]) : getMateriProgress(userId, materi),
+  ]);
 
-  const rows = await getMateriProgress(userId, materi);
+  if (!materiUnlocked) return false;
+  if (skipPetaCheck) return true;
+
   const done = new Set(rows.filter((r) => r.status === "selesai").map((r) => `${r.peta}-${r.step}`));
 
   if (stepNum === 1) {
