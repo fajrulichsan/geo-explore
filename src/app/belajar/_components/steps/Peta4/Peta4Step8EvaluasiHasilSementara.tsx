@@ -3,6 +3,7 @@ import PhotoUpload from "@/components/PhotoUpload";
 import { submitStepAction } from "@/app/belajar/actions";
 import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
 import SubmitStepButton from "@/app/belajar/_components/SubmitStepButton";
+import StepHeader from "@/app/belajar/_components/StepHeader";
 
 const evaluasi = [
   "Apakah ada kesulitan dalam menemukan pola geometri?",
@@ -23,22 +24,13 @@ export default function Peta4Step8EvaluasiHasilSementara({ materi, peta, initial
       <input type="hidden" name="step" value="8" />
 
       <div className="flex flex-col gap-4">
-        <div className="inline-flex items-center gap-1.5 bg-[#1E3A8A] text-white rounded-full py-1.5 px-3.5 text-xs font-bold tracking-[0.04em] w-fit">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2">
-            <circle cx="12" cy="12" r="10" />
-            <path d="M12 6v6l4 2" />
-          </svg>
-          TAHAP 4 – AYO MENGOLAH INFORMASI
-        </div>
+        <StepHeader materi={materi} currentStep={8} totalSteps={8} />
         <div className="flex items-center gap-3.5">
           <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#2563EB" strokeWidth="2">
             <circle cx="12" cy="12" r="9" />
             <path d="M12 8v4l3 2" />
           </svg>
           <h1 className="m-0 text-[32px] font-extrabold text-[#111827]">Evaluasi &amp; Hasil Sementara</h1>
-        </div>
-        <div className="inline-flex items-center bg-[#FDF3C7] text-[#92400E] rounded-full py-[7px] px-[18px] text-[13px] font-semibold w-fit">
-          Tahap 4 dari 6 – Discovery Learning
         </div>
       </div>
 
@@ -47,7 +39,7 @@ export default function Peta4Step8EvaluasiHasilSementara({ materi, peta, initial
           <div className="bg-white border border-[#E5E7EB] rounded-[20px] shadow-[0_1px_2px_rgba(0,0,0,0.04)] overflow-hidden h-full">
             <div className="bg-[#EFF4FF] border-b border-[#E5E7EB] p-6 flex items-center gap-3">
               <div className="w-10 h-10 rounded-full bg-[#2563EB] text-white flex items-center justify-center font-bold text-sm flex-shrink-0">
-                D
+                J
               </div>
               <h2 className="m-0 text-lg font-bold text-[#2563EB]">Evaluasi Proses</h2>
             </div>
@@ -75,7 +67,7 @@ export default function Peta4Step8EvaluasiHasilSementara({ materi, peta, initial
           <div className="bg-white border border-[#E5E7EB] rounded-[20px] shadow-[0_1px_2px_rgba(0,0,0,0.04)] overflow-hidden h-full flex flex-col">
             <div className="bg-[#FDF3C7] border-b border-[#F5E3A0] p-6 flex items-center gap-3">
               <div className="w-10 h-10 rounded-full bg-[#D97706] text-white flex items-center justify-center font-bold text-sm flex-shrink-0">
-                E
+                K
               </div>
               <h2 className="m-0 text-lg font-bold text-[#92400E]">Hasil Sementara</h2>
             </div>

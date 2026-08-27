@@ -3,6 +3,7 @@ import { redirect } from "next/navigation";
 import { supabase } from "@/lib/supabase";
 import { getSessionUserId } from "@/lib/session";
 import { getMateriProgress } from "@/lib/progress";
+import { getMateriMeta } from "@/lib/materiMeta";
 import { getPetaOrder, getPetaStructure, getTotalStepsInStructure } from "@/lib/learningStructure";
 import Navbar from "@/app/_components/Navbar";
 import Footer from "@/app/_components/Footer";
@@ -25,9 +26,9 @@ export default async function PetaBelajarPage() {
   const userId = await getSessionUserId();
   if (!userId) redirect("/login");
 
-  const [rows, { data: materiMeta }, { data: user }] = await Promise.all([
+  const [rows, materiMeta, { data: user }] = await Promise.all([
     getMateriProgress(userId, MATERI),
-    supabase.from("materi_meta").select("judul, deskripsi").eq("materi", MATERI).maybeSingle(),
+    getMateriMeta(MATERI),
     supabase.from("users").select("nama_lengkap").eq("id", userId).maybeSingle(),
   ]);
 
@@ -90,10 +91,10 @@ export default async function PetaBelajarPage() {
           <div className="absolute -left-10 -bottom-10 w-32 h-32 bg-[#fabd00] rounded-full opacity-20 blur-2xl" />
           <div className="relative z-10 text-center md:text-left">
             <h2 className="text-2xl sm:text-3xl md:text-[32px] font-bold text-[#00338a] mb-2">
-              {materiMeta?.judul ?? "Materi"}
+              {materiMeta.title}
             </h2>
             <p className="text-xs sm:text-sm text-[#434653] font-bold bg-[#dbe1ff] inline-block px-3 py-1 rounded-full text-[#00338a]">
-              {materiMeta?.deskripsi ?? "Discovery Learning"}
+              {materiMeta.description || "Discovery Learning"}
             </p>
           </div>
           <div className="w-full md:w-1/3 bg-[#f7f9fb] p-4 sm:p-5 rounded-2xl border border-[#c3c6d6]/50 shadow-inner relative z-10">

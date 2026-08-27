@@ -3,6 +3,7 @@ import PhotoUpload from "@/components/PhotoUpload";
 import { submitStepAction } from "@/app/belajar/actions";
 import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
 import SubmitStepButton from "@/app/belajar/_components/SubmitStepButton";
+import StepHeader from "@/app/belajar/_components/StepHeader";
 
 const catatan = [
   {
@@ -47,21 +48,12 @@ export default function Peta2Step7CatatanHasilDiskusi({ materi, peta, initialAns
       <input type="hidden" name="step" value="7" />
 
       <div className="flex flex-col gap-4">
-        <div className="inline-flex items-center gap-1.5 bg-[#1E3A8A] text-white rounded-full py-1.5 px-3.5 text-xs font-bold tracking-[0.04em] w-fit">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="1.8">
-            <path d="M4 4h16v16H4z" />
-            <path d="M8 9h8M8 13h5" />
-          </svg>
-          SUBMATERI 1
-        </div>
+        <StepHeader materi={materi} currentStep={7} totalSteps={8} />
         <div className="flex items-center gap-3.5">
           <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#2563EB" strokeWidth="2">
             <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z" />
           </svg>
           <h1 className="m-0 text-[32px] font-extrabold text-[#111827]">Ayo Berdiskusi</h1>
-        </div>
-        <div className="inline-flex items-center bg-[#FDF3C7] text-[#92400E] rounded-full py-[7px] px-[18px] text-[13px] font-semibold w-fit">
-          Tahap 2 dari 6 – Discovery Learning
         </div>
       </div>
 
@@ -69,7 +61,7 @@ export default function Peta2Step7CatatanHasilDiskusi({ materi, peta, initialAns
         <div className="lg:col-span-2 flex flex-col gap-4">
           <div className="flex items-center gap-3">
             <div className="w-9 h-9 rounded-full bg-[#2563EB] text-white flex items-center justify-center font-bold text-sm flex-shrink-0">
-              C
+              G
             </div>
             <div>
               <h2 className="m-0 text-lg font-bold text-[#2563EB]">Catatan Hasil Diskusi</h2>
@@ -126,7 +118,7 @@ export default function Peta2Step7CatatanHasilDiskusi({ materi, peta, initialAns
           <div className="bg-[#EFF4FF] border border-[#DBEAFE] rounded-[20px] p-6 sticky top-6">
             <div className="flex items-center gap-3 mb-4">
               <div className="w-9 h-9 rounded-full bg-[#2563EB] text-white flex items-center justify-center font-bold text-sm flex-shrink-0">
-                D
+                H
               </div>
               <h3 className="m-0 text-base font-bold text-[#2563EB] flex-1">Ingat!</h3>
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#D97706" strokeWidth="2">

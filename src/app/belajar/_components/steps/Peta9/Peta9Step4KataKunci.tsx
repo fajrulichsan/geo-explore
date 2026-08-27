@@ -2,6 +2,7 @@ import Link from "next/link";
 import { submitStepAction } from "@/app/belajar/actions";
 import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
 import SubmitStepButton from "@/app/belajar/_components/SubmitStepButton";
+import StepHeader from "@/app/belajar/_components/StepHeader";
 
 const kataKunci = [
   "Bangun ruang sisi datar",
@@ -32,12 +33,7 @@ export default function Peta9Step4KataKunci({ materi, peta }: StepComponentProps
       <input type="hidden" name="step" value="4" />
 
       <div className="flex flex-col gap-4">
-        <div className="inline-flex items-center gap-1.5 bg-[#1E3A8A] text-white rounded-full py-1.5 px-3.5 text-xs font-bold tracking-[0.04em] w-fit">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2">
-            <path d="M4 19.5A2.5 2.5 0 016.5 17H20M4 19.5A2.5 2.5 0 006.5 22H20V4H6.5A2.5 2.5 0 004 6.5v13z" />
-          </svg>
-          RANGKUMAN 4
-        </div>
+        <StepHeader materi={materi} currentStep={4} totalSteps={5} />
         <div className="flex items-center gap-3.5">
           <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#2563EB" strokeWidth="2.4">
             <path d="M20.6 12.6l-8.66 8.66a2 2 0 01-2.83 0L2.34 14.5a2 2 0 010-2.83L11 3h9a1 1 0 011 1v8.6z" />
@@ -54,7 +50,7 @@ export default function Peta9Step4KataKunci({ materi, peta }: StepComponentProps
         <div className="lg:col-span-7 bg-white border border-[#E5E7EB] rounded-[20px] p-6 flex flex-col gap-4 shadow-[0_1px_2px_rgba(0,0,0,0.04)]">
           <div className="flex items-center gap-3">
             <div className="w-[34px] h-[34px] rounded-full bg-[#2563EB] text-white flex items-center justify-center font-bold text-[15px] flex-shrink-0">
-              C
+              F
             </div>
             <h2 className="m-0 text-base font-bold text-[#2563EB]">Kata Kunci</h2>
           </div>
@@ -74,7 +70,7 @@ export default function Peta9Step4KataKunci({ materi, peta }: StepComponentProps
         <div className="lg:col-span-5 bg-[#FDF3C7] border border-[#F5E3A0] rounded-[20px] p-6 flex flex-col gap-4">
           <div className="flex items-center gap-3">
             <div className="w-[34px] h-[34px] rounded-full bg-[#D97706] text-white flex items-center justify-center font-bold text-[15px] flex-shrink-0">
-              D
+              G
             </div>
             <h2 className="m-0 text-base font-bold text-[#92400E]">Ingat!</h2>
           </div>

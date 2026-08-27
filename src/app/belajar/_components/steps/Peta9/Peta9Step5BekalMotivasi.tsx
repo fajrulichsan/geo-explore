@@ -2,6 +2,7 @@ import Link from "next/link";
 import { submitStepAction } from "@/app/belajar/actions";
 import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
 import SubmitStepButton from "@/app/belajar/_components/SubmitStepButton";
+import StepHeader from "@/app/belajar/_components/StepHeader";
 
 export default function Peta9Step5BekalMotivasi({ materi, peta }: StepComponentProps) {
   return (
@@ -11,12 +12,7 @@ export default function Peta9Step5BekalMotivasi({ materi, peta }: StepComponentP
       <input type="hidden" name="step" value="5" />
 
       <div className="flex flex-col gap-4">
-        <div className="inline-flex items-center gap-1.5 bg-[#1E3A8A] text-white rounded-full py-1.5 px-3.5 text-xs font-bold tracking-[0.04em] w-fit">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2">
-            <path d="M4 19.5A2.5 2.5 0 016.5 17H20M4 19.5A2.5 2.5 0 006.5 22H20V4H6.5A2.5 2.5 0 004 6.5v13z" />
-          </svg>
-          RANGKUMAN 5
-        </div>
+        <StepHeader materi={materi} currentStep={5} totalSteps={5} />
         <div className="flex items-center gap-3.5">
           <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#2563EB" strokeWidth="2.4">
             <path d="M12 2l2.6 6.9L22 10l-5.7 4.9L18 22l-6-3.6L6 22l1.7-7.1L2 10l7.4-1.1L12 2z" />
@@ -32,7 +28,7 @@ export default function Peta9Step5BekalMotivasi({ materi, peta }: StepComponentP
         <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-6 flex flex-col gap-4 shadow-[0_1px_2px_rgba(0,0,0,0.04)]">
           <div className="flex items-center gap-3">
             <div className="w-[34px] h-[34px] rounded-full bg-[#2563EB] text-white flex items-center justify-center font-bold text-[15px] flex-shrink-0">
-              E
+              H
             </div>
             <h2 className="m-0 text-base font-bold text-[#2563EB]">Bekal untuk Submateri Berikutnya</h2>
           </div>
@@ -54,7 +50,7 @@ export default function Peta9Step5BekalMotivasi({ materi, peta }: StepComponentP
         <div className="bg-[#FEE2E2] border border-[#FECACA] rounded-[20px] p-6 flex flex-col gap-4">
           <div className="flex items-center gap-3">
             <div className="w-[34px] h-[34px] rounded-full bg-[#DC2626] text-white flex items-center justify-center font-bold text-[15px] flex-shrink-0">
-              F
+              I
             </div>
             <h2 className="m-0 text-base font-bold text-[#B91C1C]">Pesan Motivasi</h2>
           </div>

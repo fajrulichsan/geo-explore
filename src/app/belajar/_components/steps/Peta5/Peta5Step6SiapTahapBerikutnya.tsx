@@ -2,6 +2,7 @@ import Link from "next/link";
 import { submitStepAction } from "@/app/belajar/actions";
 import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
 import SubmitStepButton from "@/app/belajar/_components/SubmitStepButton";
+import StepHeader from "@/app/belajar/_components/StepHeader";
 
 const alur = [
   { label: "Data Pengamatan", desc: "Mengumpulkan fakta dari lapangan" },
@@ -23,20 +24,12 @@ export default function Peta5Step6SiapTahapBerikutnya({ materi, peta }: StepComp
       <input type="hidden" name="step" value="6" />
 
       <div className="flex flex-col gap-4">
-        <div className="inline-flex items-center gap-1.5 bg-[#1E3A8A] text-white rounded-full py-1.5 px-3.5 text-xs font-bold tracking-[0.04em] w-fit">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2">
-            <path d="M20 6L9 17l-5-5" />
-          </svg>
-          TAHAP 5 – AYO VERIFIKASI
-        </div>
+        <StepHeader materi={materi} currentStep={6} totalSteps={6} />
         <div className="flex items-center gap-3.5">
           <div className="w-9 h-9 rounded-full bg-[#2563EB] text-white flex items-center justify-center font-bold text-sm flex-shrink-0">
             F
           </div>
           <h1 className="m-0 text-[32px] font-extrabold text-[#111827]">Siap ke Tahap Berikutnya</h1>
-        </div>
-        <div className="inline-flex items-center bg-[#FDF3C7] text-[#92400E] rounded-full py-[7px] px-[18px] text-[13px] font-semibold w-fit">
-          Tahap 5 dari 6 – Discovery Learning
         </div>
         <p className="m-0 text-[15px] leading-[1.6] text-[#374151] max-w-2xl">
           Luar biasa! Kamu telah menyelesaikan tahap verifikasi. Mari kita lihat alur perjalananmu sebelum

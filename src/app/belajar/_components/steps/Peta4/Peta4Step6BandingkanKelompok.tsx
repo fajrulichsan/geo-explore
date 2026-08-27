@@ -3,6 +3,7 @@ import PhotoUpload from "@/components/PhotoUpload";
 import { submitStepAction } from "@/app/belajar/actions";
 import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
 import SubmitStepButton from "@/app/belajar/_components/SubmitStepButton";
+import StepHeader from "@/app/belajar/_components/StepHeader";
 
 const kolom = ["Kelompokmu", "Kelompok Lain 1", "Kelompok Lain 2"];
 
@@ -19,21 +20,12 @@ export default function Peta4Step6BandingkanKelompok({ materi, peta, initialAnsw
       <input type="hidden" name="step" value="6" />
 
       <div className="flex flex-col gap-4">
-        <div className="inline-flex items-center gap-1.5 bg-[#1E3A8A] text-white rounded-full py-1.5 px-3.5 text-xs font-bold tracking-[0.04em] w-fit">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2">
-            <circle cx="12" cy="12" r="10" />
-            <path d="M12 6v6l4 2" />
-          </svg>
-          TAHAP 4 – AYO MENGOLAH INFORMASI
-        </div>
+        <StepHeader materi={materi} currentStep={6} totalSteps={8} />
         <div className="flex items-center gap-3.5">
           <div className="w-9 h-9 rounded-full bg-[#2563EB] text-white flex items-center justify-center font-bold text-sm flex-shrink-0">
-            A
+            F
           </div>
           <h1 className="m-0 text-[32px] font-extrabold text-[#111827]">Bandingkan Hasil Pengamatan Kelompokmu</h1>
-        </div>
-        <div className="inline-flex items-center bg-[#FDF3C7] text-[#92400E] rounded-full py-[7px] px-[18px] text-[13px] font-semibold w-fit">
-          Tahap 4 dari 6 – Discovery Learning
         </div>
         <p className="m-0 text-[15px] leading-[1.6] text-[#374151] max-w-2xl">
           Diskusikan dan bandingkan hasil pengamatan kelompokmu dengan kelompok lain untuk menemukan
@@ -44,7 +36,7 @@ export default function Peta4Step6BandingkanKelompok({ materi, peta, initialAnsw
       <div className="bg-white border border-[#E5E7EB] rounded-[20px] shadow-[0_1px_2px_rgba(0,0,0,0.04)] overflow-hidden">
         <div className="bg-[#EFF4FF] border-b border-[#E5E7EB] p-6 flex items-center gap-3">
           <div className="w-10 h-10 rounded-full bg-[#2563EB] text-white flex items-center justify-center font-bold text-sm flex-shrink-0">
-            A
+            G
           </div>
           <h2 className="m-0 text-lg font-bold text-[#2563EB]">Tabel Perbandingan</h2>
         </div>

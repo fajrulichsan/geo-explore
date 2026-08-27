@@ -2,6 +2,7 @@ import Link from "next/link";
 import { submitStepAction } from "@/app/belajar/actions";
 import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
 import SubmitStepButton from "@/app/belajar/_components/SubmitStepButton";
+import StepHeader from "@/app/belajar/_components/StepHeader";
 
 export default function Peta3Step9BersiapTahapBerikutnya({ materi, peta }: StepComponentProps) {
   return (
@@ -11,18 +12,21 @@ export default function Peta3Step9BersiapTahapBerikutnya({ materi, peta }: StepC
       <input type="hidden" name="step" value="9" />
 
       <div className="flex flex-col gap-4">
-        <div className="inline-flex items-center gap-1.5 bg-[#1E3A8A] text-white rounded-full py-1.5 px-3.5 text-xs font-bold tracking-[0.04em] w-fit">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2">
-            <circle cx="12" cy="12" r="10" />
-            <path d="M12 6v6l4 2" />
-          </svg>
-          TAHAP 3 – AYO BEREKSPLORASI
-        </div>
+        <StepHeader materi={materi} currentStep={9} totalSteps={10} />
         <div className="flex items-center gap-3.5">
+          <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#2563EB" strokeWidth="2">
+            <circle cx="12" cy="12" r="9" />
+            <path d="M12 8v4l3 2" />
+          </svg>
+          <h1 className="m-0 text-[32px] font-extrabold text-[#111827]">Ayo Bereksplorasi</h1>
+        </div>
+        <div className="flex items-center gap-3">
           <div className="w-9 h-9 rounded-full bg-[#2563EB] text-white flex items-center justify-center font-bold text-sm flex-shrink-0">
-            D
+            I
           </div>
-          <h1 className="m-0 text-[32px] font-extrabold text-[#111827]">Bersiap ke Tahap Berikutnya</h1>
+          <div className="bg-white border border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-full py-2 px-5 text-sm font-bold text-[#2563EB]">
+            Bersiap ke Tahap Berikutnya
+          </div>
         </div>
       </div>
 

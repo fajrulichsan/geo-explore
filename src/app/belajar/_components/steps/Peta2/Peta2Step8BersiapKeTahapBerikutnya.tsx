@@ -3,6 +3,7 @@ import PhotoUpload from "@/components/PhotoUpload";
 import { submitStepAction } from "@/app/belajar/actions";
 import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
 import SubmitStepButton from "@/app/belajar/_components/SubmitStepButton";
+import StepHeader from "@/app/belajar/_components/StepHeader";
 
 const rencana = [
   { text: "Mengamati bentuk bangun ruang" },
@@ -21,12 +22,7 @@ export default function Peta2Step8BersiapKeTahapBerikutnya({ materi, peta, initi
       <input type="hidden" name="step" value="8" />
 
       <div className="flex flex-col gap-4">
-        <div className="inline-flex items-center gap-1.5 bg-[#1E3A8A] text-white rounded-full py-1.5 px-3.5 text-xs font-bold tracking-[0.04em] w-fit">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="1.8">
-            <path d="M4 19.5A2.5 2.5 0 016.5 17H20M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z" />
-          </svg>
-          SUBMATERI 1 · TAHAP 2 DARI 6
-        </div>
+        <StepHeader materi={materi} currentStep={8} totalSteps={8} />
         <div className="flex items-center gap-3.5">
           <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#2563EB" strokeWidth="2">
             <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z" />
@@ -37,7 +33,7 @@ export default function Peta2Step8BersiapKeTahapBerikutnya({ materi, peta, initi
 
       <div className="flex items-center gap-3">
         <div className="w-9 h-9 rounded-full bg-[#2563EB] text-white flex items-center justify-center font-bold text-sm flex-shrink-0">
-          E
+          I
         </div>
         <h2 className="m-0 text-lg font-bold text-[#2563EB]">Bersiap ke Tahap Berikutnya</h2>
       </div>

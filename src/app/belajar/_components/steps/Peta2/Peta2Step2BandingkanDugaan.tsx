@@ -2,6 +2,7 @@ import Link from "next/link";
 import { submitStepAction } from "@/app/belajar/actions";
 import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
 import SubmitStepButton from "@/app/belajar/_components/SubmitStepButton";
+import StepHeader from "@/app/belajar/_components/StepHeader";
 
 const kelompok = [
   {
@@ -35,17 +36,21 @@ export default function Peta2Step2BandingkanDugaan({ materi, peta }: StepCompone
       <input type="hidden" name="step" value="2" />
 
       <div className="flex flex-col gap-4">
-        <div className="inline-flex items-center gap-1.5 bg-[#1E3A8A] text-white rounded-full py-1.5 px-3.5 text-xs font-bold tracking-[0.04em] w-fit">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="1.8">
-            <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z" />
-          </svg>
-          LANGKAH B
-        </div>
-        <h1 className="m-0 text-[32px] font-extrabold text-[#111827]">Bandingkan Dugaan Kelompok</h1>
+        <StepHeader materi={materi} currentStep={2} totalSteps={8} />
+        <h1 className="m-0 text-[32px] font-extrabold text-[#111827]">Ayo Berdiskusi</h1>
         <p className="m-0 text-[15px] leading-[1.6] text-[#374151] max-w-2xl">
           Amati dugaan pengelompokan dari ketiga kelompok berikut. Bandingkan persamaan, perbedaan, serta
           alasan yang mereka gunakan untuk mengkategorikan bangun ruang.
         </p>
+      </div>
+
+      <div className="flex items-center gap-3">
+        <div className="w-[34px] h-[34px] rounded-full bg-[#2563EB] text-white flex items-center justify-center font-bold text-[15px] flex-shrink-0">
+          B
+        </div>
+        <div className="bg-white border border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-full py-2 px-5 text-sm font-bold text-[#2563EB]">
+          Bandingkan Dugaan Kelompok
+        </div>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">

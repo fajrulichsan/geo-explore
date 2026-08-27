@@ -3,6 +3,7 @@ import PhotoUpload from "@/components/PhotoUpload";
 import { submitStepAction } from "@/app/belajar/actions";
 import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
 import SubmitStepButton from "@/app/belajar/_components/SubmitStepButton";
+import StepHeader from "@/app/belajar/_components/StepHeader";
 
 const badges = [
   { text: "Saya mampu memberi alasan matematis yang logis." },
@@ -22,22 +23,12 @@ export default function Peta7Step4KotakMotivasi({ materi, peta, initialAnswers }
       <input type="hidden" name="step" value="4" />
 
       <div className="flex flex-col gap-4">
-        <div className="inline-flex items-center gap-1.5 bg-[#1E3A8A] text-white rounded-full py-1.5 px-3.5 text-xs font-bold tracking-[0.04em] w-fit">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2">
-            <circle cx="12" cy="12" r="9" />
-            <circle cx="12" cy="12" r="4.5" />
-            <circle cx="12" cy="12" r="1" fill="#fff" />
-          </svg>
-          REFLEKSI & EVALUASI
-        </div>
+        <StepHeader materi={materi} currentStep={4} totalSteps={4} />
         <div className="flex items-center gap-3.5">
           <div className="w-9 h-9 rounded-full bg-[#2563EB] text-white flex items-center justify-center font-bold text-sm flex-shrink-0">
             4
           </div>
           <h1 className="m-0 text-[32px] font-extrabold text-[#111827]">Bekalku untuk Tantangan Open-Ended</h1>
-        </div>
-        <div className="inline-flex items-center bg-[#FDF3C7] text-[#92400E] rounded-full py-[7px] px-[18px] text-[13px] font-semibold w-fit">
-          Tahap Refleksi – Setelah Belajar
         </div>
       </div>
 

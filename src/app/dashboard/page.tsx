@@ -8,7 +8,7 @@ import Navbar from "@/app/_components/Navbar";
 import Footer from "@/app/_components/Footer";
 import QrToolCard from "@/app/dashboard/_components/QrToolCard";
 import { getPageImages, type PageImageKey } from "@/lib/pageImages";
-import { MATERI_META } from "@/lib/materiMeta";
+import { getAllMateriMeta } from "@/lib/materiMeta";
 
 export default async function DashboardPage() {
   const userId = await getSessionUserId();
@@ -41,6 +41,7 @@ export default async function DashboardPage() {
   const structure = getPetaStructure();
   const totalStepsPerMateri = getTotalStepsInStructure(structure);
 
+  const allMateriMeta = await getAllMateriMeta();
   const materiNumbers = Array.from({ length: TOTAL_MATERI }, (_, i) => String(i + 1));
   const learningPath = await Promise.all(
     materiNumbers.map(async (materi) => {
@@ -50,7 +51,7 @@ export default async function DashboardPage() {
       ]);
       const done = rows.filter((r) => r.status === "selesai").length;
       const progress = totalStepsPerMateri ? Math.round((done / totalStepsPerMateri) * 100) : 0;
-      const meta = MATERI_META[materi] ?? { title: `Materi ${materi}`, description: "" };
+      const meta = allMateriMeta[materi] ?? { title: `Materi ${materi}`, description: "" };
       return {
         materi,
         title: meta.title,

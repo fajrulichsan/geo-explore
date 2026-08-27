@@ -2,6 +2,7 @@ import Link from "next/link";
 import { submitStepAction } from "@/app/belajar/actions";
 import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
 import SubmitStepButton from "@/app/belajar/_components/SubmitStepButton";
+import StepHeader from "@/app/belajar/_components/StepHeader";
 
 const alur = [
   { label: "Mengamati", desc: "Mengamati bangun ruang sisi datar dan sifat-sifatnya.", color: "#2563EB", bg: "#EFF6FF" },
@@ -47,12 +48,7 @@ export default function Peta9Step3HubunganKonsep({ materi, peta, initialAnswers 
       <input type="hidden" name="step" value="3" />
 
       <div className="flex flex-col gap-4">
-        <div className="inline-flex items-center gap-1.5 bg-[#1E3A8A] text-white rounded-full py-1.5 px-3.5 text-xs font-bold tracking-[0.04em] w-fit">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2">
-            <path d="M4 19.5A2.5 2.5 0 016.5 17H20M4 19.5A2.5 2.5 0 006.5 22H20V4H6.5A2.5 2.5 0 004 6.5v13z" />
-          </svg>
-          RANGKUMAN 3
-        </div>
+        <StepHeader materi={materi} currentStep={3} totalSteps={5} />
         <div className="flex items-center gap-3.5">
           <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#2563EB" strokeWidth="2.4">
             <circle cx="12" cy="12" r="9" />
@@ -69,7 +65,7 @@ export default function Peta9Step3HubunganKonsep({ materi, peta, initialAnswers 
         <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-6 flex flex-col gap-4 shadow-[0_1px_2px_rgba(0,0,0,0.04)]">
           <div className="flex items-center gap-3">
             <div className="w-[34px] h-[34px] rounded-full bg-[#2563EB] text-white flex items-center justify-center font-bold text-[15px] flex-shrink-0">
-              A
+              D
             </div>
             <h2 className="m-0 text-base font-bold text-[#2563EB]">Hubungan Antar Konsep</h2>
           </div>
@@ -96,7 +92,7 @@ export default function Peta9Step3HubunganKonsep({ materi, peta, initialAnswers 
         <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-6 flex flex-col gap-4 shadow-[0_1px_2px_rgba(0,0,0,0.04)]">
           <div className="flex items-center gap-3">
             <div className="w-[34px] h-[34px] rounded-full bg-[#16A34A] text-white flex items-center justify-center font-bold text-[15px] flex-shrink-0">
-              B
+              E
             </div>
             <h2 className="m-0 text-base font-bold text-[#15803D]">Cara Berpikir yang Telah Dipelajari</h2>
           </div>
