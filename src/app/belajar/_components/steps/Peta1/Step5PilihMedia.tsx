@@ -2,6 +2,7 @@ import Link from "next/link";
 import { submitStepAction } from "@/app/belajar/actions";
 import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
 import SubmitStepButton from "@/app/belajar/_components/SubmitStepButton";
+import StepHeader from "@/app/belajar/_components/StepHeader";
 
 const cards = [
   {
@@ -53,13 +54,7 @@ export default function Step5PilihMedia({ materi, peta }: StepComponentProps) {
       <input type="hidden" name="step" value="5" />
 
       <div className="flex flex-col gap-4">
-        <div className="inline-flex items-center gap-1.5 bg-[#1E3A8A] text-white rounded-full py-1.5 px-3.5 text-xs font-bold tracking-[0.04em] w-fit">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2">
-            <path d="M4 4h16v16H4z" />
-            <path d="M4 10h16M10 4v16" />
-          </svg>
-          LANGKAH 5 – PILIH MEDIA
-        </div>
+        <StepHeader materi={materi} currentStep={5} totalSteps={7} />
         <div className="flex items-center gap-3.5">
           <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#2563EB" strokeWidth="2.4">
             <circle cx="11" cy="11" r="7" />
@@ -73,6 +68,15 @@ export default function Step5PilihMedia({ materi, peta }: StepComponentProps) {
           Pilih media berikut untuk mengamati model-model bangun ruang. Gunakan imajinasimu untuk
           mengeksplorasi bentuk dan strukturnya.
         </p>
+      </div>
+
+      <div className="flex items-center gap-3">
+        <div className="w-[34px] h-[34px] rounded-full bg-[#2563EB] text-white flex items-center justify-center font-bold text-[15px] flex-shrink-0">
+          F
+        </div>
+        <div className="bg-white border border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-full py-2 px-5 text-sm font-bold text-[#2563EB]">
+          Pilih Media
+        </div>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-5">

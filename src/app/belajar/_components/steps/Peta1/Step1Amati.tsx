@@ -1,6 +1,7 @@
 import { submitStepAction } from "@/app/belajar/actions";
 import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
 import SubmitStepButton from "@/app/belajar/_components/SubmitStepButton";
+import StepHeader from "@/app/belajar/_components/StepHeader";
 
 const thumbnails = [
   { n: 1, label: "Rumah" },
@@ -23,15 +24,7 @@ export default function Step1Amati({ materi, peta }: StepComponentProps) {
       <input type="hidden" name="step" value="1" />
 
       <div className="flex flex-col gap-4">
-        <div className="inline-flex items-center gap-1.5 bg-[#1E3A8A] text-white rounded-full py-1.5 px-3.5 text-xs font-bold tracking-[0.04em] w-fit">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="#fff">
-            <rect x="3" y="3" width="7" height="7" rx="1" />
-            <rect x="14" y="3" width="7" height="7" rx="1" />
-            <rect x="3" y="14" width="7" height="7" rx="1" />
-            <rect x="14" y="14" width="7" height="7" rx="1" />
-          </svg>
-          SUBMATERI 1
-        </div>
+        <StepHeader materi={materi} currentStep={1} totalSteps={7} />
         <div className="flex items-center gap-3.5">
           <svg
             width="30"
@@ -48,9 +41,6 @@ export default function Step1Amati({ materi, peta }: StepComponentProps) {
           <h1 className="m-0 text-2xl sm:text-[32px] font-extrabold text-[#111827]">
             Ayo Mengamati dan Berpikir
           </h1>
-        </div>
-        <div className="inline-flex items-center bg-[#FDF3C7] text-[#92400E] rounded-full py-[7px] px-[18px] text-[13px] font-semibold w-fit">
-          Tahap 1 dari 6 – Discovery Learning
         </div>
       </div>
 

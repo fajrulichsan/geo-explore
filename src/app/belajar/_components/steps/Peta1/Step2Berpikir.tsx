@@ -3,6 +3,7 @@ import PhotoUpload from "@/components/PhotoUpload";
 import { submitStepAction } from "@/app/belajar/actions";
 import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
 import SubmitStepButton from "@/app/belajar/_components/SubmitStepButton";
+import StepHeader from "@/app/belajar/_components/StepHeader";
 
 const questions = [
   {
@@ -36,13 +37,7 @@ export default function Step2Berpikir({ materi, peta, initialAnswers }: StepComp
       <input type="hidden" name="step" value="2" />
 
       <div className="flex flex-col gap-4">
-        <div className="inline-flex items-center gap-1.5 bg-[#1E3A8A] text-white rounded-full py-1.5 px-3.5 text-xs font-bold tracking-[0.04em] w-fit">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="#fff">
-            <path d="M6 3h9l4 4v14H6z" fill="none" stroke="#fff" strokeWidth="1.6" />
-            <path d="M9 12h6M9 16h6" stroke="#fff" strokeWidth="1.6" />
-          </svg>
-          MODUL 1
-        </div>
+        <StepHeader materi={materi} currentStep={2} totalSteps={7} />
         <div className="flex items-center gap-3.5">
           <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#2563EB" strokeWidth="2.4">
             <circle cx="11" cy="11" r="7" />
@@ -51,9 +46,6 @@ export default function Step2Berpikir({ materi, peta, initialAnswers }: StepComp
           <h1 className="m-0 text-[32px] font-extrabold text-[#111827]">
             Ayo Mengamati dan Berpikir
           </h1>
-        </div>
-        <div className="inline-flex items-center bg-[#FDF3C7] text-[#92400E] rounded-full py-[7px] px-[18px] text-[13px] font-semibold w-fit">
-          Tahap 2 dari 5 – Analisis
         </div>
       </div>
 

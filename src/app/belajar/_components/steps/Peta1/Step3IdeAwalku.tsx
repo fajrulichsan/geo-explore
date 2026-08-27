@@ -3,6 +3,7 @@ import PhotoUpload from "@/components/PhotoUpload";
 import { submitStepAction } from "@/app/belajar/actions";
 import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
 import SubmitStepButton from "@/app/belajar/_components/SubmitStepButton";
+import StepHeader from "@/app/belajar/_components/StepHeader";
 
 const caraList = [{ n: 1 }, { n: 2 }];
 
@@ -23,28 +24,28 @@ export default function Step3IdeAwalku({ materi, peta, initialAnswers }: StepCom
       <input type="hidden" name="step" value="3" />
 
       <div className="flex flex-col gap-4">
-        <div className="inline-flex items-center gap-1.5 bg-[#1E3A8A] text-white rounded-full py-1.5 px-3.5 text-xs font-bold tracking-[0.04em] w-fit">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="1.8">
-            <path d="M4 16c2-2 3-4 3-7a5 5 0 0110 0c0 3 1 5 3 7" />
-            <path d="M9 20h6" />
-          </svg>
-          D. LANGKAH 3 – IDE AWALKU
-        </div>
+        <StepHeader materi={materi} currentStep={3} totalSteps={7} />
         <div className="flex items-start gap-3.5">
           <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#2563EB" strokeWidth="2">
             <path d="M9 18h6M10 22h4M12 2a7 7 0 00-4 12.7c.6.5 1 1.2 1 2.3h6c0-1.1.4-1.8 1-2.3A7 7 0 0012 2z" />
           </svg>
-          <div>
-            <h1 className="m-0 mb-1 text-[32px] font-extrabold text-[#111827]">
-              Ayo Mengamati dan Berpikir
-            </h1>
-            <h2 className="m-0 text-lg font-bold text-[#2563EB]">Ide Awalku</h2>
-          </div>
+          <h1 className="m-0 text-[32px] font-extrabold text-[#111827]">
+            Ayo Mengamati dan Berpikir
+          </h1>
         </div>
         <p className="m-0 text-[15px] leading-[1.6] text-[#374151] max-w-2xl">
           Tuliskan paling sedikit dua cara berbeda yang menurutmu dapat digunakan untuk
           mengelompokkan benda-benda di atas beserta alasannya.
         </p>
+      </div>
+
+      <div className="flex items-center gap-3">
+        <div className="w-[34px] h-[34px] rounded-full bg-[#2563EB] text-white flex items-center justify-center font-bold text-[15px] flex-shrink-0">
+          D
+        </div>
+        <div className="bg-white border border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-full py-2 px-5 text-sm font-bold text-[#2563EB]">
+          Ide Awalku
+        </div>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
