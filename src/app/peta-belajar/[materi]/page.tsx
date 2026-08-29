@@ -2,13 +2,11 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import { supabase } from "@/lib/supabase";
 import { getSessionUserId } from "@/lib/session";
-import { getMateriProgress } from "@/lib/progress";
+import { getMateriProgress, isMateriUnlocked } from "@/lib/progress";
 import { getMateriMeta } from "@/lib/materiMeta";
 import { getPetaOrder, getPetaStructure, getTotalStepsInStructure } from "@/lib/learningStructure";
 import Navbar from "@/app/_components/Navbar";
 import Footer from "@/app/_components/Footer";
-
-const MATERI = "1";
 
 const PETA_INFO: Record<string, { icon: string; title: string; desc: string }> = {
   "1": { icon: "menu_book", title: "Pendahuluan", desc: "Mengenal tujuan dan konteks pembelajaran sebelum memulai." },
@@ -23,13 +21,21 @@ const PETA_INFO: Record<string, { icon: string; title: string; desc: string }> =
   "10": { icon: "workspaces", title: "Rangkuman", desc: "Merangkum konsep dan hal penting yang telah dipelajari." },
 };
 
-export default async function PetaBelajarPage() {
+export default async function PetaBelajarPage(
+  props: PageProps<"/peta-belajar/[materi]">
+) {
+  const { materi } = await props.params;
+
   const userId = await getSessionUserId();
   if (!userId) redirect("/login");
 
+  if (!(await isMateriUnlocked(userId, materi))) {
+    redirect("/dashboard");
+  }
+
   const [rows, materiMeta, { data: user }] = await Promise.all([
-    getMateriProgress(userId, MATERI),
-    getMateriMeta(MATERI),
+    getMateriProgress(userId, materi),
+    getMateriMeta(materi),
     supabase.from("users").select("nama_lengkap").eq("id", userId).maybeSingle(),
   ]);
 
@@ -132,7 +138,7 @@ export default async function PetaBelajarPage() {
                     <span className="material-symbols-outlined text-[28px]">{card.info.icon}</span>
                   </div>
                   <div className={`w-full md:w-1/2 pl-14 sm:pl-16 md:pl-0 ${alignRight ? "md:pr-12 md:text-right" : "md:pl-12"}`}>
-                    <Link href={`/belajar/${MATERI}/${card.peta}/1`} className="block">
+                    <Link href={`/belajar/${materi}/${card.peta}/1`} className="block">
                       <div className="bg-white rounded-3xl shadow-[0_8px_30px_rgba(0,0,0,0.04)] p-4 sm:p-6 border border-[#c3c6d6]/30 hover:-translate-y-2 hover:shadow-[0_12px_40px_rgba(0,51,138,0.1)] transition-all duration-300">
                         <div className={`flex flex-col mb-3 ${alignRight ? "md:items-end" : "items-start"}`}>
                           <span className="inline-flex items-center gap-1 px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-full bg-[#e6f4ea] text-[#137333] text-xs sm:text-sm mb-3 font-bold border border-[#137333]/20 shadow-sm">
@@ -178,7 +184,7 @@ export default async function PetaBelajarPage() {
                       </p>
                       <div className={`flex justify-start ${alignRight ? "md:justify-end" : ""}`}>
                         <Link
-                          href={`/belajar/${MATERI}/${card.peta}/${card.firstUnfinishedStep}`}
+                          href={`/belajar/${materi}/${card.peta}/${card.firstUnfinishedStep}`}
                           className="bg-gradient-to-r from-[#00338a] to-[#0048ba] text-white px-6 sm:px-8 py-3 sm:py-4 rounded-2xl text-xs sm:text-sm shadow-xl hover:shadow-2xl hover:scale-105 transition-all flex items-center gap-2 font-extrabold uppercase tracking-wide"
                         >
                           Lanjut Mengerjakan <span className="material-symbols-outlined text-[20px] sm:text-[24px]">arrow_forward</span>

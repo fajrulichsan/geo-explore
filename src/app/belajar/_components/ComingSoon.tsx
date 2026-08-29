@@ -26,7 +26,7 @@ export default function ComingSoon({
         aktivitas yang sudah tersedia.
       </p>
       <Link
-        href="/peta-belajar"
+        href={`/peta-belajar/${materi}`}
         className="flex items-center gap-2 bg-[#2563EB] text-white border-none rounded-full py-3.5 px-7 text-sm font-bold shadow-[0_4px_10px_rgba(37,99,235,0.3)] cursor-pointer"
       >
         Kembali ke Peta Belajar

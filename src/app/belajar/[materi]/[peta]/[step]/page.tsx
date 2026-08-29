@@ -16,7 +16,7 @@ export default async function BelajarStepPage(
 
   // Server-side gate: a locked step can't be reached by typing the URL directly.
   if (!(await isStepUnlocked(userId, materi, peta, step))) {
-    redirect("/peta-belajar");
+    redirect(`/peta-belajar/${materi}`);
   }
 
   const StepComponent = getStepComponent(materi, peta, step);

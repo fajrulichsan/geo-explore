@@ -90,7 +90,7 @@ export default async function DashboardPage() {
               </p>
               {activeItem && (
                 <Link
-                  href="/peta-belajar"
+                  href={`/peta-belajar/${activeItem.materi}`}
                   className="inline-flex bg-white text-primary px-6 py-3 rounded-lg text-sm font-semibold shadow-sm hover:scale-105 hover:shadow-md transition-all duration-200 items-center gap-2"
                 >
                   Lanjutkan {activeItem.title}
@@ -134,7 +134,7 @@ export default async function DashboardPage() {
               <span className="material-symbols-outlined text-primary">route</span>
               Peta Belajar
             </h3>
-            <Link href="/peta-belajar" className="text-xs text-primary hover:underline">
+            <Link href={`/peta-belajar/${activeItem?.materi ?? "1"}`} className="text-xs text-primary hover:underline">
               Lihat Semua
             </Link>
           </div>
@@ -229,7 +229,7 @@ export default async function DashboardPage() {
                   {cardContent}
                 </div>
               ) : (
-                <Link key={item.materi} href="/peta-belajar" className={cardClassName}>
+                <Link key={item.materi} href={`/peta-belajar/${item.materi}`} className={cardClassName}>
                   {cardContent}
                 </Link>
               );

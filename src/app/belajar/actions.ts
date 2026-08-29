@@ -31,7 +31,7 @@ function getNextStepUrl(materi: string, peta: string, step: string): string {
     return `/belajar/${materi}/${peta}/${stepNum + 1}`;
   }
 
-  return "/peta-belajar";
+  return `/peta-belajar/${materi}`;
 }
 
 export async function submitStepAction(formData: FormData) {
@@ -43,7 +43,7 @@ export async function submitStepAction(formData: FormData) {
   if (!userId) redirect("/login");
 
   if (!(await isStepUnlocked(userId, materi, peta, step))) {
-    redirect("/peta-belajar");
+    redirect(`/peta-belajar/${materi}`);
   }
 
   const answers = collectAnswers(formData);

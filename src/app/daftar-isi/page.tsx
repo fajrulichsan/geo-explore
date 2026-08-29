@@ -5,7 +5,7 @@ import Footer from "@/app/_components/Footer";
 const itemsUtama = [
   { num: 1, title: "Kata Pengantar", href: "/kata-pengantar" },
   { num: 2, title: "Petunjuk Penggunaan", href: "/petunjuk-1" },
-  { num: 3, title: "Peta Aktivitas Pembelajaran", href: "/peta-belajar" },
+  { num: 3, title: "Peta Aktivitas Pembelajaran", href: "/peta-belajar/1" },
   { num: 4, title: "Kompetensi Inti & Dasar", href: "#" },
 ];
 
