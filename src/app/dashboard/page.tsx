@@ -14,7 +14,12 @@ export default async function DashboardPage() {
   const userId = await getSessionUserId();
   if (!userId) redirect("/login");
 
-  const images = await getPageImages();
+  const [images, { data: user }, allMateriMeta] = await Promise.all([
+    getPageImages(),
+    supabase.from("users").select("nama_lengkap").eq("id", userId).maybeSingle(),
+    getAllMateriMeta(),
+  ]);
+
   const quickTools = [
     {
       icon: "3d_rotation",
@@ -32,16 +37,9 @@ export default async function DashboardPage() {
     },
   ];
 
-  const { data: user } = await supabase
-    .from("users")
-    .select("nama_lengkap")
-    .eq("id", userId)
-    .maybeSingle();
-
   const structure = getPetaStructure();
   const totalStepsPerMateri = getTotalStepsInStructure(structure);
 
-  const allMateriMeta = await getAllMateriMeta();
   const materiNumbers = Array.from({ length: TOTAL_MATERI }, (_, i) => String(i + 1));
   const learningPath = await Promise.all(
     materiNumbers.map(async (materi) => {
