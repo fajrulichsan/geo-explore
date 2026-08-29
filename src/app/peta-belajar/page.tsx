@@ -11,15 +11,16 @@ import Footer from "@/app/_components/Footer";
 const MATERI = "1";
 
 const PETA_INFO: Record<string, { icon: string; title: string; desc: string }> = {
-  "1": { icon: "menu_book", title: "Pendahuluan & Ayo Mengamati", desc: "Mengenal tujuan dan konteks pembelajaran, lalu mengamati permasalahan atau fenomena yang diberikan." },
-  "2": { icon: "forum", title: "Ayo Berdiskusi", desc: "Berdiskusi dan bertukar ide untuk memahami permasalahan." },
-  "3": { icon: "explore", title: "Ayo Bereksplorasi", desc: "Mengeksplorasi konsep melalui aktivitas dan percobaan." },
-  "4": { icon: "table_chart", title: "Ayo Mengolah Informasi", desc: "Mengolah informasi dan menemukan pola atau konsep." },
-  "5": { icon: "fact_check", title: "Ayo Memverifikasi", desc: "Memeriksa dan menguji kebenaran hasil yang diperoleh." },
-  "6": { icon: "lightbulb", title: "Ayo Menyimpulkan", desc: "Merumuskan kesimpulan berdasarkan hasil pembelajaran." },
-  "7": { icon: "psychology", title: "Refleksi Diri", desc: "Merefleksikan pemahaman dan pengalaman belajar." },
-  "8": { icon: "category", title: "Tantangan Open-Ended", desc: "Menyelesaikan permasalahan terbuka dengan berbagai kemungkinan strategi dan jawaban." },
-  "9": { icon: "workspaces", title: "Rangkuman", desc: "Merangkum konsep dan hal penting yang telah dipelajari." },
+  "1": { icon: "menu_book", title: "Pendahuluan", desc: "Mengenal tujuan dan konteks pembelajaran sebelum memulai." },
+  "2": { icon: "search", title: "Ayo Mengamati", desc: "Mengamati permasalahan atau fenomena yang diberikan." },
+  "3": { icon: "forum", title: "Ayo Berdiskusi", desc: "Berdiskusi dan bertukar ide untuk memahami permasalahan." },
+  "4": { icon: "explore", title: "Ayo Bereksplorasi", desc: "Mengeksplorasi konsep melalui aktivitas dan percobaan." },
+  "5": { icon: "table_chart", title: "Ayo Mengolah Informasi", desc: "Mengolah informasi dan menemukan pola atau konsep." },
+  "6": { icon: "fact_check", title: "Ayo Memverifikasi", desc: "Memeriksa dan menguji kebenaran hasil yang diperoleh." },
+  "7": { icon: "lightbulb", title: "Ayo Menyimpulkan", desc: "Merumuskan kesimpulan berdasarkan hasil pembelajaran." },
+  "8": { icon: "psychology", title: "Refleksi Diri", desc: "Merefleksikan pemahaman dan pengalaman belajar." },
+  "9": { icon: "category", title: "Tantangan Open-Ended", desc: "Menyelesaikan permasalahan terbuka dengan berbagai kemungkinan strategi dan jawaban." },
+  "10": { icon: "workspaces", title: "Rangkuman", desc: "Merangkum konsep dan hal penting yang telah dipelajari." },
 };
 
 export default async function PetaBelajarPage() {
