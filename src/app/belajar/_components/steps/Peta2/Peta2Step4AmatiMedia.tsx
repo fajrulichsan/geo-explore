@@ -1,9 +1,9 @@
-import Image from "next/image";
 import Link from "next/link";
 import { submitStepAction } from "@/app/belajar/actions";
 import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
 import SubmitStepButton from "@/app/belajar/_components/SubmitStepButton";
 import StepHeader from "@/app/belajar/_components/StepHeader";
+import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
 import { getPageImage, type PageImageKey } from "@/lib/pageImages";
 
 const items = [
@@ -19,7 +19,7 @@ const items = [
   { n: 10, label: "Tumpukan Ubin", imageKey: "M1-P2-L4-10" },
 ] satisfies { n: number; label: string; imageKey: PageImageKey }[];
 
-export default async function Peta2Step4AmatiMedia({ materi, peta }: StepComponentProps) {
+export default async function Peta2Step4AmatiMedia({ materi, peta, step = "4", editFoto }: StepComponentProps) {
   const itemImages = await Promise.all(items.map((item) => getPageImage(item.imageKey)));
 
   return (
@@ -55,7 +55,17 @@ export default async function Peta2Step4AmatiMedia({ materi, peta }: StepCompone
           {items.map((item, i) => (
             <div key={item.n} className="flex flex-col items-center gap-2">
               <div className="relative w-full aspect-square rounded-2xl overflow-hidden bg-[#F3F4F6]">
-                <Image src={itemImages[i]} alt={item.label} fill className="object-cover" />
+                <EditablePageImage
+                  imageKey={item.imageKey}
+                  materi={materi}
+                  peta={peta}
+                  step={step}
+                  urutan={String(i + 1)}
+                  src={itemImages[i]}
+                  alt={item.label}
+                  editable={editFoto}
+                  containerClassName="absolute inset-0"
+                />
                 <div className="absolute top-2 left-2 bg-[#2563EB] text-white w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold shadow-sm">
                   {item.n}
                 </div>

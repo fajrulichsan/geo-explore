@@ -1,9 +1,9 @@
-import Image from "next/image";
 import { submitStepAction } from "@/app/belajar/actions";
 import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
 import SubmitStepButton from "@/app/belajar/_components/SubmitStepButton";
 import StepHeader from "@/app/belajar/_components/StepHeader";
 import BackLink from "@/app/belajar/_components/BackLink";
+import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
 import { getPageImage } from "@/lib/pageImages";
 
 const tujuanPembelajaran = [
@@ -14,7 +14,12 @@ const tujuanPembelajaran = [
   "Semakin percaya diri dalam menyampaikan dan mempertahankan pendapat.",
 ];
 
-export default async function Peta1Step2TujuanPersiapan({ materi, peta }: StepComponentProps) {
+export default async function Peta1Step2TujuanPersiapan({
+  materi,
+  peta,
+  step = "2",
+  editFoto,
+}: StepComponentProps) {
   const [gambarGeoGebra, gambarAR] = await Promise.all([
     getPageImage("M1-P1-L1-2"),
     getPageImage("M1-P1-L1-3"),
@@ -83,9 +88,17 @@ export default async function Peta1Step2TujuanPersiapan({ materi, peta }: StepCo
               </svg>
               GeoGebra 3D
             </div>
-            <div className="relative w-full aspect-video rounded-[14px] overflow-hidden bg-[#F3F4F6]">
-              <Image src={gambarGeoGebra} alt="Ilustrasi eksplorasi GeoGebra 3D" fill className="object-cover" />
-            </div>
+            <EditablePageImage
+              imageKey="M1-P1-L1-2"
+              materi={materi}
+              peta={peta}
+              step={step}
+              urutan="2"
+              src={gambarGeoGebra}
+              alt="Ilustrasi eksplorasi GeoGebra 3D"
+              editable={editFoto}
+              containerClassName="relative w-full aspect-video rounded-[14px] overflow-hidden bg-[#F3F4F6]"
+            />
             <p className="m-0 text-sm text-[#4B5563] leading-[1.6]">
               Untuk mengeksplorasi model bangun ruang dan sifat-sifatnya secara interaktif.
             </p>
@@ -99,9 +112,17 @@ export default async function Peta1Step2TujuanPersiapan({ materi, peta }: StepCo
               </svg>
               Augmented Reality (AR)
             </div>
-            <div className="relative w-full aspect-video rounded-[14px] overflow-hidden bg-[#F3F4F6]">
-              <Image src={gambarAR} alt="Ilustrasi eksplorasi Augmented Reality" fill className="object-cover" />
-            </div>
+            <EditablePageImage
+              imageKey="M1-P1-L1-3"
+              materi={materi}
+              peta={peta}
+              step={step}
+              urutan="3"
+              src={gambarAR}
+              alt="Ilustrasi eksplorasi Augmented Reality"
+              editable={editFoto}
+              containerClassName="relative w-full aspect-video rounded-[14px] overflow-hidden bg-[#F3F4F6]"
+            />
             <p className="m-0 text-sm text-[#4B5563] leading-[1.6]">
               Untuk mengamati model bangun ruang secara nyata menggunakan teknologi AR.
             </p>

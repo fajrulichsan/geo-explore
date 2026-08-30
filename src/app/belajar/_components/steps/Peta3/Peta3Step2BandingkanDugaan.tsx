@@ -1,9 +1,9 @@
-import Image from "next/image";
 import Link from "next/link";
 import { submitStepAction } from "@/app/belajar/actions";
 import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
 import SubmitStepButton from "@/app/belajar/_components/SubmitStepButton";
 import StepHeader from "@/app/belajar/_components/StepHeader";
+import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
 import { getPageImage, type PageImageKey } from "@/lib/pageImages";
 
 const kelompok = [
@@ -33,7 +33,7 @@ const kelompok = [
   },
 ] satisfies { label: string; tag: string; title: string; desc: string; alasan: string; imageKey: PageImageKey }[];
 
-export default async function Peta3Step2BandingkanDugaan({ materi, peta }: StepComponentProps) {
+export default async function Peta3Step2BandingkanDugaan({ materi, peta, step = "2", editFoto }: StepComponentProps) {
   const kelompokImages = await Promise.all(kelompok.map((k) => getPageImage(k.imageKey)));
 
   return (
@@ -67,7 +67,17 @@ export default async function Peta3Step2BandingkanDugaan({ materi, peta }: StepC
             className="bg-white border border-[#E5E7EB] rounded-[20px] overflow-hidden shadow-[0_1px_2px_rgba(0,0,0,0.04)] flex flex-col hover:-translate-y-1 transition-transform duration-300"
           >
             <div className="h-36 w-full bg-[#EFF4FF] relative">
-              <Image src={kelompokImages[i]} alt={k.label} fill className="object-cover" />
+              <EditablePageImage
+                imageKey={k.imageKey}
+                materi={materi}
+                peta={peta}
+                step={step}
+                urutan={String(i + 1)}
+                src={kelompokImages[i]}
+                alt={k.label}
+                editable={editFoto}
+                containerClassName="absolute inset-0"
+              />
               <div className="absolute top-3 left-3 bg-white/90 px-3 py-1 rounded-lg border border-[#E5E7EB] shadow-sm">
                 <span className="text-xs font-bold text-[#2563EB]">{k.label}</span>
               </div>

@@ -1,8 +1,8 @@
-import Image from "next/image";
 import { submitStepAction } from "@/app/belajar/actions";
 import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
 import SubmitStepButton from "@/app/belajar/_components/SubmitStepButton";
 import StepHeader from "@/app/belajar/_components/StepHeader";
+import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
 import { getPageImage, type PageImageKey } from "@/lib/pageImages";
 
 const thumbnails = [
@@ -18,7 +18,7 @@ const thumbnails = [
   { n: 10, label: "Piramida", imageKey: "M1-P2-L1-10" },
 ] satisfies { n: number; label: string; tag?: string; imageKey: PageImageKey }[];
 
-export default async function Peta2Step1Amati({ materi, peta }: StepComponentProps) {
+export default async function Peta2Step1Amati({ materi, peta, step = "1", editFoto }: StepComponentProps) {
   const thumbnailImages = await Promise.all(thumbnails.map((t) => getPageImage(t.imageKey)));
   const gambarLangkah1 = await getPageImage("M1-P2-L1-11");
 
@@ -88,7 +88,17 @@ export default async function Peta2Step1Amati({ materi, peta }: StepComponentPro
               className="bg-white border border-[#E5E7EB] rounded-[14px] overflow-hidden shadow-[0_1px_2px_rgba(0,0,0,0.04)] flex flex-col"
             >
               <div className="relative w-full aspect-[4/3] bg-[#F3F4F6]">
-                <Image src={thumbnailImages[i]} alt={t.label} fill className="object-cover" />
+                <EditablePageImage
+                  imageKey={t.imageKey}
+                  materi={materi}
+                  peta={peta}
+                  step={step}
+                  urutan={String(i + 1)}
+                  src={thumbnailImages[i]}
+                  alt={t.label}
+                  editable={editFoto}
+                  containerClassName="absolute inset-0"
+                />
                 {t.tag && (
                   <div className="absolute bottom-1.5 right-1.5 bg-[rgba(17,24,39,0.75)] text-white text-[10px] font-semibold py-0.5 px-1.5 rounded">
                     {t.tag}
@@ -134,9 +144,17 @@ export default async function Peta2Step1Amati({ materi, peta }: StepComponentPro
               </p>
             </div>
           </div>
-          <div className="relative w-full sm:w-[180px] h-[120px] flex-shrink-0 rounded-[14px] overflow-hidden bg-[#F3F4F6]">
-            <Image src={gambarLangkah1} alt="Ilustrasi langkah 1 - Amati" fill className="object-cover" />
-          </div>
+          <EditablePageImage
+            imageKey="M1-P2-L1-11"
+            materi={materi}
+            peta={peta}
+            step={step}
+            urutan="11"
+            src={gambarLangkah1}
+            alt="Ilustrasi langkah 1 - Amati"
+            editable={editFoto}
+            containerClassName="relative w-full sm:w-[180px] h-[120px] flex-shrink-0 rounded-[14px] overflow-hidden bg-[#F3F4F6]"
+          />
         </div>
       </div>
 

@@ -1,7 +1,16 @@
 "use client";
 
 import { useRef, useState } from "react";
-import { createUploadUrl } from "@/app/belajar/upload-actions";
+import { uploadFile } from "@/app/belajar/upload-actions";
+
+function fileToBase64(file: File): Promise<string> {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => resolve((reader.result as string).split(",")[1]);
+    reader.onerror = reject;
+    reader.readAsDataURL(file);
+  });
+}
 
 export default function PhotoUpload({
   name,
@@ -21,13 +30,8 @@ export default function PhotoUpload({
     if (!file) return;
     setStatus("uploading");
     try {
-      const { uploadUrl, publicUrl } = await createUploadUrl(file.name, file.type);
-      const res = await fetch(uploadUrl, {
-        method: "PUT",
-        headers: { "Content-Type": file.type },
-        body: file,
-      });
-      if (!res.ok) throw new Error("Upload gagal");
+      const base64Data = await fileToBase64(file);
+      const publicUrl = await uploadFile(file.name, file.type, base64Data);
       setUrl(publicUrl);
       setStatus("idle");
     } catch {

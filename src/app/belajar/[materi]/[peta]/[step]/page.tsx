@@ -10,6 +10,8 @@ export default async function BelajarStepPage(
   props: PageProps<"/belajar/[materi]/[peta]/[step]">
 ) {
   const { materi, peta, step } = await props.params;
+  const searchParams = await props.searchParams;
+  const editFoto = searchParams?.["edit-foto"] === "true";
 
   const userId = await getSessionUserId();
   if (!userId) redirect("/login");
@@ -32,7 +34,13 @@ export default async function BelajarStepPage(
   return (
     <BelajarShell userName={user?.nama_lengkap ?? "Siswa"}>
       {StepComponent ? (
-        <StepComponent materi={materi} peta={peta} initialAnswers={initialAnswers} />
+        <StepComponent
+          materi={materi}
+          peta={peta}
+          step={step}
+          editFoto={editFoto}
+          initialAnswers={initialAnswers}
+        />
       ) : (
         <ComingSoon materi={materi} peta={peta} step={step} />
       )}

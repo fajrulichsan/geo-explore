@@ -66,6 +66,8 @@ import Materi2Peta1Step1Pendahuluan from "./steps/Materi2Peta1/Materi2Peta1Step1
 export type StepComponentProps = {
   materi: string;
   peta: string;
+  step?: string;
+  editFoto?: boolean;
   initialAnswers?: Record<string, unknown>;
 };
 
