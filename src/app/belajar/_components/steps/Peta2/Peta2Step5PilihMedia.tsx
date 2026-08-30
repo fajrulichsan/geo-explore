@@ -1,12 +1,15 @@
-import Link from "next/link";
 import { submitStepAction } from "@/app/belajar/actions";
 import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
 import SubmitStepButton from "@/app/belajar/_components/SubmitStepButton";
+import BackLink from "@/app/belajar/_components/BackLink";
 import StepHeader from "@/app/belajar/_components/StepHeader";
+import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
+import { getPageImage, type PageImageKey } from "@/lib/pageImages";
 
 const cards = [
   {
     key: "geogebra",
+    imageKey: "M1-P2-L5-1",
     accent: "#2563EB",
     accentBg: "#EFF4FF",
     title: "GeoGebra 3D",
@@ -20,6 +23,7 @@ const cards = [
   },
   {
     key: "ar",
+    imageKey: "M1-P2-L5-2",
     accent: "#D97706",
     accentBg: "#FEF9E7",
     title: "Augmented Reality",
@@ -34,6 +38,7 @@ const cards = [
   },
   {
     key: "2d",
+    imageKey: "M1-P2-L5-3",
     accent: "#374151",
     accentBg: "#F3F4F6",
     title: "Gambar (2D)",
@@ -44,9 +49,10 @@ const cards = [
       "Mengamati pola proyeksi 2D dari objek 3D",
     ],
   },
-];
+] satisfies { key: string; imageKey: PageImageKey; accent: string; accentBg: string; title: string; desc: string; action: string | null; note?: string; bullets: string[] }[];
 
-export default function Peta2Step5PilihMedia({ materi, peta }: StepComponentProps) {
+export default async function Peta2Step5PilihMedia({ materi, peta, step = "5", editFoto }: StepComponentProps) {
+  const cardImages = await Promise.all(cards.map((card) => getPageImage(card.imageKey)));
   return (
     <form action={submitStepAction} className="flex flex-col gap-8">
       <input type="hidden" name="materi" value={materi} />
@@ -80,7 +86,7 @@ export default function Peta2Step5PilihMedia({ materi, peta }: StepComponentProp
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-        {cards.map((card) => (
+        {cards.map((card, i) => (
           <div
             key={card.key}
             className="bg-white border border-[#E5E7EB] rounded-[20px] p-6 shadow-[0_1px_2px_rgba(0,0,0,0.04)] flex flex-col gap-4"
@@ -98,17 +104,25 @@ export default function Peta2Step5PilihMedia({ materi, peta }: StepComponentProp
             </div>
             <p className="m-0 text-sm leading-[1.6] text-[#4B5563] flex-1">{card.desc}</p>
             <div
-              className="rounded-xl p-4 flex flex-col items-center justify-center gap-2 border border-[#E5E7EB] relative"
+              className="rounded-xl p-4 flex flex-col items-center justify-center gap-2 border border-[#E5E7EB] relative overflow-hidden"
               style={{ background: card.accentBg }}
             >
               {card.note && (
-                <div className="absolute top-2 right-2 flex items-center gap-1 bg-white/80 rounded px-2 py-1">
+                <div className="absolute top-2 right-2 z-10 flex items-center gap-1 bg-white/80 rounded px-2 py-1">
                   <span className="text-[10px] text-[#DC2626] font-semibold">{card.note}</span>
                 </div>
               )}
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke={card.accent} strokeWidth="2">
-                <rect x="4" y="4" width="16" height="16" rx="2" />
-              </svg>
+              <EditablePageImage
+                imageKey={card.imageKey}
+                materi={materi}
+                peta={peta}
+                step={step}
+                urutan={String(i + 1)}
+                src={cardImages[i]}
+                alt={card.title}
+                editable={editFoto}
+                containerClassName="relative w-full h-28 rounded-lg overflow-hidden"
+              />
               <span className="text-xs text-center text-[#6B7280]">
                 Pindai atau klik untuk membuka
               </span>
@@ -148,15 +162,10 @@ export default function Peta2Step5PilihMedia({ materi, peta }: StepComponentProp
       </div>
 
       <div className="flex justify-between items-center">
-        <Link
+        <BackLink
           href={`/belajar/${materi}/${peta}/4`}
           className="flex items-center gap-2 bg-transparent text-[#6B7280] border-none rounded-full py-3 px-6 text-sm font-semibold cursor-pointer hover:text-[#374151]"
-        >
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4">
-            <path d="M19 12H5M11 5l-7 7 7 7" />
-          </svg>
-          Kembali
-        </Link>
+        />
         <SubmitStepButton className="flex items-center gap-2 bg-[#2563EB] text-white border-none rounded-full py-3.5 px-7 text-sm font-bold font-inherit shadow-[0_4px_10px_rgba(37,99,235,0.3)] cursor-pointer">
           LANJUTKAN
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.4">

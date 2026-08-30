@@ -32,6 +32,8 @@ export type PageImageKey =
   | "M1-P2-L1-9"
   | "M1-P2-L1-10"
   | "M1-P2-L1-11"
+  | "M1-P2-L2-1"
+  | "M1-P2-L3-1"
   | "M1-P2-L4-1"
   | "M1-P2-L4-2"
   | "M1-P2-L4-3"
@@ -42,6 +44,9 @@ export type PageImageKey =
   | "M1-P2-L4-8"
   | "M1-P2-L4-9"
   | "M1-P2-L4-10"
+  | "M1-P2-L5-1"
+  | "M1-P2-L5-2"
+  | "M1-P2-L5-3"
   | "M1-P2-L7-1"
   | "M1-P3-L1-1"
   | "M1-P3-L2-1"
@@ -104,6 +109,8 @@ const DEFAULT_IMAGES: Record<PageImageKey, string> = {
   "M1-P2-L1-9": "https://placehold.co/300x225?text=Gazebo",
   "M1-P2-L1-10": "https://placehold.co/300x225?text=Piramida",
   "M1-P2-L1-11": "https://placehold.co/360x240?text=Ilustrasi+Amati",
+  "M1-P2-L2-1": "https://placehold.co/400x256?text=Ilustrasi+Berpikir+Kritis",
+  "M1-P2-L3-1": "https://placehold.co/400x256?text=Ilustrasi+Ingat",
   "M1-P2-L4-1": "https://placehold.co/300x300?text=Blok+Kayu+%28Kubus%29",
   "M1-P2-L4-2": "https://placehold.co/300x300?text=Tenda+%28Prisma+Segitiga%29",
   "M1-P2-L4-3": "https://placehold.co/300x300?text=Akuarium",
@@ -114,6 +121,9 @@ const DEFAULT_IMAGES: Record<PageImageKey, string> = {
   "M1-P2-L4-8": "https://placehold.co/300x300?text=Piramida+%28Limas+Segiempat%29",
   "M1-P2-L4-9": "https://placehold.co/300x300?text=Mainan+Limas+Segitiga",
   "M1-P2-L4-10": "https://placehold.co/300x300?text=Tumpukan+Ubin",
+  "M1-P2-L5-1": "https://placehold.co/300x180?text=GeoGebra+3D",
+  "M1-P2-L5-2": "https://placehold.co/300x180?text=Augmented+Reality",
+  "M1-P2-L5-3": "https://placehold.co/300x180?text=Gambar+2D",
   "M1-P2-L7-1": "https://placehold.co/320x320?text=Ilustrasi+Diskusi",
   "M1-P3-L1-1": "https://placehold.co/500x400?text=Ilustrasi+Kolaborasi",
   "M1-P3-L2-1": "https://placehold.co/400x280?text=Kelompok+A",

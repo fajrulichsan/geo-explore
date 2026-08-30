@@ -1,8 +1,8 @@
-import Link from "next/link";
 import PhotoUpload from "@/components/PhotoUpload";
 import { submitStepAction } from "@/app/belajar/actions";
 import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
 import SubmitStepButton from "@/app/belajar/_components/SubmitStepButton";
+import BackLink from "@/app/belajar/_components/BackLink";
 import StepHeader from "@/app/belajar/_components/StepHeader";
 import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
 import { getPageImage } from "@/lib/pageImages";
@@ -97,6 +97,8 @@ export default async function Peta2Step7SiapBerdiskusi({
                   name="answers.foto_bukti"
                   label="Unggah foto hasil kerja (opsional)"
                   defaultValue={getValue("foto_bukti")}
+                  materi={materi}
+                  peta={peta}
                 />
               </div>
             </div>
@@ -105,15 +107,10 @@ export default async function Peta2Step7SiapBerdiskusi({
       </div>
 
       <div className="flex justify-between items-center">
-        <Link
+        <BackLink
           href={`/belajar/${materi}/${peta}/6`}
           className="flex items-center gap-2 bg-transparent text-[#6B7280] border-none rounded-full py-3 px-6 text-sm font-semibold cursor-pointer hover:text-[#374151]"
-        >
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4">
-            <path d="M19 12H5M11 5l-7 7 7 7" />
-          </svg>
-          Kembali
-        </Link>
+        />
         <SubmitStepButton className="flex items-center gap-2 bg-[#2563EB] text-white border-none rounded-full py-3.5 px-7 text-sm font-bold font-inherit shadow-[0_4px_10px_rgba(37,99,235,0.3)] cursor-pointer">
           Selesai
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.4">

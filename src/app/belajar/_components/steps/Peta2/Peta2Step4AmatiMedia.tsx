@@ -1,7 +1,7 @@
-import Link from "next/link";
 import { submitStepAction } from "@/app/belajar/actions";
 import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
 import SubmitStepButton from "@/app/belajar/_components/SubmitStepButton";
+import BackLink from "@/app/belajar/_components/BackLink";
 import StepHeader from "@/app/belajar/_components/StepHeader";
 import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
 import { getPageImage, type PageImageKey } from "@/lib/pageImages";
@@ -12,11 +12,6 @@ const items = [
   { n: 3, label: "Akuarium", imageKey: "M1-P2-L4-3" },
   { n: 4, label: "Rubik (Kubus)", imageKey: "M1-P2-L4-4" },
   { n: 5, label: "Kotak Tisu", imageKey: "M1-P2-L4-5" },
-  { n: 6, label: "Kardus (Balok)", imageKey: "M1-P2-L4-6" },
-  { n: 7, label: "Cokelat (Prisma Segitiga)", imageKey: "M1-P2-L4-7" },
-  { n: 8, label: "Piramida (Limas Segiempat)", imageKey: "M1-P2-L4-8" },
-  { n: 9, label: "Mainan Limas Segitiga", imageKey: "M1-P2-L4-9" },
-  { n: 10, label: "Tumpukan Ubin", imageKey: "M1-P2-L4-10" },
 ] satisfies { n: number; label: string; imageKey: PageImageKey }[];
 
 export default async function Peta2Step4AmatiMedia({ materi, peta, step = "4", editFoto }: StepComponentProps) {
@@ -89,15 +84,10 @@ export default async function Peta2Step4AmatiMedia({ materi, peta, step = "4", e
       </div>
 
       <div className="flex justify-between items-center">
-        <Link
+        <BackLink
           href={`/belajar/${materi}/${peta}/3`}
           className="flex items-center gap-2 bg-transparent text-[#6B7280] border-none rounded-full py-3 px-6 text-sm font-semibold cursor-pointer hover:text-[#374151]"
-        >
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4">
-            <path d="M19 12H5M11 5l-7 7 7 7" />
-          </svg>
-          Kembali
-        </Link>
+        />
         <SubmitStepButton className="flex items-center gap-2 bg-[#2563EB] text-white border-none rounded-full py-3.5 px-7 text-sm font-bold font-inherit shadow-[0_4px_10px_rgba(37,99,235,0.3)] cursor-pointer">
           LANJUTKAN
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.4">

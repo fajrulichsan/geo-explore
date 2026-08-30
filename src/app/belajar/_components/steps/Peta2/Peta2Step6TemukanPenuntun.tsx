@@ -1,8 +1,8 @@
-import Link from "next/link";
 import PhotoUpload from "@/components/PhotoUpload";
 import { submitStepAction } from "@/app/belajar/actions";
 import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
 import SubmitStepButton from "@/app/belajar/_components/SubmitStepButton";
+import BackLink from "@/app/belajar/_components/BackLink";
 import StepHeader from "@/app/belajar/_components/StepHeader";
 
 const temuanQuestions = [
@@ -62,13 +62,13 @@ export default function Peta2Step6TemukanPenuntun({ materi, peta, initialAnswers
                 </div>
                 <div className="flex-1">
                   <p className="m-0 mb-2 text-sm font-semibold text-[#111827]">{q}</p>
-                  <input
-                    type="text"
+                  <textarea
+                    rows={2}
                     name={`answers.temuan_${i + 1}`}
                     defaultValue={getValue(`temuan_${i + 1}`)}
                     placeholder="Tulis jawabanmu di sini..."
                     required
-                    className="w-full border-b-2 border-[#E5E7EB] bg-transparent px-1 py-1.5 text-sm text-[#374151] placeholder:text-[#9CA3AF] focus:border-[#2563EB] focus:outline-none transition-colors"
+                    className="w-full rounded-xl border border-[#E5E7EB] bg-white p-3 text-sm text-[#374151] placeholder:text-[#9CA3AF] focus:border-[#2563EB] focus:outline-none transition-colors resize-y"
                   />
                 </div>
               </div>
@@ -113,6 +113,8 @@ export default function Peta2Step6TemukanPenuntun({ materi, peta, initialAnswers
                 name="answers.foto_bukti"
                 label="Unggah foto hasil kerja (opsional)"
                 defaultValue={getValue("foto_bukti")}
+                materi={materi}
+                peta={peta}
               />
             </div>
           </div>
@@ -120,15 +122,10 @@ export default function Peta2Step6TemukanPenuntun({ materi, peta, initialAnswers
       </div>
 
       <div className="flex justify-between items-center">
-        <Link
+        <BackLink
           href={`/belajar/${materi}/${peta}/5`}
           className="flex items-center gap-2 bg-transparent text-[#6B7280] border-none rounded-full py-3 px-6 text-sm font-semibold cursor-pointer hover:text-[#374151]"
-        >
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4">
-            <path d="M19 12H5M11 5l-7 7 7 7" />
-          </svg>
-          Kembali
-        </Link>
+        />
         <SubmitStepButton className="flex items-center gap-2 bg-[#2563EB] text-white border-none rounded-full py-3.5 px-7 text-sm font-bold font-inherit shadow-[0_4px_10px_rgba(37,99,235,0.3)] cursor-pointer">
           LANJUTKAN
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.4">

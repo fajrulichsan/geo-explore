@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { uploadFile } from "@/app/belajar/upload-actions";
 
 function fileToBase64(file: File): Promise<string> {
@@ -16,22 +16,52 @@ export default function PhotoUpload({
   name,
   label,
   defaultValue,
+  materi,
+  peta,
 }: {
   name: string;
   label?: string;
   defaultValue?: string;
+  materi?: string;
+  peta?: string;
 }) {
   const [url, setUrl] = useState(defaultValue ?? "");
   const [status, setStatus] = useState<"idle" | "uploading" | "error">("idle");
   const fileInputRef = useRef<HTMLInputElement>(null);
   const cameraInputRef = useRef<HTMLInputElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  // Kalau foto bukti sudah diunggah, field lain di step ini tidak wajib diisi lagi.
+  useEffect(() => {
+    const form = containerRef.current?.closest("form");
+    if (!form) return;
+
+    if (url) {
+      form.querySelectorAll<HTMLInputElement | HTMLTextAreaElement>("[required]").forEach((field) => {
+        field.dataset.wasRequired = "1";
+        field.required = false;
+      });
+    } else {
+      form
+        .querySelectorAll<HTMLInputElement | HTMLTextAreaElement>("[data-was-required]")
+        .forEach((field) => {
+          field.required = true;
+          delete field.dataset.wasRequired;
+        });
+    }
+  }, [url]);
 
   async function handleFile(file: File | undefined) {
     if (!file) return;
     setStatus("uploading");
     try {
       const base64Data = await fileToBase64(file);
-      const publicUrl = await uploadFile(file.name, file.type, base64Data);
+      const publicUrl = await uploadFile(
+        file.name,
+        file.type,
+        base64Data,
+        materi && peta ? { materi, peta } : undefined
+      );
       setUrl(publicUrl);
       setStatus("idle");
     } catch {
@@ -40,7 +70,7 @@ export default function PhotoUpload({
   }
 
   return (
-    <div className="flex flex-col gap-3">
+    <div ref={containerRef} className="flex flex-col gap-3">
       {label && <span className="text-sm font-bold text-[#111827]">{label}</span>}
       <input type="hidden" name={name} value={url} />
 

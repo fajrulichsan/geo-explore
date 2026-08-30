@@ -48,14 +48,21 @@ async function putObject(key: string, base64Data: string, contentType: string) {
   return buildPublicUrl(key);
 }
 
-export async function uploadFile(fileName: string, contentType: string, base64Data: string) {
+export async function uploadFile(
+  fileName: string,
+  contentType: string,
+  base64Data: string,
+  folder?: { materi: string; peta: string }
+) {
   const userId = await getSessionUserId();
   if (!userId) {
     throw new Error("Unauthorized");
   }
 
   const ext = extensionFromFileName(fileName);
-  const key = `uploads/${userId}/${randomUUID()}.${ext}`;
+  const key = folder
+    ? `answers/materi-${folder.materi}/peta-${folder.peta}/${randomUUID()}.${ext}`
+    : `uploads/${userId}/${randomUUID()}.${ext}`;
 
   return putObject(key, base64Data, contentType);
 }

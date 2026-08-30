@@ -1,9 +1,11 @@
-import Link from "next/link";
 import PhotoUpload from "@/components/PhotoUpload";
 import { submitStepAction } from "@/app/belajar/actions";
 import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
 import SubmitStepButton from "@/app/belajar/_components/SubmitStepButton";
+import BackLink from "@/app/belajar/_components/BackLink";
 import StepHeader from "@/app/belajar/_components/StepHeader";
+import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
+import { getPageImage } from "@/lib/pageImages";
 
 const caraList = [{ n: 1 }, { n: 2 }];
 
@@ -13,9 +15,16 @@ const ingatItems = [
   "Bahan pembuatan benda bisa jadi petunjuk tambahan.",
 ];
 
-export default function Peta2Step3IdeAwalku({ materi, peta, initialAnswers }: StepComponentProps) {
+export default async function Peta2Step3IdeAwalku({
+  materi,
+  peta,
+  step = "3",
+  initialAnswers,
+  editFoto,
+}: StepComponentProps) {
   const answers = initialAnswers ?? {};
   const getValue = (key: string) => (typeof answers[key] === "string" ? (answers[key] as string) : "");
+  const ingatImage = await getPageImage("M1-P2-L3-1");
 
   return (
     <form action={submitStepAction} className="flex flex-col gap-8">
@@ -107,24 +116,37 @@ export default function Peta2Step3IdeAwalku({ materi, peta, initialAnswers }: St
           </svg>
         </div>
         <h3 className="m-0 mb-4 text-xl font-bold text-[#92400E]">Kotak Ingat</h3>
-        <ul className="m-0 p-0 flex flex-col gap-3 list-none">
-          {ingatItems.map((item) => (
-            <li key={item} className="flex items-start gap-3">
-              <svg
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="#D97706"
-                strokeWidth="3"
-                className="mt-1 flex-shrink-0"
-              >
-                <path d="M5 13l4 4L19 7" />
-              </svg>
-              <span className="text-[15px] leading-[1.6] text-[#374151]">{item}</span>
-            </li>
-          ))}
-        </ul>
+        <div className="flex flex-col md:flex-row gap-5">
+          <ul className="m-0 p-0 flex-1 flex flex-col gap-3 list-none">
+            {ingatItems.map((item) => (
+              <li key={item} className="flex items-start gap-3">
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#D97706"
+                  strokeWidth="3"
+                  className="mt-1 flex-shrink-0"
+                >
+                  <path d="M5 13l4 4L19 7" />
+                </svg>
+                <span className="text-[15px] leading-[1.6] text-[#374151]">{item}</span>
+              </li>
+            ))}
+          </ul>
+          <EditablePageImage
+            imageKey="M1-P2-L3-1"
+            materi={materi}
+            peta={peta}
+            step={step}
+            urutan="1"
+            src={ingatImage}
+            alt="Ilustrasi Kotak Ingat"
+            editable={editFoto}
+            containerClassName="relative w-full md:w-64 h-40 rounded-2xl overflow-hidden bg-white/50 border-2 border-dashed border-[#F5E3A0] shrink-0"
+          />
+        </div>
       </div>
 
       <div className="mt-0 pt-6 border-t border-[#E5E7EB]">
@@ -132,19 +154,16 @@ export default function Peta2Step3IdeAwalku({ materi, peta, initialAnswers }: St
           name="answers.foto_bukti"
           label="Unggah foto hasil kerja (opsional)"
           defaultValue={getValue("foto_bukti")}
+          materi={materi}
+          peta={peta}
         />
       </div>
 
       <div className="flex justify-between items-center">
-        <Link
+        <BackLink
           href={`/belajar/${materi}/${peta}/2`}
           className="flex items-center gap-2 bg-transparent text-[#6B7280] border-none rounded-full py-3 px-6 text-sm font-semibold cursor-pointer hover:text-[#374151]"
-        >
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4">
-            <path d="M19 12H5M11 5l-7 7 7 7" />
-          </svg>
-          Kembali
-        </Link>
+        />
         <SubmitStepButton className="flex items-center gap-2 bg-[#2563EB] text-white border-none rounded-full py-3.5 px-7 text-sm font-bold font-inherit shadow-[0_4px_10px_rgba(37,99,235,0.3)] cursor-pointer">
           LANJUTKAN
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.4">
