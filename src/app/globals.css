@@ -1,5 +1,18 @@
 @import "tailwindcss";
 
+@keyframes page-loader-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.page-loader-fade-in {
+  animation: page-loader-fade-in 200ms ease-out;
+}
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
