@@ -49,6 +49,10 @@ export default function PhotoUpload({
           delete field.dataset.wasRequired;
         });
     }
+
+    // SubmitStepButton hanya memeriksa ulang validitas form saat event
+    // input/change; ubah hidden input via setUrl tidak memicu itu sendiri.
+    form.dispatchEvent(new Event("change", { bubbles: true }));
   }, [url]);
 
   async function handleFile(file: File | undefined) {

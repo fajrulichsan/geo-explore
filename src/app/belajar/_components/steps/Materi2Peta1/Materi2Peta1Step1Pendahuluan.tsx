@@ -6,8 +6,10 @@ import StepHeader from "@/app/belajar/_components/StepHeader";
 const tujuanPembelajaran = [
   "Menjelaskan hubungan antara bangun ruang sisi datar dan jaring-jaringnya.",
   "Menentukan jaring-jaring yang valid dan tidak valid.",
-  "Menemukan lebih dari satu bentuk jaring-jaring dari bangun ruang yang sama.",
-  "Membandingkan berbagai jaring-jaring bangun ruang.",
+  "Menemukan lebih dari satu bentuk jaring-jaring untuk bangun ruang tertentu.",
+  "Membandingkan dan memperbaiki alternatif jaring-jaring.",
+  "Memberikan alasan matematis atas pilihannya.",
+  "Menunjukkan keyakinan diri dalam mencoba, menjelaskan, dan mempertahankan strategi penyelesaian masalah jaring-jaring bangun ruang.",
 ];
 
 export default function Materi2Peta1Step1Pendahuluan({ materi, peta }: StepComponentProps) {
@@ -18,7 +20,7 @@ export default function Materi2Peta1Step1Pendahuluan({ materi, peta }: StepCompo
       <input type="hidden" name="step" value="1" />
 
       <div className="flex flex-col gap-4">
-        <StepHeader materi={materi} currentStep={1} totalSteps={1} />
+        <StepHeader materi={materi} currentStep={1} totalSteps={2} />
         <div className="flex items-center gap-3.5">
           <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#2563EB" strokeWidth="2.4">
             <path d="M3 7l9-4 9 4-9 4-9-4z" />

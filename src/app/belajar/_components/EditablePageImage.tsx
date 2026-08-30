@@ -65,7 +65,11 @@ export default function EditablePageImage({
 
   return (
     <div className={containerClassName}>
-      <Image src={src} alt={alt} fill className={imageClassName} />
+      {src ? (
+        <Image src={src} alt={alt} fill className={imageClassName} />
+      ) : (
+        <div className="absolute inset-0 bg-[#E5E7EB]" />
+      )}
 
       {editable && (
         <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 bg-black/40">
