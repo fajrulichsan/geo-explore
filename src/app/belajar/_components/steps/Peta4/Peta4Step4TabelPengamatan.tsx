@@ -1,9 +1,11 @@
+import Image from "next/image";
 import Link from "next/link";
 import PhotoUpload from "@/components/PhotoUpload";
 import { submitStepAction } from "@/app/belajar/actions";
 import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
 import SubmitStepButton from "@/app/belajar/_components/SubmitStepButton";
 import StepHeader from "@/app/belajar/_components/StepHeader";
+import { getPageImage } from "@/lib/pageImages";
 
 const baris = [
   { key: "bentuk-sisi", label: "Bentuk sisi", type: "text" as const },
@@ -16,9 +18,10 @@ const baris = [
   { key: "catatan-lain", label: "Catatan lain", type: "textarea" as const },
 ];
 
-export default function Peta4Step4TabelPengamatan({ materi, peta, initialAnswers }: StepComponentProps) {
+export default async function Peta4Step4TabelPengamatan({ materi, peta, initialAnswers }: StepComponentProps) {
   const answers = initialAnswers ?? {};
   const getValue = (key: string) => (typeof answers[key] === "string" ? (answers[key] as string) : "");
+  const gambarReferensi = await getPageImage("M1-P4-L4-1");
 
   return (
     <form action={submitStepAction} className="flex flex-col gap-8">
@@ -59,8 +62,8 @@ export default function Peta4Step4TabelPengamatan({ materi, peta, initialAnswers
               </svg>
               Gambar Referensi
             </h3>
-            <div className="w-full aspect-square rounded-2xl bg-[#EFF4FF] flex items-center justify-center text-xs text-[#9CA3AF]">
-              Ilustrasi
+            <div className="relative w-full aspect-square rounded-2xl overflow-hidden bg-[#EFF4FF]">
+              <Image src={gambarReferensi} alt="Gambar referensi" fill className="object-cover" />
             </div>
           </div>
         </div>

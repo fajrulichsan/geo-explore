@@ -1,23 +1,27 @@
+import Image from "next/image";
 import Link from "next/link";
 import { submitStepAction } from "@/app/belajar/actions";
 import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
 import SubmitStepButton from "@/app/belajar/_components/SubmitStepButton";
 import StepHeader from "@/app/belajar/_components/StepHeader";
+import { getPageImage, type PageImageKey } from "@/lib/pageImages";
 
 const items = [
-  { n: 1, label: "Blok Kayu (Kubus)" },
-  { n: 2, label: "Tenda (Prisma Segitiga)" },
-  { n: 3, label: "Akuarium" },
-  { n: 4, label: "Rubik (Kubus)" },
-  { n: 5, label: "Kotak Tisu" },
-  { n: 6, label: "Kardus (Balok)" },
-  { n: 7, label: "Cokelat (Prisma Segitiga)" },
-  { n: 8, label: "Piramida (Limas Segiempat)" },
-  { n: 9, label: "Mainan Limas Segitiga" },
-  { n: 10, label: "Tumpukan Ubin" },
-];
+  { n: 1, label: "Blok Kayu (Kubus)", imageKey: "M1-P2-L4-1" },
+  { n: 2, label: "Tenda (Prisma Segitiga)", imageKey: "M1-P2-L4-2" },
+  { n: 3, label: "Akuarium", imageKey: "M1-P2-L4-3" },
+  { n: 4, label: "Rubik (Kubus)", imageKey: "M1-P2-L4-4" },
+  { n: 5, label: "Kotak Tisu", imageKey: "M1-P2-L4-5" },
+  { n: 6, label: "Kardus (Balok)", imageKey: "M1-P2-L4-6" },
+  { n: 7, label: "Cokelat (Prisma Segitiga)", imageKey: "M1-P2-L4-7" },
+  { n: 8, label: "Piramida (Limas Segiempat)", imageKey: "M1-P2-L4-8" },
+  { n: 9, label: "Mainan Limas Segitiga", imageKey: "M1-P2-L4-9" },
+  { n: 10, label: "Tumpukan Ubin", imageKey: "M1-P2-L4-10" },
+] satisfies { n: number; label: string; imageKey: PageImageKey }[];
 
-export default function Peta2Step4AmatiMedia({ materi, peta }: StepComponentProps) {
+export default async function Peta2Step4AmatiMedia({ materi, peta }: StepComponentProps) {
+  const itemImages = await Promise.all(items.map((item) => getPageImage(item.imageKey)));
+
   return (
     <form action={submitStepAction} className="flex flex-col gap-8">
       <input type="hidden" name="materi" value={materi} />
@@ -48,10 +52,10 @@ export default function Peta2Step4AmatiMedia({ materi, peta }: StepComponentProp
 
       <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-7 shadow-[0_1px_2px_rgba(0,0,0,0.04)] flex flex-col gap-6">
         <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
-          {items.map((item) => (
+          {items.map((item, i) => (
             <div key={item.n} className="flex flex-col items-center gap-2">
-              <div className="relative w-full aspect-square rounded-2xl bg-[#F3F4F6] flex items-center justify-center p-4 text-center text-xs text-[#9CA3AF]">
-                {item.label}
+              <div className="relative w-full aspect-square rounded-2xl overflow-hidden bg-[#F3F4F6]">
+                <Image src={itemImages[i]} alt={item.label} fill className="object-cover" />
                 <div className="absolute top-2 left-2 bg-[#2563EB] text-white w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold shadow-sm">
                   {item.n}
                 </div>

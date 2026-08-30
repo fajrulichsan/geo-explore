@@ -1,17 +1,21 @@
+import Image from "next/image";
 import Link from "next/link";
 import { submitStepAction } from "@/app/belajar/actions";
 import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
 import SubmitStepButton from "@/app/belajar/_components/SubmitStepButton";
 import StepHeader from "@/app/belajar/_components/StepHeader";
+import { getPageImage, type PageImageKey } from "@/lib/pageImages";
 
 const langkah = [
-  { n: 1, label: "Scan QR Code." },
-  { n: 2, label: "Arahkan kamera ke marker." },
-  { n: 3, label: "Putar, perbesar, atau geser model." },
-  { n: 4, label: "Lengkapi hasil pengamatan." },
-];
+  { n: 1, label: "Scan QR Code.", imageKey: "M1-P4-L6-1" },
+  { n: 2, label: "Arahkan kamera ke marker.", imageKey: "M1-P4-L6-2" },
+  { n: 3, label: "Putar, perbesar, atau geser model.", imageKey: "M1-P4-L6-3" },
+  { n: 4, label: "Lengkapi hasil pengamatan.", imageKey: "M1-P4-L6-4" },
+] satisfies { n: number; label: string; imageKey: PageImageKey }[];
 
-export default function Peta4Step6MengeksplorasiAR({ materi, peta }: StepComponentProps) {
+export default async function Peta4Step6MengeksplorasiAR({ materi, peta }: StepComponentProps) {
+  const langkahImages = await Promise.all(langkah.map((l) => getPageImage(l.imageKey)));
+
   return (
     <form action={submitStepAction} className="flex flex-col gap-8">
       <input type="hidden" name="materi" value={materi} />
@@ -57,7 +61,7 @@ export default function Peta4Step6MengeksplorasiAR({ materi, peta }: StepCompone
         </p>
         <h3 className="m-0 text-xs font-bold text-[#9CA3AF] uppercase tracking-wider">Langkah-Langkah</h3>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
-          {langkah.map((l) => (
+          {langkah.map((l, i) => (
             <div
               key={l.n}
               className="bg-white border border-[#E5E7EB] rounded-[20px] p-5 text-center flex flex-col items-center gap-3 shadow-[0_1px_2px_rgba(0,0,0,0.04)]"
@@ -65,8 +69,8 @@ export default function Peta4Step6MengeksplorasiAR({ materi, peta }: StepCompone
               <div className="w-10 h-10 rounded-full bg-[#2563EB] text-white flex items-center justify-center font-bold text-sm">
                 {l.n}
               </div>
-              <div className="w-16 h-16 rounded-xl bg-[#F3F4F6] flex items-center justify-center text-xs text-[#9CA3AF]">
-                Ilustrasi
+              <div className="relative w-16 h-16 rounded-xl overflow-hidden bg-[#F3F4F6]">
+                <Image src={langkahImages[i]} alt={l.label} fill className="object-cover" />
               </div>
               <p className="m-0 text-sm font-semibold text-[#374151]">{l.label}</p>
             </div>

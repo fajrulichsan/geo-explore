@@ -1,8 +1,10 @@
+import Image from "next/image";
 import Link from "next/link";
 import { submitStepAction } from "@/app/belajar/actions";
 import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
 import SubmitStepButton from "@/app/belajar/_components/SubmitStepButton";
 import StepHeader from "@/app/belajar/_components/StepHeader";
+import { getPageImage } from "@/lib/pageImages";
 
 const panduan = [
   {
@@ -20,7 +22,9 @@ const panduan = [
   },
 ];
 
-export default function Peta3Step1Pengelompokan({ materi, peta }: StepComponentProps) {
+export default async function Peta3Step1Pengelompokan({ materi, peta }: StepComponentProps) {
+  const gambarKolaborasi = await getPageImage("M1-P3-L1-1");
+
   return (
     <form action={submitStepAction} className="flex flex-col gap-8">
       <input type="hidden" name="materi" value={materi} />
@@ -42,8 +46,8 @@ export default function Peta3Step1Pengelompokan({ materi, peta }: StepComponentP
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
         <div className="lg:col-span-5 bg-white border border-[#E5E7EB] rounded-[20px] p-6 shadow-[0_1px_2px_rgba(0,0,0,0.04)] flex flex-col items-center justify-center text-center gap-4">
-          <div className="w-full h-52 rounded-2xl bg-[#EFF4FF] flex items-center justify-center text-xs text-[#9CA3AF]">
-            Ilustrasi
+          <div className="relative w-full h-52 rounded-2xl overflow-hidden bg-[#EFF4FF]">
+            <Image src={gambarKolaborasi} alt="Ilustrasi kolaborasi" fill className="object-cover" />
           </div>
           <div>
             <h3 className="m-0 mb-1 text-lg font-bold text-[#2563EB]">Kolaborasi</h3>

@@ -1,22 +1,27 @@
+import Image from "next/image";
 import { submitStepAction } from "@/app/belajar/actions";
 import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
 import SubmitStepButton from "@/app/belajar/_components/SubmitStepButton";
 import StepHeader from "@/app/belajar/_components/StepHeader";
+import { getPageImage, type PageImageKey } from "@/lib/pageImages";
 
 const thumbnails = [
-  { n: 1, label: "Rumah" },
-  { n: 2, label: "Tenda Limas Segiempat", tag: "1.8m" },
-  { n: 3, label: "Akuarium" },
-  { n: 4, label: "Rubik" },
-  { n: 5, label: "Tenda Prisma Segitiga" },
-  { n: 6, label: "Kotak Susu" },
-  { n: 7, label: "Kotak Sepatu" },
-  { n: 8, label: "Lemari" },
-  { n: 9, label: "Gazebo" },
-  { n: 10, label: "Piramida" },
-];
+  { n: 1, label: "Rumah", imageKey: "M1-P2-L1-1" },
+  { n: 2, label: "Tenda Limas Segiempat", tag: "1.8m", imageKey: "M1-P2-L1-2" },
+  { n: 3, label: "Akuarium", imageKey: "M1-P2-L1-3" },
+  { n: 4, label: "Rubik", imageKey: "M1-P2-L1-4" },
+  { n: 5, label: "Tenda Prisma Segitiga", imageKey: "M1-P2-L1-5" },
+  { n: 6, label: "Kotak Susu", imageKey: "M1-P2-L1-6" },
+  { n: 7, label: "Kotak Sepatu", imageKey: "M1-P2-L1-7" },
+  { n: 8, label: "Lemari", imageKey: "M1-P2-L1-8" },
+  { n: 9, label: "Gazebo", imageKey: "M1-P2-L1-9" },
+  { n: 10, label: "Piramida", imageKey: "M1-P2-L1-10" },
+] satisfies { n: number; label: string; tag?: string; imageKey: PageImageKey }[];
 
-export default function Peta2Step1Amati({ materi, peta }: StepComponentProps) {
+export default async function Peta2Step1Amati({ materi, peta }: StepComponentProps) {
+  const thumbnailImages = await Promise.all(thumbnails.map((t) => getPageImage(t.imageKey)));
+  const gambarLangkah1 = await getPageImage("M1-P2-L1-11");
+
   return (
     <form action={submitStepAction} className="flex flex-col gap-8">
       <input type="hidden" name="materi" value={materi} />
@@ -77,13 +82,13 @@ export default function Peta2Step1Amati({ materi, peta }: StepComponentProps) {
         </div>
 
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
-          {thumbnails.map((t) => (
+          {thumbnails.map((t, i) => (
             <div
               key={t.n}
               className="bg-white border border-[#E5E7EB] rounded-[14px] overflow-hidden shadow-[0_1px_2px_rgba(0,0,0,0.04)] flex flex-col"
             >
-              <div className="relative w-full aspect-[4/3] bg-[#F3F4F6] flex items-center justify-center text-xs text-[#9CA3AF]">
-                {t.label}
+              <div className="relative w-full aspect-[4/3] bg-[#F3F4F6]">
+                <Image src={thumbnailImages[i]} alt={t.label} fill className="object-cover" />
                 {t.tag && (
                   <div className="absolute bottom-1.5 right-1.5 bg-[rgba(17,24,39,0.75)] text-white text-[10px] font-semibold py-0.5 px-1.5 rounded">
                     {t.tag}
@@ -129,8 +134,8 @@ export default function Peta2Step1Amati({ materi, peta }: StepComponentProps) {
               </p>
             </div>
           </div>
-          <div className="w-full sm:w-[180px] h-[120px] flex-shrink-0 rounded-[14px] bg-[#F3F4F6] flex items-center justify-center text-xs text-[#9CA3AF]">
-            Ilustrasi
+          <div className="relative w-full sm:w-[180px] h-[120px] flex-shrink-0 rounded-[14px] overflow-hidden bg-[#F3F4F6]">
+            <Image src={gambarLangkah1} alt="Ilustrasi langkah 1 - Amati" fill className="object-cover" />
           </div>
         </div>
       </div>

@@ -1,13 +1,16 @@
+import Image from "next/image";
 import Link from "next/link";
 import PhotoUpload from "@/components/PhotoUpload";
 import { submitStepAction } from "@/app/belajar/actions";
 import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
 import SubmitStepButton from "@/app/belajar/_components/SubmitStepButton";
 import StepHeader from "@/app/belajar/_components/StepHeader";
+import { getPageImage } from "@/lib/pageImages";
 
-export default function Peta2Step7SiapBerdiskusi({ materi, peta, initialAnswers }: StepComponentProps) {
+export default async function Peta2Step7SiapBerdiskusi({ materi, peta, initialAnswers }: StepComponentProps) {
   const answers = initialAnswers ?? {};
   const getValue = (key: string) => (typeof answers[key] === "string" ? (answers[key] as string) : "");
+  const gambarDiskusi = await getPageImage("M1-P2-L7-1");
 
   return (
     <form action={submitStepAction} className="flex flex-col gap-8">
@@ -41,8 +44,8 @@ export default function Peta2Step7SiapBerdiskusi({ materi, peta, initialAnswers 
         <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-7 shadow-[0_1px_2px_rgba(0,0,0,0.04)]">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
             <div className="lg:col-span-5 flex flex-col items-center text-center gap-4">
-              <div className="w-40 h-40 rounded-2xl bg-[#EFF4FF] flex items-center justify-center text-xs text-[#9CA3AF]">
-                Ilustrasi
+              <div className="relative w-40 h-40 rounded-2xl overflow-hidden bg-[#EFF4FF]">
+                <Image src={gambarDiskusi} alt="Ilustrasi siap berdiskusi" fill className="object-cover" />
               </div>
               <div className="text-sm text-[#4B5563] leading-[1.6] text-left flex flex-col gap-3">
                 <p className="m-0">

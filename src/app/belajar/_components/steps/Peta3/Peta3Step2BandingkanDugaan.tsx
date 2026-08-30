@@ -1,8 +1,10 @@
+import Image from "next/image";
 import Link from "next/link";
 import { submitStepAction } from "@/app/belajar/actions";
 import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
 import SubmitStepButton from "@/app/belajar/_components/SubmitStepButton";
 import StepHeader from "@/app/belajar/_components/StepHeader";
+import { getPageImage, type PageImageKey } from "@/lib/pageImages";
 
 const kelompok = [
   {
@@ -11,6 +13,7 @@ const kelompok = [
     title: "Fokus pada Alas",
     desc: "Kelompok ini memisahkan bangun ruang berdasarkan bentuk bangun datar yang menjadi alasnya (misalnya: segitiga, segiempat).",
     alasan: "Alas menentukan nama spesifik bangun ruang tersebut.",
+    imageKey: "M1-P3-L2-1",
   },
   {
     label: "Kelompok B",
@@ -18,6 +21,7 @@ const kelompok = [
     title: "Kehadiran Sisi Sejajar",
     desc: "Mengelompokkan berdasarkan ada atau tidaknya sepasang sisi yang saling sejajar dan kongruen (seperti pada prisma dan tabung).",
     alasan: "Membedakan kelompok prisma/tabung dengan limas/kerucut.",
+    imageKey: "M1-P3-L2-2",
   },
   {
     label: "Kelompok C",
@@ -25,10 +29,13 @@ const kelompok = [
     title: "Sifat Permukaan",
     desc: "Mengkategorikan bangun ruang berdasarkan jenis permukaannya: apakah tersusun dari sisi datar saja, sisi lengkung, atau kombinasi keduanya.",
     alasan: "Sifat permukaan menentukan jaring-jaring bangun tersebut.",
+    imageKey: "M1-P3-L2-3",
   },
-];
+] satisfies { label: string; tag: string; title: string; desc: string; alasan: string; imageKey: PageImageKey }[];
 
-export default function Peta3Step2BandingkanDugaan({ materi, peta }: StepComponentProps) {
+export default async function Peta3Step2BandingkanDugaan({ materi, peta }: StepComponentProps) {
+  const kelompokImages = await Promise.all(kelompok.map((k) => getPageImage(k.imageKey)));
+
   return (
     <form action={submitStepAction} className="flex flex-col gap-8">
       <input type="hidden" name="materi" value={materi} />
@@ -54,13 +61,13 @@ export default function Peta3Step2BandingkanDugaan({ materi, peta }: StepCompone
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        {kelompok.map((k) => (
+        {kelompok.map((k, i) => (
           <div
             key={k.label}
             className="bg-white border border-[#E5E7EB] rounded-[20px] overflow-hidden shadow-[0_1px_2px_rgba(0,0,0,0.04)] flex flex-col hover:-translate-y-1 transition-transform duration-300"
           >
-            <div className="h-36 w-full bg-[#EFF4FF] relative flex items-center justify-center text-xs text-[#9CA3AF]">
-              Ilustrasi
+            <div className="h-36 w-full bg-[#EFF4FF] relative">
+              <Image src={kelompokImages[i]} alt={k.label} fill className="object-cover" />
               <div className="absolute top-3 left-3 bg-white/90 px-3 py-1 rounded-lg border border-[#E5E7EB] shadow-sm">
                 <span className="text-xs font-bold text-[#2563EB]">{k.label}</span>
               </div>

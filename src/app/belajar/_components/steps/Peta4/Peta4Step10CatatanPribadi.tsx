@@ -1,13 +1,16 @@
+import Image from "next/image";
 import Link from "next/link";
 import PhotoUpload from "@/components/PhotoUpload";
 import { submitStepAction } from "@/app/belajar/actions";
 import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
 import SubmitStepButton from "@/app/belajar/_components/SubmitStepButton";
 import StepHeader from "@/app/belajar/_components/StepHeader";
+import { getPageImage } from "@/lib/pageImages";
 
-export default function Peta4Step10CatatanPribadi({ materi, peta, initialAnswers }: StepComponentProps) {
+export default async function Peta4Step10CatatanPribadi({ materi, peta, initialAnswers }: StepComponentProps) {
   const answers = initialAnswers ?? {};
   const getValue = (key: string) => (typeof answers[key] === "string" ? (answers[key] as string) : "");
+  const gambarCatatan = await getPageImage("M1-P4-L10-1");
 
   return (
     <form action={submitStepAction} className="flex flex-col gap-8">
@@ -44,8 +47,8 @@ export default function Peta4Step10CatatanPribadi({ materi, peta, initialAnswers
 
         <div className="p-6 grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-6 items-start">
           <div className="flex flex-col items-center text-center gap-3">
-            <div className="w-40 h-40 rounded-2xl bg-[#F9FAFB] flex items-center justify-center text-xs text-[#9CA3AF]">
-              Ilustrasi
+            <div className="relative w-40 h-40 rounded-2xl overflow-hidden bg-[#F9FAFB]">
+              <Image src={gambarCatatan} alt="Ilustrasi catatan pribadi" fill className="object-cover" />
             </div>
             <p className="m-0 text-sm text-[#6B7280] max-w-[220px]">
               Tuliskan pemikiran dan pertanyaanmu setelah bereksplorasi dengan AR hari ini!

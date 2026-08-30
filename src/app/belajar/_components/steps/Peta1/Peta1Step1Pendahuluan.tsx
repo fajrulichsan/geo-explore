@@ -1,7 +1,9 @@
+import Image from "next/image";
 import { submitStepAction } from "@/app/belajar/actions";
 import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
 import SubmitStepButton from "@/app/belajar/_components/SubmitStepButton";
 import StepHeader from "@/app/belajar/_components/StepHeader";
+import { getPageImage } from "@/lib/pageImages";
 
 const tujuanPembelajaran = [
   "Menjelaskan hubungan antara bangun ruang sisi datar dan jaring-jaringnya.",
@@ -10,7 +12,9 @@ const tujuanPembelajaran = [
   "Membandingkan berbagai jaring-jaring bangun ruang.",
 ];
 
-export default function Peta1Step1Pendahuluan({ materi, peta }: StepComponentProps) {
+export default async function Peta1Step1Pendahuluan({ materi, peta }: StepComponentProps) {
+  const gambarPendahuluan = await getPageImage("M1-P1-L1-1");
+
   return (
     <form action={submitStepAction} className="flex flex-col gap-8">
       <input type="hidden" name="materi" value={materi} />
@@ -53,6 +57,14 @@ export default function Peta1Step1Pendahuluan({ materi, peta }: StepComponentPro
             Pahami tujuan pembelajaran berikut agar kamu tahu arah belajarmu sepanjang modul ini.
           </p>
         </div>
+
+        <Image
+          src={gambarPendahuluan}
+          alt="Ilustrasi pendahuluan jaring-jaring bangun ruang"
+          width={600}
+          height={400}
+          className="w-full h-auto rounded-[20px] border border-[#E5E7EB]"
+        />
       </div>
 
       <div className="flex flex-col gap-4">

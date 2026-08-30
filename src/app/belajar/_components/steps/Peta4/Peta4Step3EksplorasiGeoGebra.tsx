@@ -1,8 +1,10 @@
+import Image from "next/image";
 import Link from "next/link";
 import { submitStepAction } from "@/app/belajar/actions";
 import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
 import SubmitStepButton from "@/app/belajar/_components/SubmitStepButton";
 import StepHeader from "@/app/belajar/_components/StepHeader";
+import { getPageImage } from "@/lib/pageImages";
 
 const langkah = [
   "Buka aplikasi GeoGebra 3D Calculator di browser atau smartphone-mu.",
@@ -18,7 +20,9 @@ const tips = [
   "Zoom in untuk melihat perpotongan rusuk lebih detail.",
 ];
 
-export default function Peta4Step3EksplorasiGeoGebra({ materi, peta }: StepComponentProps) {
+export default async function Peta4Step3EksplorasiGeoGebra({ materi, peta }: StepComponentProps) {
+  const gambarGeoGebra = await getPageImage("M1-P4-L3-1");
+
   return (
     <form action={submitStepAction} className="flex flex-col gap-8">
       <input type="hidden" name="materi" value={materi} />
@@ -47,8 +51,8 @@ export default function Peta4Step3EksplorasiGeoGebra({ materi, peta }: StepCompo
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
         <div className="lg:col-span-7 flex flex-col gap-4">
           <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-4 shadow-[0_1px_2px_rgba(0,0,0,0.04)]">
-            <div className="w-full aspect-video rounded-2xl bg-[#EFF4FF] flex items-center justify-center text-xs text-[#9CA3AF]">
-              Ilustrasi GeoGebra 3D
+            <div className="relative w-full aspect-video rounded-2xl overflow-hidden bg-[#EFF4FF]">
+              <Image src={gambarGeoGebra} alt="Ilustrasi GeoGebra 3D" fill className="object-cover" />
             </div>
           </div>
 

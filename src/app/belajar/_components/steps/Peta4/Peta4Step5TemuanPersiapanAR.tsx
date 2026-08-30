@@ -1,9 +1,11 @@
+import Image from "next/image";
 import Link from "next/link";
 import PhotoUpload from "@/components/PhotoUpload";
 import { submitStepAction } from "@/app/belajar/actions";
 import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
 import SubmitStepButton from "@/app/belajar/_components/SubmitStepButton";
 import StepHeader from "@/app/belajar/_components/StepHeader";
+import { getPageImage } from "@/lib/pageImages";
 
 const langkahAR = [
   "Siapkan smartphone-mu.",
@@ -11,9 +13,10 @@ const langkahAR = [
   "Klik tombol di bawah ini untuk memulai.",
 ];
 
-export default function Peta4Step5TemuanPersiapanAR({ materi, peta, initialAnswers }: StepComponentProps) {
+export default async function Peta4Step5TemuanPersiapanAR({ materi, peta, initialAnswers }: StepComponentProps) {
   const answers = initialAnswers ?? {};
   const getValue = (key: string) => (typeof answers[key] === "string" ? (answers[key] as string) : "");
+  const gambarAR = await getPageImage("M1-P4-L5-1");
 
   return (
     <form action={submitStepAction} className="flex flex-col gap-8">
@@ -88,8 +91,8 @@ export default function Peta4Step5TemuanPersiapanAR({ materi, peta, initialAnswe
             Augmented Reality (AR).
           </p>
           <div className="bg-white border border-[#E5E7EB] rounded-2xl p-5 flex flex-col items-center gap-4">
-            <div className="w-32 h-32 rounded-xl bg-[#F3F4F6] flex items-center justify-center text-xs text-[#9CA3AF]">
-              Ilustrasi AR
+            <div className="relative w-32 h-32 rounded-xl overflow-hidden bg-[#F3F4F6]">
+              <Image src={gambarAR} alt="Ilustrasi AR" fill className="object-cover" />
             </div>
             <ol className="m-0 p-0 flex flex-col gap-2 list-decimal list-inside w-full text-sm text-[#374151]">
               {langkahAR.map((l) => (
