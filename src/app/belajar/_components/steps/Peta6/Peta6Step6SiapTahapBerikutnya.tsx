@@ -1,8 +1,10 @@
 import Link from "next/link";
+import Image from "next/image";
 import { submitStepAction } from "@/app/belajar/actions";
 import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
 import SubmitStepButton from "@/app/belajar/_components/SubmitStepButton";
 import StepHeader from "@/app/belajar/_components/StepHeader";
+import { getPageImage } from "@/lib/pageImages";
 
 const alur = [
   { label: "Data Pengamatan", desc: "Mengumpulkan fakta dari lapangan" },
@@ -16,7 +18,8 @@ const ringkasan = [
   "Memverifikasi hipotesis awal dengan data lapangan.",
 ];
 
-export default function Peta6Step6SiapTahapBerikutnya({ materi, peta }: StepComponentProps) {
+export default async function Peta6Step6SiapTahapBerikutnya({ materi, peta }: StepComponentProps) {
+  const gambarAlur = await getPageImage("M1-P6-L6-1");
   return (
     <form action={submitStepAction} className="flex flex-col gap-8">
       <input type="hidden" name="materi" value={materi} />
@@ -66,8 +69,8 @@ export default function Peta6Step6SiapTahapBerikutnya({ materi, peta }: StepComp
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-3 shadow-[0_1px_2px_rgba(0,0,0,0.04)]">
-          <div className="w-full h-full min-h-[220px] rounded-xl bg-[#F9FAFB] flex items-center justify-center text-xs text-[#9CA3AF]">
-            Ilustrasi
+          <div className="relative w-full h-full min-h-[220px] rounded-xl bg-[#F9FAFB] overflow-hidden">
+            <Image src={gambarAlur} alt="Ilustrasi alur berikutnya" fill className="object-cover" />
           </div>
         </div>
 

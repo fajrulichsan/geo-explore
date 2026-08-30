@@ -1,9 +1,11 @@
 import Link from "next/link";
+import Image from "next/image";
 import PhotoUpload from "@/components/PhotoUpload";
 import { submitStepAction } from "@/app/belajar/actions";
 import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
 import SubmitStepButton from "@/app/belajar/_components/SubmitStepButton";
 import StepHeader from "@/app/belajar/_components/StepHeader";
+import { getPageImage } from "@/lib/pageImages";
 
 const pertanyaan = [
   {
@@ -23,9 +25,10 @@ const pertanyaan = [
   },
 ];
 
-export default function Peta6Step4EvaluasiVerifikasi({ materi, peta, initialAnswers }: StepComponentProps) {
+export default async function Peta6Step4EvaluasiVerifikasi({ materi, peta, initialAnswers }: StepComponentProps) {
   const answers = initialAnswers ?? {};
   const getValue = (key: string) => (typeof answers[key] === "string" ? (answers[key] as string) : "");
+  const gambarKonteks = await getPageImage("M1-P6-L4-1");
 
   return (
     <form action={submitStepAction} className="flex flex-col gap-8">
@@ -48,8 +51,8 @@ export default function Peta6Step4EvaluasiVerifikasi({ materi, peta, initialAnsw
       </div>
 
       <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-6 shadow-[0_1px_2px_rgba(0,0,0,0.04)] flex flex-col md:flex-row gap-5 items-start">
-        <div className="flex-shrink-0 w-16 h-16 rounded-xl bg-[#F9FAFB] flex items-center justify-center text-xs text-[#9CA3AF]">
-          Ilustrasi
+        <div className="relative flex-shrink-0 w-16 h-16 rounded-xl bg-[#F9FAFB] overflow-hidden">
+          <Image src={gambarKonteks} alt="Konteks evaluasi" fill className="object-cover" />
         </div>
         <div className="flex-1 flex flex-col gap-1">
           <h3 className="m-0 text-base font-bold text-[#111827] flex items-center gap-2">

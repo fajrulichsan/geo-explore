@@ -1,13 +1,16 @@
 import Link from "next/link";
+import Image from "next/image";
 import PhotoUpload from "@/components/PhotoUpload";
 import { submitStepAction } from "@/app/belajar/actions";
 import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
 import SubmitStepButton from "@/app/belajar/_components/SubmitStepButton";
 import StepHeader from "@/app/belajar/_components/StepHeader";
+import { getPageImage } from "@/lib/pageImages";
 
-export default function Peta5Step7PolaKlasifikasiStrategi({ materi, peta, initialAnswers }: StepComponentProps) {
+export default async function Peta5Step7PolaKlasifikasiStrategi({ materi, peta, initialAnswers }: StepComponentProps) {
   const answers = initialAnswers ?? {};
   const getValue = (key: string) => (typeof answers[key] === "string" ? (answers[key] as string) : "");
+  const gambarPola = await getPageImage("M1-P5-L7-1");
 
   return (
     <form action={submitStepAction} className="flex flex-col gap-8">
@@ -40,8 +43,8 @@ export default function Peta5Step7PolaKlasifikasiStrategi({ materi, peta, initia
           <p className="m-0 text-sm leading-[1.6] text-[#374151]">
             Kelompokkan bangun-bangun berikut berdasarkan pola yang kamu temukan.
           </p>
-          <div className="w-full h-40 rounded-2xl bg-[#F9FAFB] flex items-center justify-center text-xs text-[#9CA3AF]">
-            Ilustrasi
+          <div className="relative w-full h-40 rounded-2xl overflow-hidden bg-[#F9FAFB]">
+            <Image src={gambarPola} alt="Ilustrasi pola klasifikasi" fill className="object-cover" />
           </div>
           <div className="flex flex-col gap-1.5">
             <label htmlFor="pola-input" className="text-sm font-bold text-[#2563EB]">

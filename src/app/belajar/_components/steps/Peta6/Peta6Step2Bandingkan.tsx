@@ -1,13 +1,16 @@
 import Link from "next/link";
+import Image from "next/image";
 import PhotoUpload from "@/components/PhotoUpload";
 import { submitStepAction } from "@/app/belajar/actions";
 import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
 import SubmitStepButton from "@/app/belajar/_components/SubmitStepButton";
 import StepHeader from "@/app/belajar/_components/StepHeader";
+import { getPageImage } from "@/lib/pageImages";
 
-export default function Peta6Step2Bandingkan({ materi, peta, initialAnswers }: StepComponentProps) {
+export default async function Peta6Step2Bandingkan({ materi, peta, initialAnswers }: StepComponentProps) {
   const answers = initialAnswers ?? {};
   const getValue = (key: string) => (typeof answers[key] === "string" ? (answers[key] as string) : "");
+  const gambarReferensi = await getPageImage("M1-P6-L2-1");
 
   return (
     <form action={submitStepAction} className="flex flex-col gap-8">
@@ -90,8 +93,8 @@ export default function Peta6Step2Bandingkan({ materi, peta, initialAnswers }: S
               </svg>
               Referensi Diskusi
             </span>
-            <div className="rounded-lg bg-[#F9FAFB] aspect-[0.66] flex items-center justify-center text-xs text-[#9CA3AF]">
-              Ilustrasi
+            <div className="relative rounded-lg bg-[#F9FAFB] aspect-[0.66] overflow-hidden">
+              <Image src={gambarReferensi} alt="Referensi diskusi" fill className="object-cover" />
             </div>
             <p className="m-0 text-xs text-[#6B7280] text-center italic">
               Perhatikan gambar referensi di atas untuk membantu analisis.

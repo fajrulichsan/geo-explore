@@ -1,9 +1,11 @@
 import Link from "next/link";
+import Image from "next/image";
 import PhotoUpload from "@/components/PhotoUpload";
 import { submitStepAction } from "@/app/belajar/actions";
 import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
 import SubmitStepButton from "@/app/belajar/_components/SubmitStepButton";
 import StepHeader from "@/app/belajar/_components/StepHeader";
+import { getPageImage } from "@/lib/pageImages";
 
 const verifikasi = [
   { key: "bentuk_sisi", aspek: "Bentuk sisi" },
@@ -11,9 +13,10 @@ const verifikasi = [
   { key: "pasangan_sisi", aspek: "Pasangan bidang sisi sejajar" },
 ];
 
-export default function Peta6Step1PeriksaKembali({ materi, peta, initialAnswers }: StepComponentProps) {
+export default async function Peta6Step1PeriksaKembali({ materi, peta, initialAnswers }: StepComponentProps) {
   const answers = initialAnswers ?? {};
   const getValue = (key: string) => (typeof answers[key] === "string" ? (answers[key] as string) : "");
+  const gambarBalok = await getPageImage("M1-P6-L1-1");
 
   return (
     <form action={submitStepAction} className="flex flex-col gap-8">
@@ -39,8 +42,8 @@ export default function Peta6Step1PeriksaKembali({ materi, peta, initialAnswers 
         <div className="lg:col-span-4">
           <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-4 shadow-[0_1px_2px_rgba(0,0,0,0.04)] h-full flex flex-col gap-3">
             <span className="text-sm font-bold text-[#111827]">Referensi Model</span>
-            <div className="flex-1 min-h-[160px] rounded-xl bg-[#F9FAFB] flex items-center justify-center text-xs text-[#9CA3AF]">
-              Ilustrasi Balok
+            <div className="relative flex-1 min-h-[160px] rounded-xl bg-[#F9FAFB] overflow-hidden">
+              <Image src={gambarBalok} alt="Referensi model balok" fill className="object-cover" />
             </div>
           </div>
         </div>

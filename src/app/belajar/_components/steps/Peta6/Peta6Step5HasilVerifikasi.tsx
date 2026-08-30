@@ -1,9 +1,11 @@
 import Link from "next/link";
+import Image from "next/image";
 import PhotoUpload from "@/components/PhotoUpload";
 import { submitStepAction } from "@/app/belajar/actions";
 import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
 import SubmitStepButton from "@/app/belajar/_components/SubmitStepButton";
 import StepHeader from "@/app/belajar/_components/StepHeader";
+import { getPageImage } from "@/lib/pageImages";
 
 const checklist = [
   "Sesuai dengan data pengamatan atau hasil eksperimen.",
@@ -11,9 +13,10 @@ const checklist = [
   "Telah didiskusikan dan disetujui oleh seluruh anggota kelompok.",
 ];
 
-export default function Peta6Step5HasilVerifikasi({ materi, peta, initialAnswers }: StepComponentProps) {
+export default async function Peta6Step5HasilVerifikasi({ materi, peta, initialAnswers }: StepComponentProps) {
   const answers = initialAnswers ?? {};
   const getValue = (key: string) => (typeof answers[key] === "string" ? (answers[key] as string) : "");
+  const gambarIlustrasi = await getPageImage("M1-P6-L5-1");
 
   return (
     <form action={submitStepAction} className="flex flex-col gap-8">
@@ -37,8 +40,8 @@ export default function Peta6Step5HasilVerifikasi({ materi, peta, initialAnswers
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
         <div className="lg:col-span-4">
           <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-3 shadow-[0_1px_2px_rgba(0,0,0,0.04)] h-full">
-            <div className="w-full h-full min-h-[180px] rounded-xl bg-[#F9FAFB] flex items-center justify-center text-xs text-[#9CA3AF]">
-              Ilustrasi
+            <div className="relative w-full h-full min-h-[180px] rounded-xl bg-[#F9FAFB] overflow-hidden">
+              <Image src={gambarIlustrasi} alt="Ilustrasi hasil verifikasi" fill className="object-cover" />
             </div>
           </div>
         </div>

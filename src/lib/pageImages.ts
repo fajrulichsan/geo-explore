@@ -53,7 +53,14 @@ export type PageImageKey =
   | "M1-P4-L6-2"
   | "M1-P4-L6-3"
   | "M1-P4-L6-4"
-  | "M1-P4-L10-1";
+  | "M1-P4-L10-1"
+  | "M1-P5-L5-1"
+  | "M1-P5-L7-1"
+  | "M1-P6-L1-1"
+  | "M1-P6-L2-1"
+  | "M1-P6-L4-1"
+  | "M1-P6-L5-1"
+  | "M1-P6-L6-1";
 
 const DEFAULT_IMAGES: Record<PageImageKey, string> = {
   "logo-kampus": "https://is3.cloudhost.id/assets-geo/logo-kampus.png",
@@ -108,6 +115,13 @@ const DEFAULT_IMAGES: Record<PageImageKey, string> = {
   "M1-P4-L6-3": "https://placehold.co/150x150?text=Putar+Model",
   "M1-P4-L6-4": "https://placehold.co/150x150?text=Lengkapi+Pengamatan",
   "M1-P4-L10-1": "https://placehold.co/400x400?text=Ilustrasi+Catatan",
+  "M1-P5-L5-1": "https://placehold.co/200x200?text=Ilustrasi",
+  "M1-P5-L7-1": "https://placehold.co/560x315?text=Ilustrasi",
+  "M1-P6-L1-1": "https://placehold.co/320x160?text=Ilustrasi+Balok",
+  "M1-P6-L2-1": "https://placehold.co/260x394?text=Ilustrasi",
+  "M1-P6-L4-1": "https://placehold.co/64x64?text=Ilustrasi",
+  "M1-P6-L5-1": "https://placehold.co/300x180?text=Ilustrasi",
+  "M1-P6-L6-1": "https://placehold.co/400x220?text=Ilustrasi",
 };
 
 /** Falls back to DEFAULT_IMAGES for any key missing from the table (e.g. before the migration is seeded). */
