@@ -1,9 +1,11 @@
 import Link from "next/link";
+import Image from "next/image";
 import PhotoUpload from "@/components/PhotoUpload";
 import { submitStepAction } from "@/app/belajar/actions";
 import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
 import SubmitStepButton from "@/app/belajar/_components/SubmitStepButton";
 import StepHeader from "@/app/belajar/_components/StepHeader";
+import { getPageImage } from "@/lib/pageImages";
 
 const badges = [
   { text: "Saya mampu memberi alasan matematis yang logis." },
@@ -12,9 +14,10 @@ const badges = [
   { text: "Saya menggunakan data dan informasi sebagai bukti." },
 ];
 
-export default function Peta8Step4KotakMotivasi({ materi, peta, initialAnswers }: StepComponentProps) {
+export default async function Peta8Step4KotakMotivasi({ materi, peta, initialAnswers }: StepComponentProps) {
   const answers = initialAnswers ?? {};
   const getValue = (key: string) => (typeof answers[key] === "string" ? (answers[key] as string) : "");
+  const gambarMotivasi = await getPageImage("M1-P8-L4-1");
 
   return (
     <form action={submitStepAction} className="flex flex-col gap-8">
@@ -86,8 +89,8 @@ export default function Peta8Step4KotakMotivasi({ materi, peta, initialAnswers }
             logis.
           </p>
         </div>
-        <div className="w-[120px] h-[120px] flex-shrink-0 rounded-[14px] bg-white/60 flex items-center justify-center text-xs text-[#9CA3AF] relative z-[1]">
-          Ilustrasi
+        <div className="relative w-[120px] h-[120px] flex-shrink-0 rounded-[14px] bg-white/60 overflow-hidden z-[1]">
+          <Image src={gambarMotivasi} alt="Ilustrasi kotak motivasi" fill className="object-cover" />
         </div>
       </div>
 

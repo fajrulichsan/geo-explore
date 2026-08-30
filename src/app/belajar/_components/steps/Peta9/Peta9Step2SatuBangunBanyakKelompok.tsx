@@ -1,17 +1,21 @@
 import Link from "next/link";
+import Image from "next/image";
 import PhotoUpload from "@/components/PhotoUpload";
 import { submitStepAction } from "@/app/belajar/actions";
 import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
 import SubmitStepButton from "@/app/belajar/_components/SubmitStepButton";
 import StepHeader from "@/app/belajar/_components/StepHeader";
+import { getPageImage } from "@/lib/pageImages";
 
-export default function Peta9Step2SatuBangunBanyakKelompok({
+export default async function Peta9Step2SatuBangunBanyakKelompok({
   materi,
   peta,
   initialAnswers,
 }: StepComponentProps) {
   const answers = initialAnswers ?? {};
   const getValue = (key: string) => (typeof answers[key] === "string" ? (answers[key] as string) : "");
+  const gambarKubus = await getPageImage("M1-P9-L2-1");
+  const gambarBangunLain = await getPageImage("M1-P9-L2-2");
 
   return (
     <form action={submitStepAction} className="flex flex-col gap-8">
@@ -46,8 +50,8 @@ export default function Peta9Step2SatuBangunBanyakKelompok({
             </p>
           </div>
           <div className="mt-auto flex items-end gap-5">
-            <div className="w-24 h-24 flex-shrink-0 rounded-xl bg-[#EFF4FF] flex items-center justify-center text-xs text-[#9CA3AF]">
-              Ilustrasi
+            <div className="relative w-24 h-24 flex-shrink-0 rounded-xl overflow-hidden bg-[#EFF4FF]">
+              <Image src={gambarKubus} alt="Ilustrasi kubus" fill className="object-cover" />
             </div>
             <div className="flex-grow flex flex-col gap-3">
               <input
@@ -90,8 +94,8 @@ export default function Peta9Step2SatuBangunBanyakKelompok({
               className="w-full bg-[#F9FAFB] border border-[#E5E7EB] rounded-xl focus:ring-2 focus:ring-[#2563EB]/20 focus:border-[#2563EB] outline-none p-4 text-sm text-[#374151] resize-none min-h-[100px]"
             />
             <div className="flex justify-end">
-              <div className="w-20 h-20 flex-shrink-0 rounded-xl bg-[#EFF4FF] flex items-center justify-center text-xs text-[#9CA3AF]">
-                Ilustrasi
+              <div className="relative w-20 h-20 flex-shrink-0 rounded-xl overflow-hidden bg-[#EFF4FF]">
+                <Image src={gambarBangunLain} alt="Ilustrasi bangun ruang lain" fill className="object-cover" />
               </div>
             </div>
           </div>

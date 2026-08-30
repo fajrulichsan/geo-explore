@@ -1,28 +1,31 @@
 import Link from "next/link";
+import Image from "next/image";
 import PhotoUpload from "@/components/PhotoUpload";
 import { submitStepAction } from "@/app/belajar/actions";
 import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
 import SubmitStepButton from "@/app/belajar/_components/SubmitStepButton";
 import StepHeader from "@/app/belajar/_components/StepHeader";
+import { getPageImage, type PageImageKey } from "@/lib/pageImages";
 
 const bangun = [
-  { n: 1, label: "Kubus" },
-  { n: 2, label: "Balok" },
-  { n: 3, label: "Prisma Segitiga" },
-  { n: 4, label: "Prisma Segi Lima" },
-  { n: 5, label: "Limas Segitiga" },
-  { n: 6, label: "Limas Segiempat" },
-];
+  { n: 1, label: "Kubus", imageKey: "M1-P9-L1-1" },
+  { n: 2, label: "Balok", imageKey: "M1-P9-L1-2" },
+  { n: 3, label: "Prisma Segitiga", imageKey: "M1-P9-L1-3" },
+  { n: 4, label: "Prisma Segi Lima", imageKey: "M1-P9-L1-4" },
+  { n: 5, label: "Limas Segitiga", imageKey: "M1-P9-L1-5" },
+  { n: 6, label: "Limas Segiempat", imageKey: "M1-P9-L1-6" },
+] satisfies { n: number; label: string; imageKey: PageImageKey }[];
 
 const baris = [1, 2, 3];
 
-export default function Peta9Step1MengelompokkanBangunRuang({
+export default async function Peta9Step1MengelompokkanBangunRuang({
   materi,
   peta,
   initialAnswers,
 }: StepComponentProps) {
   const answers = initialAnswers ?? {};
   const getValue = (key: string) => (typeof answers[key] === "string" ? (answers[key] as string) : "");
+  const bangunImages = await Promise.all(bangun.map((b) => getPageImage(b.imageKey)));
 
   return (
     <form action={submitStepAction} className="flex flex-col gap-8">
@@ -61,10 +64,10 @@ export default function Peta9Step1MengelompokkanBangunRuang({
 
         <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-7 shadow-[0_1px_2px_rgba(0,0,0,0.04)]">
           <div className="grid grid-cols-2 md:grid-cols-6 gap-4 mb-6">
-            {bangun.map((b) => (
+            {bangun.map((b, i) => (
               <div key={b.n} className="flex flex-col items-center gap-2">
-                <div className="w-full aspect-square rounded-2xl bg-[#EFF4FF] flex items-center justify-center text-xs text-[#9CA3AF]">
-                  Ilustrasi
+                <div className="relative w-full aspect-square rounded-2xl overflow-hidden bg-[#EFF4FF]">
+                  <Image src={bangunImages[i]} alt={b.label} fill className="object-cover" />
                 </div>
                 <div className="flex items-center gap-1.5">
                   <div className="w-[18px] h-[18px] rounded-full bg-[#2563EB] text-white text-[10px] font-bold flex items-center justify-center flex-shrink-0">
