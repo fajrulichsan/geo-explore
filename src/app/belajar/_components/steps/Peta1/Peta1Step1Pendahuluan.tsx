@@ -5,11 +5,10 @@ import SubmitStepButton from "@/app/belajar/_components/SubmitStepButton";
 import StepHeader from "@/app/belajar/_components/StepHeader";
 import { getPageImage } from "@/lib/pageImages";
 
-const tujuanPembelajaran = [
-  "Menjelaskan hubungan antara bangun ruang sisi datar dan jaring-jaringnya.",
-  "Menentukan jaring-jaring yang valid dan tidak valid.",
-  "Menemukan lebih dari satu bentuk jaring-jaring dari bangun ruang yang sama.",
-  "Membandingkan berbagai jaring-jaring bangun ruang.",
+const menurutmu = [
+  "Apakah benda-benda pada gambar memiliki bentuk yang sama?",
+  "Bagaimana kamu akan mengelompokkannya?",
+  "Apakah benda-benda tersebut dapat dikelompokkan dengan lebih dari satu cara? Jelaskan alasan matematismu.",
 ];
 
 export default async function Peta1Step1Pendahuluan({ materi, peta }: StepComponentProps) {
@@ -22,13 +21,15 @@ export default async function Peta1Step1Pendahuluan({ materi, peta }: StepCompon
       <input type="hidden" name="step" value="1" />
 
       <div className="flex flex-col gap-4">
-        <StepHeader materi={materi} currentStep={1} totalSteps={1} />
+        <StepHeader materi={materi} currentStep={1} totalSteps={2} />
         <div className="flex items-center gap-3.5">
           <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#2563EB" strokeWidth="2.4">
             <path d="M4 19.5V4.5A1.5 1.5 0 015.5 3H15l5 5v11.5a1.5 1.5 0 01-1.5 1.5h-13A1.5 1.5 0 014 19.5z" />
             <path d="M14 3v5h5" />
           </svg>
-          <h1 className="m-0 text-2xl sm:text-[32px] font-extrabold text-[#111827]">Pendahuluan</h1>
+          <h1 className="m-0 text-2xl sm:text-[32px] font-extrabold text-[#111827]">
+            Klasifikasi Bangun Ruang Sisi Datar
+          </h1>
         </div>
       </div>
 
@@ -49,73 +50,53 @@ export default async function Peta1Step1Pendahuluan({ materi, peta }: StepCompon
             </svg>
           </div>
           <p className="m-0 mb-3 text-[15px] leading-[1.6] text-[#374151]">
-            Selamat datang di modul{" "}
-            <span className="text-[#2563EB] font-bold">Bangun Ruang Sisi Datar</span>. Sebelum masuk ke
-            aktivitas pengamatan, mari kenali dulu apa yang akan kamu pelajari dan capai di modul ini.
+            Di sekitar kita banyak benda yang memiliki bentuk berbeda-beda. Jika kita perhatikan,
+            benda-benda tersebut dapat dikelompokkan berdasarkan{" "}
+            <span className="text-[#2563EB] font-bold">
+              sifat-sifat tertentu, seperti bentuk sisi, jumlah rusuk, atau jumlah titik sudutnya
+            </span>
+            .
           </p>
           <p className="m-0 text-[15px] leading-[1.6] text-[#374151]">
-            Pahami tujuan pembelajaran berikut agar kamu tahu arah belajarmu sepanjang modul ini.
+            Pada submateri ini, kamu akan mengamati, mengeksplorasi, dan berdiskusi untuk menemukan
+            cara mengelompokkan bangun ruang sisi datar berdasarkan sifat-sifatnya.
           </p>
         </div>
 
-        <Image
-          src={gambarPendahuluan}
-          alt="Ilustrasi pendahuluan jaring-jaring bangun ruang"
-          width={600}
-          height={400}
-          className="w-full h-auto rounded-[20px] border border-[#E5E7EB]"
-        />
-      </div>
-
-      <div className="flex flex-col gap-4">
-        <div className="flex items-center gap-3">
-          <div className="w-[34px] h-[34px] rounded-full bg-[#2563EB] text-white flex items-center justify-center font-bold text-[15px] flex-shrink-0">
-            B
-          </div>
-          <div className="bg-white border border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-full py-2 px-5 text-sm font-bold text-[#2563EB]">
-            Tujuan Pembelajaran
-          </div>
+        <div className="relative rounded-[20px] overflow-hidden border border-[#E5E7EB]">
+          <Image
+            src={gambarPendahuluan}
+            alt="Ilustrasi benda-benda dengan berbagai bentuk bangun ruang sisi datar"
+            width={800}
+            height={500}
+            className="w-full h-auto"
+          />
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          {tujuanPembelajaran.map((tujuan, i) => (
-            <div
-              key={tujuan}
-              className="bg-white border border-[#E5E7EB] rounded-[20px] p-5 shadow-[0_1px_2px_rgba(0,0,0,0.04)] flex items-start gap-4"
-            >
-              <div className="w-[34px] h-[34px] rounded-full bg-[#2563EB] text-white flex items-center justify-center font-bold text-[15px] flex-shrink-0">
-                {i + 1}
-              </div>
-              <p className="m-0 text-sm leading-[1.6] text-[#374151] pt-1">{tujuan}</p>
+        <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-6 shadow-[0_1px_2px_rgba(0,0,0,0.04)] flex flex-col gap-4">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-full bg-[#FCE9A8] flex items-center justify-center flex-shrink-0">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#92400E" strokeWidth="2">
+                <path d="M12 18h.01M9.5 9a2.5 2.5 0 015 0c0 1.5-2.5 2-2.5 4" />
+                <circle cx="12" cy="12" r="9" />
+              </svg>
             </div>
-          ))}
-        </div>
-      </div>
-
-      <div className="flex flex-col gap-4">
-        <div className="flex items-center gap-3">
-          <div className="w-[34px] h-[34px] rounded-full bg-[#2563EB] text-white flex items-center justify-center font-bold text-[15px] flex-shrink-0">
-            C
+            <h3 className="m-0 text-base font-bold text-[#111827]">Menurutmu...</h3>
           </div>
-          <div className="bg-white border border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-full py-2 px-5 text-sm font-bold text-[#2563EB]">
-            Ingat!
-          </div>
-        </div>
-        <div className="bg-[#FCE9A8] rounded-2xl p-6 flex flex-col gap-3">
-          <p className="m-0 text-sm font-bold text-[#1D4ED8] leading-[1.5]">
-            Saat mempelajari jaring-jaring bangun ruang, perhatikan hal-hal berikut:
-          </p>
-          <ul className="m-0 pl-5 flex flex-col gap-1.5 text-sm text-[#374151] leading-[1.6] list-disc">
-            <li>Amati susunan sisi yang membentuk jaring-jaring.</li>
-            <li>Hitung dengan cermat jumlah sisi pada bangun datar.</li>
-            <li>Identifikasi bagian yang perlu dipotong atau dilipat untuk membentuk bangun ruang.</li>
+          <ul className="m-0 p-0 list-none flex flex-col gap-3">
+            {menurutmu.map((q) => (
+              <li key={q} className="flex items-start gap-3">
+                <span className="w-2 h-2 rounded-full bg-[#D97706] mt-2 flex-shrink-0" />
+                <p className="m-0 text-sm leading-[1.6] text-[#374151]">{q}</p>
+              </li>
+            ))}
           </ul>
         </div>
       </div>
 
       <div className="flex justify-end">
         <SubmitStepButton className="flex items-center gap-2 bg-[#2563EB] text-white border-none rounded-full py-3.5 px-7 text-sm font-bold font-inherit shadow-[0_4px_10px_rgba(37,99,235,0.3)] cursor-pointer w-full sm:w-auto justify-center">
-          MULAI BELAJAR
+          LANJUTKAN
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.4">
             <path d="M5 12h14M13 5l7 7-7 7" />
           </svg>

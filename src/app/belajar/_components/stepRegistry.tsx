@@ -1,5 +1,6 @@
 import type { ComponentType } from "react";
 import Peta1Step1Pendahuluan from "./steps/Peta1/Peta1Step1Pendahuluan";
+import Peta1Step2TujuanPersiapan from "./steps/Peta1/Peta1Step2TujuanPersiapan";
 import Peta2Step1Amati from "./steps/Peta2/Peta2Step1Amati";
 import Peta2Step2Berpikir from "./steps/Peta2/Peta2Step2Berpikir";
 import Peta2Step3IdeAwalku from "./steps/Peta2/Peta2Step3IdeAwalku";
@@ -70,6 +71,7 @@ export type StepComponentProps = {
 
 export const stepRegistry: Record<string, ComponentType<StepComponentProps>> = {
   "1-1-1": Peta1Step1Pendahuluan,
+  "1-1-2": Peta1Step2TujuanPersiapan,
   "1-2-1": Peta2Step1Amati,
   "1-2-2": Peta2Step2Berpikir,
   "1-2-3": Peta2Step3IdeAwalku,

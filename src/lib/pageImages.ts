@@ -19,6 +19,8 @@ export type PageImageKey =
   | "materi-7-cover"
   | "materi-8-cover"
   | "M1-P1-L1-1"
+  | "M1-P1-L1-2"
+  | "M1-P1-L1-3"
   | "M1-P2-L1-1"
   | "M1-P2-L1-2"
   | "M1-P2-L1-3"
@@ -89,6 +91,8 @@ const DEFAULT_IMAGES: Record<PageImageKey, string> = {
   "materi-7-cover": "https://placehold.co/400x300?text=Gabungan+Datar",
   "materi-8-cover": "https://placehold.co/400x300?text=Gabungan+Lengkung",
   "M1-P1-L1-1": "https://placehold.co/600x400?text=M1-P1-L1-1",
+  "M1-P1-L1-2": "https://placehold.co/300x180?text=GeoGebra+3D",
+  "M1-P1-L1-3": "https://placehold.co/300x180?text=Augmented+Reality",
   "M1-P2-L1-1": "https://placehold.co/300x225?text=Rumah",
   "M1-P2-L1-2": "https://placehold.co/300x225?text=Tenda+Limas+Segiempat",
   "M1-P2-L1-3": "https://placehold.co/300x225?text=Akuarium",
