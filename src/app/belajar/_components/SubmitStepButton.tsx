@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState, type ReactNode } from "react";
+import { useFormStatus } from "react-dom";
 
 function isFormValid(form: HTMLFormElement): boolean {
   if (!form.checkValidity()) return false;
@@ -21,6 +22,7 @@ export default function SubmitStepButton({
 }) {
   const buttonRef = useRef<HTMLButtonElement>(null);
   const [valid, setValid] = useState(false);
+  const { pending } = useFormStatus();
 
   useEffect(() => {
     const form = buttonRef.current?.form;
@@ -39,10 +41,20 @@ export default function SubmitStepButton({
     <button
       ref={buttonRef}
       type="submit"
-      disabled={!valid}
-      className={`${className} disabled:bg-[#9CA3AF] disabled:shadow-none disabled:cursor-not-allowed disabled:opacity-70`}
+      disabled={!valid || pending}
+      className={`${className} active:scale-95 transition-transform disabled:bg-[#9CA3AF] disabled:shadow-none disabled:cursor-not-allowed disabled:opacity-70`}
     >
-      {children}
+      {pending ? (
+        <>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" className="animate-spin">
+            <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="2.4" strokeOpacity="0.25" />
+            <path d="M21 12a9 9 0 00-9-9" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" />
+          </svg>
+          Memproses...
+        </>
+      ) : (
+        children
+      )}
     </button>
   );
 }
