@@ -19,8 +19,10 @@ const thumbnails = [
 ] satisfies { n: number; label: string; tag?: string; imageKey: PageImageKey }[];
 
 export default async function Peta2Step1Amati({ materi, peta, step = "1", editFoto }: StepComponentProps) {
-  const thumbnailImages = await Promise.all(thumbnails.map((t) => getPageImage(t.imageKey)));
-  const gambarLangkah1 = await getPageImage("M1-P2-L1-11");
+  const [thumbnailImages, gambarLangkah1] = await Promise.all([
+    Promise.all(thumbnails.map((t) => getPageImage(t.imageKey))),
+    getPageImage("M1-P2-L1-11"),
+  ]);
 
   return (
     <form action={submitStepAction} className="flex flex-col gap-8">

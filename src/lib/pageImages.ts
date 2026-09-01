@@ -1,3 +1,4 @@
+import { cache } from "react";
 import { supabase } from "@/lib/supabase";
 
 /** Keys match the `nama` column in the `page_images` table (supabase/migrations_manual/0002_page_images.sql). */
@@ -156,15 +157,19 @@ const DEFAULT_IMAGES: Record<PageImageKey, string> = {
   "M1-P9-L2-2": "https://placehold.co/80x80?text=Ilustrasi",
 };
 
-/** Falls back to DEFAULT_IMAGES for any key missing from the table (e.g. before the migration is seeded). */
-export async function getPageImages(): Promise<Record<PageImageKey, string>> {
+/**
+ * Falls back to DEFAULT_IMAGES for any key missing from the table (e.g. before the migration is seeded).
+ * Wrapped in `cache()` so all `getPageImage` calls within the same request share one query
+ * instead of each re-fetching the whole table.
+ */
+export const getPageImages = cache(async (): Promise<Record<PageImageKey, string>> => {
   const { data } = await supabase.from("page_images").select("nama, url");
   const images = { ...DEFAULT_IMAGES };
   for (const row of data ?? []) {
     if (row.nama in images) images[row.nama as PageImageKey] = row.url;
   }
   return images;
-}
+});
 
 export async function getPageImage(key: PageImageKey): Promise<string> {
   const images = await getPageImages();

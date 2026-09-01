@@ -33,13 +33,18 @@ export async function isMateriUnlocked(userId: string, materi: string): Promise<
   return isMateriFullyComplete(userId, String(materiNum - 1));
 }
 
-/** Enforced server-side so a step can't be reached by guessing the URL. */
-export async function isStepUnlocked(
-  userId: string,
-  materi: string,
+/**
+ * Same gating logic as `isStepUnlocked`, but takes the current materi's progress rows
+ * (and whether the materi is unlocked) as arguments instead of fetching them itself, so a
+ * caller that already fetched `getMateriProgress` for other purposes (e.g. `initialAnswers`)
+ * doesn't have to fetch it again.
+ */
+export function isStepUnlockedFromRows(
+  rows: ProgressRow[],
+  materiUnlocked: boolean,
   peta: string,
   step: string
-): Promise<boolean> {
+): boolean {
   const structure = getPetaStructure();
   const totalStepsInPeta = structure[peta];
   const stepNum = Number(step);
@@ -49,11 +54,10 @@ export async function isStepUnlocked(
     return false;
   }
 
-  if (!(await isMateriUnlocked(userId, materi))) return false;
+  if (!materiUnlocked) return false;
 
   if (petaNum === 1 && stepNum === 1) return true;
 
-  const rows = await getMateriProgress(userId, materi);
   const done = new Set(rows.filter((r) => r.status === "selesai").map((r) => `${r.peta}-${r.step}`));
 
   if (stepNum === 1) {
