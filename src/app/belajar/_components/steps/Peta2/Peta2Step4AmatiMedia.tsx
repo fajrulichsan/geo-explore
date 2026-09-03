@@ -7,11 +7,11 @@ import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
 import { getPageImage, type PageImageKey } from "@/lib/pageImages";
 
 const items = [
-  { n: 1, label: "Blok Kayu (Kubus)", imageKey: "M1-P2-L4-1" },
-  { n: 2, label: "Tenda (Prisma Segitiga)", imageKey: "M1-P2-L4-2" },
-  { n: 3, label: "Akuarium", imageKey: "M1-P2-L4-3" },
-  { n: 4, label: "Rubik (Kubus)", imageKey: "M1-P2-L4-4" },
-  { n: 5, label: "Kotak Tisu", imageKey: "M1-P2-L4-5" },
+  { n: 1, label: "Kubus", imageKey: "M1-P2-L4-1" },
+  { n: 2, label: "Balok", imageKey: "M1-P2-L4-2" },
+  { n: 3, label: "Prisma Segitiga", imageKey: "M1-P2-L4-3" },
+  { n: 4, label: "Limas Segiempat", imageKey: "M1-P2-L4-4" },
+  { n: 5, label: "Limas Segitiga", imageKey: "M1-P2-L4-5" },
 ] satisfies { n: number; label: string; imageKey: PageImageKey }[];
 
 export default async function Peta2Step4AmatiMedia({ materi, peta, step = "4", editFoto }: StepComponentProps) {

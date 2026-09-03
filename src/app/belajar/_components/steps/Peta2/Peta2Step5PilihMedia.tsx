@@ -4,6 +4,7 @@ import SubmitStepButton from "@/app/belajar/_components/SubmitStepButton";
 import BackLink from "@/app/belajar/_components/BackLink";
 import StepHeader from "@/app/belajar/_components/StepHeader";
 import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
+import QrPopupButton from "@/app/belajar/_components/steps/Peta2/QrPopupButton";
 import { getPageImage, type PageImageKey } from "@/lib/pageImages";
 
 const cards = [
@@ -15,6 +16,8 @@ const cards = [
     title: "GeoGebra 3D",
     desc: "Amati model bangun ruang secara interaktif menggunakan GeoGebra 3D. Kamu dapat memutar dan memperbesar model sesuka hati.",
     action: "Buka GeoGebra",
+    qrImageKey: "qr-geogebra",
+    webHref: "/geogebra",
     bullets: [
       "Melihat model dari berbagai arah",
       "Memutar model secara bebas",
@@ -29,6 +32,8 @@ const cards = [
     title: "Augmented Reality",
     desc: "Amati model bangun ruang virtual di lingkungan sekitarmu menggunakan teknologi Augmented Reality (AR).",
     action: "Buka Kamera AR",
+    qrImageKey: "qr-ar",
+    webHref: "https://ar.geo-explore.my.id",
     note: "Butuh cahaya terang",
     bullets: [
       "Menempatkan model di meja/lantai",
@@ -44,15 +49,32 @@ const cards = [
     title: "Gambar (2D)",
     desc: "Amati model bangun ruang melalui gambar tampak dari beberapa arah (Depan, Samping, Atas).",
     action: null,
+    qrImageKey: null,
+    webHref: null,
     bullets: [
       "Membandingkan bentuk sisi dari arah berbeda",
       "Mengamati pola proyeksi 2D dari objek 3D",
     ],
   },
-] satisfies { key: string; imageKey: PageImageKey; accent: string; accentBg: string; title: string; desc: string; action: string | null; note?: string; bullets: string[] }[];
+] satisfies {
+  key: string;
+  imageKey: PageImageKey;
+  accent: string;
+  accentBg: string;
+  title: string;
+  desc: string;
+  action: string | null;
+  qrImageKey: PageImageKey | null;
+  webHref: string | null;
+  note?: string;
+  bullets: string[];
+}[];
 
 export default async function Peta2Step5PilihMedia({ materi, peta, step = "5", editFoto }: StepComponentProps) {
   const cardImages = await Promise.all(cards.map((card) => getPageImage(card.imageKey)));
+  const qrImages = await Promise.all(
+    cards.map((card) => (card.qrImageKey ? getPageImage(card.qrImageKey) : Promise.resolve(null)))
+  );
   return (
     <form action={submitStepAction} className="flex flex-col gap-8">
       <input type="hidden" name="materi" value={materi} />
@@ -107,34 +129,62 @@ export default async function Peta2Step5PilihMedia({ materi, peta, step = "5", e
               className="rounded-xl p-4 flex flex-col items-center justify-center gap-2 border border-[#E5E7EB] relative overflow-hidden"
               style={{ background: card.accentBg }}
             >
-              {card.note && (
-                <div className="absolute top-2 right-2 z-10 flex items-center gap-1 bg-white/80 rounded px-2 py-1">
-                  <span className="text-[10px] text-[#DC2626] font-semibold">{card.note}</span>
-                </div>
+              <div className="h-5 flex items-center justify-end w-full">
+                {card.note && (
+                  <div className="flex items-center gap-1 bg-white/80 rounded px-2 py-1">
+                    <span className="text-[10px] text-[#DC2626] font-semibold">{card.note}</span>
+                  </div>
+                )}
+              </div>
+              {card.qrImageKey && qrImages[i] ? (
+                <QrPopupButton
+                  title={card.title}
+                  accent={card.accent}
+                  qrImage={qrImages[i]!}
+                  webHref={card.webHref!}
+                  label=""
+                  className="relative w-full h-40 rounded-lg overflow-hidden p-0 border-0 cursor-pointer"
+                >
+                  <EditablePageImage
+                    imageKey={card.imageKey}
+                    materi={materi}
+                    peta={peta}
+                    step={step}
+                    urutan={String(i + 1)}
+                    src={cardImages[i]}
+                    alt={card.title}
+                    editable={editFoto}
+                    containerClassName="relative w-full h-40 rounded-lg overflow-hidden"
+                  />
+                </QrPopupButton>
+              ) : (
+                <EditablePageImage
+                  imageKey={card.imageKey}
+                  materi={materi}
+                  peta={peta}
+                  step={step}
+                  urutan={String(i + 1)}
+                  src={cardImages[i]}
+                  alt={card.title}
+                  editable={editFoto}
+                  containerClassName="relative w-full h-40 rounded-lg overflow-hidden"
+                />
               )}
-              <EditablePageImage
-                imageKey={card.imageKey}
-                materi={materi}
-                peta={peta}
-                step={step}
-                urutan={String(i + 1)}
-                src={cardImages[i]}
-                alt={card.title}
-                editable={editFoto}
-                containerClassName="relative w-full h-28 rounded-lg overflow-hidden"
-              />
               <span className="text-xs text-center text-[#6B7280]">
                 Pindai atau klik untuk membuka
               </span>
-              {card.action && (
-                <button
-                  type="button"
-                  className="mt-1 w-full rounded-full py-2 text-sm font-bold text-white shadow-sm"
-                  style={{ background: card.accent }}
-                >
-                  {card.action}
-                </button>
-              )}
+              <div className="mt-1 w-full h-9">
+                {card.action && card.qrImageKey && qrImages[i] && (
+                  <QrPopupButton
+                    title={card.title}
+                    accent={card.accent}
+                    qrImage={qrImages[i]!}
+                    webHref={card.webHref!}
+                    label={card.action}
+                    className="w-full h-full rounded-full text-sm font-bold text-white shadow-sm"
+                  />
+                )}
+              </div>
             </div>
             <div>
               <h4 className="m-0 mb-2 text-xs font-bold text-[#374151]">Kamu dapat:</h4>
