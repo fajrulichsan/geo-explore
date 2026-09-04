@@ -144,7 +144,22 @@ export type PageImageKey =
   | "M3-P4-L8-2"
   | "M3-P5-L1-1"
   | "M3-P5-L3-1"
-  | "M3-P5-L6-1";
+  | "M3-P5-L6-1"
+  | "M3-P6-L1-1"
+  | "M3-P6-L3-1"
+  | "M3-P6-L3-2"
+  | "M3-P8-L1-1"
+  | "M3-P8-L3-1"
+  | "M3-P8-L5-1"
+  | "M3-P8-L5-2"
+  | "M3-P7-L1-1"
+  | "M3-P7-L2-1"
+  | "M3-P9-L1-1"
+  | "M3-P9-L3-1"
+  | "M3-P9-L4-1"
+  | "M3-P9-L4-2"
+  | "M3-P10-L1-1"
+  | "M3-P10-L4-1";
 
 const DEFAULT_IMAGES: Record<PageImageKey, string> = {
   "logo-kampus": "https://is3.cloudhost.id/assets-geo/logo-kampus.png",
@@ -289,6 +304,21 @@ const DEFAULT_IMAGES: Record<PageImageKey, string> = {
   "M3-P5-L1-1": "https://placehold.co/416x320?text=Tiga+Siswa+Mengolah+Data",
   "M3-P5-L3-1": "https://placehold.co/240x240?text=Kubus+3D",
   "M3-P5-L6-1": "https://placehold.co/280x280?text=Maskot+Jempol",
+  "M3-P6-L1-1": "https://placehold.co/416x320?text=Tiga+Siswa+Verifikasi",
+  "M3-P6-L3-1": "https://placehold.co/160x192?text=Maskot+Semangat",
+  "M3-P6-L3-2": "https://placehold.co/280x360?text=Tiga+Siswa+Refleksi",
+  "M3-P8-L1-1": "https://placehold.co/320x240?text=Tiga+Siswa+Berdiskusi",
+  "M3-P8-L3-1": "https://placehold.co/160x224?text=Maskot+Jempol",
+  "M3-P8-L5-1": "https://placehold.co/128x128?text=Trofi",
+  "M3-P8-L5-2": "https://placehold.co/220x220?text=Bintang",
+  "M3-P7-L1-1": "https://placehold.co/280x360?text=Tiga+Siswa+Menyimpulkan",
+  "M3-P7-L2-1": "https://placehold.co/140x160?text=Maskot+Jempol",
+  "M3-P9-L1-1": "https://placehold.co/512x320?text=Tiga+Siswa+Berdiskusi+Strategi",
+  "M3-P9-L3-1": "https://placehold.co/224x256?text=Maskot+Bertanya",
+  "M3-P9-L4-1": "https://placehold.co/224x256?text=Maskot+Jempol",
+  "M3-P9-L4-2": "https://placehold.co/112x128?text=Maskot+Semangat",
+  "M3-P10-L1-1": "https://placehold.co/440x320?text=Tiga+Siswa+GeoGebra+%26+AR",
+  "M3-P10-L4-1": "https://placehold.co/200x280?text=Maskot+Jempol",
 };
 
 /**

@@ -120,16 +120,34 @@ import Materi3Peta5Step3CariPolaRefleksi from "./steps/Materi3Peta5/Materi3Peta5
 import Materi3Peta5Step4MenemukanStrategi from "./steps/Materi3Peta5/Materi3Peta5Step4MenemukanStrategi";
 import Materi3Peta5Step5RumusSementara from "./steps/Materi3Peta5/Materi3Peta5Step5RumusSementara";
 import Materi3Peta5Step6RefleksiSingkat from "./steps/Materi3Peta5/Materi3Peta5Step6RefleksiSingkat";
+import Materi3Peta9Step1MasalahDanStrategi from "./steps/Materi3Peta9/Materi3Peta9Step1MasalahDanStrategi";
+import Materi3Peta9Step2BandingkanStrategi from "./steps/Materi3Peta9/Materi3Peta9Step2BandingkanStrategi";
+import Materi3Peta9Step3AlasanDanTransfer from "./steps/Materi3Peta9/Materi3Peta9Step3AlasanDanTransfer";
+import Materi3Peta9Step4RefleksiSingkat from "./steps/Materi3Peta9/Materi3Peta9Step4RefleksiSingkat";
 import Materi2Peta9Step1MasalahOpenEnded from "./steps/Materi2Peta9/Materi2Peta9Step1MasalahOpenEnded";
 import Materi2Peta9Step2BuatIdemu from "./steps/Materi2Peta9/Materi2Peta9Step2BuatIdemu";
 import Materi2Peta9Step3StrategiPola from "./steps/Materi2Peta9/Materi2Peta9Step3StrategiPola";
 import Materi2Peta9Step4BandingkanRefleksi from "./steps/Materi2Peta9/Materi2Peta9Step4BandingkanRefleksi";
+import Materi3Peta7Step1Kesimpulan from "./steps/Materi3Peta7/Materi3Peta7Step1Kesimpulan";
+import Materi3Peta7Step2KesimpulanKelompok from "./steps/Materi3Peta7/Materi3Peta7Step2KesimpulanKelompok";
+import Materi3Peta6Step1VerifikasiGeoGebraAR from "./steps/Materi3Peta6/Materi3Peta6Step1VerifikasiGeoGebraAR";
+import Materi3Peta6Step2Bandingkan from "./steps/Materi3Peta6/Materi3Peta6Step2Bandingkan";
+import Materi3Peta6Step3RevisiHasilRefleksi from "./steps/Materi3Peta6/Materi3Peta6Step3RevisiHasilRefleksi";
+import Materi3Peta10Step1KonsepDasar from "./steps/Materi3Peta10/Materi3Peta10Step1KonsepDasar";
+import Materi3Peta10Step2RumusLuasPermukaan from "./steps/Materi3Peta10/Materi3Peta10Step2RumusLuasPermukaan";
+import Materi3Peta10Step3LangkahDanStrategi from "./steps/Materi3Peta10/Materi3Peta10Step3LangkahDanStrategi";
+import Materi3Peta10Step4PetaKonsepPenutup from "./steps/Materi3Peta10/Materi3Peta10Step4PetaKonsepPenutup";
 import Materi3Peta3Step1DiskusikanBersama from "./steps/Materi3Peta3/Materi3Peta3Step1DiskusikanBersama";
 import Materi3Peta3Step2DugaanKelompok from "./steps/Materi3Peta3/Materi3Peta3Step2DugaanKelompok";
 import Materi3Peta3Step3BandingkanPendapat from "./steps/Materi3Peta3/Materi3Peta3Step3BandingkanPendapat";
 import Materi3Peta3Step4DugaanSementara from "./steps/Materi3Peta3/Materi3Peta3Step4DugaanSementara";
 import Materi3Peta3Step5DugaanUntukDiuji from "./steps/Materi3Peta3/Materi3Peta3Step5DugaanUntukDiuji";
 import Materi3Peta3Step6RefleksiDiskusi from "./steps/Materi3Peta3/Materi3Peta3Step6RefleksiDiskusi";
+import Materi3Peta8Step1RefleksiPemahaman from "./steps/Materi3Peta8/Materi3Peta8Step1RefleksiPemahaman";
+import Materi3Peta8Step2RefleksiPengalaman from "./steps/Materi3Peta8/Materi3Peta8Step2RefleksiPengalaman";
+import Materi3Peta8Step3KeyakinanDiriku from "./steps/Materi3Peta8/Materi3Peta8Step3KeyakinanDiriku";
+import Materi3Peta8Step4RefleksiPenalaran from "./steps/Materi3Peta8/Materi3Peta8Step4RefleksiPenalaran";
+import Materi3Peta8Step5PesanUntukDiriku from "./steps/Materi3Peta8/Materi3Peta8Step5PesanUntukDiriku";
 
 export type StepComponentProps = {
   materi: string;
@@ -271,6 +289,24 @@ export const stepRegistry: Record<string, ComponentType<StepComponentProps>> = {
   "3-5-4": Materi3Peta5Step4MenemukanStrategi,
   "3-5-5": Materi3Peta5Step5RumusSementara,
   "3-5-6": Materi3Peta5Step6RefleksiSingkat,
+  "3-9-1": Materi3Peta9Step1MasalahDanStrategi,
+  "3-9-2": Materi3Peta9Step2BandingkanStrategi,
+  "3-9-3": Materi3Peta9Step3AlasanDanTransfer,
+  "3-9-4": Materi3Peta9Step4RefleksiSingkat,
+  "3-7-1": Materi3Peta7Step1Kesimpulan,
+  "3-7-2": Materi3Peta7Step2KesimpulanKelompok,
+  "3-6-1": Materi3Peta6Step1VerifikasiGeoGebraAR,
+  "3-6-2": Materi3Peta6Step2Bandingkan,
+  "3-6-3": Materi3Peta6Step3RevisiHasilRefleksi,
+  "3-8-1": Materi3Peta8Step1RefleksiPemahaman,
+  "3-8-2": Materi3Peta8Step2RefleksiPengalaman,
+  "3-8-3": Materi3Peta8Step3KeyakinanDiriku,
+  "3-8-4": Materi3Peta8Step4RefleksiPenalaran,
+  "3-8-5": Materi3Peta8Step5PesanUntukDiriku,
+  "3-10-1": Materi3Peta10Step1KonsepDasar,
+  "3-10-2": Materi3Peta10Step2RumusLuasPermukaan,
+  "3-10-3": Materi3Peta10Step3LangkahDanStrategi,
+  "3-10-4": Materi3Peta10Step4PetaKonsepPenutup,
 };
 
 export function getStepComponent(materi: string, peta: string, step: string) {
