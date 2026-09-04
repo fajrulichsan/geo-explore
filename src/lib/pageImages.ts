@@ -118,7 +118,33 @@ export type PageImageKey =
   | "M2-P9-L1-2"
   | "M2-P9-L4-1"
   | "M2-P10-L1-1"
-  | "M2-P10-L2-1";
+  | "M2-P10-L2-1"
+  | "M3-P1-L1-1"
+  | "M3-P1-L1-2"
+  | "M3-P1-L1-3"
+  | "M3-P1-L2-1"
+  | "M3-P1-L2-2"
+  | "M3-P1-L2-3"
+  | "M3-P2-L1-1"
+  | "M3-P2-L1-2"
+  | "M3-P2-L1-3"
+  | "M3-P2-L1-4"
+  | "M3-P2-L2-1"
+  | "M3-P2-L4-1"
+  | "M3-P2-L4-2"
+  | "M3-P2-L4-3"
+  | "M3-P2-L6-1"
+  | "M3-P3-L1-1"
+  | "M3-P3-L2-1"
+  | "M3-P3-L3-1"
+  | "M3-P4-L1-1"
+  | "M3-P4-L2-1"
+  | "M3-P4-L3-1"
+  | "M3-P4-L8-1"
+  | "M3-P4-L8-2"
+  | "M3-P5-L1-1"
+  | "M3-P5-L3-1"
+  | "M3-P5-L6-1";
 
 const DEFAULT_IMAGES: Record<PageImageKey, string> = {
   "logo-kampus": "https://is3.cloudhost.id/assets-geo/logo-kampus.png",
@@ -237,6 +263,32 @@ const DEFAULT_IMAGES: Record<PageImageKey, string> = {
   "M2-P9-L4-1": "https://placehold.co/280x360?text=Maskot+Refleksi",
   "M2-P10-L1-1": "https://placehold.co/280x360?text=Maskot+Rangkuman",
   "M2-P10-L2-1": "https://placehold.co/200x280?text=Maskot+Semangat",
+  "M3-P1-L1-1": "https://placehold.co/400x300?text=Siswa+Berdiskusi",
+  "M3-P1-L1-2": "https://placehold.co/600x338?text=Alur+Luas+Permukaan",
+  "M3-P1-L1-3": "https://placehold.co/280x360?text=Maskot+Membaca",
+  "M3-P1-L2-1": "https://placehold.co/300x180?text=GeoGebra+3D",
+  "M3-P1-L2-2": "https://placehold.co/300x180?text=Augmented+Reality",
+  "M3-P1-L2-3": "https://placehold.co/220x220?text=Maskot+Ingat",
+  "M3-P2-L1-1": "https://placehold.co/280x360?text=Maskot+Mengamati",
+  "M3-P2-L1-2": "https://placehold.co/320x240?text=Jaring-Jaring+Kubus",
+  "M3-P2-L1-3": "https://placehold.co/320x240?text=Jaring-Jaring+Balok",
+  "M3-P2-L1-4": "https://placehold.co/320x240?text=Jaring-Jaring+Prisma+Segitiga",
+  "M3-P2-L2-1": "https://placehold.co/280x360?text=Maskot+Berpikir",
+  "M3-P2-L4-1": "https://placehold.co/320x240?text=Jaring-Jaring+Kubus+%28Ukuran%29",
+  "M3-P2-L4-2": "https://placehold.co/320x240?text=Jaring-Jaring+Balok+%28Ukuran%29",
+  "M3-P2-L4-3": "https://placehold.co/320x240?text=Jaring-Jaring+Prisma+%28Ukuran%29",
+  "M3-P2-L6-1": "https://placehold.co/280x280?text=Dua+Siswa+Jempol",
+  "M3-P3-L1-1": "https://placehold.co/280x360?text=Tiga+Siswa+Berdiskusi",
+  "M3-P3-L2-1": "https://placehold.co/220x220?text=Maskot+Ingat",
+  "M3-P3-L3-1": "https://placehold.co/320x280?text=Tiga+Siswa+Berpendapat",
+  "M3-P4-L1-1": "https://placehold.co/416x320?text=Tiga+Siswa+Bereksplorasi",
+  "M3-P4-L2-1": "https://placehold.co/600x338?text=Transisi+GeoGebra+3D",
+  "M3-P4-L3-1": "https://placehold.co/600x338?text=AR+Kubus+5cm",
+  "M3-P4-L8-1": "https://placehold.co/300x400?text=Maskot+Menulis+Refleksi",
+  "M3-P4-L8-2": "https://placehold.co/112x128?text=Maskot+Semangat",
+  "M3-P5-L1-1": "https://placehold.co/416x320?text=Tiga+Siswa+Mengolah+Data",
+  "M3-P5-L3-1": "https://placehold.co/240x240?text=Kubus+3D",
+  "M3-P5-L6-1": "https://placehold.co/280x280?text=Maskot+Jempol",
 };
 
 /**
