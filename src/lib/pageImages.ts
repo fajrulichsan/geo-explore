@@ -93,7 +93,32 @@ export type PageImageKey =
   | "M2-P2-L1-10"
   | "M2-P2-L1-12"
   | "M2-P2-L2-1"
-  | "M2-P2-L4-1";
+  | "M2-P2-L4-1"
+  | "M2-P3-L1-1"
+  | "M2-P3-L1-2"
+  | "M2-P4-L1-1"
+  | "M2-P4-L1-2"
+  | "M2-P4-L1-3"
+  | "M2-P4-L1-4"
+  | "M2-P4-L1-5"
+  | "M2-P4-L4-1"
+  | "M2-P5-L1-1"
+  | "M2-P6-L1-1"
+  | "M2-P6-L1-2"
+  | "M2-P6-L1-3"
+  | "M2-P6-L1-4"
+  | "M2-P6-L1-5"
+  | "M2-P6-L3-1"
+  | "M2-P7-L1-1"
+  | "M2-P7-L4-1"
+  | "M2-P8-L1-1"
+  | "M2-P8-L1-2"
+  | "M2-P8-L3-1"
+  | "M2-P9-L1-1"
+  | "M2-P9-L1-2"
+  | "M2-P9-L4-1"
+  | "M2-P10-L1-1"
+  | "M2-P10-L2-1";
 
 const DEFAULT_IMAGES: Record<PageImageKey, string> = {
   "logo-kampus": "https://is3.cloudhost.id/assets-geo/logo-kampus.png",
@@ -187,6 +212,31 @@ const DEFAULT_IMAGES: Record<PageImageKey, string> = {
   "M2-P2-L1-12": "https://placehold.co/280x360?text=Maskot+Mengamati",
   "M2-P2-L2-1": "https://placehold.co/280x360?text=Maskot+Berpikir",
   "M2-P2-L4-1": "https://placehold.co/280x360?text=Maskot+Lanjutkan",
+  "M2-P3-L1-1": "https://placehold.co/280x360?text=Maskot+Berdiskusi",
+  "M2-P3-L1-2": "https://placehold.co/480x300?text=Kelompok+Berdiskusi",
+  "M2-P4-L1-1": "https://placehold.co/280x360?text=Maskot+Eksplorasi",
+  "M2-P4-L1-2": "https://placehold.co/480x300?text=GeoGebra+3D",
+  "M2-P4-L1-3": "https://placehold.co/220x220?text=QR+GeoGebra",
+  "M2-P4-L1-4": "https://placehold.co/480x300?text=Lipatan+AR",
+  "M2-P4-L1-5": "https://placehold.co/220x220?text=QR+AR",
+  "M2-P4-L4-1": "https://placehold.co/280x360?text=Maskot+Refleksi",
+  "M2-P5-L1-1": "https://placehold.co/280x360?text=Maskot+Mengolah+Informasi",
+  "M2-P6-L1-1": "https://placehold.co/280x360?text=Maskot+Verifikasi",
+  "M2-P6-L1-2": "https://placehold.co/480x300?text=GeoGebra+3D",
+  "M2-P6-L1-3": "https://placehold.co/220x220?text=QR+GeoGebra",
+  "M2-P6-L1-4": "https://placehold.co/480x300?text=Proses+AR",
+  "M2-P6-L1-5": "https://placehold.co/220x220?text=QR+AR",
+  "M2-P6-L3-1": "https://placehold.co/280x360?text=Maskot+Refleksi",
+  "M2-P7-L1-1": "https://placehold.co/280x360?text=Maskot+Menyimpulkan",
+  "M2-P7-L4-1": "https://placehold.co/160x200?text=Maskot+Jempol",
+  "M2-P8-L1-1": "https://placehold.co/280x360?text=Maskot+Refleksi+Diri",
+  "M2-P8-L1-2": "https://placehold.co/320x280?text=Jaring-Jaring+Bangun+Ruang",
+  "M2-P8-L3-1": "https://placehold.co/480x280?text=Siswa+Berdiskusi",
+  "M2-P9-L1-1": "https://placehold.co/280x360?text=Maskot+Tantangan",
+  "M2-P9-L1-2": "https://placehold.co/320x320?text=Kubus",
+  "M2-P9-L4-1": "https://placehold.co/280x360?text=Maskot+Refleksi",
+  "M2-P10-L1-1": "https://placehold.co/280x360?text=Maskot+Rangkuman",
+  "M2-P10-L2-1": "https://placehold.co/200x280?text=Maskot+Semangat",
 };
 
 /**
