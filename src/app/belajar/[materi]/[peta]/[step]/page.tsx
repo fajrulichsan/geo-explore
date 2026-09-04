@@ -25,7 +25,7 @@ export default async function BelajarStepPage(
   ]);
 
   // Server-side gate: a locked step can't be reached by typing the URL directly.
-  if (!isStepUnlockedFromRows(rows, materiUnlocked, peta, step)) {
+  if (!isStepUnlockedFromRows(rows, materiUnlocked, materi, peta, step)) {
     redirect(`/peta-belajar/${materi}`);
   }
 

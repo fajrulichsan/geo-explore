@@ -23,7 +23,7 @@ function collectAnswers(formData: FormData): Record<string, unknown> {
 }
 
 function getNextStepUrl(materi: string, peta: string, step: string): string {
-  const structure = getPetaStructure();
+  const structure = getPetaStructure(materi);
   const stepNum = Number(step);
   const totalInPeta = structure[peta] ?? 0;
 

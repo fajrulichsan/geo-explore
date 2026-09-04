@@ -18,7 +18,7 @@ export async function getMateriProgress(userId: string, materi: string): Promise
 }
 
 export async function isMateriFullyComplete(userId: string, materi: string): Promise<boolean> {
-  const structure = getPetaStructure();
+  const structure = getPetaStructure(materi);
   const total = getTotalStepsInStructure(structure);
   if (total === 0) return false;
   const rows = await getMateriProgress(userId, materi);
@@ -33,6 +33,19 @@ export async function isMateriUnlocked(userId: string, materi: string): Promise<
   return isMateriFullyComplete(userId, String(materiNum - 1));
 }
 
+export async function isStepUnlocked(
+  userId: string,
+  materi: string,
+  peta: string,
+  step: string
+): Promise<boolean> {
+  const [materiUnlocked, rows] = await Promise.all([
+    isMateriUnlocked(userId, materi),
+    getMateriProgress(userId, materi),
+  ]);
+  return isStepUnlockedFromRows(rows, materiUnlocked, materi, peta, step);
+}
+
 /**
  * Same gating logic as `isStepUnlocked`, but takes the current materi's progress rows
  * (and whether the materi is unlocked) as arguments instead of fetching them itself, so a
@@ -42,10 +55,11 @@ export async function isMateriUnlocked(userId: string, materi: string): Promise<
 export function isStepUnlockedFromRows(
   rows: ProgressRow[],
   materiUnlocked: boolean,
+  materi: string,
   peta: string,
   step: string
 ): boolean {
-  const structure = getPetaStructure();
+  const structure = getPetaStructure(materi);
   const totalStepsInPeta = structure[peta];
   const stepNum = Number(step);
   const petaNum = Number(peta);

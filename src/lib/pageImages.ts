@@ -77,7 +77,23 @@ export type PageImageKey =
   | "M1-P9-L1-5"
   | "M1-P9-L1-6"
   | "M1-P9-L2-1"
-  | "M1-P9-L2-2";
+  | "M1-P9-L2-2"
+  | "M2-P1-L2-1"
+  | "M2-P1-L2-2"
+  | "M2-P1-L2-3"
+  | "M2-P2-L1-1"
+  | "M2-P2-L1-2"
+  | "M2-P2-L1-3"
+  | "M2-P2-L1-4"
+  | "M2-P2-L1-5"
+  | "M2-P2-L1-6"
+  | "M2-P2-L1-7"
+  | "M2-P2-L1-8"
+  | "M2-P2-L1-9"
+  | "M2-P2-L1-10"
+  | "M2-P2-L1-12"
+  | "M2-P2-L2-1"
+  | "M2-P2-L4-1";
 
 const DEFAULT_IMAGES: Record<PageImageKey, string> = {
   "logo-kampus": "https://is3.cloudhost.id/assets-geo/logo-kampus.png",
@@ -155,6 +171,22 @@ const DEFAULT_IMAGES: Record<PageImageKey, string> = {
   "M1-P9-L1-6": "https://placehold.co/200x200?text=Limas+Segiempat",
   "M1-P9-L2-1": "https://placehold.co/96x96?text=Kubus",
   "M1-P9-L2-2": "https://placehold.co/80x80?text=Ilustrasi",
+  "M2-P1-L2-1": "https://placehold.co/600x338?text=Proses+Jaring-Jaring",
+  "M2-P1-L2-2": "https://placehold.co/300x180?text=GeoGebra+3D",
+  "M2-P1-L2-3": "https://placehold.co/300x180?text=Augmented+Reality",
+  "M2-P2-L1-1": "https://placehold.co/300x300?text=Susunan+A",
+  "M2-P2-L1-2": "https://placehold.co/300x300?text=Susunan+B",
+  "M2-P2-L1-3": "https://placehold.co/300x300?text=Susunan+C",
+  "M2-P2-L1-4": "https://placehold.co/300x300?text=Susunan+D",
+  "M2-P2-L1-5": "https://placehold.co/300x300?text=Susunan+E",
+  "M2-P2-L1-6": "https://placehold.co/300x300?text=Susunan+F",
+  "M2-P2-L1-7": "https://placehold.co/300x300?text=Susunan+G",
+  "M2-P2-L1-8": "https://placehold.co/300x300?text=Susunan+H",
+  "M2-P2-L1-9": "https://placehold.co/300x300?text=Susunan+I",
+  "M2-P2-L1-10": "https://placehold.co/300x300?text=Susunan+J",
+  "M2-P2-L1-12": "https://placehold.co/280x360?text=Maskot+Mengamati",
+  "M2-P2-L2-1": "https://placehold.co/280x360?text=Maskot+Berpikir",
+  "M2-P2-L4-1": "https://placehold.co/280x360?text=Maskot+Lanjutkan",
 };
 
 /**

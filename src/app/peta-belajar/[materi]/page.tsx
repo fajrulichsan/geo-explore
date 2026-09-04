@@ -39,7 +39,7 @@ export default async function PetaBelajarPage(
     supabase.from("users").select("nama_lengkap").eq("id", userId).maybeSingle(),
   ]);
 
-  const structure = getPetaStructure();
+  const structure = getPetaStructure(materi);
   const petaOrder = getPetaOrder(structure);
   const done = new Set(rows.filter((r) => r.status === "selesai").map((r) => `${r.peta}-${r.step}`));
 
