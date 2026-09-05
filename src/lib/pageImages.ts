@@ -203,7 +203,46 @@ export type PageImageKey =
   | "M4-P7-L4-1"
   | "M4-P7-L6-1"
   | "M4-P7-L7-1"
-  | "M4-P8-L1-1";
+  | "M4-P8-L1-1"
+  | "M5-P1-L1-1"
+  | "M5-P1-L2-1"
+  | "M5-P1-L2-2"
+  | "M5-P1-L2-3"
+  | "M5-P1-L2-4"
+  | "M5-P1-L2-5"
+  | "M5-P1-L2-6"
+  | "M5-P1-L2-7"
+  | "M5-P8-L1-1"
+  | "M5-P4-L1-1"
+  | "M5-P4-L2-1"
+  | "M5-P4-L3-1"
+  | "M5-P4-L4-1"
+  | "M5-P3-L1-1"
+  | "M5-P3-L1-2"
+  | "M5-P3-L1-3"
+  | "M5-P3-L1-4"
+  | "M5-P3-L1-5"
+  | "M5-P3-L2-1"
+  | "M5-P5-L1-1"
+  | "M5-P5-L3-1"
+  | "M5-P5-L4-1"
+  | "M5-P5-L6-1"
+  | "M5-P5-L6-2"
+  | "M5-P7-L1-1"
+  | "M5-P7-L4-1"
+  | "M5-P7-L5-1"
+  | "M5-P7-L5-2"
+  | "M5-P7-L6-1"
+  | "M5-P10-L1-1"
+  | "M5-P10-L4-1"
+  | "M5-P9-L1-1"
+  | "M5-P9-L4-1"
+  | "M5-P6-L1-1"
+  | "M5-P6-L3-1"
+  | "M5-P6-L4-1"
+  | "M5-P6-L4-2"
+  | "M5-P2-L1-1"
+  | "M5-P2-L9-1";
 
 const DEFAULT_IMAGES: Record<PageImageKey, string> = {
   "logo-kampus": "https://is3.cloudhost.id/assets-geo/logo-kampus.png",
@@ -407,6 +446,45 @@ const DEFAULT_IMAGES: Record<PageImageKey, string> = {
   "M4-P7-L6-1": "https://placehold.co/560x224?text=Barisan+Alas+Limas",
   "M4-P7-L7-1": "https://placehold.co/160x192?text=Dua+Siswa+Jempol",
   "M4-P8-L1-1": "https://placehold.co/320x240?text=Tiga+Siswa+Berdiskusi",
+  "M5-P8-L1-1": "https://placehold.co/320x240?text=Dua+Siswa+Mencatat",
+  "M5-P4-L1-1": "https://placehold.co/416x320?text=Tiga+Siswa+Bereksplorasi+Skala",
+  "M5-P4-L2-1": "https://placehold.co/600x338?text=GeoGebra+3D+Faktor+Skala",
+  "M5-P4-L3-1": "https://placehold.co/600x338?text=AR+Kubus+Faktor+Skala",
+  "M5-P4-L4-1": "https://placehold.co/220x280?text=Maskot+Ayo+Berpikir",
+  "M5-P3-L1-1": "https://placehold.co/256x320?text=Tiga+Siswa+Berdiskusi",
+  "M5-P3-L1-2": "https://placehold.co/360x200?text=Kubus+Awal+ke+Hasil+Skala",
+  "M5-P3-L1-3": "https://placehold.co/360x200?text=Balok+Awal+ke+Hasil+Skala",
+  "M5-P3-L1-4": "https://placehold.co/360x200?text=Prisma+Awal+ke+Hasil+Skala",
+  "M5-P3-L1-5": "https://placehold.co/360x200?text=Limas+Awal+ke+Hasil+Skala",
+  "M5-P3-L2-1": "https://placehold.co/200x200?text=Laptop+Kubus+GeoGebra",
+  "M5-P5-L1-1": "https://placehold.co/416x320?text=Tiga+Siswa+Mengolah+Data",
+  "M5-P5-L3-1": "https://placehold.co/220x220?text=Maskot+Refleksi+Mini",
+  "M5-P5-L4-1": "https://placehold.co/416x224?text=Tiga+Siswa+Membandingkan",
+  "M5-P5-L6-1": "https://placehold.co/220x220?text=Maskot+Tampak+Berlaku",
+  "M5-P5-L6-2": "https://placehold.co/220x220?text=Maskot+Motivasi",
+  "M5-P7-L1-1": "https://placehold.co/416x320?text=Tiga+Siswa+Menyimpulkan+Skala",
+  "M5-P7-L4-1": "https://placehold.co/480x320?text=Kubus+%26+Jaring-Jaring+Diskalakan",
+  "M5-P7-L5-1": "https://placehold.co/220x280?text=Maskot+Kesimpulan",
+  "M5-P7-L5-2": "https://placehold.co/416x224?text=Tiga+Siswa+Membandingkan",
+  "M5-P7-L6-1": "https://placehold.co/200x260?text=Maskot+Jempol",
+  "M5-P10-L1-1": "https://placehold.co/440x320?text=Tiga+Siswa+Berdiskusi+Skala",
+  "M5-P10-L4-1": "https://placehold.co/200x280?text=Maskot+Jempol",
+  "M5-P9-L1-1": "https://placehold.co/416x320?text=Tiga+Siswa+Strategi",
+  "M5-P9-L4-1": "https://placehold.co/280x280?text=Dua+Siswa+Merayakan",
+  "M5-P6-L1-1": "https://placehold.co/416x320?text=Tiga+Siswa+Verifikasi",
+  "M5-P6-L3-1": "https://placehold.co/416x320?text=Tiga+Siswa+Verifikasi",
+  "M5-P6-L4-1": "https://placehold.co/256x320?text=Siswa+Jempol",
+  "M5-P6-L4-2": "https://placehold.co/112x128?text=Maskot+Semangat",
+  "M5-P2-L1-1": "https://placehold.co/280x224?text=Dua+Siswa+Mengamati+Bangun+Ruang",
+  "M5-P2-L9-1": "https://placehold.co/160x200?text=Maskot+Jempol",
+  "M5-P1-L1-1": "https://placehold.co/400x300?text=Tiga+Siswa+Skala+3D",
+  "M5-P1-L2-1": "https://placehold.co/480x300?text=GeoGebra+3D+Slider+Skala",
+  "M5-P1-L2-2": "https://placehold.co/480x300?text=Augmented+Reality+Skala",
+  "M5-P1-L2-3": "https://placehold.co/220x220?text=Maskot+Menulis",
+  "M5-P1-L2-4": "https://placehold.co/160x160?text=Kubus",
+  "M5-P1-L2-5": "https://placehold.co/160x160?text=Balok",
+  "M5-P1-L2-6": "https://placehold.co/160x160?text=Prisma+Segitiga",
+  "M5-P1-L2-7": "https://placehold.co/160x160?text=Limas+Segiempat",
 };
 
 /**
