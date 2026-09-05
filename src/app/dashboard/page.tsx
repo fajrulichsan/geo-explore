@@ -37,9 +37,6 @@ export default async function DashboardPage() {
     },
   ];
 
-  const structure = getPetaStructure();
-  const totalStepsPerMateri = getTotalStepsInStructure(structure);
-
   const materiNumbers = Array.from({ length: TOTAL_MATERI }, (_, i) => String(i + 1));
   const learningPath = await Promise.all(
     materiNumbers.map(async (materi) => {
@@ -47,8 +44,10 @@ export default async function DashboardPage() {
         getMateriProgress(userId, materi),
         isMateriUnlocked(userId, materi),
       ]);
+      const structure = getPetaStructure(materi);
+      const totalSteps = getTotalStepsInStructure(structure);
       const done = rows.filter((r) => r.status === "selesai").length;
-      const progress = totalStepsPerMateri ? Math.round((done / totalStepsPerMateri) * 100) : 0;
+      const progress = totalSteps ? Math.round((done / totalSteps) * 100) : 0;
       const meta = allMateriMeta[materi] ?? { title: `Materi ${materi}`, description: "" };
       return {
         materi,

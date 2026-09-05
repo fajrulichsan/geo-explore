@@ -176,6 +176,7 @@ import Materi4Peta10Step1KonsepDasar from "./steps/Materi4Peta10/Materi4Peta10St
 import Materi4Peta10Step2RumusLuasPermukaan from "./steps/Materi4Peta10/Materi4Peta10Step2RumusLuasPermukaan";
 import Materi4Peta10Step3StrategiPenutup from "./steps/Materi4Peta10/Materi4Peta10Step3StrategiPenutup";
 import Materi4Peta1Step1Pendahuluan from "./steps/Materi4Peta1/Materi4Peta1Step1Pendahuluan";
+import Materi4Peta1Step2TujuanDanIngat from "./steps/Materi4Peta1/Materi4Peta1Step2TujuanDanIngat";
 import Materi4Peta2Step1AmatiBangunRuang from "./steps/Materi4Peta2/Materi4Peta2Step1AmatiBangunRuang";
 import Materi4Peta2Step2PertanyaanPengamatan from "./steps/Materi4Peta2/Materi4Peta2Step2PertanyaanPengamatan";
 import Materi4Peta2Step3LanjutkanPengamatan from "./steps/Materi4Peta2/Materi4Peta2Step3LanjutkanPengamatan";
@@ -404,6 +405,7 @@ export const stepRegistry: Record<string, ComponentType<StepComponentProps>> = {
   "3-10-3": Materi3Peta10Step3LangkahDanStrategi,
   "3-10-4": Materi3Peta10Step4PetaKonsepPenutup,
   "4-1-1": Materi4Peta1Step1Pendahuluan,
+  "4-1-2": Materi4Peta1Step2TujuanDanIngat,
   "4-2-1": Materi4Peta2Step1AmatiBangunRuang,
   "4-2-2": Materi4Peta2Step2PertanyaanPengamatan,
   "4-2-3": Materi4Peta2Step3LanjutkanPengamatan,
