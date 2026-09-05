@@ -159,7 +159,51 @@ export type PageImageKey =
   | "M3-P9-L4-1"
   | "M3-P9-L4-2"
   | "M3-P10-L1-1"
-  | "M3-P10-L4-1";
+  | "M3-P10-L4-1"
+  | "M4-P1-L1-1"
+  | "M4-P1-L1-2"
+  | "M4-P1-L1-3"
+  | "M4-P1-L1-4"
+  | "M4-P1-L1-5"
+  | "M4-P1-L1-6"
+  | "M4-P1-L1-7"
+  | "M4-P2-L1-1"
+  | "M4-P2-L2-1"
+  | "M4-P10-L1-1"
+  | "M4-P10-L3-1"
+  | "M4-P3-L1-1"
+  | "M4-P3-L1-2"
+  | "M4-P3-L1-3"
+  | "M4-P3-L1-4"
+  | "M4-P3-L2-1"
+  | "M4-P3-L2-2"
+  | "M4-P3-L4-1"
+  | "M4-P4-L1-1"
+  | "M4-P4-L2-1"
+  | "M4-P4-L3-1"
+  | "M4-P4-L6-1"
+  | "M4-P4-L6-2"
+  | "M4-P5-L1-1"
+  | "M4-P5-L1-2"
+  | "M4-P5-L3-1"
+  | "M4-P5-L4-1"
+  | "M4-P5-L5-1"
+  | "M4-P5-L6-1"
+  | "M4-P6-L1-1"
+  | "M4-P6-L2-1"
+  | "M4-P6-L3-1"
+  | "M4-P6-L4-1"
+  | "M4-P6-L4-2"
+  | "M4-P9-L1-1"
+  | "M4-P9-L3-1"
+  | "M4-P9-L4-1"
+  | "M4-P7-L1-1"
+  | "M4-P7-L1-2"
+  | "M4-P7-L3-1"
+  | "M4-P7-L4-1"
+  | "M4-P7-L6-1"
+  | "M4-P7-L7-1"
+  | "M4-P8-L1-1";
 
 const DEFAULT_IMAGES: Record<PageImageKey, string> = {
   "logo-kampus": "https://is3.cloudhost.id/assets-geo/logo-kampus.png",
@@ -319,6 +363,50 @@ const DEFAULT_IMAGES: Record<PageImageKey, string> = {
   "M3-P9-L4-2": "https://placehold.co/112x128?text=Maskot+Semangat",
   "M3-P10-L1-1": "https://placehold.co/440x320?text=Tiga+Siswa+GeoGebra+%26+AR",
   "M3-P10-L4-1": "https://placehold.co/200x280?text=Maskot+Jempol",
+  "M4-P1-L1-1": "https://placehold.co/400x300?text=Tiga+Siswa+Berpikir",
+  "M4-P1-L1-2": "https://placehold.co/480x300?text=GeoGebra+3D",
+  "M4-P1-L1-3": "https://placehold.co/300x400?text=Augmented+Reality",
+  "M4-P1-L1-4": "https://placehold.co/220x220?text=Maskot+Menulis",
+  "M4-P1-L1-5": "https://placehold.co/160x160?text=Limas+Segitiga",
+  "M4-P1-L1-6": "https://placehold.co/160x160?text=Limas+Segiempat",
+  "M4-P1-L1-7": "https://placehold.co/160x160?text=Limas+Segilima",
+  "M4-P3-L1-1": "https://placehold.co/280x360?text=Tiga+Siswa+Diskusi",
+  "M4-P3-L1-2": "https://placehold.co/400x300?text=Jaring+Limas+Segitiga",
+  "M4-P3-L1-3": "https://placehold.co/400x300?text=Jaring+Limas+Segiempat",
+  "M4-P3-L1-4": "https://placehold.co/400x300?text=Jaring+Limas+Segilima",
+  "M4-P3-L2-1": "https://placehold.co/480x270?text=Dua+Siswa+Dugaan",
+  "M4-P3-L2-2": "https://placehold.co/480x270?text=GeoGebra+3D+%26+AR",
+  "M4-P3-L4-1": "https://placehold.co/480x270?text=Limas+Segitiga",
+  "M4-P4-L1-1": "https://placehold.co/416x320?text=Tiga+Siswa+Bereksplorasi",
+  "M4-P4-L2-1": "https://placehold.co/600x338?text=Transisi+GeoGebra+3D+Limas",
+  "M4-P4-L3-1": "https://placehold.co/600x338?text=AR+Limas",
+  "M4-P4-L6-1": "https://placehold.co/480x270?text=Tiga+Siswa+Refleksi",
+  "M4-P4-L6-2": "https://placehold.co/128x160?text=Maskot+Semangat",
+  "M4-P5-L1-1": "https://placehold.co/416x320?text=Tiga+Siswa+Mengolah+Data",
+  "M4-P5-L1-2": "https://placehold.co/300x180?text=Dua+Limas+Sisi+Berbeda",
+  "M4-P5-L3-1": "https://placehold.co/240x240?text=Limas+3D",
+  "M4-P5-L4-1": "https://placehold.co/416x224?text=Tiga+Siswa+Membandingkan",
+  "M4-P5-L5-1": "https://placehold.co/240x240?text=Limas+Segiempat",
+  "M4-P5-L6-1": "https://placehold.co/280x280?text=Tiga+Siswa+Trofi",
+  "M4-P2-L1-1": "https://placehold.co/300x180?text=Tiga+Siswa+Mengamati+Limas",
+  "M4-P2-L2-1": "https://placehold.co/160x180?text=Maskot+Jempol",
+  "M4-P10-L1-1": "https://placehold.co/440x320?text=Tiga+Siswa+GeoGebra+%26+AR",
+  "M4-P10-L3-1": "https://placehold.co/200x280?text=Maskot+Jempol",
+  "M4-P6-L1-1": "https://placehold.co/416x320?text=Tiga+Siswa+Verifikasi",
+  "M4-P6-L2-1": "https://placehold.co/192x224?text=Dua+Siswa+Jempol",
+  "M4-P6-L3-1": "https://placehold.co/192x224?text=Ilustrasi+Limas",
+  "M4-P6-L4-1": "https://placehold.co/256x320?text=Tiga+Siswa+Refleksi",
+  "M4-P6-L4-2": "https://placehold.co/160x192?text=Trofi",
+  "M4-P9-L1-1": "https://placehold.co/416x320?text=Tiga+Siswa+Strategi",
+  "M4-P9-L3-1": "https://placehold.co/300x300?text=Limas+Strategi",
+  "M4-P9-L4-1": "https://placehold.co/280x280?text=Tiga+Siswa+Refleksi",
+  "M4-P7-L1-1": "https://placehold.co/416x320?text=Tiga+Siswa+Menyimpulkan",
+  "M4-P7-L1-2": "https://placehold.co/480x270?text=Diagram+Jaring-Jaring+Limas",
+  "M4-P7-L3-1": "https://placehold.co/300x300?text=Limas+8cm+10cm",
+  "M4-P7-L4-1": "https://placehold.co/300x300?text=Limas+ke+Jaring-Jaring",
+  "M4-P7-L6-1": "https://placehold.co/560x224?text=Barisan+Alas+Limas",
+  "M4-P7-L7-1": "https://placehold.co/160x192?text=Dua+Siswa+Jempol",
+  "M4-P8-L1-1": "https://placehold.co/320x240?text=Tiga+Siswa+Berdiskusi",
 };
 
 /**

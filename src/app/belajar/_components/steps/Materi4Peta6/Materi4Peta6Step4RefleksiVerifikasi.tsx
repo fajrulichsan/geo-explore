@@ -1,0 +1,187 @@
+import { submitStepAction } from "@/app/belajar/actions";
+import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
+import SubmitStepButton from "@/app/belajar/_components/SubmitStepButton";
+import BackLink from "@/app/belajar/_components/BackLink";
+import StepHeader from "@/app/belajar/_components/StepHeader";
+import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
+import { getPageImage } from "@/lib/pageImages";
+
+const refleksi = [
+  { key: "periksa_ukuran_jaring", label: "Saya memeriksa kembali ukuran dan jaring-jaring limas menggunakan GeoGebra 3D atau AR." },
+  { key: "hitung_ulang_luas", label: "Saya menghitung ulang luas alas dan setiap sisi tegak." },
+  { key: "bandingkan_kelompok", label: "Saya membandingkan hasil dengan kelompok lain." },
+  { key: "temukan_bagian_perbaikan", label: "Saya dapat menemukan bagian yang perlu diperbaiki." },
+  { key: "perbaiki_jawaban", label: "Saya memperbaiki jawaban berdasarkan bukti dan alasan matematis." },
+  { key: "jelaskan_kesesuaian", label: "Saya dapat menjelaskan mengapa hasil yang kami peroleh sesuai dengan bukti." },
+  { key: "hargai_pendapat", label: "Saya menghargai pendapat teman dan bekerja sama saat berdiskusi." },
+  { key: "yakin_hasil", label: "Saya semakin yakin terhadap hasil yang diperoleh setelah diverifikasi." },
+];
+
+const ingat = [
+  "Luas alas dihitung satu kali.",
+  "Luas semua sisi tegak yang membatasi limas telah diperhitungkan.",
+  "Tidak ada sisi yang terlewat.",
+  "Verifikasi memastikan jawaban didukung oleh bukti dan alasan matematis.",
+];
+
+export default async function Materi4Peta6Step4RefleksiVerifikasi({
+  materi,
+  peta,
+  step = "4",
+  editFoto,
+  initialAnswers,
+}: StepComponentProps) {
+  const answers = initialAnswers ?? {};
+  const checked = (key: string) => answers[key] === "on" || answers[key] === true;
+  const refleksiImage = await getPageImage("M4-P6-L4-1");
+  const trophyImage = await getPageImage("M4-P6-L4-2");
+
+  return (
+    <form action={submitStepAction} className="flex flex-col gap-8">
+      <input type="hidden" name="materi" value={materi} />
+      <input type="hidden" name="peta" value={peta} />
+      <input type="hidden" name="step" value="4" />
+
+      <div className="flex flex-col gap-4">
+        <StepHeader materi={materi} currentStep={4} totalSteps={4} />
+        <div className="inline-flex items-center bg-[#FDF3C7] text-[#92400E] rounded-full py-1.5 px-3.5 text-xs font-bold tracking-[0.02em] w-fit">
+          Tahap 5
+        </div>
+        <h1 className="m-0 text-2xl sm:text-[32px] font-extrabold text-[#111827]">Ayo Verifikasi</h1>
+        <p className="m-0 text-sm font-semibold text-[#2563EB]">Luas Permukaan Limas</p>
+      </div>
+
+      <div className="flex flex-col gap-4">
+        <div className="flex items-center gap-3">
+          <div className="w-[34px] h-[34px] rounded-full bg-[#7C3AED] text-white flex items-center justify-center font-bold text-[15px] flex-shrink-0">
+            E
+          </div>
+          <div className="bg-white border border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-full py-2 px-5 text-sm font-bold text-[#7C3AED]">
+            Refleksi Verifikasi
+          </div>
+        </div>
+        <p className="m-0 -mt-2 text-sm text-[#4B5563]">
+          Berilah tanda centang (✓) pada pernyataan yang sesuai dengan pengalamanmu pada Tahap 5.
+        </p>
+
+        <div className="flex flex-col sm:flex-row gap-5">
+          <div className="flex-1 bg-white border border-[#E5E7EB] rounded-[20px] p-6 shadow-[0_1px_2px_rgba(0,0,0,0.04)] flex flex-col gap-3">
+            {refleksi.map((r) => (
+              <label key={r.key} className="flex items-center gap-3 text-sm text-[#374151] cursor-pointer">
+                <input
+                  type="checkbox"
+                  name={`answers.refleksi_${r.key}`}
+                  defaultChecked={checked(`refleksi_${r.key}`)}
+                  className="w-4 h-4 rounded accent-[#7C3AED] flex-shrink-0"
+                />
+                {r.label}
+              </label>
+            ))}
+          </div>
+          <EditablePageImage
+            imageKey="M4-P6-L4-1"
+            materi={materi}
+            peta={peta}
+            step={step}
+            urutan="1"
+            src={refleksiImage}
+            alt="Tiga siswa merefleksikan hasil verifikasi"
+            editable={editFoto}
+            imageClassName="object-contain"
+            containerClassName="relative hidden sm:block w-32 h-40 flex-shrink-0 rounded-2xl overflow-hidden bg-[#F3E8FF] self-start"
+          />
+        </div>
+      </div>
+
+      <div className="grid sm:grid-cols-2 gap-4">
+        <div className="bg-[#FEF9E7] border border-[#F5E3A0] rounded-2xl p-5 flex items-start gap-3">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D97706" strokeWidth="2" className="flex-shrink-0 mt-0.5">
+            <path d="M12 2l2.4 6.6L21 11l-6.6 2.4L12 20l-2.4-6.6L3 11l6.6-2.4z" />
+          </svg>
+          <div className="flex flex-col gap-1">
+            <p className="m-0 text-xs font-bold text-[#92400E]">Ingat!</p>
+            <ul className="m-0 pl-4 flex flex-col gap-0.5 list-disc">
+              {ingat.map((item) => (
+                <li key={item} className="text-xs text-[#92400E] leading-[1.5]">
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        <div className="bg-[#FEF2F2] border border-[#FECACA] rounded-2xl p-5 flex items-start gap-3">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#DC2626" strokeWidth="2" className="flex-shrink-0 mt-0.5">
+            <path d="M12 17.3l-6.2 3.6 1.6-7-5.4-4.6 7.1-.6L12 2l2.9 6.7 7.1.6-5.4 4.6 1.6 7z" />
+          </svg>
+          <div className="flex flex-col gap-1">
+            <p className="m-0 text-xs font-bold text-[#B91C1C]">Motivasi</p>
+            <p className="m-0 text-xs text-[#374151] leading-[1.6]">
+              Kamu telah berusaha memeriksa, membandingkan, dan memperbaiki jawabanmu. Setiap
+              langkah verifikasi yang kamu lakukan membuat pemahamanmu semakin akurat dan kuat.
+              Teruslah berpikir kritis dan teliti!
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div className="relative overflow-hidden rounded-[28px] bg-gradient-to-br from-[#7C3AED] to-[#6D28D9] px-7 py-8 sm:px-10 sm:py-9">
+        <div className="absolute -right-10 -top-16 w-56 h-56 rounded-full bg-white/10" />
+        <div className="absolute -right-4 bottom-[-40px] w-32 h-32 rounded-full bg-white/10" />
+        <div className="relative flex items-center gap-4">
+          <EditablePageImage
+            imageKey="M4-P6-L4-2"
+            materi={materi}
+            peta={peta}
+            step={step}
+            urutan="2"
+            src={trophyImage}
+            alt="Ilustrasi piala penghargaan"
+            editable={editFoto}
+            imageClassName="object-contain"
+            containerClassName="relative hidden sm:block w-20 h-24 flex-shrink-0 rounded-xl overflow-hidden bg-white/10"
+          />
+          <div>
+            <div className="flex items-center gap-3 mb-2">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.2" className="flex-shrink-0">
+                <path d="M8 21h8M12 17v4M12 3a5 5 0 015 5c0 2.5-1.5 3.5-2 5-.3.8-.5 1.5-.5 2.5h-5c0-1-.2-1.7-.5-2.5-.5-1.5-2-2.5-2-5a5 5 0 015-5z" />
+              </svg>
+              <div className="bg-white/15 border border-white/25 rounded-full py-2 px-5 text-sm font-bold text-white">
+                Hebat!
+              </div>
+            </div>
+            <p className="relative m-0 max-w-xl text-[15px] leading-[1.6] text-white/90">
+              Hasil verifikasi yang kamu lakukan akan menjadi dasar penting untuk menyusun
+              kesimpulan umum mengenai cara menentukan luas permukaan limas. Siapkan dirimu untuk
+              menyimpulkan dan menggeneralisasi hasil belajar hari ini!
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div className="bg-[#EFF4FF] border border-[#BFDBFE] rounded-2xl px-5 py-4 flex items-start gap-2.5">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2563EB" strokeWidth="2" className="flex-shrink-0 mt-0.5">
+          <path d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5M18 2l4 4-11 11H7v-4L18 2z" />
+        </svg>
+        <p className="m-0 text-xs text-[#1D4ED8] leading-[1.5]">
+          Kamu telah memverifikasi hasil penemuanmu. Pada Tahap 6 - Ayo Menyimpulkan, kamu akan
+          menyusun generalisasi umum tentang cara menentukan luas permukaan limas berdasarkan
+          seluruh proses yang telah dilakukan.
+        </p>
+      </div>
+
+      <div className="flex justify-between items-center">
+        <BackLink
+          href={`/belajar/${materi}/${peta}/3`}
+          className="flex items-center gap-2 bg-transparent text-[#6B7280] border-none rounded-full py-3 px-6 text-sm font-semibold cursor-pointer hover:text-[#374151]"
+        />
+        <SubmitStepButton className="flex items-center gap-2 bg-[#2563EB] text-white border-none rounded-full py-3.5 px-7 text-sm font-bold font-inherit shadow-[0_4px_10px_rgba(37,99,235,0.3)] cursor-pointer">
+          LANJUT KE TAHAP 6
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.4">
+            <path d="M5 12h14M13 5l7 7-7 7" />
+          </svg>
+        </SubmitStepButton>
+      </div>
+    </form>
+  );
+}
