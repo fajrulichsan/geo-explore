@@ -5,6 +5,8 @@ import { supabase } from "@/lib/supabase";
 export type PageImageKey =
   | "logo-kampus"
   | "home-hero"
+  | "petunjuk2-geogebra"
+  | "petunjuk2-ar"
   | "shape-kubus"
   | "shape-balok"
   | "shape-prisma"
@@ -247,6 +249,8 @@ export type PageImageKey =
 const DEFAULT_IMAGES: Record<PageImageKey, string> = {
   "logo-kampus": "https://is3.cloudhost.id/assets-geo/logo-kampus.png",
   "home-hero": "https://is3.cloudhost.id/assets-geo/home-1.webp",
+  "petunjuk2-geogebra": "https://placehold.co/300x180?text=GeoGebra+3D",
+  "petunjuk2-ar": "https://placehold.co/300x180?text=Augmented+Reality",
   "shape-kubus": "https://is3.cloudhost.id/assets-geo/kubus.png",
   "shape-balok": "https://is3.cloudhost.id/assets-geo/balok.png",
   "shape-prisma": "https://is3.cloudhost.id/assets-geo/prima.png",

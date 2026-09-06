@@ -1,6 +1,10 @@
 import { Fragment } from "react";
-import Link from "next/link";
+import { redirect } from "next/navigation";
 import Footer from "@/app/_components/Footer";
+import SubmitStepButton from "@/app/belajar/_components/SubmitStepButton";
+import BackLink from "@/app/belajar/_components/BackLink";
+import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
+import { getPageImage } from "@/lib/pageImages";
 
 const glass =
   "bg-white/80 backdrop-blur-[10px] border border-white/50 shadow-[0_4px_20px_rgba(0,51,138,0.06)]";
@@ -147,7 +151,16 @@ const setelahTahap = [
   },
 ];
 
-export default function Petunjuk2Page() {
+async function goToKataPengantar() {
+  "use server";
+  redirect("/kata-pengantar");
+}
+
+export default async function Petunjuk2Page(props: PageProps<"/petunjuk-2">) {
+  const geogebraImage = await getPageImage("petunjuk2-geogebra");
+  const arImage = await getPageImage("petunjuk2-ar");
+  const searchParams = await props.searchParams;
+  const editFoto = searchParams?.["edit-foto"] === "true";
   return (
     <div
       className="bg-[#f7f9fb] text-[#191c1e] min-h-screen flex flex-col"
@@ -219,11 +232,18 @@ export default function Petunjuk2Page() {
               <div className="bg-[#f7f9fb] rounded-xl border border-[#dbe1ff] p-6 flex flex-col h-full">
                 <h3 className="text-2xl font-semibold text-[#00338a] text-center mb-4">GeoGebra 3D</h3>
                 <div className="flex flex-col sm:flex-row items-center gap-4 mb-6">
-                  <div className="w-full sm:w-1/2 rounded-lg bg-[#eceef0] flex items-center justify-center h-32">
-                    <span className="material-symbols-outlined text-6xl text-[#00338a] opacity-50">
-                      laptop_mac
-                    </span>
-                  </div>
+                  <EditablePageImage
+                    imageKey="petunjuk2-geogebra"
+                    materi="0"
+                    peta="0"
+                    step="petunjuk-2"
+                    urutan="1"
+                    src={geogebraImage}
+                    alt="Ilustrasi GeoGebra 3D"
+                    editable={editFoto}
+                    imageClassName="object-cover rounded-lg"
+                    containerClassName="relative w-full sm:w-1/2 rounded-lg bg-[#eceef0] h-32 overflow-hidden"
+                  />
                   <p className="text-base text-[#434653] w-full sm:w-1/2">
                     Gunakan GeoGebra 3D untuk memutar, mengamati, dan memanipulasi model bangun ruang sesuai
                     petunjuk pada kegiatan eksplorasi.
@@ -248,11 +268,18 @@ export default function Petunjuk2Page() {
                   Augmented Reality (AR)
                 </h3>
                 <div className="flex flex-col sm:flex-row items-center gap-4 mb-6">
-                  <div className="w-full sm:w-1/2 rounded-lg bg-[#eceef0] flex items-center justify-center h-32 relative">
-                    <span className="material-symbols-outlined text-6xl text-[#00338a] opacity-50">
-                      smartphone
-                    </span>
-                  </div>
+                  <EditablePageImage
+                    imageKey="petunjuk2-ar"
+                    materi="0"
+                    peta="0"
+                    step="petunjuk-2"
+                    urutan="1"
+                    src={arImage}
+                    alt="Ilustrasi Augmented Reality"
+                    editable={editFoto}
+                    imageClassName="object-cover rounded-lg"
+                    containerClassName="relative w-full sm:w-1/2 rounded-lg bg-[#eceef0] h-32 overflow-hidden"
+                  />
                   <p className="text-base text-[#434653] w-full sm:w-1/2">
                     Gunakan AR untuk mengamati model bangun ruang tiga dimensi dari berbagai arah sesuai
                     petunjuk yang tersedia.
@@ -347,8 +374,8 @@ export default function Petunjuk2Page() {
         </section>
 
         {/* Footer CTA */}
-        <div className="flex flex-col md:flex-row justify-between items-center gap-6 mb-8">
-          <div className="bg-[#f7f9fb] border border-[#dbe1ff] rounded-xl p-4 flex items-center gap-4 flex-grow shadow-sm">
+        <div className="flex flex-col gap-4 mb-8">
+          <div className="bg-[#f7f9fb] border border-[#dbe1ff] rounded-xl p-4 flex items-center gap-4 shadow-sm">
             <div className="bg-yellow-100 text-yellow-600 p-3 rounded-full flex-shrink-0">
               <span
                 className="material-symbols-outlined text-2xl md:text-3xl"
@@ -365,13 +392,18 @@ export default function Petunjuk2Page() {
               </span>
             </div>
           </div>
-          <Link
-            href="/kata-pengantar"
-            className="w-full sm:w-auto justify-center inline-flex items-center gap-3 bg-primary hover:bg-primary-dark text-white font-bold py-3 md:py-4 px-6 md:px-8 rounded-2xl text-sm md:text-lg shadow-[0_8px_20px_-5px_rgba(0,72,186,0.4)] hover:shadow-[0_12px_25px_-5px_rgba(0,72,186,0.5)] hover:-translate-y-1 active:translate-y-0 transition-all group flex-shrink-0"
-          >
-            <span className="tracking-wide">LANJUTKAN</span>
-            <i className="fa-solid fa-arrow-right-long group-hover:translate-x-2 transition-transform" />
-          </Link>
+          <div className="flex flex-col-reverse md:flex-row justify-between items-center gap-4">
+            <BackLink
+              href="/petunjuk-1"
+              className="flex items-center gap-2 bg-transparent text-[#6B7280] border-none rounded-full py-3 px-6 text-sm font-semibold cursor-pointer hover:text-[#374151]"
+            />
+            <form action={goToKataPengantar} className="w-full sm:w-auto flex-shrink-0">
+              <SubmitStepButton className="w-full sm:w-auto justify-center inline-flex items-center gap-3 bg-primary hover:bg-primary-dark text-white font-bold py-3 md:py-4 px-6 md:px-8 rounded-2xl text-sm md:text-lg shadow-[0_8px_20px_-5px_rgba(0,72,186,0.4)] hover:shadow-[0_12px_25px_-5px_rgba(0,72,186,0.5)] hover:-translate-y-1 active:translate-y-0 transition-all group">
+                <span className="tracking-wide">LANJUTKAN</span>
+                <i className="fa-solid fa-arrow-right-long group-hover:translate-x-2 transition-transform" />
+              </SubmitStepButton>
+            </form>
+          </div>
         </div>
       </main>
 

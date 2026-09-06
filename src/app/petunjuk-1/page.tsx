@@ -1,6 +1,8 @@
-import Link from "next/link";
+import { redirect } from "next/navigation";
 import Footer from "@/app/_components/Footer";
 import { getPageImage } from "@/lib/pageImages";
+import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
+import SubmitStepButton from "@/app/belajar/_components/SubmitStepButton";
 
 const sebelumMemulai = [
   {
@@ -67,15 +69,22 @@ const tanda = [
   },
 ];
 
-export default async function Petunjuk1Page() {
+async function goToPetunjuk2() {
+  "use server";
+  redirect("/petunjuk-2");
+}
+
+export default async function Petunjuk1Page(props: PageProps<"/petunjuk-1">) {
   const heroImage = await getPageImage("home-hero");
+  const searchParams = await props.searchParams;
+  const editFoto = searchParams?.["edit-foto"] === "true";
   return (
     <div
-      className="min-h-screen flex flex-col p-4 md:p-8 text-slate-800 antialiased font-sans"
+      className="min-h-screen flex flex-col text-slate-800 antialiased font-sans"
       style={{
-        backgroundColor: "#e6f0fa",
-        backgroundImage:
-          "radial-gradient(circle at top right, #ffffff, transparent 50%), radial-gradient(circle at bottom left, #ffffff, transparent 50%)",
+        backgroundColor: "#f7f9fb",
+        backgroundImage: "radial-gradient(#dbe1ff 1px, transparent 1px)",
+        backgroundSize: "20px 20px",
       }}
     >
       <main className="max-w-6xl mx-auto w-full flex flex-col relative flex-1">
@@ -98,11 +107,17 @@ export default async function Petunjuk1Page() {
             </div>
           </div>
           <div className="w-full md:w-1/3 max-w-sm shrink-0">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              alt="Ilustrasi siswa belajar geometri"
-              className="w-full h-auto object-contain drop-shadow-xl rounded-xl"
+            <EditablePageImage
+              imageKey="home-hero"
+              materi="0"
+              peta="0"
+              step="petunjuk-1"
+              urutan="1"
               src={heroImage}
+              alt="Ilustrasi siswa belajar geometri"
+              editable={editFoto}
+              imageClassName="object-contain drop-shadow-xl rounded-xl"
+              containerClassName="relative w-full aspect-[4/3] rounded-xl overflow-hidden"
             />
           </div>
         </header>
@@ -222,13 +237,12 @@ export default async function Petunjuk1Page() {
               </p>
             </div>
           </div>
-          <Link
-            href="/petunjuk-2"
-            className="w-full sm:w-auto justify-center inline-flex items-center gap-3 bg-primary hover:bg-primary-dark text-white font-bold py-3 md:py-4 px-6 md:px-8 rounded-2xl text-sm md:text-lg shadow-[0_8px_20px_-5px_rgba(0,72,186,0.4)] hover:shadow-[0_12px_25px_-5px_rgba(0,72,186,0.5)] hover:-translate-y-1 active:translate-y-0 transition-all group"
-          >
-            <span className="tracking-wide">LANJUTKAN</span>
-            <i className="fa-solid fa-arrow-right-long group-hover:translate-x-2 transition-transform" />
-          </Link>
+          <form action={goToPetunjuk2} className="w-full sm:w-auto">
+            <SubmitStepButton className="w-full sm:w-auto justify-center inline-flex items-center gap-3 bg-primary hover:bg-primary-dark text-white font-bold py-3 md:py-4 px-6 md:px-8 rounded-2xl text-sm md:text-lg shadow-[0_8px_20px_-5px_rgba(0,72,186,0.4)] hover:shadow-[0_12px_25px_-5px_rgba(0,72,186,0.5)] hover:-translate-y-1 active:translate-y-0 transition-all group">
+              <span className="tracking-wide">LANJUTKAN</span>
+              <i className="fa-solid fa-arrow-right-long group-hover:translate-x-2 transition-transform" />
+            </SubmitStepButton>
+          </form>
         </div>
       </main>
 

@@ -1,10 +1,19 @@
-import Link from "next/link";
-import Image from "next/image";
+import { redirect } from "next/navigation";
 import Footer from "@/app/_components/Footer";
 import { getPageImage } from "@/lib/pageImages";
+import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
+import SubmitStepButton from "@/app/belajar/_components/SubmitStepButton";
+import BackLink from "@/app/belajar/_components/BackLink";
 
-export default async function KataPengantarPage() {
+async function goToDaftarIsi() {
+  "use server";
+  redirect("/daftar-isi");
+}
+
+export default async function KataPengantarPage(props: PageProps<"/kata-pengantar">) {
   const heroImage = await getPageImage("home-hero");
+  const searchParams = await props.searchParams;
+  const editFoto = searchParams?.["edit-foto"] === "true";
   return (
     <div
       className="min-h-screen text-[#191c1e] antialiased overflow-x-hidden relative flex flex-col"
@@ -41,12 +50,17 @@ export default async function KataPengantarPage() {
             <div className="absolute -top-4 -left-4 w-24 h-24 bg-[#ffdf9e] rounded-full opacity-50 mix-blend-multiply blur-xl animate-pulse" />
             <div className="absolute -bottom-8 -right-8 w-32 h-32 bg-[#dbe1ff] rounded-full opacity-60 mix-blend-multiply blur-xl" />
             <div className="bg-white/95 backdrop-blur-[10px] border border-white/20 shadow-[0_10px_30px_-10px_rgba(0,51,138,0.08)] w-full h-full rounded-2xl overflow-hidden relative z-10 border-4 border-white">
-              <Image
+              <EditablePageImage
+                imageKey="home-hero"
+                materi="0"
+                peta="0"
+                step="kata-pengantar"
+                urutan="1"
                 src={heroImage}
                 alt="Ilustrasi siswa belajar geometri"
-                fill
-                sizes="(min-width: 768px) 40vw, 90vw"
-                className="object-cover"
+                editable={editFoto}
+                imageClassName="object-cover"
+                containerClassName="absolute inset-0"
               />
             </div>
             <div
@@ -115,14 +129,17 @@ export default async function KataPengantarPage() {
               </div>
             </div>
 
-            <div className="mt-8 pt-6 border-t border-[#e6e8ea] flex justify-end">
-              <Link
-                href="/daftar-isi"
-                className="w-full sm:w-auto justify-center inline-flex items-center gap-3 bg-primary hover:bg-primary-dark text-white font-bold py-3 md:py-4 px-6 md:px-8 rounded-2xl text-sm md:text-lg shadow-[0_8px_20px_-5px_rgba(0,72,186,0.4)] hover:shadow-[0_12px_25px_-5px_rgba(0,72,186,0.5)] hover:-translate-y-1 active:translate-y-0 transition-all group"
-              >
-                <span className="tracking-wide">Lanjutkan ke Daftar Isi</span>
-                <i className="fa-solid fa-arrow-right-long group-hover:translate-x-2 transition-transform" />
-              </Link>
+            <div className="mt-8 pt-6 border-t border-[#e6e8ea] flex flex-col-reverse sm:flex-row justify-between items-center gap-4">
+              <BackLink
+                href="/petunjuk-2"
+                className="flex items-center gap-2 bg-transparent text-[#6B7280] border-none rounded-full py-3 px-6 text-sm font-semibold cursor-pointer hover:text-[#374151]"
+              />
+              <form action={goToDaftarIsi} className="w-full sm:w-auto">
+                <SubmitStepButton className="w-full sm:w-auto justify-center inline-flex items-center gap-3 bg-primary hover:bg-primary-dark text-white font-bold py-3 md:py-4 px-6 md:px-8 rounded-2xl text-sm md:text-lg shadow-[0_8px_20px_-5px_rgba(0,72,186,0.4)] hover:shadow-[0_12px_25px_-5px_rgba(0,72,186,0.5)] hover:-translate-y-1 active:translate-y-0 transition-all group">
+                  <span className="tracking-wide">Lanjutkan ke Daftar Isi</span>
+                  <i className="fa-solid fa-arrow-right-long group-hover:translate-x-2 transition-transform" />
+                </SubmitStepButton>
+              </form>
             </div>
           </div>
         </div>
