@@ -7,12 +7,21 @@ import { getPetaStructure, getTotalStepsInStructure, TOTAL_MATERI } from "@/lib/
 import Navbar from "@/app/_components/Navbar";
 import Footer from "@/app/_components/Footer";
 import QrToolCard from "@/app/dashboard/_components/QrToolCard";
+import ContinueLearningButton from "@/app/dashboard/_components/ContinueLearningButton";
+import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
 import { getPageImages, type PageImageKey } from "@/lib/pageImages";
 import { getAllMateriMeta } from "@/lib/materiMeta";
 
-export default async function DashboardPage() {
+export default async function DashboardPage({
+  searchParams,
+}: {
+  searchParams?: Promise<Record<string, string | string[] | undefined>>;
+}) {
   const userId = await getSessionUserId();
   if (!userId) redirect("/login");
+
+  const resolvedSearchParams = await searchParams;
+  const editFoto = resolvedSearchParams?.["edit-foto"] === "true";
 
   const [images, { data: user }, allMateriMeta] = await Promise.all([
     getPageImages(),
@@ -147,8 +156,7 @@ export default async function DashboardPage() {
               const cardContent = (
                 <>
                 {item.status === "locked" && (
-                  <div className="absolute top-4 right-4 bg-slate-200 text-slate-500 px-2 py-1 rounded text-xs font-bold z-10 flex items-center gap-1">
-                    <span className="material-symbols-outlined text-[14px]">lock</span>
+                  <div className="absolute top-4 right-4 bg-slate-200 text-slate-500 px-2 py-1 rounded text-xs font-bold z-10">
                     Terkunci
                   </div>
                 )}
@@ -158,18 +166,21 @@ export default async function DashboardPage() {
                     Selesai
                   </div>
                 )}
-                {item.status === "active" && (
-                  <div className="absolute top-4 right-4 bg-primary-light/20 text-primary px-2 py-1 rounded text-xs font-bold z-10 flex items-center gap-1">
-                    <span className="material-symbols-outlined text-[14px]">play_circle</span>
-                    Sedang Belajar
-                  </div>
-                )}
-
                 <div className={`h-32 relative overflow-hidden flex items-center justify-center ${item.status === "locked" ? "bg-slate-200" : "bg-surface"}`}>
                   {item.status === "locked" ? (
                     <span className="material-symbols-outlined text-4xl text-slate-500">lock</span>
                   ) : (
-                    <img src={item.cover} alt={item.title} className="w-full h-full object-cover" />
+                    <EditablePageImage
+                      imageKey={`materi-${item.materi}-cover` as PageImageKey}
+                      materi={item.materi}
+                      peta="dashboard"
+                      step="cover"
+                      urutan="1"
+                      src={item.cover}
+                      alt={item.title}
+                      editable={editFoto}
+                      containerClassName="absolute inset-0"
+                    />
                   )}
                 </div>
 
@@ -188,8 +199,7 @@ export default async function DashboardPage() {
 
                   {item.status === "locked" ? (
                     <div className="mt-auto pt-4 border-t border-slate-200/50">
-                      <button className="w-full bg-slate-200 text-slate-500 py-2.5 rounded-lg text-sm font-semibold cursor-not-allowed flex items-center justify-center gap-2">
-                        <span className="material-symbols-outlined text-sm">lock</span>
+                      <button className="w-full bg-slate-200 text-slate-500 py-2.5 rounded-lg text-sm font-semibold cursor-not-allowed">
                         Terkunci
                       </button>
                     </div>
@@ -213,9 +223,9 @@ export default async function DashboardPage() {
                           style={{ width: `${item.progress}%` }}
                         />
                       </div>
-                      <div className="w-full bg-primary text-white py-2.5 rounded-lg text-sm font-semibold text-center">
-                        {item.status === "active" ? "Lanjut Belajar" : "Lihat Materi"}
-                      </div>
+                      <ContinueLearningButton
+                        label={item.status === "active" ? "Lanjut Belajar" : "Lihat Materi"}
+                      />
                     </div>
                   )}
                 </div>
@@ -226,7 +236,7 @@ export default async function DashboardPage() {
                   {cardContent}
                 </div>
               ) : (
-                <Link key={item.materi} href={`/peta-belajar/${item.materi}`} className={cardClassName}>
+                <Link key={item.materi} href={`/peta-belajar/${item.materi}`} prefetch={false} className={cardClassName}>
                   {cardContent}
                 </Link>
               );

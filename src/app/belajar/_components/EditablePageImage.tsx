@@ -72,12 +72,19 @@ export default function EditablePageImage({
       )}
 
       {editable && (
-        <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 bg-black/40">
+        <div
+          className="absolute inset-0 flex flex-col items-center justify-center gap-2 bg-black/40"
+          onClick={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
+          }}
+        >
           <input
             ref={inputRef}
             type="file"
             accept="image/*"
             className="hidden"
+            onClick={(e) => e.stopPropagation()}
             onChange={handleFileChange}
           />
           <button
