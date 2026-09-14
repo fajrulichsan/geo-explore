@@ -1,9 +1,9 @@
-import Image from "next/image";
 import Link from "next/link";
 import { submitStepAction } from "@/app/belajar/actions";
 import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
 import SubmitStepButton from "@/app/belajar/_components/SubmitStepButton";
 import StepHeader from "@/app/belajar/_components/StepHeader";
+import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
 import { getPageImage, type PageImageKey } from "@/lib/pageImages";
 
 const langkah = [
@@ -13,7 +13,7 @@ const langkah = [
   { n: 4, label: "Lengkapi hasil pengamatan.", imageKey: "M1-P4-L6-4" },
 ] satisfies { n: number; label: string; imageKey: PageImageKey }[];
 
-export default async function Peta4Step6MengeksplorasiAR({ materi, peta }: StepComponentProps) {
+export default async function Peta4Step6MengeksplorasiAR({ materi, peta, step = "6", editFoto }: StepComponentProps) {
   const langkahImages = await Promise.all(langkah.map((l) => getPageImage(l.imageKey)));
 
   return (
@@ -69,9 +69,17 @@ export default async function Peta4Step6MengeksplorasiAR({ materi, peta }: StepC
               <div className="w-10 h-10 rounded-full bg-[#2563EB] text-white flex items-center justify-center font-bold text-sm">
                 {l.n}
               </div>
-              <div className="relative w-16 h-16 rounded-xl overflow-hidden bg-[#F3F4F6]">
-                <Image src={langkahImages[i]} alt={l.label} fill className="object-cover" />
-              </div>
+              <EditablePageImage
+                imageKey={l.imageKey}
+                materi={materi}
+                peta={peta}
+                step={step}
+                urutan={String(i + 1)}
+                src={langkahImages[i]}
+                alt={l.label}
+                editable={editFoto}
+                containerClassName="relative w-16 h-16 rounded-xl overflow-hidden bg-[#F3F4F6]"
+              />
               <p className="m-0 text-sm font-semibold text-[#374151]">{l.label}</p>
             </div>
           ))}

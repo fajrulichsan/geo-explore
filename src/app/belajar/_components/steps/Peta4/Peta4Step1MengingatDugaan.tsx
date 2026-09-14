@@ -1,9 +1,9 @@
-import Image from "next/image";
 import Link from "next/link";
 import { submitStepAction } from "@/app/belajar/actions";
 import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
 import SubmitStepButton from "@/app/belajar/_components/SubmitStepButton";
 import StepHeader from "@/app/belajar/_components/StepHeader";
+import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
 import { getPageImage } from "@/lib/pageImages";
 
 const pertanyaan = [
@@ -12,7 +12,7 @@ const pertanyaan = [
   "Data apa saja yang sekiranya dibutuhkan untuk membuktikan dugaan itu?",
 ];
 
-export default async function Peta4Step1MengingatDugaan({ materi, peta }: StepComponentProps) {
+export default async function Peta4Step1MengingatDugaan({ materi, peta, step = "1", editFoto }: StepComponentProps) {
   const gambarReferensiVisual = await getPageImage("M1-P4-L1-1");
 
   return (
@@ -79,9 +79,17 @@ export default async function Peta4Step1MengingatDugaan({ materi, peta }: StepCo
 
         <div className="lg:col-span-4">
           <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-4 shadow-[0_1px_2px_rgba(0,0,0,0.04)] h-full flex flex-col items-center justify-center gap-3">
-            <div className="relative w-full aspect-square rounded-2xl overflow-hidden bg-[#EFF4FF]">
-              <Image src={gambarReferensiVisual} alt="Referensi visual" fill className="object-cover" />
-            </div>
+            <EditablePageImage
+              imageKey="M1-P4-L1-1"
+              materi={materi}
+              peta={peta}
+              step={step}
+              urutan="1"
+              src={gambarReferensiVisual}
+              alt="Referensi visual"
+              editable={editFoto}
+              containerClassName="relative w-full aspect-square rounded-2xl overflow-hidden bg-[#EFF4FF]"
+            />
             <span className="inline-block bg-[#FDC003]/30 text-[#785900] px-3 py-1 rounded-full text-xs font-bold">
               Referensi Visual
             </span>
