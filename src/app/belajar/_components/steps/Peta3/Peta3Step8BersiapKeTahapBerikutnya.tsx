@@ -4,6 +4,8 @@ import { submitStepAction } from "@/app/belajar/actions";
 import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
 import SubmitStepButton from "@/app/belajar/_components/SubmitStepButton";
 import StepHeader from "@/app/belajar/_components/StepHeader";
+import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
+import { getPageImage } from "@/lib/pageImages";
 
 const rencana = [
   { text: "Mengamati bentuk bangun ruang" },
@@ -11,9 +13,16 @@ const rencana = [
   { text: "Membandingkan dan mencari informasi yang diperlukan" },
 ];
 
-export default function Peta3Step8BersiapKeTahapBerikutnya({ materi, peta, initialAnswers }: StepComponentProps) {
+export default async function Peta3Step8BersiapKeTahapBerikutnya({
+  materi,
+  peta,
+  step = "8",
+  editFoto,
+  initialAnswers,
+}: StepComponentProps) {
   const answers = initialAnswers ?? {};
   const getValue = (key: string) => (typeof answers[key] === "string" ? (answers[key] as string) : "");
+  const gambarIlustrasi = await getPageImage("M1-P3-L8-1");
 
   return (
     <form action={submitStepAction} className="flex flex-col gap-8">
@@ -40,6 +49,17 @@ export default function Peta3Step8BersiapKeTahapBerikutnya({ materi, peta, initi
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
         <div className="lg:col-span-5 flex flex-col gap-4">
+          <EditablePageImage
+            imageKey="M1-P3-L8-1"
+            materi={materi}
+            peta={peta}
+            step={step}
+            urutan="1"
+            src={gambarIlustrasi}
+            alt="Ilustrasi persiapan tahap berikutnya"
+            editable={editFoto}
+            containerClassName="relative w-full h-48 rounded-2xl overflow-hidden bg-[#EFF4FF]"
+          />
           <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-6 shadow-[0_1px_2px_rgba(0,0,0,0.04)] flex flex-col gap-4">
             <p className="m-0 text-sm leading-[1.6] text-[#374151]">
               Pada tahap berikutnya, kita akan mengumpulkan informasi menggunakan GeoGebra 3D, Augmented
@@ -107,7 +127,7 @@ export default function Peta3Step8BersiapKeTahapBerikutnya({ materi, peta, initi
           </svg>
           Kembali
         </Link>
-        <SubmitStepButton className="flex items-center gap-2 bg-[#2563EB] text-white border-none rounded-full py-3.5 px-7 text-sm font-bold font-inherit shadow-[0_4px_10px_rgba(37,99,235,0.3)] cursor-pointer">
+        <SubmitStepButton className="flex items-center gap-2 bg-[#16A34A] text-white border-none rounded-full py-3.5 px-7 text-sm font-bold font-inherit shadow-[0_4px_10px_rgba(22,163,74,0.3)] cursor-pointer">
           Selesai
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.4">
             <path d="M5 13l4 4L19 7" />

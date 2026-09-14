@@ -52,6 +52,7 @@ export type PageImageKey =
   | "M1-P2-L5-3"
   | "M1-P2-L7-1"
   | "M1-P3-L1-1"
+  | "M1-P3-L8-1"
   | "M1-P3-L2-1"
   | "M1-P3-L2-2"
   | "M1-P3-L2-3"
@@ -296,6 +297,7 @@ const DEFAULT_IMAGES: Record<PageImageKey, string> = {
   "M1-P2-L5-3": "https://placehold.co/300x180?text=Gambar+2D",
   "M1-P2-L7-1": "https://placehold.co/320x320?text=Ilustrasi+Diskusi",
   "M1-P3-L1-1": "https://placehold.co/500x400?text=Ilustrasi+Kolaborasi",
+  "M1-P3-L8-1": "https://placehold.co/500x300?text=Ilustrasi+Persiapan",
   "M1-P3-L2-1": "https://placehold.co/400x280?text=Kelompok+A",
   "M1-P3-L2-2": "https://placehold.co/400x280?text=Kelompok+B",
   "M1-P3-L2-3": "https://placehold.co/400x280?text=Kelompok+C",

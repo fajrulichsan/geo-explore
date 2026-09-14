@@ -85,21 +85,13 @@ export default function Peta3Step7CatatanHasilDiskusi({ materi, peta, initialAns
                   {c.label}
                 </label>
                 {c.sub && <span className="text-xs text-[#9CA3AF]">{c.sub}</span>}
-                <input
-                  type="text"
-                  name={`answers.catatan_${i + 1}_utama`}
-                  defaultValue={getValue(`catatan_${i + 1}_utama`)}
+                <textarea
+                  rows={2}
+                  name={`answers.catatan_${i + 1}`}
+                  defaultValue={getValue(`catatan_${i + 1}`)}
                   placeholder="Tuliskan di sini..."
                   required
-                  className="w-full bg-transparent border-0 border-b border-dashed border-[#E5E7EB] py-2 text-sm text-[#374151] placeholder:text-[#9CA3AF] focus:outline-none focus:border-[#2563EB] transition-colors"
-                />
-                <input
-                  type="text"
-                  name={`answers.catatan_${i + 1}_detail`}
-                  defaultValue={getValue(`catatan_${i + 1}_detail`)}
-                  placeholder="..."
-                  required
-                  className="w-full bg-transparent border-0 border-b border-dashed border-[#E5E7EB] py-2 mt-1 text-sm text-[#374151] placeholder:text-[#9CA3AF] focus:outline-none focus:border-[#2563EB] transition-colors"
+                  className="w-full bg-transparent border-0 border-b border-dashed border-[#E5E7EB] py-2 text-sm text-[#374151] placeholder:text-[#9CA3AF] focus:outline-none focus:border-[#2563EB] transition-colors resize-y"
                 />
               </div>
             </div>
