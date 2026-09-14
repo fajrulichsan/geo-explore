@@ -3,16 +3,20 @@ import { submitStepAction } from "@/app/belajar/actions";
 import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
 import SubmitStepButton from "@/app/belajar/_components/SubmitStepButton";
 import StepHeader from "@/app/belajar/_components/StepHeader";
+import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
+import { getPageImage, type PageImageKey } from "@/lib/pageImages";
 
 const bangun = [
-  { n: 1, label: "Kubus", desc: "6 sisi persegi identik", color: "#4ADE80" },
-  { n: 2, label: "Balok", desc: "Sisi berhadapan sama luas", color: "#60A5FA" },
-  { n: 3, label: "Prisma Segitiga", desc: "Alas & atap segitiga", color: "#FB923C" },
-  { n: 4, label: "Limas Segiempat", desc: "Satu titik puncak", color: "#3B82F6" },
-  { n: 5, label: "Limas Segitiga", desc: "Empat sisi segitiga", color: "#FACC15" },
-];
+  { n: 1, label: "Kubus", desc: "6 sisi persegi identik", imageKey: "M1-P4-L2-1" },
+  { n: 2, label: "Balok", desc: "Sisi berhadapan sama luas", imageKey: "M1-P4-L2-2" },
+  { n: 3, label: "Prisma Segitiga", desc: "Dua alas segitiga sejajar dan kongruen", imageKey: "M1-P4-L2-3" },
+  { n: 4, label: "Limas Segiempat", desc: "Alas berbentuk persegi", imageKey: "M1-P4-L2-4" },
+  { n: 5, label: "Limas Segitiga", desc: "Alas berbentuk segitiga", imageKey: "M1-P4-L2-5" },
+] satisfies { n: number; label: string; desc: string; imageKey: PageImageKey }[];
 
-export default function Peta4Step2PilihBangunRuang({ materi, peta }: StepComponentProps) {
+export default async function Peta4Step2PilihBangunRuang({ materi, peta, step = "2", editFoto }: StepComponentProps) {
+  const bangunImages = await Promise.all(bangun.map((b) => getPageImage(b.imageKey)));
+
   return (
     <form action={submitStepAction} className="flex flex-col gap-8">
       <input type="hidden" name="materi" value={materi} />
@@ -26,36 +30,37 @@ export default function Peta4Step2PilihBangunRuang({ materi, peta }: StepCompone
             <circle cx="12" cy="12" r="9" />
             <path d="M12 8v4l3 2" />
           </svg>
-          <h1 className="m-0 text-[32px] font-extrabold text-[#111827]">Ayo Bereksplorasi</h1>
+          <h1 className="m-0 text-[32px] font-extrabold text-[#111827]">Ayo Mengeksplorasi dengan GeoGebra 3D</h1>
         </div>
         <p className="m-0 text-[15px] leading-[1.6] text-[#374151] max-w-2xl">
-          Bangun ruang apa yang ingin kamu amati hari ini? Pilih salah satu untuk memulai eksplorasi
-          interaktif.
+          Pilih bangun yang perlu kamu amati sesuai dugaan kelompokmu. Ulangi pengamatan pada bangun
+          lain jika diperlukan.
         </p>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-        {bangun.map((b) => (
-          <button
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
+        {bangun.map((b, i) => (
+          <div
             key={b.n}
-            type="button"
-            className="bg-white border border-[#E5E7EB] rounded-[20px] p-6 shadow-[0_1px_2px_rgba(0,0,0,0.04)] flex flex-col items-center text-center gap-3 relative hover:border-[#2563EB] transition-colors cursor-pointer"
+            className="bg-white border border-[#E5E7EB] rounded-2xl p-3 shadow-[0_1px_2px_rgba(0,0,0,0.04)] flex flex-col items-center text-center gap-2 relative"
           >
-            <div className="absolute top-4 left-4 w-7 h-7 rounded-full bg-[#F3F4F6] flex items-center justify-center text-xs font-bold text-[#6B7280]">
+            <div className="absolute top-2 left-2 w-5 h-5 rounded-full bg-[#F3F4F6] flex items-center justify-center text-[10px] font-bold text-[#6B7280] z-10">
               {b.n}
             </div>
-            <div className="w-full aspect-square rounded-2xl bg-[#F9FAFB] flex items-center justify-center">
-              <div
-                className="w-16 h-16 rounded-md opacity-80"
-                style={{ backgroundColor: b.color }}
-              />
-            </div>
-            <h3 className="m-0 text-base font-bold text-[#111827]">{b.label}</h3>
-            <p className="m-0 text-sm text-[#6B7280]">{b.desc}</p>
-            <div className="w-full mt-1 rounded-full py-2.5 text-sm font-bold text-white bg-[#2563EB]">
-              Mulai Belajar
-            </div>
-          </button>
+            <EditablePageImage
+              imageKey={b.imageKey}
+              materi={materi}
+              peta={peta}
+              step={step}
+              urutan={String(i + 1)}
+              src={bangunImages[i]}
+              alt={b.label}
+              editable={editFoto}
+              containerClassName="relative w-full aspect-square rounded-xl overflow-hidden bg-[#F9FAFB]"
+            />
+            <h3 className="m-0 text-xs font-bold text-[#111827]">{b.label}</h3>
+            <p className="m-0 text-[11px] text-[#6B7280] leading-[1.3]">{b.desc}</p>
+          </div>
         ))}
       </div>
 

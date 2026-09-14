@@ -7,7 +7,7 @@ import SubmitStepButton from "@/app/belajar/_components/SubmitStepButton";
 import StepHeader from "@/app/belajar/_components/StepHeader";
 import { getPageImage } from "@/lib/pageImages";
 
-export default async function Peta5Step7PolaKlasifikasiStrategi({ materi, peta, initialAnswers }: StepComponentProps) {
+export default async function Peta5Step6PolaKlasifikasiStrategi({ materi, peta, initialAnswers }: StepComponentProps) {
   const answers = initialAnswers ?? {};
   const getValue = (key: string) => (typeof answers[key] === "string" ? (answers[key] as string) : "");
   const gambarPola = await getPageImage("M1-P5-L7-1");
@@ -16,10 +16,10 @@ export default async function Peta5Step7PolaKlasifikasiStrategi({ materi, peta, 
     <form action={submitStepAction} className="flex flex-col gap-8">
       <input type="hidden" name="materi" value={materi} />
       <input type="hidden" name="peta" value={peta} />
-      <input type="hidden" name="step" value="7" />
+      <input type="hidden" name="step" value="6" />
 
       <div className="flex flex-col gap-4">
-        <StepHeader materi={materi} currentStep={7} totalSteps={8} />
+        <StepHeader materi={materi} currentStep={6} totalSteps={7} />
         <div className="flex items-center gap-3.5">
           <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#2563EB" strokeWidth="2">
             <circle cx="12" cy="12" r="9" />
@@ -36,7 +36,7 @@ export default async function Peta5Step7PolaKlasifikasiStrategi({ materi, peta, 
         <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-6 shadow-[0_1px_2px_rgba(0,0,0,0.04)] flex flex-col gap-4">
           <div className="flex items-center gap-3">
             <div className="w-9 h-9 rounded-full bg-[#2563EB] text-white flex items-center justify-center font-bold text-sm flex-shrink-0">
-              H
+              G
             </div>
             <h2 className="m-0 text-lg font-bold text-[#2563EB]">Pola Klasifikasi</h2>
           </div>
@@ -65,7 +65,7 @@ export default async function Peta5Step7PolaKlasifikasiStrategi({ materi, peta, 
         <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-6 shadow-[0_1px_2px_rgba(0,0,0,0.04)] flex flex-col gap-4">
           <div className="flex items-center gap-3">
             <div className="w-9 h-9 rounded-full bg-[#2563EB] text-white flex items-center justify-center font-bold text-sm flex-shrink-0">
-              I
+              H
             </div>
             <h2 className="m-0 text-lg font-bold text-[#2563EB]">Bandingkan Strategi</h2>
           </div>
@@ -119,7 +119,7 @@ export default async function Peta5Step7PolaKlasifikasiStrategi({ materi, peta, 
 
       <div className="flex justify-between items-center">
         <Link
-          href={`/belajar/${materi}/${peta}/6`}
+          href={`/belajar/${materi}/${peta}/5`}
           className="flex items-center gap-2 bg-transparent text-[#6B7280] border-none rounded-full py-3 px-6 text-sm font-semibold cursor-pointer hover:text-[#374151]"
         >
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4">

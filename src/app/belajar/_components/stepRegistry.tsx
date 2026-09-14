@@ -38,13 +38,12 @@ import Peta4Step8CatatanHasilEksplorasi from "./steps/Peta4/Peta4Step8CatatanHas
 import Peta4Step9BersiapTahapBerikutnya from "./steps/Peta4/Peta4Step9BersiapTahapBerikutnya";
 import Peta4Step10CatatanPribadi from "./steps/Peta4/Peta4Step10CatatanPribadi";
 import Peta5Step1TinjauKembaliData from "./steps/Peta5/Peta5Step1TinjauKembaliData";
-import Peta5Step2OrganisasikanData from "./steps/Peta5/Peta5Step2OrganisasikanData";
-import Peta5Step3TemuanEksplorasi from "./steps/Peta5/Peta5Step3TemuanEksplorasi";
-import Peta5Step4TemukanPolanya from "./steps/Peta5/Peta5Step4TemukanPolanya";
-import Peta5Step5SiapKlasifikasi from "./steps/Peta5/Peta5Step5SiapKlasifikasi";
-import Peta5Step6BandingkanKelompok from "./steps/Peta5/Peta5Step6BandingkanKelompok";
-import Peta5Step7PolaKlasifikasiStrategi from "./steps/Peta5/Peta5Step7PolaKlasifikasiStrategi";
-import Peta5Step8EvaluasiHasilSementara from "./steps/Peta5/Peta5Step8EvaluasiHasilSementara";
+import Peta5Step2TemuanEksplorasi from "./steps/Peta5/Peta5Step2TemuanEksplorasi";
+import Peta5Step3TemukanPolanya from "./steps/Peta5/Peta5Step3TemukanPolanya";
+import Peta5Step4SiapKlasifikasi from "./steps/Peta5/Peta5Step4SiapKlasifikasi";
+import Peta5Step5BandingkanKelompok from "./steps/Peta5/Peta5Step5BandingkanKelompok";
+import Peta5Step6PolaKlasifikasiStrategi from "./steps/Peta5/Peta5Step6PolaKlasifikasiStrategi";
+import Peta5Step7EvaluasiHasilSementara from "./steps/Peta5/Peta5Step7EvaluasiHasilSementara";
 import Peta10Step1BentukBangunRuang from "./steps/Peta10/Peta10Step1BentukBangunRuang";
 import Peta10Step2DasarKlasifikasi from "./steps/Peta10/Peta10Step2DasarKlasifikasi";
 import Peta10Step3HubunganKonsep from "./steps/Peta10/Peta10Step3HubunganKonsep";
@@ -283,13 +282,12 @@ export const stepRegistry: Record<string, ComponentType<StepComponentProps>> = {
   "1-4-9": Peta4Step9BersiapTahapBerikutnya,
   "1-4-10": Peta4Step10CatatanPribadi,
   "1-5-1": Peta5Step1TinjauKembaliData,
-  "1-5-2": Peta5Step2OrganisasikanData,
-  "1-5-3": Peta5Step3TemuanEksplorasi,
-  "1-5-4": Peta5Step4TemukanPolanya,
-  "1-5-5": Peta5Step5SiapKlasifikasi,
-  "1-5-6": Peta5Step6BandingkanKelompok,
-  "1-5-7": Peta5Step7PolaKlasifikasiStrategi,
-  "1-5-8": Peta5Step8EvaluasiHasilSementara,
+  "1-5-2": Peta5Step2TemuanEksplorasi,
+  "1-5-3": Peta5Step3TemukanPolanya,
+  "1-5-4": Peta5Step4SiapKlasifikasi,
+  "1-5-5": Peta5Step5BandingkanKelompok,
+  "1-5-6": Peta5Step6PolaKlasifikasiStrategi,
+  "1-5-7": Peta5Step7EvaluasiHasilSementara,
   "1-6-1": Peta6Step1PeriksaKembali,
   "1-6-2": Peta6Step2Bandingkan,
   "1-6-3": Peta6Step3RevisiDugaan,

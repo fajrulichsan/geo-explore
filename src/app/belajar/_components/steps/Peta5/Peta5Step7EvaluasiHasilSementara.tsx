@@ -13,7 +13,7 @@ const evaluasi = [
 
 const checklist = ["Sesuai dengan data pengamatan", "Telah didiskusikan bersama"];
 
-export default function Peta5Step8EvaluasiHasilSementara({ materi, peta, initialAnswers }: StepComponentProps) {
+export default function Peta5Step7EvaluasiHasilSementara({ materi, peta, initialAnswers }: StepComponentProps) {
   const answers = initialAnswers ?? {};
   const getValue = (key: string) => (typeof answers[key] === "string" ? (answers[key] as string) : "");
 
@@ -21,10 +21,10 @@ export default function Peta5Step8EvaluasiHasilSementara({ materi, peta, initial
     <form action={submitStepAction} className="flex flex-col gap-8">
       <input type="hidden" name="materi" value={materi} />
       <input type="hidden" name="peta" value={peta} />
-      <input type="hidden" name="step" value="8" />
+      <input type="hidden" name="step" value="7" />
 
       <div className="flex flex-col gap-4">
-        <StepHeader materi={materi} currentStep={8} totalSteps={8} />
+        <StepHeader materi={materi} currentStep={7} totalSteps={7} />
         <div className="flex items-center gap-3.5">
           <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#2563EB" strokeWidth="2">
             <circle cx="12" cy="12" r="9" />
@@ -39,7 +39,7 @@ export default function Peta5Step8EvaluasiHasilSementara({ materi, peta, initial
           <div className="bg-white border border-[#E5E7EB] rounded-[20px] shadow-[0_1px_2px_rgba(0,0,0,0.04)] overflow-hidden h-full">
             <div className="bg-[#EFF4FF] border-b border-[#E5E7EB] p-6 flex items-center gap-3">
               <div className="w-10 h-10 rounded-full bg-[#2563EB] text-white flex items-center justify-center font-bold text-sm flex-shrink-0">
-                J
+                I
               </div>
               <h2 className="m-0 text-lg font-bold text-[#2563EB]">Evaluasi Proses</h2>
             </div>
@@ -67,7 +67,7 @@ export default function Peta5Step8EvaluasiHasilSementara({ materi, peta, initial
           <div className="bg-white border border-[#E5E7EB] rounded-[20px] shadow-[0_1px_2px_rgba(0,0,0,0.04)] overflow-hidden h-full flex flex-col">
             <div className="bg-[#FDF3C7] border-b border-[#F5E3A0] p-6 flex items-center gap-3">
               <div className="w-10 h-10 rounded-full bg-[#D97706] text-white flex items-center justify-center font-bold text-sm flex-shrink-0">
-                K
+                J
               </div>
               <h2 className="m-0 text-lg font-bold text-[#92400E]">Hasil Sementara</h2>
             </div>
@@ -86,16 +86,9 @@ export default function Peta5Step8EvaluasiHasilSementara({ materi, peta, initial
               <div className="bg-[#F9FAFB] border border-[#E5E7EB] rounded-xl p-4">
                 <h3 className="m-0 mb-2 text-sm font-bold text-[#111827]">Pastikan hasilmu:</h3>
                 <ul className="m-0 p-0 flex flex-col gap-2 list-none">
-                  {checklist.map((c, i) => (
+                  {checklist.map((c) => (
                     <li key={c} className="flex items-center gap-2 text-sm text-[#374151]">
-                      <input
-                        type="checkbox"
-                        name={`answers.checklist_${i}`}
-                        value="true"
-                        defaultChecked={getValue(`checklist_${i}`) === "true"}
-                        data-require-group="peta4step8"
-                        className="w-4 h-4 rounded border-[#E5E7EB] text-[#2563EB]"
-                      />
+                      <div className="w-1.5 h-1.5 rounded-full bg-[#2563EB] flex-shrink-0" />
                       {c}
                     </li>
                   ))}
@@ -115,7 +108,7 @@ export default function Peta5Step8EvaluasiHasilSementara({ materi, peta, initial
 
       <div className="flex justify-between items-center">
         <Link
-          href={`/belajar/${materi}/${peta}/7`}
+          href={`/belajar/${materi}/${peta}/6`}
           className="flex items-center gap-2 bg-transparent text-[#6B7280] border-none rounded-full py-3 px-6 text-sm font-semibold cursor-pointer hover:text-[#374151]"
         >
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4">
@@ -123,7 +116,7 @@ export default function Peta5Step8EvaluasiHasilSementara({ materi, peta, initial
           </svg>
           Kembali
         </Link>
-        <SubmitStepButton className="flex items-center gap-2 bg-[#2563EB] text-white border-none rounded-full py-3.5 px-7 text-sm font-bold font-inherit shadow-[0_4px_10px_rgba(37,99,235,0.3)] cursor-pointer">
+        <SubmitStepButton className="flex items-center gap-2 bg-[#16A34A] text-white border-none rounded-full py-3.5 px-7 text-sm font-bold font-inherit shadow-[0_4px_10px_rgba(22,163,74,0.3)] cursor-pointer">
           Selesai
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.4">
             <path d="M5 13l4 4L19 7" />

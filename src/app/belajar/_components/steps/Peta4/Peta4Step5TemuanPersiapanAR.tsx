@@ -31,7 +31,7 @@ export default async function Peta4Step5TemuanPersiapanAR({ materi, peta, initia
             <circle cx="12" cy="12" r="9" />
             <path d="M12 8v4l3 2" />
           </svg>
-          <h1 className="m-0 text-[32px] font-extrabold text-[#111827]">Ayo Bereksplorasi</h1>
+          <h1 className="m-0 text-[32px] font-extrabold text-[#111827]">Ayo Mengeksplorasi dengan GeoGebra 3D</h1>
         </div>
       </div>
 
@@ -73,7 +73,7 @@ export default async function Peta4Step5TemuanPersiapanAR({ materi, peta, initia
           <div className="mt-2 pt-4 border-t border-[#E5E7EB]">
             <PhotoUpload
               name="answers.foto_bukti"
-              label="Unggah foto catatan temuanmu (opsional)"
+              label="Unggah foto catatan hasil eksplorasi (opsional)"
               defaultValue={getValue("foto_bukti")}
             />
           </div>
@@ -107,17 +107,6 @@ export default async function Peta4Step5TemuanPersiapanAR({ materi, peta, initia
                 <li key={l}>{l}</li>
               ))}
             </ol>
-          </div>
-          <div className="flex justify-end">
-            <Link
-              href={`/belajar/${materi}/${peta}/6`}
-              className="flex items-center gap-2 bg-[#2563EB] text-white border-none rounded-full py-3 px-6 text-sm font-bold cursor-pointer shadow-[0_4px_10px_rgba(37,99,235,0.3)]"
-            >
-              Lanjut Eksplorasi dengan AR
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.4">
-                <path d="M5 12h14M13 5l7 7-7 7" />
-              </svg>
-            </Link>
           </div>
         </div>
       </div>

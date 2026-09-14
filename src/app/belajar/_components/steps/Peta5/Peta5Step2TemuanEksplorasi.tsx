@@ -9,10 +9,10 @@ const pertanyaan = [
   { n: 1, label: "Bangun ruang mana yang memiliki beberapa ciri yang sama?" },
   { n: 2, label: "Bangun ruang mana yang memiliki ciri paling berbeda?" },
   { n: 3, label: "Ciri apa yang dapat digunakan untuk membedakan prisma dengan limas?" },
-  { n: 4, label: "Apakah satu bangun dapat memiliki kesamaan dengan bangun lain lebih dari satu ciri? Berikan alasan." },
+  { n: 4, label: "Apakah satu bangun dapat memiliki kesamaan dengan bangun lain lebih dari satu ciri? Jelaskan." },
 ];
 
-export default function Peta5Step3TemuanEksplorasi({ materi, peta, initialAnswers }: StepComponentProps) {
+export default function Peta5Step2TemuanEksplorasi({ materi, peta, initialAnswers }: StepComponentProps) {
   const answers = initialAnswers ?? {};
   const getValue = (key: string) => (typeof answers[key] === "string" ? (answers[key] as string) : "");
 
@@ -20,22 +20,32 @@ export default function Peta5Step3TemuanEksplorasi({ materi, peta, initialAnswer
     <form action={submitStepAction} className="flex flex-col gap-8">
       <input type="hidden" name="materi" value={materi} />
       <input type="hidden" name="peta" value={peta} />
-      <input type="hidden" name="step" value="3" />
+      <input type="hidden" name="step" value="2" />
 
       <div className="flex flex-col gap-4">
-        <StepHeader materi={materi} currentStep={3} totalSteps={8} />
-        <div className="flex items-center gap-3.5">
-          <div className="w-9 h-9 rounded-full bg-[#2563EB] text-white flex items-center justify-center font-bold text-sm flex-shrink-0">
-            C
-          </div>
-          <h1 className="m-0 text-[32px] font-extrabold text-[#111827]">Apa yang Kamu Temukan?</h1>
+        <StepHeader materi={materi} currentStep={2} totalSteps={7} />
+        <div className="inline-flex items-center gap-1.5 bg-[#FDF3C7] text-[#92400E] rounded-full py-1.5 px-3.5 text-xs font-bold tracking-[0.02em] w-fit">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#92400E" strokeWidth="2.4">
+            <circle cx="12" cy="12" r="9" />
+            <circle cx="12" cy="12" r="4.5" />
+            <circle cx="12" cy="12" r="1" fill="#92400E" />
+          </svg>
+          Tahap 4 dari 6 – Discovery Learning
         </div>
-        <p className="m-0 text-[15px] leading-[1.6] text-[#374151] max-w-2xl">
-          Berdasarkan pengelompokan yang telah kamu lakukan pada langkah sebelumnya, jawablah
-          pertanyaan-pertanyaan reflektif di bawah ini untuk memperdalam pemahamanmu tentang ciri-ciri
-          bangun ruang.
-        </p>
+        <h1 className="m-0 text-[32px] font-extrabold text-[#111827]">Ayo Mengolah Informasi</h1>
       </div>
+
+      <div className="flex items-center gap-3">
+        <div className="w-[34px] h-[34px] rounded-full bg-[#2563EB] text-white flex items-center justify-center font-bold text-[15px] flex-shrink-0">
+          B
+        </div>
+        <div className="bg-white border border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-full py-2 px-5 text-sm font-bold text-[#2563EB]">
+          Apa yang Kamu Temukan?
+        </div>
+      </div>
+      <p className="m-0 -mt-6 text-sm text-[#4B5563]">
+        Bandingkan data pada tabel. Tuliskan persamaan dan perbedaan yang kamu temukan.
+      </p>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
         {pertanyaan.map((p) => (
@@ -71,7 +81,7 @@ export default function Peta5Step3TemuanEksplorasi({ materi, peta, initialAnswer
 
       <div className="flex justify-between items-center">
         <Link
-          href={`/belajar/${materi}/${peta}/2`}
+          href={`/belajar/${materi}/${peta}/1`}
           className="flex items-center gap-2 bg-transparent text-[#6B7280] border-none rounded-full py-3 px-6 text-sm font-semibold cursor-pointer hover:text-[#374151]"
         >
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4">

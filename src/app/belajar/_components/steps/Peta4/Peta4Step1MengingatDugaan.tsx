@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { submitStepAction } from "@/app/belajar/actions";
 import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
 import SubmitStepButton from "@/app/belajar/_components/SubmitStepButton";
@@ -28,7 +27,17 @@ export default async function Peta4Step1MengingatDugaan({ materi, peta, step = "
             <circle cx="12" cy="12" r="9" />
             <path d="M12 8v4l3 2" />
           </svg>
-          <h1 className="m-0 text-[32px] font-extrabold text-[#111827]">Ayo Bereksplorasi</h1>
+          <h1 className="m-0 text-[32px] font-extrabold text-[#111827]">Ayo Mengeksplorasi dengan GeoGebra 3D</h1>
+        </div>
+        <div className="bg-[#FEF9E7] border border-[#F5E3A0] rounded-2xl p-4 flex items-start gap-3 max-w-xl">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D97706" strokeWidth="2" className="flex-shrink-0 mt-0.5">
+            <path d="M9 18h6M10 22h4M12 2a7 7 0 00-4 12.7c.6.5 1 1.2 1 2.3h6c0-1.1.4-1.8 1-2.3A7 7 0 0012 2z" />
+          </svg>
+          <p className="m-0 text-sm leading-[1.6] text-[#374151]">
+            <span className="font-bold text-[#92400E]">Ingat! </span>
+            Pada tahap ini, kita mencari informasi yang diperlukan untuk menyelidiki dugaan kelompokmu,
+            belum menyimpulkan kebenaran dugaan tersebut.
+          </p>
         </div>
       </div>
 
@@ -43,8 +52,8 @@ export default async function Peta4Step1MengingatDugaan({ materi, peta, step = "
 
           <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-6 shadow-[0_1px_2px_rgba(0,0,0,0.04)] flex flex-col gap-4">
             <p className="m-0 text-[15px] leading-[1.6] text-[#374151]">
-              Pada tahap sebelumnya, kalian telah membuat dugaan bersama kelompok. Mari kita ingat
-              kembali fokus utama dari dugaan tersebut.
+              Pada tahap sebelumnya, kelompokmu telah membuat dugaan tentang cara mengelompokkan bangun
+              ruang. Sekarang saatnya mencari informasi yang diperlukan untuk menyelidiki dugaan tersebut.
             </p>
             <div className="bg-[#F9FAFB] border border-[#E5E7EB] rounded-2xl p-5">
               <div className="flex items-center gap-2 mb-3">
@@ -52,9 +61,12 @@ export default async function Peta4Step1MengingatDugaan({ materi, peta, step = "
                   <circle cx="11" cy="11" r="7" />
                   <path d="M21 21l-4.3-4.3" />
                 </svg>
-                <h3 className="m-0 text-sm font-bold text-[#111827]">Informasi yang Dicari:</h3>
+                <h3 className="m-0 text-sm font-bold text-[#111827]">Informasi yang Akan Kami Cari:</h3>
               </div>
-              <ul className="m-0 p-0 flex flex-col gap-3 list-none">
+              <p className="m-0 mb-3 text-xs text-[#6B7280]">
+                Bantu diri sendiri fokus dengan menjawab pertanyaan berikut sebelum mulai mengamati:
+              </p>
+              <ul className="m-0 p-0 mb-4 flex flex-col gap-2 list-none">
                 {pertanyaan.map((p) => (
                   <li key={p} className="flex items-start gap-3">
                     <div className="w-1.5 h-1.5 rounded-full bg-[#2563EB] mt-2 flex-shrink-0" />
@@ -63,50 +75,28 @@ export default async function Peta4Step1MengingatDugaan({ materi, peta, step = "
                 ))}
               </ul>
             </div>
-            <div className="flex justify-end">
-              <button
-                type="button"
-                className="flex items-center gap-2 bg-[#2563EB] text-white border-none rounded-full py-3 px-6 text-sm font-bold cursor-pointer shadow-[0_4px_10px_rgba(37,99,235,0.3)]"
-              >
-                Tulis Catatan
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2">
-                  <path d="M12 20h9M16.5 3.5a2.1 2.1 0 013 3L7 19l-4 1 1-4L16.5 3.5z" />
-                </svg>
-              </button>
-            </div>
           </div>
         </div>
 
-        <div className="lg:col-span-4">
-          <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-4 shadow-[0_1px_2px_rgba(0,0,0,0.04)] h-full flex flex-col items-center justify-center gap-3">
-            <EditablePageImage
-              imageKey="M1-P4-L1-1"
-              materi={materi}
-              peta={peta}
-              step={step}
-              urutan="1"
-              src={gambarReferensiVisual}
-              alt="Referensi visual"
-              editable={editFoto}
-              containerClassName="relative w-full aspect-square rounded-2xl overflow-hidden bg-[#EFF4FF]"
-            />
-            <span className="inline-block bg-[#FDC003]/30 text-[#785900] px-3 py-1 rounded-full text-xs font-bold">
-              Referensi Visual
-            </span>
-          </div>
+        <div className="lg:col-span-4 flex flex-col items-center justify-center gap-3">
+          <EditablePageImage
+            imageKey="M1-P4-L1-1"
+            materi={materi}
+            peta={peta}
+            step={step}
+            urutan="1"
+            src={gambarReferensiVisual}
+            alt="Referensi visual"
+            editable={editFoto}
+            containerClassName="relative w-full aspect-square rounded-2xl overflow-hidden bg-[#EFF4FF]"
+          />
+          <span className="inline-block bg-[#FDC003]/30 text-[#785900] px-3 py-1 rounded-full text-xs font-bold">
+            Referensi Visual
+          </span>
         </div>
       </div>
 
-      <div className="flex justify-between items-center">
-        <Link
-          href={`/belajar/${materi}/2/8`}
-          className="flex items-center gap-2 bg-transparent text-[#6B7280] border-none rounded-full py-3 px-6 text-sm font-semibold cursor-pointer hover:text-[#374151]"
-        >
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4">
-            <path d="M19 12H5M11 5l-7 7 7 7" />
-          </svg>
-          Kembali
-        </Link>
+      <div className="flex justify-end items-center">
         <SubmitStepButton className="flex items-center gap-2 bg-[#2563EB] text-white border-none rounded-full py-3.5 px-7 text-sm font-bold font-inherit shadow-[0_4px_10px_rgba(37,99,235,0.3)] cursor-pointer">
           LANJUTKAN
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.4">

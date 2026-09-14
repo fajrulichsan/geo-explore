@@ -8,12 +8,12 @@ import StepHeader from "@/app/belajar/_components/StepHeader";
 import { getPageImage } from "@/lib/pageImages";
 
 const catatan = [
-  "Perhatikan ciri-ciri sudut dan sisi.",
-  "Apakah ada bangun yang memiliki sifat yang sama namun ukuran berbeda?",
-  "Kelompokkan berdasarkan kesamaan sifat dominan yang telah diamati.",
+  "Analisis data dengan teliti.",
+  "Cari pola yang muncul.",
+  "Pastikan dugaanmu berdasarkan data, bukan sekadar perkiraan.",
 ];
 
-export default async function Peta5Step5SiapKlasifikasi({ materi, peta, initialAnswers }: StepComponentProps) {
+export default async function Peta5Step4SiapKlasifikasi({ materi, peta, initialAnswers }: StepComponentProps) {
   const answers = initialAnswers ?? {};
   const getValue = (key: string) => (typeof answers[key] === "string" ? (answers[key] as string) : "");
   const gambarKlasifikasi = await getPageImage("M1-P5-L5-1");
@@ -22,21 +22,33 @@ export default async function Peta5Step5SiapKlasifikasi({ materi, peta, initialA
     <form action={submitStepAction} className="flex flex-col gap-8">
       <input type="hidden" name="materi" value={materi} />
       <input type="hidden" name="peta" value={peta} />
-      <input type="hidden" name="step" value="5" />
+      <input type="hidden" name="step" value="4" />
 
       <div className="flex flex-col gap-4">
-        <StepHeader materi={materi} currentStep={5} totalSteps={8} />
-        <div className="flex items-center gap-3.5">
-          <div className="w-9 h-9 rounded-full bg-[#2563EB] text-white flex items-center justify-center font-bold text-sm flex-shrink-0">
-            E
-          </div>
-          <h1 className="m-0 text-[32px] font-extrabold text-[#111827]">Siap Membuat Klasifikasi?</h1>
+        <StepHeader materi={materi} currentStep={4} totalSteps={7} />
+        <div className="inline-flex items-center gap-1.5 bg-[#FDF3C7] text-[#92400E] rounded-full py-1.5 px-3.5 text-xs font-bold tracking-[0.02em] w-fit">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#92400E" strokeWidth="2.4">
+            <circle cx="12" cy="12" r="9" />
+            <circle cx="12" cy="12" r="4.5" />
+            <circle cx="12" cy="12" r="1" fill="#92400E" />
+          </svg>
+          Tahap 4 dari 6 – Discovery Learning
         </div>
-        <p className="m-0 text-[15px] leading-[1.6] text-[#374151] max-w-2xl">
-          Dari pola yang telah kamu temukan, manakah yang menurutmu dapat digunakan sebagai dasar
-          pengelompokan? Berikan alasanmu.
-        </p>
+        <h1 className="m-0 text-[32px] font-extrabold text-[#111827]">Ayo Mengolah Informasi</h1>
       </div>
+
+      <div className="flex items-center gap-3">
+        <div className="w-[34px] h-[34px] rounded-full bg-[#2563EB] text-white flex items-center justify-center font-bold text-[15px] flex-shrink-0">
+          D
+        </div>
+        <div className="bg-white border border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-full py-2 px-5 text-sm font-bold text-[#2563EB]">
+          Siap Membuat Klasifikasi?
+        </div>
+      </div>
+      <p className="m-0 -mt-6 text-sm text-[#4B5563]">
+        Dari pola yang telah kamu temukan, manakah yang menurutmu dapat digunakan sebagai dasar
+        pengelompokan? Berikan alasanmu.
+      </p>
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
         <div className="lg:col-span-8">
@@ -83,7 +95,7 @@ export default async function Peta5Step5SiapKlasifikasi({ materi, peta, initialA
           </div>
 
           <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-6 shadow-[0_1px_2px_rgba(0,0,0,0.04)] flex flex-col items-center text-center gap-3">
-            <div className="relative w-16 h-16 rounded-2xl overflow-hidden bg-[#F9FAFB]">
+            <div className="relative w-32 h-32 rounded-2xl overflow-hidden bg-[#F9FAFB]">
               <Image src={gambarKlasifikasi} alt="Ilustrasi klasifikasi bangun geometri" fill className="object-cover" />
             </div>
             <p className="m-0 text-sm text-[#6B7280]">
@@ -95,7 +107,7 @@ export default async function Peta5Step5SiapKlasifikasi({ materi, peta, initialA
 
       <div className="flex justify-between items-center">
         <Link
-          href={`/belajar/${materi}/${peta}/4`}
+          href={`/belajar/${materi}/${peta}/3`}
           className="flex items-center gap-2 bg-transparent text-[#6B7280] border-none rounded-full py-3 px-6 text-sm font-semibold cursor-pointer hover:text-[#374151]"
         >
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4">

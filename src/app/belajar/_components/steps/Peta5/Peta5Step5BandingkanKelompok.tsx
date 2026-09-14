@@ -9,7 +9,7 @@ const kolom = ["Kelompokmu", "Kelompok Lain 1", "Kelompok Lain 2"];
 
 const baris = ["Bentuk sisi", "Susunan sisi", "Pasangan bidang sisi sejajar", "Ukuran rusuk"];
 
-export default function Peta5Step6BandingkanKelompok({ materi, peta, initialAnswers }: StepComponentProps) {
+export default function Peta5Step5BandingkanKelompok({ materi, peta, initialAnswers }: StepComponentProps) {
   const answers = initialAnswers ?? {};
   const getValue = (key: string) => (typeof answers[key] === "string" ? (answers[key] as string) : "");
 
@@ -17,13 +17,13 @@ export default function Peta5Step6BandingkanKelompok({ materi, peta, initialAnsw
     <form action={submitStepAction} className="flex flex-col gap-8">
       <input type="hidden" name="materi" value={materi} />
       <input type="hidden" name="peta" value={peta} />
-      <input type="hidden" name="step" value="6" />
+      <input type="hidden" name="step" value="5" />
 
       <div className="flex flex-col gap-4">
-        <StepHeader materi={materi} currentStep={6} totalSteps={8} />
+        <StepHeader materi={materi} currentStep={5} totalSteps={7} />
         <div className="flex items-center gap-3.5">
           <div className="w-9 h-9 rounded-full bg-[#2563EB] text-white flex items-center justify-center font-bold text-sm flex-shrink-0">
-            F
+            E
           </div>
           <h1 className="m-0 text-[32px] font-extrabold text-[#111827]">Bandingkan Hasil Pengamatan Kelompokmu</h1>
         </div>
@@ -36,7 +36,7 @@ export default function Peta5Step6BandingkanKelompok({ materi, peta, initialAnsw
       <div className="bg-white border border-[#E5E7EB] rounded-[20px] shadow-[0_1px_2px_rgba(0,0,0,0.04)] overflow-hidden">
         <div className="bg-[#EFF4FF] border-b border-[#E5E7EB] p-6 flex items-center gap-3">
           <div className="w-10 h-10 rounded-full bg-[#2563EB] text-white flex items-center justify-center font-bold text-sm flex-shrink-0">
-            G
+            F
           </div>
           <h2 className="m-0 text-lg font-bold text-[#2563EB]">Tabel Perbandingan</h2>
         </div>
@@ -69,9 +69,7 @@ export default function Peta5Step6BandingkanKelompok({ materi, peta, initialAnsw
                         defaultValue={getValue(`perbandingan_${i}_${j}`)}
                         required
                         placeholder={j === 0 ? "Ketik di sini..." : "..."}
-                        className={`w-full rounded-lg border px-3 py-2 text-sm text-center text-[#374151] placeholder:text-[#9CA3AF] focus:border-[#2563EB] focus:outline-none transition-colors ${
-                          j === 0 ? "border-[#DBEAFE] bg-[#EFF4FF]" : "border-[#E5E7EB] bg-white"
-                        }`}
+                        className="w-full rounded-lg border border-[#E5E7EB] bg-white px-3 py-2 text-sm text-center text-[#374151] placeholder:text-[#9CA3AF] focus:border-[#2563EB] focus:outline-none transition-colors"
                       />
                     </td>
                   ))}
@@ -92,7 +90,7 @@ export default function Peta5Step6BandingkanKelompok({ materi, peta, initialAnsw
 
       <div className="flex justify-between items-center">
         <Link
-          href={`/belajar/${materi}/${peta}/5`}
+          href={`/belajar/${materi}/${peta}/4`}
           className="flex items-center gap-2 bg-transparent text-[#6B7280] border-none rounded-full py-3 px-6 text-sm font-semibold cursor-pointer hover:text-[#374151]"
         >
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4">

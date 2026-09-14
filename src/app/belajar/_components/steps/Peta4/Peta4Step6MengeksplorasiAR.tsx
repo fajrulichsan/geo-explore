@@ -13,6 +13,26 @@ const langkah = [
   { n: 4, label: "Lengkapi hasil pengamatan.", imageKey: "M1-P4-L6-4" },
 ] satisfies { n: number; label: string; imageKey: PageImageKey }[];
 
+const tipsAR = [
+  "Putar model untuk melihat setiap sisi.",
+  "Perhatikan sisi yang sebelumnya belum terlihat.",
+  "Geser perangkat jika ada bagian yang terhalang.",
+  "Perbesar bagian yang diperlukan untuk melihat detail.",
+  "Amati sisi, rusuk, titik sudut, dan pasangan bidang sejajar.",
+  "Pastikan bagian yang belum terlihat pada GeoGebra dapat diamati melalui AR.",
+];
+
+const halDiamati = [
+  "Bentuk sisi",
+  "Susunan sisi",
+  "Pasangan bidang sejajar",
+  "Bentuk alas",
+  "Jumlah sisi",
+  "Jumlah rusuk",
+  "Jumlah titik sudut",
+  "Informasi tambahan",
+];
+
 export default async function Peta4Step6MengeksplorasiAR({ materi, peta, step = "6", editFoto }: StepComponentProps) {
   const langkahImages = await Promise.all(langkah.map((l) => getPageImage(l.imageKey)));
 
@@ -29,14 +49,14 @@ export default async function Peta4Step6MengeksplorasiAR({ materi, peta, step = 
             <circle cx="12" cy="12" r="9" />
             <path d="M12 8v4l3 2" />
           </svg>
-          <h1 className="m-0 text-[32px] font-extrabold text-[#111827]">Ayo Bereksplorasi</h1>
+          <h1 className="m-0 text-[32px] font-extrabold text-[#111827]">Ayo Mengeksplorasi dengan Augmented Reality (AR)</h1>
         </div>
         <div className="flex items-center gap-3">
           <div className="w-9 h-9 rounded-full bg-[#2563EB] text-white flex items-center justify-center font-bold text-sm flex-shrink-0">
             F
           </div>
           <div className="bg-white border border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-full py-2 px-5 text-sm font-bold text-[#2563EB]">
-            Mengeksplorasi dengan Augmented Reality (AR)
+            Melengkapi Hasil Pengamatan
           </div>
         </div>
         <div className="bg-[#EFF4FF] border border-[#DBEAFE] rounded-2xl p-4 flex items-start gap-3 max-w-xl">
@@ -64,25 +84,68 @@ export default async function Peta4Step6MengeksplorasiAR({ materi, peta, step = 
           {langkah.map((l, i) => (
             <div
               key={l.n}
-              className="bg-white border border-[#E5E7EB] rounded-[20px] p-5 text-center flex flex-col items-center gap-3 shadow-[0_1px_2px_rgba(0,0,0,0.04)]"
+              className="bg-white border border-[#E5E7EB] rounded-[20px] p-3 text-center flex flex-col items-center gap-3 shadow-[0_1px_2px_rgba(0,0,0,0.04)]"
             >
-              <div className="w-10 h-10 rounded-full bg-[#2563EB] text-white flex items-center justify-center font-bold text-sm">
-                {l.n}
+              <div className="relative w-full">
+                <div className="absolute top-1.5 left-1.5 w-5 h-5 rounded-full bg-[#2563EB] text-white flex items-center justify-center font-bold text-[10px] z-10">
+                  {l.n}
+                </div>
+                <EditablePageImage
+                  imageKey={l.imageKey}
+                  materi={materi}
+                  peta={peta}
+                  step={step}
+                  urutan={String(i + 1)}
+                  src={langkahImages[i]}
+                  alt={l.label}
+                  editable={editFoto}
+                  containerClassName="relative w-full aspect-square rounded-xl overflow-hidden bg-[#F3F4F6]"
+                />
               </div>
-              <EditablePageImage
-                imageKey={l.imageKey}
-                materi={materi}
-                peta={peta}
-                step={step}
-                urutan={String(i + 1)}
-                src={langkahImages[i]}
-                alt={l.label}
-                editable={editFoto}
-                containerClassName="relative w-16 h-16 rounded-xl overflow-hidden bg-[#F3F4F6]"
-              />
               <p className="m-0 text-sm font-semibold text-[#374151]">{l.label}</p>
             </div>
           ))}
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-2">
+          <div className="bg-[#FEF9E7] border border-[#F5E3A0] rounded-[20px] p-6">
+            <h3 className="m-0 mb-4 flex items-center gap-2 text-base font-bold text-[#92400E]">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D97706" strokeWidth="2">
+                <path d="M9 18h6M10 22h4M12 2a7 7 0 00-4 12.7c.6.5 1 1.2 1 2.3h6c0-1.1.4-1.8 1-2.3A7 7 0 0012 2z" />
+              </svg>
+              Tips Eksplorasi AR
+            </h3>
+            <ul className="m-0 p-0 flex flex-col gap-3 list-none">
+              {tipsAR.map((t) => (
+                <li key={t} className="flex items-start gap-2">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#D97706" strokeWidth="3" className="mt-0.5 flex-shrink-0">
+                    <path d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span className="text-sm leading-[1.6] text-[#374151]">{t}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-6 shadow-[0_1px_2px_rgba(0,0,0,0.04)]">
+            <h3 className="m-0 mb-4 flex items-center gap-2 text-base font-bold text-[#111827]">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2563EB" strokeWidth="2">
+                <circle cx="11" cy="11" r="7" />
+                <path d="M21 21l-4.3-4.3" />
+              </svg>
+              Hal yang Diamati
+            </h3>
+            <ul className="m-0 p-0 grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-2 list-none">
+              {halDiamati.map((h, i) => (
+                <li key={h} className="flex items-center gap-2">
+                  <div className="w-5 h-5 rounded-full bg-[#EFF4FF] text-[#2563EB] flex items-center justify-center text-[10px] font-bold flex-shrink-0">
+                    {i + 1}
+                  </div>
+                  <span className="text-sm text-[#374151]">{h}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </div>
 

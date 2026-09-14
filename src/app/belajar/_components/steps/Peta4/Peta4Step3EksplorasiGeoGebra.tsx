@@ -21,7 +21,10 @@ const tips = [
 ];
 
 export default async function Peta4Step3EksplorasiGeoGebra({ materi, peta, step = "3", editFoto }: StepComponentProps) {
-  const gambarGeoGebra = await getPageImage("M1-P4-L3-1");
+  const [gambarGeoGebra, gambarQr] = await Promise.all([
+    getPageImage("M1-P4-L3-1"),
+    getPageImage("qr-geogebra"),
+  ]);
 
   return (
     <form action={submitStepAction} className="flex flex-col gap-8">
@@ -36,7 +39,7 @@ export default async function Peta4Step3EksplorasiGeoGebra({ materi, peta, step 
             <circle cx="12" cy="12" r="9" />
             <path d="M12 8v4l3 2" />
           </svg>
-          <h1 className="m-0 text-[32px] font-extrabold text-[#111827]">Ayo Bereksplorasi</h1>
+          <h1 className="m-0 text-[32px] font-extrabold text-[#111827]">Ayo Mengeksplorasi dengan GeoGebra 3D</h1>
         </div>
         <div className="flex items-center gap-3">
           <div className="w-9 h-9 rounded-full bg-[#2563EB] text-white flex items-center justify-center font-bold text-sm flex-shrink-0">
@@ -106,9 +109,18 @@ export default async function Peta4Step3EksplorasiGeoGebra({ materi, peta, step 
 
           <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-6 shadow-[0_1px_2px_rgba(0,0,0,0.04)] flex flex-col items-center text-center gap-3">
             <h4 className="m-0 text-sm font-bold text-[#374151]">Akses Langsung</h4>
-            <div className="w-32 h-32 rounded-xl bg-[#F3F4F6] flex items-center justify-center text-xs text-[#9CA3AF]">
-              QR Code
-            </div>
+            <EditablePageImage
+              imageKey="qr-geogebra"
+              materi={materi}
+              peta={peta}
+              step={step}
+              urutan="2"
+              src={gambarQr}
+              alt="QR code menuju model GeoGebra 3D"
+              editable={editFoto}
+              imageClassName="object-contain p-2"
+              containerClassName="relative w-32 h-32 rounded-xl overflow-hidden bg-white border border-[#E5E7EB]"
+            />
             <p className="m-0 text-xs text-[#6B7280]">
               Scan QR Code ini dengan HP-mu untuk membuka GeoGebra 3D secara langsung.
             </p>

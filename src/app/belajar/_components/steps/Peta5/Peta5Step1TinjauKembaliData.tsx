@@ -5,12 +5,16 @@ import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry"
 import SubmitStepButton from "@/app/belajar/_components/SubmitStepButton";
 import StepHeader from "@/app/belajar/_components/StepHeader";
 
-const bangunList = [
-  { n: 1, label: "Kubus" },
-  { n: 2, label: "Balok" },
-  { n: 3, label: "Prisma Segitiga" },
-  { n: 4, label: "Limas Segiempat" },
-  { n: 5, label: "Limas Segitiga" },
+const kolomBangun = ["Kubus", "Balok", "Prisma Segitiga", "Limas Segiempat", "Limas Segitiga"];
+
+const baris = [
+  "Bentuk sisi",
+  "Susunan sisi",
+  "Pasangan bidang sisi sejajar",
+  "Bentuk sisi yang dipilih sebagai alas",
+  "Jumlah sisi",
+  "Jumlah rusuk",
+  "Jumlah titik sudut",
 ];
 
 export default function Peta5Step1TinjauKembaliData({ materi, peta, initialAnswers }: StepComponentProps) {
@@ -24,60 +28,97 @@ export default function Peta5Step1TinjauKembaliData({ materi, peta, initialAnswe
       <input type="hidden" name="step" value="1" />
 
       <div className="flex flex-col gap-4">
-        <StepHeader materi={materi} currentStep={1} totalSteps={8} />
-        <div className="flex items-center gap-3.5">
-          <div className="w-9 h-9 rounded-full bg-[#2563EB] text-white flex items-center justify-center font-bold text-sm flex-shrink-0">
-            A
-          </div>
-          <h1 className="m-0 text-[32px] font-extrabold text-[#111827]">Tinjau Kembali Data Eksplorasi</h1>
+        <StepHeader materi={materi} currentStep={1} totalSteps={7} />
+        <div className="inline-flex items-center gap-1.5 bg-[#FDF3C7] text-[#92400E] rounded-full py-1.5 px-3.5 text-xs font-bold tracking-[0.02em] w-fit">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#92400E" strokeWidth="2.4">
+            <circle cx="12" cy="12" r="9" />
+            <circle cx="12" cy="12" r="4.5" />
+            <circle cx="12" cy="12" r="1" fill="#92400E" />
+          </svg>
+          Tahap 4 dari 6 – Discovery Learning
         </div>
+        <h1 className="m-0 text-[32px] font-extrabold text-[#111827]">Ayo Mengolah Informasi</h1>
         <p className="m-0 text-[15px] leading-[1.6] text-[#374151] max-w-2xl">
-          Tampilkan kembali data setiap bangun untuk memastikan informasimu sudah lengkap sebelum diolah
-          lebih lanjut.
+          Pada Tahap 3, kamu telah memperoleh data hasil eksplorasi menggunakan GeoGebra 3D dan Augmented
+          Reality (AR). Sekarang, lengkapi data kelompokmu dengan hasil pengamatan anggota atau kelompok
+          lain yang telah dibagikan. Selanjutnya, organisasikan dan bandingkan data tersebut untuk
+          menemukan persamaan, perbedaan, dan pola pada bangun ruang.
         </p>
       </div>
 
-      <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-6 shadow-[0_1px_2px_rgba(0,0,0,0.04)] flex flex-col gap-5">
-        <label className="text-sm font-bold text-[#111827]">Pilih Bangun:</label>
-        <select
-          name="answers.bangun_dipilih"
-          defaultValue={getValue("bangun_dipilih")}
-          required
-          className="w-full rounded-lg border border-[#E5E7EB] bg-white px-4 py-3 text-sm text-[#374151] focus:border-[#2563EB] focus:outline-none transition-colors"
-        >
-          <option value="">-- Pilih Bangun --</option>
-          <option value="kubus">Kubus</option>
-          <option value="balok">Balok</option>
-          <option value="prisma-segitiga">Prisma Segitiga</option>
-          <option value="limas-segiempat">Limas Segiempat</option>
-          <option value="limas-segitiga">Limas Segitiga</option>
-        </select>
+      <div className="bg-[#FEF9E7] border border-[#F5E3A0] rounded-[20px] p-6 flex flex-col gap-3">
+        <div className="flex items-center gap-2">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D97706" strokeWidth="2">
+            <circle cx="12" cy="12" r="10" />
+            <path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3M12 17h.01" />
+          </svg>
+          <h3 className="m-0 text-sm font-bold text-[#92400E]">Ingat!</h3>
+        </div>
+        <ul className="m-0 p-0 flex flex-col gap-2 list-none">
+          {["Analisis data dengan teliti.", "Cari pola yang muncul.", "Pastikan dugaanmu berdasarkan data, bukan sekadar perkiraan."].map(
+            (c) => (
+              <li key={c} className="flex items-start gap-2">
+                <div className="w-1.5 h-1.5 rounded-full bg-[#D97706] mt-2 flex-shrink-0" />
+                <span className="text-sm leading-[1.6] text-[#92400E]">{c}</span>
+              </li>
+            ),
+          )}
+        </ul>
+      </div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
-          {bangunList.map((b) => (
-            <button
-              key={b.n}
-              type="button"
-              className="flex flex-col items-center justify-center p-4 bg-white border border-[#E5E7EB] rounded-2xl hover:border-[#2563EB] transition-colors gap-2"
-            >
-              <div className="w-14 h-14 rounded-2xl bg-[#F9FAFB] flex items-center justify-center text-xs text-[#9CA3AF]">
-                {b.n}
-              </div>
-              <span className="text-sm font-semibold text-[#111827] text-center">{b.label}</span>
-            </button>
-          ))}
+      <div className="flex items-center gap-3">
+        <div className="w-[34px] h-[34px] rounded-full bg-[#2563EB] text-white flex items-center justify-center font-bold text-[15px] flex-shrink-0">
+          A
+        </div>
+        <div className="bg-white border border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-full py-2 px-5 text-sm font-bold text-[#2563EB]">
+          Organisasikan Data Hasil Pengamatan
+        </div>
+      </div>
+      <p className="m-0 -mt-6 text-sm text-[#4B5563]">
+        Lengkapi tabel berikut berdasarkan data Tahap 3 (GeoGebra 3D dan AR) serta data yang kamu peroleh
+        dari teman/kelompok lain. Sisi yang dipilih sebagai alas ditetapkan berdasarkan posisi bangun yang
+        sedang diamati.
+      </p>
+
+      <div className="bg-white border border-[#E5E7EB] rounded-[20px] shadow-[0_1px_2px_rgba(0,0,0,0.04)] overflow-hidden">
+        <div className="overflow-x-auto">
+          <table className="w-full text-left border-collapse min-w-[800px]">
+            <thead>
+              <tr>
+                <th className="bg-[#2563EB] text-white text-sm font-bold px-4 py-3 w-1/4">Yang Dibandingkan</th>
+                {kolomBangun.map((k) => (
+                  <th key={k} className="bg-[#2563EB] text-white text-sm font-bold px-4 py-3 text-center border-l border-white/20">
+                    {k}
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-[#E5E7EB]">
+              {baris.map((b, i) => (
+                <tr key={b} className="hover:bg-[#F9FAFB] transition-colors">
+                  <td className="px-4 py-3 text-sm font-semibold text-[#2563EB] align-top">{b}</td>
+                  {kolomBangun.map((k, j) => (
+                    <td key={k} className="px-4 py-3">
+                      <input
+                        type="text"
+                        name={`answers.perbandingan_${i}_${j}`}
+                        defaultValue={getValue(`perbandingan_${i}_${j}`)}
+                        required
+                        placeholder="..."
+                        className="w-full rounded-lg border border-[#E5E7EB] bg-[#F9FAFB] px-3 py-2 text-sm text-center text-[#374151] placeholder:text-[#9CA3AF] focus:border-[#2563EB] focus:outline-none focus:bg-white transition-colors"
+                      />
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
 
-        <div className="p-8 border-2 border-dashed border-[#E5E7EB] rounded-2xl flex flex-col items-center justify-center text-center gap-2 min-h-[160px]">
-          <span className="text-sm text-[#6B7280]">
-            Pilih bangun dari dropdown atau klik ikon di atas untuk melihat data eksplorasi.
-          </span>
-        </div>
-
-        <div className="mt-6 pt-6 border-t border-[#E5E7EB]">
+        <div className="p-6 pt-0">
           <PhotoUpload
             name="answers.foto_bukti"
-            label="Unggah foto hasil tinjauan data (opsional)"
+            label="Unggah foto hasil tabel organisasi data (opsional)"
             defaultValue={getValue("foto_bukti")}
           />
         </div>

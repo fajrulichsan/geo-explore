@@ -22,7 +22,7 @@ export default function Peta4Step8CatatanHasilEksplorasi({ materi, peta, initial
             <circle cx="12" cy="12" r="9" />
             <path d="M12 8v4l3 2" />
           </svg>
-          <h1 className="m-0 text-[32px] font-extrabold text-[#111827]">Ayo Bereksplorasi</h1>
+          <h1 className="m-0 text-[32px] font-extrabold text-[#111827]">Ayo Mengeksplorasi dengan Augmented Reality (AR)</h1>
         </div>
         <div className="flex items-center gap-3">
           <div className="w-9 h-9 rounded-full bg-[#2563EB] text-white flex items-center justify-center font-bold text-sm flex-shrink-0">

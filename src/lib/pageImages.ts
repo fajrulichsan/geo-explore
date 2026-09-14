@@ -57,6 +57,11 @@ export type PageImageKey =
   | "M1-P3-L2-2"
   | "M1-P3-L2-3"
   | "M1-P4-L1-1"
+  | "M1-P4-L2-1"
+  | "M1-P4-L2-2"
+  | "M1-P4-L2-3"
+  | "M1-P4-L2-4"
+  | "M1-P4-L2-5"
   | "M1-P4-L3-1"
   | "M1-P4-L4-1"
   | "M1-P4-L5-1"
@@ -302,6 +307,11 @@ const DEFAULT_IMAGES: Record<PageImageKey, string> = {
   "M1-P3-L2-2": "https://placehold.co/400x280?text=Kelompok+B",
   "M1-P3-L2-3": "https://placehold.co/400x280?text=Kelompok+C",
   "M1-P4-L1-1": "https://placehold.co/400x400?text=Referensi+Visual",
+  "M1-P4-L2-1": "https://placehold.co/200x200?text=Kubus",
+  "M1-P4-L2-2": "https://placehold.co/200x200?text=Balok",
+  "M1-P4-L2-3": "https://placehold.co/200x200?text=Prisma+Segitiga",
+  "M1-P4-L2-4": "https://placehold.co/200x200?text=Limas+Segiempat",
+  "M1-P4-L2-5": "https://placehold.co/200x200?text=Limas+Segitiga",
   "M1-P4-L3-1": "https://placehold.co/560x315?text=Ilustrasi+GeoGebra+3D",
   "M1-P4-L4-1": "https://placehold.co/400x400?text=Gambar+Referensi",
   "M1-P4-L5-1": "https://placehold.co/300x300?text=Ilustrasi+AR",
