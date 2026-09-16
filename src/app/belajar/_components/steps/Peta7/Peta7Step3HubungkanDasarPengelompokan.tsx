@@ -27,7 +27,7 @@ export default function Peta7Step3HubungkanDasarPengelompokan({
       <input type="hidden" name="step" value="3" />
 
       <div className="flex flex-col gap-4">
-        <StepHeader materi={materi} currentStep={3} totalSteps={11} />
+        <StepHeader materi={materi} currentStep={3} totalSteps={5} />
         <div className="flex items-center gap-3.5">
           <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#2563EB" strokeWidth="2.4" className="flex-shrink-0">
             <circle cx="11" cy="11" r="7" />

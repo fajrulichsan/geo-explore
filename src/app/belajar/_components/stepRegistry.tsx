@@ -64,12 +64,6 @@ import Peta7Step2LengkapiKesimpulan from "./steps/Peta7/Peta7Step2LengkapiKesimp
 import Peta7Step3HubungkanDasarPengelompokan from "./steps/Peta7/Peta7Step3HubungkanDasarPengelompokan";
 import Peta7Step4PertanyaanGeneralisasi from "./steps/Peta7/Peta7Step4PertanyaanGeneralisasi";
 import Peta7Step5SiapkanGeneralisasi from "./steps/Peta7/Peta7Step5SiapkanGeneralisasi";
-import Peta7Step6BandingkanKesimpulan from "./steps/Peta7/Peta7Step6BandingkanKesimpulan";
-import Peta7Step7RumuskanGeneralisasi from "./steps/Peta7/Peta7Step7RumuskanGeneralisasi";
-import Peta7Step8HubungkanDasarKelompok from "./steps/Peta7/Peta7Step8HubungkanDasarKelompok";
-import Peta7Step9PertanyaanGeneralisasiFinal from "./steps/Peta7/Peta7Step9PertanyaanGeneralisasiFinal";
-import Peta7Step10SiapkanGeneralisasiFinal from "./steps/Peta7/Peta7Step10SiapkanGeneralisasiFinal";
-import Peta7Step11GeneralisasiAkhir from "./steps/Peta7/Peta7Step11GeneralisasiAkhir";
 import Peta9Step1MengelompokkanBangunRuang from "./steps/Peta9/Peta9Step1MengelompokkanBangunRuang";
 import Peta9Step2SatuBangunBanyakKelompok from "./steps/Peta9/Peta9Step2SatuBangunBanyakKelompok";
 import Peta9Step3MenemukanCaraBaru from "./steps/Peta9/Peta9Step3MenemukanCaraBaru";
@@ -304,12 +298,6 @@ export const stepRegistry: Record<string, ComponentType<StepComponentProps>> = {
   "1-7-3": Peta7Step3HubungkanDasarPengelompokan,
   "1-7-4": Peta7Step4PertanyaanGeneralisasi,
   "1-7-5": Peta7Step5SiapkanGeneralisasi,
-  "1-7-6": Peta7Step6BandingkanKesimpulan,
-  "1-7-7": Peta7Step7RumuskanGeneralisasi,
-  "1-7-8": Peta7Step8HubungkanDasarKelompok,
-  "1-7-9": Peta7Step9PertanyaanGeneralisasiFinal,
-  "1-7-10": Peta7Step10SiapkanGeneralisasiFinal,
-  "1-7-11": Peta7Step11GeneralisasiAkhir,
   "1-8-1": Peta8Step1RefleksiPemahaman,
   "1-8-2": Peta8Step2RefleksiPengalaman,
   "1-8-3": Peta8Step3KeyakinanDiriku,

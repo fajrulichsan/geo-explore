@@ -4,10 +4,27 @@ import { submitStepAction } from "@/app/belajar/actions";
 import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
 import SubmitStepButton from "@/app/belajar/_components/SubmitStepButton";
 import StepHeader from "@/app/belajar/_components/StepHeader";
+import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
+import { getPageImage, type PageImageKey } from "@/lib/pageImages";
 
-export default function Peta7Step1TinjauVerifikasi({ materi, peta, initialAnswers }: StepComponentProps) {
+const alurData = [
+  { key: "data-tahap-3", imageKey: "M1-P7-L1-1" as PageImageKey, label: "Data Tahap 3" },
+  { key: "hasil-tahap-4", imageKey: "M1-P7-L1-2" as PageImageKey, label: "Hasil Tahap 4" },
+  { key: "hasil-tahap-5", imageKey: "M1-P7-L1-3" as PageImageKey, label: "Hasil Tahap 5" },
+  { key: "tahap-6", imageKey: "M1-P7-L1-4" as PageImageKey, label: "Tahap 6 (Kesimpulan)" },
+];
+
+export default async function Peta7Step1TinjauVerifikasi({
+  materi,
+  peta,
+  step = "1",
+  editFoto,
+  initialAnswers,
+}: StepComponentProps) {
   const answers = initialAnswers ?? {};
   const getValue = (key: string) => (typeof answers[key] === "string" ? (answers[key] as string) : "");
+
+  const alurDataImages = await Promise.all(alurData.map((a) => getPageImage(a.imageKey)));
 
   return (
     <form action={submitStepAction} className="flex flex-col gap-8">
@@ -16,7 +33,7 @@ export default function Peta7Step1TinjauVerifikasi({ materi, peta, initialAnswer
       <input type="hidden" name="step" value="1" />
 
       <div className="flex flex-col gap-4">
-        <StepHeader materi={materi} currentStep={1} totalSteps={11} />
+        <StepHeader materi={materi} currentStep={1} totalSteps={5} />
         <div className="flex items-center gap-3.5">
           <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#2563EB" strokeWidth="2.4" className="flex-shrink-0">
             <circle cx="11" cy="11" r="7" />
@@ -55,25 +72,48 @@ export default function Peta7Step1TinjauVerifikasi({ materi, peta, initialAnswer
       <div className="flex flex-col gap-4">
         <h3 className="m-0 text-lg font-bold text-[#111827]">Alur Data</h3>
         <div className="flex flex-col md:flex-row items-center justify-center gap-3">
-          <div className="bg-white rounded-xl p-4 border-2 border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] text-center w-full md:w-1/4">
-            <div className="text-[#2b3d44] text-xl mb-1">📊</div>
-            <p className="m-0 text-xs font-semibold text-[#374151]">Data Tahap 3</p>
-          </div>
-          <span className="text-[#9CA3AF] font-bold rotate-90 md:rotate-0">+</span>
-          <div className="bg-white rounded-xl p-4 border-2 border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] text-center w-full md:w-1/4">
-            <div className="text-[#2b3d44] text-xl mb-1">📈</div>
-            <p className="m-0 text-xs font-semibold text-[#374151]">Hasil Tahap 4</p>
-          </div>
-          <span className="text-[#2563EB] font-bold rotate-90 md:rotate-0">→</span>
-          <div className="bg-white rounded-xl p-4 border-2 border-[#2563EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] text-center w-full md:w-1/4">
-            <div className="text-[#2563EB] text-xl mb-1">✔️</div>
-            <p className="m-0 text-xs font-bold text-[#2563EB]">Hasil Tahap 5</p>
-          </div>
-          <span className="text-[#2563EB] font-bold text-lg rotate-90 md:rotate-0">→</span>
-          <div className="bg-[#2563EB] text-white rounded-xl p-4 shadow-[0_4px_10px_rgba(37,99,235,0.3)] text-center w-full md:w-1/4 md:scale-110">
-            <div className="text-xl mb-1">💡</div>
-            <p className="m-0 text-xs font-bold">Tahap 6 (Kesimpulan)</p>
-          </div>
+          {alurData.map((a, i) => {
+            const isLast = i === alurData.length - 1;
+            const isHighlighted = i === alurData.length - 2 || isLast;
+            return (
+              <div key={a.key} className="flex items-center gap-3 w-full md:w-1/4">
+                <div
+                  className={
+                    isLast
+                      ? "bg-[#2563EB] text-white rounded-xl p-4 shadow-[0_4px_10px_rgba(37,99,235,0.3)] text-center w-full md:scale-110"
+                      : `bg-white rounded-xl p-4 border-2 text-center w-full shadow-[0_1px_2px_rgba(0,0,0,0.04)] ${
+                          isHighlighted ? "border-[#2563EB]" : "border-[#E5E7EB]"
+                        }`
+                  }
+                >
+                  <EditablePageImage
+                    imageKey={a.imageKey}
+                    materi={materi}
+                    peta={peta}
+                    step={step}
+                    urutan={String(i + 1)}
+                    src={alurDataImages[i]}
+                    alt={a.label}
+                    editable={editFoto}
+                    imageClassName="object-contain"
+                    containerClassName="relative w-20 h-20 mx-auto mb-1"
+                  />
+                  <p className={`m-0 text-xs font-semibold ${isLast ? "font-bold" : isHighlighted ? "font-bold text-[#2563EB]" : "text-[#374151]"}`}>
+                    {a.label}
+                  </p>
+                </div>
+                {!isLast && (
+                  <span
+                    className={`font-bold rotate-90 md:rotate-0 flex-shrink-0 ${
+                      i === 0 ? "text-[#9CA3AF]" : "text-[#2563EB]"
+                    } ${i === alurData.length - 2 ? "text-lg" : ""}`}
+                  >
+                    {i === 0 ? "+" : "→"}
+                  </span>
+                )}
+              </div>
+            );
+          })}
         </div>
       </div>
 

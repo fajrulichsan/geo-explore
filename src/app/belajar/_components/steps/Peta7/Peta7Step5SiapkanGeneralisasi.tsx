@@ -25,7 +25,7 @@ export default function Peta7Step5SiapkanGeneralisasi({ materi, peta, initialAns
       <input type="hidden" name="step" value="5" />
 
       <div className="flex flex-col gap-4">
-        <StepHeader materi={materi} currentStep={5} totalSteps={11} />
+        <StepHeader materi={materi} currentStep={5} totalSteps={5} />
         <div className="flex items-center gap-3.5">
           <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#2563EB" strokeWidth="2.4" className="flex-shrink-0">
             <circle cx="11" cy="11" r="7" />
@@ -61,20 +61,10 @@ export default function Peta7Step5SiapkanGeneralisasi({ materi, peta, initialAns
           </div>
           <div className="flex flex-col gap-2">
             {checklist.map((c) => (
-              <label
-                key={c.key}
-                className="flex items-start gap-3 p-3 rounded-lg border border-transparent hover:border-[#B3C5FF] hover:bg-[#F9FAFB] cursor-pointer transition-all"
-              >
-                <input
-                  type="checkbox"
-                  name={`answers.${c.key}`}
-                  value="true"
-                  defaultChecked={getValue(c.key) === "true"}
-                  data-require-group="peta6step5"
-                  className="mt-1 w-4 h-4 rounded border-[#E5E7EB] text-[#2563EB]"
-                />
+              <div key={c.key} className="flex items-start gap-3 p-3 rounded-lg">
+                <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-[#2563EB] flex-shrink-0" />
                 <span className="text-sm text-[#374151]">{c.label}</span>
-              </label>
+              </div>
             ))}
           </div>
         </div>
@@ -119,10 +109,10 @@ export default function Peta7Step5SiapkanGeneralisasi({ materi, peta, initialAns
           </svg>
           Kembali
         </Link>
-        <SubmitStepButton className="flex items-center gap-2 bg-[#2563EB] text-white border-none rounded-full py-3.5 px-7 text-sm font-bold font-inherit shadow-[0_4px_10px_rgba(37,99,235,0.3)] cursor-pointer">
-          LANJUTKAN
+        <SubmitStepButton className="flex items-center gap-2 bg-[#16A34A] text-white border-none rounded-full py-3.5 px-7 text-sm font-bold font-inherit shadow-[0_4px_10px_rgba(22,163,74,0.3)] cursor-pointer">
+          SELESAI
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.4">
-            <path d="M5 12h14M13 5l7 7-7 7" />
+            <path d="M20 6L9 17l-5-5" />
           </svg>
         </SubmitStepButton>
       </div>
