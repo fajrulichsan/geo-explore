@@ -6,13 +6,13 @@ import SubmitStepButton from "@/app/belajar/_components/SubmitStepButton";
 import StepHeader from "@/app/belajar/_components/StepHeader";
 
 const baris = [
-  { icon: "🔷", label: "Bentuk dan susunan sisi", key: "bentuk_susunan_sisi" },
-  { icon: "📐", label: "Pasangan bidang sisi sejajar", key: "pasangan_bidang_sejajar" },
-  { icon: "🧱", label: "Bentuk sisi yang dipilih sebagai alas", key: "bentuk_sisi_alas" },
-  { icon: "🔢", label: "Jumlah sisi/rusuk/titik sudut", key: "jumlah_sisi_rusuk_titik_sudut" },
+  { icon: "🔷", label: "Bentuk dan susunan sisi", key: "final_bentuk_susunan_sisi" },
+  { icon: "📐", label: "Pasangan bidang sisi sejajar", key: "final_pasangan_bidang_sejajar" },
+  { icon: "🧱", label: "Bentuk sisi yang dipilih sebagai alas", key: "final_bentuk_sisi_alas" },
+  { icon: "🔢", label: "Jumlah sisi/rusuk/titik sudut", key: "final_jumlah_sisi_rusuk_titik_sudut" },
 ];
 
-export default function Peta7Step3HubungkanDasarPengelompokan({
+export default function Peta7Step8HubungkanDasarKelompok({
   materi,
   peta,
   initialAnswers,
@@ -24,10 +24,10 @@ export default function Peta7Step3HubungkanDasarPengelompokan({
     <form action={submitStepAction} className="flex flex-col gap-8">
       <input type="hidden" name="materi" value={materi} />
       <input type="hidden" name="peta" value={peta} />
-      <input type="hidden" name="step" value="3" />
+      <input type="hidden" name="step" value="8" />
 
       <div className="flex flex-col gap-4">
-        <StepHeader materi={materi} currentStep={3} totalSteps={11} />
+        <StepHeader materi={materi} currentStep={8} totalSteps={11} />
         <div className="flex items-center gap-3.5">
           <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#2563EB" strokeWidth="2.4" className="flex-shrink-0">
             <circle cx="11" cy="11" r="7" />
@@ -36,14 +36,13 @@ export default function Peta7Step3HubungkanDasarPengelompokan({
           <h1 className="m-0 text-2xl sm:text-[32px] font-extrabold text-[#111827]">Ayo Menyimpulkan</h1>
         </div>
         <p className="m-0 text-[15px] leading-[1.6] text-[#374151] max-w-2xl">
-          Perhatikan kembali beberapa dasar pengelompokan yang telah kamu gunakan. Lengkapi hubungan
-          berikut.
+          Lengkapi tabel berikut berdasarkan hasil pengamatan dan diskusi kelompokmu.
         </p>
       </div>
 
       <div className="flex items-center gap-3">
         <div className="w-[34px] h-[34px] rounded-full bg-[#2563EB] text-white flex items-center justify-center font-bold text-[15px] flex-shrink-0">
-          C
+          H
         </div>
         <div className="bg-white border border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-full py-2 px-5 text-sm font-bold text-[#2563EB]">
           Hubungkan Dasar Pengelompokan
@@ -106,8 +105,8 @@ export default function Peta7Step3HubungkanDasarPengelompokan({
                     </div>
                     <input
                       type="text"
-                      name="answers.dasar_lain"
-                      defaultValue={getValue("dasar_lain")}
+                      name="answers.final_dasar_lain"
+                      defaultValue={getValue("final_dasar_lain")}
                       placeholder="..."
                       required
                       className="w-full bg-transparent border-b border-[#E5E7EB] p-1 text-sm focus:border-[#2563EB] focus:outline-none transition-colors"
@@ -116,8 +115,8 @@ export default function Peta7Step3HubungkanDasarPengelompokan({
                 </td>
                 <td className="p-3 align-top">
                   <textarea
-                    name="answers.dasar_lain_contoh_bangun"
-                    defaultValue={getValue("dasar_lain_contoh_bangun")}
+                    name="answers.final_dasar_lain_contoh_bangun"
+                    defaultValue={getValue("final_dasar_lain_contoh_bangun")}
                     rows={3}
                     placeholder="Tuliskan bangun..."
                     required
@@ -126,8 +125,8 @@ export default function Peta7Step3HubungkanDasarPengelompokan({
                 </td>
                 <td className="p-3 align-top">
                   <textarea
-                    name="answers.dasar_lain_kesimpulan"
-                    defaultValue={getValue("dasar_lain_kesimpulan")}
+                    name="answers.final_dasar_lain_kesimpulan"
+                    defaultValue={getValue("final_dasar_lain_kesimpulan")}
                     rows={3}
                     placeholder="Kesimpulanmu..."
                     required
@@ -160,7 +159,7 @@ export default function Peta7Step3HubungkanDasarPengelompokan({
 
       <div className="flex justify-between items-center">
         <Link
-          href={`/belajar/${materi}/${peta}/2`}
+          href={`/belajar/${materi}/${peta}/7`}
           className="flex items-center gap-2 bg-transparent text-[#6B7280] border-none rounded-full py-3 px-6 text-sm font-semibold cursor-pointer hover:text-[#374151]"
         >
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4">

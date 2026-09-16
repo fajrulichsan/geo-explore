@@ -6,15 +6,19 @@ import SubmitStepButton from "@/app/belajar/_components/SubmitStepButton";
 import StepHeader from "@/app/belajar/_components/StepHeader";
 
 const checklist = [
-  { key: "checklist_dasar_pengelompokan", label: "Dasar pengelompokan yang dapat digunakan" },
+  { key: "final_checklist_dasar_pengelompokan", label: "Dasar pengelompokan yang dapat digunakan" },
   {
-    key: "checklist_alasan_lebih_dari_satu_kelompok",
+    key: "final_checklist_alasan_lebih_dari_satu_kelompok",
     label: "Alasan mengapa satu bangun dapat masuk lebih dari satu kelompok",
   },
-  { key: "checklist_syarat_klasifikasi_diterima", label: "Syarat agar klasifikasi dapat diterima" },
+  { key: "final_checklist_syarat_klasifikasi_diterima", label: "Syarat agar klasifikasi dapat diterima" },
 ];
 
-export default function Peta7Step5SiapkanGeneralisasi({ materi, peta, initialAnswers }: StepComponentProps) {
+export default function Peta7Step10SiapkanGeneralisasiFinal({
+  materi,
+  peta,
+  initialAnswers,
+}: StepComponentProps) {
   const answers = initialAnswers ?? {};
   const getValue = (key: string) => (typeof answers[key] === "string" ? (answers[key] as string) : "");
 
@@ -22,10 +26,10 @@ export default function Peta7Step5SiapkanGeneralisasi({ materi, peta, initialAns
     <form action={submitStepAction} className="flex flex-col gap-8">
       <input type="hidden" name="materi" value={materi} />
       <input type="hidden" name="peta" value={peta} />
-      <input type="hidden" name="step" value="5" />
+      <input type="hidden" name="step" value="10" />
 
       <div className="flex flex-col gap-4">
-        <StepHeader materi={materi} currentStep={5} totalSteps={11} />
+        <StepHeader materi={materi} currentStep={10} totalSteps={11} />
         <div className="flex items-center gap-3.5">
           <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#2563EB" strokeWidth="2.4" className="flex-shrink-0">
             <circle cx="11" cy="11" r="7" />
@@ -34,14 +38,14 @@ export default function Peta7Step5SiapkanGeneralisasi({ materi, peta, initialAns
           <h1 className="m-0 text-2xl sm:text-[32px] font-extrabold text-[#111827]">Ayo Menyimpulkan</h1>
         </div>
         <p className="m-0 text-[15px] leading-[1.6] text-[#374151] max-w-2xl">
-          Sekarang kamu telah memiliki bahan untuk menyusun generalisasi kelompok. Pada halaman
-          berikutnya, bandingkan pemikiran anggota kelompok dan rumuskan kesimpulan akhir bersama.
+          Sekarang kamu telah menilai bahan untuk menyusun generalisasi kelompok. Tuliskan kesimpulan
+          akhir untuk generalisasi kelompokmu.
         </p>
       </div>
 
       <div className="flex items-center gap-3">
         <div className="w-[34px] h-[34px] rounded-full bg-[#2563EB] text-white flex items-center justify-center font-bold text-[15px] flex-shrink-0">
-          E
+          J
         </div>
         <div className="bg-white border border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-full py-2 px-5 text-sm font-bold text-[#2563EB]">
           Siapkan Generalisasi Kelompokmu
@@ -70,7 +74,7 @@ export default function Peta7Step5SiapkanGeneralisasi({ materi, peta, initialAns
                   name={`answers.${c.key}`}
                   value="true"
                   defaultChecked={getValue(c.key) === "true"}
-                  data-require-group="peta6step5"
+                  data-require-group="peta7step10"
                   className="mt-1 w-4 h-4 rounded border-[#E5E7EB] text-[#2563EB]"
                 />
                 <span className="text-sm text-[#374151]">{c.label}</span>
@@ -92,8 +96,8 @@ export default function Peta7Step5SiapkanGeneralisasi({ materi, peta, initialAns
             <span className="text-xs text-[#9CA3AF] px-2 py-1 bg-[#F9FAFB] rounded">Draft Tersimpan</span>
           </div>
           <textarea
-            name="answers.catatan_kesepakatan"
-            defaultValue={getValue("catatan_kesepakatan")}
+            name="answers.final_catatan_kesepakatan"
+            defaultValue={getValue("final_catatan_kesepakatan")}
             className="w-full flex-1 min-h-[200px] resize-none rounded-lg border border-[#E5E7EB] bg-[#F9FAFB] p-4 text-sm text-[#374151] placeholder:text-[#9CA3AF] focus:border-[#2563EB] focus:outline-none transition-colors"
             placeholder="Tuliskan poin-poin kesepakatan kelompokmu di sini..."
             required
@@ -111,7 +115,7 @@ export default function Peta7Step5SiapkanGeneralisasi({ materi, peta, initialAns
 
       <div className="flex justify-between items-center">
         <Link
-          href={`/belajar/${materi}/${peta}/4`}
+          href={`/belajar/${materi}/${peta}/9`}
           className="flex items-center gap-2 bg-transparent text-[#6B7280] border-none rounded-full py-3 px-6 text-sm font-semibold cursor-pointer hover:text-[#374151]"
         >
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4">
