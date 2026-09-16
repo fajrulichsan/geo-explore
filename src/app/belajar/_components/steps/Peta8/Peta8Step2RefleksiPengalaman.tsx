@@ -35,18 +35,22 @@ export default function Peta8Step2RefleksiPengalaman({ materi, peta, initialAnsw
 
       <div className="flex flex-col gap-4">
         <StepHeader materi={materi} currentStep={2} totalSteps={4} />
-        <div className="flex items-center gap-3.5">
-          <div className="w-9 h-9 rounded-full bg-[#2563EB] text-white flex items-center justify-center font-bold text-sm flex-shrink-0">
-            2
-          </div>
-          <h1 className="m-0 text-[32px] font-extrabold text-[#111827]">Refleksi Pengalaman Belajar</h1>
-        </div>
+        <h1 className="m-0 text-[32px] font-extrabold text-[#111827]">Refleksi Diri</h1>
         <p className="m-0 text-[15px] leading-[1.6] text-[#374151] max-w-2xl">
           Tuliskan pengalaman belajarmu hari ini dengan jujur dan terbuka.
         </p>
       </div>
 
       <div className="flex flex-col gap-4">
+        <div className="flex items-center gap-3">
+          <div className="w-[34px] h-[34px] rounded-full bg-[#2563EB] text-white flex items-center justify-center font-bold text-[15px] flex-shrink-0">
+            B
+          </div>
+          <div className="bg-white border border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-full py-2 px-5 text-sm font-bold text-[#2563EB]">
+            Refleksi Pengalaman Belajar
+          </div>
+        </div>
+
         {fields.map((f) => (
           <div
             key={f.key}

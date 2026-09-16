@@ -38,18 +38,23 @@ export default function Peta8Step1RefleksiPemahaman({ materi, peta, initialAnswe
 
       <div className="flex flex-col gap-4">
         <StepHeader materi={materi} currentStep={1} totalSteps={4} />
-        <div className="flex items-center gap-3.5">
-          <div className="w-9 h-9 rounded-full bg-[#2563EB] text-white flex items-center justify-center font-bold text-sm flex-shrink-0">
-            1
-          </div>
-          <h1 className="m-0 text-[32px] font-extrabold text-[#111827]">Refleksi Pemahaman</h1>
-        </div>
+        <h1 className="m-0 text-[32px] font-extrabold text-[#111827]">Refleksi Diri</h1>
         <p className="m-0 text-[15px] leading-[1.6] text-[#374151] max-w-2xl">
           Centang setiap pernyataan yang sesuai dengan pemahamanmu setelah belajar hari ini.
         </p>
       </div>
 
-      <div className="flex flex-col gap-3">
+      <div className="flex flex-col gap-4">
+        <div className="flex items-center gap-3">
+          <div className="w-[34px] h-[34px] rounded-full bg-[#2563EB] text-white flex items-center justify-center font-bold text-[15px] flex-shrink-0">
+            A
+          </div>
+          <div className="bg-white border border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-full py-2 px-5 text-sm font-bold text-[#2563EB]">
+            Refleksi Pemahaman
+          </div>
+        </div>
+
+        <div className="flex flex-col gap-3">
         {checklist.map((c) => (
           <label
             key={c.key}
@@ -73,6 +78,7 @@ export default function Peta8Step1RefleksiPemahaman({ materi, peta, initialAnswe
             </span>
           </label>
         ))}
+        </div>
       </div>
 
       <div className="relative bg-[#EFF4FF] border border-[#DBE4FF] rounded-[20px] py-5 px-6 flex items-center gap-4">

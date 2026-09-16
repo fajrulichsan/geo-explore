@@ -49,7 +49,7 @@ export default function Peta9Step6MenemukanPrinsipUmum({
             <path d="M9 18h6M10 22h4" />
           </svg>
           <h1 className="m-0 text-[32px] font-extrabold text-[#111827]">
-            Menemukan Prinsip Umum
+            Tantangan Open-Ended
           </h1>
         </div>
         <p className="m-0 text-[15px] leading-[1.6] text-[#374151] max-w-2xl">
@@ -105,9 +105,12 @@ export default function Peta9Step6MenemukanPrinsipUmum({
                     value="true"
                     defaultChecked={getValue(item.key) === "true"}
                     data-require-group="peta8step6"
-                    className="w-4 h-4 rounded border-[#D1D5DB] text-[#2563EB] focus:ring-[#2563EB]"
+                    className="peer sr-only"
                   />
-                  <span className="text-sm text-[#374151] flex-grow">{item.text}</span>
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#2563EB] flex-shrink-0" />
+                  <span className="text-sm text-[#374151] flex-grow peer-checked:text-[#111827] peer-checked:font-semibold">
+                    {item.text}
+                  </span>
                 </label>
               ))}
             </div>
@@ -133,7 +136,7 @@ export default function Peta9Step6MenemukanPrinsipUmum({
           </svg>
           Kembali
         </Link>
-        <SubmitStepButton className="flex items-center gap-2 bg-[#2563EB] text-white border-none rounded-full py-3.5 px-7 text-sm font-bold font-inherit shadow-[0_4px_10px_rgba(37,99,235,0.3)] cursor-pointer">
+        <SubmitStepButton className="flex items-center gap-2 bg-[#16A34A] text-white border-none rounded-full py-3.5 px-7 text-sm font-bold font-inherit shadow-[0_4px_10px_rgba(22,163,74,0.3)] cursor-pointer">
           Selesai
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.4">
             <path d="M5 13l4 4L19 7" />

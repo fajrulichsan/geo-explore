@@ -72,7 +72,7 @@ export default function Peta9Step5MemilihStrategi({
             <circle cx="12" cy="12" r="3" />
           </svg>
           <h1 className="m-0 text-[32px] font-extrabold text-[#111827]">
-            Memilih Strategi yang Paling Sesuai
+            Tantangan Open-Ended
           </h1>
         </div>
         <p className="m-0 text-[15px] leading-[1.6] text-[#374151] max-w-2xl">

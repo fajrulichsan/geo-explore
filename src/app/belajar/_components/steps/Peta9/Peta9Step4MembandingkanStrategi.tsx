@@ -73,7 +73,7 @@ export default function Peta9Step4MembandingkanStrategi({
             <path d="M8 3v18M16 3v18M3 8h5M16 8h5M3 16h5M16 16h5" />
           </svg>
           <h1 className="m-0 text-[32px] font-extrabold text-[#111827]">
-            Membandingkan Strategi
+            Tantangan Open-Ended
           </h1>
         </div>
         <p className="m-0 text-[15px] leading-[1.6] text-[#374151] max-w-2xl">

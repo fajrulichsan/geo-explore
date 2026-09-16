@@ -27,11 +27,15 @@ export default async function Peta8Step4KotakMotivasi({ materi, peta, initialAns
 
       <div className="flex flex-col gap-4">
         <StepHeader materi={materi} currentStep={4} totalSteps={4} />
-        <div className="flex items-center gap-3.5">
-          <div className="w-9 h-9 rounded-full bg-[#2563EB] text-white flex items-center justify-center font-bold text-sm flex-shrink-0">
-            4
-          </div>
-          <h1 className="m-0 text-[32px] font-extrabold text-[#111827]">Bekalku untuk Tantangan Open-Ended</h1>
+        <h1 className="m-0 text-[32px] font-extrabold text-[#111827]">Refleksi Diri</h1>
+      </div>
+
+      <div className="flex items-center gap-3">
+        <div className="w-[34px] h-[34px] rounded-full bg-[#2563EB] text-white flex items-center justify-center font-bold text-[15px] flex-shrink-0">
+          D
+        </div>
+        <div className="bg-white border border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-full py-2 px-5 text-sm font-bold text-[#2563EB]">
+          Bekal Motivasi
         </div>
       </div>
 
@@ -104,7 +108,7 @@ export default async function Peta8Step4KotakMotivasi({ materi, peta, initialAns
           </svg>
           Kembali
         </Link>
-        <SubmitStepButton className="flex items-center gap-2 bg-[#2563EB] text-white border-none rounded-full py-3.5 px-7 text-sm font-bold font-inherit shadow-[0_4px_10px_rgba(37,99,235,0.3)] cursor-pointer">
+        <SubmitStepButton className="flex items-center gap-2 bg-[#16A34A] text-white border-none rounded-full py-3.5 px-7 text-sm font-bold font-inherit shadow-[0_4px_10px_rgba(22,163,74,0.3)] cursor-pointer">
           Selesai
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.4">
             <path d="M5 13l4 4L19 7" />

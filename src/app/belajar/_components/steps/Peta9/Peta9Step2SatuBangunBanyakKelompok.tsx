@@ -1,21 +1,17 @@
 import Link from "next/link";
-import Image from "next/image";
 import PhotoUpload from "@/components/PhotoUpload";
 import { submitStepAction } from "@/app/belajar/actions";
 import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
 import SubmitStepButton from "@/app/belajar/_components/SubmitStepButton";
 import StepHeader from "@/app/belajar/_components/StepHeader";
-import { getPageImage } from "@/lib/pageImages";
 
-export default async function Peta9Step2SatuBangunBanyakKelompok({
+export default function Peta9Step2SatuBangunBanyakKelompok({
   materi,
   peta,
   initialAnswers,
 }: StepComponentProps) {
   const answers = initialAnswers ?? {};
   const getValue = (key: string) => (typeof answers[key] === "string" ? (answers[key] as string) : "");
-  const gambarKubus = await getPageImage("M1-P9-L2-1");
-  const gambarBangunLain = await getPageImage("M1-P9-L2-2");
 
   return (
     <form action={submitStepAction} className="flex flex-col gap-8">
@@ -33,7 +29,7 @@ export default async function Peta9Step2SatuBangunBanyakKelompok({
             <rect x="14" y="14" width="7" height="7" rx="1" />
           </svg>
           <h1 className="m-0 text-[32px] font-extrabold text-[#111827]">
-            Satu Bangun, Banyak Kelompok
+            Tantangan Open-Ended
           </h1>
         </div>
       </div>
@@ -49,28 +45,15 @@ export default async function Peta9Step2SatuBangunBanyakKelompok({
               kelompok berbeda yang dapat memuat kubus. Berikan alasan matematis.
             </p>
           </div>
-          <div className="mt-auto flex items-end gap-5">
-            <div className="relative w-24 h-24 flex-shrink-0 rounded-xl overflow-hidden bg-[#EFF4FF]">
-              <Image src={gambarKubus} alt="Ilustrasi kubus" fill className="object-cover" />
-            </div>
-            <div className="flex-grow flex flex-col gap-3">
-              <input
-                type="text"
-                name="answers.kubus_kelompok_lain"
-                defaultValue={getValue("kubus_kelompok_lain")}
-                placeholder="Tuliskan jawabanmu di sini..."
-                required
-                className="w-full bg-transparent border-0 border-b border-dashed border-[#D1D5DB] focus:ring-0 focus:border-[#2563EB] outline-none px-0 py-2 text-sm text-[#2563EB]"
-              />
-              <input
-                type="text"
-                name="answers.kubus_alasan"
-                defaultValue={getValue("kubus_alasan")}
-                placeholder="Tuliskan alasanmu di sini..."
-                required
-                className="w-full bg-transparent border-0 border-b border-dashed border-[#D1D5DB] focus:ring-0 focus:border-[#2563EB] outline-none px-0 py-2 text-sm text-[#2563EB]"
-              />
-            </div>
+          <div className="mt-auto">
+            <textarea
+              name="answers.kubus_kelompok_lain"
+              defaultValue={getValue("kubus_kelompok_lain")}
+              rows={4}
+              placeholder="Tuliskan jawabanmu di sini..."
+              required
+              className="w-full bg-[#F9FAFB] border border-[#E5E7EB] rounded-xl focus:ring-2 focus:ring-[#2563EB]/20 focus:border-[#2563EB] outline-none p-4 text-sm text-[#374151] resize-none min-h-[120px]"
+            />
           </div>
         </div>
 
@@ -93,11 +76,6 @@ export default async function Peta9Step2SatuBangunBanyakKelompok({
               required
               className="w-full bg-[#F9FAFB] border border-[#E5E7EB] rounded-xl focus:ring-2 focus:ring-[#2563EB]/20 focus:border-[#2563EB] outline-none p-4 text-sm text-[#374151] resize-none min-h-[100px]"
             />
-            <div className="flex justify-end">
-              <div className="relative w-20 h-20 flex-shrink-0 rounded-xl overflow-hidden bg-[#EFF4FF]">
-                <Image src={gambarBangunLain} alt="Ilustrasi bangun ruang lain" fill className="object-cover" />
-              </div>
-            </div>
           </div>
         </div>
       </div>

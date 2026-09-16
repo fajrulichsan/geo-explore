@@ -43,7 +43,7 @@ export default async function Peta9Step1MengelompokkanBangunRuang({
             <rect x="14" y="14" width="7" height="7" rx="1" />
           </svg>
           <h1 className="m-0 text-[32px] font-extrabold text-[#111827]">
-            Mengelompokkan Bangun Ruang
+            Tantangan Open-Ended
           </h1>
         </div>
         <p className="m-0 text-[15px] leading-[1.6] text-[#374151] max-w-2xl">

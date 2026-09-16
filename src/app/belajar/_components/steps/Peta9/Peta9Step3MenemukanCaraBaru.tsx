@@ -25,7 +25,7 @@ export default function Peta9Step3MenemukanCaraBaru({
           <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#2563EB" strokeWidth="2.4">
             <path d="M9 18h6M10 22h4M12 2a7 7 0 00-4 12.7c.6.5 1 1.2 1 2.3h6c0-1.1.4-1.8 1-2.3A7 7 0 0012 2z" />
           </svg>
-          <h1 className="m-0 text-[32px] font-extrabold text-[#111827]">Menemukan Cara Baru</h1>
+          <h1 className="m-0 text-[32px] font-extrabold text-[#111827]">Tantangan Open-Ended</h1>
         </div>
         <p className="m-0 text-[15px] leading-[1.6] text-[#374151] max-w-2xl">
           Buatlah satu dasar klasifikasi baru yang belum kamu gunakan pada Tantangan 1. Kemudian,
