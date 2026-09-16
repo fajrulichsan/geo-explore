@@ -1,9 +1,9 @@
-import Link from "next/link";
 import Image from "next/image";
 import PhotoUpload from "@/components/PhotoUpload";
 import { submitStepAction } from "@/app/belajar/actions";
 import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
 import SubmitStepButton from "@/app/belajar/_components/SubmitStepButton";
+import BackLink from "@/app/belajar/_components/BackLink";
 import StepHeader from "@/app/belajar/_components/StepHeader";
 import { getPageImage } from "@/lib/pageImages";
 
@@ -21,10 +21,30 @@ export default async function Peta6Step2Bandingkan({ materi, peta, initialAnswer
       <div className="flex flex-col gap-4">
         <StepHeader materi={materi} currentStep={2} totalSteps={6} />
         <div className="flex items-center gap-3.5">
-          <div className="w-9 h-9 rounded-full bg-[#2563EB] text-white flex items-center justify-center font-bold text-sm flex-shrink-0">
+          <svg
+            width="30"
+            height="30"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="#2563EB"
+            strokeWidth="2.4"
+            className="flex-shrink-0"
+          >
+            <path d="M9 11l3 3L22 4" />
+            <path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11" />
+          </svg>
+          <h1 className="m-0 text-2xl sm:text-[32px] font-extrabold text-[#111827]">Ayo Verifikasi</h1>
+        </div>
+      </div>
+
+      <div className="flex flex-col gap-3">
+        <div className="flex items-center gap-3">
+          <div className="w-[34px] h-[34px] rounded-full bg-[#2563EB] text-white flex items-center justify-center font-bold text-[15px] flex-shrink-0">
             B
           </div>
-          <h1 className="m-0 text-[32px] font-extrabold text-[#111827]">Bandingkan dengan Kelompok Lain</h1>
+          <div className="bg-white border border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-full py-2 px-5 text-sm font-bold text-[#2563EB]">
+            Bandingkan dengan Kelompok Lain
+          </div>
         </div>
         <p className="m-0 text-[15px] leading-[1.6] text-[#374151] max-w-2xl">
           Sekarang saatnya melihat hasil kelompok lain. Bandingkan alasan kalian dan temukan perbedaan atau
@@ -93,7 +113,7 @@ export default async function Peta6Step2Bandingkan({ materi, peta, initialAnswer
               </svg>
               Referensi Diskusi
             </span>
-            <div className="relative rounded-lg bg-[#F9FAFB] aspect-[0.66] overflow-hidden">
+            <div className="relative rounded-lg bg-[#F9FAFB] aspect-square overflow-hidden">
               <Image src={gambarReferensi} alt="Referensi diskusi" fill className="object-cover" />
             </div>
             <p className="m-0 text-xs text-[#6B7280] text-center italic">
@@ -104,15 +124,10 @@ export default async function Peta6Step2Bandingkan({ materi, peta, initialAnswer
       </div>
 
       <div className="flex justify-between items-center">
-        <Link
+        <BackLink
           href={`/belajar/${materi}/${peta}/1`}
           className="flex items-center gap-2 bg-transparent text-[#6B7280] border-none rounded-full py-3 px-6 text-sm font-semibold cursor-pointer hover:text-[#374151]"
-        >
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4">
-            <path d="M19 12H5M11 5l-7 7 7 7" />
-          </svg>
-          Kembali
-        </Link>
+        />
         <SubmitStepButton className="flex items-center gap-2 bg-[#2563EB] text-white border-none rounded-full py-3.5 px-7 text-sm font-bold font-inherit shadow-[0_4px_10px_rgba(37,99,235,0.3)] cursor-pointer">
           LANJUTKAN
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.4">
