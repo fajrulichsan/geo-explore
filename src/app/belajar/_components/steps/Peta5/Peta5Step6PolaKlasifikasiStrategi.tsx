@@ -1,13 +1,13 @@
 import Link from "next/link";
-import Image from "next/image";
 import PhotoUpload from "@/components/PhotoUpload";
 import { submitStepAction } from "@/app/belajar/actions";
 import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
 import SubmitStepButton from "@/app/belajar/_components/SubmitStepButton";
+import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
 import StepHeader from "@/app/belajar/_components/StepHeader";
 import { getPageImage } from "@/lib/pageImages";
 
-export default async function Peta5Step6PolaKlasifikasiStrategi({ materi, peta, initialAnswers }: StepComponentProps) {
+export default async function Peta5Step6PolaKlasifikasiStrategi({ materi, peta, step = "6", editFoto, initialAnswers }: StepComponentProps) {
   const answers = initialAnswers ?? {};
   const getValue = (key: string) => (typeof answers[key] === "string" ? (answers[key] as string) : "");
   const gambarPola = await getPageImage("M1-P5-L7-1");
@@ -43,9 +43,17 @@ export default async function Peta5Step6PolaKlasifikasiStrategi({ materi, peta, 
           <p className="m-0 text-sm leading-[1.6] text-[#374151]">
             Kelompokkan bangun-bangun berikut berdasarkan pola yang kamu temukan.
           </p>
-          <div className="relative w-full h-40 rounded-2xl overflow-hidden bg-[#F9FAFB]">
-            <Image src={gambarPola} alt="Ilustrasi pola klasifikasi" fill className="object-cover" />
-          </div>
+          <EditablePageImage
+              imageKey="M1-P5-L7-1"
+              materi={materi}
+              peta={peta}
+              step={step}
+              urutan="1"
+              src={gambarPola}
+              alt="Ilustrasi pola klasifikasi"
+              editable={editFoto}
+              containerClassName="relative w-full h-40 rounded-2xl overflow-hidden bg-[#F9FAFB]"
+            />
           <div className="flex flex-col gap-1.5">
             <label htmlFor="pola-input" className="text-sm font-bold text-[#2563EB]">
               Pola yang kami temukan:

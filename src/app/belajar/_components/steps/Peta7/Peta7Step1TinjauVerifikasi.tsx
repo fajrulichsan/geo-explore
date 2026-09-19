@@ -74,17 +74,12 @@ export default async function Peta7Step1TinjauVerifikasi({
         <div className="flex flex-col md:flex-row items-center justify-center gap-3">
           {alurData.map((a, i) => {
             const isLast = i === alurData.length - 1;
-            const isHighlighted = i === alurData.length - 2 || isLast;
             return (
               <div key={a.key} className="flex items-center gap-3 w-full md:w-1/4">
                 <div
-                  className={
-                    isLast
-                      ? "bg-[#2563EB] text-white rounded-xl p-4 shadow-[0_4px_10px_rgba(37,99,235,0.3)] text-center w-full md:scale-110"
-                      : `bg-white rounded-xl p-4 border-2 text-center w-full shadow-[0_1px_2px_rgba(0,0,0,0.04)] ${
-                          isHighlighted ? "border-[#2563EB]" : "border-[#E5E7EB]"
-                        }`
-                  }
+                  className={`bg-white rounded-xl p-4 border-2 text-center w-full shadow-[0_1px_2px_rgba(0,0,0,0.04)] ${
+                    isLast ? "border-[#2563EB]" : "border-[#E5E7EB]"
+                  }`}
                 >
                   <EditablePageImage
                     imageKey={a.imageKey}
@@ -96,20 +91,14 @@ export default async function Peta7Step1TinjauVerifikasi({
                     alt={a.label}
                     editable={editFoto}
                     imageClassName="object-contain"
-                    containerClassName="relative w-20 h-20 mx-auto mb-1"
+                    containerClassName="relative w-40 h-40 max-w-full mx-auto mb-1"
                   />
-                  <p className={`m-0 text-xs font-semibold ${isLast ? "font-bold" : isHighlighted ? "font-bold text-[#2563EB]" : "text-[#374151]"}`}>
+                  <p className={`m-0 text-xs font-semibold ${isLast ? "font-bold text-[#2563EB]" : "text-[#374151]"}`}>
                     {a.label}
                   </p>
                 </div>
                 {!isLast && (
-                  <span
-                    className={`font-bold rotate-90 md:rotate-0 flex-shrink-0 ${
-                      i === 0 ? "text-[#9CA3AF]" : "text-[#2563EB]"
-                    } ${i === alurData.length - 2 ? "text-lg" : ""}`}
-                  >
-                    {i === 0 ? "+" : "→"}
-                  </span>
+                  <span className="font-bold text-[#2563EB] rotate-90 md:rotate-0 flex-shrink-0">→</span>
                 )}
               </div>
             );

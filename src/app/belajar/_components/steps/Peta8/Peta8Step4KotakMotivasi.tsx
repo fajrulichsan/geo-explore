@@ -1,9 +1,9 @@
 import Link from "next/link";
-import Image from "next/image";
 import PhotoUpload from "@/components/PhotoUpload";
 import { submitStepAction } from "@/app/belajar/actions";
 import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
 import SubmitStepButton from "@/app/belajar/_components/SubmitStepButton";
+import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
 import StepHeader from "@/app/belajar/_components/StepHeader";
 import { getPageImage } from "@/lib/pageImages";
 
@@ -14,7 +14,7 @@ const badges = [
   { text: "Saya menggunakan data dan informasi sebagai bukti." },
 ];
 
-export default async function Peta8Step4KotakMotivasi({ materi, peta, initialAnswers }: StepComponentProps) {
+export default async function Peta8Step4KotakMotivasi({ materi, peta, step = "4", editFoto, initialAnswers }: StepComponentProps) {
   const answers = initialAnswers ?? {};
   const getValue = (key: string) => (typeof answers[key] === "string" ? (answers[key] as string) : "");
   const gambarMotivasi = await getPageImage("M1-P8-L4-1");
@@ -93,9 +93,17 @@ export default async function Peta8Step4KotakMotivasi({ materi, peta, initialAns
             logis.
           </p>
         </div>
-        <div className="relative w-[120px] h-[120px] flex-shrink-0 rounded-[14px] bg-white/60 overflow-hidden z-[1]">
-          <Image src={gambarMotivasi} alt="Ilustrasi kotak motivasi" fill className="object-cover" />
-        </div>
+        <EditablePageImage
+          imageKey="M1-P8-L4-1"
+          materi={materi}
+          peta={peta}
+          step={step}
+          urutan="1"
+          src={gambarMotivasi}
+          alt="Ilustrasi kotak motivasi"
+          editable={editFoto}
+          containerClassName="relative w-[120px] h-[120px] flex-shrink-0 rounded-[14px] bg-white/60 overflow-hidden z-[1]"
+        />
       </div>
 
       <div className="flex justify-between items-center">

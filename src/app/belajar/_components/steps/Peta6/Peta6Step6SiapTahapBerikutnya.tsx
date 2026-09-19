@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { submitStepAction } from "@/app/belajar/actions";
 import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
 import SubmitStepButton from "@/app/belajar/_components/SubmitStepButton";
@@ -25,7 +24,6 @@ const ingatKembali = [
 ];
 
 export default async function Peta6Step6SiapTahapBerikutnya({ materi, peta, step = "6", editFoto }: StepComponentProps) {
-  const gambarAlur = await getPageImage("M1-P6-L6-1");
   const [gambarKartu1, gambarKartu2, gambarKartu3, gambarKartu4] = await Promise.all([
     getPageImage("M1-P6-L6-2"),
     getPageImage("M1-P6-L6-3"),
@@ -89,7 +87,7 @@ export default async function Peta6Step6SiapTahapBerikutnya({ materi, peta, step
               src={kartuGambar[i]}
               alt={a.label}
               editable={editFoto}
-              containerClassName="relative w-10 h-10 rounded-full overflow-hidden bg-[#EFF4FF]"
+              containerClassName="relative w-32 h-32 rounded-xl overflow-hidden bg-[#EFF4FF]"
             />
             <h3 className="m-0 text-sm font-bold text-[#111827]">{a.label}</h3>
             <p className="m-0 text-xs text-[#6B7280]">{a.desc}</p>
@@ -105,7 +103,7 @@ export default async function Peta6Step6SiapTahapBerikutnya({ materi, peta, step
             src={gambarKartu3}
             alt="Verifikasi"
             editable={editFoto}
-            containerClassName="relative w-10 h-10 rounded-full overflow-hidden bg-white/20"
+            containerClassName="relative w-32 h-32 rounded-xl overflow-hidden bg-white/20"
           />
           <h3 className="m-0 text-sm font-bold">Verifikasi</h3>
           <p className="m-0 text-xs text-white/80">Tahap 5</p>
@@ -120,7 +118,7 @@ export default async function Peta6Step6SiapTahapBerikutnya({ materi, peta, step
             src={gambarKartu4}
             alt="Siap Menyusun Kesimpulan"
             editable={editFoto}
-            containerClassName="relative w-14 h-14 rounded-lg overflow-hidden bg-[#FEF9E7]"
+            containerClassName="relative w-32 h-32 rounded-xl overflow-hidden bg-[#FEF9E7]"
           />
           <h3 className="m-0 text-sm font-bold text-[#111827]">Siap Menyusun Kesimpulan</h3>
           <p className="m-0 text-xs text-[#6B7280]">Tahap 6</p>
@@ -128,13 +126,7 @@ export default async function Peta6Step6SiapTahapBerikutnya({ materi, peta, step
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-3 shadow-[0_1px_2px_rgba(0,0,0,0.04)]">
-          <div className="relative w-full h-full min-h-[220px] rounded-xl bg-[#F9FAFB] overflow-hidden">
-            <Image src={gambarAlur} alt="Ilustrasi alur berikutnya" fill className="object-cover" />
-          </div>
-        </div>
-
-        <div className="flex flex-col gap-5">
+        <div className="contents">
           <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-6 shadow-[0_1px_2px_rgba(0,0,0,0.04)]">
             <h2 className="m-0 mb-4 text-lg font-bold text-[#111827] flex items-center gap-2">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2563EB" strokeWidth="2">

@@ -3,6 +3,8 @@ import { submitStepAction } from "@/app/belajar/actions";
 import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
 import SubmitStepButton from "@/app/belajar/_components/SubmitStepButton";
 import StepHeader from "@/app/belajar/_components/StepHeader";
+import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
+import { getPageImage } from "@/lib/pageImages";
 
 const dasar = [
   { label: "Bentuk dan susunan sisi", desc: "Bentuk dan susunan semua sisinya." },
@@ -14,10 +16,14 @@ const dasar = [
   { label: "Sifat-sifat lain", desc: "Sifat atau hal lain yang dapat membantu pengelompokan." },
 ];
 
-const prismaChildren = ["Kubus", "Balok", "Prisma Segitiga", "Prisma Segiempat", "Prisma Segilima", "..."];
-const limasChildren = ["Limas Segitiga", "Limas Segiempat", "Limas Segilima", "..."];
+export default async function Peta10Step2DasarKlasifikasi({
+  materi,
+  peta,
+  step = "2",
+  editFoto,
+}: StepComponentProps) {
+  const gambarPetaKonsep = await getPageImage("M1-P10-L2-1");
 
-export default function Peta10Step2DasarKlasifikasi({ materi, peta }: StepComponentProps) {
   return (
     <form action={submitStepAction} className="flex flex-col gap-8">
       <input type="hidden" name="materi" value={materi} />
@@ -82,50 +88,18 @@ export default function Peta10Step2DasarKlasifikasi({ materi, peta }: StepCompon
           </div>
         </div>
 
-        <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-7 shadow-[0_1px_2px_rgba(0,0,0,0.04)] overflow-x-auto">
-          <div className="min-w-[640px] flex flex-col items-center gap-6">
-            <div className="bg-[#1E3A8A] text-white rounded-xl py-3 px-6 text-center">
-              <div className="text-sm font-bold tracking-wide">Bangun Ruang Sisi Datar</div>
-              <div className="text-[11px] text-[#C7D2FE]">Klasifikasi Bangun Ruang</div>
-            </div>
-
-            <div className="w-px h-6 bg-[#D1D5DB]" />
-
-            <div className="w-full grid grid-cols-2 gap-8">
-              <div className="flex flex-col items-center gap-4">
-                <div className="bg-white border-2 border-[#FCA5A5] text-[#DC2626] rounded-full py-1.5 px-6 text-sm font-bold">
-                  PRISMA
-                </div>
-                <div className="w-full border-t-2 border-dashed border-[#FCA5A5] pt-4 flex flex-wrap justify-center gap-3">
-                  {prismaChildren.map((c) => (
-                    <div
-                      key={c}
-                      className="bg-[#FEF2F2] border border-[#FCA5A5] rounded-lg py-1.5 px-3 text-xs font-semibold text-[#991B1B] text-center"
-                    >
-                      {c}
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              <div className="flex flex-col items-center gap-4">
-                <div className="bg-white border-2 border-[#93C5FD] text-[#2563EB] rounded-full py-1.5 px-6 text-sm font-bold">
-                  LIMAS
-                </div>
-                <div className="w-full border-t-2 border-dashed border-[#93C5FD] pt-4 flex flex-wrap justify-center gap-3">
-                  {limasChildren.map((c) => (
-                    <div
-                      key={c}
-                      className="bg-[#EFF6FF] border border-[#93C5FD] rounded-lg py-1.5 px-3 text-xs font-semibold text-[#1D4ED8] text-center"
-                    >
-                      {c}
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <EditablePageImage
+          imageKey="M1-P10-L2-1"
+          materi={materi}
+          peta={peta}
+          step={step}
+          urutan="1"
+          src={gambarPetaKonsep}
+          alt="Peta konsep klasifikasi bangun ruang sisi datar"
+          editable={editFoto}
+          imageClassName="object-contain"
+          containerClassName="relative w-full mx-auto aspect-[9/3] rounded-[20px] overflow-hidden bg-white border border-[#E5E7EB]"
+        />
 
         <div className="bg-[#FDF3C7] border border-[#F5E3A0] rounded-xl p-4 flex items-start gap-3">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#92400E" strokeWidth="2" className="flex-shrink-0 mt-0.5">

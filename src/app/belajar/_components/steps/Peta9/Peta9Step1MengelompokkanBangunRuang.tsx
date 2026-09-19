@@ -1,9 +1,9 @@
 import Link from "next/link";
-import Image from "next/image";
 import PhotoUpload from "@/components/PhotoUpload";
 import { submitStepAction } from "@/app/belajar/actions";
 import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
 import SubmitStepButton from "@/app/belajar/_components/SubmitStepButton";
+import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
 import StepHeader from "@/app/belajar/_components/StepHeader";
 import { getPageImage, type PageImageKey } from "@/lib/pageImages";
 
@@ -13,7 +13,6 @@ const bangun = [
   { n: 3, label: "Prisma Segitiga", imageKey: "M1-P9-L1-3" },
   { n: 4, label: "Prisma Segi Lima", imageKey: "M1-P9-L1-4" },
   { n: 5, label: "Limas Segitiga", imageKey: "M1-P9-L1-5" },
-  { n: 6, label: "Limas Segiempat", imageKey: "M1-P9-L1-6" },
 ] satisfies { n: number; label: string; imageKey: PageImageKey }[];
 
 const baris = [1, 2, 3];
@@ -21,6 +20,8 @@ const baris = [1, 2, 3];
 export default async function Peta9Step1MengelompokkanBangunRuang({
   materi,
   peta,
+  step = "1",
+  editFoto,
   initialAnswers,
 }: StepComponentProps) {
   const answers = initialAnswers ?? {};
@@ -47,7 +48,7 @@ export default async function Peta9Step1MengelompokkanBangunRuang({
           </h1>
         </div>
         <p className="m-0 text-[15px] leading-[1.6] text-[#374151] max-w-2xl">
-          Perhatikan keenam bangun berikut. Kelompokkan bangun-bangun tersebut menggunakan minimal
+          Perhatikan kelima bangun berikut. Kelompokkan bangun-bangun tersebut menggunakan minimal
           tiga dasar klasifikasi yang berbeda. Lengkapilah tabel berikut.
         </p>
       </div>
@@ -63,12 +64,20 @@ export default async function Peta9Step1MengelompokkanBangunRuang({
         </div>
 
         <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-7 shadow-[0_1px_2px_rgba(0,0,0,0.04)]">
-          <div className="grid grid-cols-2 md:grid-cols-6 gap-4 mb-6">
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-6">
             {bangun.map((b, i) => (
               <div key={b.n} className="flex flex-col items-center gap-2">
-                <div className="relative w-full aspect-square rounded-2xl overflow-hidden bg-[#EFF4FF]">
-                  <Image src={bangunImages[i]} alt={b.label} fill className="object-cover" />
-                </div>
+                <EditablePageImage
+                  imageKey={b.imageKey}
+                  materi={materi}
+                  peta={peta}
+                  step={step}
+                  urutan={String(b.n)}
+                  src={bangunImages[i]}
+                  alt={b.label}
+                  editable={editFoto}
+                  containerClassName="relative w-full aspect-square rounded-2xl overflow-hidden bg-[#EFF4FF]"
+                />
                 <div className="flex items-center gap-1.5">
                   <div className="w-[18px] h-[18px] rounded-full bg-[#2563EB] text-white text-[10px] font-bold flex items-center justify-center flex-shrink-0">
                     {b.n}

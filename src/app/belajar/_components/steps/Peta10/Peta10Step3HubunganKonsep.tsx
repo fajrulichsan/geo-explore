@@ -37,10 +37,7 @@ const kemampuan = [
   "Menarik kesimpulan dari berbagai strategi yang telah digunakan.",
 ];
 
-export default function Peta10Step3HubunganKonsep({ materi, peta, initialAnswers }: StepComponentProps) {
-  const answers = initialAnswers ?? {};
-  const getValue = (key: string) => (typeof answers[key] === "string" ? (answers[key] as string) : "");
-
+export default function Peta10Step3HubunganKonsep({ materi, peta }: StepComponentProps) {
   return (
     <form action={submitStepAction} className="flex flex-col gap-8">
       <input type="hidden" name="materi" value={materi} />
@@ -100,21 +97,14 @@ export default function Peta10Step3HubunganKonsep({ materi, peta, initialAnswers
             Setelah melalui Tahap 1–6 dan Tantangan Open-Ended, saya mampu:
           </p>
           <div className="flex flex-col gap-2.5">
-            {kemampuan.map((k, i) => (
-              <label
+            {kemampuan.map((k) => (
+              <div
                 key={k}
-                className="flex items-center gap-3 bg-[#F9FAFB] border border-[#E5E7EB] rounded-lg py-3 px-3.5 cursor-pointer hover:border-[#16A34A] transition-colors"
+                className="flex items-center gap-3 bg-[#F9FAFB] border border-[#E5E7EB] rounded-lg py-3 px-3.5"
               >
-                <input
-                  type="checkbox"
-                  name={`answers.kemampuan_${i}`}
-                  value="true"
-                  defaultChecked={getValue(`kemampuan_${i}`) === "true"}
-                  data-require-group="peta9step3"
-                  className="w-4 h-4 rounded border-[#D1D5DB] text-[#16A34A] flex-shrink-0"
-                />
+                <span className="w-1.5 h-1.5 rounded-full bg-[#16A34A] flex-shrink-0" />
                 <span className="text-sm text-[#374151] font-medium">{k}</span>
-              </label>
+              </div>
             ))}
           </div>
         </div>
