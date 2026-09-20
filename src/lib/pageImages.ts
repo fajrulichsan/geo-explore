@@ -266,6 +266,25 @@ export type PageImageKey =
   | "M6-P1-L2-7"
   | "M6-P1-L2-8"
   | "M6-P1-L2-9"
+  | "M6-P2-L1-1"
+  | "M6-P2-L1-2"
+  | "M6-P2-L1-3"
+  | "M6-P2-L1-4"
+  | "M6-P2-L3-1"
+  | "M6-P2-L3-2"
+  | "M6-P2-L3-3"
+  | "M6-P2-L4-1"
+  | "M6-P2-L4-2"
+  | "M6-P2-L4-3"
+  | "M6-P2-L4-4"
+  | "M6-P2-L4-5"
+  | "M6-P2-L4-6"
+  | "M6-P2-L6-1"
+  | "M6-P2-L6-2"
+  | "M6-P2-L6-3"
+  | "M6-P2-L6-4"
+  | "M6-P2-L6-5"
+  | "M6-P2-L7-1"
   | "M5-P9-L4-1"
   | "M5-P6-L1-1"
   | "M5-P6-L3-1"
@@ -545,6 +564,25 @@ const DEFAULT_IMAGES: Record<PageImageKey, string> = {
   "M6-P1-L2-7": "https://placehold.co/200x200?text=2+Lapisan",
   "M6-P1-L2-8": "https://placehold.co/200x200?text=3+Lapisan",
   "M6-P1-L2-9": "https://placehold.co/224x288?text=Maskot+Semangat",
+  "M6-P2-L1-1": "https://placehold.co/880x496?text=Hero+Tiga+Siswa+Amati",
+  "M6-P2-L1-2": "https://placehold.co/727x502?text=Kubus+dan+Lapisan",
+  "M6-P2-L1-3": "https://placehold.co/804x499?text=Balok+dan+Lapisan",
+  "M6-P2-L1-4": "https://placehold.co/922x520?text=Prisma+dan+Penampang",
+  "M6-P2-L3-1": "https://placehold.co/1246x625?text=Alur+Lapisan+ke+Bangun",
+  "M6-P2-L3-2": "https://placehold.co/619x508?text=Maskot+Berpikir",
+  "M6-P2-L3-3": "https://placehold.co/408x513?text=Maskot+Ide",
+  "M6-P2-L4-1": "https://placehold.co/376x334?text=Kubus",
+  "M6-P2-L4-2": "https://placehold.co/447x229?text=Satu+Lapisan+Kubus",
+  "M6-P2-L4-3": "https://placehold.co/357x273?text=Balok",
+  "M6-P2-L4-4": "https://placehold.co/922x385?text=Satu+Lapisan+Balok",
+  "M6-P2-L4-5": "https://placehold.co/787x390?text=Prisma",
+  "M6-P2-L4-6": "https://placehold.co/576x166?text=Posisi+Penampang",
+  "M6-P2-L6-1": "https://placehold.co/456x520?text=Maskot+Refleksi",
+  "M6-P2-L6-2": "https://placehold.co/274x402?text=Lapisan+Kubus",
+  "M6-P2-L6-3": "https://placehold.co/283x355?text=Lapisan+Balok",
+  "M6-P2-L6-4": "https://placehold.co/196x175?text=Penampang+Prisma",
+  "M6-P2-L6-5": "https://placehold.co/1444x318?text=Penampang+Beberapa+Posisi",
+  "M6-P2-L7-1": "https://placehold.co/373x504?text=Maskot+Menulis",
 };
 
 /**

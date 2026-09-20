@@ -1,11 +1,12 @@
 ---
 name: build-peta-step-from-image
-description: Turn one or more worksheet-page screenshots (image URLs) into fully wired Peta step components — split into app steps, continuous section lettering, illustration/mascot images sized and placed correctly, registry + page_images + migration SQL, then crops the illustrations out of the supplied screenshot and uploads them itself via ?edit-foto=true (Playwright). Trigger phrases — "bikin page dari gambar ini", "buatkan step peta dari screenshot", "ini lanjutan yang sebelumnya cba tambahin", "split gambar ini jadi beberapa page".
+description: Turn one or more worksheet-page images (project assets-source renders or image URLs) into fully wired Peta step components — split into app steps, continuous section lettering, illustration/mascot images sized and placed correctly, registry + page_images + migration SQL, then uploads the client's original illustration files from assets-source/ into the running site via ?edit-foto=true (Playwright) and iterates until the page looks tidy. Trigger phrases — "bikin page dari gambar ini", "buatkan step peta dari screenshot", "ini lanjutan yang sebelumnya cba tambahin", "split gambar ini jadi beberapa page".
 ---
 
 # Build Peta step components from a worksheet image
 
-Given one or more image URLs (screenshots of a printed/Canva-style worksheet page — usually
+Given one or more images — preferably the client's page renders already saved in the project under
+`assets-source/materi-{M}/peta-{NN}-<slug>/page-render-*.png` (see §8), otherwise image URLs (screenshots of a printed/Canva-style worksheet page — usually
 Bahasa Indonesia math learning material), reproduce the content as real Next.js step components
 in this app's `belajar` flow, following the existing code pattern exactly for scaffolding but
 free to redesign layout/illustration placement creatively (see Non-negotiables). Read this whole
@@ -25,7 +26,12 @@ Ask the user (don't assume) whenever unclear:
   continuous lettering and combine into one run of app steps, even if supplied in separate
   messages/turns.
 
-## 1. Fetch and actually read every image
+## 1. Get and actually read every image
+
+**Source priority:** (1) `assets-source/materi-{M}/peta-{NN}-<slug>/page-render-*.png` — the client's
+full-page renders for this peta, in project (read `assets-source/materi-{M}/README.md` first); (2) URLs
+the user pastes. If both exist, read the project renders (higher res) and use the URL only to confirm.
+For URLs:
 
 ```bash
 mkdir -p "$SCRATCHPAD"
@@ -162,39 +168,52 @@ registry keys added, the illustration keys added and where each is placed/sized,
 file path (user runs it manually, never run SQL yourself), and whether this peta is now complete
 or still awaiting more tahap content.
 
-## 8. Crop the illustrations from the source image and upload them (only with explicit consent)
+## 8. Upload the real illustrations into the running site and make it tidy
 
-Do this after §6/§7 pass, when the user wants real photos instead of placeholders. It writes to the
-user's Supabase storage + `page_images` through the app's own upload action, so confirm once first,
-and use credentials the user gave for this session (never look for or store them; don't save them
-in the repo or memory).
+This is the second half of the job; run it every time after §7, not only when asked. The whole
+flow is: **build pages from the worksheet render -> register + lint -> upload real assets from
+`assets-source/` -> screenshot -> fix -> repeat until tidy.**
 
-1. **Prereqs**: dev server running (`curl -s -o /dev/null -w "%{http_code}" localhost:3000`); the
-   migration for this peta has been run by the user (otherwise slots show broken alt text — say so
-   and stop); login email + password from the user.
-2. **Crop** with Pillow from the image you already downloaded (§1). The Read tool shows the image at
-   its true pixel size when it is small (check with `sips -g pixelWidth -g pixelHeight`), so estimate
-   boxes `(x0,y0,x1,y1)` from what you saw. Crop each slot **tight to the artwork only** — exclude
-   captions, neighbouring text and card borders (QR: exclude the "Scan di sini" caption). Upscale
-   3x with LANCZOS, save as `$SCRATCHPAD/crops/L{step}-{urutan}.png` (urutan = the `urutan` prop).
-3. **Look at the crops** (Read a contact sheet or each file). Recrop anything with stray text or a
-   clipped edge before uploading — re-uploading replaces the image, so it's cheap but check first.
-4. **Upload** with `scripts/upload-crops.mjs` (install `playwright` in the scratchpad, not the
-   project). If Playwright says the browser build is missing, don't run `playwright install`; point
-   `chromium.launch({ executablePath })` at the cached
-   `~/Library/Caches/ms-playwright/chromium_headless_shell-*/chrome-headless-shell-mac-arm64/chrome-headless-shell`.
-   One call per step: `node upload-crops.mjs http://localhost:3000 <email> <pass> <materi> <peta> <step> <cropsDir> <exe>`
-   (`ONLY=3,5` re-uploads a subset).
-5. **Verify** with the screenshot the script saves: no cropped or blurry-wrong slot, labels aligned.
-   Note that low-resolution sources (e.g. ~900px-wide screenshots) upscale soft; tell the user to
-   re-upload from the original file via `?edit-foto=true` if they want sharp images.
-6. Don't overwrite slots that already hold real images unless the user asks; list in the report which
-   urutan you uploaded and which you skipped.
+**Consent/credentials:** uploads write to the user's storage + `page_images`. The first time in a
+session, confirm once and ask for the login email/password (or use ones the user already gave this
+session). Never search for, store, or commit credentials. If dev server isn't up
+(`curl -s -o /dev/null -w "%{http_code}" localhost:3000`), start it or ask.
 
-## 9. Prefer the client's original assets in `assets-source/`
+**Asset source** (`assets-source/materi-{M}/peta-{NN}-<slug>/`):
+- `page-render-*` = whole-page renders — use them to read the layout, never upload them to a slot.
+- `imageN.png` = the client's original illustrations. Look at every file for the peta (contact
+  sheet via Pillow, ~400px thumbs labelled with the filename) and match each to a slot **by what it
+  shows**, using the slot list from §5 and the page render (filenames are ordered but not labelled).
+- Upload **as-is**. Only transform when a slot needs it: split a combined strip/row into per-item
+  images (find blocks by scanning columns for non-white pixels, gap threshold ~12px, keep only rows
+  above caption text so labels don't leak in), or crop the QR/screenshot from the page render when no
+  standalone file exists (then that slot is low-res — say so). Never upscale.
+- Slots that already hold real photos: don't overwrite unless asked.
 
-Before cropping from a screenshot (§8), check `assets-source/materi-{M}/peta-{NN}-<slug>/` and its
-`README.md` (per-peta file list with pixel sizes and which slot each file already fills). Those are the
-full-resolution images extracted from the client's `.docx`; upload them as-is (split a combined strip
-only when a slot needs one item). Fall back to cropping the screenshot only for elements with no
-standalone file, and say which slots stayed low-res. Don't overwrite slots that already hold real photos.
+**Upload:** stage files as `$SCRATCHPAD/<peta>/L{step}-{urutan}.png` (urutan = the `urutan` prop;
+`ONLY=3,5` uploads a subset) and run `scripts/upload-crops.mjs` (install `playwright` in the
+scratchpad, not the project; if the browser build is missing point `executablePath` at the cached
+`~/Library/Caches/ms-playwright/chromium_headless_shell-*/chrome-headless-shell-mac-arm64/chrome-headless-shell`,
+don't run `playwright install`): `node upload-crops.mjs http://localhost:3000 <email> <pass> <materi> <peta> <step> <dir> <exe>`.
+The upload action upserts `page_images`, so it works even before the user runs the placeholder
+migration; the migration still gets written for placeholders/fallback.
+Very large files (>~8MB) may be rejected by the server action: downscale the long side to ~2000px.
+
+**Tidy loop (don't stop after the first upload):** open the screenshot the script saves (also check
+at ~390px width) and for every slot verify: right picture in right slot; nothing cropped
+(`natural` or `object-contain`, no `object-cover`); no stray caption/text inside a crop; no leftover
+tinted letterbox background; equal heights + aligned labels in rows of sibling images; mascot/QR not
+distorted; no broken-alt-text boxes. Fix the component or re-crop, re-upload only the affected
+urutan, screenshot again. Finish only when a full pass finds nothing to fix.
+
+Report (in addition to §7): every slot -> source file (or "crop from render, low-res"), which slots
+were skipped and why, and any asset the docx lacked so the user can request it from the client.
+
+## 9. Adding a new materi's assets
+
+If `assets-source/materi-{M}/` doesn't exist yet and the user gives a `.docx`: `unzip -o file.docx
+"word/media/*" word/document.xml word/_rels/document.xml.rels -d $SCRATCHPAD/docx`, read the images in
+document order (`r:embed` order in `document.xml`), find the full-page renders (portrait ~1024x1536)
+and read their headers ("Tahap N", title) to assign each following run of images to a peta, then
+copy into `assets-source/materi-{M}/peta-{NN}-<slug>/` (renders as `page-render-halN-imageX.png`) and
+write a README with per-peta tables. Mention the folder is large (git size) and ask whether to gitignore it.
