@@ -8,6 +8,54 @@ import Materi6Peta2Step4BandingkanPengamatan from "./steps/Materi6Peta2/Materi6P
 import Materi6Peta2Step5DugaanIndividu from "./steps/Materi6Peta2/Materi6Peta2Step5DugaanIndividu";
 import Materi6Peta2Step6RefleksiTahukahKamu from "./steps/Materi6Peta2/Materi6Peta2Step6RefleksiTahukahKamu";
 import Materi6Peta2Step7PeriksaKembaliDugaan from "./steps/Materi6Peta2/Materi6Peta2Step7PeriksaKembaliDugaan";
+import Materi6Peta3Step1BandingkanHasil from "./steps/Materi6Peta3/Materi6Peta3Step1BandingkanHasil";
+import Materi6Peta3Step2DugaanAlasan from "./steps/Materi6Peta3/Materi6Peta3Step2DugaanAlasan";
+import Materi6Peta3Step3MenentukanDugaan from "./steps/Materi6Peta3/Materi6Peta3Step3MenentukanDugaan";
+import Materi6Peta3Step4RumuskanMasalah from "./steps/Materi6Peta3/Materi6Peta3Step4RumuskanMasalah";
+import Materi6Peta3Step5HipotesisUji from "./steps/Materi6Peta3/Materi6Peta3Step5HipotesisUji";
+import Materi6Peta3Step6RefleksiSingkat from "./steps/Materi6Peta3/Materi6Peta3Step6RefleksiSingkat";
+import Materi6Peta5Step1KelompokkanData from "./steps/Materi6Peta5/Materi6Peta5Step1KelompokkanData";
+import Materi6Peta5Step2ApaYangBerubah from "./steps/Materi6Peta5/Materi6Peta5Step2ApaYangBerubah";
+import Materi6Peta5Step3PolaKubusBalok from "./steps/Materi6Peta5/Materi6Peta5Step3PolaKubusBalok";
+import Materi6Peta5Step4PolaPrismaBandingkan from "./steps/Materi6Peta5/Materi6Peta5Step4PolaPrismaBandingkan";
+import Materi6Peta5Step5DugaanHubungan from "./steps/Materi6Peta5/Materi6Peta5Step5DugaanHubungan";
+import Materi6Peta5Step6AlasanKesimpulan from "./steps/Materi6Peta5/Materi6Peta5Step6AlasanKesimpulan";
+import Materi6Peta6Step1VerifikasiKubusBalok from "./steps/Materi6Peta6/Materi6Peta6Step1VerifikasiKubusBalok";
+import Materi6Peta6Step2HasilSementaraRefleksi from "./steps/Materi6Peta6/Materi6Peta6Step2HasilSementaraRefleksi";
+import Materi6Peta6Step3VerifikasiPrisma from "./steps/Materi6Peta6/Materi6Peta6Step3VerifikasiPrisma";
+import Materi6Peta6Step4BandingkanPola from "./steps/Materi6Peta6/Materi6Peta6Step4BandingkanPola";
+import Materi6Peta6Step5RekapHasil from "./steps/Materi6Peta6/Materi6Peta6Step5RekapHasil";
+import Materi6Peta6Step6HubunganTerverifikasi from "./steps/Materi6Peta6/Materi6Peta6Step6HubunganTerverifikasi";
+import Materi6Peta7Step1PengantarKubusBalok from "./steps/Materi6Peta7/Materi6Peta7Step1PengantarKubusBalok";
+import Materi6Peta7Step2PrismaPersamaan from "./steps/Materi6Peta7/Materi6Peta7Step2PrismaPersamaan";
+import Materi6Peta7Step3RumusVolume from "./steps/Materi6Peta7/Materi6Peta7Step3RumusVolume";
+import Materi6Peta7Step4KesimpulanIntisari from "./steps/Materi6Peta7/Materi6Peta7Step4KesimpulanIntisari";
+import Materi6Peta9Step1TantanganOpenEnded from "./steps/Materi6Peta9/Materi6Peta9Step1TantanganOpenEnded";
+import Materi6Peta9Step2RancangBandingkan from "./steps/Materi6Peta9/Materi6Peta9Step2RancangBandingkan";
+import Materi6Peta9Step3AlternatifPenyelesaian from "./steps/Materi6Peta9/Materi6Peta9Step3AlternatifPenyelesaian";
+import Materi6Peta9Step4AnalisisDiskusi from "./steps/Materi6Peta9/Materi6Peta9Step4AnalisisDiskusi";
+import Materi6Peta9Step5KesimpulanPerasaan from "./steps/Materi6Peta9/Materi6Peta9Step5KesimpulanPerasaan";
+import Materi6Peta7Step5RefleksiEvaluasi from "./steps/Materi6Peta7/Materi6Peta7Step5RefleksiEvaluasi";
+import Materi6Peta7Step6UjiPemahaman from "./steps/Materi6Peta7/Materi6Peta7Step6UjiPemahaman";
+import Materi6Peta8Step1PengantarPemahamanStrategi from "./steps/Materi6Peta8/Materi6Peta8Step1PengantarPemahamanStrategi";
+import Materi6Peta8Step2KeyakinanTarget from "./steps/Materi6Peta8/Materi6Peta8Step2KeyakinanTarget";
+import Materi6Peta10Step1PengantarKonsep from "./steps/Materi6Peta10/Materi6Peta10Step1PengantarKonsep";
+import Materi6Peta10Step2RingkasanRumus from "./steps/Materi6Peta10/Materi6Peta10Step2RingkasanRumus";
+import Materi6Peta10Step3RumusOpenEnded from "./steps/Materi6Peta10/Materi6Peta10Step3RumusOpenEnded";
+import Materi6Peta10Step4KataKunci from "./steps/Materi6Peta10/Materi6Peta10Step4KataKunci";
+import Materi6Peta10Step5GeneralisasiPesanAkhir from "./steps/Materi6Peta10/Materi6Peta10Step5GeneralisasiPesanAkhir";
+import Materi6Peta4Step1PetunjukGeoGebra from "./steps/Materi6Peta4/Materi6Peta4Step1PetunjukGeoGebra";
+import Materi6Peta4Step2LangkahEksplorasi from "./steps/Materi6Peta4/Materi6Peta4Step2LangkahEksplorasi";
+import Materi6Peta4Step3ContohGeoGebra from "./steps/Materi6Peta4/Materi6Peta4Step3ContohGeoGebra";
+import Materi6Peta4Step4TabelDataGeoGebra from "./steps/Materi6Peta4/Materi6Peta4Step4TabelDataGeoGebra";
+import Materi6Peta4Step5PetunjukAR from "./steps/Materi6Peta4/Materi6Peta4Step5PetunjukAR";
+import Materi6Peta4Step6AktivitasAR from "./steps/Materi6Peta4/Materi6Peta4Step6AktivitasAR";
+import Materi6Peta4Step7ContohAR from "./steps/Materi6Peta4/Materi6Peta4Step7ContohAR";
+import Materi6Peta4Step8TabelDataAR from "./steps/Materi6Peta4/Materi6Peta4Step8TabelDataAR";
+import Materi6Peta4Step9TabelPerbandingan from "./steps/Materi6Peta4/Materi6Peta4Step9TabelPerbandingan";
+import Materi6Peta4Step10PertanyaanEksplorasi from "./steps/Materi6Peta4/Materi6Peta4Step10PertanyaanEksplorasi";
+import Materi6Peta4Step11DugaanAwalKelompok from "./steps/Materi6Peta4/Materi6Peta4Step11DugaanAwalKelompok";
+import Materi6Peta4Step12RefleksiMini from "./steps/Materi6Peta4/Materi6Peta4Step12RefleksiMini";
 import Materi5Peta1Step1Pendahuluan from "./steps/Materi5Peta1/Materi5Peta1Step1Pendahuluan";
 import Materi5Peta1Step2EksplorasiProses from "./steps/Materi5Peta1/Materi5Peta1Step2EksplorasiProses";
 import Materi5Peta2Step1AyoMengamati from "./steps/Materi5Peta2/Materi5Peta2Step1AyoMengamati";
@@ -437,6 +485,54 @@ export const stepRegistry: Record<string, ComponentType<StepComponentProps>> = {
   "6-2-5": Materi6Peta2Step5DugaanIndividu,
   "6-2-6": Materi6Peta2Step6RefleksiTahukahKamu,
   "6-2-7": Materi6Peta2Step7PeriksaKembaliDugaan,
+  "6-3-1": Materi6Peta3Step1BandingkanHasil,
+  "6-3-2": Materi6Peta3Step2DugaanAlasan,
+  "6-3-3": Materi6Peta3Step3MenentukanDugaan,
+  "6-3-4": Materi6Peta3Step4RumuskanMasalah,
+  "6-3-5": Materi6Peta3Step5HipotesisUji,
+  "6-3-6": Materi6Peta3Step6RefleksiSingkat,
+  "6-5-1": Materi6Peta5Step1KelompokkanData,
+  "6-5-2": Materi6Peta5Step2ApaYangBerubah,
+  "6-5-3": Materi6Peta5Step3PolaKubusBalok,
+  "6-5-4": Materi6Peta5Step4PolaPrismaBandingkan,
+  "6-5-5": Materi6Peta5Step5DugaanHubungan,
+  "6-5-6": Materi6Peta5Step6AlasanKesimpulan,
+  "6-6-1": Materi6Peta6Step1VerifikasiKubusBalok,
+  "6-6-2": Materi6Peta6Step2HasilSementaraRefleksi,
+  "6-6-3": Materi6Peta6Step3VerifikasiPrisma,
+  "6-6-4": Materi6Peta6Step4BandingkanPola,
+  "6-6-5": Materi6Peta6Step5RekapHasil,
+  "6-6-6": Materi6Peta6Step6HubunganTerverifikasi,
+  "6-7-1": Materi6Peta7Step1PengantarKubusBalok,
+  "6-7-2": Materi6Peta7Step2PrismaPersamaan,
+  "6-7-3": Materi6Peta7Step3RumusVolume,
+  "6-7-4": Materi6Peta7Step4KesimpulanIntisari,
+  "6-7-5": Materi6Peta7Step5RefleksiEvaluasi,
+  "6-7-6": Materi6Peta7Step6UjiPemahaman,
+  "6-8-1": Materi6Peta8Step1PengantarPemahamanStrategi,
+  "6-8-2": Materi6Peta8Step2KeyakinanTarget,
+  "6-10-1": Materi6Peta10Step1PengantarKonsep,
+  "6-10-2": Materi6Peta10Step2RingkasanRumus,
+  "6-10-3": Materi6Peta10Step3RumusOpenEnded,
+  "6-10-4": Materi6Peta10Step4KataKunci,
+  "6-10-5": Materi6Peta10Step5GeneralisasiPesanAkhir,
+  "6-4-1": Materi6Peta4Step1PetunjukGeoGebra,
+  "6-4-2": Materi6Peta4Step2LangkahEksplorasi,
+  "6-4-3": Materi6Peta4Step3ContohGeoGebra,
+  "6-4-4": Materi6Peta4Step4TabelDataGeoGebra,
+  "6-4-5": Materi6Peta4Step5PetunjukAR,
+  "6-4-6": Materi6Peta4Step6AktivitasAR,
+  "6-4-7": Materi6Peta4Step7ContohAR,
+  "6-4-8": Materi6Peta4Step8TabelDataAR,
+  "6-4-9": Materi6Peta4Step9TabelPerbandingan,
+  "6-4-10": Materi6Peta4Step10PertanyaanEksplorasi,
+  "6-4-11": Materi6Peta4Step11DugaanAwalKelompok,
+  "6-4-12": Materi6Peta4Step12RefleksiMini,
+  "6-9-1": Materi6Peta9Step1TantanganOpenEnded,
+  "6-9-2": Materi6Peta9Step2RancangBandingkan,
+  "6-9-3": Materi6Peta9Step3AlternatifPenyelesaian,
+  "6-9-4": Materi6Peta9Step4AnalisisDiskusi,
+  "6-9-5": Materi6Peta9Step5KesimpulanPerasaan,
   "5-1-1": Materi5Peta1Step1Pendahuluan,
   "5-1-2": Materi5Peta1Step2EksplorasiProses,
   "5-2-1": Materi5Peta2Step1AyoMengamati,
