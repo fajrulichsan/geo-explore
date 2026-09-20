@@ -403,6 +403,30 @@ export type PageImageKey =
   | "M7-P4-L8-1"
   | "M7-P4-L9-1"
   | "M7-P4-L9-2"
+  | "M7-P5-L1-1"
+  | "M7-P5-L2-1"
+  | "M7-P5-L2-2"
+  | "M7-P5-L2-3"
+  | "M7-P5-L2-4"
+  | "M7-P5-L2-5"
+  | "M7-P5-L2-6"
+  | "M7-P5-L2-7"
+  | "M7-P5-L3-1"
+  | "M7-P5-L4-1"
+  | "M7-P5-L5-1"
+  | "M7-P5-L5-2"
+  | "M7-P5-L6-1"
+  | "M7-P5-L7-1"
+  | "M7-P6-L1-1"
+  | "M7-P6-L2-1"
+  | "M7-P6-L2-2"
+  | "M7-P6-L4-1"
+  | "M7-P6-L4-2"
+  | "M7-P6-L5-1"
+  | "M7-P6-L6-1"
+  | "M7-P6-L7-1"
+  | "M7-P6-L7-2"
+  | "M7-P6-L8-1"
   | "M5-P9-L4-1"
   | "M5-P6-L1-1"
   | "M5-P6-L3-1"
@@ -819,6 +843,30 @@ const DEFAULT_IMAGES: Record<PageImageKey, string> = {
   "M7-P4-L8-1": "https://placehold.co/588x583?text=Maskot+laki-laki+berpikir",
   "M7-P4-L9-1": "https://placehold.co/1606x421?text=Satu+prisma+sama+dengan+tiga+limas",
   "M7-P4-L9-2": "https://placehold.co/961x621?text=Dua+siswa+Siap+ke+Tahap+4",
+  "M7-P5-L1-1": "https://placehold.co/1194x625?text=Hero+tiga+siswa+analisis+data",
+  "M7-P5-L2-1": "https://placehold.co/348x163?text=Prisma+limas+luas+alas+kecil",
+  "M7-P5-L2-2": "https://placehold.co/505x214?text=Prisma+limas+luas+alas+sedang",
+  "M7-P5-L2-3": "https://placehold.co/586x240?text=Prisma+limas+luas+alas+besar",
+  "M7-P5-L2-4": "https://placehold.co/432x210?text=Prisma+limas+tinggi+rendah",
+  "M7-P5-L2-5": "https://placehold.co/501x276?text=Prisma+limas+tinggi+sedang",
+  "M7-P5-L2-6": "https://placehold.co/531x342?text=Prisma+limas+tinggi+tinggi",
+  "M7-P5-L2-7": "https://placehold.co/1606x334?text=Penuangan+limas+berulang+ke+prisma",
+  "M7-P5-L3-1": "https://placehold.co/373x612?text=Maskot+laki-laki+gunakan+data",
+  "M7-P5-L4-1": "https://placehold.co/403x616?text=Maskot+perempuan+jempol",
+  "M7-P5-L5-1": "https://placehold.co/1192x625?text=Hero+tiga+siswa+susun+dugaan",
+  "M7-P5-L5-2": "https://placehold.co/1050x556?text=Diagram+prisma+dan+limas+L+dan+t",
+  "M7-P5-L6-1": "https://placehold.co/354x601?text=Maskot+laki-laki+alasan+dugaan",
+  "M7-P5-L7-1": "https://placehold.co/370x616?text=Maskot+perempuan+langkah+pemahaman",
+  "M7-P6-L1-1": "https://placehold.co/1171x625?text=Hero+tiga+siswa+verifikasi+dugaan",
+  "M7-P6-L2-1": "https://placehold.co/440x420?text=Model+GeoGebra+3D+limas",
+  "M7-P6-L2-2": "https://placehold.co/440x420?text=Model+AR+limas",
+  "M7-P6-L4-1": "https://placehold.co/379x601?text=Maskot+perempuan+setiap+data",
+  "M7-P6-L4-2": "https://placehold.co/592x610?text=Maskot+laki-laki+semangat",
+  "M7-P6-L5-1": "https://placehold.co/1671x564?text=Hero+dua+siswa+simpulkan+verifikasi",
+  "M7-P6-L6-1": "https://placehold.co/898x252?text=Ilustrasi+tiga+limas+memenuhi+prisma",
+  "M7-P6-L7-1": "https://placehold.co/384x558?text=Maskot+laki-laki+gunakan+data+pola+model",
+  "M7-P6-L7-2": "https://placehold.co/381x577?text=Maskot+perempuan+terus+semangat",
+  "M7-P6-L8-1": "https://placehold.co/382x583?text=Maskot+laki-laki+lanjut+tahap+berikutnya",
 };
 
 /**
