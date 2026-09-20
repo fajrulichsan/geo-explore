@@ -8,10 +8,7 @@ const pertanyaan = [
   { n: 1, label: "Apa perbedaan utama antara kedua bangun pada setiap pasangan?" },
   { n: 2, label: "Apakah jumlah sisi kedua bangun berubah? Mengapa?" },
   { n: 3, label: "Bagaimana perubahan ukuran panjang pada setiap pasangan bangun?" },
-  {
-    n: 4,
-    label: "Menurutmu, bagaimana perubahan luas setiap sisi ketika semua ukuran panjang diperbesar 2 kali?",
-  },
+  { n: 4, label: "Menurutmu, bagaimana perubahan luas setiap sisi ketika semua ukuran panjang diperbesar 2 kali?" },
 ];
 
 export default async function Materi5Peta2Step3PertanyaanPengamatan({
@@ -30,6 +27,13 @@ export default async function Materi5Peta2Step3PertanyaanPengamatan({
 
       <div className="flex flex-col gap-4">
         <StepHeader materi={materi} currentStep={3} totalSteps={9} />
+        <div className="inline-flex items-center gap-2 bg-[#1E3A8A] text-white rounded-full py-1.5 px-3.5 text-xs font-bold tracking-[0.02em] w-fit">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2">
+            <circle cx="11" cy="11" r="7" />
+            <path d="M21 21l-4.3-4.3" />
+          </svg>
+          Tahap 1
+        </div>
         <h1 className="m-0 text-2xl sm:text-[32px] font-extrabold text-[#111827]">Ayo Mengamati dan Berpikir</h1>
       </div>
 
@@ -47,7 +51,7 @@ export default async function Materi5Peta2Step3PertanyaanPengamatan({
           {pertanyaan.map((q) => (
             <div
               key={q.n}
-              className="bg-white border border-[#E5E7EB] rounded-[20px] p-6 shadow-[0_1px_2px_rgba(0,0,0,0.04)] focus-within:border-[#2563EB] transition-colors"
+              className="bg-white border border-[#E5E7EB] rounded-[20px] p-5 sm:p-6 shadow-[0_1px_2px_rgba(0,0,0,0.04)] focus-within:border-[#2563EB] transition-colors"
             >
               <div className="flex items-start gap-4 mb-4">
                 <div className="w-[30px] h-[30px] rounded-full bg-[#2563EB] text-white flex items-center justify-center font-bold text-sm flex-shrink-0">

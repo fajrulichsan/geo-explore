@@ -3,16 +3,56 @@ import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry"
 import SubmitStepButton from "@/app/belajar/_components/SubmitStepButton";
 import BackLink from "@/app/belajar/_components/BackLink";
 import StepHeader from "@/app/belajar/_components/StepHeader";
-import { KubusSvg, BalokSvg, PrismaSvg, LimasSvg } from "./shapes";
+import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
+import { getPageImage, type PageImageKey } from "@/lib/pageImages";
 
-const bangunList = [
-  { key: "kubus", label: "Kubus", color: "#2563EB", bg: "#EFF6FF", border: "#BFDBFE", Svg: KubusSvg, catatan: "Semua ukuran panjang menjadi 2 kali." },
-  { key: "balok", label: "Balok", color: "#EA580C", bg: "#FFF7ED", border: "#FED7AA", Svg: BalokSvg, catatan: "Setiap ukuran (panjang, lebar, tinggi) menjadi 2 kali." },
-  { key: "prisma", label: "Prisma Segitiga", color: "#7C3AED", bg: "#F5F3FF", border: "#DDD6FE", Svg: PrismaSvg, catatan: "Semua ukuran pada sisi alas, tinggi alas, dan panjang prisma menjadi 2 kali." },
-  { key: "limas", label: "Limas Segiempat", color: "#16A34A", bg: "#F0FDF4", border: "#BBF7D0", Svg: LimasSvg, catatan: "Semua ukuran (sisi alas dan apotema) menjadi 2 kali." },
-] as const;
+type Bangun = {
+  label: string;
+  color: string;
+  imageKey: PageImageKey;
+  urutan: string;
+  alt: string;
+  catatan: string;
+};
 
-export default async function Materi5Peta2Step5LanjutkanPengamatan({ materi, peta }: StepComponentProps) {
+const bangunList: Bangun[] = [
+  {
+    label: "Kubus",
+    color: "#16A34A",
+    imageKey: "M5-P2-L1-2",
+    urutan: "2",
+    alt: "Kubus kecil dengan rusuk 4 cm dan kubus besar dengan rusuk 8 cm (k = 2)",
+    catatan: "Perhatikan: semua ukuran panjang menjadi 2 kali.",
+  },
+  {
+    label: "Balok",
+    color: "#EA580C",
+    imageKey: "M5-P2-L1-3",
+    urutan: "3",
+    alt: "Balok kecil 6 × 4 × 3 dan balok besar 12 × 8 × 6 (k = 2)",
+    catatan: "Perhatikan: setiap ukuran (panjang, lebar, tinggi) menjadi 2 kali.",
+  },
+  {
+    label: "Prisma Segitiga",
+    color: "#7C3AED",
+    imageKey: "M5-P2-L1-4",
+    urutan: "4",
+    alt: "Prisma segitiga kecil dan prisma segitiga besar (k = 2)",
+    catatan: "Perhatikan: semua ukuran pada sisi alas, tinggi alas, dan panjang prisma menjadi 2 kali.",
+  },
+  {
+    label: "Limas Segiempat",
+    color: "#2563EB",
+    imageKey: "M5-P2-L1-5",
+    urutan: "5",
+    alt: "Limas segiempat kecil dengan apotema 5 cm dan limas besar dengan apotema 10 cm (k = 2)",
+    catatan: "Perhatikan: semua ukuran (sisi alas dan apotema) menjadi 2 kali.",
+  },
+];
+
+export default async function Materi5Peta2Step5LanjutkanPengamatan({ materi, peta, step = "5" }: StepComponentProps) {
+  const images = await Promise.all(bangunList.map((b) => getPageImage(b.imageKey)));
+
   return (
     <form action={submitStepAction} className="flex flex-col gap-8">
       <input type="hidden" name="materi" value={materi} />
@@ -21,21 +61,23 @@ export default async function Materi5Peta2Step5LanjutkanPengamatan({ materi, pet
 
       <div className="flex flex-col gap-4">
         <StepHeader materi={materi} currentStep={5} totalSteps={9} />
+        <div className="inline-flex items-center gap-2 bg-[#1E3A8A] text-white rounded-full py-1.5 px-3.5 text-xs font-bold tracking-[0.02em] w-fit">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2">
+            <circle cx="11" cy="11" r="7" />
+            <path d="M21 21l-4.3-4.3" />
+          </svg>
+          Tahap 1
+        </div>
         <h1 className="m-0 text-2xl sm:text-[32px] font-extrabold text-[#111827]">Ayo Mengamati dan Berpikir</h1>
       </div>
 
-      <div className="bg-[#FEF9E7] border border-[#F5E3A0] rounded-2xl p-5 flex flex-col gap-1.5">
-        <p className="m-0 text-sm font-bold text-[#78350F] flex items-center gap-2">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#D97706" strokeWidth="2">
-            <path d="M12 2l2.4 6.6L21 11l-6.6 2.4L12 20l-2.4-6.6L3 11l6.6-2.4z" />
-          </svg>
-          Ingat!
+      <div className="bg-[#FEF9E7] border border-[#F5E3A0] rounded-[20px] p-5 sm:p-6 flex flex-col gap-2">
+        <p className="m-0 text-sm font-bold text-[#78350F]">Ingat!</p>
+        <p className="m-0 text-sm leading-[1.6] text-[#374151]">
+          Faktor skala <span className="font-bold text-[#2563EB]">k = 2</span> berarti setiap ukuran panjang pada
+          bangun hasil skala menjadi 2 kali ukuran semula.
         </p>
-        <p className="m-0 text-sm text-[#78350F] leading-[1.6]">
-          Faktor skala k = 2 berarti setiap ukuran panjang pada bangun hasil skala menjadi 2 kali
-          ukuran semula.
-        </p>
-        <p className="m-0 text-sm font-bold text-[#78350F]">Ukuran baru = k × ukuran lama (k = 2)</p>
+        <p className="m-0 text-sm font-bold text-[#2563EB]">Ukuran baru = k × ukuran lama (k = 2)</p>
       </div>
 
       <div className="flex flex-col gap-4">
@@ -49,25 +91,29 @@ export default async function Materi5Peta2Step5LanjutkanPengamatan({ materi, pet
         </div>
         <p className="m-0 text-sm text-[#4B5563]">Perhatikan kembali perubahan setiap bangun di bawah ini.</p>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          {bangunList.map((b) => (
-            <div key={b.key} className="rounded-[20px] p-5 flex flex-col items-center gap-3 border" style={{ backgroundColor: b.bg, borderColor: b.border }}>
-              <p className="m-0 text-sm font-bold" style={{ color: b.color }}>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
+          {bangunList.map((b, i) => (
+            <div key={b.label} className="bg-white border border-[#E5E7EB] rounded-[20px] p-4 flex flex-col gap-3 shadow-[0_1px_2px_rgba(0,0,0,0.04)]">
+              <span
+                className="inline-flex w-fit rounded-full py-1.5 px-4 text-sm font-bold text-white"
+                style={{ backgroundColor: b.color }}
+              >
                 {b.label}
+              </span>
+              <EditablePageImage
+                imageKey={b.imageKey}
+                materi={materi}
+                peta={peta}
+                step={step}
+                urutan={b.urutan}
+                src={images[i]}
+                alt={b.alt}
+                natural
+                containerClassName="relative w-full overflow-hidden"
+              />
+              <p className="m-0 bg-[#F0FDF4] border border-[#BBF7D0] rounded-xl py-2.5 px-3.5 text-sm text-[#374151]">
+                {b.catatan}
               </p>
-              <div className="flex items-center justify-center gap-3">
-                <b.Svg size="kecil" color={b.color} />
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke={b.color} strokeWidth="2.4" className="flex-shrink-0">
-                  <path d="M5 12h14M13 5l7 7-7 7" />
-                </svg>
-                <b.Svg size="besar" color={b.color} />
-              </div>
-              <div className="w-full bg-white/70 rounded-2xl p-3 flex items-start gap-1.5">
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke={b.color} strokeWidth="2.4" className="mt-0.5 flex-shrink-0">
-                  <path d="M12 2l2.4 6.6L21 11l-6.6 2.4L12 20l-2.4-6.6L3 11l6.6-2.4z" />
-                </svg>
-                <p className="m-0 text-xs text-[#374151] leading-[1.4]">{b.catatan}</p>
-              </div>
             </div>
           ))}
         </div>

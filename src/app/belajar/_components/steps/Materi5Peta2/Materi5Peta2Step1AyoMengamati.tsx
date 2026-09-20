@@ -3,24 +3,39 @@ import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry"
 import SubmitStepButton from "@/app/belajar/_components/SubmitStepButton";
 import StepHeader from "@/app/belajar/_components/StepHeader";
 import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
-import { getPageImage } from "@/lib/pageImages";
-import { KubusSvg, BalokSvg, PrismaSvg, LimasSvg } from "./shapes";
+import { getPageImage, type PageImageKey } from "@/lib/pageImages";
 
-const bangunList = [
+type Bangun = {
+  key: string;
+  label: string;
+  color: string;
+  bg: string;
+  border: string;
+  imageKey: PageImageKey;
+  urutan: string;
+  alt: string;
+  pertanyaan?: string;
+  opsi?: { value: string; label: string }[];
+  petunjuk: string;
+};
+
+const bangunList: Bangun[] = [
   {
     key: "kubus",
     label: "1. Kubus",
-    color: "#2563EB",
-    bg: "#EFF6FF",
-    border: "#BFDBFE",
-    Svg: KubusSvg,
-    kecil: "Rusuk = 4 cm",
-    besar: "Rusuk = 8 cm",
+    color: "#16A34A",
+    bg: "#F0FDF4",
+    border: "#BBF7D0",
+    imageKey: "M5-P2-L1-2",
+    urutan: "2",
+    alt: "Kubus kecil dengan rusuk 4 cm diperbesar dengan k = 2 menjadi kubus besar dengan rusuk 8 cm",
+    pertanyaan: "Apa yang berubah?",
     opsi: [
       { value: "panjang_rusuk", label: "panjang rusuk" },
       { value: "jumlah_sisi", label: "jumlah sisi" },
       { value: "bentuk_bangun", label: "bentuk bangun" },
     ],
+    petunjuk: "Perhatikan dan tentukan sendiri apa yang berubah dan apa yang tetap.",
   },
   {
     key: "balok",
@@ -28,14 +43,16 @@ const bangunList = [
     color: "#EA580C",
     bg: "#FFF7ED",
     border: "#FED7AA",
-    Svg: BalokSvg,
-    kecil: "(p × l × t) 6 × 4 × 3",
-    besar: "(p × l × t) 12 × 8 × 6",
+    imageKey: "M5-P2-L1-3",
+    urutan: "3",
+    alt: "Balok kecil 6 × 4 × 3 diperbesar dengan k = 2 menjadi balok besar 12 × 8 × 6",
+    pertanyaan: "Ukuran mana yang berubah?",
     opsi: [
       { value: "panjang", label: "panjang" },
       { value: "lebar", label: "lebar" },
       { value: "tinggi", label: "tinggi" },
     ],
+    petunjuk: "Amati semua ukuran panjang, lebar, dan tinggi.",
   },
   {
     key: "prisma",
@@ -43,31 +60,29 @@ const bangunList = [
     color: "#7C3AED",
     bg: "#F5F3FF",
     border: "#DDD6FE",
-    Svg: PrismaSvg,
-    kecil: "Tinggi alas = 3 cm, Sisi alas = 4 cm, Panjang prisma = 6 cm",
-    besar: "Tinggi alas = 6 cm, Sisi alas = 8 cm, Panjang prisma = 12 cm",
+    imageKey: "M5-P2-L1-4",
+    urutan: "4",
+    alt: "Prisma segitiga kecil diperbesar dengan k = 2 menjadi prisma segitiga besar",
+    pertanyaan: "Ukuran mana yang berubah?",
     opsi: [
       { value: "panjang_prisma", label: "panjang prisma" },
       { value: "sisi_alas", label: "sisi alas" },
       { value: "tinggi_alas", label: "tinggi alas segitiga" },
     ],
+    petunjuk: "Amati perubahan ukuran pada sisi alas, tinggi alas segitiga, dan panjang prisma.",
   },
   {
     key: "limas",
     label: "4. Limas Segiempat",
-    color: "#16A34A",
-    bg: "#F0FDF4",
-    border: "#BBF7D0",
-    Svg: LimasSvg,
-    kecil: "Apotema = 5 cm, Sisi alas = 3 cm",
-    besar: "Apotema = 10 cm, Sisi alas = 6 cm",
-    opsi: [
-      { value: "sisi_alas", label: "sisi alas" },
-      { value: "apotema", label: "apotema" },
-      { value: "bentuk_bangun", label: "bentuk bangun" },
-    ],
+    color: "#2563EB",
+    bg: "#EFF6FF",
+    border: "#BFDBFE",
+    imageKey: "M5-P2-L1-5",
+    urutan: "5",
+    alt: "Limas segiempat kecil dengan apotema 5 cm diperbesar dengan k = 2 menjadi limas besar dengan apotema 10 cm",
+    petunjuk: "Amati semua ukuran (sisi alas dan apotema) setelah skala diterapkan.",
   },
-] as const;
+];
 
 export default async function Materi5Peta2Step1AyoMengamati({
   materi,
@@ -76,7 +91,10 @@ export default async function Materi5Peta2Step1AyoMengamati({
   editFoto,
   initialAnswers,
 }: StepComponentProps) {
-  const heroImage = await getPageImage("M5-P2-L1-1");
+  const [heroImage, ...bangunImages] = await Promise.all([
+    getPageImage("M5-P2-L1-1"),
+    ...bangunList.map((b) => getPageImage(b.imageKey)),
+  ]);
   const answers = initialAnswers ?? {};
   const getValue = (key: string) => (typeof answers[key] === "string" ? (answers[key] as string) : "");
 
@@ -98,23 +116,23 @@ export default async function Materi5Peta2Step1AyoMengamati({
         <h1 className="m-0 text-2xl sm:text-[32px] font-extrabold text-[#111827]">Ayo Mengamati dan Berpikir</h1>
       </div>
 
-      <div className="relative overflow-hidden rounded-[24px] bg-gradient-to-br from-[#EFF4FF] to-[#F5F3FF] border border-[#E5E7EB] p-6 sm:p-8">
-        <div className="flex flex-col sm:flex-row sm:items-center gap-6">
-          <div className="flex-1 flex flex-col gap-3">
-            <p className="m-0 text-sm font-bold text-[#2563EB] flex items-center gap-2">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2563EB" strokeWidth="2">
-                <circle cx="11" cy="11" r="7" />
-                <path d="M21 21l-4.3-4.3" />
-              </svg>
-              Ayo Mengamati!
-            </p>
-            <p className="m-0 text-sm leading-[1.6] text-[#374151]">
-              Perhatikan setiap pasangan bangun ruang di bawah ini. Bentuknya sama, tetapi
-              ukurannya berbeda karena diperbesar dengan faktor skala <span className="font-bold text-[#111827]">k = 2</span>.
-              Amati perubahan ukuran setiap bangun, kemudian pikirkan apakah perubahan tersebut
-              juga memengaruhi luas permukaannya.
-            </p>
+      <div className="flex flex-col gap-4">
+        <div className="flex items-center gap-3">
+          <div className="w-[34px] h-[34px] rounded-full bg-[#2563EB] text-white flex items-center justify-center font-bold text-[15px] flex-shrink-0">
+            A
           </div>
+          <div className="bg-white border border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-full py-2 px-5 text-sm font-bold text-[#2563EB]">
+            Ayo Mengamati!
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-[1fr_320px] gap-5 items-center bg-[#FEF9E7] border border-[#F5E3A0] rounded-[20px] p-5 sm:p-6">
+          <p className="m-0 text-sm leading-[1.7] text-[#374151]">
+            Perhatikan setiap pasangan bangun ruang di bawah ini. Bentuknya sama, tetapi ukurannya berbeda
+            karena diperbesar dengan faktor skala <span className="font-bold text-[#2563EB]">k = 2</span>. Amati
+            perubahan ukuran setiap bangun, kemudian pikirkan apakah perubahan tersebut juga memengaruhi luas
+            permukaannya.
+          </p>
           <EditablePageImage
             imageKey="M5-P2-L1-1"
             materi={materi}
@@ -124,61 +142,67 @@ export default async function Materi5Peta2Step1AyoMengamati({
             src={heroImage}
             alt="Siswa laki-laki dengan kaca pembesar dan siswa perempuan memegang penggaris mengamati bangun ruang"
             editable={editFoto}
-            imageClassName="object-contain"
-            containerClassName="relative w-full sm:w-64 h-40 flex-shrink-0 rounded-2xl overflow-hidden bg-white/60"
+            natural
+            containerClassName="relative w-full overflow-hidden rounded-2xl"
           />
         </div>
-      </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-        {bangunList.map((b) => (
-          <div key={b.key} className="rounded-[20px] p-5 flex flex-col gap-4 border" style={{ backgroundColor: b.bg, borderColor: b.border }}>
-            <p className="m-0 text-sm font-bold" style={{ color: b.color }}>
-              {b.label}
-            </p>
-            <div className="flex items-center justify-center gap-3">
-              <div className="flex flex-col items-center gap-1.5">
-                <span className="text-xs font-semibold text-[#6B7280]">Kecil</span>
-                <b.Svg size="kecil" color={b.color} />
-                <span className="text-[11px] text-[#374151] text-center">{b.kecil}</span>
-              </div>
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={b.color} strokeWidth="2.4" className="flex-shrink-0">
-                <path d="M5 12h14M13 5l7 7-7 7" />
-              </svg>
-              <div className="flex flex-col items-center gap-1.5">
-                <span className="text-xs font-semibold text-[#6B7280]">Besar (k = 2)</span>
-                <b.Svg size="besar" color={b.color} />
-                <span className="text-[11px] text-[#374151] text-center">{b.besar}</span>
-              </div>
-            </div>
-
-            <div className="bg-white/70 rounded-2xl p-3.5 flex flex-col gap-2">
-              <p className="m-0 text-xs font-bold text-[#374151]">Apa yang berubah?</p>
-              {b.opsi.map((o) => (
-                <label key={o.value} className="flex items-center gap-2 text-xs text-[#374151] cursor-pointer">
-                  <input
-                    type="radio"
-                    name={`answers.${b.key}_berubah`}
-                    value={o.value}
-                    defaultChecked={getValue(`${b.key}_berubah`) === o.value}
-                    required
-                    className="accent-[#2563EB]"
+        <div className="grid grid-cols-1 gap-5">
+          {bangunList.map((b, i) => (
+            <div
+              key={b.key}
+              className="rounded-[20px] p-4 sm:p-5 flex flex-col gap-4 border"
+              style={{ backgroundColor: b.bg, borderColor: b.border }}
+            >
+              <span
+                className="inline-flex w-fit rounded-full py-1.5 px-4 text-sm font-bold text-white"
+                style={{ backgroundColor: b.color }}
+              >
+                {b.label}
+              </span>
+              <div className="grid grid-cols-1 md:grid-cols-[1fr_200px] gap-4 items-center">
+                <div className="bg-white rounded-2xl p-3">
+                  <EditablePageImage
+                    imageKey={b.imageKey}
+                    materi={materi}
+                    peta={peta}
+                    step={step}
+                    urutan={b.urutan}
+                    src={bangunImages[i]}
+                    alt={b.alt}
+                    editable={editFoto}
+                    natural
+                    containerClassName="relative w-full overflow-hidden"
                   />
-                  {o.label}
-                </label>
-              ))}
+                </div>
+                {b.opsi && (
+                  <fieldset className="m-0 bg-white rounded-2xl border border-[#E5E7EB] p-3.5 flex flex-col gap-2">
+                    <legend className="px-1 text-xs font-bold text-[#374151]">{b.pertanyaan}</legend>
+                    {b.opsi.map((o) => (
+                      <label key={o.value} className="flex items-center gap-2 text-sm text-[#374151] cursor-pointer">
+                        <input
+                          type="radio"
+                          name={`answers.${b.key}_berubah`}
+                          value={o.value}
+                          defaultChecked={getValue(`${b.key}_berubah`) === o.value}
+                          required
+                          className="accent-[#2563EB]"
+                        />
+                        {o.label}
+                      </label>
+                    ))}
+                  </fieldset>
+                )}
+              </div>
+              <p className="m-0 flex items-center gap-2 bg-white/80 rounded-xl py-2.5 px-3.5 text-sm text-[#374151]">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#D97706" strokeWidth="2" className="flex-shrink-0">
+                  <path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-4 10.5c.7.7 1 1.5 1 2.5h6c0-1 .3-1.8 1-2.5A6 6 0 0 0 12 3z" />
+                </svg>
+                {b.petunjuk}
+              </p>
             </div>
-          </div>
-        ))}
-      </div>
-
-      <div className="bg-[#FEF9E7] border border-[#F5E3A0] rounded-2xl p-4 flex items-center gap-2.5">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D97706" strokeWidth="2" className="flex-shrink-0">
-          <path d="M12 2l2.4 6.6L21 11l-6.6 2.4L12 20l-2.4-6.6L3 11l6.6-2.4z" />
-        </svg>
-        <p className="m-0 text-sm font-semibold text-[#78350F]">
-          Perhatikan dan tentukan sendiri apa yang berubah dan apa yang tetap.
-        </p>
+          ))}
+        </div>
       </div>
 
       <div className="flex justify-end">

@@ -26,6 +26,13 @@ export default async function Materi5Peta2Step8PertanyaanPemantik({
 
       <div className="flex flex-col gap-4">
         <StepHeader materi={materi} currentStep={8} totalSteps={9} />
+        <div className="inline-flex items-center gap-2 bg-[#1E3A8A] text-white rounded-full py-1.5 px-3.5 text-xs font-bold tracking-[0.02em] w-fit">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2">
+            <circle cx="11" cy="11" r="7" />
+            <path d="M21 21l-4.3-4.3" />
+          </svg>
+          Tahap 1
+        </div>
         <h1 className="m-0 text-2xl sm:text-[32px] font-extrabold text-[#111827]">Ayo Mengamati dan Berpikir</h1>
       </div>
 
@@ -43,7 +50,7 @@ export default async function Materi5Peta2Step8PertanyaanPemantik({
           {pertanyaan.map((q) => (
             <div
               key={q.n}
-              className="bg-white border border-[#E5E7EB] rounded-[20px] p-6 shadow-[0_1px_2px_rgba(0,0,0,0.04)] focus-within:border-[#2563EB] transition-colors"
+              className="bg-white border border-[#E5E7EB] rounded-[20px] p-5 sm:p-6 shadow-[0_1px_2px_rgba(0,0,0,0.04)] focus-within:border-[#2563EB] transition-colors"
             >
               <div className="flex items-start gap-4 mb-4">
                 <div className="w-[30px] h-[30px] rounded-full bg-[#2563EB] text-white flex items-center justify-center font-bold text-sm flex-shrink-0">
@@ -58,8 +65,8 @@ export default async function Materi5Peta2Step8PertanyaanPemantik({
                 name={`answers.pemantik_${q.n}`}
                 defaultValue={getValue(`pemantik_${q.n}`)}
                 rows={3}
-                placeholder="Ketik jawabanmu di sini..."
                 required
+                placeholder="Ketik jawabanmu di sini..."
                 className="w-full rounded-2xl border border-[#E5E7EB] bg-[#F9FAFB] p-4 text-sm text-[#374151] placeholder:text-[#9CA3AF] focus:border-[#2563EB] focus:outline-none transition-colors resize-y"
               />
             </div>

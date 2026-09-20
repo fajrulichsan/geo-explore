@@ -534,6 +534,11 @@ export type PageImageKey =
   | "M5-P6-L4-1"
   | "M5-P6-L4-2"
   | "M5-P2-L1-1"
+  | "M5-P2-L1-2"
+  | "M5-P2-L1-3"
+  | "M5-P2-L1-4"
+  | "M5-P2-L1-5"
+  | "M5-P2-L2-1"
   | "M5-P2-L9-1";
 
 const DEFAULT_IMAGES: Record<PageImageKey, string> = {
@@ -785,6 +790,11 @@ const DEFAULT_IMAGES: Record<PageImageKey, string> = {
   "M5-P6-L4-1": "https://placehold.co/256x320?text=Siswa+Jempol",
   "M5-P6-L4-2": "https://placehold.co/112x128?text=Maskot+Semangat",
   "M5-P2-L1-1": "https://placehold.co/280x224?text=Dua+Siswa+Mengamati+Bangun+Ruang",
+  "M5-P2-L1-2": "https://placehold.co/800x400?text=Kubus+Kecil+ke+Besar",
+  "M5-P2-L1-3": "https://placehold.co/1000x300?text=Balok+Kecil+ke+Besar",
+  "M5-P2-L1-4": "https://placehold.co/800x330?text=Prisma+Kecil+ke+Besar",
+  "M5-P2-L1-5": "https://placehold.co/900x420?text=Limas+Kecil+ke+Besar",
+  "M5-P2-L2-1": "https://placehold.co/900x420?text=Luas+Satu+Sisi+Kubus",
   "M5-P2-L9-1": "https://placehold.co/160x200?text=Maskot+Jempol",
   "M5-P1-L1-1": "https://placehold.co/800x536?text=Tiga+Siswa+Skala+3D",
   "M5-P1-L1-2": "https://placehold.co/1350x400?text=Skala+1+ke+Skala+2",

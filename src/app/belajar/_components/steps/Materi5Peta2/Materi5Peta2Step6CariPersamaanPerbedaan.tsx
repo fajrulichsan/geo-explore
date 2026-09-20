@@ -4,11 +4,14 @@ import SubmitStepButton from "@/app/belajar/_components/SubmitStepButton";
 import BackLink from "@/app/belajar/_components/BackLink";
 import StepHeader from "@/app/belajar/_components/StepHeader";
 
-const baris = [
+const aspek = [
   { key: "bentuk_bangun", label: "Bentuk bangun" },
   { key: "jumlah_sisi", label: "Jumlah sisi" },
   { key: "ukuran_panjang", label: "Ukuran panjang (sisi, rusuk, tinggi, panjang prisma, apotema, dll.)" },
-] as const;
+];
+
+const textareaClass =
+  "w-full rounded-xl border border-[#E5E7EB] bg-[#F9FAFB] p-3 text-sm text-[#374151] placeholder:text-[#9CA3AF] focus:border-[#2563EB] focus:outline-none transition-colors resize-y";
 
 export default async function Materi5Peta2Step6CariPersamaanPerbedaan({
   materi,
@@ -26,100 +29,101 @@ export default async function Materi5Peta2Step6CariPersamaanPerbedaan({
 
       <div className="flex flex-col gap-4">
         <StepHeader materi={materi} currentStep={6} totalSteps={9} />
+        <div className="inline-flex items-center gap-2 bg-[#1E3A8A] text-white rounded-full py-1.5 px-3.5 text-xs font-bold tracking-[0.02em] w-fit">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2">
+            <circle cx="11" cy="11" r="7" />
+            <path d="M21 21l-4.3-4.3" />
+          </svg>
+          Tahap 1
+        </div>
         <h1 className="m-0 text-2xl sm:text-[32px] font-extrabold text-[#111827]">Ayo Mengamati dan Berpikir</h1>
       </div>
 
-      <div className="bg-white border border-[#E5E7EB] rounded-[20px] shadow-[0_1px_2px_rgba(0,0,0,0.04)] overflow-hidden">
-        <div className="flex items-center gap-3 px-6 pt-5">
-          <div className="w-9 h-9 rounded-full bg-[#2563EB] text-white flex items-center justify-center font-bold text-sm flex-shrink-0">
+      <div className="flex flex-col gap-4">
+        <div className="flex items-center gap-3">
+          <div className="w-[34px] h-[34px] rounded-full bg-[#2563EB] text-white flex items-center justify-center font-bold text-[15px] flex-shrink-0">
             F
           </div>
-          <h2 className="m-0 text-lg font-bold text-[#111827]">Cari Persamaan dan Perbedaan</h2>
+          <div className="bg-white border border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-full py-2 px-5 text-sm font-bold text-[#2563EB]">
+            Cari Persamaan dan Perbedaan
+          </div>
         </div>
-        <p className="m-0 px-6 pt-2 text-sm text-[#4B5563]">
-          Lengkapilah tabel berikut berdasarkan hasil pengamatanmu!
-        </p>
+        <p className="m-0 text-sm text-[#4B5563]">Lengkapilah tabel berdasarkan hasil pengamatanmu!</p>
 
-        <div className="px-6 pt-4 pb-2 overflow-x-auto">
-          <table className="w-full text-left border-collapse">
-            <thead>
-              <tr>
-                <th className="bg-[#1E3A8A] text-white text-xs font-bold px-3 py-3 rounded-l-lg w-1/3">
-                  Aspek yang Diamati
-                </th>
-                <th className="bg-[#2563EB] text-white text-xs font-bold px-3 py-3 border-l border-white/20">
-                  Persamaan (sama)
-                </th>
-                <th className="bg-[#7C3AED] text-white text-xs font-bold px-3 py-3 border-l border-white/20 rounded-r-lg">
-                  Perbedaan (berbeda)
-                </th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-[#E5E7EB]">
-              {baris.map((b) => (
-                <tr key={b.key}>
-                  <td className="px-3 py-2.5 text-xs font-bold text-[#111827] align-top">{b.label}</td>
-                  {(["persamaan", "perbedaan"] as const).map((kolom) => {
-                    const name = `${b.key}_${kolom}`;
-                    return (
-                      <td key={kolom} className="px-2 py-2 align-top">
-                        <textarea
-                          name={`answers.${name}`}
-                          defaultValue={getValue(name)}
-                          rows={2}
-                          placeholder="..."
-                          required
-                          className="w-full rounded-lg border border-[#E5E7EB] bg-[#F9FAFB] px-2.5 py-2 text-xs text-[#374151] placeholder:text-[#9CA3AF] focus:border-[#2563EB] focus:outline-none focus:bg-white transition-colors resize-y"
-                        />
-                      </td>
-                    );
-                  })}
-                </tr>
-              ))}
-            </tbody>
-          </table>
+        <div className="flex flex-col gap-4">
+          {aspek.map((a) => (
+            <div key={a.key} className="bg-white border border-[#E5E7EB] rounded-[20px] overflow-hidden shadow-[0_1px_2px_rgba(0,0,0,0.04)]">
+              <p className="m-0 bg-[#1E3A8A] text-white text-sm font-bold py-2.5 px-5">{a.label}</p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 p-4 sm:p-5">
+                <div className="flex flex-col gap-1.5">
+                  <label htmlFor={`${a.key}_sama`} className="text-xs font-bold text-[#16A34A]">
+                    Persamaan (sama)
+                  </label>
+                  <textarea
+                    id={`${a.key}_sama`}
+                    name={`answers.${a.key}_sama`}
+                    defaultValue={getValue(`${a.key}_sama`)}
+                    rows={3}
+                    required
+                    className={textareaClass}
+                  />
+                </div>
+                <div className="flex flex-col gap-1.5">
+                  <label htmlFor={`${a.key}_beda`} className="text-xs font-bold text-[#EA580C]">
+                    Perbedaan (berbeda)
+                  </label>
+                  <textarea
+                    id={`${a.key}_beda`}
+                    name={`answers.${a.key}_beda`}
+                    defaultValue={getValue(`${a.key}_beda`)}
+                    rows={3}
+                    required
+                    className={textareaClass}
+                  />
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
 
-        <div className="mx-6 mb-6 bg-[#F9FAFB] border border-[#E5E7EB] rounded-2xl p-5 grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <div className="flex flex-col gap-2">
-            <label htmlFor="dugaan_perubahan_luas" className="text-sm font-bold text-[#111827]">
-              Dugaan perubahan luas permukaan (k = 2)
-            </label>
+        <div className="bg-[#FEF9E7] border border-[#F5E3A0] rounded-[20px] p-5 sm:p-6 grid grid-cols-1 sm:grid-cols-[160px_1fr] gap-4">
+          <p className="m-0 text-sm font-bold text-[#2563EB] leading-[1.6]">
+            Dugaan perubahan luas permukaan (<span className="italic">k</span> = 2)
+          </p>
+          <div className="flex flex-col gap-3">
             <input
-              id="dugaan_perubahan_luas"
               type="text"
               name="answers.dugaan_perubahan_luas"
               defaultValue={getValue("dugaan_perubahan_luas")}
-              placeholder="menurutmu luas permukaan menjadi ... kali luas permukaan semula"
               required
-              className="w-full rounded-lg border border-[#E5E7EB] bg-white px-3 py-2.5 text-sm text-[#374151] placeholder:text-[#9CA3AF] focus:border-[#2563EB] focus:outline-none transition-colors"
+              aria-label="Dugaan perubahan luas permukaan"
+              placeholder="Dugaanmu..."
+              className="w-full rounded-xl border border-[#E5E7EB] bg-white py-2.5 px-3 text-sm text-[#374151] placeholder:text-[#9CA3AF] focus:border-[#2563EB] focus:outline-none"
             />
-          </div>
-          <div className="flex flex-col gap-2">
-            <label htmlFor="alasan_dugaan_perubahan" className="text-sm font-bold text-[#111827]">
+            <label htmlFor="alasan_dugaan_perubahan" className="text-sm font-bold text-[#78350F]">
               Alasan dugaan (bukti pengamatan)
             </label>
             <textarea
               id="alasan_dugaan_perubahan"
               name="answers.alasan_dugaan_perubahan"
               defaultValue={getValue("alasan_dugaan_perubahan")}
-              rows={2}
-              placeholder="Jawabanmu..."
+              rows={3}
               required
-              className="w-full rounded-lg border border-[#E5E7EB] bg-white px-3 py-2.5 text-sm text-[#374151] placeholder:text-[#9CA3AF] focus:border-[#2563EB] focus:outline-none transition-colors resize-y"
+              className="w-full rounded-xl border border-[#E5E7EB] bg-white p-3 text-sm text-[#374151] placeholder:text-[#9CA3AF] focus:border-[#2563EB] focus:outline-none resize-y"
             />
           </div>
         </div>
 
-        <div className="mx-6 mb-6 bg-[#F0FDF4] border border-[#BBF7D0] rounded-xl py-3 px-4 flex items-center gap-2.5">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#16A34A" strokeWidth="2.6" className="flex-shrink-0">
-            <path d="M5 13l4 4L19 7" />
+        <p className="m-0 flex items-start gap-2.5 bg-[#F0FDF4] border border-[#BBF7D0] rounded-xl py-3 px-4 text-sm text-[#374151]">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#16A34A" strokeWidth="2.4" className="mt-0.5 flex-shrink-0">
+            <circle cx="12" cy="12" r="9" />
+            <path d="M8 12.5l3 3 5-6" />
           </svg>
-          <p className="m-0 text-xs font-semibold text-[#166534]">
-            Tips: Sebelum ke tahap berikutnya, pastikan kamu telah melengkapi tabel dengan
-            pengamatanmu sendiri.
-          </p>
-        </div>
+          <span>
+            <span className="font-bold text-[#16A34A]">Tips:</span> Sebelum ke tahap berikutnya, pastikan kamu
+            telah melengkapi tabel dengan pengamatanmu sendiri.
+          </span>
+        </p>
       </div>
 
       <div className="flex justify-between items-center">

@@ -3,24 +3,19 @@ import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry"
 import SubmitStepButton from "@/app/belajar/_components/SubmitStepButton";
 import BackLink from "@/app/belajar/_components/BackLink";
 import StepHeader from "@/app/belajar/_components/StepHeader";
-
-function SisiSvg({ size }: { size: "kecil" | "besar" }) {
-  const s = size === "kecil" ? 46 : 74;
-  const w = s + 12;
-  return (
-    <svg width={w} height={w} viewBox={`0 0 ${w} ${w}`} fill="none">
-      <rect x="6" y="6" width={s} height={s} rx="3" fill="#2563EB" fillOpacity="0.28" stroke="#2563EB" strokeWidth="2" strokeDasharray="4 3" />
-    </svg>
-  );
-}
+import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
+import { getPageImage } from "@/lib/pageImages";
 
 export default async function Materi5Peta2Step2LuasSalahSatuSisi({
   materi,
   peta,
+  step = "2",
+  editFoto,
   initialAnswers,
 }: StepComponentProps) {
+  const sisiImage = await getPageImage("M5-P2-L2-1");
   const answers = initialAnswers ?? {};
-  const getValue = (key: string) => (typeof answers[key] === "string" ? (answers[key] as string) : "");
+  const jawaban = typeof answers.pertanyaan_luas_sisi === "string" ? answers.pertanyaan_luas_sisi : "";
 
   return (
     <form action={submitStepAction} className="flex flex-col gap-8">
@@ -30,6 +25,13 @@ export default async function Materi5Peta2Step2LuasSalahSatuSisi({
 
       <div className="flex flex-col gap-4">
         <StepHeader materi={materi} currentStep={2} totalSteps={9} />
+        <div className="inline-flex items-center gap-2 bg-[#1E3A8A] text-white rounded-full py-1.5 px-3.5 text-xs font-bold tracking-[0.02em] w-fit">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2">
+            <circle cx="11" cy="11" r="7" />
+            <path d="M21 21l-4.3-4.3" />
+          </svg>
+          Tahap 1
+        </div>
         <h1 className="m-0 text-2xl sm:text-[32px] font-extrabold text-[#111827]">Ayo Mengamati dan Berpikir</h1>
       </div>
 
@@ -43,37 +45,32 @@ export default async function Materi5Peta2Step2LuasSalahSatuSisi({
           </div>
         </div>
 
-        <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-6 shadow-[0_1px_2px_rgba(0,0,0,0.04)]">
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            <div className="flex flex-col items-center gap-2">
-              <p className="m-0 text-sm font-bold text-[#374151]">Kubus kecil — Satu sisi</p>
-              <SisiSvg size="kecil" />
-              <div className="bg-[#EFF6FF] rounded-full py-1.5 px-4 text-sm font-bold text-[#2563EB]">4 × 4</div>
-              <p className="m-0 text-xs text-[#9CA3AF]">(hitunglah sendiri)</p>
-            </div>
-            <div className="flex flex-col items-center gap-2">
-              <p className="m-0 text-sm font-bold text-[#374151]">Kubus besar — Satu sisi</p>
-              <SisiSvg size="besar" />
-              <div className="bg-[#EFF6FF] rounded-full py-1.5 px-4 text-sm font-bold text-[#2563EB]">8 × 8</div>
-              <p className="m-0 text-xs text-[#9CA3AF]">(hitunglah sendiri)</p>
-            </div>
-          </div>
+        <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-4 sm:p-5 shadow-[0_1px_2px_rgba(0,0,0,0.04)]">
+          <EditablePageImage
+            imageKey="M5-P2-L2-1"
+            materi={materi}
+            peta={peta}
+            step={step}
+            urutan="1"
+            src={sisiImage}
+            alt="Kubus kecil dengan satu sisi 4 × 4 dan kubus besar dengan satu sisi 8 × 8, hitunglah sendiri luasnya"
+            editable={editFoto}
+            natural
+            containerClassName="relative w-full overflow-hidden"
+          />
         </div>
 
-        <div className="bg-[#FEF9E7] border border-[#F5E3A0] rounded-[20px] p-6 flex flex-col gap-3">
-          <p className="m-0 text-sm font-bold text-[#78350F] flex items-center gap-2">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#D97706" strokeWidth="2">
-              <path d="M12 2l2.4 6.6L21 11l-6.6 2.4L12 20l-2.4-6.6L3 11l6.6-2.4z" />
+        <div className="bg-[#FEF9E7] border border-[#F5E3A0] rounded-[20px] p-5 sm:p-6 flex flex-col gap-3">
+          <label htmlFor="pertanyaan_luas_sisi" className="flex items-start gap-2.5 text-sm font-bold text-[#78350F]">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D97706" strokeWidth="2" className="mt-0.5 flex-shrink-0">
+              <path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-4 10.5c.7.7 1 1.5 1 2.5h6c0-1 .3-1.8 1-2.5A6 6 0 0 0 12 3z" />
             </svg>
-            Pertanyaan
-          </p>
-          <label htmlFor="pertanyaan_luas_sisi" className="text-sm text-[#374151]">
             Apakah perubahan luas sisi sama dengan perubahan panjang sisinya? Jelaskan dugaanmu.
           </label>
           <textarea
             id="pertanyaan_luas_sisi"
             name="answers.pertanyaan_luas_sisi"
-            defaultValue={getValue("pertanyaan_luas_sisi")}
+            defaultValue={jawaban}
             rows={4}
             required
             placeholder="Jawabanmu..."
