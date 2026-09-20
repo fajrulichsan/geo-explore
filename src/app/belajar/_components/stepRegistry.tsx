@@ -358,6 +358,17 @@ import Materi5Peta7Step3AturanUmum from "./steps/Materi5Peta7/Materi5Peta7Step3A
 import Materi5Peta7Step4MengapaAturanBenar from "./steps/Materi5Peta7/Materi5Peta7Step4MengapaAturanBenar";
 import Materi5Peta7Step5KesimpulanDanBandingkan from "./steps/Materi5Peta7/Materi5Peta7Step5KesimpulanDanBandingkan";
 import Materi5Peta7Step6GeneralisasiIntiKonsep from "./steps/Materi5Peta7/Materi5Peta7Step6GeneralisasiIntiKonsep";
+import Materi8Peta1Step1Pendahuluan from "./steps/Materi8Peta1/Materi8Peta1Step1Pendahuluan";
+import Materi8Peta1Step2EksplorasiTujuan from "./steps/Materi8Peta1/Materi8Peta1Step2EksplorasiTujuan";
+import Materi8Peta1Step3IngatSiapEksplorasi from "./steps/Materi8Peta1/Materi8Peta1Step3IngatSiapEksplorasi";
+import Materi8Peta2Step1PengantarAmati from "./steps/Materi8Peta2/Materi8Peta2Step1PengantarAmati";
+import Materi8Peta2Step2VolumeKeduaBangun from "./steps/Materi8Peta2/Materi8Peta2Step2VolumeKeduaBangun";
+import Materi8Peta2Step3PertanyaanPengamatan from "./steps/Materi8Peta2/Materi8Peta2Step3PertanyaanPengamatan";
+import Materi8Peta2Step4DugaanAwalTahukahKamu from "./steps/Materi8Peta2/Materi8Peta2Step4DugaanAwalTahukahKamu";
+import Materi8Peta2Step5LanjutkanPengamatan from "./steps/Materi8Peta2/Materi8Peta2Step5LanjutkanPengamatan";
+import Materi8Peta2Step6BandingkanBangun from "./steps/Materi8Peta2/Materi8Peta2Step6BandingkanBangun";
+import Materi8Peta2Step7KesimpulanPemantik from "./steps/Materi8Peta2/Materi8Peta2Step7KesimpulanPemantik";
+import Materi8Peta2Step8RefleksiSingkat from "./steps/Materi8Peta2/Materi8Peta2Step8RefleksiSingkat";
 
 export type StepComponentProps = {
   materi: string;
@@ -577,6 +588,17 @@ export const stepRegistry: Record<string, ComponentType<StepComponentProps>> = {
   "7-1-1": Materi7Peta1Step1Pendahuluan,
   "7-1-2": Materi7Peta1Step2TujuanMedia,
   "7-1-3": Materi7Peta1Step3BuatDugaan,
+  "8-1-1": Materi8Peta1Step1Pendahuluan,
+  "8-1-2": Materi8Peta1Step2EksplorasiTujuan,
+  "8-1-3": Materi8Peta1Step3IngatSiapEksplorasi,
+  "8-2-1": Materi8Peta2Step1PengantarAmati,
+  "8-2-2": Materi8Peta2Step2VolumeKeduaBangun,
+  "8-2-3": Materi8Peta2Step3PertanyaanPengamatan,
+  "8-2-4": Materi8Peta2Step4DugaanAwalTahukahKamu,
+  "8-2-5": Materi8Peta2Step5LanjutkanPengamatan,
+  "8-2-6": Materi8Peta2Step6BandingkanBangun,
+  "8-2-7": Materi8Peta2Step7KesimpulanPemantik,
+  "8-2-8": Materi8Peta2Step8RefleksiSingkat,
   "7-2-1": Materi7Peta2Step1AmatiBangun,
   "7-2-2": Materi7Peta2Step2ApaYangKamuPerhatikan,
   "7-2-3": Materi7Peta2Step3ProsesPenuangan,

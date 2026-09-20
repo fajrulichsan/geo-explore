@@ -374,6 +374,26 @@ export type PageImageKey =
   | "M7-P1-L2-4"
   | "M7-P1-L3-1"
   | "M7-P1-L3-2"
+  | "M8-P1-L1-1"
+  | "M8-P1-L1-2"
+  | "M8-P1-L2-1"
+  | "M8-P1-L2-2"
+  | "M8-P1-L2-3"
+  | "M8-P1-L3-1"
+  | "M8-P1-L3-2"
+  | "M8-P1-L3-3"
+  | "M8-P1-L3-4"
+  | "M8-P1-L3-5"
+  | "M8-P2-L1-1"
+  | "M8-P2-L1-2"
+  | "M8-P2-L1-3"
+  | "M8-P2-L1-4"
+  | "M8-P2-L1-5"
+  | "M8-P2-L2-1"
+  | "M8-P2-L4-1"
+  | "M8-P2-L5-1"
+  | "M8-P2-L5-2"
+  | "M8-P2-L8-1"
   | "M7-P2-L1-1"
   | "M7-P2-L1-2"
   | "M7-P2-L1-3"
@@ -842,6 +862,26 @@ const DEFAULT_IMAGES: Record<PageImageKey, string> = {
   "M7-P1-L2-4": "https://placehold.co/200x200?text=QR+AR+Viewer",
   "M7-P1-L3-1": "https://placehold.co/1021x300?text=Dugaan+Limas+Prisma",
   "M7-P1-L3-2": "https://placehold.co/336x262?text=Maskot+Ayo+Mulai",
+  "M8-P1-L1-1": "https://placehold.co/1048x622?text=Hero+Tiga+Siswa+Skala",
+  "M8-P1-L1-2": "https://placehold.co/993x328?text=Alur+Skala+Volume",
+  "M8-P1-L2-1": "https://placehold.co/480x300?text=GeoGebra+3D+Skala",
+  "M8-P1-L2-2": "https://placehold.co/480x300?text=AR+Skala",
+  "M8-P1-L2-3": "https://placehold.co/298x256?text=Siswa+Menulis",
+  "M8-P1-L3-1": "https://placehold.co/270x256?text=Kaca+Pembesar",
+  "M8-P1-L3-2": "https://placehold.co/334x160?text=Kubus+k2",
+  "M8-P1-L3-3": "https://placehold.co/367x160?text=Balok+k2",
+  "M8-P1-L3-4": "https://placehold.co/339x160?text=Prisma+k2",
+  "M8-P1-L3-5": "https://placehold.co/309x181?text=Limas+k2",
+  "M8-P2-L1-1": "https://placehold.co/933x603?text=Hero+Dua+Siswa+Amati",
+  "M8-P2-L1-2": "https://placehold.co/607x222?text=Kubus+k2",
+  "M8-P2-L1-3": "https://placehold.co/607x196?text=Balok+k2",
+  "M8-P2-L1-4": "https://placehold.co/609x216?text=Prisma+k2",
+  "M8-P2-L1-5": "https://placehold.co/472x244?text=Limas+k2",
+  "M8-P2-L2-1": "https://placehold.co/388x196?text=Kubus+Kecil+Besar",
+  "M8-P2-L4-1": "https://placehold.co/400x260?text=Maket+Rumah",
+  "M8-P2-L5-1": "https://placehold.co/1087x598?text=Hero+Siswa+Kaca+Pembesar",
+  "M8-P2-L5-2": "https://placehold.co/1543x481?text=Kubus+Dimensi+k2",
+  "M8-P2-L8-1": "https://placehold.co/138x258?text=Siswa+Jempol",
   "M7-P2-L1-1": "https://placehold.co/1039x313?text=Tiga+limas+identik+dan+satu+prisma",
   "M7-P2-L1-2": "https://placehold.co/757x523?text=Limas+biru+di+dalam+prisma",
   "M7-P2-L1-3": "https://placehold.co/216x247?text=Limas+kuning",
