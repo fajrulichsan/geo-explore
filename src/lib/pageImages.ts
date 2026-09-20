@@ -395,6 +395,14 @@ export type PageImageKey =
   | "M7-P3-L2-1"
   | "M7-P3-L3-1"
   | "M7-P3-L4-1"
+  | "M7-P4-L1-1"
+  | "M7-P4-L2-1"
+  | "M7-P4-L2-2"
+  | "M7-P4-L4-1"
+  | "M7-P4-L7-1"
+  | "M7-P4-L8-1"
+  | "M7-P4-L9-1"
+  | "M7-P4-L9-2"
   | "M5-P9-L4-1"
   | "M5-P6-L1-1"
   | "M5-P6-L3-1"
@@ -803,6 +811,14 @@ const DEFAULT_IMAGES: Record<PageImageKey, string> = {
   "M7-P3-L2-1": "https://placehold.co/517x244?text=Tiga+maskot+siswa",
   "M7-P3-L3-1": "https://placehold.co/928x616?text=Maskot+perempuan+diskusi+yang+baik",
   "M7-P3-L4-1": "https://placehold.co/952x622?text=Tiga+siswa+dan+buku+Amati+Buktikan",
+  "M7-P4-L1-1": "https://placehold.co/954x625?text=Hero+tiga+siswa+GeoGebra+3D",
+  "M7-P4-L2-1": "https://placehold.co/882x559?text=Diagram+Bagian+1+luas+alas+berubah",
+  "M7-P4-L2-2": "https://placehold.co/990x481?text=Diagram+Bagian+2+tinggi+berubah",
+  "M7-P4-L4-1": "https://placehold.co/1189x624?text=Hero+tiga+siswa+AR",
+  "M7-P4-L7-1": "https://placehold.co/1324x622?text=Hero+dua+siswa+bandingkan+hasil",
+  "M7-P4-L8-1": "https://placehold.co/588x583?text=Maskot+laki-laki+berpikir",
+  "M7-P4-L9-1": "https://placehold.co/1606x421?text=Satu+prisma+sama+dengan+tiga+limas",
+  "M7-P4-L9-2": "https://placehold.co/961x621?text=Dua+siswa+Siap+ke+Tahap+4",
 };
 
 /**

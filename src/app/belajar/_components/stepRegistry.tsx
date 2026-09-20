@@ -59,6 +59,15 @@ import Materi7Peta3Step3MenentukanDugaan from "./steps/Materi7Peta3/Materi7Peta3
 import Materi7Peta3Step4RumuskanMasalah from "./steps/Materi7Peta3/Materi7Peta3Step4RumuskanMasalah";
 import Materi7Peta3Step5ApaYangDibuktikan from "./steps/Materi7Peta3/Materi7Peta3Step5ApaYangDibuktikan";
 import Materi7Peta3Step6RefleksiDiskusi from "./steps/Materi7Peta3/Materi7Peta3Step6RefleksiDiskusi";
+import Materi7Peta4Step1PengantarHipotesis from "./steps/Materi7Peta4/Materi7Peta4Step1PengantarHipotesis";
+import Materi7Peta4Step2LangkahGeogebra from "./steps/Materi7Peta4/Materi7Peta4Step2LangkahGeogebra";
+import Materi7Peta4Step3DataGeogebra from "./steps/Materi7Peta4/Materi7Peta4Step3DataGeogebra";
+import Materi7Peta4Step4AktivitasAR from "./steps/Materi7Peta4/Materi7Peta4Step4AktivitasAR";
+import Materi7Peta4Step5DataAR from "./steps/Materi7Peta4/Materi7Peta4Step5DataAR";
+import Materi7Peta4Step6AnalisisAR from "./steps/Materi7Peta4/Materi7Peta4Step6AnalisisAR";
+import Materi7Peta4Step7BandingkanHasil from "./steps/Materi7Peta4/Materi7Peta4Step7BandingkanHasil";
+import Materi7Peta4Step8PertanyaanDugaan from "./steps/Materi7Peta4/Materi7Peta4Step8PertanyaanDugaan";
+import Materi7Peta4Step9SintesisPersiapan from "./steps/Materi7Peta4/Materi7Peta4Step9SintesisPersiapan";
 import Materi6Peta4Step1PetunjukGeoGebra from "./steps/Materi6Peta4/Materi6Peta4Step1PetunjukGeoGebra";
 import Materi6Peta4Step2LangkahEksplorasi from "./steps/Materi6Peta4/Materi6Peta4Step2LangkahEksplorasi";
 import Materi6Peta4Step3ContohGeoGebra from "./steps/Materi6Peta4/Materi6Peta4Step3ContohGeoGebra";
@@ -546,6 +555,15 @@ export const stepRegistry: Record<string, ComponentType<StepComponentProps>> = {
   "7-3-4": Materi7Peta3Step4RumuskanMasalah,
   "7-3-5": Materi7Peta3Step5ApaYangDibuktikan,
   "7-3-6": Materi7Peta3Step6RefleksiDiskusi,
+  "7-4-1": Materi7Peta4Step1PengantarHipotesis,
+  "7-4-2": Materi7Peta4Step2LangkahGeogebra,
+  "7-4-3": Materi7Peta4Step3DataGeogebra,
+  "7-4-4": Materi7Peta4Step4AktivitasAR,
+  "7-4-5": Materi7Peta4Step5DataAR,
+  "7-4-6": Materi7Peta4Step6AnalisisAR,
+  "7-4-7": Materi7Peta4Step7BandingkanHasil,
+  "7-4-8": Materi7Peta4Step8PertanyaanDugaan,
+  "7-4-9": Materi7Peta4Step9SintesisPersiapan,
   "6-4-1": Materi6Peta4Step1PetunjukGeoGebra,
   "6-4-2": Materi6Peta4Step2LangkahEksplorasi,
   "6-4-3": Materi6Peta4Step3ContohGeoGebra,
