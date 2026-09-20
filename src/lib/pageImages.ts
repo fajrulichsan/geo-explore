@@ -222,13 +222,13 @@ export type PageImageKey =
   | "M4-P7-L7-1"
   | "M4-P8-L1-1"
   | "M5-P1-L1-1"
+  | "M5-P1-L1-2"
   | "M5-P1-L2-1"
   | "M5-P1-L2-2"
   | "M5-P1-L2-3"
-  | "M5-P1-L2-4"
-  | "M5-P1-L2-5"
-  | "M5-P1-L2-6"
-  | "M5-P1-L2-7"
+  | "M5-P1-L3-1"
+  | "M5-P1-L3-2"
+  | "M5-P1-L3-3"
   | "M5-P8-L1-1"
   | "M5-P4-L1-1"
   | "M5-P4-L2-1"
@@ -786,14 +786,14 @@ const DEFAULT_IMAGES: Record<PageImageKey, string> = {
   "M5-P6-L4-2": "https://placehold.co/112x128?text=Maskot+Semangat",
   "M5-P2-L1-1": "https://placehold.co/280x224?text=Dua+Siswa+Mengamati+Bangun+Ruang",
   "M5-P2-L9-1": "https://placehold.co/160x200?text=Maskot+Jempol",
-  "M5-P1-L1-1": "https://placehold.co/400x300?text=Tiga+Siswa+Skala+3D",
-  "M5-P1-L2-1": "https://placehold.co/480x300?text=GeoGebra+3D+Slider+Skala",
-  "M5-P1-L2-2": "https://placehold.co/480x300?text=Augmented+Reality+Skala",
-  "M5-P1-L2-3": "https://placehold.co/220x220?text=Maskot+Menulis",
-  "M5-P1-L2-4": "https://placehold.co/160x160?text=Kubus",
-  "M5-P1-L2-5": "https://placehold.co/160x160?text=Balok",
-  "M5-P1-L2-6": "https://placehold.co/160x160?text=Prisma+Segitiga",
-  "M5-P1-L2-7": "https://placehold.co/160x160?text=Limas+Segiempat",
+  "M5-P1-L1-1": "https://placehold.co/800x536?text=Tiga+Siswa+Skala+3D",
+  "M5-P1-L1-2": "https://placehold.co/1350x400?text=Skala+1+ke+Skala+2",
+  "M5-P1-L2-1": "https://placehold.co/990x535?text=Alur+Skala+dan+Luas",
+  "M5-P1-L2-2": "https://placehold.co/480x340?text=GeoGebra+3D+Slider+Skala",
+  "M5-P1-L2-3": "https://placehold.co/480x340?text=Augmented+Reality+Skala",
+  "M5-P1-L3-1": "https://placehold.co/580x530?text=Maskot+Menulis",
+  "M5-P1-L3-2": "https://placehold.co/460x430?text=Kaca+Pembesar+Kubus",
+  "M5-P1-L3-3": "https://placehold.co/1190x450?text=Siap+Mengeksplorasi",
   "M6-P1-L1-1": "https://placehold.co/880x496?text=Hero+Tiga+Siswa+Volume",
   "M6-P1-L1-2": "https://placehold.co/400x300?text=Kotak+Mainan",
   "M6-P1-L1-3": "https://placehold.co/400x300?text=Akuarium",

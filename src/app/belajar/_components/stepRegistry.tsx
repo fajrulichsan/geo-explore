@@ -114,8 +114,9 @@ import Materi6Peta4Step9TabelPerbandingan from "./steps/Materi6Peta4/Materi6Peta
 import Materi6Peta4Step10PertanyaanEksplorasi from "./steps/Materi6Peta4/Materi6Peta4Step10PertanyaanEksplorasi";
 import Materi6Peta4Step11DugaanAwalKelompok from "./steps/Materi6Peta4/Materi6Peta4Step11DugaanAwalKelompok";
 import Materi6Peta4Step12RefleksiMini from "./steps/Materi6Peta4/Materi6Peta4Step12RefleksiMini";
-import Materi5Peta1Step1Pendahuluan from "./steps/Materi5Peta1/Materi5Peta1Step1Pendahuluan";
-import Materi5Peta1Step2EksplorasiProses from "./steps/Materi5Peta1/Materi5Peta1Step2EksplorasiProses";
+import Materi5Peta1Step1TahukahKamu from "./steps/Materi5Peta1/Materi5Peta1Step1TahukahKamu";
+import Materi5Peta1Step2AlurEksplorasi from "./steps/Materi5Peta1/Materi5Peta1Step2AlurEksplorasi";
+import Materi5Peta1Step3TujuanSiap from "./steps/Materi5Peta1/Materi5Peta1Step3TujuanSiap";
 import Materi5Peta2Step1AyoMengamati from "./steps/Materi5Peta2/Materi5Peta2Step1AyoMengamati";
 import Materi5Peta2Step2LuasSalahSatuSisi from "./steps/Materi5Peta2/Materi5Peta2Step2LuasSalahSatuSisi";
 import Materi5Peta2Step3PertanyaanPengamatan from "./steps/Materi5Peta2/Materi5Peta2Step3PertanyaanPengamatan";
@@ -789,8 +790,9 @@ export const stepRegistry: Record<string, ComponentType<StepComponentProps>> = {
   "6-9-3": Materi6Peta9Step3AlternatifPenyelesaian,
   "6-9-4": Materi6Peta9Step4AnalisisDiskusi,
   "6-9-5": Materi6Peta9Step5KesimpulanPerasaan,
-  "5-1-1": Materi5Peta1Step1Pendahuluan,
-  "5-1-2": Materi5Peta1Step2EksplorasiProses,
+  "5-1-1": Materi5Peta1Step1TahukahKamu,
+  "5-1-2": Materi5Peta1Step2AlurEksplorasi,
+  "5-1-3": Materi5Peta1Step3TujuanSiap,
   "5-2-1": Materi5Peta2Step1AyoMengamati,
   "5-2-2": Materi5Peta2Step2LuasSalahSatuSisi,
   "5-2-3": Materi5Peta2Step3PertanyaanPengamatan,
