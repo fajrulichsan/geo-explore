@@ -216,4 +216,4 @@ If `assets-source/materi-{M}/` doesn't exist yet and the user gives a `.docx`: `
 document order (`r:embed` order in `document.xml`), find the full-page renders (portrait ~1024x1536)
 and read their headers ("Tahap N", title) to assign each following run of images to a peta, then
 copy into `assets-source/materi-{M}/peta-{NN}-<slug>/` (renders as `page-render-halN-imageX.png`) and
-write a README with per-peta tables. Mention the folder is large (git size) and ask whether to gitignore it.
+write a README with per-peta tables — `scripts/organize-docx-assets.py` does the copy + README once you have read the page-render headers and built the `{render: [peta, halaman]}` map. Mention the folder is large (git size) and ask whether to gitignore it.

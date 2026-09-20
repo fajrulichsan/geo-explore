@@ -362,6 +362,18 @@ export type PageImageKey =
   | "M6-P10-L2-4"
   | "M6-P10-L5-1"
   | "M6-P10-L5-2"
+  | "M7-P1-L1-1"
+  | "M7-P1-L1-2"
+  | "M7-P1-L1-3"
+  | "M7-P1-L1-4"
+  | "M7-P1-L1-5"
+  | "M7-P1-L1-6"
+  | "M7-P1-L2-1"
+  | "M7-P1-L2-2"
+  | "M7-P1-L2-3"
+  | "M7-P1-L2-4"
+  | "M7-P1-L3-1"
+  | "M7-P1-L3-2"
   | "M5-P9-L4-1"
   | "M5-P6-L1-1"
   | "M5-P6-L3-1"
@@ -737,6 +749,18 @@ const DEFAULT_IMAGES: Record<PageImageKey, string> = {
   "M6-P10-L2-4": "https://placehold.co/700x612?text=Maskot+Selanjutnya",
   "M6-P10-L5-1": "https://placehold.co/697x358?text=Generalisasi+Prisma",
   "M6-P10-L5-2": "https://placehold.co/1608x601?text=Pesan+Akhir",
+  "M7-P1-L1-1": "https://placehold.co/1104x619?text=Hero+Tiga+Siswa+Limas",
+  "M7-P1-L1-2": "https://placehold.co/1263x321?text=Limas+dalam+Prisma",
+  "M7-P1-L1-3": "https://placehold.co/400x300?text=Atap+Rumah",
+  "M7-P1-L1-4": "https://placehold.co/400x300?text=Tenda",
+  "M7-P1-L1-5": "https://placehold.co/400x300?text=Piramida+Mesir",
+  "M7-P1-L1-6": "https://placehold.co/1419x615?text=Jenis+Limas",
+  "M7-P1-L2-1": "https://placehold.co/480x270?text=GeoGebra+3D+Limas",
+  "M7-P1-L2-2": "https://placehold.co/200x200?text=QR+GeoGebra+3D",
+  "M7-P1-L2-3": "https://placehold.co/480x270?text=AR+Limas",
+  "M7-P1-L2-4": "https://placehold.co/200x200?text=QR+AR+Viewer",
+  "M7-P1-L3-1": "https://placehold.co/1021x300?text=Dugaan+Limas+Prisma",
+  "M7-P1-L3-2": "https://placehold.co/336x262?text=Maskot+Ayo+Mulai",
 };
 
 /**

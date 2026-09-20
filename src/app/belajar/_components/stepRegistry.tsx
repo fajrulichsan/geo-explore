@@ -44,6 +44,9 @@ import Materi6Peta10Step2RingkasanRumus from "./steps/Materi6Peta10/Materi6Peta1
 import Materi6Peta10Step3RumusOpenEnded from "./steps/Materi6Peta10/Materi6Peta10Step3RumusOpenEnded";
 import Materi6Peta10Step4KataKunci from "./steps/Materi6Peta10/Materi6Peta10Step4KataKunci";
 import Materi6Peta10Step5GeneralisasiPesanAkhir from "./steps/Materi6Peta10/Materi6Peta10Step5GeneralisasiPesanAkhir";
+import Materi7Peta1Step1Pendahuluan from "./steps/Materi7Peta1/Materi7Peta1Step1Pendahuluan";
+import Materi7Peta1Step2TujuanMedia from "./steps/Materi7Peta1/Materi7Peta1Step2TujuanMedia";
+import Materi7Peta1Step3BuatDugaan from "./steps/Materi7Peta1/Materi7Peta1Step3BuatDugaan";
 import Materi6Peta4Step1PetunjukGeoGebra from "./steps/Materi6Peta4/Materi6Peta4Step1PetunjukGeoGebra";
 import Materi6Peta4Step2LangkahEksplorasi from "./steps/Materi6Peta4/Materi6Peta4Step2LangkahEksplorasi";
 import Materi6Peta4Step3ContohGeoGebra from "./steps/Materi6Peta4/Materi6Peta4Step3ContohGeoGebra";
@@ -516,6 +519,9 @@ export const stepRegistry: Record<string, ComponentType<StepComponentProps>> = {
   "6-10-3": Materi6Peta10Step3RumusOpenEnded,
   "6-10-4": Materi6Peta10Step4KataKunci,
   "6-10-5": Materi6Peta10Step5GeneralisasiPesanAkhir,
+  "7-1-1": Materi7Peta1Step1Pendahuluan,
+  "7-1-2": Materi7Peta1Step2TujuanMedia,
+  "7-1-3": Materi7Peta1Step3BuatDugaan,
   "6-4-1": Materi6Peta4Step1PetunjukGeoGebra,
   "6-4-2": Materi6Peta4Step2LangkahEksplorasi,
   "6-4-3": Materi6Peta4Step3ContohGeoGebra,
