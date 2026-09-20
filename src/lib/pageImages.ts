@@ -394,6 +394,59 @@ export type PageImageKey =
   | "M8-P2-L5-1"
   | "M8-P2-L5-2"
   | "M8-P2-L8-1"
+  | "M8-P3-L1-1"
+  | "M8-P3-L5-1"
+  | "M8-P3-L6-1"
+  | "M8-P3-L9-1"
+  | "M8-P3-L9-2"
+  | "M8-P3-L9-3"
+  | "M8-P3-L9-4"
+  | "M8-P3-L9-5"
+  | "M8-P4-L1-1"
+  | "M8-P4-L2-1"
+  | "M8-P4-L2-2"
+  | "M8-P4-L3-1"
+  | "M8-P4-L3-2"
+  | "M8-P4-L5-1"
+  | "M8-P4-L7-1"
+  | "M8-P6-L1-1"
+  | "M8-P6-L5-1"
+  | "M8-P6-L6-1"
+  | "M8-P6-L7-1"
+  | "M8-P6-L7-2"
+  | "M8-P6-L7-3"
+  | "M8-P10-L1-1"
+  | "M8-P10-L1-2"
+  | "M8-P10-L3-1"
+  | "M8-P10-L6-1"
+  | "M8-P10-L7-1"
+  | "M8-P10-L7-2"
+  | "M8-P7-L1-1"
+  | "M8-P7-L4-1"
+  | "M8-P7-L4-2"
+  | "M8-P7-L5-1"
+  | "M8-P7-L6-1"
+  | "M8-P7-L6-2"
+  | "M8-P7-L7-1"
+  | "M8-P8-L1-1"
+  | "M8-P8-L1-2"
+  | "M8-P8-L1-3"
+  | "M8-P8-L4-1"
+  | "M8-P8-L6-1"
+  | "M8-P9-L1-1"
+  | "M8-P9-L2-1"
+  | "M8-P9-L2-2"
+  | "M8-P9-L5-1"
+  | "M8-P9-L5-2"
+  | "M8-P9-L6-1"
+  | "M8-P9-L6-2"
+  | "M8-P9-L7-1"
+  | "M8-P9-L7-2"
+  | "M8-P5-L1-1"
+  | "M8-P5-L5-1"
+  | "M8-P5-L6-1"
+  | "M8-P5-L9-1"
+  | "M8-P5-L9-2"
   | "M7-P2-L1-1"
   | "M7-P2-L1-2"
   | "M7-P2-L1-3"
@@ -882,6 +935,59 @@ const DEFAULT_IMAGES: Record<PageImageKey, string> = {
   "M8-P2-L5-1": "https://placehold.co/1087x598?text=Hero+Siswa+Kaca+Pembesar",
   "M8-P2-L5-2": "https://placehold.co/1543x481?text=Kubus+Dimensi+k2",
   "M8-P2-L8-1": "https://placehold.co/138x258?text=Siswa+Jempol",
+  "M8-P3-L1-1": "https://placehold.co/933x603?text=Hero+Tiga+Siswa+Diskusi",
+  "M8-P3-L5-1": "https://placehold.co/301x264?text=Siswa+Ide+Ingat",
+  "M8-P3-L6-1": "https://placehold.co/811x615?text=Hero+Kelompok+A+B",
+  "M8-P3-L9-1": "https://placehold.co/234x223?text=Siswa+Aktif+Pendapat",
+  "M8-P3-L9-2": "https://placehold.co/348x231?text=Siswa+Mendengarkan",
+  "M8-P3-L9-3": "https://placehold.co/607x520?text=Siswa+Alasan+Hasil",
+  "M8-P3-L9-4": "https://placehold.co/646x496?text=Siswa+Siap+Membuktikan",
+  "M8-P3-L9-5": "https://placehold.co/606x250?text=Banner+Ayo+Lanjut",
+  "M8-P4-L1-1": "https://placehold.co/933x603?text=Hero+Tiga+Siswa+Eksplorasi",
+  "M8-P4-L2-1": "https://placehold.co/400x400?text=QR+GeoGebra+3D",
+  "M8-P4-L2-2": "https://placehold.co/600x400?text=Tampilan+GeoGebra+k2",
+  "M8-P4-L3-1": "https://placehold.co/400x400?text=QR+AR",
+  "M8-P4-L3-2": "https://placehold.co/800x500?text=Tablet+AR+Kubus",
+  "M8-P4-L5-1": "https://placehold.co/498x268?text=Siswa+Berpikir",
+  "M8-P4-L7-1": "https://placehold.co/165x258?text=Siswi+Kerja+Bagus",
+  "M8-P6-L1-1": "https://placehold.co/931x618?text=Hero+Tiga+Siswa+Tablet",
+  "M8-P6-L5-1": "https://placehold.co/420x234?text=Kubus+Awal+ke+Kubus+Skala",
+  "M8-P6-L6-1": "https://placehold.co/205x249?text=Siswa+Ide",
+  "M8-P6-L7-1": "https://placehold.co/193x256?text=Siswi+Jempol",
+  "M8-P6-L7-2": "https://placehold.co/283x258?text=Siswi+Motivasi",
+  "M8-P6-L7-3": "https://placehold.co/238x237?text=Kaca+Pembesar+Grafik",
+  "M8-P10-L1-1": "https://placehold.co/936x333?text=Banner+Bangun+Ruang",
+  "M8-P10-L1-2": "https://placehold.co/936x616?text=Tiga+Siswa+GeoGebra+AR",
+  "M8-P10-L3-1": "https://placehold.co/573x127?text=Empat+Bangun+Ruang",
+  "M8-P10-L6-1": "https://placehold.co/633x580?text=Target+Poin+Penting",
+  "M8-P10-L7-1": "https://placehold.co/495x586?text=Siswa+Hebat",
+  "M8-P10-L7-2": "https://placehold.co/580x589?text=Matematika+Lebih+Hebat",
+  "M8-P7-L1-1": "https://placehold.co/936x621?text=Hero+Tiga+Siswa+Kesimpulan",
+  "M8-P7-L4-1": "https://placehold.co/589x237?text=Kubus+Awal+ke+Kubus+Skala",
+  "M8-P7-L4-2": "https://placehold.co/238x244?text=Siswi+Ingat",
+  "M8-P7-L5-1": "https://placehold.co/1221x606?text=Tiga+Keadaan+Skala",
+  "M8-P7-L6-1": "https://placehold.co/183x264?text=Siswa+Ide",
+  "M8-P7-L6-2": "https://placehold.co/933x610?text=Tiga+Siswa+Bandingkan",
+  "M8-P7-L7-1": "https://placehold.co/280x259?text=Siswi+Hebat",
+  "M8-P8-L1-1": "https://placehold.co/1221x553?text=Kaca+Pembesar+Lampu+Kubus",
+  "M8-P8-L1-2": "https://placehold.co/675x601?text=Siswa+Berpikir",
+  "M8-P8-L1-3": "https://placehold.co/819x625?text=Siswi+Menulis",
+  "M8-P8-L4-1": "https://placehold.co/360x612?text=Siswa+Aku+Mampu",
+  "M8-P8-L6-1": "https://placehold.co/552x595?text=Siswi+Hebat",
+  "M8-P9-L1-1": "https://placehold.co/1198x613?text=Hero+Tiga+Siswa+Open-Ended",
+  "M8-P9-L2-1": "https://placehold.co/544x543?text=Prisma+Diskala+Faktor+k",
+  "M8-P9-L2-2": "https://placehold.co/1312x1199?text=Ingat+Kembali+Faktor+Skala",
+  "M8-P9-L5-1": "https://placehold.co/411x592?text=Siswa+Ide",
+  "M8-P9-L5-2": "https://placehold.co/1374x1145?text=Penjelasan+k3",
+  "M8-P9-L6-1": "https://placehold.co/1192x496?text=Kubus+Balok+Prisma+Limas",
+  "M8-P9-L6-2": "https://placehold.co/1379x920?text=Petunjuk+Faktor+Skala+4",
+  "M8-P9-L7-1": "https://placehold.co/1195x589?text=Siswa+Siswi+Semangat",
+  "M8-P9-L7-2": "https://placehold.co/457x600?text=Siswi+Ide",
+  "M8-P5-L1-1": "https://placehold.co/771x618?text=Hero+Tiga+Siswa+Olah+Data",
+  "M8-P5-L5-1": "https://placehold.co/342x264?text=Siswa+Lampu+Ide",
+  "M8-P5-L6-1": "https://placehold.co/751x616?text=Hero+Tiga+Siswa+Strategi",
+  "M8-P5-L9-1": "https://placehold.co/355x259?text=Siswi+Langkah+Kecil",
+  "M8-P5-L9-2": "https://placehold.co/402x252?text=Siswa+Hebat",
   "M7-P2-L1-1": "https://placehold.co/1039x313?text=Tiga+limas+identik+dan+satu+prisma",
   "M7-P2-L1-2": "https://placehold.co/757x523?text=Limas+biru+di+dalam+prisma",
   "M7-P2-L1-3": "https://placehold.co/216x247?text=Limas+kuning",

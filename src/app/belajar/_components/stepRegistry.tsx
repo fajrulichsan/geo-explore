@@ -369,6 +369,65 @@ import Materi8Peta2Step5LanjutkanPengamatan from "./steps/Materi8Peta2/Materi8Pe
 import Materi8Peta2Step6BandingkanBangun from "./steps/Materi8Peta2/Materi8Peta2Step6BandingkanBangun";
 import Materi8Peta2Step7KesimpulanPemantik from "./steps/Materi8Peta2/Materi8Peta2Step7KesimpulanPemantik";
 import Materi8Peta2Step8RefleksiSingkat from "./steps/Materi8Peta2/Materi8Peta2Step8RefleksiSingkat";
+import Materi8Peta6Step1Pengantar from "@/app/belajar/_components/steps/Materi8Peta6/Materi8Peta6Step1Pengantar";
+import Materi8Peta6Step2VerifikasiGeoGebraAR from "@/app/belajar/_components/steps/Materi8Peta6/Materi8Peta6Step2VerifikasiGeoGebraAR";
+import Materi8Peta6Step3BandingkanKelompokLain from "@/app/belajar/_components/steps/Materi8Peta6/Materi8Peta6Step3BandingkanKelompokLain";
+import Materi8Peta6Step4UjiHubunganFaktorSkalaVolume from "@/app/belajar/_components/steps/Materi8Peta6/Materi8Peta6Step4UjiHubunganFaktorSkalaVolume";
+import Materi8Peta6Step5JelaskanAlasanMatematis from "@/app/belajar/_components/steps/Materi8Peta6/Materi8Peta6Step5JelaskanAlasanMatematis";
+import Materi8Peta6Step6PerbaikiDugaan from "@/app/belajar/_components/steps/Materi8Peta6/Materi8Peta6Step6PerbaikiDugaan";
+import Materi8Peta10Step1ApaYangTelahKamuPelajari from "@/app/belajar/_components/steps/Materi8Peta10/Materi8Peta10Step1ApaYangTelahKamuPelajari";
+import Materi8Peta10Step2KonsepDasarDanHubungan from "@/app/belajar/_components/steps/Materi8Peta10/Materi8Peta10Step2KonsepDasarDanHubungan";
+import Materi8Peta10Step3MengapaDemikian from "@/app/belajar/_components/steps/Materi8Peta10/Materi8Peta10Step3MengapaDemikian";
+import Materi8Peta10Step4LangkahMenyelesaikanMasalah from "@/app/belajar/_components/steps/Materi8Peta10/Materi8Peta10Step4LangkahMenyelesaikanMasalah";
+import Materi8Peta10Step5StrategiPenyelesaian from "@/app/belajar/_components/steps/Materi8Peta10/Materi8Peta10Step5StrategiPenyelesaian";
+import Materi8Peta10Step6PetaKonsepDanPoinPenting from "@/app/belajar/_components/steps/Materi8Peta10/Materi8Peta10Step6PetaKonsepDanPoinPenting";
+import Materi8Peta10Step7KataKunciDanPenutup from "@/app/belajar/_components/steps/Materi8Peta10/Materi8Peta10Step7KataKunciDanPenutup";
+import Materi8Peta7Step1Pengantar from "@/app/belajar/_components/steps/Materi8Peta7/Materi8Peta7Step1Pengantar";
+import Materi8Peta7Step2ApaYangKamuTemukan from "@/app/belajar/_components/steps/Materi8Peta7/Materi8Peta7Step2ApaYangKamuTemukan";
+import Materi8Peta7Step3FaktorPerubahanVolume from "@/app/belajar/_components/steps/Materi8Peta7/Materi8Peta7Step3FaktorPerubahanVolume";
+import Materi8Peta7Step4AturanUmum from "@/app/belajar/_components/steps/Materi8Peta7/Materi8Peta7Step4AturanUmum";
+import Materi8Peta7Step5MengapaAturanBenar from "@/app/belajar/_components/steps/Materi8Peta7/Materi8Peta7Step5MengapaAturanBenar";
+import Materi8Peta7Step6KesimpulanDanBandingkan from "@/app/belajar/_components/steps/Materi8Peta7/Materi8Peta7Step6KesimpulanDanBandingkan";
+import Materi8Peta7Step7GeneralisasiKonsep from "@/app/belajar/_components/steps/Materi8Peta7/Materi8Peta7Step7GeneralisasiKonsep";
+import Materi8Peta9Step1Pengantar from "@/app/belajar/_components/steps/Materi8Peta9/Materi8Peta9Step1Pengantar";
+import Materi8Peta9Step2MasalahOpenEnded from "@/app/belajar/_components/steps/Materi8Peta9/Materi8Peta9Step2MasalahOpenEnded";
+import Materi8Peta9Step3TampilkanStrategi from "@/app/belajar/_components/steps/Materi8Peta9/Materi8Peta9Step3TampilkanStrategi";
+import Materi8Peta9Step4BandingkanStrategi from "@/app/belajar/_components/steps/Materi8Peta9/Materi8Peta9Step4BandingkanStrategi";
+import Materi8Peta9Step5JelaskanAlasanMatematis from "@/app/belajar/_components/steps/Materi8Peta9/Materi8Peta9Step5JelaskanAlasanMatematis";
+import Materi8Peta9Step6TantanganLanjutan from "@/app/belajar/_components/steps/Materi8Peta9/Materi8Peta9Step6TantanganLanjutan";
+import Materi8Peta9Step7RefleksiSingkat from "@/app/belajar/_components/steps/Materi8Peta9/Materi8Peta9Step7RefleksiSingkat";
+import Materi8Peta8Step1Pengantar from "@/app/belajar/_components/steps/Materi8Peta8/Materi8Peta8Step1Pengantar";
+import Materi8Peta8Step2RefleksiPemahaman from "@/app/belajar/_components/steps/Materi8Peta8/Materi8Peta8Step2RefleksiPemahaman";
+import Materi8Peta8Step3RefleksiPengalamanBelajar from "@/app/belajar/_components/steps/Materi8Peta8/Materi8Peta8Step3RefleksiPengalamanBelajar";
+import Materi8Peta8Step4KeyakinanDiriku from "@/app/belajar/_components/steps/Materi8Peta8/Materi8Peta8Step4KeyakinanDiriku";
+import Materi8Peta8Step5RefleksiCaraBerpikirku from "@/app/belajar/_components/steps/Materi8Peta8/Materi8Peta8Step5RefleksiCaraBerpikirku";
+import Materi8Peta8Step6PesanUntukDiriku from "@/app/belajar/_components/steps/Materi8Peta8/Materi8Peta8Step6PesanUntukDiriku";
+import Materi8Peta6Step7RefleksiSingkat from "@/app/belajar/_components/steps/Materi8Peta6/Materi8Peta6Step7RefleksiSingkat";
+import Materi8Peta3Step1Pengantar from "@/app/belajar/_components/steps/Materi8Peta3/Materi8Peta3Step1Pengantar";
+import Materi8Peta3Step2BandingkanHasilPengamatan from "@/app/belajar/_components/steps/Materi8Peta3/Materi8Peta3Step2BandingkanHasilPengamatan";
+import Materi8Peta3Step3RumuskanPermasalahan from "@/app/belajar/_components/steps/Materi8Peta3/Materi8Peta3Step3RumuskanPermasalahan";
+import Materi8Peta3Step4DugaanDanAlasan from "@/app/belajar/_components/steps/Materi8Peta3/Materi8Peta3Step4DugaanDanAlasan";
+import Materi8Peta3Step5PertanyaanDiskusiIngat from "@/app/belajar/_components/steps/Materi8Peta3/Materi8Peta3Step5PertanyaanDiskusiIngat";
+import Materi8Peta3Step6BandingkanDugaanKelompok from "@/app/belajar/_components/steps/Materi8Peta3/Materi8Peta3Step6BandingkanDugaanKelompok";
+import Materi8Peta3Step7PertanyaanDibuktikan from "@/app/belajar/_components/steps/Materi8Peta3/Materi8Peta3Step7PertanyaanDibuktikan";
+import Materi8Peta3Step8HipotesisKelompok from "@/app/belajar/_components/steps/Materi8Peta3/Materi8Peta3Step8HipotesisKelompok";
+import Materi8Peta3Step9RefleksiMotivasi from "@/app/belajar/_components/steps/Materi8Peta3/Materi8Peta3Step9RefleksiMotivasi";
+import Materi8Peta4Step1Pengantar from "@/app/belajar/_components/steps/Materi8Peta4/Materi8Peta4Step1Pengantar";
+import Materi8Peta4Step2EksplorasiGeoGebra3D from "@/app/belajar/_components/steps/Materi8Peta4/Materi8Peta4Step2EksplorasiGeoGebra3D";
+import Materi8Peta4Step3EksplorasiAR from "@/app/belajar/_components/steps/Materi8Peta4/Materi8Peta4Step3EksplorasiAR";
+import Materi8Peta4Step4CatatanKelompok from "@/app/belajar/_components/steps/Materi8Peta4/Materi8Peta4Step4CatatanKelompok";
+import Materi8Peta4Step5PertanyaanEksplorasi from "@/app/belajar/_components/steps/Materi8Peta4/Materi8Peta4Step5PertanyaanEksplorasi";
+import Materi8Peta4Step6TemukanPolanya from "@/app/belajar/_components/steps/Materi8Peta4/Materi8Peta4Step6TemukanPolanya";
+import Materi8Peta4Step7RefleksiSingkat from "@/app/belajar/_components/steps/Materi8Peta4/Materi8Peta4Step7RefleksiSingkat";
+import Materi8Peta5Step1Pengantar from "@/app/belajar/_components/steps/Materi8Peta5/Materi8Peta5Step1Pengantar";
+import Materi8Peta5Step2MengelompokkanData from "@/app/belajar/_components/steps/Materi8Peta5/Materi8Peta5Step2MengelompokkanData";
+import Materi8Peta5Step3BandingkanPerubahan from "@/app/belajar/_components/steps/Materi8Peta5/Materi8Peta5Step3BandingkanPerubahan";
+import Materi8Peta5Step4CariPola from "@/app/belajar/_components/steps/Materi8Peta5/Materi8Peta5Step4CariPola";
+import Materi8Peta5Step5RefleksiMiniIngat from "@/app/belajar/_components/steps/Materi8Peta5/Materi8Peta5Step5RefleksiMiniIngat";
+import Materi8Peta5Step6PengantarMenyusunStrategi from "@/app/belajar/_components/steps/Materi8Peta5/Materi8Peta5Step6PengantarMenyusunStrategi";
+import Materi8Peta5Step7MenemukanStrategi from "@/app/belajar/_components/steps/Materi8Peta5/Materi8Peta5Step7MenemukanStrategi";
+import Materi8Peta5Step8HubunganMatematikaSementara from "@/app/belajar/_components/steps/Materi8Peta5/Materi8Peta5Step8HubunganMatematikaSementara";
+import Materi8Peta5Step9RefleksiMotivasi from "@/app/belajar/_components/steps/Materi8Peta5/Materi8Peta5Step9RefleksiMotivasi";
 
 export type StepComponentProps = {
   materi: string;
@@ -599,6 +658,65 @@ export const stepRegistry: Record<string, ComponentType<StepComponentProps>> = {
   "8-2-6": Materi8Peta2Step6BandingkanBangun,
   "8-2-7": Materi8Peta2Step7KesimpulanPemantik,
   "8-2-8": Materi8Peta2Step8RefleksiSingkat,
+  "8-3-1": Materi8Peta3Step1Pengantar,
+  "8-3-2": Materi8Peta3Step2BandingkanHasilPengamatan,
+  "8-3-3": Materi8Peta3Step3RumuskanPermasalahan,
+  "8-3-4": Materi8Peta3Step4DugaanDanAlasan,
+  "8-3-5": Materi8Peta3Step5PertanyaanDiskusiIngat,
+  "8-3-6": Materi8Peta3Step6BandingkanDugaanKelompok,
+  "8-3-7": Materi8Peta3Step7PertanyaanDibuktikan,
+  "8-3-8": Materi8Peta3Step8HipotesisKelompok,
+  "8-3-9": Materi8Peta3Step9RefleksiMotivasi,
+  "8-4-1": Materi8Peta4Step1Pengantar,
+  "8-4-2": Materi8Peta4Step2EksplorasiGeoGebra3D,
+  "8-4-3": Materi8Peta4Step3EksplorasiAR,
+  "8-4-4": Materi8Peta4Step4CatatanKelompok,
+  "8-4-5": Materi8Peta4Step5PertanyaanEksplorasi,
+  "8-4-6": Materi8Peta4Step6TemukanPolanya,
+  "8-4-7": Materi8Peta4Step7RefleksiSingkat,
+  "8-6-1": Materi8Peta6Step1Pengantar,
+  "8-6-2": Materi8Peta6Step2VerifikasiGeoGebraAR,
+  "8-6-3": Materi8Peta6Step3BandingkanKelompokLain,
+  "8-6-4": Materi8Peta6Step4UjiHubunganFaktorSkalaVolume,
+  "8-6-5": Materi8Peta6Step5JelaskanAlasanMatematis,
+  "8-6-6": Materi8Peta6Step6PerbaikiDugaan,
+  "8-6-7": Materi8Peta6Step7RefleksiSingkat,
+  "8-10-1": Materi8Peta10Step1ApaYangTelahKamuPelajari,
+  "8-10-2": Materi8Peta10Step2KonsepDasarDanHubungan,
+  "8-10-3": Materi8Peta10Step3MengapaDemikian,
+  "8-10-4": Materi8Peta10Step4LangkahMenyelesaikanMasalah,
+  "8-10-5": Materi8Peta10Step5StrategiPenyelesaian,
+  "8-10-6": Materi8Peta10Step6PetaKonsepDanPoinPenting,
+  "8-10-7": Materi8Peta10Step7KataKunciDanPenutup,
+  "8-7-1": Materi8Peta7Step1Pengantar,
+  "8-7-2": Materi8Peta7Step2ApaYangKamuTemukan,
+  "8-7-3": Materi8Peta7Step3FaktorPerubahanVolume,
+  "8-7-4": Materi8Peta7Step4AturanUmum,
+  "8-7-5": Materi8Peta7Step5MengapaAturanBenar,
+  "8-7-6": Materi8Peta7Step6KesimpulanDanBandingkan,
+  "8-7-7": Materi8Peta7Step7GeneralisasiKonsep,
+  "8-9-1": Materi8Peta9Step1Pengantar,
+  "8-9-2": Materi8Peta9Step2MasalahOpenEnded,
+  "8-9-3": Materi8Peta9Step3TampilkanStrategi,
+  "8-9-4": Materi8Peta9Step4BandingkanStrategi,
+  "8-9-5": Materi8Peta9Step5JelaskanAlasanMatematis,
+  "8-9-6": Materi8Peta9Step6TantanganLanjutan,
+  "8-9-7": Materi8Peta9Step7RefleksiSingkat,
+  "8-8-1": Materi8Peta8Step1Pengantar,
+  "8-8-2": Materi8Peta8Step2RefleksiPemahaman,
+  "8-8-3": Materi8Peta8Step3RefleksiPengalamanBelajar,
+  "8-8-4": Materi8Peta8Step4KeyakinanDiriku,
+  "8-8-5": Materi8Peta8Step5RefleksiCaraBerpikirku,
+  "8-8-6": Materi8Peta8Step6PesanUntukDiriku,
+  "8-5-1": Materi8Peta5Step1Pengantar,
+  "8-5-2": Materi8Peta5Step2MengelompokkanData,
+  "8-5-3": Materi8Peta5Step3BandingkanPerubahan,
+  "8-5-4": Materi8Peta5Step4CariPola,
+  "8-5-5": Materi8Peta5Step5RefleksiMiniIngat,
+  "8-5-6": Materi8Peta5Step6PengantarMenyusunStrategi,
+  "8-5-7": Materi8Peta5Step7MenemukanStrategi,
+  "8-5-8": Materi8Peta5Step8HubunganMatematikaSementara,
+  "8-5-9": Materi8Peta5Step9RefleksiMotivasi,
   "7-2-1": Materi7Peta2Step1AmatiBangun,
   "7-2-2": Materi7Peta2Step2ApaYangKamuPerhatikan,
   "7-2-3": Materi7Peta2Step3ProsesPenuangan,
