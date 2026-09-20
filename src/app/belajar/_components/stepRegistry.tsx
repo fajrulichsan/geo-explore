@@ -47,6 +47,18 @@ import Materi6Peta10Step5GeneralisasiPesanAkhir from "./steps/Materi6Peta10/Mate
 import Materi7Peta1Step1Pendahuluan from "./steps/Materi7Peta1/Materi7Peta1Step1Pendahuluan";
 import Materi7Peta1Step2TujuanMedia from "./steps/Materi7Peta1/Materi7Peta1Step2TujuanMedia";
 import Materi7Peta1Step3BuatDugaan from "./steps/Materi7Peta1/Materi7Peta1Step3BuatDugaan";
+import Materi7Peta2Step1AmatiBangun from "./steps/Materi7Peta2/Materi7Peta2Step1AmatiBangun";
+import Materi7Peta2Step2ApaYangKamuPerhatikan from "./steps/Materi7Peta2/Materi7Peta2Step2ApaYangKamuPerhatikan";
+import Materi7Peta2Step3ProsesPenuangan from "./steps/Materi7Peta2/Materi7Peta2Step3ProsesPenuangan";
+import Materi7Peta2Step4HasilPengamatan from "./steps/Materi7Peta2/Materi7Peta2Step4HasilPengamatan";
+import Materi7Peta2Step5MenurutPengamatanmu from "./steps/Materi7Peta2/Materi7Peta2Step5MenurutPengamatanmu";
+import Materi7Peta2Step6RefleksiPertanyaan from "./steps/Materi7Peta2/Materi7Peta2Step6RefleksiPertanyaan";
+import Materi7Peta3Step1BandingkanHasil from "./steps/Materi7Peta3/Materi7Peta3Step1BandingkanHasil";
+import Materi7Peta3Step2DugaanKelompok from "./steps/Materi7Peta3/Materi7Peta3Step2DugaanKelompok";
+import Materi7Peta3Step3MenentukanDugaan from "./steps/Materi7Peta3/Materi7Peta3Step3MenentukanDugaan";
+import Materi7Peta3Step4RumuskanMasalah from "./steps/Materi7Peta3/Materi7Peta3Step4RumuskanMasalah";
+import Materi7Peta3Step5ApaYangDibuktikan from "./steps/Materi7Peta3/Materi7Peta3Step5ApaYangDibuktikan";
+import Materi7Peta3Step6RefleksiDiskusi from "./steps/Materi7Peta3/Materi7Peta3Step6RefleksiDiskusi";
 import Materi6Peta4Step1PetunjukGeoGebra from "./steps/Materi6Peta4/Materi6Peta4Step1PetunjukGeoGebra";
 import Materi6Peta4Step2LangkahEksplorasi from "./steps/Materi6Peta4/Materi6Peta4Step2LangkahEksplorasi";
 import Materi6Peta4Step3ContohGeoGebra from "./steps/Materi6Peta4/Materi6Peta4Step3ContohGeoGebra";
@@ -522,6 +534,18 @@ export const stepRegistry: Record<string, ComponentType<StepComponentProps>> = {
   "7-1-1": Materi7Peta1Step1Pendahuluan,
   "7-1-2": Materi7Peta1Step2TujuanMedia,
   "7-1-3": Materi7Peta1Step3BuatDugaan,
+  "7-2-1": Materi7Peta2Step1AmatiBangun,
+  "7-2-2": Materi7Peta2Step2ApaYangKamuPerhatikan,
+  "7-2-3": Materi7Peta2Step3ProsesPenuangan,
+  "7-2-4": Materi7Peta2Step4HasilPengamatan,
+  "7-2-5": Materi7Peta2Step5MenurutPengamatanmu,
+  "7-2-6": Materi7Peta2Step6RefleksiPertanyaan,
+  "7-3-1": Materi7Peta3Step1BandingkanHasil,
+  "7-3-2": Materi7Peta3Step2DugaanKelompok,
+  "7-3-3": Materi7Peta3Step3MenentukanDugaan,
+  "7-3-4": Materi7Peta3Step4RumuskanMasalah,
+  "7-3-5": Materi7Peta3Step5ApaYangDibuktikan,
+  "7-3-6": Materi7Peta3Step6RefleksiDiskusi,
   "6-4-1": Materi6Peta4Step1PetunjukGeoGebra,
   "6-4-2": Materi6Peta4Step2LangkahEksplorasi,
   "6-4-3": Materi6Peta4Step3ContohGeoGebra,

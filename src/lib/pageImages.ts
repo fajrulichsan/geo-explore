@@ -374,6 +374,27 @@ export type PageImageKey =
   | "M7-P1-L2-4"
   | "M7-P1-L3-1"
   | "M7-P1-L3-2"
+  | "M7-P2-L1-1"
+  | "M7-P2-L1-2"
+  | "M7-P2-L1-3"
+  | "M7-P2-L1-4"
+  | "M7-P2-L2-1"
+  | "M7-P2-L3-1"
+  | "M7-P2-L3-2"
+  | "M7-P2-L3-3"
+  | "M7-P2-L3-4"
+  | "M7-P2-L5-1"
+  | "M7-P2-L5-2"
+  | "M7-P2-L5-3"
+  | "M7-P2-L5-4"
+  | "M7-P2-L6-1"
+  | "M7-P2-L6-2"
+  | "M7-P2-L6-3"
+  | "M7-P3-L1-1"
+  | "M7-P3-L1-2"
+  | "M7-P3-L2-1"
+  | "M7-P3-L3-1"
+  | "M7-P3-L4-1"
   | "M5-P9-L4-1"
   | "M5-P6-L1-1"
   | "M5-P6-L3-1"
@@ -761,6 +782,27 @@ const DEFAULT_IMAGES: Record<PageImageKey, string> = {
   "M7-P1-L2-4": "https://placehold.co/200x200?text=QR+AR+Viewer",
   "M7-P1-L3-1": "https://placehold.co/1021x300?text=Dugaan+Limas+Prisma",
   "M7-P1-L3-2": "https://placehold.co/336x262?text=Maskot+Ayo+Mulai",
+  "M7-P2-L1-1": "https://placehold.co/1039x313?text=Tiga+limas+identik+dan+satu+prisma",
+  "M7-P2-L1-2": "https://placehold.co/757x523?text=Limas+biru+di+dalam+prisma",
+  "M7-P2-L1-3": "https://placehold.co/216x247?text=Limas+kuning",
+  "M7-P2-L1-4": "https://placehold.co/196x241?text=Limas+hijau",
+  "M7-P2-L2-1": "https://placehold.co/181x265?text=Maskot+laki-laki+berpikir",
+  "M7-P2-L3-1": "https://placehold.co/222x250?text=Limas+ungu",
+  "M7-P2-L3-2": "https://placehold.co/219x241?text=Limas+kuning",
+  "M7-P2-L3-3": "https://placehold.co/219x246?text=Limas+hijau",
+  "M7-P2-L3-4": "https://placehold.co/1117x607?text=Tiga+tahap+penuangan",
+  "M7-P2-L5-1": "https://placehold.co/757x523?text=Prisma+terisi+sebagian+(satu+penuangan)",
+  "M7-P2-L5-2": "https://placehold.co/790x532?text=Prisma+terisi+lebih+tinggi+(dua+penuangan)",
+  "M7-P2-L5-3": "https://placehold.co/373x229?text=Prisma+penuh+dan+tanda+tanya",
+  "M7-P2-L5-4": "https://placehold.co/409x606?text=Maskot+laki-laki+bertanya+mengapa",
+  "M7-P2-L6-1": "https://placehold.co/387x610?text=Maskot+perempuan+menunjuk+ke+atas",
+  "M7-P2-L6-2": "https://placehold.co/910x279?text=Tiga+limas+identik+dan+satu+prisma",
+  "M7-P2-L6-3": "https://placehold.co/505x613?text=Maskot+laki-laki+menunjuk+ke+atas",
+  "M7-P3-L1-1": "https://placehold.co/954x625?text=Tiga+siswa+berdiskusi",
+  "M7-P3-L1-2": "https://placehold.co/840x328?text=Tiga+limas+identik+dan+satu+prisma",
+  "M7-P3-L2-1": "https://placehold.co/517x244?text=Tiga+maskot+siswa",
+  "M7-P3-L3-1": "https://placehold.co/928x616?text=Maskot+perempuan+diskusi+yang+baik",
+  "M7-P3-L4-1": "https://placehold.co/952x622?text=Tiga+siswa+dan+buku+Amati+Buktikan",
 };
 
 /**
