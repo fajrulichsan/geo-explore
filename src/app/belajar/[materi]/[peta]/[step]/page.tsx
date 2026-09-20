@@ -32,7 +32,7 @@ export default async function BelajarStepPage(
   const initialAnswers = rows.find((r) => r.peta === peta && r.step === step)?.answers;
 
   return (
-    <BelajarShell userName={user?.nama_lengkap ?? "Siswa"}>
+    <BelajarShell userName={user?.nama_lengkap ?? "Siswa"} materi={materi}>
       {StepComponent ? (
         <StepComponent
           materi={materi}

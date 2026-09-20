@@ -3,9 +3,10 @@ import { logoutAction } from "@/app/actions";
 
 type NavbarProps = {
   userName: string;
+  petaBelajarHref?: string;
 };
 
-export default function Navbar({ userName }: NavbarProps) {
+export default function Navbar({ userName, petaBelajarHref }: NavbarProps) {
   return (
     <header className="relative z-10 max-w-6xl mx-auto w-full flex items-center justify-between pt-6 px-4">
       <div className="flex items-center gap-6">
@@ -22,6 +23,15 @@ export default function Navbar({ userName }: NavbarProps) {
           <span className="material-symbols-outlined text-base">home</span>
           <span className="hidden sm:inline">Home</span>
         </Link>
+        {petaBelajarHref && (
+          <Link
+            href={petaBelajarHref}
+            className="text-sm font-semibold text-slate-500 hover:text-primary transition-colors flex items-center gap-1"
+          >
+            <span className="material-symbols-outlined text-base">map</span>
+            <span className="hidden sm:inline">Peta Belajar</span>
+          </Link>
+        )}
       </div>
 
       <div className="flex items-center gap-4">

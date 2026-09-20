@@ -79,7 +79,7 @@ export default async function PetaBelajarPage(
         }}
       />
 
-      <Navbar userName={user?.nama_lengkap ?? "Siswa"} />
+      <Navbar userName={user?.nama_lengkap ?? "Siswa"} petaBelajarHref={`/peta-belajar/${materi}`} />
 
       <div className="max-w-[1200px] mx-auto w-full px-4 sm:px-6 pt-4">
         <Link

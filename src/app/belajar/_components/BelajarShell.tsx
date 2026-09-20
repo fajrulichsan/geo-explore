@@ -5,9 +5,11 @@ import Footer from "@/app/_components/Footer";
 export default function BelajarShell({
   children,
   userName,
+  materi,
 }: {
   children: ReactNode;
   userName: string;
+  materi: string;
 }) {
   return (
     <div
@@ -91,7 +93,7 @@ export default function BelajarShell({
       </svg>
 
       <div className="relative z-[1] flex flex-col min-h-screen">
-        <Navbar userName={userName} />
+        <Navbar userName={userName} petaBelajarHref={`/peta-belajar/${materi}`} />
 
         <div className="flex justify-center px-4 sm:px-8 pt-10 pb-20 flex-1">
           <div className="w-full max-w-[1040px] py-6 px-2 pb-12 flex flex-col gap-8">{children}</div>
