@@ -427,6 +427,34 @@ export type PageImageKey =
   | "M7-P6-L7-1"
   | "M7-P6-L7-2"
   | "M7-P6-L8-1"
+  | "M7-P9-L1-1"
+  | "M7-P9-L1-2"
+  | "M7-P9-L1-3"
+  | "M7-P9-L1-4"
+  | "M7-P9-L4-1"
+  | "M7-P9-L5-1"
+  | "M7-P9-L6-1"
+  | "M7-P9-L7-1"
+  | "M7-P7-L1-1"
+  | "M7-P7-L2-1"
+  | "M7-P7-L3-1"
+  | "M7-P7-L3-2"
+  | "M7-P7-L5-1"
+  | "M7-P7-L5-2"
+  | "M7-P7-L6-1"
+  | "M7-P8-L1-1"
+  | "M7-P8-L4-1"
+  | "M7-P10-L1-1"
+  | "M7-P10-L1-2"
+  | "M7-P10-L1-3"
+  | "M7-P10-L1-4"
+  | "M7-P10-L1-5"
+  | "M7-P10-L1-6"
+  | "M7-P10-L2-1"
+  | "M7-P10-L2-2"
+  | "M7-P10-L2-3"
+  | "M7-P10-L2-4"
+  | "M7-P10-L2-5"
   | "M5-P9-L4-1"
   | "M5-P6-L1-1"
   | "M5-P6-L3-1"
@@ -867,6 +895,34 @@ const DEFAULT_IMAGES: Record<PageImageKey, string> = {
   "M7-P6-L7-1": "https://placehold.co/384x558?text=Maskot+laki-laki+gunakan+data+pola+model",
   "M7-P6-L7-2": "https://placehold.co/381x577?text=Maskot+perempuan+terus+semangat",
   "M7-P6-L8-1": "https://placehold.co/382x583?text=Maskot+laki-laki+lanjut+tahap+berikutnya",
+  "M7-P9-L1-1": "https://placehold.co/1066x622?text=Hero+tiga+siswa+tantangan+open-ended",
+  "M7-P9-L1-2": "https://placehold.co/400x300?text=Limas+persegi+ungu",
+  "M7-P9-L1-3": "https://placehold.co/651x600?text=Limas+segitiga+oranye",
+  "M7-P9-L1-4": "https://placehold.co/469x424?text=Limas+segilima+biru",
+  "M7-P9-L4-1": "https://placehold.co/591x196?text=Tiga+limas+persegi+segitiga+segilima",
+  "M7-P9-L5-1": "https://placehold.co/1063x619?text=Tiga+siswa+analisis+strategi",
+  "M7-P9-L6-1": "https://placehold.co/1063x622?text=Tiga+siswa+diskusi+open-ended",
+  "M7-P9-L7-1": "https://placehold.co/417x601?text=Maskot+laki-laki+semangat",
+  "M7-P7-L1-1": "https://placehold.co/1171x651?text=Hero+tiga+siswa+menyimpulkan+rumus",
+  "M7-P7-L2-1": "https://placehold.co/1543x279?text=Ilustrasi+tiga+limas+memenuhi+prisma",
+  "M7-P7-L3-1": "https://placehold.co/357x567?text=Maskot+laki-laki+gunakan+data+pola+gambar",
+  "M7-P7-L3-2": "https://placehold.co/340x607?text=Maskot+perempuan+kesimpulan+halaman+berikutnya",
+  "M7-P7-L5-1": "https://placehold.co/481x589?text=Limas+segiempat+biru+contoh+1",
+  "M7-P7-L5-2": "https://placehold.co/430x600?text=Tenda+limas+cokelat+contoh+2",
+  "M7-P7-L6-1": "https://placehold.co/555x595?text=Maskot+laki-laki+bersemangat",
+  "M7-P8-L1-1": "https://placehold.co/1063x621?text=Hero+tiga+siswa+lembar+refleksi+diri",
+  "M7-P8-L4-1": "https://placehold.co/568x594?text=Maskot+laki-laki+semangat",
+  "M7-P10-L1-1": "https://placehold.co/1063x624?text=Hero+tiga+siswa+merangkum",
+  "M7-P10-L1-2": "https://placehold.co/540x240?text=Alas+segitiga",
+  "M7-P10-L1-3": "https://placehold.co/192x186?text=Alas+persegi",
+  "M7-P10-L1-4": "https://placehold.co/247x226?text=Alas+segilima",
+  "M7-P10-L1-5": "https://placehold.co/718x592?text=Limas+alas+segi-n",
+  "M7-P10-L1-6": "https://placehold.co/847x211?text=Tiga+limas+jadi+satu+prisma",
+  "M7-P10-L2-1": "https://placehold.co/387x166?text=Tiga+limas+sama+dengan+prisma",
+  "M7-P10-L2-2": "https://placehold.co/583x174?text=Tiga+limas+segitiga+persegi+segi-n",
+  "M7-P10-L2-3": "https://placehold.co/259x249?text=Kubus+kuning",
+  "M7-P10-L2-4": "https://placehold.co/199x249?text=Prisma+ungu+hijau",
+  "M7-P10-L2-5": "https://placehold.co/1060x627?text=Hero+pesan+akhir+tiga+siswa",
 };
 
 /**
