@@ -26,18 +26,18 @@ export default function ShapeDropdown({
   const selectedLabel = SHAPES.find((s) => s.id === selected)?.label ?? "";
 
   return (
-    <div ref={rootRef} className="absolute top-4 left-4 z-10">
+    <div ref={rootRef} className="relative">
       <button
         type="button"
         onClick={() => setOpen((v) => !v)}
-        className="flex items-center gap-2 rounded-lg border border-[#E5E7EB] bg-white px-4 py-2 text-sm font-semibold text-[#111827] shadow-md"
+        className="flex w-full items-center justify-between gap-2 rounded-lg border border-[#E5E7EB] bg-white px-4 py-2 text-sm font-semibold text-[#111827] shadow-md"
       >
         {selectedLabel}
         <span className={`transition-transform ${open ? "rotate-180" : ""}`}>▾</span>
       </button>
 
       {open && (
-        <ul className="mt-1 w-48 overflow-hidden rounded-lg border border-[#E5E7EB] bg-white shadow-lg">
+        <ul className="absolute left-0 right-0 z-20 mt-1 overflow-hidden rounded-lg border border-[#E5E7EB] bg-white shadow-lg">
           {SHAPES.map((shape) => (
             <li key={shape.id}>
               <button

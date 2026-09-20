@@ -89,7 +89,9 @@ export default function GeogebraCube() {
         strategy="afterInteractive"
         onLoad={handleScriptLoad}
       />
-      <ShapeDropdown selected={shapeId} onSelect={handleSelectShape} />
+      <div className="absolute top-4 left-4 z-10 w-48">
+        <ShapeDropdown selected={shapeId} onSelect={handleSelectShape} />
+      </div>
       <div ref={containerRef} className="w-full h-full" />
     </div>
   );

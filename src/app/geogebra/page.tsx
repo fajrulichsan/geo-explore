@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import GeogebraCube from "./GeogebraCube";
+import GeoGebraExplorer from "./GeoGebraExplorer";
 
 export const metadata: Metadata = {
   title: "GeoGebra 3D - Kubus | E-Modul Geometri",
@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 export default function GeogebraPage() {
   return (
     <div className="fixed inset-0 bg-[#F9FAFB]">
-      <GeogebraCube />
+      <GeoGebraExplorer />
     </div>
   );
 }
