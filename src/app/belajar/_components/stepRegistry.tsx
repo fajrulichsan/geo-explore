@@ -1,4 +1,6 @@
 import type { ComponentType } from "react";
+import Materi6Peta1Step1Pendahuluan from "./steps/Materi6Peta1/Materi6Peta1Step1Pendahuluan";
+import Materi6Peta1Step2EksplorasiProses from "./steps/Materi6Peta1/Materi6Peta1Step2EksplorasiProses";
 import Materi5Peta1Step1Pendahuluan from "./steps/Materi5Peta1/Materi5Peta1Step1Pendahuluan";
 import Materi5Peta1Step2EksplorasiProses from "./steps/Materi5Peta1/Materi5Peta1Step2EksplorasiProses";
 import Materi5Peta2Step1AyoMengamati from "./steps/Materi5Peta2/Materi5Peta2Step1AyoMengamati";
@@ -419,6 +421,8 @@ export const stepRegistry: Record<string, ComponentType<StepComponentProps>> = {
   "4-4-4": Materi4Peta4Step4RingkasPengamatan,
   "4-4-5": Materi4Peta4Step5KeterkaitanAwal,
   "4-4-6": Materi4Peta4Step6DugaanRefleksi,
+  "6-1-1": Materi6Peta1Step1Pendahuluan,
+  "6-1-2": Materi6Peta1Step2EksplorasiProses,
   "5-1-1": Materi5Peta1Step1Pendahuluan,
   "5-1-2": Materi5Peta1Step2EksplorasiProses,
   "5-2-1": Materi5Peta2Step1AyoMengamati,

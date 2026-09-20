@@ -1,6 +1,6 @@
 ---
 name: build-peta-step-from-image
-description: Turn one or more worksheet-page screenshots (image URLs) into fully wired Peta step components — split into app steps, continuous section lettering, illustration/mascot images sized and placed correctly, registry + page_images + migration SQL. Trigger phrases — "bikin page dari gambar ini", "buatkan step peta dari screenshot", "ini lanjutan yang sebelumnya cba tambahin", "split gambar ini jadi beberapa page".
+description: Turn one or more worksheet-page screenshots (image URLs) into fully wired Peta step components — split into app steps, continuous section lettering, illustration/mascot images sized and placed correctly, registry + page_images + migration SQL, then crops the illustrations out of the supplied screenshot and uploads them itself via ?edit-foto=true (Playwright). Trigger phrases — "bikin page dari gambar ini", "buatkan step peta dari screenshot", "ini lanjutan yang sebelumnya cba tambahin", "split gambar ini jadi beberapa page".
 ---
 
 # Build Peta step components from a worksheet image
@@ -109,6 +109,11 @@ For every distinct illustration/character counted in §1:
   named `M{materi}-P{peta}-L{step}-{urutan}` (reuse the langkah of the step it *first* appears in;
   a later step reusing the same artwork reuses the same key rather than minting a new one).
 - Pick a size that matches the source's proportions, don't default every image to a square:
+  - **Content images that must never be cropped** (scene, screenshot, thumbnails): pass `natural` to
+    `EditablePageImage` (renders at card width with the image's own height, no `fill`/aspect box).
+    For a row of sibling images that must line up (labels beneath), use `aspect-*` +
+    `imageClassName="object-contain"` with **no** tinted `bg-*` on the container, so letterboxing is
+    invisible against the white card. Never use `object-cover` for uploaded content.
   - **Portrait mascot/character** (holds a prop, shown waist-up or full-body): ~`w-28 h-36` to
     `w-32 h-40`, `imageClassName="object-contain"` (never `object-cover` — cropping a character
     is wrong), transparent-friendly background (`bg-[#EFF4FF]` etc, no border).
@@ -152,7 +157,44 @@ npm run lint
 Fix only errors/warnings in files you touched — this repo has pre-existing unrelated issues
 (`page.tsx`'s dynamic-component pattern, `GeogebraCube.tsx`'s ref-in-render) that are out of scope.
 
-Report back: which step files were created (with the section letters/titles they cover), the
+Report back (plus, if §8 ran, which urutan were uploaded/skipped): which step files were created (with the section letters/titles they cover), the
 registry keys added, the illustration keys added and where each is placed/sized, the migration
 file path (user runs it manually, never run SQL yourself), and whether this peta is now complete
 or still awaiting more tahap content.
+
+## 8. Crop the illustrations from the source image and upload them (only with explicit consent)
+
+Do this after §6/§7 pass, when the user wants real photos instead of placeholders. It writes to the
+user's Supabase storage + `page_images` through the app's own upload action, so confirm once first,
+and use credentials the user gave for this session (never look for or store them; don't save them
+in the repo or memory).
+
+1. **Prereqs**: dev server running (`curl -s -o /dev/null -w "%{http_code}" localhost:3000`); the
+   migration for this peta has been run by the user (otherwise slots show broken alt text — say so
+   and stop); login email + password from the user.
+2. **Crop** with Pillow from the image you already downloaded (§1). The Read tool shows the image at
+   its true pixel size when it is small (check with `sips -g pixelWidth -g pixelHeight`), so estimate
+   boxes `(x0,y0,x1,y1)` from what you saw. Crop each slot **tight to the artwork only** — exclude
+   captions, neighbouring text and card borders (QR: exclude the "Scan di sini" caption). Upscale
+   3x with LANCZOS, save as `$SCRATCHPAD/crops/L{step}-{urutan}.png` (urutan = the `urutan` prop).
+3. **Look at the crops** (Read a contact sheet or each file). Recrop anything with stray text or a
+   clipped edge before uploading — re-uploading replaces the image, so it's cheap but check first.
+4. **Upload** with `scripts/upload-crops.mjs` (install `playwright` in the scratchpad, not the
+   project). If Playwright says the browser build is missing, don't run `playwright install`; point
+   `chromium.launch({ executablePath })` at the cached
+   `~/Library/Caches/ms-playwright/chromium_headless_shell-*/chrome-headless-shell-mac-arm64/chrome-headless-shell`.
+   One call per step: `node upload-crops.mjs http://localhost:3000 <email> <pass> <materi> <peta> <step> <cropsDir> <exe>`
+   (`ONLY=3,5` re-uploads a subset).
+5. **Verify** with the screenshot the script saves: no cropped or blurry-wrong slot, labels aligned.
+   Note that low-resolution sources (e.g. ~900px-wide screenshots) upscale soft; tell the user to
+   re-upload from the original file via `?edit-foto=true` if they want sharp images.
+6. Don't overwrite slots that already hold real images unless the user asks; list in the report which
+   urutan you uploaded and which you skipped.
+
+## 9. Prefer the client's original assets in `assets-source/`
+
+Before cropping from a screenshot (§8), check `assets-source/materi-{M}/peta-{NN}-<slug>/` and its
+`README.md` (per-peta file list with pixel sizes and which slot each file already fills). Those are the
+full-resolution images extracted from the client's `.docx`; upload them as-is (split a combined strip
+only when a slot needs one item). Fall back to cropping the screenshot only for elements with no
+standalone file, and say which slots stayed low-res. Don't overwrite slots that already hold real photos.

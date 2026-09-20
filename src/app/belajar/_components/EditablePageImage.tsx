@@ -15,6 +15,7 @@ type EditablePageImageProps = {
   src: string;
   alt: string;
   editable?: boolean;
+  natural?: boolean;
   imageClassName?: string;
   containerClassName: string;
 };
@@ -37,6 +38,7 @@ export default function EditablePageImage({
   src,
   alt,
   editable,
+  natural,
   imageClassName = "object-cover",
   containerClassName,
 }: EditablePageImageProps) {
@@ -65,7 +67,9 @@ export default function EditablePageImage({
 
   return (
     <div className={containerClassName}>
-      {src ? (
+      {src && natural ? (
+        <Image src={src} alt={alt} width={0} height={0} sizes="100vw" className="block w-full h-auto" />
+      ) : src ? (
         <Image src={src} alt={alt} fill className={imageClassName} />
       ) : (
         <div className="absolute inset-0 bg-[#E5E7EB]" />

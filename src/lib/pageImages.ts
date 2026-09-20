@@ -253,6 +253,19 @@ export type PageImageKey =
   | "M5-P10-L1-1"
   | "M5-P10-L4-1"
   | "M5-P9-L1-1"
+  | "M6-P1-L1-1"
+  | "M6-P1-L1-2"
+  | "M6-P1-L1-3"
+  | "M6-P1-L1-4"
+  | "M6-P1-L2-1"
+  | "M6-P1-L2-2"
+  | "M6-P1-L2-3"
+  | "M6-P1-L2-4"
+  | "M6-P1-L2-5"
+  | "M6-P1-L2-6"
+  | "M6-P1-L2-7"
+  | "M6-P1-L2-8"
+  | "M6-P1-L2-9"
   | "M5-P9-L4-1"
   | "M5-P6-L1-1"
   | "M5-P6-L3-1"
@@ -519,6 +532,19 @@ const DEFAULT_IMAGES: Record<PageImageKey, string> = {
   "M5-P1-L2-5": "https://placehold.co/160x160?text=Balok",
   "M5-P1-L2-6": "https://placehold.co/160x160?text=Prisma+Segitiga",
   "M5-P1-L2-7": "https://placehold.co/160x160?text=Limas+Segiempat",
+  "M6-P1-L1-1": "https://placehold.co/880x496?text=Hero+Tiga+Siswa+Volume",
+  "M6-P1-L1-2": "https://placehold.co/400x300?text=Kotak+Mainan",
+  "M6-P1-L1-3": "https://placehold.co/400x300?text=Akuarium",
+  "M6-P1-L1-4": "https://placehold.co/400x300?text=Gudang+Kardus",
+  "M6-P1-L2-1": "https://placehold.co/440x330?text=Tiga+Siswa+Tujuan",
+  "M6-P1-L2-2": "https://placehold.co/480x270?text=GeoGebra+3D+Volume",
+  "M6-P1-L2-3": "https://placehold.co/200x200?text=QR+GeoGebra+3D",
+  "M6-P1-L2-4": "https://placehold.co/480x270?text=AR+Volume+Kubus",
+  "M6-P1-L2-5": "https://placehold.co/200x200?text=QR+AR+3D+Viewer",
+  "M6-P1-L2-6": "https://placehold.co/200x200?text=1+Lapisan",
+  "M6-P1-L2-7": "https://placehold.co/200x200?text=2+Lapisan",
+  "M6-P1-L2-8": "https://placehold.co/200x200?text=3+Lapisan",
+  "M6-P1-L2-9": "https://placehold.co/224x288?text=Maskot+Semangat",
 };
 
 /**
