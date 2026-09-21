@@ -329,10 +329,13 @@ import Materi4Peta9Step1MasalahDanStrategi from "./steps/Materi4Peta9/Materi4Pet
 import Materi4Peta9Step2BandingkanStrategi from "./steps/Materi4Peta9/Materi4Peta9Step2BandingkanStrategi";
 import Materi4Peta9Step3AlasanDanTransfer from "./steps/Materi4Peta9/Materi4Peta9Step3AlasanDanTransfer";
 import Materi4Peta9Step4RefleksiSingkat from "./steps/Materi4Peta9/Materi4Peta9Step4RefleksiSingkat";
-import Materi5Peta3Step1BandingkanRumuskan from "./steps/Materi5Peta3/Materi5Peta3Step1BandingkanRumuskan";
-import Materi5Peta3Step2DugaanAwal from "./steps/Materi5Peta3/Materi5Peta3Step2DugaanAwal";
-import Materi5Peta3Step3BandingkanDugaanKelompok from "./steps/Materi5Peta3/Materi5Peta3Step3BandingkanDugaanKelompok";
-import Materi5Peta3Step4HipotesisRefleksi from "./steps/Materi5Peta3/Materi5Peta3Step4HipotesisRefleksi";
+import Materi5Peta3Step1AyoBerdiskusi from "./steps/Materi5Peta3/Materi5Peta3Step1AyoBerdiskusi";
+import Materi5Peta3Step2RumuskanPermasalahan from "./steps/Materi5Peta3/Materi5Peta3Step2RumuskanPermasalahan";
+import Materi5Peta3Step3DugaanAwalAlasan from "./steps/Materi5Peta3/Materi5Peta3Step3DugaanAwalAlasan";
+import Materi5Peta3Step4BandingkanDugaanKelompok from "./steps/Materi5Peta3/Materi5Peta3Step4BandingkanDugaanKelompok";
+import Materi5Peta3Step5PertanyaanDibuktikan from "./steps/Materi5Peta3/Materi5Peta3Step5PertanyaanDibuktikan";
+import Materi5Peta3Step6HipotesisKelompok from "./steps/Materi5Peta3/Materi5Peta3Step6HipotesisKelompok";
+import Materi5Peta3Step7RefleksiSingkat from "./steps/Materi5Peta3/Materi5Peta3Step7RefleksiSingkat";
 import Materi5Peta4Step1Pendahuluan from "./steps/Materi5Peta4/Materi5Peta4Step1Pendahuluan";
 import Materi5Peta4Step2EksplorasiGeoGebra from "./steps/Materi5Peta4/Materi5Peta4Step2EksplorasiGeoGebra";
 import Materi5Peta4Step3EksplorasiAR from "./steps/Materi5Peta4/Materi5Peta4Step3EksplorasiAR";
@@ -846,10 +849,13 @@ export const stepRegistry: Record<string, ComponentType<StepComponentProps>> = {
   "5-4-4": Materi5Peta4Step4CatatanKelompok,
   "5-4-5": Materi5Peta4Step5PertanyaanEksplorasi,
   "5-4-6": Materi5Peta4Step6RefleksiData,
-  "5-3-1": Materi5Peta3Step1BandingkanRumuskan,
-  "5-3-2": Materi5Peta3Step2DugaanAwal,
-  "5-3-3": Materi5Peta3Step3BandingkanDugaanKelompok,
-  "5-3-4": Materi5Peta3Step4HipotesisRefleksi,
+  "5-3-1": Materi5Peta3Step1AyoBerdiskusi,
+  "5-3-2": Materi5Peta3Step2RumuskanPermasalahan,
+  "5-3-3": Materi5Peta3Step3DugaanAwalAlasan,
+  "5-3-4": Materi5Peta3Step4BandingkanDugaanKelompok,
+  "5-3-5": Materi5Peta3Step5PertanyaanDibuktikan,
+  "5-3-6": Materi5Peta3Step6HipotesisKelompok,
+  "5-3-7": Materi5Peta3Step7RefleksiSingkat,
   "5-8-1": Materi5Peta8Step1RefleksiPemahaman,
   "5-8-2": Materi5Peta8Step2RefleksiPengalaman,
   "5-8-3": Materi5Peta8Step3KeyakinanDiriku,

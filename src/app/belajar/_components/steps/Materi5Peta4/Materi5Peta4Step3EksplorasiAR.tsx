@@ -6,18 +6,11 @@ import StepHeader from "@/app/belajar/_components/StepHeader";
 import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
 import { getPageImage } from "@/lib/pageImages";
 
-const langkahKegiatan = [
-  "Amati model bangun ruang melalui AR.",
+const perhatikan = ["bentuk bangun", "jumlah sisi", "ukuran bangun", "luas satu sisi", "luas permukaan"];
+
+const langkah = [
   "Gerakkan perangkat untuk mengamati model bangun ruang dari berbagai sudut.",
   "Catat hasil pengamatan untuk setiap faktor skala.",
-];
-
-const yangDiamati = [
-  "Bentuk bangun.",
-  "Jumlah sisi.",
-  "Ukuran bangun.",
-  "Luas satu sisi.",
-  "Luas permukaan.",
 ];
 
 export default async function Materi5Peta4Step3EksplorasiAR({
@@ -28,9 +21,9 @@ export default async function Materi5Peta4Step3EksplorasiAR({
   initialAnswers,
 }: StepComponentProps) {
   const answers = initialAnswers ?? {};
-  const getValue = (key: string) => (typeof answers[key] === "string" ? (answers[key] as string) : "");
+  const catatan = typeof answers.catatan_ar === "string" ? answers.catatan_ar : "";
 
-  const [gambarAR, gambarQr] = await Promise.all([getPageImage("M5-P4-L3-1"), getPageImage("qr-ar")]);
+  const [gambarQr, gambarAr] = await Promise.all([getPageImage("M5-P4-L3-1"), getPageImage("M5-P4-L3-2")]);
 
   return (
     <form action={submitStepAction} className="flex flex-col gap-8">
@@ -48,97 +41,84 @@ export default async function Materi5Peta4Step3EksplorasiAR({
           <div className="w-[34px] h-[34px] rounded-full bg-[#16A34A] text-white flex items-center justify-center font-bold text-[15px] flex-shrink-0">
             B
           </div>
-          <div className="bg-white border border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-full py-2 px-5 text-sm font-bold text-[#16A34A]">
+          <div className="bg-white border border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-full py-2 px-5 text-sm font-bold text-[#15803D]">
             Eksplorasi Menggunakan Augmented Reality (AR)
           </div>
         </div>
 
-        <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-5 sm:p-6 shadow-[0_1px_2px_rgba(0,0,0,0.04)] flex flex-col gap-5">
-          <div className="grid grid-cols-1 lg:grid-cols-[1fr_260px] gap-5 items-start">
-            <EditablePageImage
-              imageKey="M5-P4-L3-1"
-              materi={materi}
-              peta={peta}
-              step={step}
-              urutan="1"
-              src={gambarAR}
-              alt="Tampilan kamera AR menunjukkan kubus biru yang dapat diubah faktor skalanya"
-              editable={editFoto}
-              containerClassName="relative w-full aspect-video rounded-2xl overflow-hidden bg-[#111827]"
-            />
-
-            <div className="bg-white border border-[#E5E7EB] rounded-2xl p-4 flex flex-col items-center gap-3">
-              <span className="text-xs font-bold text-[#16A34A]">Scan QR Code AR</span>
+        <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-5 sm:p-6 shadow-[0_1px_2px_rgba(0,0,0,0.04)] flex flex-col gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-[170px_1fr] gap-6 items-start">
+            <div className="bg-[#F0FDF4] rounded-2xl p-3 flex flex-col items-center gap-2 w-fit mx-auto md:mx-0">
+              <span className="text-xs font-bold text-[#15803D] text-center">Scan QR Code AR</span>
               <EditablePageImage
-                imageKey="qr-ar"
+                imageKey="M5-P4-L3-1"
                 materi={materi}
                 peta={peta}
                 step={step}
-                urutan="2"
+                urutan="1"
                 src={gambarQr}
-                alt="QR code menuju model AR bangun ruang"
+                alt="QR code menuju model bangun ruang Augmented Reality"
                 editable={editFoto}
-                imageClassName="object-contain p-2"
-                containerClassName="relative w-28 h-28 rounded-xl overflow-hidden bg-white border border-[#E5E7EB]"
+                imageClassName="object-contain p-1.5"
+                containerClassName="relative w-36 h-36 rounded-xl overflow-hidden bg-white"
               />
-              <p className="m-0 text-center text-xs text-[#6B7280]">
-                Scan untuk menampilkan model bangun ruang secara nyata.
-              </p>
+              <span className="bg-[#166534] text-white rounded-full py-1 px-3 text-[11px] font-bold">QR AR</span>
+            </div>
+
+            <div className="flex flex-col gap-3">
+              <p className="m-0 text-sm text-[#374151] leading-[1.6]">Amati model bangun ruang melalui AR.</p>
+              <span className="text-sm font-bold text-[#15803D]">Perhatikan perubahan pada:</span>
+              <ol className="m-0 p-0 list-none grid grid-cols-1 sm:grid-cols-2 gap-2">
+                {perhatikan.map((p, i) => (
+                  <li key={p} className="flex items-center gap-2.5 text-sm text-[#374151]">
+                    <span className="w-5 h-5 rounded-full bg-[#16A34A] text-white flex items-center justify-center font-bold text-[10px] flex-shrink-0">
+                      {i + 1}
+                    </span>
+                    {p}
+                  </li>
+                ))}
+              </ol>
             </div>
           </div>
 
-          <div>
-            <span className="text-xs font-bold text-[#111827] mb-2 block">Langkah Kegiatan</span>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-              {langkahKegiatan.map((l, i) => (
-                <div key={i} className="flex items-start gap-2.5">
-                  <div className="w-5 h-5 rounded-full bg-[#16A34A] text-white flex items-center justify-center font-bold text-[10px] flex-shrink-0 mt-0.5">
+          <div className="grid grid-cols-1 md:grid-cols-[1fr_300px] gap-5 items-center">
+            <div className="flex flex-col gap-3">
+              {langkah.map((l, i) => (
+                <div key={l} className="flex items-start gap-3 bg-[#F0FDF4] rounded-xl p-3.5">
+                  <div className="w-6 h-6 rounded-full bg-[#16A34A] text-white flex items-center justify-center font-bold text-[11px] flex-shrink-0">
                     {i + 1}
                   </div>
                   <span className="text-sm text-[#374151] leading-[1.5]">{l}</span>
                 </div>
               ))}
             </div>
-          </div>
-
-          <div>
-            <span className="text-xs font-bold text-[#111827] mb-2 block">Perhatikan Perubahan Pada</span>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-              {yangDiamati.map((y) => (
-                <div key={y} className="flex items-center gap-2.5">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#16A34A" strokeWidth="2.4" className="flex-shrink-0">
-                    <rect x="3" y="3" width="18" height="18" rx="4" />
-                  </svg>
-                  <span className="text-sm text-[#374151]">{y}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div className="bg-[#EFF4FF] border border-[#BFDBFE] rounded-2xl p-4 flex flex-col gap-2">
-            <label htmlFor="catatan_ar" className="text-sm font-bold text-[#2563EB]">
-              Catat data hasil pengamatan AR pada catatan berikut.
-            </label>
-            <textarea
-              id="catatan_ar"
-              name="answers.catatan_ar"
-              defaultValue={getValue("catatan_ar")}
-              rows={4}
-              required
-              placeholder="Tuliskan data hasil pengamatan AR untuk setiap faktor skala..."
-              className="w-full rounded-xl border border-[#BFDBFE] bg-white px-3.5 py-2.5 text-sm text-[#374151] placeholder:text-[#9CA3AF] focus:border-[#2563EB] focus:outline-none transition-colors resize-y"
+            <EditablePageImage
+              imageKey="M5-P4-L3-2"
+              materi={materi}
+              peta={peta}
+              step={step}
+              urutan="2"
+              src={gambarAr}
+              alt="Tablet menampilkan kubus biru dalam Augmented Reality"
+              editable={editFoto}
+              natural
+              containerClassName="relative w-full rounded-2xl overflow-hidden bg-white"
             />
           </div>
 
-          <div className="bg-[#FEF9E7] rounded-xl py-3.5 px-[18px] flex items-start gap-3">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D97706" strokeWidth="2" className="mt-0.5 flex-shrink-0">
-              <path d="M12 2l2.9 6 6.6.9-4.8 4.6 1.1 6.5L12 16.9 6.2 20l1.1-6.5-4.8-4.6L9.1 8z" />
-            </svg>
-            <p className="m-0 text-sm font-bold text-[#92400E] leading-[1.5]">
-              GeoGebra 3D dan AR membantumu mengumpulkan informasi dengan lebih baik. Kumpulkan
-              data sebanyak mungkin sebelum mencari pola pada tahap berikutnya.
-            </p>
-          </div>
+          <label className="flex flex-col gap-2">
+            <span className="text-sm font-bold text-[#111827]">
+              Catat data hasil pengamatan AR pada tabel yang sama atau pada catatan berikut.
+            </span>
+            <textarea
+              name="answers.catatan_ar"
+              defaultValue={catatan}
+              required
+              rows={5}
+              placeholder="Tuliskan hasil pengamatan ARmu di sini..."
+              className="w-full rounded-xl border border-[#E5E7EB] bg-[#F9FAFB] px-4 py-3 text-sm text-[#374151] placeholder:text-[#9CA3AF] focus:border-[#16A34A] focus:outline-none focus:bg-white transition-colors resize-y"
+            />
+          </label>
         </div>
       </div>
 

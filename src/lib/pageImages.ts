@@ -233,13 +233,23 @@ export type PageImageKey =
   | "M5-P4-L1-1"
   | "M5-P4-L2-1"
   | "M5-P4-L3-1"
+  | "M5-P4-L2-2"
+  | "M5-P4-L3-2"
   | "M5-P4-L4-1"
+  | "M5-P4-L4-2"
+  | "M5-P4-L4-3"
+  | "M5-P4-L4-4"
+  | "M5-P4-L4-5"
   | "M5-P3-L1-1"
   | "M5-P3-L1-2"
   | "M5-P3-L1-3"
   | "M5-P3-L1-4"
   | "M5-P3-L1-5"
-  | "M5-P3-L2-1"
+  | "M5-P3-L3-1"
+  | "M5-P3-L7-1"
+  | "M5-P3-L7-2"
+  | "M5-P3-L7-3"
+  | "M5-P3-L7-4"
   | "M5-P5-L1-1"
   | "M5-P5-L3-1"
   | "M5-P5-L4-1"
@@ -761,16 +771,26 @@ const DEFAULT_IMAGES: Record<PageImageKey, string> = {
   "M4-P7-L7-1": "https://placehold.co/160x192?text=Dua+Siswa+Jempol",
   "M4-P8-L1-1": "https://placehold.co/320x240?text=Tiga+Siswa+Berdiskusi",
   "M5-P8-L1-1": "https://placehold.co/320x240?text=Dua+Siswa+Mencatat",
-  "M5-P4-L1-1": "https://placehold.co/416x320?text=Tiga+Siswa+Bereksplorasi+Skala",
-  "M5-P4-L2-1": "https://placehold.co/600x338?text=GeoGebra+3D+Faktor+Skala",
-  "M5-P4-L3-1": "https://placehold.co/600x338?text=AR+Kubus+Faktor+Skala",
-  "M5-P4-L4-1": "https://placehold.co/220x280?text=Maskot+Ayo+Berpikir",
-  "M5-P3-L1-1": "https://placehold.co/256x320?text=Tiga+Siswa+Berdiskusi",
-  "M5-P3-L1-2": "https://placehold.co/360x200?text=Kubus+Awal+ke+Hasil+Skala",
-  "M5-P3-L1-3": "https://placehold.co/360x200?text=Balok+Awal+ke+Hasil+Skala",
-  "M5-P3-L1-4": "https://placehold.co/360x200?text=Prisma+Awal+ke+Hasil+Skala",
-  "M5-P3-L1-5": "https://placehold.co/360x200?text=Limas+Awal+ke+Hasil+Skala",
-  "M5-P3-L2-1": "https://placehold.co/200x200?text=Laptop+Kubus+GeoGebra",
+  "M5-P4-L1-1": "https://placehold.co/625x538.png?text=Tiga+Siswa+Bereksplorasi+Skala",
+  "M5-P4-L2-1": "https://placehold.co/300x300.png?text=QR+GeoGebra+3D",
+  "M5-P4-L2-2": "https://placehold.co/600x338.png?text=GeoGebra+3D+Faktor+Skala",
+  "M5-P4-L3-1": "https://placehold.co/300x300.png?text=QR+AR",
+  "M5-P4-L3-2": "https://placehold.co/580x502.png?text=AR+Kubus+Faktor+Skala",
+  "M5-P4-L4-1": "https://placehold.co/184x192.png?text=Kubus",
+  "M5-P4-L4-2": "https://placehold.co/312x183.png?text=Balok",
+  "M5-P4-L4-3": "https://placehold.co/420x250.png?text=Prisma+Segitiga",
+  "M5-P4-L4-4": "https://placehold.co/323x280.png?text=Limas+Segiempat",
+  "M5-P4-L4-5": "https://placehold.co/252x280.png?text=Maskot+Ayo+Berpikir",
+  "M5-P3-L1-1": "https://placehold.co/816x546?text=Tiga+Siswa+Berdiskusi",
+  "M5-P3-L1-2": "https://placehold.co/468x138?text=Kubus+Awal+ke+Hasil+Skala",
+  "M5-P3-L1-3": "https://placehold.co/468x165?text=Balok+Awal+ke+Hasil+Skala",
+  "M5-P3-L1-4": "https://placehold.co/468x140?text=Prisma+Awal+ke+Hasil+Skala",
+  "M5-P3-L1-5": "https://placehold.co/468x133?text=Limas+Awal+ke+Hasil+Skala",
+  "M5-P3-L3-1": "https://placehold.co/160x155?text=Laptop+Kubus+GeoGebra",
+  "M5-P3-L7-1": "https://placehold.co/234x223?text=Siswa+Menyampaikan+Pendapat",
+  "M5-P3-L7-2": "https://placehold.co/348x231?text=Siswa+Mendengarkan",
+  "M5-P3-L7-3": "https://placehold.co/607x520?text=Siswa+Membawa+Catatan",
+  "M5-P3-L7-4": "https://placehold.co/646x496?text=Siswa+Siap+Membuktikan",
   "M5-P5-L1-1": "https://placehold.co/416x320?text=Tiga+Siswa+Mengolah+Data",
   "M5-P5-L3-1": "https://placehold.co/220x220?text=Maskot+Refleksi+Mini",
   "M5-P5-L4-1": "https://placehold.co/416x224?text=Tiga+Siswa+Membandingkan",

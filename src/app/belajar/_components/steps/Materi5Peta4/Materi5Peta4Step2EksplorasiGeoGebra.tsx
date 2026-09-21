@@ -16,14 +16,17 @@ const petunjuk = [
 ];
 
 const alurKerja = [
-  { n: 1, label: "Pilih Model", desc: "Pilih salah satu bangun ruang." },
-  { n: 2, label: "Ubah Skala", desc: "Geser slider faktor skala." },
-  { n: 3, label: "Ukur Ukuran", desc: "Ukur ukuran yang diminta (rusuk, panjang, tinggi, dll)." },
-  { n: 4, label: "Hitung Luas", desc: "Hitung luas permukaan berdasarkan ukuran." },
-  { n: 5, label: "Catat Hasil", desc: "Catat pada tabel untuk setiap faktor skala (k)." },
+  { label: "Pilih Model", desc: "Pilih salah satu bangun ruang." },
+  { label: "Ubah Skala", desc: "Geser slider faktor skala (k)." },
+  { label: "Ukur Ukuran", desc: "Ukur ukuran yang diminta (rusuk, panjang, tinggi, apotema, dll)." },
+  { label: "Hitung Luas", desc: "Hitung luas permukaan berdasarkan ukuran." },
+  { label: "Catat Hasil", desc: "Catat pada tabel untuk setiap faktor skala (k)." },
 ];
 
 const faktorSkala = ["1/2", "1", "2", "3"];
+
+const inputClass =
+  "w-full rounded-lg border border-[#E5E7EB] bg-[#F9FAFB] px-3 py-2 text-sm text-[#374151] placeholder:text-[#9CA3AF] focus:border-[#2563EB] focus:outline-none focus:bg-white transition-colors";
 
 export default async function Materi5Peta4Step2EksplorasiGeoGebra({
   materi,
@@ -35,9 +38,9 @@ export default async function Materi5Peta4Step2EksplorasiGeoGebra({
   const answers = initialAnswers ?? {};
   const getValue = (key: string) => (typeof answers[key] === "string" ? (answers[key] as string) : "");
 
-  const [gambarGeoGebra, gambarQr] = await Promise.all([
+  const [gambarQr, gambarGeoGebra] = await Promise.all([
     getPageImage("M5-P4-L2-1"),
-    getPageImage("qr-geogebra"),
+    getPageImage("M5-P4-L2-2"),
   ]);
 
   return (
@@ -61,13 +64,30 @@ export default async function Materi5Peta4Step2EksplorasiGeoGebra({
           </div>
         </div>
 
-        <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-5 sm:p-6 shadow-[0_1px_2px_rgba(0,0,0,0.04)] flex flex-col gap-5">
-          <div className="grid grid-cols-1 lg:grid-cols-[1fr_260px] gap-5 items-start">
+        <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-5 sm:p-6 shadow-[0_1px_2px_rgba(0,0,0,0.04)] flex flex-col gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-[150px_1fr_280px] gap-5 items-start">
+            <div className="bg-[#EFF4FF] rounded-2xl p-3 flex flex-col items-center gap-2 w-fit mx-auto md:mx-0">
+              <span className="text-xs font-bold text-[#1D4ED8] text-center">Scan QR Code GeoGebra</span>
+              <EditablePageImage
+                imageKey="M5-P4-L2-1"
+                materi={materi}
+                peta={peta}
+                step={step}
+                urutan="1"
+                src={gambarQr}
+                alt="QR code menuju model GeoGebra 3D bangun ruang"
+                editable={editFoto}
+                imageClassName="object-contain p-1.5"
+                containerClassName="relative w-32 h-32 rounded-xl overflow-hidden bg-white"
+              />
+              <span className="bg-[#1E3A8A] text-white rounded-full py-1 px-3 text-[11px] font-bold">QR GeoGebra 3D</span>
+            </div>
+
             <div className="flex flex-col gap-3">
-              <span className="text-xs font-bold text-[#111827]">Petunjuk</span>
+              <span className="w-fit bg-[#2563EB] text-white rounded-full py-1 px-3.5 text-xs font-bold">Petunjuk</span>
               <div className="flex flex-col gap-2.5">
                 {petunjuk.map((l, i) => (
-                  <div key={i} className="flex items-start gap-2.5">
+                  <div key={l} className="flex items-start gap-2.5">
                     <div className="w-5 h-5 rounded-full bg-[#2563EB] text-white flex items-center justify-center font-bold text-[10px] flex-shrink-0 mt-0.5">
                       {i + 1}
                     </div>
@@ -77,55 +97,54 @@ export default async function Materi5Peta4Step2EksplorasiGeoGebra({
               </div>
             </div>
 
-            <div className="bg-[#F9FAFB] border border-[#E5E7EB] rounded-2xl p-4 flex flex-col gap-3">
-              <span className="text-xs font-bold text-[#1D4ED8]">Model GeoGebra 3D (Contoh: Kubus)</span>
+            <div className="flex flex-col gap-3">
               <EditablePageImage
-                imageKey="M5-P4-L2-1"
+                imageKey="M5-P4-L2-2"
                 materi={materi}
                 peta={peta}
                 step={step}
-                urutan="1"
+                urutan="2"
                 src={gambarGeoGebra}
                 alt="Model kubus pada GeoGebra 3D dengan slider faktor skala k = 2"
                 editable={editFoto}
-                containerClassName="relative w-full aspect-video rounded-[14px] overflow-hidden bg-white"
+                natural
+                containerClassName="relative w-full rounded-xl overflow-hidden bg-white"
               />
-
-              <div className="flex flex-col items-center gap-2 pt-2 border-t border-[#E5E7EB]">
-                <span className="text-xs font-bold text-[#2563EB]">Scan GeoGebra 3D</span>
-                <EditablePageImage
-                  imageKey="qr-geogebra"
-                  materi={materi}
-                  peta={peta}
-                  step={step}
-                  urutan="2"
-                  src={gambarQr}
-                  alt="QR code menuju model GeoGebra 3D bangun ruang"
-                  editable={editFoto}
-                  imageClassName="object-contain p-2"
-                  containerClassName="relative w-28 h-28 rounded-xl overflow-hidden bg-white border border-[#E5E7EB]"
-                />
+              <div className="bg-[#F9FAFB] border border-[#E5E7EB] rounded-xl p-3 flex flex-col gap-1.5">
+                <div className="flex items-center justify-between">
+                  <span className="text-xs font-bold text-[#1D4ED8]">Informasi Dinamis</span>
+                  <span className="text-[10px] text-[#6B7280]">(contoh: Kubus)</span>
+                </div>
+                {[
+                  ["Rusuk (s)", "8 cm"],
+                  ["Luas Satu Sisi", "64 cm²"],
+                  ["Luas Permukaan", "384 cm²"],
+                ].map(([label, nilai]) => (
+                  <div key={label} className="flex justify-between text-xs text-[#374151] border-t border-[#E5E7EB] pt-1.5">
+                    <span className="font-semibold">{label}</span>
+                    <span className="font-bold text-[#2563EB]">{nilai}</span>
+                  </div>
+                ))}
+                <p className="m-0 text-[10px] text-[#6B7280] leading-[1.4] italic">
+                  Nilai di atas muncul setelah kamu mengukur dan menghitung, lalu menekan tombol &quot;Cek Hasil&quot;.
+                </p>
               </div>
             </div>
           </div>
 
           <div>
-            <span className="text-xs font-bold text-[#111827] mb-2 block">Alur Kerja</span>
-            <div className="flex flex-wrap items-start gap-2">
+            <span className="text-xs font-bold text-[#111827] mb-3 block">Alur Kerja</span>
+            <div className="grid grid-cols-2 sm:grid-cols-5 gap-3">
               {alurKerja.map((a, i) => (
-                <div key={a.n} className="flex items-start gap-2">
-                  <div className="flex flex-col items-center gap-1.5 min-w-[100px] max-w-[130px]">
-                    <div className="w-7 h-7 rounded-full bg-[#2563EB] text-white flex items-center justify-center font-bold text-[11px] flex-shrink-0">
-                      {a.n}
-                    </div>
-                    <p className="m-0 text-center text-[11px] font-bold text-[#111827]">{a.label}</p>
-                    <p className="m-0 text-center text-[10px] text-[#6B7280] leading-[1.4]">{a.desc}</p>
+                <div
+                  key={a.label}
+                  className="relative bg-[#F9FAFB] border border-[#E5E7EB] rounded-xl p-3 flex flex-col items-center gap-1.5 text-center"
+                >
+                  <div className="w-7 h-7 rounded-full bg-[#2563EB] text-white flex items-center justify-center font-bold text-[11px]">
+                    {i + 1}
                   </div>
-                  {i < alurKerja.length - 1 && (
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#9CA3AF" strokeWidth="2.4" className="flex-shrink-0 mt-1.5">
-                      <path d="M5 12h14M13 5l7 7-7 7" />
-                    </svg>
-                  )}
+                  <p className="m-0 text-[11px] font-bold text-[#111827]">{a.label}</p>
+                  <p className="m-0 text-[10px] text-[#6B7280] leading-[1.4]">{a.desc}</p>
                 </div>
               ))}
             </div>
@@ -136,55 +155,62 @@ export default async function Materi5Peta4Step2EksplorasiGeoGebra({
             <table className="w-full text-left border-collapse min-w-[480px]">
               <thead>
                 <tr>
-                  <th className="bg-[#2563EB] text-white text-sm font-bold px-4 py-3 rounded-l-lg w-1/4">
+                  <th className="bg-[#1E3A8A] text-white text-sm font-bold px-4 py-3 rounded-l-lg w-1/4">
                     Faktor Skala (k)
                   </th>
-                  <th className="bg-[#2563EB] text-white text-sm font-bold px-4 py-3 border-l border-white/20">
+                  <th className="bg-[#1E3A8A] text-white text-sm font-bold px-4 py-3 border-l border-white/20">
                     Ukuran yang Diamati (cm)
                   </th>
-                  <th className="bg-[#2563EB] text-white text-sm font-bold px-4 py-3 border-l border-white/20 rounded-r-lg">
+                  <th className="bg-[#1E3A8A] text-white text-sm font-bold px-4 py-3 border-l border-white/20 rounded-r-lg">
                     Luas Permukaan (cm&sup2;)
                   </th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-[#E5E7EB]">
-                {faktorSkala.map((k) => (
-                  <tr key={k}>
-                    <td className="px-4 py-3 text-sm font-bold text-[#111827] align-top">k = {k}</td>
-                    <td className="px-4 py-3">
-                      <input
-                        type="text"
-                        name={`answers.geogebra_ukuran_${k.replace("/", "-")}`}
-                        defaultValue={getValue(`geogebra_ukuran_${k.replace("/", "-")}`)}
-                        placeholder="..."
-                        required
-                        className="w-full rounded-lg border border-[#E5E7EB] bg-[#F9FAFB] px-3 py-2 text-sm text-[#374151] placeholder:text-[#9CA3AF] focus:border-[#2563EB] focus:outline-none focus:bg-white transition-colors"
-                      />
-                    </td>
-                    <td className="px-4 py-3">
-                      <input
-                        type="text"
-                        name={`answers.geogebra_luas_${k.replace("/", "-")}`}
-                        defaultValue={getValue(`geogebra_luas_${k.replace("/", "-")}`)}
-                        placeholder="..."
-                        required
-                        className="w-full rounded-lg border border-[#E5E7EB] bg-[#F9FAFB] px-3 py-2 text-sm text-[#374151] placeholder:text-[#9CA3AF] focus:border-[#2563EB] focus:outline-none focus:bg-white transition-colors"
-                      />
-                    </td>
-                  </tr>
-                ))}
+                {faktorSkala.map((k) => {
+                  const slug = k.replace("/", "-");
+                  return (
+                    <tr key={k}>
+                      <td className="px-4 py-3 text-sm font-bold text-[#111827] align-top">k = {k}</td>
+                      <td className="px-4 py-3">
+                        <input
+                          type="text"
+                          name={`answers.geogebra_ukuran_${slug}`}
+                          defaultValue={getValue(`geogebra_ukuran_${slug}`)}
+                          placeholder="..."
+                          required
+                          className={inputClass}
+                        />
+                      </td>
+                      <td className="px-4 py-3">
+                        <input
+                          type="text"
+                          name={`answers.geogebra_luas_${slug}`}
+                          defaultValue={getValue(`geogebra_luas_${slug}`)}
+                          placeholder="..."
+                          required
+                          className={inputClass}
+                        />
+                      </td>
+                    </tr>
+                  );
+                })}
               </tbody>
             </table>
           </div>
 
           <div className="bg-[#FEF9E7] rounded-xl py-3.5 px-[18px] flex flex-col gap-1.5">
-            <p className="m-0 text-sm font-bold text-[#92400E]">Catatan</p>
+            <p className="m-0 text-sm font-bold text-[#92400E]">Catatan: ukuran yang diamati</p>
             <ul className="m-0 pl-4 flex flex-col gap-1 text-xs text-[#78350F] leading-[1.5] list-disc">
               <li>Kubus: panjang rusuk (s)</li>
-              <li>Balok: panjang, lebar, tinggi (p, l, t)</li>
-              <li>Prisma Segitiga: panjang prisma, alas segitiga (p, a, t<sub>a</sub>)</li>
-              <li>Limas Segiempat: sisi alas (a), apotema (a)</li>
-              <li>Catat panjang/ukuran dan luas permukaan untuk setiap faktor skala (k).</li>
+              <li>Balok: panjang (p), lebar (l), tinggi (t)</li>
+              <li>
+                Prisma Segitiga: panjang prisma (p), alas segitiga (a, b), tinggi alas (t<sub>a</sub>)
+              </li>
+              <li>Limas Segiempat: sisi alas (a), apotema (a<sub>p</sub>)</li>
+              <li className="text-[#DC2626] font-semibold">
+                Catat panjang/ukuran dan luas permukaan untuk setiap faktor skala (k).
+              </li>
             </ul>
           </div>
         </div>

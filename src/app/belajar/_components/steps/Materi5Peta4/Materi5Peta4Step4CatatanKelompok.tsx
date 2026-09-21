@@ -3,12 +3,14 @@ import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry"
 import SubmitStepButton from "@/app/belajar/_components/SubmitStepButton";
 import BackLink from "@/app/belajar/_components/BackLink";
 import StepHeader from "@/app/belajar/_components/StepHeader";
+import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
+import { getPageImage, type PageImageKey } from "@/lib/pageImages";
 
-const bangunRuang = [
-  { key: "kubus", label: "Kubus", color: "#16A34A" },
-  { key: "balok", label: "Balok", color: "#2563EB" },
-  { key: "prisma", label: "Prisma Segitiga", color: "#EA580C" },
-  { key: "limas", label: "Limas Segiempat", color: "#7C3AED" },
+const bangunRuang: { key: string; label: string; color: string; imageKey: PageImageKey; urutan: string }[] = [
+  { key: "kubus", label: "Kubus", color: "#16A34A", imageKey: "M5-P4-L4-1", urutan: "1" },
+  { key: "balok", label: "Balok", color: "#2563EB", imageKey: "M5-P4-L4-2", urutan: "2" },
+  { key: "prisma", label: "Prisma Segitiga", color: "#EA580C", imageKey: "M5-P4-L4-3", urutan: "3" },
+  { key: "limas", label: "Limas Segiempat", color: "#7C3AED", imageKey: "M5-P4-L4-4", urutan: "4" },
 ];
 
 const faktorSkala = ["1/2", "1", "2", "3"];
@@ -22,14 +24,24 @@ const checklist = [
   "Tidak ada data yang terlewat.",
 ];
 
+const inputClass =
+  "w-full rounded-lg border border-[#E5E7EB] bg-[#F9FAFB] px-2.5 py-1.5 text-sm text-[#374151] placeholder:text-[#9CA3AF] focus:border-[#2563EB] focus:outline-none focus:bg-white transition-colors";
+
 export default async function Materi5Peta4Step4CatatanKelompok({
   materi,
   peta,
+  step = "4",
+  editFoto,
   initialAnswers,
 }: StepComponentProps) {
   const answers = initialAnswers ?? {};
   const getValue = (key: string) => (typeof answers[key] === "string" ? (answers[key] as string) : "");
   const isChecked = (key: string) => answers[key] === "true" || answers[key] === "on";
+
+  const [gambarBangun, gambarMaskot] = await Promise.all([
+    Promise.all(bangunRuang.map((b) => getPageImage(b.imageKey))),
+    getPageImage("M5-P4-L4-5"),
+  ]);
 
   return (
     <form action={submitStepAction} className="flex flex-col gap-8">
@@ -51,7 +63,8 @@ export default async function Materi5Peta4Step4CatatanKelompok({
             <div className="flex flex-col">
               <span className="text-sm font-bold text-[#2563EB]">Catatan Kelompok</span>
               <span className="text-xs text-[#6B7280]">
-                Lengkapilah tabel berikut berdasarkan data dari GeoGebra 3D dan AR.
+                Lengkapilah tabel berikut berdasarkan data yang telah kamu peroleh dari GeoGebra 3D dan Augmented
+                Reality (AR).
               </span>
             </div>
           </div>
@@ -60,24 +73,46 @@ export default async function Materi5Peta4Step4CatatanKelompok({
             <table className="w-full text-left border-collapse min-w-[720px]">
               <thead>
                 <tr>
-                  <th className="bg-[#2563EB] text-white text-xs font-bold px-3 py-3 rounded-l-lg">Bangun Ruang</th>
-                  <th className="bg-[#2563EB] text-white text-xs font-bold px-3 py-3 border-l border-white/20">Faktor Skala (k)</th>
-                  <th className="bg-[#2563EB] text-white text-xs font-bold px-3 py-3 border-l border-white/20">Ukuran (cm) / Rusuk</th>
-                  <th className="bg-[#2563EB] text-white text-xs font-bold px-3 py-3 border-l border-white/20">Luas Awal (cm&sup2;) (k = 1)</th>
-                  <th className="bg-[#2563EB] text-white text-xs font-bold px-3 py-3 border-l border-white/20 rounded-r-lg">Luas Baru (cm&sup2;)</th>
+                  <th className="bg-[#1E3A8A] text-white text-xs font-bold px-3 py-3 rounded-l-lg">Bangun Ruang</th>
+                  <th className="bg-[#1E3A8A] text-white text-xs font-bold px-3 py-3 border-l border-white/20">
+                    Faktor Skala (k)
+                  </th>
+                  <th className="bg-[#1E3A8A] text-white text-xs font-bold px-3 py-3 border-l border-white/20">
+                    Ukuran yang Diamati (cm) / Rusuk
+                  </th>
+                  <th className="bg-[#1E3A8A] text-white text-xs font-bold px-3 py-3 border-l border-white/20">
+                    Luas Awal (cm&sup2;) (k = 1)
+                  </th>
+                  <th className="bg-[#1E3A8A] text-white text-xs font-bold px-3 py-3 border-l border-white/20 rounded-r-lg">
+                    Luas Baru (cm&sup2;)
+                  </th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-[#E5E7EB]">
-                {bangunRuang.map((b) =>
+                {bangunRuang.map((b, bi) =>
                   faktorSkala.map((k, i) => {
                     const kSlug = k.replace("/", "-");
                     return (
                       <tr key={`${b.key}-${k}`}>
                         {i === 0 && (
-                          <td rowSpan={faktorSkala.length} className="px-3 py-2 align-middle border-r border-[#F3F4F6]">
-                            <span className="text-sm font-bold" style={{ color: b.color }}>
-                              {b.label}
-                            </span>
+                          <td rowSpan={faktorSkala.length} className="px-3 py-2 align-middle border-r border-[#F3F4F6] w-[130px]">
+                            <div className="flex flex-col items-center gap-1.5 text-center">
+                              <EditablePageImage
+                                imageKey={b.imageKey}
+                                materi={materi}
+                                peta={peta}
+                                step={step}
+                                urutan={b.urutan}
+                                src={gambarBangun[bi]}
+                                alt={`Ilustrasi ${b.label}`}
+                                editable={editFoto}
+                                imageClassName="object-contain"
+                                containerClassName="relative w-20 h-16"
+                              />
+                              <span className="text-sm font-bold" style={{ color: b.color }}>
+                                {b.label}
+                              </span>
+                            </div>
                           </td>
                         )}
                         <td className="px-3 py-2 text-sm font-semibold text-[#111827] align-top">k = {k}</td>
@@ -88,7 +123,7 @@ export default async function Materi5Peta4Step4CatatanKelompok({
                             defaultValue={getValue(`ukuran_${b.key}_${kSlug}`)}
                             placeholder="..."
                             required
-                            className="w-full rounded-lg border border-[#E5E7EB] bg-[#F9FAFB] px-2.5 py-1.5 text-sm text-[#374151] placeholder:text-[#9CA3AF] focus:border-[#2563EB] focus:outline-none focus:bg-white transition-colors"
+                            className={inputClass}
                           />
                         </td>
                         <td className="px-3 py-2">
@@ -98,7 +133,7 @@ export default async function Materi5Peta4Step4CatatanKelompok({
                             defaultValue={getValue(`luas_awal_${b.key}_${kSlug}`)}
                             placeholder="..."
                             required
-                            className="w-full rounded-lg border border-[#E5E7EB] bg-[#F9FAFB] px-2.5 py-1.5 text-sm text-[#374151] placeholder:text-[#9CA3AF] focus:border-[#2563EB] focus:outline-none focus:bg-white transition-colors"
+                            className={inputClass}
                           />
                         </td>
                         <td className="px-3 py-2">
@@ -108,7 +143,7 @@ export default async function Materi5Peta4Step4CatatanKelompok({
                             defaultValue={getValue(`luas_baru_${b.key}_${kSlug}`)}
                             placeholder="..."
                             required
-                            className="w-full rounded-lg border border-[#E5E7EB] bg-[#F9FAFB] px-2.5 py-1.5 text-sm text-[#374151] placeholder:text-[#9CA3AF] focus:border-[#2563EB] focus:outline-none focus:bg-white transition-colors"
+                            className={inputClass}
                           />
                         </td>
                       </tr>
@@ -123,8 +158,13 @@ export default async function Materi5Peta4Step4CatatanKelompok({
             <p className="m-0 text-sm font-bold text-[#92400E]">Catatan</p>
             <ul className="m-0 pl-4 flex flex-col gap-1 text-xs text-[#78350F] leading-[1.5] list-disc">
               <li>Ukuran yang diamati dapat berupa panjang rusuk, panjang-lebar-tinggi, tinggi alas, apotema, dll.</li>
-              <li>Luas Awal = luas permukaan bangun sebelum perubahan skala (k = 1).</li>
-              <li>Luas Baru = luas permukaan bangun setelah diperbesar atau diperkecil sesuai faktor skala (k).</li>
+              <li>
+                <strong>Luas Awal</strong> = luas permukaan bangun sebelum perubahan skala (k = 1).
+              </li>
+              <li>
+                <strong>Luas Baru</strong> = luas permukaan bangun setelah diperbesar atau diperkecil sesuai faktor
+                skala (k).
+              </li>
             </ul>
             <p className="m-0 mt-1 text-xs font-bold text-[#DC2626]">
               Isilah tabel secara berurutan mulai dari faktor skala &frac12;, kemudian 1, 2, dan 3.
@@ -133,6 +173,13 @@ export default async function Materi5Peta4Step4CatatanKelompok({
         </div>
 
         <div className="flex flex-col gap-5">
+          <div className="bg-[#FEF9E7] border border-[#FDE68A] rounded-[20px] p-5 flex flex-col gap-2">
+            <span className="text-sm font-bold text-[#B45309]">Catatan:</span>
+            <p className="m-0 text-xs text-[#78350F] leading-[1.6]">
+              Gunakan data dari GeoGebra 3D dan AR untuk mengisi tabel di samping.
+            </p>
+          </div>
+
           <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-5 shadow-[0_1px_2px_rgba(0,0,0,0.04)] flex flex-col gap-3">
             <div className="flex items-center gap-2">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#16A34A" strokeWidth="2.4">
@@ -141,7 +188,7 @@ export default async function Materi5Peta4Step4CatatanKelompok({
               <span className="text-sm font-bold text-[#16A34A]">Pastikan Data Lengkap!</span>
             </div>
             {checklist.map((c, i) => (
-              <label key={i} className="flex items-start gap-2.5 cursor-pointer group">
+              <label key={c} className="flex items-start gap-2.5 cursor-pointer group">
                 <input
                   type="checkbox"
                   name={`answers.checklist_${i}`}
@@ -156,18 +203,25 @@ export default async function Materi5Peta4Step4CatatanKelompok({
             ))}
           </div>
 
-          <div className="bg-[#FFF1F2] border border-[#FECDD3] rounded-[20px] p-5 flex flex-col gap-2">
-            <div className="flex items-center gap-2">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E11D48" strokeWidth="2.4">
-                <circle cx="12" cy="12" r="9" />
-                <path d="M12 8v5M12 16.5v.01" />
-              </svg>
-              <span className="text-sm font-bold text-[#E11D48]">Ayo Berpikir!</span>
+          <div className="bg-[#EFF4FF] border border-[#BFDBFE] rounded-[20px] p-5 flex items-end gap-3">
+            <div className="flex flex-col gap-2 flex-1">
+              <span className="text-sm font-bold text-[#1D4ED8]">Ayo Berpikir!</span>
+              <p className="m-0 text-xs text-[#1E3A8A] leading-[1.6]">
+                Perhatikan data yang kamu kumpulkan. Nanti kita akan mengolah data ini untuk menemukan polanya.
+              </p>
             </div>
-            <p className="m-0 text-xs text-[#9F1239] leading-[1.6]">
-              Perhatikan data yang kamu kumpulkan. Nanti kita akan mengolah data ini untuk
-              menemukan polanya.
-            </p>
+            <EditablePageImage
+              imageKey="M5-P4-L4-5"
+              materi={materi}
+              peta={peta}
+              step={step}
+              urutan="5"
+              src={gambarMaskot}
+              alt="Siswa berpikir dengan tanda tanya di atas kepala"
+              editable={editFoto}
+              imageClassName="object-contain"
+              containerClassName="relative w-24 h-28 flex-shrink-0"
+            />
           </div>
         </div>
       </div>
