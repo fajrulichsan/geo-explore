@@ -3,21 +3,20 @@ import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry"
 import SubmitStepButton from "@/app/belajar/_components/SubmitStepButton";
 import StepHeader from "@/app/belajar/_components/StepHeader";
 import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
-import { getPageImage } from "@/lib/pageImages";
+import { getPageImage, type PageImageKey } from "@/lib/pageImages";
 
 const bangunRuang = [
-  { key: "kubus", label: "Kubus" },
-  { key: "balok", label: "Balok" },
-  { key: "prisma", label: "Prisma" },
+  { key: "kubus", label: "Kubus", urutan: "2", alt: "Kubus biru" },
+  { key: "balok", label: "Balok", urutan: "3", alt: "Balok hijau" },
+  { key: "prisma", label: "Prisma", urutan: "4", alt: "Prisma segitiga oranye" },
 ];
 
-const proses = [
-  { n: 1, label: "Mengelompokkan Data" },
-  { n: 2, label: "Hitung Luas Sisi" },
-  { n: 3, label: "Cari Pola" },
-];
+const proses = ["Mengelompokkan Data", "Hitung Luas Sisi", "Cari Pola"];
 
-export default async function Materi3Peta5Step1MengelompokkanData({
+const inputClass =
+  "w-full rounded-lg border border-[#E5E7EB] bg-[#F9FAFB] px-3 py-2 text-sm text-[#374151] placeholder:text-[#9CA3AF] focus:border-[#16A34A] focus:outline-none focus:bg-white transition-colors";
+
+export default async function Materi3Peta5Step1KelompokkanSisi({
   materi,
   peta,
   step = "1",
@@ -26,7 +25,8 @@ export default async function Materi3Peta5Step1MengelompokkanData({
 }: StepComponentProps) {
   const answers = initialAnswers ?? {};
   const getValue = (key: string) => (typeof answers[key] === "string" ? (answers[key] as string) : "");
-  const heroImage = await getPageImage("M3-P5-L1-1");
+  const keys: PageImageKey[] = ["M3-P5-L1-1", "M3-P5-L1-2", "M3-P5-L1-3", "M3-P5-L1-4"];
+  const [hero, ...shapes] = await Promise.all(keys.map((k) => getPageImage(k)));
 
   return (
     <form action={submitStepAction} className="flex flex-col gap-8">
@@ -45,56 +45,62 @@ export default async function Materi3Peta5Step1MengelompokkanData({
         <p className="m-0 text-sm font-semibold text-[#2563EB]">Temukan Pola Luas Permukaan</p>
       </div>
 
-      <div className="grid lg:grid-cols-12 gap-6 items-stretch">
-        <div className="lg:col-span-8 bg-white border border-[#E5E7EB] rounded-[20px] p-6 shadow-[0_1px_2px_rgba(0,0,0,0.04)] flex flex-col gap-3">
-          <p className="m-0 text-sm leading-[1.6] text-[#374151]">
+      <div className="grid lg:grid-cols-12 gap-6 items-center">
+        <div className="lg:col-span-5 bg-[#EFF4FF] border border-[#BFDBFE] rounded-[20px] p-6 flex flex-col gap-3">
+          <p className="m-0 text-sm leading-[1.7] text-[#374151]">
             Kamu telah mengumpulkan berbagai informasi melalui GeoGebra 3D dan Augmented Reality.
             Sekarang saatnya mengolah informasi tersebut.
           </p>
-          <p className="m-0 text-sm leading-[1.6] text-[#374151]">
+          <p className="m-0 text-sm leading-[1.7] text-[#374151]">
             Kelompokkan sisi-sisi yang{" "}
             <span className="font-bold text-[#2563EB]">sama bentuk dan ukurannya</span>, hitung luas
-            setiap sisi, kemudian temukan sendiri bagaimana luas permukaan suatu bangun ruang diperoleh.
+            setiap sisi, kemudian temukan sendiri bagaimana luas permukaan suatu bangun ruang
+            diperoleh.
           </p>
         </div>
-        <div className="lg:col-span-4 relative rounded-[20px] overflow-hidden bg-[#EFF4FF]">
+        <div className="lg:col-span-7 rounded-[20px] overflow-hidden bg-white border border-[#E5E7EB]">
           <EditablePageImage
             imageKey="M3-P5-L1-1"
             materi={materi}
             peta={peta}
             step={step}
             urutan="1"
-            src={heroImage}
-            alt="Tiga siswa mengolah data hasil eksplorasi"
+            src={hero}
+            alt="Tiga siswa mengamati jaring-jaring dan GeoGebra di laptop"
             editable={editFoto}
-            imageClassName="object-contain"
-            containerClassName="relative w-full h-full min-h-[180px]"
+            natural
+            containerClassName="relative w-full"
           />
         </div>
       </div>
 
-      <div className="flex flex-wrap items-center gap-3 bg-[#F9FAFB] border border-[#E5E7EB] rounded-2xl px-5 py-4">
-        {proses.map((p, i) => (
-          <div key={p.n} className="flex items-center gap-3">
-            <div className="flex items-center gap-2">
-              <div
-                className={`w-7 h-7 rounded-full flex items-center justify-center font-bold text-xs flex-shrink-0 ${
-                  p.n === 1 ? "bg-[#16A34A] text-white" : "bg-[#E5E7EB] text-[#6B7280]"
-                }`}
-              >
-                {p.n}
+      <div className="flex flex-col gap-2 bg-[#F9FAFB] border border-[#E5E7EB] rounded-2xl px-5 py-4">
+        <div className="flex flex-wrap items-center gap-3">
+          {proses.map((label, i) => (
+            <div key={label} className="flex items-center gap-3">
+              <div className="flex items-center gap-2">
+                <div
+                  className={`w-7 h-7 rounded-full flex items-center justify-center font-bold text-xs flex-shrink-0 ${
+                    i === 0 ? "bg-[#16A34A] text-white" : "bg-[#E5E7EB] text-[#6B7280]"
+                  }`}
+                >
+                  {i + 1}
+                </div>
+                <span className={`text-sm font-bold ${i === 0 ? "text-[#16A34A]" : "text-[#6B7280]"}`}>
+                  {label}
+                </span>
               </div>
-              <span className={`text-sm font-bold ${p.n === 1 ? "text-[#16A34A]" : "text-[#6B7280]"}`}>
-                {p.label}
-              </span>
+              {i < proses.length - 1 && (
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#9CA3AF" strokeWidth="2.4">
+                  <path d="M5 12h14M13 5l7 7-7 7" />
+                </svg>
+              )}
             </div>
-            {i < proses.length - 1 && (
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#9CA3AF" strokeWidth="2.4">
-                <path d="M5 12h14M13 5l7 7-7 7" />
-              </svg>
-            )}
-          </div>
-        ))}
+          ))}
+        </div>
+        <p className="m-0 text-xs font-semibold text-[#2563EB]">
+          Olah hasil pengamatanmu melalui langkah-langkah berikut untuk menemukan pola luas permukaan.
+        </p>
       </div>
 
       <div className="bg-white border border-[#E5E7EB] rounded-[20px] shadow-[0_1px_2px_rgba(0,0,0,0.04)] overflow-hidden">
@@ -107,10 +113,10 @@ export default async function Materi3Peta5Step1MengelompokkanData({
         <p className="m-0 px-6 pt-2 text-sm text-[#4B5563]">Lengkapilah tabel berikut.</p>
 
         <div className="px-6 pt-4 overflow-x-auto">
-          <table className="w-full text-left border-collapse">
+          <table className="w-full min-w-[520px] text-left border-collapse">
             <thead>
               <tr>
-                <th className="bg-[#16A34A] text-white text-sm font-bold px-4 py-3 rounded-l-lg w-1/4">
+                <th className="bg-[#16A34A] text-white text-sm font-bold px-4 py-3 rounded-l-lg w-[30%]">
                   Bangun Ruang
                 </th>
                 <th className="bg-[#16A34A] text-white text-sm font-bold px-4 py-3 border-l border-white/20">
@@ -122,9 +128,25 @@ export default async function Materi3Peta5Step1MengelompokkanData({
               </tr>
             </thead>
             <tbody className="divide-y divide-[#E5E7EB]">
-              {bangunRuang.map((b) => (
+              {bangunRuang.map((b, i) => (
                 <tr key={b.key}>
-                  <td className="px-4 py-3 text-sm font-bold text-[#111827] align-top">{b.label}</td>
+                  <td className="px-4 py-3">
+                    <div className="flex items-center gap-3">
+                      <EditablePageImage
+                        imageKey={`M3-P5-L1-${b.urutan}` as PageImageKey}
+                        materi={materi}
+                        peta={peta}
+                        step={step}
+                        urutan={b.urutan}
+                        src={shapes[i]}
+                        alt={b.alt}
+                        editable={editFoto}
+                        imageClassName="object-contain"
+                        containerClassName="relative w-16 h-12 flex-shrink-0"
+                      />
+                      <span className="text-sm font-bold text-[#111827]">{b.label}</span>
+                    </div>
+                  </td>
                   <td className="px-4 py-3">
                     <input
                       type="text"
@@ -132,7 +154,7 @@ export default async function Materi3Peta5Step1MengelompokkanData({
                       defaultValue={getValue(`sisi_sama_${b.key}`)}
                       placeholder="Ketik di sini..."
                       required
-                      className="w-full rounded-lg border border-[#E5E7EB] bg-[#F9FAFB] px-3 py-2 text-sm text-[#374151] placeholder:text-[#9CA3AF] focus:border-[#16A34A] focus:outline-none focus:bg-white transition-colors"
+                      className={inputClass}
                     />
                   </td>
                   <td className="px-4 py-3">
@@ -142,7 +164,7 @@ export default async function Materi3Peta5Step1MengelompokkanData({
                       defaultValue={getValue(`banyak_sisi_${b.key}`)}
                       placeholder="0"
                       required
-                      className="w-full rounded-lg border border-[#E5E7EB] bg-[#F9FAFB] px-3 py-2 text-sm text-[#374151] placeholder:text-[#9CA3AF] focus:border-[#16A34A] focus:outline-none focus:bg-white transition-colors"
+                      className={inputClass}
                     />
                   </td>
                 </tr>

@@ -10,6 +10,16 @@ const bangunRuang = [
   { key: "prisma", label: "Prisma" },
 ];
 
+const kolom = [
+  { key: "kelompok", label: "Kelompok Sisi", hint: "sisi-sisi yang sama bentuk dan ukurannya", type: "text", placeholder: "Ketik..." },
+  { key: "banyak", label: "Banyak Sisi", hint: "satuan", type: "number", placeholder: "0" },
+  { key: "luas_satu", label: "Luas Satu Sisi", hint: "satuan luas", type: "text", placeholder: "0" },
+  { key: "total", label: "Total Luas Kelompok", hint: "satuan luas", type: "text", placeholder: "0" },
+];
+
+const inputClass =
+  "w-full rounded-lg border border-[#E5E7EB] bg-[#F9FAFB] px-3 py-2 text-sm text-[#374151] placeholder:text-[#9CA3AF] focus:border-[#2563EB] focus:outline-none focus:bg-white transition-colors";
+
 export default async function Materi3Peta5Step2HitungLuasSisi({
   materi,
   peta,
@@ -45,70 +55,42 @@ export default async function Materi3Peta5Step2HitungLuasSisi({
         <p className="m-0 px-6 pt-2 text-sm text-[#4B5563]">Lengkapilah tabel berikut.</p>
 
         <div className="px-6 pt-4 overflow-x-auto">
-          <table className="w-full text-left border-collapse min-w-[640px]">
+          <table className="w-full min-w-[720px] text-left border-collapse">
             <thead>
               <tr>
                 <th className="bg-[#2563EB] text-white text-sm font-bold px-4 py-3 rounded-l-lg">
                   Bangun Ruang
                 </th>
-                <th className="bg-[#2563EB] text-white text-sm font-bold px-4 py-3 border-l border-white/20">
-                  Kelompok Sisi (sisi-sisi yang sama bentuk dan ukurannya)
-                </th>
-                <th className="bg-[#2563EB] text-white text-sm font-bold px-4 py-3 border-l border-white/20 w-28">
-                  Banyak Sisi (satuan)
-                </th>
-                <th className="bg-[#2563EB] text-white text-sm font-bold px-4 py-3 border-l border-white/20 w-28">
-                  Luas Satu Sisi (satuan luas)
-                </th>
-                <th className="bg-[#2563EB] text-white text-sm font-bold px-4 py-3 border-l border-white/20 rounded-r-lg w-32">
-                  Total Luas Kelompok (satuan luas)
-                </th>
+                {kolom.map((k, i) => (
+                  <th
+                    key={k.key}
+                    className={`bg-[#2563EB] text-white text-sm font-bold px-4 py-3 border-l border-white/20 ${
+                      i === kolom.length - 1 ? "rounded-r-lg" : ""
+                    }`}
+                  >
+                    {k.label}
+                    <span className="block text-[11px] font-medium text-white/80">({k.hint})</span>
+                  </th>
+                ))}
               </tr>
             </thead>
             <tbody className="divide-y divide-[#E5E7EB]">
               {bangunRuang.map((b) => (
                 <tr key={b.key}>
                   <td className="px-4 py-3 text-sm font-bold text-[#111827] align-top">{b.label}</td>
-                  <td className="px-4 py-3">
-                    <input
-                      type="text"
-                      name={`answers.kelompok_sisi_${b.key}`}
-                      defaultValue={getValue(`kelompok_sisi_${b.key}`)}
-                      placeholder="Ketik di sini..."
-                      required
-                      className="w-full rounded-lg border border-[#E5E7EB] bg-[#F9FAFB] px-3 py-2 text-sm text-[#374151] placeholder:text-[#9CA3AF] focus:border-[#2563EB] focus:outline-none focus:bg-white transition-colors"
-                    />
-                  </td>
-                  <td className="px-4 py-3">
-                    <input
-                      type="number"
-                      name={`answers.banyak_sisi_luas_${b.key}`}
-                      defaultValue={getValue(`banyak_sisi_luas_${b.key}`)}
-                      placeholder="0"
-                      required
-                      className="w-full rounded-lg border border-[#E5E7EB] bg-[#F9FAFB] px-3 py-2 text-sm text-[#374151] placeholder:text-[#9CA3AF] focus:border-[#2563EB] focus:outline-none focus:bg-white transition-colors"
-                    />
-                  </td>
-                  <td className="px-4 py-3">
-                    <input
-                      type="text"
-                      name={`answers.luas_satu_sisi_${b.key}`}
-                      defaultValue={getValue(`luas_satu_sisi_${b.key}`)}
-                      placeholder="..."
-                      required
-                      className="w-full rounded-lg border border-[#E5E7EB] bg-[#F9FAFB] px-3 py-2 text-sm text-[#374151] placeholder:text-[#9CA3AF] focus:border-[#2563EB] focus:outline-none focus:bg-white transition-colors"
-                    />
-                  </td>
-                  <td className="px-4 py-3">
-                    <input
-                      type="text"
-                      name={`answers.total_luas_kelompok_${b.key}`}
-                      defaultValue={getValue(`total_luas_kelompok_${b.key}`)}
-                      placeholder="..."
-                      required
-                      className="w-full rounded-lg border border-[#E5E7EB] bg-[#F9FAFB] px-3 py-2 text-sm text-[#374151] placeholder:text-[#9CA3AF] focus:border-[#2563EB] focus:outline-none focus:bg-white transition-colors"
-                    />
-                  </td>
+                  {kolom.map((k) => (
+                    <td key={k.key} className="px-3 py-3">
+                      <input
+                        type={k.type}
+                        name={`answers.${k.key}_${b.key}`}
+                        defaultValue={getValue(`${k.key}_${b.key}`)}
+                        placeholder={k.placeholder}
+                        required
+                        aria-label={`${k.label} ${b.label}`}
+                        className={inputClass}
+                      />
+                    </td>
+                  ))}
                 </tr>
               ))}
             </tbody>
@@ -123,14 +105,14 @@ export default async function Materi3Peta5Step2HitungLuasSisi({
             </svg>
             Pertanyaan
           </p>
-          <label htmlFor="apakah_semua_sisi" className="text-sm text-[#374151]">
+          <label htmlFor="hitung_satu_per_satu" className="text-sm text-[#374151]">
             Apakah semua sisi harus dihitung satu per satu? Mengapa?
           </label>
           <textarea
-            id="apakah_semua_sisi"
-            name="answers.apakah_semua_sisi"
-            defaultValue={getValue("apakah_semua_sisi")}
-            rows={2}
+            id="hitung_satu_per_satu"
+            name="answers.hitung_satu_per_satu"
+            defaultValue={getValue("hitung_satu_per_satu")}
+            rows={3}
             required
             placeholder="Jawabanmu..."
             className="w-full rounded-xl border border-[#BFDBFE] bg-white px-3.5 py-2.5 text-sm text-[#374151] placeholder:text-[#9CA3AF] focus:border-[#2563EB] focus:outline-none transition-colors resize-y"

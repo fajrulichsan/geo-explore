@@ -23,7 +23,11 @@ export default async function Materi3Peta5Step6RefleksiSingkat({
 }: StepComponentProps) {
   const answers = initialAnswers ?? {};
   const getChecked = (key: string) => answers[key] === "on" || answers[key] === true;
-  const mascotImage = await getPageImage("M3-P5-L6-1");
+  const [groupImage, mascotImage, cubeImage] = await Promise.all([
+    getPageImage("M3-P5-L6-1"),
+    getPageImage("M3-P5-L6-2"),
+    getPageImage("M3-P5-L6-3"),
+  ]);
 
   return (
     <form action={submitStepAction} className="flex flex-col gap-8">
@@ -42,83 +46,102 @@ export default async function Materi3Peta5Step6RefleksiSingkat({
         <p className="m-0 text-sm font-semibold text-[#2563EB]">Temukan Pola Luas Permukaan</p>
       </div>
 
-      <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-6 shadow-[0_1px_2px_rgba(0,0,0,0.04)] flex flex-col gap-4">
-        <div className="flex items-center gap-3">
-          <div className="w-9 h-9 rounded-full bg-[#7C3AED] text-white flex items-center justify-center font-bold text-sm flex-shrink-0">
-            F
+      <div className="grid lg:grid-cols-12 gap-6 items-center bg-[#F5F3FF] border border-[#DDD6FE] rounded-[20px] p-6">
+        <div className="lg:col-span-7 flex flex-col gap-4">
+          <div className="flex items-center gap-3">
+            <div className="w-9 h-9 rounded-full bg-[#4C1D95] text-white flex items-center justify-center font-bold text-sm flex-shrink-0">
+              F
+            </div>
+            <h2 className="m-0 text-lg font-bold text-[#111827]">Refleksi Singkat</h2>
           </div>
-          <h2 className="m-0 text-lg font-bold text-[#111827]">Refleksi Singkat</h2>
+          <p className="m-0 text-sm text-[#4B5563]">Centang (&#10003;) pernyataan yang sesuai denganmu.</p>
+          <div className="flex flex-col gap-2.5">
+            {pernyataan.map((p) => (
+              <label
+                key={p.key}
+                className="flex items-center gap-3 bg-white border border-[#E5E7EB] rounded-xl px-4 py-3 cursor-pointer has-[:checked]:bg-[#EDE9FE] has-[:checked]:border-[#4C1D95] transition-colors"
+              >
+                <input
+                  type="checkbox"
+                  name={`answers.${p.key}`}
+                  defaultChecked={getChecked(p.key)}
+                  className="w-4 h-4 accent-[#4C1D95] flex-shrink-0"
+                />
+                <span className="text-sm font-semibold text-[#374151]">{p.label}</span>
+              </label>
+            ))}
+          </div>
         </div>
-        <p className="m-0 text-sm text-[#4B5563]">
-          Centang (&#10003;) pernyataan yang sesuai dengamu.
-        </p>
-        <div className="flex flex-col gap-2.5">
-          {pernyataan.map((p) => (
-            <label
-              key={p.key}
-              className="flex items-center gap-3 bg-[#F9FAFB] border border-[#E5E7EB] rounded-xl px-4 py-3 cursor-pointer has-[:checked]:bg-[#F5F3FF] has-[:checked]:border-[#7C3AED] transition-colors"
-            >
-              <input
-                type="checkbox"
-                name={`answers.${p.key}`}
-                defaultChecked={getChecked(p.key)}
-                className="w-4 h-4 accent-[#7C3AED] flex-shrink-0"
-              />
-              <span className="text-sm font-semibold text-[#374151]">{p.label}</span>
-            </label>
-          ))}
+        <div className="lg:col-span-5 rounded-2xl overflow-hidden">
+          <EditablePageImage
+            imageKey="M3-P5-L6-1"
+            materi={materi}
+            peta={peta}
+            step={step}
+            urutan="1"
+            src={groupImage}
+            alt="Tiga siswa menggambar jaring-jaring bangun ruang"
+            editable={editFoto}
+            natural
+            containerClassName="relative w-full"
+          />
         </div>
       </div>
 
       <div className="grid sm:grid-cols-2 gap-5">
-        <div className="bg-white border border-[#E5E7EB] rounded-2xl p-5 flex items-start gap-3">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D97706" strokeWidth="2.2" className="mt-0.5 flex-shrink-0">
-            <path d="M12 2l2.6 6.5L21 9.3l-5 4.4 1.5 6.8L12 17l-5.5 3.5L8 13.7 3 9.3l6.4-.8z" />
-          </svg>
-          <div className="flex flex-col gap-1">
-            <p className="m-0 text-sm font-bold text-[#D97706]">Ingat!</p>
+        <div className="bg-[#FEF9E7] border border-[#FDE68A] rounded-2xl p-5 flex items-center gap-4">
+          <div className="flex-1 flex flex-col gap-1.5">
+            <p className="m-0 flex items-center gap-2 text-sm font-bold text-[#DC2626]">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" strokeWidth="1.5" strokeLinejoin="round">
+                <path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17l-6.1 3.6 1.4-6.8L2.2 9.1l6.9-.8z" />
+              </svg>
+              Ingat!
+            </p>
             <p className="m-0 text-xs leading-[1.7] text-[#374151]">
               Sebelum menggunakan rumus, pahamilah mengapa rumus tersebut terbentuk.{" "}
-              <span className="font-bold text-[#111827]">
-                Rumus berasal dari pola yang kamu temukan sendiri.
-              </span>
+              <span className="font-bold text-[#1E3A8A]">Rumus berasal dari pola yang kamu temukan sendiri.</span>
             </p>
           </div>
+          <EditablePageImage
+            imageKey="M3-P5-L6-3"
+            materi={materi}
+            peta={peta}
+            step={step}
+            urutan="3"
+            src={cubeImage}
+            alt="Kubus biru"
+            editable={editFoto}
+            imageClassName="object-contain"
+            containerClassName="relative w-24 h-24 flex-shrink-0"
+          />
         </div>
 
-        <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-[#16A34A] to-[#15803D] p-5 flex items-center gap-4">
+        <div className="bg-[#FEF9E7] border border-[#FDE68A] rounded-2xl p-5 flex items-center gap-4">
           <div className="flex-1 flex flex-col gap-1.5">
-            <p className="m-0 flex items-center gap-2 text-sm font-bold text-white">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="#FDE68A">
-                <path d="M8 21h8l-1-5H9zM12 3a5 5 0 00-5 5v1a5 5 0 0010 0V8a5 5 0 00-5-5zM4 6h3M20 6h-3" />
-              </svg>
-              Kotak Motivasi
-            </p>
-            <p className="m-0 text-xs leading-[1.6] text-white/90">
+            <p className="m-0 text-sm font-bold text-[#D97706]">Kotak Motivasi</p>
+            <p className="m-0 text-xs leading-[1.7] text-[#374151]">
               Setiap strategi yang kamu temukan adalah hasil proses berpikirmu. Teruslah
               membandingkan berbagai cara hingga menemukan strategi yang paling tepat.
             </p>
           </div>
-          <div className="relative w-16 h-16 flex-shrink-0 rounded-xl overflow-hidden bg-white/10">
-            <EditablePageImage
-              imageKey="M3-P5-L6-1"
-              materi={materi}
-              peta={peta}
-              step={step}
-              urutan="1"
-              src={mascotImage}
-              alt="Maskot memberi jempol"
-              editable={editFoto}
-              imageClassName="object-contain"
-              containerClassName="relative w-full h-full"
-            />
-          </div>
+          <EditablePageImage
+            imageKey="M3-P5-L6-2"
+            materi={materi}
+            peta={peta}
+            step={step}
+            urutan="2"
+            src={mascotImage}
+            alt="Siswi berjilbab memberi jempol sambil membaca buku"
+            editable={editFoto}
+            imageClassName="object-contain"
+            containerClassName="relative w-36 h-32 flex-shrink-0"
+          />
         </div>
       </div>
 
       <div className="flex items-start gap-3 bg-[#EFF4FF] border border-[#BFDBFE] rounded-2xl px-5 py-4">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2563EB" strokeWidth="2.2" className="mt-0.5 flex-shrink-0">
-          <path d="M13 2L3 14h7l-1 8 10-12h-7z" />
+          <path d="M3 11v2a1 1 0 001 1h3l5 4V6L7 10H4a1 1 0 00-1 1zM16 8a5 5 0 010 8" />
         </svg>
         <p className="m-0 text-xs leading-[1.7] text-[#374151]">
           <span className="font-bold text-[#111827]">Hebat! </span>

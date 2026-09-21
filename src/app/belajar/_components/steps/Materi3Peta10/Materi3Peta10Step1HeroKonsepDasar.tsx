@@ -6,14 +6,14 @@ import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
 import { getPageImage } from "@/lib/pageImages";
 
 const alurKonsep = [
-  { icon: "📦", label: "Bangun Ruang" },
-  { icon: "➕", label: "Jaring-jaring (representasi)" },
+  { icon: "🧊", label: "Bangun Ruang" },
+  { icon: "✚", label: "Jaring-jaring (representasi)" },
   { icon: "📏", label: "Hitung luas setiap sisi" },
   { icon: "∑", label: "Jumlahkan luas seluruh sisi" },
   { icon: "🎯", label: "Luas Permukaan" },
 ];
 
-export default async function Materi3Peta10Step1KonsepDasar({
+export default async function Materi3Peta10Step1HeroKonsepDasar({
   materi,
   peta,
   step = "1",
@@ -34,19 +34,31 @@ export default async function Materi3Peta10Step1KonsepDasar({
         </h1>
       </div>
 
-      <div className="relative overflow-hidden rounded-[20px] bg-gradient-to-br from-[#1E3A8A] to-[#2563EB] p-6 grid grid-cols-1 sm:grid-cols-[1fr_auto] gap-5 items-center">
-        <div className="absolute -right-10 -top-10 w-40 h-40 rounded-full bg-white/10" />
-        <div className="relative flex flex-col gap-2.5">
-          <p className="m-0 text-sm font-extrabold text-white/80 uppercase tracking-wide">
-            Apa yang telah kamu pelajari?
-          </p>
-          <p className="m-0 text-sm sm:text-[15px] leading-[1.7] text-white/95 font-medium">
+      <div className="rounded-[20px] bg-[#FEF9E7] border border-[#F5E6A8] p-5 sm:p-6 grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+        <div className="flex flex-col gap-3.5">
+          <div className="flex items-center gap-3">
+            <div className="w-11 h-11 rounded-full bg-[#FACC15] flex items-center justify-center text-xl flex-shrink-0">
+              📖
+            </div>
+            <h2 className="m-0 text-lg font-extrabold text-[#1E3A8A]">Apa yang telah kamu pelajari?</h2>
+          </div>
+          <p className="m-0 text-sm leading-[1.7] text-[#374151]">
             Pada submateri ini kamu telah menemukan bahwa luas permukaan suatu bangun ruang
-            diperoleh dari menjumlahkan luas seluruh sisi yang membatasi bangun tersebut. Melalui
-            pengamatan jaring-jaring, eksplorasi menggunakan GeoGebra 3D dan Augmented Reality
-            (AR), diskusi, serta verifikasi, kamu menyusun sendiri cara menentukan luas permukaan
-            kubus, balok, dan prisma.
+            diperoleh dari menjumlahkan luas seluruh sisi yang membatasi bangun tersebut.
           </p>
+          <p className="m-0 text-sm leading-[1.7] text-[#374151]">
+            Melalui pengamatan jaring-jaring, eksplorasi menggunakan GeoGebra 3D dan Augmented
+            Reality (AR), diskusi, serta verifikasi, kamu menyusun sendiri cara menentukan luas
+            permukaan kubus, balok, dan prisma.
+          </p>
+          <div className="bg-white border border-[#F5E6A8] rounded-2xl px-4 py-3 flex items-start gap-3">
+            <span className="text-lg flex-shrink-0">⭐</span>
+            <p className="m-0 text-sm text-[#1E3A8A]">
+              <span className="font-extrabold">Inti pembelajaran:</span> luas permukaan suatu bangun
+              ruang diperoleh dengan menjumlahkan luas{" "}
+              <span className="font-extrabold">seluruh sisi yang membatasi bangun tersebut.</span>
+            </p>
+          </div>
         </div>
         <EditablePageImage
           imageKey="M3-P10-L1-1"
@@ -57,21 +69,13 @@ export default async function Materi3Peta10Step1KonsepDasar({
           src={heroImage}
           alt="Tiga siswa mempresentasikan luas permukaan bangun ruang menggunakan GeoGebra 3D dan AR"
           editable={editFoto}
-          imageClassName="object-contain"
-          containerClassName="relative hidden sm:block w-44 h-32 flex-shrink-0 rounded-xl overflow-hidden bg-white/10"
+          natural
+          containerClassName="relative w-full"
         />
       </div>
 
-      <div className="bg-[#FEF9E7] border border-[#F5E6A8] rounded-2xl px-5 py-3.5 flex items-center gap-3">
-        <span className="text-lg flex-shrink-0">⭐</span>
-        <p className="m-0 text-sm text-[#785900]">
-          <span className="font-extrabold">Inti pembelajaran:</span> luas permukaan suatu bangun
-          ruang diperoleh dengan menjumlahkan luas seluruh sisi yang membatasi bangun tersebut.
-        </p>
-      </div>
-
       <div className="flex flex-col gap-4">
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-3 flex-wrap">
           <div className="w-[34px] h-[34px] rounded-full bg-[#2563EB] text-white flex items-center justify-center font-bold text-[15px] flex-shrink-0">
             A
           </div>
@@ -81,16 +85,14 @@ export default async function Materi3Peta10Step1KonsepDasar({
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-5">
-          <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-6 shadow-[0_1px_2px_rgba(0,0,0,0.04)] flex flex-wrap items-center justify-center gap-3">
+          <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-5 shadow-[0_1px_2px_rgba(0,0,0,0.04)] flex flex-wrap items-center justify-center gap-3">
             {alurKonsep.map((a, i) => (
               <div key={a.label} className="flex items-center gap-3">
                 <div className="flex flex-col items-center gap-2 w-24 text-center">
-                  <div className="w-12 h-12 rounded-2xl bg-[#DBEAFE] text-[#2563EB] flex items-center justify-center text-xl font-bold flex-shrink-0">
+                  <div className="w-14 h-14 rounded-2xl bg-[#EFF6FF] border border-[#DBEAFE] text-[#2563EB] flex items-center justify-center text-2xl font-bold">
                     {a.icon}
                   </div>
-                  <p className="m-0 text-[11px] font-semibold text-[#374151] leading-[1.3]">
-                    {a.label}
-                  </p>
+                  <p className="m-0 text-[11px] font-semibold text-[#374151] leading-[1.3]">{a.label}</p>
                 </div>
                 {i < alurKonsep.length - 1 && (
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#9CA3AF" strokeWidth="2.4" className="flex-shrink-0 hidden sm:block">

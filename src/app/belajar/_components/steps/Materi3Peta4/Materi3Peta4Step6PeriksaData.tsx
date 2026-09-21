@@ -22,7 +22,7 @@ const pertanyaanYaBelum = [
   },
 ];
 
-export default async function Materi3Peta4Step6PeriksaKelengkapan({
+export default async function Materi3Peta4Step6PeriksaData({
   materi,
   peta,
   initialAnswers,
@@ -38,15 +38,18 @@ export default async function Materi3Peta4Step6PeriksaKelengkapan({
 
       <div className="flex flex-col gap-4">
         <StepHeader materi={materi} currentStep={6} totalSteps={8} />
-        <h1 className="m-0 text-2xl sm:text-[32px] font-extrabold text-[#111827]">Ayo Bereksplorasi</h1>
+        <div className="flex items-center gap-3.5 flex-wrap">
+          <h1 className="m-0 text-2xl sm:text-[32px] font-extrabold text-[#111827]">Ayo Bereksplorasi</h1>
+          <span className="rounded-full bg-[#EFF4FF] text-[#2563EB] text-xs font-bold py-1 px-3">Tahap 3 dari 6</span>
+        </div>
       </div>
 
       <div className="flex flex-col gap-4">
         <div className="flex items-center gap-3">
-          <div className="w-[34px] h-[34px] rounded-full bg-[#2563EB] text-white flex items-center justify-center font-bold text-[15px] flex-shrink-0">
+          <div className="w-[34px] h-[34px] rounded-full bg-[#0EA5E9] text-white flex items-center justify-center font-bold text-[15px] flex-shrink-0">
             E
           </div>
-          <div className="bg-white border border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-full py-2 px-5 text-sm font-bold text-[#2563EB]">
+          <div className="bg-white border border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-full py-2 px-5 text-sm font-bold text-[#0EA5E9]">
             Periksa Kelengkapan Data
           </div>
         </div>

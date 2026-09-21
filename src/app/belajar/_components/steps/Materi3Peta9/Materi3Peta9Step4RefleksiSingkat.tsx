@@ -14,10 +14,10 @@ const pernyataan = [
 ];
 
 const ingat = [
-  "Open-Ended berarti membuka kesempatan munculnya berbagai strategi.",
-  "Yang dinilai bukan hanya hasil akhir, tetapi juga cara berpikir,",
-  "alasan matematis, kemampuan membandingkan strategi,",
-  "dan kemampuan memperbaiki penyelesaian.",
+  "cara berpikir",
+  "alasan matematis",
+  "kemampuan membandingkan strategi",
+  "kemampuan memperbaiki penyelesaian",
 ];
 
 export default async function Materi3Peta9Step4RefleksiSingkat({
@@ -29,8 +29,10 @@ export default async function Materi3Peta9Step4RefleksiSingkat({
 }: StepComponentProps) {
   const answers = initialAnswers ?? {};
   const getValue = (key: string) => (typeof answers[key] === "string" ? (answers[key] as string) : "");
-  const girlImage = await getPageImage("M3-P9-L4-1");
-  const trophyImage = await getPageImage("M3-P9-L4-2");
+  const [siswiImage, semangatImage] = await Promise.all([
+    getPageImage("M3-P9-L4-1"),
+    getPageImage("M3-P9-L4-2"),
+  ]);
 
   return (
     <form action={submitStepAction} className="flex flex-col gap-8">
@@ -46,17 +48,16 @@ export default async function Materi3Peta9Step4RefleksiSingkat({
       </div>
 
       <div className="flex flex-col gap-4">
-        <div className="flex items-center gap-3">
+        <div className="flex flex-wrap items-center gap-3">
           <div className="w-[34px] h-[34px] rounded-full bg-[#16A34A] text-white flex items-center justify-center font-bold text-[15px] flex-shrink-0">
             F
           </div>
           <div className="bg-white border border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-full py-2 px-5 text-sm font-bold text-[#16A34A]">
             Refleksi Singkat
           </div>
-          <p className="m-0 text-xs text-[#6B7280]">Centang sesuai dengan pengalamanmu.</p>
+          <p className="m-0 text-xs text-[#6B7280]">Centang (✓) sesuai dengan pengalamanmu.</p>
         </div>
-
-        <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-6 shadow-[0_1px_2px_rgba(0,0,0,0.04)] flex flex-col sm:flex-row items-start gap-5">
+        <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-6 shadow-[0_1px_2px_rgba(0,0,0,0.04)] flex items-center gap-6">
           <div className="flex-1 flex flex-col gap-3">
             {pernyataan.map((p) => (
               <label
@@ -82,30 +83,18 @@ export default async function Materi3Peta9Step4RefleksiSingkat({
             peta={peta}
             step={step}
             urutan="1"
-            src={girlImage}
-            alt="Siswa memberi jempol setelah refleksi"
+            src={siswiImage}
+            alt="Siswi berjilbab mengacungkan jempol"
             editable={editFoto}
             imageClassName="object-contain"
-            containerClassName="relative w-28 h-32 sm:w-32 sm:h-36 flex-shrink-0 rounded-2xl overflow-hidden bg-[#EFFDF4] hidden sm:block"
+            containerClassName="relative w-28 h-36 sm:w-32 sm:h-40 flex-shrink-0 rounded-2xl overflow-hidden bg-[#EFFDF4] hidden sm:block"
           />
         </div>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div className="bg-[#FEF2F2] border border-[#FBCACA] rounded-2xl p-5 flex items-center gap-4">
-          <EditablePageImage
-            imageKey="M3-P9-L4-2"
-            materi={materi}
-            peta={peta}
-            step={step}
-            urutan="2"
-            src={trophyImage}
-            alt="Siswa bersemangat merayakan usahanya"
-            editable={editFoto}
-            imageClassName="object-contain"
-            containerClassName="relative w-14 h-16 flex-shrink-0 rounded-xl overflow-hidden bg-white"
-          />
-          <div className="flex flex-col gap-1">
+          <div className="flex flex-col gap-1 flex-1">
             <p className="m-0 text-sm font-bold text-[#DC2626]">Semangat!</p>
             <p className="m-0 text-xs font-semibold text-[#991B1B] leading-[1.5]">
               Setiap strategi yang kamu temukan merupakan hasil proses berpikir matematis.
@@ -113,18 +102,32 @@ export default async function Materi3Peta9Step4RefleksiSingkat({
               berbagai strategi untuk menemukan penyelesaian yang paling tepat.
             </p>
           </div>
+          <EditablePageImage
+            imageKey="M3-P9-L4-2"
+            materi={materi}
+            peta={peta}
+            step={step}
+            urutan="2"
+            src={semangatImage}
+            alt="Siswa mengepalkan tangan dengan bintang tanda semangat"
+            editable={editFoto}
+            imageClassName="object-contain"
+            containerClassName="relative w-24 h-28 flex-shrink-0 rounded-xl overflow-hidden"
+          />
         </div>
-        <div className="bg-[#FEF9E7] border border-[#F5E3A0] rounded-2xl p-5 flex items-start gap-3">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D97706" strokeWidth="2" className="flex-shrink-0 mt-0.5">
-            <path d="M11 15h2v2h-2zM11 7h2v6h-2z" />
-            <path d="M12 2l10 18H2z" />
-          </svg>
-          <div className="flex flex-col gap-1">
-            <p className="m-0 text-sm font-bold text-[#92400E]">Ingat!</p>
-            <p className="m-0 text-xs font-semibold text-[#78350F] leading-[1.5]">
-              {ingat.join(" ")}
-            </p>
-          </div>
+        <div className="bg-[#FEF9E7] border border-[#F5E3A0] rounded-2xl p-5 flex flex-col gap-2">
+          <p className="m-0 text-sm font-bold text-[#92400E]">Ingat!</p>
+          <p className="m-0 text-xs font-semibold text-[#78350F] leading-[1.5]">
+            Open-Ended berarti membuka kesempatan munculnya berbagai strategi. Yang dinilai bukan
+            hanya hasil akhir, tetapi juga:
+          </p>
+          <ul className="m-0 pl-4 flex flex-col gap-0.5 list-disc">
+            {ingat.map((t) => (
+              <li key={t} className="text-xs font-semibold text-[#78350F]">
+                {t}
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
 

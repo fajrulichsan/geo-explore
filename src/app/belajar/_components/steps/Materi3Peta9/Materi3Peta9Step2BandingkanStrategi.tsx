@@ -12,6 +12,9 @@ const baris = [
   { key: "kekurangan", label: "Kekurangan" },
 ] as const;
 
+const textareaClass =
+  "w-full rounded-lg border border-[#E5E7EB] bg-[#F9FAFB] px-2.5 py-2 text-xs text-[#374151] placeholder:text-[#9CA3AF] focus:border-[#2563EB] focus:outline-none transition-colors resize-y";
+
 export default function Materi3Peta9Step2BandingkanStrategi({
   materi,
   peta,
@@ -34,7 +37,7 @@ export default function Materi3Peta9Step2BandingkanStrategi({
       </div>
 
       <div className="flex flex-col gap-4">
-        <div className="flex items-center gap-3">
+        <div className="flex flex-wrap items-center gap-3">
           <div className="w-[34px] h-[34px] rounded-full bg-[#2563EB] text-white flex items-center justify-center font-bold text-[15px] flex-shrink-0">
             C
           </div>
@@ -44,53 +47,44 @@ export default function Materi3Peta9Step2BandingkanStrategi({
           <p className="m-0 text-xs text-[#6B7280]">Lengkapi tabel berikut.</p>
         </div>
 
-        <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-6 shadow-[0_1px_2px_rgba(0,0,0,0.04)]">
-          <div className="overflow-x-auto">
-            <table className="w-full border-collapse min-w-[560px]">
-              <thead>
-                <tr>
-                  <th className="text-left text-xs font-bold text-[#374151] bg-[#F3F0FF] rounded-l-xl py-2.5 px-3.5 w-[30%]">
-                    Hal yang Dibandingkan
+        <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-4 sm:p-6 shadow-[0_1px_2px_rgba(0,0,0,0.04)] overflow-x-auto">
+          <table className="w-full border-collapse min-w-[560px]">
+            <thead>
+              <tr>
+                <th className="text-left text-xs font-bold text-[#374151] bg-[#F3F0FF] rounded-l-xl py-2.5 px-3.5 w-[30%]">
+                  Hal yang Dibandingkan
+                </th>
+                <th className="text-left text-xs font-bold text-[#2563EB] bg-[#F3F0FF] py-2.5 px-3.5">
+                  Strategi 1
+                </th>
+                <th className="text-left text-xs font-bold text-[#2563EB] bg-[#F3F0FF] rounded-r-xl py-2.5 px-3.5">
+                  Strategi 2
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {baris.map((b) => (
+                <tr key={b.key} className="border-b border-[#F3F4F6] last:border-none">
+                  <th scope="row" className="py-3 px-3.5 text-left text-xs font-semibold text-[#374151] align-top">
+                    {b.label}
                   </th>
-                  <th className="text-left text-xs font-bold text-[#2563EB] bg-[#F3F0FF] py-2.5 px-3.5">
-                    Strategi 1
-                  </th>
-                  <th className="text-left text-xs font-bold text-[#2563EB] bg-[#F3F0FF] rounded-r-xl py-2.5 px-3.5">
-                    Strategi 2
-                  </th>
+                  {[1, 2].map((n) => (
+                    <td key={n} className="py-3 px-3.5 align-top">
+                      <textarea
+                        name={`answers.bandingkan_${b.key}_${n}`}
+                        defaultValue={getValue(`bandingkan_${b.key}_${n}`)}
+                        rows={2}
+                        required
+                        aria-label={`${b.label} strategi ${n}`}
+                        placeholder="Jawabanmu..."
+                        className={textareaClass}
+                      />
+                    </td>
+                  ))}
                 </tr>
-              </thead>
-              <tbody>
-                {baris.map((b) => (
-                  <tr key={b.key} className="border-b border-[#F3F4F6] last:border-none">
-                    <td className="py-3 px-3.5 text-xs font-semibold text-[#374151] align-top">
-                      {b.label}
-                    </td>
-                    <td className="py-3 px-3.5 align-top">
-                      <textarea
-                        name={`answers.bandingkan_${b.key}_1`}
-                        defaultValue={getValue(`bandingkan_${b.key}_1`)}
-                        rows={2}
-                        required
-                        placeholder="Jawabanmu..."
-                        className="w-full rounded-lg border border-[#E5E7EB] bg-[#F9FAFB] px-2.5 py-2 text-xs text-[#374151] placeholder:text-[#9CA3AF] focus:border-[#2563EB] focus:outline-none transition-colors resize-y"
-                      />
-                    </td>
-                    <td className="py-3 px-3.5 align-top">
-                      <textarea
-                        name={`answers.bandingkan_${b.key}_2`}
-                        defaultValue={getValue(`bandingkan_${b.key}_2`)}
-                        rows={2}
-                        required
-                        placeholder="Jawabanmu..."
-                        className="w-full rounded-lg border border-[#E5E7EB] bg-[#F9FAFB] px-2.5 py-2 text-xs text-[#374151] placeholder:text-[#9CA3AF] focus:border-[#2563EB] focus:outline-none transition-colors resize-y"
-                      />
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+              ))}
+            </tbody>
+          </table>
         </div>
 
         <div className="bg-[#F5F3FF] border border-[#DDD6FE] rounded-2xl p-5 flex items-start gap-3">
