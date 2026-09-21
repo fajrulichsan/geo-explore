@@ -12,6 +12,9 @@ const teman = [
   { n: 4, label: "Teman 3" },
 ];
 
+const inputClass =
+  "w-full rounded-xl border border-[#E5E7EB] bg-[#F9FAFB] px-3.5 py-2.5 text-sm text-[#374151] placeholder:text-[#9CA3AF] focus:border-[#2563EB] focus:outline-none focus:bg-white transition-colors";
+
 export default async function Materi2Peta3Step1BagikanPersamaan({
   materi,
   peta,
@@ -36,39 +39,40 @@ export default async function Materi2Peta3Step1BagikanPersamaan({
       <div className="flex flex-col gap-4">
         <StepHeader materi={materi} currentStep={1} totalSteps={7} />
         <div className="inline-flex items-center bg-[#FDF3C7] text-[#92400E] rounded-full py-1.5 px-3.5 text-xs font-bold tracking-[0.02em] w-fit">
-          Tahap 2 dari 6 – Ayo Berdiskusi
+          Tahap 2 dari 6
         </div>
+        <h1 className="m-0 text-2xl sm:text-[32px] font-extrabold text-[#111827]">Ayo Berdiskusi</h1>
       </div>
 
-      <div className="flex flex-col sm:flex-row sm:items-center gap-5">
-        <EditablePageImage
-          imageKey="M2-P3-L1-1"
-          materi={materi}
-          peta={peta}
-          step={step}
-          urutan="1"
-          src={mascotImage}
-          alt="Maskot mengajak berdiskusi"
-          editable={editFoto}
-          imageClassName="object-contain"
-          containerClassName="relative w-28 h-36 sm:w-32 sm:h-40 flex-shrink-0 rounded-2xl overflow-hidden bg-[#EFF4FF]"
-        />
-        <div className="flex-1 flex flex-col gap-3">
-          <div className="flex items-center gap-3.5">
-            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#2563EB" strokeWidth="2.4" className="flex-shrink-0">
-              <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z" />
-            </svg>
-            <h1 className="m-0 text-2xl sm:text-[32px] font-extrabold text-[#111827]">Ayo Berdiskusi</h1>
-          </div>
-          <div className="relative bg-white border border-[#E5E7EB] rounded-2xl rounded-tl-sm shadow-[0_1px_2px_rgba(0,0,0,0.04)] py-3 px-4 w-fit max-w-md flex items-center gap-2.5">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D97706" strokeWidth="2" className="flex-shrink-0">
-              <path d="M9 18h6M10 22h4M12 2a7 7 0 00-4 12.7c.6.5 1 1.2 1 2.3h6c0-1.1.4-1.8 1-2.3A7 7 0 0012 2z" />
-            </svg>
-            <p className="m-0 text-sm leading-[1.5] text-[#374151]">
-              Setiap anggota kelompok mungkin memiliki hasil pengamatan yang berbeda. Sekarang, ceritakan
-              hasil pengamatanmu kepada teman sekelompok dan dengarkan pendapat mereka.
-            </p>
-          </div>
+      <div className="grid grid-cols-1 lg:grid-cols-[auto_1fr_auto] items-center gap-5 rounded-[28px] bg-white border border-[#DBE7FF] p-5 sm:p-6">
+        <div className="flex items-center gap-4">
+          <EditablePageImage
+            imageKey="M2-P3-L1-1"
+            materi={materi}
+            peta={peta}
+            step={step}
+            urutan="1"
+            src={mascotImage}
+            alt="Maskot mengajak berdiskusi"
+            editable={editFoto}
+            imageClassName="object-contain"
+            containerClassName="relative w-28 h-24 sm:w-36 sm:h-28 flex-shrink-0"
+          />
+          <p className="lg:hidden m-0 text-sm leading-[1.6] text-[#374151]">
+            Setiap anggota kelompok mungkin memiliki hasil pengamatan yang berbeda. Sekarang,{" "}
+            <b className="text-[#2563EB]">ceritakan</b> hasil pengamatanmu kepada teman sekelompok dan{" "}
+            <b className="text-[#2563EB]">dengarkan</b> pendapat mereka.
+          </p>
+        </div>
+        <div className="hidden lg:flex items-center gap-2.5 bg-white border border-[#E5E7EB] rounded-2xl py-4 px-5">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#D97706" strokeWidth="2" className="flex-shrink-0">
+            <path d="M9 18h6M10 22h4M12 2a7 7 0 00-4 12.7c.6.5 1 1.2 1 2.3h6c0-1.1.4-1.8 1-2.3A7 7 0 0012 2z" />
+          </svg>
+          <p className="m-0 text-sm leading-[1.6] text-[#374151]">
+            Setiap anggota kelompok mungkin memiliki hasil pengamatan yang berbeda. Sekarang,{" "}
+            <b className="text-[#2563EB]">ceritakan</b> hasil pengamatanmu kepada teman sekelompok dan{" "}
+            <b className="text-[#2563EB]">dengarkan</b> pendapat mereka.
+          </p>
         </div>
         <EditablePageImage
           imageKey="M2-P3-L1-2"
@@ -77,10 +81,10 @@ export default async function Materi2Peta3Step1BagikanPersamaan({
           step={step}
           urutan="2"
           src={kelompokImage}
-          alt="Ilustrasi kelompok siswa berdiskusi"
+          alt="Ilustrasi empat siswa berdiskusi"
           editable={editFoto}
           imageClassName="object-contain"
-          containerClassName="relative hidden lg:block w-48 h-28 flex-shrink-0 rounded-2xl overflow-hidden bg-[#FEF9E7]"
+          containerClassName="relative w-full sm:w-64 aspect-[3/2] mx-auto"
         />
       </div>
 
@@ -94,22 +98,16 @@ export default async function Materi2Peta3Step1BagikanPersamaan({
               Bagikan Hasil Pengamatanmu
             </div>
           </div>
-          <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-5 sm:p-6 shadow-[0_1px_2px_rgba(0,0,0,0.04)] flex flex-col gap-5">
+          <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-5 sm:p-6 shadow-[0_1px_2px_rgba(0,0,0,0.04)] flex flex-col gap-4">
             <p className="m-0 text-sm text-[#4B5563]">
               Tuliskan hasil pengamatanmu dan dengarkan pendapat temanmu. Lengkapi tabel berikut.
             </p>
             {teman.map((t) => (
-              <div key={t.n} className="flex flex-col gap-3 border-b border-[#F3F4F6] last:border-0 pb-4 last:pb-0">
-                <div className="flex items-center gap-2.5">
-                  <div className="w-8 h-8 rounded-full bg-[#EFF4FF] text-[#2563EB] flex items-center justify-center flex-shrink-0">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
-                      <circle cx="12" cy="8" r="4" />
-                      <path d="M4 21c0-4 3.5-6 8-6s8 2 8 6" />
-                    </svg>
-                  </div>
-                  <span className="text-sm font-bold text-[#111827]">{t.label}</span>
-                </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pl-[42px]">
+              <div key={t.n} className="rounded-2xl border border-[#DBE7FF] bg-[#F8FAFF] p-4 flex flex-col gap-3">
+                <span className="inline-flex w-fit items-center gap-2 rounded-full bg-[#2563EB] text-white text-xs font-bold py-1 px-3">
+                  {t.label}
+                </span>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   <div className="flex flex-col gap-1.5">
                     <label className="text-xs font-semibold text-[#6B7280]">Susunan yang dianggap jaring-jaring</label>
                     <input
@@ -118,7 +116,7 @@ export default async function Materi2Peta3Step1BagikanPersamaan({
                       defaultValue={getValue(`teman_${t.n}_susunan`)}
                       placeholder="Ketik di sini..."
                       required
-                      className="w-full rounded-xl border border-[#E5E7EB] bg-[#F9FAFB] px-3.5 py-2.5 text-sm text-[#374151] placeholder:text-[#9CA3AF] focus:border-[#2563EB] focus:outline-none focus:bg-white transition-colors"
+                      className={inputClass}
                     />
                   </div>
                   <div className="flex flex-col gap-1.5">
@@ -129,7 +127,7 @@ export default async function Materi2Peta3Step1BagikanPersamaan({
                       defaultValue={getValue(`teman_${t.n}_alasan`)}
                       placeholder="Ketik di sini..."
                       required
-                      className="w-full rounded-xl border border-[#E5E7EB] bg-[#F9FAFB] px-3.5 py-2.5 text-sm text-[#374151] placeholder:text-[#9CA3AF] focus:border-[#2563EB] focus:outline-none focus:bg-white transition-colors"
+                      className={inputClass}
                     />
                   </div>
                 </div>
@@ -138,7 +136,7 @@ export default async function Materi2Peta3Step1BagikanPersamaan({
           </div>
         </div>
 
-        <div className="lg:col-span-5 flex flex-col gap-4 lg:sticky lg:top-6">
+        <div className="lg:col-span-5 flex flex-col gap-4">
           <div className="flex items-center gap-3">
             <div className="w-[34px] h-[34px] rounded-full bg-[#2563EB] text-white flex items-center justify-center font-bold text-[15px] flex-shrink-0">
               B
@@ -151,8 +149,10 @@ export default async function Materi2Peta3Step1BagikanPersamaan({
 
           <div className="bg-[#F0FDF4] border border-[#BBF7D0] rounded-[20px] p-5 flex flex-col gap-3">
             <div className="flex items-center justify-between">
-              <span className="text-sm font-bold text-[#16A34A]">Persamaan (hal yang sama)</span>
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#16A34A" strokeWidth="2">
+              <span className="text-sm font-bold text-[#16A34A]">
+                Persamaan <span className="font-semibold text-xs">(hal yang sama)</span>
+              </span>
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#16A34A" strokeWidth="2">
                 <circle cx="9" cy="8" r="3" />
                 <circle cx="17" cy="8" r="3" />
                 <path d="M2 20c0-3 3-5 7-5s7 2 7 5M13 20c0-2.5 2.5-4.5 6-4.5s5 2 5 4.5" />
@@ -173,8 +173,10 @@ export default async function Materi2Peta3Step1BagikanPersamaan({
 
           <div className="bg-[#FEF2F2] border border-[#FECACA] rounded-[20px] p-5 flex flex-col gap-3">
             <div className="flex items-center justify-between">
-              <span className="text-sm font-bold text-[#DC2626]">Perbedaan (hal yang berbeda)</span>
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#DC2626" strokeWidth="2">
+              <span className="text-sm font-bold text-[#DC2626]">
+                Perbedaan <span className="font-semibold text-xs">(hal yang berbeda)</span>
+              </span>
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#DC2626" strokeWidth="2">
                 <circle cx="9" cy="8" r="3" />
                 <circle cx="17" cy="8" r="3" />
                 <path d="M2 20c0-3 3-5 7-5s7 2 7 5M13 20c0-2.5 2.5-4.5 6-4.5s5 2 5 4.5" />

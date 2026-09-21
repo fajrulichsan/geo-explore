@@ -190,14 +190,13 @@ import Peta8Step1RefleksiPemahaman from "./steps/Peta8/Peta8Step1RefleksiPemaham
 import Peta8Step2RefleksiPengalaman from "./steps/Peta8/Peta8Step2RefleksiPengalaman";
 import Peta8Step3KeyakinanDiriku from "./steps/Peta8/Peta8Step3KeyakinanDiriku";
 import Peta8Step4KotakMotivasi from "./steps/Peta8/Peta8Step4KotakMotivasi";
-import Materi2Peta1Step1Pendahuluan from "./steps/Materi2Peta1/Materi2Peta1Step1Pendahuluan";
-import Materi2Peta1Step2EksplorasiProses from "./steps/Materi2Peta1/Materi2Peta1Step2EksplorasiProses";
+import Materi2Peta1Step1Pengantar from "./steps/Materi2Peta1/Materi2Peta1Step1Pengantar";
+import Materi2Peta1Step2EksplorasiTujuan from "./steps/Materi2Peta1/Materi2Peta1Step2EksplorasiTujuan";
 import Materi2Peta2Step1Amati from "./steps/Materi2Peta2/Materi2Peta2Step1Amati";
-import Materi2Peta2Step2Berpikir from "./steps/Materi2Peta2/Materi2Peta2Step2Berpikir";
-import Materi2Peta2Step3DugaanAwal from "./steps/Materi2Peta2/Materi2Peta2Step3DugaanAwal";
-import Materi2Peta2Step4LanjutkanPengamatan from "./steps/Materi2Peta2/Materi2Peta2Step4LanjutkanPengamatan";
-import Materi2Peta2Step5PersamaanPerbedaan from "./steps/Materi2Peta2/Materi2Peta2Step5PersamaanPerbedaan";
-import Materi2Peta2Step6PemantikRefleksi from "./steps/Materi2Peta2/Materi2Peta2Step6PemantikRefleksi";
+import Materi2Peta2Step2PengamatanDugaan from "./steps/Materi2Peta2/Materi2Peta2Step2PengamatanDugaan";
+import Materi2Peta2Step3LanjutkanPengamatan from "./steps/Materi2Peta2/Materi2Peta2Step3LanjutkanPengamatan";
+import Materi2Peta2Step4PersamaanPerbedaan from "./steps/Materi2Peta2/Materi2Peta2Step4PersamaanPerbedaan";
+import Materi2Peta2Step5PemantikRefleksi from "./steps/Materi2Peta2/Materi2Peta2Step5PemantikRefleksi";
 import Materi2Peta3Step1BagikanPersamaan from "./steps/Materi2Peta3/Materi2Peta3Step1BagikanPersamaan";
 import Materi2Peta3Step2DiskusikanBersama from "./steps/Materi2Peta3/Materi2Peta3Step2DiskusikanBersama";
 import Materi2Peta3Step3DugaanKelompok from "./steps/Materi2Peta3/Materi2Peta3Step3DugaanKelompok";
@@ -205,28 +204,32 @@ import Materi2Peta3Step4PertanyaanRumusan from "./steps/Materi2Peta3/Materi2Peta
 import Materi2Peta3Step5PrediksiAspek from "./steps/Materi2Peta3/Materi2Peta3Step5PrediksiAspek";
 import Materi2Peta3Step6PersiapanRefleksi from "./steps/Materi2Peta3/Materi2Peta3Step6PersiapanRefleksi";
 import Materi2Peta3Step7KotakMotivasi from "./steps/Materi2Peta3/Materi2Peta3Step7KotakMotivasi";
-import Materi2Peta5Step1BandingkanHasil from "./steps/Materi2Peta5/Materi2Peta5Step1BandingkanHasil";
-import Materi2Peta5Step2KelompokkanInformasi from "./steps/Materi2Peta5/Materi2Peta5Step2KelompokkanInformasi";
-import Materi2Peta5Step3HubunganKlasifikasi from "./steps/Materi2Peta5/Materi2Peta5Step3HubunganKlasifikasi";
-import Materi2Peta5Step4DugaanKelompok from "./steps/Materi2Peta5/Materi2Peta5Step4DugaanKelompok";
-import Materi2Peta5Step5RefleksiSingkat from "./steps/Materi2Peta5/Materi2Peta5Step5RefleksiSingkat";
 import Materi2Peta4Step1Eksplorasi from "./steps/Materi2Peta4/Materi2Peta4Step1Eksplorasi";
 import Materi2Peta4Step2TabelPengamatan from "./steps/Materi2Peta4/Materi2Peta4Step2TabelPengamatan";
 import Materi2Peta4Step3TemuanEksplorasi from "./steps/Materi2Peta4/Materi2Peta4Step3TemuanEksplorasi";
 import Materi2Peta4Step4RefleksiSingkat from "./steps/Materi2Peta4/Materi2Peta4Step4RefleksiSingkat";
 import Materi2Peta6Step1VerifikasiGeoGebraAR from "./steps/Materi2Peta6/Materi2Peta6Step1VerifikasiGeoGebraAR";
-import Materi2Peta6Step2HasilPerbandingan from "./steps/Materi2Peta6/Materi2Peta6Step2HasilPerbandingan";
-import Materi2Peta6Step3RevisiRefleksi from "./steps/Materi2Peta6/Materi2Peta6Step3RevisiRefleksi";
+import Materi2Peta6Step2HasilVerifikasi from "./steps/Materi2Peta6/Materi2Peta6Step2HasilVerifikasi";
+import Materi2Peta6Step3Bandingkan from "./steps/Materi2Peta6/Materi2Peta6Step3Bandingkan";
+import Materi2Peta6Step4RevisiRefleksi from "./steps/Materi2Peta6/Materi2Peta6Step4RevisiRefleksi";
 import Materi2Peta7Step1KesimpulanGeneralisasi from "./steps/Materi2Peta7/Materi2Peta7Step1KesimpulanGeneralisasi";
 import Materi2Peta7Step2PernyataanUmum from "./steps/Materi2Peta7/Materi2Peta7Step2PernyataanUmum";
 import Materi2Peta7Step3IngatKembali from "./steps/Materi2Peta7/Materi2Peta7Step3IngatKembali";
 import Materi2Peta7Step4RefleksiMotivasi from "./steps/Materi2Peta7/Materi2Peta7Step4RefleksiMotivasi";
 import Materi2Peta7Step5Rangkuman from "./steps/Materi2Peta7/Materi2Peta7Step5Rangkuman";
-import Materi2Peta8Step1RefleksiPemahamanPengalaman from "./steps/Materi2Peta8/Materi2Peta8Step1RefleksiPemahamanPengalaman";
-import Materi2Peta8Step2KeyakinanBerpikir from "./steps/Materi2Peta8/Materi2Peta8Step2KeyakinanBerpikir";
-import Materi2Peta8Step3SikapTarget from "./steps/Materi2Peta8/Materi2Peta8Step3SikapTarget";
-import Materi2Peta10Step1RangkumanKonsep from "./steps/Materi2Peta10/Materi2Peta10Step1RangkumanKonsep";
-import Materi2Peta10Step2PetaKonsepPenutup from "./steps/Materi2Peta10/Materi2Peta10Step2PetaKonsepPenutup";
+import Materi2Peta8Step1RefleksiPemahaman from "./steps/Materi2Peta8/Materi2Peta8Step1RefleksiPemahaman";
+import Materi2Peta8Step2RefleksiPengalaman from "./steps/Materi2Peta8/Materi2Peta8Step2RefleksiPengalaman";
+import Materi2Peta8Step3KeyakinanDiriku from "./steps/Materi2Peta8/Materi2Peta8Step3KeyakinanDiriku";
+import Materi2Peta8Step4RefleksiBerpikir from "./steps/Materi2Peta8/Materi2Peta8Step4RefleksiBerpikir";
+import Materi2Peta8Step5SikapTarget from "./steps/Materi2Peta8/Materi2Peta8Step5SikapTarget";
+import Materi2Peta5Step1BandingkanKelompokkan from "./steps/Materi2Peta5/Materi2Peta5Step1BandingkanKelompokkan";
+import Materi2Peta5Step2HubunganKlasifikasi from "./steps/Materi2Peta5/Materi2Peta5Step2HubunganKlasifikasi";
+import Materi2Peta5Step3DugaanKelompok from "./steps/Materi2Peta5/Materi2Peta5Step3DugaanKelompok";
+import Materi2Peta5Step4RefleksiSingkat from "./steps/Materi2Peta5/Materi2Peta5Step4RefleksiSingkat";
+import Materi2Peta10Step1HubunganJaring from "./steps/Materi2Peta10/Materi2Peta10Step1HubunganJaring";
+import Materi2Peta10Step2ValidTidakValid from "./steps/Materi2Peta10/Materi2Peta10Step2ValidTidakValid";
+import Materi2Peta10Step3PetaKonsepKataKunci from "./steps/Materi2Peta10/Materi2Peta10Step3PetaKonsepKataKunci";
+import Materi2Peta10Step4HalPentingPenutup from "./steps/Materi2Peta10/Materi2Peta10Step4HalPentingPenutup";
 import Materi3Peta1Step1TahukahKamu from "./steps/Materi3Peta1/Materi3Peta1Step1TahukahKamu";
 import Materi3Peta1Step2AlurLuasPermukaan from "./steps/Materi3Peta1/Materi3Peta1Step2AlurLuasPermukaan";
 import Materi3Peta1Step3EksplorasiDigital from "./steps/Materi3Peta1/Materi3Peta1Step3EksplorasiDigital";
@@ -260,10 +263,10 @@ import Materi3Peta10Step1HeroKonsepDasar from "./steps/Materi3Peta10/Materi3Peta
 import Materi3Peta10Step2LuasKubusBalokPrisma from "./steps/Materi3Peta10/Materi3Peta10Step2LuasKubusBalokPrisma";
 import Materi3Peta10Step3LangkahStrategi from "./steps/Materi3Peta10/Materi3Peta10Step3LangkahStrategi";
 import Materi3Peta10Step4PetaKonsepPoinKunci from "./steps/Materi3Peta10/Materi3Peta10Step4PetaKonsepPoinKunci";
-import Materi2Peta9Step1MasalahOpenEnded from "./steps/Materi2Peta9/Materi2Peta9Step1MasalahOpenEnded";
-import Materi2Peta9Step2BuatIdemu from "./steps/Materi2Peta9/Materi2Peta9Step2BuatIdemu";
-import Materi2Peta9Step3StrategiPola from "./steps/Materi2Peta9/Materi2Peta9Step3StrategiPola";
-import Materi2Peta9Step4BandingkanRefleksi from "./steps/Materi2Peta9/Materi2Peta9Step4BandingkanRefleksi";
+import Materi2Peta9Step1TantanganKubus from "./steps/Materi2Peta9/Materi2Peta9Step1TantanganKubus";
+import Materi2Peta9Step2RancangJaring from "./steps/Materi2Peta9/Materi2Peta9Step2RancangJaring";
+import Materi2Peta9Step3StrategiDanPola from "./steps/Materi2Peta9/Materi2Peta9Step3StrategiDanPola";
+import Materi2Peta9Step4BandingkanDanRefleksi from "./steps/Materi2Peta9/Materi2Peta9Step4BandingkanDanRefleksi";
 import Materi3Peta7Step1AapaYangKamuTemukan from "./steps/Materi3Peta7/Materi3Peta7Step1AapaYangKamuTemukan";
 import Materi3Peta7Step2JaringDanRumus from "./steps/Materi3Peta7/Materi3Peta7Step2JaringDanRumus";
 import Materi3Peta7Step3KesimpulanKelompok from "./steps/Materi3Peta7/Materi3Peta7Step3KesimpulanKelompok";
@@ -516,14 +519,13 @@ export const stepRegistry: Record<string, ComponentType<StepComponentProps>> = {
   "1-10-3": Peta10Step3HubunganKonsep,
   "1-10-4": Peta10Step4KataKunci,
   "1-10-5": Peta10Step5BekalMotivasi,
-  "2-1-1": Materi2Peta1Step1Pendahuluan,
-  "2-1-2": Materi2Peta1Step2EksplorasiProses,
+  "2-1-1": Materi2Peta1Step1Pengantar,
+  "2-1-2": Materi2Peta1Step2EksplorasiTujuan,
   "2-2-1": Materi2Peta2Step1Amati,
-  "2-2-2": Materi2Peta2Step2Berpikir,
-  "2-2-3": Materi2Peta2Step3DugaanAwal,
-  "2-2-4": Materi2Peta2Step4LanjutkanPengamatan,
-  "2-2-5": Materi2Peta2Step5PersamaanPerbedaan,
-  "2-2-6": Materi2Peta2Step6PemantikRefleksi,
+  "2-2-2": Materi2Peta2Step2PengamatanDugaan,
+  "2-2-3": Materi2Peta2Step3LanjutkanPengamatan,
+  "2-2-4": Materi2Peta2Step4PersamaanPerbedaan,
+  "2-2-5": Materi2Peta2Step5PemantikRefleksi,
   "2-3-1": Materi2Peta3Step1BagikanPersamaan,
   "2-3-2": Materi2Peta3Step2DiskusikanBersama,
   "2-3-3": Materi2Peta3Step3DugaanKelompok,
@@ -535,28 +537,32 @@ export const stepRegistry: Record<string, ComponentType<StepComponentProps>> = {
   "2-4-2": Materi2Peta4Step2TabelPengamatan,
   "2-4-3": Materi2Peta4Step3TemuanEksplorasi,
   "2-4-4": Materi2Peta4Step4RefleksiSingkat,
-  "2-5-1": Materi2Peta5Step1BandingkanHasil,
-  "2-5-2": Materi2Peta5Step2KelompokkanInformasi,
-  "2-5-3": Materi2Peta5Step3HubunganKlasifikasi,
-  "2-5-4": Materi2Peta5Step4DugaanKelompok,
-  "2-5-5": Materi2Peta5Step5RefleksiSingkat,
+  "2-5-1": Materi2Peta5Step1BandingkanKelompokkan,
+  "2-5-2": Materi2Peta5Step2HubunganKlasifikasi,
+  "2-5-3": Materi2Peta5Step3DugaanKelompok,
+  "2-5-4": Materi2Peta5Step4RefleksiSingkat,
   "2-6-1": Materi2Peta6Step1VerifikasiGeoGebraAR,
-  "2-6-2": Materi2Peta6Step2HasilPerbandingan,
-  "2-6-3": Materi2Peta6Step3RevisiRefleksi,
+  "2-6-2": Materi2Peta6Step2HasilVerifikasi,
+  "2-6-3": Materi2Peta6Step3Bandingkan,
+  "2-6-4": Materi2Peta6Step4RevisiRefleksi,
   "2-7-1": Materi2Peta7Step1KesimpulanGeneralisasi,
   "2-7-2": Materi2Peta7Step2PernyataanUmum,
   "2-7-3": Materi2Peta7Step3IngatKembali,
   "2-7-4": Materi2Peta7Step4RefleksiMotivasi,
   "2-7-5": Materi2Peta7Step5Rangkuman,
-  "2-8-1": Materi2Peta8Step1RefleksiPemahamanPengalaman,
-  "2-8-2": Materi2Peta8Step2KeyakinanBerpikir,
-  "2-8-3": Materi2Peta8Step3SikapTarget,
-  "2-9-1": Materi2Peta9Step1MasalahOpenEnded,
-  "2-9-2": Materi2Peta9Step2BuatIdemu,
-  "2-9-3": Materi2Peta9Step3StrategiPola,
-  "2-9-4": Materi2Peta9Step4BandingkanRefleksi,
-  "2-10-1": Materi2Peta10Step1RangkumanKonsep,
-  "2-10-2": Materi2Peta10Step2PetaKonsepPenutup,
+  "2-8-1": Materi2Peta8Step1RefleksiPemahaman,
+  "2-8-2": Materi2Peta8Step2RefleksiPengalaman,
+  "2-8-3": Materi2Peta8Step3KeyakinanDiriku,
+  "2-8-4": Materi2Peta8Step4RefleksiBerpikir,
+  "2-8-5": Materi2Peta8Step5SikapTarget,
+  "2-9-1": Materi2Peta9Step1TantanganKubus,
+  "2-9-2": Materi2Peta9Step2RancangJaring,
+  "2-9-3": Materi2Peta9Step3StrategiDanPola,
+  "2-9-4": Materi2Peta9Step4BandingkanDanRefleksi,
+  "2-10-1": Materi2Peta10Step1HubunganJaring,
+  "2-10-2": Materi2Peta10Step2ValidTidakValid,
+  "2-10-3": Materi2Peta10Step3PetaKonsepKataKunci,
+  "2-10-4": Materi2Peta10Step4HalPentingPenutup,
   "3-1-1": Materi3Peta1Step1TahukahKamu,
   "3-1-2": Materi3Peta1Step2AlurLuasPermukaan,
   "3-1-3": Materi3Peta1Step3EksplorasiDigital,

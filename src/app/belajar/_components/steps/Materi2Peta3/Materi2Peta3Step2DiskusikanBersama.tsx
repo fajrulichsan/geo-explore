@@ -5,10 +5,10 @@ import BackLink from "@/app/belajar/_components/BackLink";
 import StepHeader from "@/app/belajar/_components/StepHeader";
 
 const pertanyaan = [
-  { n: 1, label: "Mengapa ada susunan bidang datar yang dapat dilipat menjadi bangun ruang, tetapi tidak oleh yang lain?" },
-  { n: 2, label: "Bagian mana yang paling menentukan apakah suatu susunan dapat menjadi jaring-jaring?" },
-  { n: 3, label: "Apakah jumlah sisi saja sudah cukup untuk menentukan jaring-jaring?" },
-  { n: 4, label: "Apakah posisi setiap bidang datar memengaruhi hasil lipatan?" },
+  "Mengapa ada susunan bidang datar yang dapat dilipat menjadi bangun ruang, tetapi tidak oleh yang lain?",
+  "Bagian mana yang paling menentukan apakah suatu susunan dapat menjadi jaring-jaring?",
+  "Apakah jumlah sisi saja sudah cukup untuk menentukan jaring-jaring?",
+  "Apakah posisi setiap bidang datar memengaruhi hasil lipatan?",
 ];
 
 export default async function Materi2Peta3Step2DiskusikanBersama({
@@ -27,6 +27,9 @@ export default async function Materi2Peta3Step2DiskusikanBersama({
 
       <div className="flex flex-col gap-4">
         <StepHeader materi={materi} currentStep={2} totalSteps={7} />
+        <div className="inline-flex items-center bg-[#FDF3C7] text-[#92400E] rounded-full py-1.5 px-3.5 text-xs font-bold tracking-[0.02em] w-fit">
+          Tahap 2 dari 6
+        </div>
         <h1 className="m-0 text-2xl sm:text-[32px] font-extrabold text-[#111827]">Ayo Berdiskusi</h1>
       </div>
 
@@ -41,28 +44,25 @@ export default async function Materi2Peta3Step2DiskusikanBersama({
         </div>
         <p className="m-0 text-sm text-[#4B5563]">Jawablah pertanyaan berikut bersama kelompokmu.</p>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          {pertanyaan.map((q) => (
-            <div
-              key={q.n}
-              className="bg-white border border-[#E5E7EB] rounded-[20px] p-6 shadow-[0_1px_2px_rgba(0,0,0,0.04)] focus-within:border-[#2563EB] transition-colors"
-            >
-              <div className="flex items-start gap-4 mb-4">
-                <div className="w-[30px] h-[30px] rounded-full bg-[#DC2626] text-white flex items-center justify-center font-bold text-sm flex-shrink-0">
-                  {q.n}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {pertanyaan.map((q, i) => (
+            <div key={i} className="bg-white border border-[#E5E7EB] rounded-[20px] p-5 shadow-[0_1px_2px_rgba(0,0,0,0.04)] flex flex-col gap-3">
+              <div className="flex items-start gap-3">
+                <div className="w-7 h-7 rounded-full bg-[#F97316] text-white flex items-center justify-center font-bold text-xs flex-shrink-0">
+                  {i + 1}
                 </div>
-                <label htmlFor={`diskusi${q.n}`} className="flex-1 text-[15px] font-bold text-[#111827] pt-0.5">
-                  {q.label}
+                <label htmlFor={`diskusi_${i + 1}`} className="text-sm font-semibold leading-[1.5] text-[#1F2937]">
+                  {q}
                 </label>
               </div>
               <textarea
-                id={`diskusi${q.n}`}
-                name={`answers.diskusi_${q.n}`}
-                defaultValue={getValue(`diskusi_${q.n}`)}
-                rows={3}
-                placeholder="Ketik jawabanmu di sini..."
+                id={`diskusi_${i + 1}`}
+                name={`answers.diskusi_${i + 1}`}
+                defaultValue={getValue(`diskusi_${i + 1}`)}
+                placeholder="Tuliskan jawaban kelompokmu..."
                 required
-                className="w-full rounded-2xl border border-[#E5E7EB] bg-[#F9FAFB] p-4 text-sm text-[#374151] placeholder:text-[#9CA3AF] focus:border-[#2563EB] focus:outline-none focus:ring-0 transition-colors resize-y"
+                rows={3}
+                className="w-full rounded-xl border border-[#E5E7EB] bg-[#F9FAFB] px-3.5 py-2.5 text-sm text-[#374151] placeholder:text-[#9CA3AF] focus:border-[#2563EB] focus:outline-none focus:bg-white transition-colors resize-y"
               />
             </div>
           ))}

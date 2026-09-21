@@ -22,7 +22,7 @@ export default async function Materi2Peta7Step4RefleksiMotivasi({
   initialAnswers,
 }: StepComponentProps) {
   const answers = initialAnswers ?? {};
-  const getValue = (key: string) => (typeof answers[key] === "string" ? (answers[key] as string) : "");
+  const checked = (key: string) => answers[key] === "on" || answers[key] === true;
   const mascotImage = await getPageImage("M2-P7-L4-1");
 
   return (
@@ -33,83 +33,67 @@ export default async function Materi2Peta7Step4RefleksiMotivasi({
 
       <div className="flex flex-col gap-4">
         <StepHeader materi={materi} currentStep={4} totalSteps={5} />
-        <h1 className="m-0 text-2xl sm:text-[32px] font-extrabold text-[#111827]">
-          Ayo Menyimpulkan (Generalisasi)
-        </h1>
+        <div className="inline-flex items-center bg-[#FDF3C7] text-[#92400E] rounded-full py-1.5 px-3.5 text-xs font-bold tracking-[0.02em] w-fit">
+          Tahap 6 dari 6
+        </div>
+        <h1 className="m-0 text-2xl sm:text-[32px] font-extrabold text-[#111827]">Ayo Menyimpulkan (Generalisasi)</h1>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-        <div className="flex flex-col gap-4">
+      <div className="bg-white border border-[#BBF7D0] rounded-[20px] overflow-hidden grid md:grid-cols-3">
+        <div className="md:col-span-2 p-6 flex flex-col gap-3">
           <div className="flex items-center gap-3">
-            <div className="w-[34px] h-[34px] rounded-full bg-[#2563EB] text-white flex items-center justify-center font-bold text-[15px] flex-shrink-0">
-              F
-            </div>
-            <div className="bg-white border border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-full py-2 px-5 text-sm font-bold text-[#2563EB]">
-              Refleksi Singkat
-            </div>
+            <div className="w-9 h-9 rounded-full bg-[#16A34A] text-white flex items-center justify-center font-bold text-sm flex-shrink-0">F</div>
+            <h2 className="m-0 text-lg font-bold text-[#166534]">Refleksi Singkat</h2>
           </div>
-          <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-6 shadow-[0_1px_2px_rgba(0,0,0,0.04)] flex-1 flex flex-col gap-4">
-            <div className="flex items-start gap-4">
-              <p className="m-0 text-sm text-[#4B5563] flex-1">
-                Berilah tanda centang (✓) pada pernyataan yang sesuai denganmu.
-              </p>
-              <EditablePageImage
-                imageKey="M2-P7-L4-1"
-                materi={materi}
-                peta={peta}
-                step={step}
-                urutan="1"
-                src={mascotImage}
-                alt="Maskot memberi jempol"
-                editable={editFoto}
-                imageClassName="object-contain"
-                containerClassName="relative hidden sm:block w-16 h-20 flex-shrink-0 rounded-xl overflow-hidden bg-[#EFF4FF]"
-              />
-            </div>
-            <div className="flex flex-col gap-2.5">
-              {refleksi.map((r) => (
-                <label
-                  key={r.key}
-                  className="flex items-start gap-2.5 text-sm font-semibold text-[#374151] cursor-pointer"
-                >
-                  <input
-                    type="checkbox"
-                    name={`answers.${r.key}`}
-                    defaultChecked={getValue(r.key) === "true"}
-                    value="true"
-                    data-require-group="refleksi_singkat"
-                    className="mt-1 w-4 h-4 rounded border-[#D1D5DB] text-[#2563EB] focus:ring-[#2563EB] flex-shrink-0"
-                  />
-                  {r.label}
-                </label>
-              ))}
-            </div>
+          <p className="m-0 text-sm text-[#4B5563]">Berilah tanda centang (✓) pada pernyataan yang sesuai denganmu.</p>
+          <div className="flex flex-col gap-2">
+            {refleksi.map((r) => (
+              <label key={r.key} className="flex items-start gap-3 bg-white border border-[#E5E7EB] rounded-xl px-4 py-3 cursor-pointer">
+                <input
+                  type="checkbox"
+                  name={`answers.${r.key}`}
+                  defaultChecked={checked(r.key)}
+                  className="mt-0.5 w-4 h-4 accent-[#16A34A]"
+                />
+                <span className="text-sm text-[#374151]">{r.label}</span>
+              </label>
+            ))}
           </div>
         </div>
+        <div className="flex items-end justify-center p-4">
+          <EditablePageImage
+            imageKey="M2-P7-L4-1"
+            materi={materi}
+            peta={peta}
+            step={step}
+            urutan="1"
+            src={mascotImage}
+            alt="Siswa mengacungkan jempol dengan tanda centang hijau"
+            editable={editFoto}
+            imageClassName="object-contain"
+            containerClassName="relative w-28 h-44"
+          />
+        </div>
+      </div>
 
-        <div className="flex flex-col gap-4">
+      <div className="bg-[#EFF4FF] border border-[#BFDBFE] rounded-[20px] p-6 flex items-center gap-5">
+        <div className="flex-1 flex flex-col gap-2">
           <div className="flex items-center gap-3">
-            <div className="w-[34px] h-[34px] rounded-full bg-[#2563EB] text-white flex items-center justify-center font-bold text-[15px] flex-shrink-0">
-              G
-            </div>
-            <div className="bg-white border border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-full py-2 px-5 text-sm font-bold text-[#2563EB]">
-              Kotak Motivasi
-            </div>
+            <div className="w-9 h-9 rounded-full bg-[#2563EB] text-white flex items-center justify-center font-bold text-sm flex-shrink-0">G</div>
+            <h2 className="m-0 text-lg font-bold text-[#1E3A8A]">Kotak Motivasi</h2>
           </div>
-          <div className="relative overflow-hidden rounded-[20px] bg-gradient-to-br from-[#2563EB] to-[#1D4ED8] p-6 flex-1 flex flex-col justify-center gap-3">
-            <div className="absolute -right-8 -top-12 w-40 h-40 rounded-full bg-white/10" />
-            <div className="absolute -right-4 bottom-[-30px] w-24 h-24 rounded-full bg-white/10" />
-            <div className="relative flex items-center gap-2">
-              <span className="text-xl">⭐</span>
-              <h2 className="m-0 text-lg font-extrabold text-white">Hebat!</h2>
-            </div>
-            <p className="relative m-0 text-sm leading-[1.6] text-white/90">
-              Kamu telah menemukan sendiri bahwa suatu konsep matematika dapat dipahami melalui
-              proses mengamati, berdiskusi, mengeksplorasi, memverifikasi, dan menyimpulkan.
-              Inilah cara seorang matematikawan membangun pengetahuan.
-            </p>
-          </div>
+          <p className="m-0 text-base font-extrabold text-[#B45309]">Hebat!</p>
+          <p className="m-0 text-sm leading-[1.7] text-[#1E40AF]">
+            Kamu telah menemukan sendiri bahwa suatu konsep matematika dapat dipahami melalui proses mengamati,
+            berdiskusi, mengeksplorasi, memverifikasi, dan menyimpulkan. Inilah cara seorang matematikawan membangun
+            pengetahuan.
+          </p>
         </div>
+        <svg width="72" height="72" viewBox="0 0 64 64" fill="none" className="flex-shrink-0" aria-hidden="true">
+          <path d="M20 8h24v14a12 12 0 01-24 0V8z" fill="#FBBF24" stroke="#D97706" strokeWidth="2.5" />
+          <path d="M20 12h-8v4a8 8 0 008 8M44 12h8v4a8 8 0 01-8 8" stroke="#D97706" strokeWidth="2.5" />
+          <path d="M32 34v10M22 56h20M26 44h12v12H26z" stroke="#D97706" strokeWidth="2.5" fill="#FBBF24" />
+        </svg>
       </div>
 
       <div className="flex justify-between items-center">

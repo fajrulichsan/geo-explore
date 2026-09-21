@@ -3,22 +3,31 @@ import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry"
 import SubmitStepButton from "@/app/belajar/_components/SubmitStepButton";
 import BackLink from "@/app/belajar/_components/BackLink";
 import StepHeader from "@/app/belajar/_components/StepHeader";
+import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
+import { getPageImage } from "@/lib/pageImages";
 
-const opsiPertanyaan = [
-  { key: "susunan_lipat", label: "Mengapa ada susunan bidang datar yang dapat dilipat menjadi bangun ruang?" },
-  { key: "susunan_tidak_lipat", label: "Mengapa ada susunan bidang datar yang tidak dapat dilipat menjadi bangun ruang?" },
-  { key: "lebih_dari_satu", label: "Mengapa satu bangun ruang dapat memiliki lebih dari satu jaring-jaring?" },
-  { key: "enam_persegi", label: "Apakah semua susunan enam persegi dapat menjadi jaring kubus?" },
+const opsi = [
+  { key: "1", label: "Mengapa ada susunan bidang datar yang dapat dilipat menjadi bangun ruang?" },
+  { key: "2", label: "Mengapa ada susunan bidang datar yang tidak dapat dilipat menjadi bangun ruang?" },
+  { key: "3", label: "Mengapa satu bangun ruang dapat memiliki lebih dari satu jaring-jaring?" },
+  { key: "4", label: "Apakah semua susunan enam persegi dapat menjadi jaring kubus?" },
 ];
 
 export default async function Materi2Peta3Step4PertanyaanRumusan({
   materi,
   peta,
+  step = "4",
+  editFoto,
   initialAnswers,
 }: StepComponentProps) {
   const answers = initialAnswers ?? {};
   const getValue = (key: string) => (typeof answers[key] === "string" ? (answers[key] as string) : "");
-  const getBool = (key: string) => answers[key] === "on" || answers[key] === true;
+  const getBool = (key: string) => answers[key] === "on";
+
+  const [mascotImage, kelompokImage] = await Promise.all([
+    getPageImage("M2-P3-L4-1"),
+    getPageImage("M2-P3-L1-2"),
+  ]);
 
   return (
     <form action={submitStepAction} className="flex flex-col gap-8">
@@ -28,11 +37,41 @@ export default async function Materi2Peta3Step4PertanyaanRumusan({
 
       <div className="flex flex-col gap-4">
         <StepHeader materi={materi} currentStep={4} totalSteps={7} />
+        <div className="inline-flex items-center bg-[#FDF3C7] text-[#92400E] rounded-full py-1.5 px-3.5 text-xs font-bold tracking-[0.02em] w-fit">
+          Tahap 2 dari 6
+        </div>
         <h1 className="m-0 text-2xl sm:text-[32px] font-extrabold text-[#111827]">Ayo Berdiskusi</h1>
-        <p className="m-0 text-[15px] leading-[1.6] text-[#374151] max-w-2xl">
-          Sekarang, mari kita merumuskan masalah dan membuat dugaan kelompok. Pertanyaan-pertanyaan
-          ini akan kita buktikan pada tahap berikutnya!
+      </div>
+
+      <div className="flex flex-col md:flex-row md:items-center gap-5 rounded-[28px] bg-white border border-[#DBE7FF] p-5 sm:p-6">
+        <EditablePageImage
+          imageKey="M2-P3-L4-1"
+          materi={materi}
+          peta={peta}
+          step={step}
+          urutan="1"
+          src={mascotImage}
+          alt="Maskot memberi tahu langkah selanjutnya"
+          editable={editFoto}
+          imageClassName="object-contain"
+          containerClassName="relative w-32 h-28 flex-shrink-0"
+        />
+        <p className="m-0 flex-1 text-sm leading-[1.6] text-[#374151] bg-white border border-[#E5E7EB] rounded-2xl py-4 px-5">
+          Sekarang, mari kita merumuskan masalah dan membuat dugaan kelompok. Pertanyaan-pertanyaan ini akan
+          kita buktikan pada tahap berikutnya!
         </p>
+        <EditablePageImage
+          imageKey="M2-P3-L1-2"
+          materi={materi}
+          peta={peta}
+          step="1"
+          urutan="2"
+          src={kelompokImage}
+          alt="Ilustrasi empat siswa berdiskusi"
+          editable={editFoto}
+          imageClassName="object-contain"
+          containerClassName="relative hidden md:block w-56 aspect-[3/2] flex-shrink-0"
+        />
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-start">
@@ -45,14 +84,14 @@ export default async function Materi2Peta3Step4PertanyaanRumusan({
               Menyusun Pertanyaan Penyelidikan
             </div>
           </div>
-          <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-6 shadow-[0_1px_2px_rgba(0,0,0,0.04)] flex flex-col gap-4">
-            <p className="m-0 text-sm text-[#4B5563]">
-              Centang pertanyaan yang menurut kelompokmu paling ingin diketahui.
-            </p>
-            {opsiPertanyaan.map((o) => (
+          <p className="m-0 text-sm text-[#4B5563]">
+            Centang (✓) pertanyaan yang menurut kelompokmu paling ingin diketahui.
+          </p>
+          <div className="flex flex-col gap-3">
+            {opsi.map((o) => (
               <label
                 key={o.key}
-                className="flex items-start gap-3 rounded-xl border border-[#E5E7EB] bg-[#F9FAFB] p-3.5 cursor-pointer has-[:checked]:border-[#2563EB] has-[:checked]:bg-[#EFF4FF] transition-colors"
+                className="flex items-start gap-3 rounded-xl border border-[#E5E7EB] bg-white p-3.5 cursor-pointer has-[:checked]:border-[#2563EB] has-[:checked]:bg-[#EFF4FF] transition-colors"
               >
                 <input
                   type="checkbox"
@@ -64,13 +103,16 @@ export default async function Materi2Peta3Step4PertanyaanRumusan({
                 <span className="text-sm font-semibold text-[#374151]">{o.label}</span>
               </label>
             ))}
-            <div className="flex flex-col gap-1.5 pt-1">
-              <label className="text-xs font-semibold text-[#6B7280]">Pertanyaan lain (opsional)</label>
+            <div className="rounded-xl border border-[#E5E7EB] bg-white p-3.5 flex flex-col gap-2">
+              <label htmlFor="pertanyaan_lain" className="text-sm font-semibold text-[#374151]">
+                Pertanyaan lain:
+              </label>
               <input
+                id="pertanyaan_lain"
                 type="text"
                 name="answers.pertanyaan_lain"
                 defaultValue={getValue("pertanyaan_lain")}
-                placeholder="Tuliskan pertanyaan lain jika ada..."
+                placeholder="Ketik pertanyaan lain (opsional)..."
                 className="w-full rounded-xl border border-[#E5E7EB] bg-[#F9FAFB] px-3.5 py-2.5 text-sm text-[#374151] placeholder:text-[#9CA3AF] focus:border-[#2563EB] focus:outline-none focus:bg-white transition-colors"
               />
             </div>
@@ -86,26 +128,21 @@ export default async function Materi2Peta3Step4PertanyaanRumusan({
               Rumusan Masalah Kelompok
             </div>
           </div>
-          <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-6 shadow-[0_1px_2px_rgba(0,0,0,0.04)] flex flex-col gap-4">
-            <p className="m-0 text-sm text-[#4B5563]">
-              Berdasarkan hasil diskusi kelompokmu, tuliskan satu rumusan masalah utama yang ingin
-              diselesaikan melalui eksplorasi menggunakan GeoGebra 3D dan Augmented Reality.
-            </p>
-            <textarea
-              name="answers.rumusan_masalah"
-              defaultValue={getValue("rumusan_masalah")}
-              rows={5}
-              placeholder="Tuliskan rumusan masalah kelompokmu di sini..."
-              required
-              className="w-full rounded-2xl border border-[#E5E7EB] bg-[#F9FAFB] p-4 text-sm text-[#374151] placeholder:text-[#9CA3AF] focus:border-[#2563EB] focus:outline-none transition-colors resize-y"
-            />
-            <div className="bg-[#EFF4FF] rounded-xl p-4">
-              <p className="m-0 text-xs font-bold text-[#1D4ED8] mb-1">Contoh:</p>
-              <p className="m-0 text-xs italic text-[#374151] leading-[1.6]">
-                &ldquo;Bagaimana menentukan apakah suatu susunan bidang datar merupakan jaring-jaring
-                yang valid?&rdquo;
-              </p>
-            </div>
+          <p className="m-0 text-sm text-[#4B5563]">
+            Berdasarkan hasil diskusi kelompokmu, tuliskan satu rumusan masalah utama yang ingin diselesaikan
+            melalui eksplorasi menggunakan GeoGebra 3D dan Augmented Reality.
+          </p>
+          <textarea
+            name="answers.rumusan_masalah"
+            defaultValue={getValue("rumusan_masalah")}
+            placeholder="Tuliskan rumusan masalah kelompokmu..."
+            required
+            rows={5}
+            className="w-full rounded-2xl border border-[#DBE7FF] bg-[#F8FAFF] px-4 py-3 text-sm text-[#374151] placeholder:text-[#9CA3AF] focus:border-[#2563EB] focus:outline-none focus:bg-white transition-colors resize-y"
+          />
+          <div className="rounded-xl bg-[#FEF9E7] border border-[#F5E3A0] p-4 text-sm leading-[1.6] text-[#374151]">
+            <span className="font-bold text-[#92400E]">Contoh: </span>
+            <i>&ldquo;Bagaimana menentukan apakah suatu susunan bidang datar merupakan jaring-jaring yang valid?&rdquo;</i>
           </div>
         </div>
       </div>

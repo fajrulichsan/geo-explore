@@ -3,8 +3,17 @@ import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry"
 import SubmitStepButton from "@/app/belajar/_components/SubmitStepButton";
 import BackLink from "@/app/belajar/_components/BackLink";
 import StepHeader from "@/app/belajar/_components/StepHeader";
+import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
+import { getPageImage } from "@/lib/pageImages";
 
-export default async function Materi2Peta3Step7KotakMotivasi({ materi, peta }: StepComponentProps) {
+export default async function Materi2Peta3Step7KotakMotivasi({
+  materi,
+  peta,
+  step = "7",
+  editFoto,
+}: StepComponentProps) {
+  const motivasiImage = await getPageImage("M2-P3-L7-1");
+
   return (
     <form action={submitStepAction} className="flex flex-col gap-8">
       <input type="hidden" name="materi" value={materi} />
@@ -13,6 +22,9 @@ export default async function Materi2Peta3Step7KotakMotivasi({ materi, peta }: S
 
       <div className="flex flex-col gap-4">
         <StepHeader materi={materi} currentStep={7} totalSteps={7} />
+        <div className="inline-flex items-center bg-[#FDF3C7] text-[#92400E] rounded-full py-1.5 px-3.5 text-xs font-bold tracking-[0.02em] w-fit">
+          Tahap 2 dari 6
+        </div>
         <h1 className="m-0 text-2xl sm:text-[32px] font-extrabold text-[#111827]">Ayo Berdiskusi</h1>
       </div>
 
@@ -25,14 +37,28 @@ export default async function Materi2Peta3Step7KotakMotivasi({ materi, peta }: S
             Kotak Motivasi
           </div>
         </div>
-        <div className="bg-[#FEF9E7] border border-[#F5E3A0] rounded-[20px] p-6 flex items-start gap-4">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#D97706" strokeWidth="2" className="flex-shrink-0">
-            <path d="M12 2l2.9 6.2 6.8.7-5 4.7 1.4 6.7L12 17l-6.1 3.3 1.4-6.7-5-4.7 6.8-.7z" />
-          </svg>
-          <p className="m-0 text-sm leading-[1.6] text-[#374151]">
-            Perbedaan pendapat bukan berarti salah. Melalui diskusi, kita dapat menemukan berbagai
-            kemungkinan jawaban yang akan dibuktikan pada tahap eksplorasi.
-          </p>
+        <div className="bg-[#FEF9E7] border border-[#F5E3A0] rounded-[20px] p-5 sm:p-6 flex flex-col md:flex-row md:items-center gap-5">
+          <div className="flex items-start gap-4 md:flex-1">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#D97706" strokeWidth="2" className="flex-shrink-0">
+              <path d="M12 2l2.9 6.2 6.8.7-5 4.7 1.4 6.7L12 17l-6.1 3.3 1.4-6.7-5-4.7 6.8-.7z" />
+            </svg>
+            <p className="m-0 text-sm leading-[1.6] text-[#374151]">
+              Perbedaan pendapat bukan berarti salah. Melalui diskusi, kita dapat menemukan berbagai
+              kemungkinan jawaban yang akan dibuktikan pada tahap eksplorasi!
+            </p>
+          </div>
+          <EditablePageImage
+            imageKey="M2-P3-L7-1"
+            materi={materi}
+            peta={peta}
+            step={step}
+            urutan="1"
+            src={motivasiImage}
+            alt="Empat siswa dengan simbol tanda tanya, ide, centang, dan percakapan"
+            editable={editFoto}
+            imageClassName="object-contain"
+            containerClassName="relative w-full md:w-72 aspect-[3/2] flex-shrink-0"
+          />
         </div>
       </div>
 

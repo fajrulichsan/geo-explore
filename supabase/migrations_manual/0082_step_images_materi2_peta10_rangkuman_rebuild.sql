@@ -1,0 +1,38 @@
+-- Run this in the Supabase SQL editor.
+-- Rebuild of Materi 2 / Peta 10 (Rangkuman) images: 4 steps, keys M2-P10-L1-1 .. M2-P10-L4-3.
+
+insert into page_images (nama, url, keterangan) values
+  ('M2-P10-L1-1', 'https://placehold.co/280x360?text=Maskot+Menunjuk', 'Materi 2 Peta 10 Langkah 1 - Maskot siswi menunjuk ke atas sambil menulis (dummy)'),
+  ('M2-P10-L1-2', 'https://placehold.co/180x220?text=Jaring+Kubus+1', 'Materi 2 Peta 10 Langkah 1 - Jaring-jaring kubus valid 1 (dummy)'),
+  ('M2-P10-L1-3', 'https://placehold.co/180x220?text=Jaring+Kubus+2', 'Materi 2 Peta 10 Langkah 1 - Jaring-jaring kubus valid 2 (dummy)'),
+  ('M2-P10-L1-4', 'https://placehold.co/180x220?text=Jaring+Kubus+3', 'Materi 2 Peta 10 Langkah 1 - Jaring-jaring kubus valid 3 (dummy)'),
+  ('M2-P10-L1-5', 'https://placehold.co/180x220?text=Jaring+Kubus+4', 'Materi 2 Peta 10 Langkah 1 - Jaring-jaring kubus valid 4 (dummy)'),
+  ('M2-P10-L1-6', 'https://placehold.co/220x200?text=Jaring+Balok+1', 'Materi 2 Peta 10 Langkah 1 - Jaring-jaring balok valid 1 (dummy)'),
+  ('M2-P10-L1-7', 'https://placehold.co/220x200?text=Jaring+Balok+2', 'Materi 2 Peta 10 Langkah 1 - Jaring-jaring balok valid 2 (dummy)'),
+  ('M2-P10-L1-8', 'https://placehold.co/220x200?text=Jaring+Balok+3', 'Materi 2 Peta 10 Langkah 1 - Jaring-jaring balok valid 3 (dummy)'),
+  ('M2-P10-L1-9', 'https://placehold.co/220x200?text=Jaring+Balok+4', 'Materi 2 Peta 10 Langkah 1 - Jaring-jaring balok valid 4 (dummy)'),
+  ('M2-P10-L1-10', 'https://placehold.co/200x140?text=Prisma+Segitiga', 'Materi 2 Peta 10 Langkah 1 - Bangun prisma segitiga hijau (dummy)'),
+  ('M2-P10-L1-11', 'https://placehold.co/200x240?text=Jaring+Prisma+1', 'Materi 2 Peta 10 Langkah 1 - Jaring-jaring prisma segitiga valid 1 (dummy)'),
+  ('M2-P10-L1-12', 'https://placehold.co/200x240?text=Jaring+Prisma+2', 'Materi 2 Peta 10 Langkah 1 - Jaring-jaring prisma segitiga valid 2 (dummy)'),
+  ('M2-P10-L1-13', 'https://placehold.co/200x240?text=Jaring+Prisma+3', 'Materi 2 Peta 10 Langkah 1 - Jaring-jaring prisma segitiga valid 3 (dummy)'),
+  ('M2-P10-L1-14', 'https://placehold.co/200x240?text=Jaring+Prisma+4', 'Materi 2 Peta 10 Langkah 1 - Jaring-jaring prisma segitiga valid 4 (dummy)'),
+  ('M2-P10-L1-15', 'https://placehold.co/200x240?text=Limas+Segiempat', 'Materi 2 Peta 10 Langkah 1 - Bangun limas segiempat oranye (dummy)'),
+  ('M2-P10-L1-16', 'https://placehold.co/220x220?text=Jaring+Limas+1', 'Materi 2 Peta 10 Langkah 1 - Jaring-jaring limas segiempat valid 1 (dummy)'),
+  ('M2-P10-L1-17', 'https://placehold.co/220x220?text=Jaring+Limas+2', 'Materi 2 Peta 10 Langkah 1 - Jaring-jaring limas segiempat valid 2 (dummy)'),
+  ('M2-P10-L1-18', 'https://placehold.co/220x220?text=Jaring+Limas+3', 'Materi 2 Peta 10 Langkah 1 - Jaring-jaring limas segiempat valid 3 (dummy)'),
+  ('M2-P10-L1-19', 'https://placehold.co/220x220?text=Jaring+Limas+4', 'Materi 2 Peta 10 Langkah 1 - Jaring-jaring limas segiempat valid 4 (dummy)'),
+  ('M2-P10-L1-20', 'https://placehold.co/300x120?text=Jaring+ke+Kubus', 'Materi 2 Peta 10 Langkah 1 - Jaring-jaring kubus dilipat menjadi kubus (dummy)'),
+  ('M2-P10-L2-1', 'https://placehold.co/200x150?text=Kubus+valid', 'Materi 2 Peta 10 Langkah 2 - Contoh jaring-jaring kubus valid (dummy)'),
+  ('M2-P10-L2-2', 'https://placehold.co/200x150?text=Kubus+tidak+valid', 'Materi 2 Peta 10 Langkah 2 - Contoh jaring-jaring kubus tidak valid (dummy)'),
+  ('M2-P10-L2-3', 'https://placehold.co/200x150?text=Balok+valid', 'Materi 2 Peta 10 Langkah 2 - Contoh jaring-jaring balok valid (dummy)'),
+  ('M2-P10-L2-4', 'https://placehold.co/200x150?text=Balok+tidak+valid', 'Materi 2 Peta 10 Langkah 2 - Contoh jaring-jaring balok tidak valid (dummy)'),
+  ('M2-P10-L2-5', 'https://placehold.co/200x150?text=Prisma+Segitiga+valid', 'Materi 2 Peta 10 Langkah 2 - Contoh jaring-jaring prisma segitiga valid (dummy)'),
+  ('M2-P10-L2-6', 'https://placehold.co/200x150?text=Prisma+Segitiga+tidak+valid', 'Materi 2 Peta 10 Langkah 2 - Contoh jaring-jaring prisma segitiga tidak valid (dummy)'),
+  ('M2-P10-L2-7', 'https://placehold.co/200x150?text=Limas+Segiempat+valid', 'Materi 2 Peta 10 Langkah 2 - Contoh jaring-jaring limas segiempat valid (dummy)'),
+  ('M2-P10-L2-8', 'https://placehold.co/200x150?text=Limas+Segiempat+tidak+valid', 'Materi 2 Peta 10 Langkah 2 - Contoh jaring-jaring limas segiempat tidak valid (dummy)'),
+  ('M2-P10-L3-1', 'https://placehold.co/200x140?text=Prisma+Segitiga', 'Materi 2 Peta 10 Langkah 3 - Ikon kata kunci prisma (dummy)'),
+  ('M2-P10-L3-2', 'https://placehold.co/200x240?text=Limas+Segiempat', 'Materi 2 Peta 10 Langkah 3 - Ikon kata kunci limas (dummy)'),
+  ('M2-P10-L4-1', 'https://placehold.co/240x320?text=Jaring+Kubus+Panah', 'Materi 2 Peta 10 Langkah 4 - Jaring-jaring kubus dengan panah lipatan dan kubus (dummy)'),
+  ('M2-P10-L4-2', 'https://placehold.co/280x360?text=Maskot+Semangat', 'Materi 2 Peta 10 Langkah 4 - Maskot siswi mengepalkan tangan semangat (dummy)'),
+  ('M2-P10-L4-3', 'https://placehold.co/460x190?text=Jaring+ke+Luas', 'Materi 2 Peta 10 Langkah 4 - Alur jaring-jaring, pembukaan sisi, perhitungan luas, dan luas permukaan (dummy)')
+on conflict (nama) do nothing;

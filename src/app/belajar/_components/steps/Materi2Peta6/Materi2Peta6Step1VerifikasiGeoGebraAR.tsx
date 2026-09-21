@@ -11,27 +11,59 @@ const ingat = [
   "Alasan matematika lebih penting daripada sekadar jawaban.",
 ];
 
-const geogebraChecklist = [
-  "Putar model dan amati seluruh sisinya.",
-  "Buka dan tutup bangun ruang menjadi jaring-jaring.",
-  "Perhatikan hubungan antar sisi dan garis lipatan.",
-  "Periksa apakah jaring dapat membentuk bangun ruang sempurna.",
+const cekGeoGebra = [
+  { key: "gg_putar", label: "Putar model dan amati seluruh sisinya." },
+  { key: "gg_buka_tutup", label: "Buka dan tutup bangun ruang menjadi jaring-jaring." },
+  { key: "gg_hubungan", label: "Perhatikan hubungan antar sisi dan garis lipatan." },
+  { key: "gg_sempurna", label: "Periksa apakah jaring dapat membentuk bangun ruang sempurna." },
 ];
 
-const arChecklist = [
-  "Amati proses membuka (melipat) setiap sisi.",
-  "Perhatikan posisi sisi saat dibuka.",
-  "Periksa apakah semua sisi terbuka tanpa bertumpuk dan tidak terlewat.",
-  "Cocokkan hasil AR dengan hasil GeoGebra 3D.",
+const cekAr = [
+  { key: "ar_proses", label: "Amati proses membuka (melipat) setiap sisi." },
+  { key: "ar_posisi", label: "Perhatikan posisi sisi saat dibuka." },
+  { key: "ar_lengkap", label: "Periksa apakah semua sisi terbuka tanpa bertumpuk dan tidak terlewat." },
+  { key: "ar_cocok", label: "Cocokkan hasil AR dengan hasil GeoGebra 3D." },
 ];
+
+function Checklist({
+  items,
+  accent,
+  checked,
+}: {
+  items: { key: string; label: string }[];
+  accent: string;
+  checked: (key: string) => boolean;
+}) {
+  return (
+    <ul className="m-0 p-0 list-none flex flex-col gap-2">
+      {items.map((item) => (
+        <li key={item.key}>
+          <label className="flex items-start gap-2.5 text-sm text-[#374151] cursor-pointer">
+            <input
+              type="checkbox"
+              name={`answers.${item.key}`}
+              defaultChecked={checked(item.key)}
+              style={{ accentColor: accent }}
+              className="mt-1 w-4 h-4 flex-shrink-0"
+            />
+            {item.label}
+          </label>
+        </li>
+      ))}
+    </ul>
+  );
+}
 
 export default async function Materi2Peta6Step1VerifikasiGeoGebraAR({
   materi,
   peta,
   step = "1",
   editFoto,
+  initialAnswers,
 }: StepComponentProps) {
-  const [mascotImage, geogebraImage, qrGeogebraImage, arImage, qrArImage] = await Promise.all([
+  const answers = initialAnswers ?? {};
+  const checked = (key: string) => answers[key] === "on" || answers[key] === true;
+  const [mascot, geogebra, qrGeogebra, arStrip, qrAr] = await Promise.all([
     getPageImage("M2-P6-L1-1"),
     getPageImage("M2-P6-L1-2"),
     getPageImage("M2-P6-L1-3"),
@@ -46,172 +78,152 @@ export default async function Materi2Peta6Step1VerifikasiGeoGebraAR({
       <input type="hidden" name="step" value="1" />
 
       <div className="flex flex-col gap-4">
-        <StepHeader materi={materi} currentStep={1} totalSteps={3} />
-        <div className="inline-flex items-center gap-1.5 bg-[#FDF3C7] text-[#92400E] rounded-full py-1.5 px-3.5 text-xs font-bold tracking-[0.02em] w-fit">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#92400E" strokeWidth="2.4">
-            <circle cx="12" cy="12" r="9" />
-            <circle cx="12" cy="12" r="4.5" />
-            <circle cx="12" cy="12" r="1" fill="#92400E" />
-          </svg>
-          Tahap 5 dari 6 – Ayo Verifikasi
+        <StepHeader materi={materi} currentStep={1} totalSteps={4} />
+        <div className="inline-flex items-center bg-[#FDF3C7] text-[#92400E] rounded-full py-1.5 px-3.5 text-xs font-bold tracking-[0.02em] w-fit">
+          Tahap 5 dari 6
         </div>
+        <h1 className="m-0 text-2xl sm:text-[32px] font-extrabold text-[#111827]">Ayo Verifikasi</h1>
       </div>
 
-      <div className="flex flex-col sm:flex-row sm:items-center gap-5">
-        <EditablePageImage
-          imageKey="M2-P6-L1-1"
-          materi={materi}
-          peta={peta}
-          step={step}
-          urutan="1"
-          src={mascotImage}
-          alt="Maskot memeriksa dugaan"
-          editable={editFoto}
-          imageClassName="object-contain"
-          containerClassName="relative w-28 h-36 sm:w-32 sm:h-40 flex-shrink-0 rounded-2xl overflow-hidden bg-[#EFF4FF]"
-        />
-        <div className="flex-1 flex flex-col gap-3">
-          <h1 className="m-0 text-2xl sm:text-[32px] font-extrabold text-[#111827]">Ayo Verifikasi</h1>
-          <div className="relative bg-white border border-[#E5E7EB] rounded-2xl rounded-tl-sm shadow-[0_1px_2px_rgba(0,0,0,0.04)] py-3 px-4 w-fit max-w-md">
-            <p className="m-0 text-sm leading-[1.5] text-[#374151]">
-              Apakah dugaan kelompokmu sudah benar? Sekarang, uji dan periksa kembali dugaanmu menggunakan{" "}
-              <span className="font-bold">GeoGebra 3D</span> dan <span className="font-bold">Augmented Reality (AR)</span>,
-              lalu bandingkan hasilnya dengan kelompok lain.
-            </p>
-          </div>
+      <div className="grid md:grid-cols-5 gap-5">
+        <div className="md:col-span-3 rounded-[24px] bg-white border border-[#DBEAFE] p-5 flex items-center gap-4">
+          <EditablePageImage
+            imageKey="M2-P6-L1-1"
+            materi={materi}
+            peta={peta}
+            step={step}
+            urutan="1"
+            src={mascot}
+            alt="Siswa berpikir sambil memegang dagu dengan tanda tanya"
+            editable={editFoto}
+            imageClassName="object-contain"
+            containerClassName="relative w-28 h-32 sm:w-36 sm:h-40 flex-shrink-0"
+          />
+          <p className="m-0 text-sm leading-[1.7] text-[#374151]">
+            Apakah dugaan kelompokmu sudah benar? Sekarang, uji dan periksa kembali dugaanmu
+            menggunakan <span className="font-bold text-[#2563EB]">GeoGebra 3D</span> dan{" "}
+            <span className="font-bold text-[#16A34A]">Augmented Reality (AR)</span>, lalu bandingkan
+            hasilnya dengan kelompok lain.
+          </p>
         </div>
-      </div>
-
-      <div className="bg-[#FEF9E7] border border-[#F5E3A0] rounded-[20px] p-6 flex items-start gap-4">
-        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#D97706" strokeWidth="2" className="flex-shrink-0">
-          <path d="M12 2l2.4 6.6L21 11l-6.6 2.4L12 20l-2.4-6.6L3 11l6.6-2.4z" />
-        </svg>
-        <div>
-          <p className="m-0 text-sm font-bold text-[#92400E] mb-1">Ingat!</p>
-          <ul className="m-0 mt-1 pl-5 flex flex-col gap-1 text-sm text-[#374151] leading-[1.6] list-disc">
+        <div className="md:col-span-2 bg-[#FEF9E7] border border-[#F5E3A0] rounded-[24px] p-5 flex flex-col gap-3">
+          <p className="m-0 flex items-center gap-2 text-base font-extrabold text-[#92400E]">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" strokeWidth="1.5" strokeLinejoin="round">
+              <path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z" />
+            </svg>
+            Ingat!
+          </p>
+          <ul className="m-0 p-0 list-none flex flex-col gap-2">
             {ingat.map((item) => (
-              <li key={item}>{item}</li>
+              <li key={item} className="flex items-start gap-2 text-xs leading-[1.5] font-semibold text-[#1E3A8A]">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#2563EB" strokeWidth="2.8" className="mt-0.5 flex-shrink-0">
+                  <path d="M5 13l4 4L19 7" />
+                </svg>
+                {item}
+              </li>
             ))}
           </ul>
         </div>
       </div>
 
-      <div className="flex flex-col gap-4">
-        <div className="flex items-center gap-3">
-          <div className="w-[34px] h-[34px] rounded-full bg-[#2563EB] text-white flex items-center justify-center font-bold text-[15px] flex-shrink-0">
-            A
+      <div className="bg-white border border-[#E5E7EB] rounded-[20px] shadow-[0_1px_2px_rgba(0,0,0,0.04)] p-6 flex flex-col gap-5">
+        <div className="flex flex-col gap-1.5">
+          <div className="flex items-center gap-3">
+            <div className="w-9 h-9 rounded-full bg-[#2563EB] text-white flex items-center justify-center font-bold text-sm flex-shrink-0">A</div>
+            <h2 className="m-0 text-lg font-bold text-[#111827]">Verifikasi Menggunakan GeoGebra 3D dan AR</h2>
           </div>
-          <div className="bg-white border border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-full py-2 px-5 text-sm font-bold text-[#2563EB]">
-            Verifikasi Menggunakan GeoGebra 3D dan AR
-          </div>
+          <p className="m-0 text-sm text-[#4B5563]">
+            Gunakan kembali GeoGebra 3D dan AR untuk memeriksa apakah dugaan kelompokmu sesuai dengan
+            hasil pengamatan.
+          </p>
         </div>
-        <p className="m-0 -mt-2 text-sm text-[#4B5563]">
-          Gunakan kembali GeoGebra 3D dan AR untuk memeriksa apakah dugaan kelompokmu sesuai dengan hasil pengamatan.
-        </p>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-5 shadow-[0_1px_2px_rgba(0,0,0,0.04)] flex flex-col gap-3">
-            <div className="inline-flex items-center gap-2 bg-[#2563EB] text-white rounded-full py-1.5 px-4 text-xs font-bold w-fit">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2">
-                <rect x="2" y="4" width="20" height="13" rx="2" />
-                <path d="M8 21h8M12 17v4" />
-              </svg>
-              GeoGebra 3D
+        <div className="grid lg:grid-cols-2 gap-5">
+          <div className="rounded-2xl border border-[#BFDBFE] bg-[#F5F9FF] p-5 flex flex-col gap-4">
+            <div className="flex items-center gap-2.5">
+              <span className="w-7 h-7 rounded-full bg-[#2563EB] text-white flex items-center justify-center text-sm font-bold">1</span>
+              <h3 className="m-0 text-base font-extrabold text-[#1E3A8A]">GeoGebra 3D</h3>
             </div>
-            <p className="m-0 text-sm text-[#4B5563]">Scan QR untuk membuka model 3D.</p>
-            <div className="flex items-center gap-3">
+            <p className="m-0 text-xs text-[#4B5563]">Scan QR untuk membuka model 3D.</p>
+            <div className="flex flex-col sm:flex-row gap-4 items-start">
               <EditablePageImage
                 imageKey="M2-P6-L1-2"
                 materi={materi}
                 peta={peta}
                 step={step}
                 urutan="2"
-                src={geogebraImage}
-                alt="Tampilan model GeoGebra 3D"
+                src={geogebra}
+                alt="Tampilan GeoGebra 3D jaring-jaring kubus"
                 editable={editFoto}
-                containerClassName="relative flex-1 aspect-video rounded-[14px] overflow-hidden bg-[#F3F4F6]"
+                natural
+                containerClassName="relative w-full sm:flex-1 min-w-0"
               />
-              <div className="flex flex-col items-center gap-1.5 flex-shrink-0">
+              <div className="flex flex-col items-center gap-1.5 rounded-xl border border-[#BFDBFE] bg-white p-2.5 flex-shrink-0">
                 <EditablePageImage
                   imageKey="M2-P6-L1-3"
                   materi={materi}
                   peta={peta}
                   step={step}
                   urutan="3"
-                  src={qrGeogebraImage}
-                  alt="QR code menuju GeoGebra 3D"
+                  src={qrGeogebra}
+                  alt="QR code GeoGebra 3D"
                   editable={editFoto}
-                  containerClassName="relative w-20 h-20 rounded-lg overflow-hidden bg-white border border-[#E5E7EB]"
+                  imageClassName="object-contain"
+                  containerClassName="relative w-24 h-24"
                 />
-                <span className="text-[11px] font-bold text-[#2563EB] text-center leading-tight">
-                  Scan untuk GeoGebra 3D
-                </span>
+                <span className="text-[11px] font-semibold text-[#1E3A8A] text-center">Scan untuk GeoGebra 3D</span>
               </div>
             </div>
-            <ul className="m-0 pl-0 flex flex-col gap-1.5">
-              {geogebraChecklist.map((item) => (
-                <li key={item} className="flex items-start gap-2 text-sm text-[#374151]">
-                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#16A34A" strokeWidth="2.6" className="mt-0.5 flex-shrink-0">
-                    <path d="M5 13l4 4L19 7" />
-                  </svg>
-                  {item}
-                </li>
-              ))}
-            </ul>
+            <Checklist items={cekGeoGebra} accent="#2563EB" checked={checked} />
           </div>
 
-          <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-5 shadow-[0_1px_2px_rgba(0,0,0,0.04)] flex flex-col gap-3">
-            <div className="inline-flex items-center gap-2 bg-[#2B3D44] text-white rounded-full py-1.5 px-4 text-xs font-bold w-fit">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2">
-                <path d="M12 2v20M2 12h20" />
-                <circle cx="12" cy="12" r="9" />
-              </svg>
-              Augmented Reality (AR)
+          <div className="rounded-2xl border border-[#BBF7D0] bg-[#F3FCF6] p-5 flex flex-col gap-4">
+            <div className="flex items-center gap-2.5">
+              <span className="w-7 h-7 rounded-full bg-[#16A34A] text-white flex items-center justify-center text-sm font-bold">2</span>
+              <h3 className="m-0 text-base font-extrabold text-[#166534]">Augmented Reality (AR)</h3>
             </div>
-            <p className="m-0 text-sm text-[#4B5563]">Scan QR untuk melihat proses melipat jaring-jaring.</p>
-            <div className="flex items-center gap-3">
-              <EditablePageImage
-                imageKey="M2-P6-L1-4"
-                materi={materi}
-                peta={peta}
-                step={step}
-                urutan="4"
-                src={arImage}
-                alt="Ilustrasi proses membuka bangun ruang menjadi jaring-jaring via AR"
-                editable={editFoto}
-                containerClassName="relative flex-1 aspect-video rounded-[14px] overflow-hidden bg-[#F3F4F6]"
-              />
-              <div className="flex flex-col items-center gap-1.5 flex-shrink-0">
+            <p className="m-0 text-xs text-[#4B5563]">Scan QR untuk melihat proses melipat jaring-jaring.</p>
+            <div className="flex flex-col sm:flex-row gap-4 items-start">
+              <div className="w-full sm:flex-1 min-w-0 flex flex-col gap-1.5">
+                <EditablePageImage
+                  imageKey="M2-P6-L1-4"
+                  materi={materi}
+                  peta={peta}
+                  step={step}
+                  urutan="4"
+                  src={arStrip}
+                  alt="Proses AR: bangun ruang utuh, proses membuka, jaring-jaring terbentuk"
+                  editable={editFoto}
+                  natural
+                  containerClassName="relative w-full"
+                />
+                <p className="m-0 text-[11px] font-semibold text-[#374151] text-center">
+                  Bangun ruang utuh → Proses membuka → Jaring-jaring terbentuk
+                </p>
+              </div>
+              <div className="flex flex-col items-center gap-1.5 rounded-xl border border-[#BBF7D0] bg-white p-2.5 flex-shrink-0">
                 <EditablePageImage
                   imageKey="M2-P6-L1-5"
                   materi={materi}
                   peta={peta}
                   step={step}
                   urutan="5"
-                  src={qrArImage}
-                  alt="QR code menuju pengalaman AR"
+                  src={qrAr}
+                  alt="QR code AR"
                   editable={editFoto}
-                  containerClassName="relative w-20 h-20 rounded-lg overflow-hidden bg-white border border-[#E5E7EB]"
+                  imageClassName="object-contain"
+                  containerClassName="relative w-24 h-24"
                 />
-                <span className="text-[11px] font-bold text-[#2563EB] text-center leading-tight">Scan untuk AR</span>
+                <span className="text-[11px] font-semibold text-[#166534] text-center">Scan untuk AR</span>
               </div>
             </div>
-            <ul className="m-0 pl-0 flex flex-col gap-1.5">
-              {arChecklist.map((item) => (
-                <li key={item} className="flex items-start gap-2 text-sm text-[#374151]">
-                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#16A34A" strokeWidth="2.6" className="mt-0.5 flex-shrink-0">
-                    <path d="M5 13l4 4L19 7" />
-                  </svg>
-                  {item}
-                </li>
-              ))}
-            </ul>
+            <Checklist items={cekAr} accent="#16A34A" checked={checked} />
           </div>
         </div>
       </div>
 
-      <div className="flex justify-end">
-        <SubmitStepButton className="flex items-center gap-2 bg-[#2563EB] text-white border-none rounded-full py-3.5 px-7 text-sm font-bold font-inherit shadow-[0_4px_10px_rgba(37,99,235,0.3)] cursor-pointer w-full sm:w-auto justify-center">
+      <div className="flex justify-end items-center">
+        <SubmitStepButton className="flex items-center gap-2 bg-[#2563EB] text-white border-none rounded-full py-3.5 px-7 text-sm font-bold font-inherit shadow-[0_4px_10px_rgba(37,99,235,0.3)] cursor-pointer">
           LANJUTKAN
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.4">
             <path d="M5 12h14M13 5l7 7-7 7" />

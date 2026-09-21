@@ -4,7 +4,7 @@ import SubmitStepButton from "@/app/belajar/_components/SubmitStepButton";
 import BackLink from "@/app/belajar/_components/BackLink";
 import StepHeader from "@/app/belajar/_components/StepHeader";
 
-export default function Materi2Peta9Step3StrategiPola({
+export default function Materi2Peta9Step3StrategiDanPola({
   materi,
   peta,
   initialAnswers,
@@ -25,21 +25,20 @@ export default function Materi2Peta9Step3StrategiPola({
         </h1>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <div className="flex flex-col gap-4">
           <div className="flex items-center gap-3">
-            <div className="w-[34px] h-[34px] rounded-full bg-[#2563EB] text-white flex items-center justify-center font-bold text-[15px] flex-shrink-0">
+            <div className="w-[34px] h-[34px] rounded-full bg-[#16A34A] text-white flex items-center justify-center font-bold text-[15px] flex-shrink-0">
               C
             </div>
-            <div className="bg-white border border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-full py-2 px-5 text-sm font-bold text-[#2563EB]">
+            <div className="bg-white border border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-full py-2 px-5 text-sm font-bold text-[#16A34A]">
               Strategi dan Cara Berpikir
             </div>
           </div>
           <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-6 shadow-[0_1px_2px_rgba(0,0,0,0.04)] flex-1 flex flex-col gap-4">
             <div className="flex items-start gap-3">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#7C3AED" strokeWidth="2" className="flex-shrink-0">
-                <path d="M12 2a5 5 0 00-3 9v2a1 1 0 001 1h4a1 1 0 001-1v-2a5 5 0 00-3-9z" />
-                <path d="M9 21h6" />
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#EC4899" strokeWidth="1.8" className="flex-shrink-0">
+                <path d="M9 4a3 3 0 00-3 3 3 3 0 00-2 5 3 3 0 002 4 3 3 0 003 3h1V4zM15 4a3 3 0 013 3 3 3 0 012 5 3 3 0 01-2 4 3 3 0 01-3 3h-1V4z" />
               </svg>
               <p className="m-0 text-sm text-[#374151] leading-[1.6]">
                 Tuliskan berbagai cara atau strategi yang kamu gunakan untuk menemukan
@@ -48,16 +47,16 @@ export default function Materi2Peta9Step3StrategiPola({
             </div>
             {[1, 2, 3, 4].map((n) => (
               <div key={n} className="flex items-center gap-3">
-                <span className="w-6 h-6 rounded-full bg-[#F5F3FF] text-[#7C3AED] flex items-center justify-center text-xs font-bold flex-shrink-0">
+                <span className="w-6 h-6 rounded-full bg-[#EFFDF4] text-[#16A34A] flex items-center justify-center text-xs font-bold flex-shrink-0">
                   {n}
                 </span>
                 <input
                   type="text"
                   name={`answers.strategi_${n}`}
                   defaultValue={getValue(`strategi_${n}`)}
-                  required
-                  placeholder="Strategimu..."
-                  className="flex-1 rounded-xl border border-[#E5E7EB] bg-[#F9FAFB] px-3.5 py-2.5 text-sm text-[#374151] placeholder:text-[#9CA3AF] focus:border-[#2563EB] focus:outline-none transition-colors"
+                  required={n <= 2}
+                  placeholder={n <= 2 ? "Strategimu..." : "Strategimu (opsional)..."}
+                  className="flex-1 rounded-xl border border-[#E5E7EB] bg-[#F9FAFB] px-3.5 py-2.5 text-sm text-[#374151] placeholder:text-[#9CA3AF] focus:border-[#16A34A] focus:outline-none transition-colors"
                 />
               </div>
             ))}

@@ -6,7 +6,7 @@ import StepHeader from "@/app/belajar/_components/StepHeader";
 
 export default function Materi2Peta7Step5Rangkuman({ materi, peta, initialAnswers }: StepComponentProps) {
   const answers = initialAnswers ?? {};
-  const getValue = (key: string) => (typeof answers[key] === "string" ? (answers[key] as string) : "");
+  const rangkuman = typeof answers.rangkuman === "string" ? answers.rangkuman : "";
 
   return (
     <form action={submitStepAction} className="flex flex-col gap-8">
@@ -16,80 +16,64 @@ export default function Materi2Peta7Step5Rangkuman({ materi, peta, initialAnswer
 
       <div className="flex flex-col gap-4">
         <StepHeader materi={materi} currentStep={5} totalSteps={5} />
-        <h1 className="m-0 text-2xl sm:text-[32px] font-extrabold text-[#111827]">
-          Ayo Menyimpulkan (Generalisasi)
-        </h1>
+        <div className="inline-flex items-center bg-[#FDF3C7] text-[#92400E] rounded-full py-1.5 px-3.5 text-xs font-bold tracking-[0.02em] w-fit">
+          Tahap 6 dari 6
+        </div>
+        <h1 className="m-0 text-2xl sm:text-[32px] font-extrabold text-[#111827]">Ayo Menyimpulkan (Generalisasi)</h1>
       </div>
 
-      <div className="flex flex-col gap-4">
+      <div className="bg-white border border-[#E5E7EB] rounded-[20px] shadow-[0_1px_2px_rgba(0,0,0,0.04)] p-6 flex flex-col gap-4">
         <div className="flex items-center gap-3">
-          <div className="w-[34px] h-[34px] rounded-full bg-[#2563EB] text-white flex items-center justify-center font-bold text-[15px] flex-shrink-0">
-            H
-          </div>
-          <div className="bg-white border border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-full py-2 px-5 text-sm font-bold text-[#2563EB]">
-            Rangkuman Singkat
-          </div>
+          <div className="w-9 h-9 rounded-full bg-[#2563EB] text-white flex items-center justify-center font-bold text-sm flex-shrink-0">H</div>
+          <h2 className="m-0 text-lg font-bold text-[#1E3A8A]">Rangkuman Singkat</h2>
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#2563EB" strokeWidth="1.8" className="ml-auto flex-shrink-0" aria-hidden="true">
+            <rect x="5" y="4" width="14" height="17" rx="2" fill="#EFF4FF" />
+            <path d="M9 4V3h6v1M8.5 10l1.2 1.2 2-2M8.5 15l1.2 1.2 2-2M14 10.5h2.5M14 15.5h2.5" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
         </div>
-        <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-6 shadow-[0_1px_2px_rgba(0,0,0,0.04)] flex flex-col gap-3">
-          <div className="flex items-center gap-2">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2563EB" strokeWidth="2">
-              <path d="M9 3h6l1 3H8zM5 6h14l-1 15H6z" />
-              <path d="M9 11h6M9 15h6" />
-            </svg>
-            <p className="m-0 text-sm font-bold text-[#111827]">
-              Tuliskan rangkuman singkat tentang apa yang telah kamu pelajari pada submateri ini.
-            </p>
-          </div>
+        <label className="flex flex-col gap-2">
+          <span className="text-sm text-[#4B5563]">
+            Tuliskan rangkuman singkat tentang apa yang telah kamu pelajari pada submateri ini.
+          </span>
           <textarea
             name="answers.rangkuman"
-            defaultValue={getValue("rangkuman")}
-            rows={5}
+            defaultValue={rangkuman}
             required
-            placeholder="Tuliskan rangkumanmu..."
-            className="w-full rounded-xl border border-[#E5E7EB] bg-[#F9FAFB] px-3.5 py-2.5 text-sm text-[#374151] placeholder:text-[#9CA3AF] focus:border-[#2563EB] focus:outline-none transition-colors resize-none"
+            rows={5}
+            className="w-full rounded-xl border border-[#E5E7EB] px-3.5 py-2.5 text-sm text-[#374151] focus:border-[#2563EB] focus:outline-none resize-y"
           />
-        </div>
+        </label>
       </div>
 
-      <div className="relative overflow-hidden rounded-[20px] bg-[#1E3A8A] p-6 flex items-center gap-4">
-        <div className="absolute -right-6 -bottom-10 w-32 h-32 rounded-full bg-white/10" />
-        <div className="relative w-11 h-11 rounded-full bg-white/15 flex items-center justify-center flex-shrink-0 text-xl">
-          🚀
-        </div>
-        <div className="relative">
-          <p className="m-0 text-sm font-bold text-white mb-1">Menuju Tahap Berikutnya</p>
-          <p className="m-0 text-xs text-white/80 leading-[1.5]">
-            Selanjutnya, lakukan Refleksi Diri untuk melihat perkembangan pemahaman dan
-            keyakinanmu selama mempelajari materi jaring-jaring bangun ruang.
-          </p>
-        </div>
-      </div>
-
-      <div className="bg-[#FDF3C7] rounded-[20px] p-8 flex flex-col md:flex-row items-center justify-between gap-6">
-        <div className="text-center md:text-left">
-          <div className="flex items-center justify-center md:justify-start gap-2 mb-2 text-xl">
-            <span>⭐</span>
-            <span>✨</span>
+      <div className="bg-[#EFF4FF] border border-[#BFDBFE] rounded-[20px] p-6 flex items-center gap-5">
+        <div className="flex-1 flex flex-col gap-2">
+          <div className="flex items-center gap-3">
+            <div className="w-9 h-9 rounded-full bg-[#4338CA] text-white flex items-center justify-center font-bold text-sm flex-shrink-0">I</div>
+            <h2 className="m-0 text-lg font-bold text-[#3730A3]">Menuju Tahap Berikutnya</h2>
           </div>
-          <h2 className="m-0 mb-1.5 text-2xl font-extrabold text-[#92400E]">Hebat!</h2>
-          <p className="m-0 text-sm text-[#785900] font-medium">
-            Kamu telah menyelesaikan seluruh Tahap Discovery Learning submateri ini dengan sangat
-            baik!
+          <p className="m-0 text-sm leading-[1.7] text-[#1E40AF]">
+            Selanjutnya, lakukan Refleksi Diri untuk melihat perkembangan pemahaman dan keyakinanmu selama mempelajari
+            materi jaring-jaring bangun ruang.
           </p>
         </div>
-        <SubmitStepButton className="flex items-center gap-2 bg-[#16A34A] text-white border-none rounded-full py-4 px-7 text-sm font-bold shadow-[0_4px_10px_rgba(22,163,74,0.3)] cursor-pointer flex-shrink-0">
-          SELESAI
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.4">
-            <path d="M5 13l4 4L19 7" />
-          </svg>
-        </SubmitStepButton>
+        <svg width="64" height="64" viewBox="0 0 64 64" fill="none" className="flex-shrink-0" aria-hidden="true">
+          <path d="M32 6c10 6 14 18 12 32H20C18 24 22 12 32 6z" fill="#E0E7FF" stroke="#4338CA" strokeWidth="2.5" strokeLinejoin="round" />
+          <circle cx="32" cy="24" r="5" fill="#93C5FD" stroke="#4338CA" strokeWidth="2" />
+          <path d="M20 38l-8 10 10-2M44 38l8 10-10-2M28 42l4 12 4-12" stroke="#EC4899" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
       </div>
 
-      <div className="flex justify-start items-center">
+      <div className="flex justify-between items-center">
         <BackLink
           href={`/belajar/${materi}/${peta}/4`}
           className="flex items-center gap-2 bg-transparent text-[#6B7280] border-none rounded-full py-3 px-6 text-sm font-semibold cursor-pointer hover:text-[#374151]"
         />
+        <SubmitStepButton className="flex items-center gap-2 bg-[#16A34A] text-white border-none rounded-full py-3.5 px-7 text-sm font-bold font-inherit shadow-[0_4px_10px_rgba(22,163,74,0.3)] cursor-pointer">
+          SELESAI
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.6">
+            <path d="M5 13l4 4L19 7" />
+          </svg>
+        </SubmitStepButton>
       </div>
     </form>
   );

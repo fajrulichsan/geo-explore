@@ -5,31 +5,23 @@ import StepHeader from "@/app/belajar/_components/StepHeader";
 import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
 import { getPageImage, type PageImageKey } from "@/lib/pageImages";
 
-const tints = [
-  "bg-[#EFF4FF]",
-  "bg-[#F0FDF4]",
-  "bg-[#FEF9E7]",
-  "bg-[#FDF2F8]",
-  "bg-[#F5F3FF]",
-];
-
 const susunan = [
-  { letter: "A", imageKey: "M2-P2-L1-1", featured: true },
-  { letter: "B", imageKey: "M2-P2-L1-2" },
-  { letter: "C", imageKey: "M2-P2-L1-3" },
-  { letter: "D", imageKey: "M2-P2-L1-4" },
-  { letter: "E", imageKey: "M2-P2-L1-5" },
-  { letter: "F", imageKey: "M2-P2-L1-6" },
-  { letter: "G", imageKey: "M2-P2-L1-7" },
-  { letter: "H", imageKey: "M2-P2-L1-8" },
-  { letter: "I", imageKey: "M2-P2-L1-9" },
-  { letter: "J", imageKey: "M2-P2-L1-10" },
-] satisfies { letter: string; imageKey: PageImageKey; featured?: boolean }[];
+  { letter: "A", imageKey: "M2-P2-L1-2", urutan: "2" },
+  { letter: "B", imageKey: "M2-P2-L1-3", urutan: "3" },
+  { letter: "C", imageKey: "M2-P2-L1-4", urutan: "4" },
+  { letter: "D", imageKey: "M2-P2-L1-5", urutan: "5" },
+  { letter: "E", imageKey: "M2-P2-L1-6", urutan: "6" },
+  { letter: "F", imageKey: "M2-P2-L1-7", urutan: "7" },
+  { letter: "G", imageKey: "M2-P2-L1-8", urutan: "8" },
+  { letter: "H", imageKey: "M2-P2-L1-9", urutan: "9" },
+  { letter: "I", imageKey: "M2-P2-L1-10", urutan: "10" },
+  { letter: "J", imageKey: "M2-P2-L1-11", urutan: "11" },
+] satisfies { letter: string; imageKey: PageImageKey; urutan: string }[];
 
 export default async function Materi2Peta2Step1Amati({ materi, peta, step = "1", editFoto }: StepComponentProps) {
-  const [susunanImages, mascotImage] = await Promise.all([
-    Promise.all(susunan.map((s) => getPageImage(s.imageKey))),
-    getPageImage("M2-P2-L1-12"),
+  const [mascotImage, ...susunanImages] = await Promise.all([
+    getPageImage("M2-P2-L1-1"),
+    ...susunan.map((s) => getPageImage(s.imageKey)),
   ]);
 
   return (
@@ -39,7 +31,7 @@ export default async function Materi2Peta2Step1Amati({ materi, peta, step = "1",
       <input type="hidden" name="step" value="1" />
 
       <div className="flex flex-col gap-4">
-        <StepHeader materi={materi} currentStep={1} totalSteps={7} />
+        <StepHeader materi={materi} currentStep={1} totalSteps={5} />
         <div className="inline-flex items-center bg-[#FDF3C7] text-[#92400E] rounded-full py-1.5 px-3.5 text-xs font-bold tracking-[0.02em] w-fit">
           Tahap 1 dari 6 – Discovery Learning
         </div>
@@ -47,16 +39,16 @@ export default async function Materi2Peta2Step1Amati({ materi, peta, step = "1",
 
       <div className="flex flex-col sm:flex-row sm:items-center gap-5">
         <EditablePageImage
-          imageKey="M2-P2-L1-12"
+          imageKey="M2-P2-L1-1"
           materi={materi}
           peta={peta}
           step={step}
-          urutan="12"
+          urutan="1"
           src={mascotImage}
-          alt="Maskot mengamati dengan kaca pembesar"
+          alt="Siswi berhijab mengamati buku dengan kaca pembesar"
           editable={editFoto}
           imageClassName="object-contain"
-          containerClassName="relative w-28 h-36 sm:w-32 sm:h-40 flex-shrink-0 rounded-2xl overflow-hidden bg-[#EFF4FF]"
+          containerClassName="relative w-40 h-32 sm:w-44 sm:h-36 flex-shrink-0"
         />
         <div className="flex-1 flex flex-col gap-3">
           <div className="flex items-center gap-3.5">
@@ -68,7 +60,7 @@ export default async function Materi2Peta2Step1Amati({ materi, peta, step = "1",
               Ayo Mengamati dan Berpikir
             </h1>
           </div>
-          <div className="relative bg-white border border-[#E5E7EB] rounded-2xl rounded-tl-sm shadow-[0_1px_2px_rgba(0,0,0,0.04)] py-3 px-4 w-fit max-w-md flex items-center gap-2.5">
+          <div className="bg-white border border-[#E5E7EB] rounded-2xl rounded-tl-sm shadow-[0_1px_2px_rgba(0,0,0,0.04)] py-3 px-4 w-fit max-w-md flex items-center gap-2.5">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D97706" strokeWidth="2" className="flex-shrink-0">
               <path d="M9 18h6M10 22h4M12 2a7 7 0 00-4 12.7c.6.5 1 1.2 1 2.3h6c0-1.1.4-1.8 1-2.3A7 7 0 0012 2z" />
             </svg>
@@ -91,33 +83,31 @@ export default async function Materi2Peta2Step1Amati({ materi, peta, step = "1",
           </div>
         </div>
         <p className="relative m-0 max-w-xl text-[15px] leading-[1.6] text-white/90">
-          Berikut adalah beberapa susunan bidang datar. Perhatikan dengan teliti — apakah menurutmu
-          susunan ini bisa dilipat menjadi sebuah bangun ruang?
+          Berikut adalah beberapa susunan bidang datar. Perhatikan dengan teliti!
         </p>
       </div>
 
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-5">
+      <div className="grid grid-cols-2 lg:grid-cols-5 gap-4">
         {susunan.map((s, i) => (
           <div
             key={s.letter}
-            className={`relative border border-[#E5E7EB] rounded-[18px] overflow-hidden shadow-[0_1px_2px_rgba(0,0,0,0.04)] hover:shadow-[0_8px_20px_rgba(0,0,0,0.08)] hover:-translate-y-0.5 transition-all ${tints[i % tints.length]} ${
-              s.featured ? "col-span-2" : ""
-            }`}
+            className="bg-white border border-[#E5E7EB] rounded-[18px] p-3 shadow-[0_1px_2px_rgba(0,0,0,0.04)] flex flex-col items-center gap-2"
           >
             <EditablePageImage
               imageKey={s.imageKey}
               materi={materi}
               peta={peta}
               step={step}
-              urutan={String(i + 1)}
+              urutan={s.urutan}
               src={susunanImages[i]}
               alt={`Susunan bidang datar ${s.letter}`}
               editable={editFoto}
-              containerClassName={`relative w-full ${s.featured ? "aspect-[2/1]" : "aspect-square"}`}
+              imageClassName="object-contain"
+              containerClassName="relative w-full aspect-[4/3]"
             />
-            <div className="absolute top-2.5 left-2.5 w-8 h-8 rounded-full bg-white shadow-[0_2px_6px_rgba(0,0,0,0.12)] flex items-center justify-center">
-              <span className="text-sm font-extrabold text-[#2563EB]">{s.letter}</span>
-            </div>
+            <span className="w-8 h-8 rounded-full bg-[#EFF4FF] text-[#2563EB] flex items-center justify-center text-sm font-extrabold">
+              {s.letter}
+            </span>
           </div>
         ))}
       </div>

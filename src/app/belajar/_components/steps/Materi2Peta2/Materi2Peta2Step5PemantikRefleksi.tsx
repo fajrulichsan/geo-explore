@@ -33,7 +33,7 @@ const opsi = [
   { value: "belum", label: "Belum" },
 ];
 
-export default async function Materi2Peta2Step6PemantikRefleksi({
+export default async function Materi2Peta2Step5PemantikRefleksi({
   materi,
   peta,
   initialAnswers,
@@ -45,10 +45,10 @@ export default async function Materi2Peta2Step6PemantikRefleksi({
     <form action={submitStepAction} className="flex flex-col gap-8">
       <input type="hidden" name="materi" value={materi} />
       <input type="hidden" name="peta" value={peta} />
-      <input type="hidden" name="step" value="6" />
+      <input type="hidden" name="step" value="5" />
 
       <div className="flex flex-col gap-4">
-        <StepHeader materi={materi} currentStep={6} totalSteps={7} />
+        <StepHeader materi={materi} currentStep={5} totalSteps={5} />
         <div className="flex items-center gap-3.5">
           <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#2563EB" strokeWidth="2.4">
             <circle cx="11" cy="11" r="7" />
@@ -149,7 +149,7 @@ export default async function Materi2Peta2Step6PemantikRefleksi({
 
       <div className="flex justify-between items-center">
         <BackLink
-          href={`/belajar/${materi}/${peta}/5`}
+          href={`/belajar/${materi}/${peta}/4`}
           className="flex items-center gap-2 bg-transparent text-[#6B7280] border-none rounded-full py-3 px-6 text-sm font-semibold cursor-pointer hover:text-[#374151]"
         />
         <SubmitStepButton className="flex items-center gap-2 bg-[#16A34A] text-white border-none rounded-full py-3.5 px-7 text-sm font-bold font-inherit shadow-[0_4px_10px_rgba(22,163,74,0.3)] cursor-pointer">

@@ -95,9 +95,14 @@ export type PageImageKey =
   | "M1-P9-L2-1"
   | "M1-P9-L2-2"
   | "M1-P10-L2-1"
+  | "M2-P1-L1-1"
+  | "M2-P1-L1-2"
   | "M2-P1-L2-1"
   | "M2-P1-L2-2"
   | "M2-P1-L2-3"
+  | "M2-P1-L2-4"
+  | "M2-P1-L2-5"
+  | "M2-P1-L2-6"
   | "M2-P2-L1-1"
   | "M2-P2-L1-2"
   | "M2-P2-L1-3"
@@ -108,11 +113,25 @@ export type PageImageKey =
   | "M2-P2-L1-8"
   | "M2-P2-L1-9"
   | "M2-P2-L1-10"
-  | "M2-P2-L1-12"
+  | "M2-P2-L1-11"
   | "M2-P2-L2-1"
-  | "M2-P2-L4-1"
+  | "M2-P2-L3-1"
+  | "M2-P2-L3-2"
+  | "M2-P2-L3-3"
+  | "M2-P2-L3-4"
+  | "M2-P2-L3-5"
+  | "M2-P2-L3-6"
+  | "M2-P2-L3-7"
+  | "M2-P2-L3-8"
+  | "M2-P2-L3-9"
+  | "M2-P2-L3-10"
+  | "M2-P2-L3-11"
   | "M2-P3-L1-1"
   | "M2-P3-L1-2"
+  | "M2-P3-L3-1"
+  | "M2-P3-L3-2"
+  | "M2-P3-L4-1"
+  | "M2-P3-L7-1"
   | "M2-P4-L1-1"
   | "M2-P4-L1-2"
   | "M2-P4-L1-3"
@@ -120,22 +139,55 @@ export type PageImageKey =
   | "M2-P4-L1-5"
   | "M2-P4-L4-1"
   | "M2-P5-L1-1"
+  | "M2-P5-L4-1"
   | "M2-P6-L1-1"
   | "M2-P6-L1-2"
   | "M2-P6-L1-3"
   | "M2-P6-L1-4"
   | "M2-P6-L1-5"
-  | "M2-P6-L3-1"
+  | "M2-P6-L4-1"
   | "M2-P7-L1-1"
   | "M2-P7-L4-1"
   | "M2-P8-L1-1"
-  | "M2-P8-L1-2"
   | "M2-P8-L3-1"
+  | "M2-P8-L5-1"
+  | "M2-P8-L5-2"
   | "M2-P9-L1-1"
   | "M2-P9-L1-2"
   | "M2-P9-L4-1"
   | "M2-P10-L1-1"
+  | "M2-P10-L1-2"
+  | "M2-P10-L1-3"
+  | "M2-P10-L1-4"
+  | "M2-P10-L1-5"
+  | "M2-P10-L1-6"
+  | "M2-P10-L1-7"
+  | "M2-P10-L1-8"
+  | "M2-P10-L1-9"
+  | "M2-P10-L1-10"
+  | "M2-P10-L1-11"
+  | "M2-P10-L1-12"
+  | "M2-P10-L1-13"
+  | "M2-P10-L1-14"
+  | "M2-P10-L1-15"
+  | "M2-P10-L1-16"
+  | "M2-P10-L1-17"
+  | "M2-P10-L1-18"
+  | "M2-P10-L1-19"
+  | "M2-P10-L1-20"
   | "M2-P10-L2-1"
+  | "M2-P10-L2-2"
+  | "M2-P10-L2-3"
+  | "M2-P10-L2-4"
+  | "M2-P10-L2-5"
+  | "M2-P10-L2-6"
+  | "M2-P10-L2-7"
+  | "M2-P10-L2-8"
+  | "M2-P10-L3-1"
+  | "M2-P10-L3-2"
+  | "M2-P10-L4-1"
+  | "M2-P10-L4-2"
+  | "M2-P10-L4-3"
   | "M3-P1-L1-1"
   | "M3-P1-L2-1"
   | "M3-P1-L3-1"
@@ -716,47 +768,99 @@ const DEFAULT_IMAGES: Record<PageImageKey, string> = {
   "M1-P9-L2-1": "https://placehold.co/96x96?text=Kubus",
   "M1-P9-L2-2": "https://placehold.co/80x80?text=Ilustrasi",
   "M1-P10-L2-1": "https://placehold.co/900x500?text=Peta+Konsep",
-  "M2-P1-L2-1": "https://placehold.co/600x338?text=Proses+Jaring-Jaring",
-  "M2-P1-L2-2": "https://placehold.co/300x180?text=GeoGebra+3D",
-  "M2-P1-L2-3": "https://placehold.co/300x180?text=Augmented+Reality",
-  "M2-P2-L1-1": "https://placehold.co/300x300?text=Susunan+A",
-  "M2-P2-L1-2": "https://placehold.co/300x300?text=Susunan+B",
-  "M2-P2-L1-3": "https://placehold.co/300x300?text=Susunan+C",
-  "M2-P2-L1-4": "https://placehold.co/300x300?text=Susunan+D",
-  "M2-P2-L1-5": "https://placehold.co/300x300?text=Susunan+E",
-  "M2-P2-L1-6": "https://placehold.co/300x300?text=Susunan+F",
-  "M2-P2-L1-7": "https://placehold.co/300x300?text=Susunan+G",
-  "M2-P2-L1-8": "https://placehold.co/300x300?text=Susunan+H",
-  "M2-P2-L1-9": "https://placehold.co/300x300?text=Susunan+I",
-  "M2-P2-L1-10": "https://placehold.co/300x300?text=Susunan+J",
-  "M2-P2-L1-12": "https://placehold.co/280x360?text=Maskot+Mengamati",
-  "M2-P2-L2-1": "https://placehold.co/280x360?text=Maskot+Berpikir",
-  "M2-P2-L4-1": "https://placehold.co/280x360?text=Maskot+Lanjutkan",
+  "M2-P1-L1-1": "https://placehold.co/380x250?text=Siswa+Belajar",
+  "M2-P1-L1-2": "https://placehold.co/1100x160?text=Proses+Jaring-Jaring",
+  "M2-P1-L2-1": "https://placehold.co/350x240?text=GeoGebra+3D",
+  "M2-P1-L2-2": "https://placehold.co/200x250?text=Augmented+Reality",
+  "M2-P1-L2-3": "https://placehold.co/111x111?text=Kubus",
+  "M2-P1-L2-4": "https://placehold.co/400x220?text=Balok",
+  "M2-P1-L2-5": "https://placehold.co/200x130?text=Prisma",
+  "M2-P1-L2-6": "https://placehold.co/290x270?text=Limas",
+  "M2-P2-L1-1": "https://placehold.co/280x240?text=Siswi+Mengamati",
+  "M2-P2-L1-2": "https://placehold.co/400x300?text=Susunan+A",
+  "M2-P2-L1-3": "https://placehold.co/400x300?text=Susunan+B",
+  "M2-P2-L1-4": "https://placehold.co/400x300?text=Susunan+C",
+  "M2-P2-L1-5": "https://placehold.co/400x300?text=Susunan+D",
+  "M2-P2-L1-6": "https://placehold.co/400x300?text=Susunan+E",
+  "M2-P2-L1-7": "https://placehold.co/400x300?text=Susunan+F",
+  "M2-P2-L1-8": "https://placehold.co/400x300?text=Susunan+G",
+  "M2-P2-L1-9": "https://placehold.co/400x300?text=Susunan+H",
+  "M2-P2-L1-10": "https://placehold.co/400x300?text=Susunan+I",
+  "M2-P2-L1-11": "https://placehold.co/400x300?text=Susunan+J",
+  "M2-P2-L2-1": "https://placehold.co/140x240?text=Siswi+Berpikir",
+  "M2-P2-L3-1": "https://placehold.co/256x241?text=Siswa+Kaca+Pembesar",
+  "M2-P2-L3-2": "https://placehold.co/400x300?text=Susunan+A",
+  "M2-P2-L3-3": "https://placehold.co/400x300?text=Susunan+B",
+  "M2-P2-L3-4": "https://placehold.co/400x300?text=Susunan+C",
+  "M2-P2-L3-5": "https://placehold.co/400x300?text=Susunan+D",
+  "M2-P2-L3-6": "https://placehold.co/400x300?text=Susunan+E",
+  "M2-P2-L3-7": "https://placehold.co/400x300?text=Susunan+F",
+  "M2-P2-L3-8": "https://placehold.co/400x300?text=Susunan+G",
+  "M2-P2-L3-9": "https://placehold.co/400x300?text=Susunan+H",
+  "M2-P2-L3-10": "https://placehold.co/400x300?text=Susunan+I",
+  "M2-P2-L3-11": "https://placehold.co/400x300?text=Susunan+J",
   "M2-P3-L1-1": "https://placehold.co/280x360?text=Maskot+Berdiskusi",
   "M2-P3-L1-2": "https://placehold.co/480x300?text=Kelompok+Berdiskusi",
+  "M2-P3-L3-1": "https://placehold.co/802x429?text=GeoGebra+3D+dan+AR",
+  "M2-P3-L3-2": "https://placehold.co/150x150?text=QR",
+  "M2-P3-L4-1": "https://placehold.co/646x529?text=Maskot+Berdiskusi+2",
+  "M2-P3-L7-1": "https://placehold.co/811x535?text=Kotak+Motivasi",
   "M2-P4-L1-1": "https://placehold.co/280x360?text=Maskot+Eksplorasi",
   "M2-P4-L1-2": "https://placehold.co/480x300?text=GeoGebra+3D",
   "M2-P4-L1-3": "https://placehold.co/220x220?text=QR+GeoGebra",
   "M2-P4-L1-4": "https://placehold.co/480x300?text=Lipatan+AR",
   "M2-P4-L1-5": "https://placehold.co/220x220?text=QR+AR",
   "M2-P4-L4-1": "https://placehold.co/280x360?text=Maskot+Refleksi",
-  "M2-P5-L1-1": "https://placehold.co/280x360?text=Maskot+Mengolah+Informasi",
-  "M2-P6-L1-1": "https://placehold.co/280x360?text=Maskot+Verifikasi",
+  "M2-P5-L1-1": "https://placehold.co/630x520?text=Siswi+Menulis",
+  "M2-P5-L4-1": "https://placehold.co/325x532?text=Siswa+Ide",
+  "M2-P6-L1-1": "https://placehold.co/280x320?text=Siswa+Berpikir",
   "M2-P6-L1-2": "https://placehold.co/480x300?text=GeoGebra+3D",
   "M2-P6-L1-3": "https://placehold.co/220x220?text=QR+GeoGebra",
-  "M2-P6-L1-4": "https://placehold.co/480x300?text=Proses+AR",
+  "M2-P6-L1-4": "https://placehold.co/480x220?text=Proses+AR",
   "M2-P6-L1-5": "https://placehold.co/220x220?text=QR+AR",
-  "M2-P6-L3-1": "https://placehold.co/280x360?text=Maskot+Refleksi",
+  "M2-P6-L4-1": "https://placehold.co/300x400?text=Siswi+Ide",
   "M2-P7-L1-1": "https://placehold.co/280x360?text=Maskot+Menyimpulkan",
   "M2-P7-L4-1": "https://placehold.co/160x200?text=Maskot+Jempol",
-  "M2-P8-L1-1": "https://placehold.co/280x360?text=Maskot+Refleksi+Diri",
-  "M2-P8-L1-2": "https://placehold.co/320x280?text=Jaring-Jaring+Bangun+Ruang",
-  "M2-P8-L3-1": "https://placehold.co/480x280?text=Siswa+Berdiskusi",
-  "M2-P9-L1-1": "https://placehold.co/280x360?text=Maskot+Tantangan",
-  "M2-P9-L1-2": "https://placehold.co/320x320?text=Kubus",
-  "M2-P9-L4-1": "https://placehold.co/280x360?text=Maskot+Refleksi",
-  "M2-P10-L1-1": "https://placehold.co/280x360?text=Maskot+Rangkuman",
-  "M2-P10-L2-1": "https://placehold.co/200x280?text=Maskot+Semangat",
+  "M2-P8-L1-1": "https://placehold.co/400x400?text=Maskot+Refleksi+Diri",
+  "M2-P8-L3-1": "https://placehold.co/350x540?text=Siswa+Yakin",
+  "M2-P8-L5-1": "https://placehold.co/800x520?text=Siswa+Berdiskusi",
+  "M2-P8-L5-2": "https://placehold.co/350x540?text=Target+Belajar",
+  "M2-P9-L1-1": "https://placehold.co/576x528?text=Siswi+Tantangan",
+  "M2-P9-L1-2": "https://placehold.co/457x492?text=Kubus",
+  "M2-P9-L4-1": "https://placehold.co/357x540?text=Siswa+Refleksi",
+  "M2-P10-L1-1": "https://placehold.co/280x360?text=Maskot+Menunjuk",
+  "M2-P10-L1-2": "https://placehold.co/180x220?text=Jaring+Kubus+1",
+  "M2-P10-L1-3": "https://placehold.co/180x220?text=Jaring+Kubus+2",
+  "M2-P10-L1-4": "https://placehold.co/180x220?text=Jaring+Kubus+3",
+  "M2-P10-L1-5": "https://placehold.co/180x220?text=Jaring+Kubus+4",
+  "M2-P10-L1-6": "https://placehold.co/220x200?text=Jaring+Balok+1",
+  "M2-P10-L1-7": "https://placehold.co/220x200?text=Jaring+Balok+2",
+  "M2-P10-L1-8": "https://placehold.co/220x200?text=Jaring+Balok+3",
+  "M2-P10-L1-9": "https://placehold.co/220x200?text=Jaring+Balok+4",
+  "M2-P10-L1-10": "https://placehold.co/200x140?text=Prisma+Segitiga",
+  "M2-P10-L1-11": "https://placehold.co/200x240?text=Jaring+Prisma+1",
+  "M2-P10-L1-12": "https://placehold.co/200x240?text=Jaring+Prisma+2",
+  "M2-P10-L1-13": "https://placehold.co/200x240?text=Jaring+Prisma+3",
+  "M2-P10-L1-14": "https://placehold.co/200x240?text=Jaring+Prisma+4",
+  "M2-P10-L1-15": "https://placehold.co/200x240?text=Limas+Segiempat",
+  "M2-P10-L1-16": "https://placehold.co/220x220?text=Jaring+Limas+1",
+  "M2-P10-L1-17": "https://placehold.co/220x220?text=Jaring+Limas+2",
+  "M2-P10-L1-18": "https://placehold.co/220x220?text=Jaring+Limas+3",
+  "M2-P10-L1-19": "https://placehold.co/220x220?text=Jaring+Limas+4",
+  "M2-P10-L1-20": "https://placehold.co/300x120?text=Jaring+ke+Kubus",
+  "M2-P10-L2-1": "https://placehold.co/200x150?text=Kubus+valid",
+  "M2-P10-L2-2": "https://placehold.co/200x150?text=Kubus+tidak+valid",
+  "M2-P10-L2-3": "https://placehold.co/200x150?text=Balok+valid",
+  "M2-P10-L2-4": "https://placehold.co/200x150?text=Balok+tidak+valid",
+  "M2-P10-L2-5": "https://placehold.co/200x150?text=Prisma+Segitiga+valid",
+  "M2-P10-L2-6": "https://placehold.co/200x150?text=Prisma+Segitiga+tidak+valid",
+  "M2-P10-L2-7": "https://placehold.co/200x150?text=Limas+Segiempat+valid",
+  "M2-P10-L2-8": "https://placehold.co/200x150?text=Limas+Segiempat+tidak+valid",
+  "M2-P10-L3-1": "https://placehold.co/200x140?text=Prisma+Segitiga",
+  "M2-P10-L3-2": "https://placehold.co/200x240?text=Limas+Segiempat",
+  "M2-P10-L4-1": "https://placehold.co/240x320?text=Jaring+Kubus+Panah",
+  "M2-P10-L4-2": "https://placehold.co/280x360?text=Maskot+Semangat",
+  "M2-P10-L4-3": "https://placehold.co/460x190?text=Jaring+ke+Luas",
   "M3-P1-L1-1": "https://placehold.co/600x400?text=Siswa+Berdiskusi",
   "M3-P1-L2-1": "https://placehold.co/800x290?text=Alur+Luas+Permukaan",
   "M3-P1-L3-1": "https://placehold.co/350x230?text=GeoGebra+3D",

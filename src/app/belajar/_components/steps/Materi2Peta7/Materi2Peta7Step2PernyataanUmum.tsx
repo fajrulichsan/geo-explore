@@ -13,13 +13,10 @@ const pernyataan = [
   { key: "seluruh_sisi", label: "Jaring-jaring harus memiliki seluruh sisi bangun ruang." },
 ];
 
-export default function Materi2Peta7Step2PernyataanUmum({
-  materi,
-  peta,
-  initialAnswers,
-}: StepComponentProps) {
+export default function Materi2Peta7Step2PernyataanUmum({ materi, peta, initialAnswers }: StepComponentProps) {
   const answers = initialAnswers ?? {};
   const getValue = (key: string) => (typeof answers[key] === "string" ? (answers[key] as string) : "");
+  const checked = (key: string) => answers[key] === "on" || answers[key] === true;
 
   return (
     <form action={submitStepAction} className="flex flex-col gap-8">
@@ -29,87 +26,69 @@ export default function Materi2Peta7Step2PernyataanUmum({
 
       <div className="flex flex-col gap-4">
         <StepHeader materi={materi} currentStep={2} totalSteps={5} />
-        <h1 className="m-0 text-2xl sm:text-[32px] font-extrabold text-[#111827]">
-          Ayo Menyimpulkan (Generalisasi)
-        </h1>
+        <div className="inline-flex items-center bg-[#FDF3C7] text-[#92400E] rounded-full py-1.5 px-3.5 text-xs font-bold tracking-[0.02em] w-fit">
+          Tahap 6 dari 6
+        </div>
+        <h1 className="m-0 text-2xl sm:text-[32px] font-extrabold text-[#111827]">Ayo Menyimpulkan (Generalisasi)</h1>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        <div className="flex flex-col gap-4">
+      <div className="grid lg:grid-cols-2 gap-6">
+        <div className="bg-white border border-[#DDD6FE] rounded-[20px] p-6 flex flex-col gap-4">
           <div className="flex items-center gap-3">
-            <div className="w-[34px] h-[34px] rounded-full bg-[#2563EB] text-white flex items-center justify-center font-bold text-[15px] flex-shrink-0">
-              C
-            </div>
-            <div className="bg-white border border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-full py-2 px-5 text-sm font-bold text-[#2563EB]">
-              Menentukan Pernyataan Umum
-            </div>
+            <div className="w-9 h-9 rounded-full bg-[#4338CA] text-white flex items-center justify-center font-bold text-sm flex-shrink-0">C</div>
+            <h2 className="m-0 text-lg font-bold text-[#3730A3]">Menentukan Pernyataan Umum</h2>
           </div>
-          <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-6 shadow-[0_1px_2px_rgba(0,0,0,0.04)] flex-1 flex flex-col gap-4">
-            <p className="m-0 text-sm text-[#4B5563]">
-              Berilah tanda centang (✓) pada pernyataan yang benar menurut hasil belajarmu.
-              Siapkan alasan untuk pilihanmu.
-            </p>
-            <div className="flex flex-col gap-2.5">
-              {pernyataan.map((p) => (
-                <label
-                  key={p.key}
-                  className="flex items-start gap-2.5 text-sm font-semibold text-[#374151] cursor-pointer"
-                >
-                  <input
-                    type="checkbox"
-                    name={`answers.${p.key}`}
-                    defaultChecked={getValue(p.key) === "true"}
-                    value="true"
-                    data-require-group="pernyataan_umum"
-                    className="mt-1 w-4 h-4 rounded border-[#D1D5DB] text-[#2563EB] focus:ring-[#2563EB] flex-shrink-0"
-                  />
-                  {p.label}
-                </label>
-              ))}
-            </div>
-            <div className="flex flex-col gap-1.5 pt-2 border-t border-dashed border-[#E5E7EB]">
-              <label htmlFor="alasan_pernyataan" className="text-sm font-semibold text-[#111827]">
-                Alasan pilihan pernyataan di atas:
+          <p className="m-0 text-sm text-[#4B5563]">
+            Berilah tanda centang (✓) pada pernyataan yang benar menurut hasil belajarmu. Siapkan alasan untuk pilihanmu.
+          </p>
+          <div className="flex flex-col gap-2">
+            {pernyataan.map((p) => (
+              <label key={p.key} className="flex items-start gap-3 bg-white border border-[#E5E7EB] rounded-xl px-4 py-3 cursor-pointer">
+                <input
+                  type="checkbox"
+                  name={`answers.${p.key}`}
+                  defaultChecked={checked(p.key)}
+                  className="mt-0.5 w-4 h-4 accent-[#4338CA]"
+                />
+                <span className="text-sm text-[#374151]">{p.label}</span>
               </label>
-              <textarea
-                id="alasan_pernyataan"
-                name="answers.alasan_pernyataan"
-                defaultValue={getValue("alasan_pernyataan")}
-                rows={3}
-                required
-                placeholder="Jelaskan alasanmu..."
-                className="w-full rounded-xl border border-[#E5E7EB] bg-[#F9FAFB] px-3.5 py-2.5 text-sm text-[#374151] placeholder:text-[#9CA3AF] focus:border-[#2563EB] focus:outline-none transition-colors resize-none"
-              />
-            </div>
+            ))}
           </div>
+          <label className="flex flex-col gap-2 border-t border-dashed border-[#93C5FD] pt-4">
+            <span className="text-sm font-semibold text-[#1F2937]">Alasan pilihan pernyataan di atas:</span>
+            <textarea
+              name="answers.alasan_pernyataan"
+              defaultValue={getValue("alasan_pernyataan")}
+              required
+              rows={3}
+              className="w-full rounded-xl border border-[#E5E7EB] px-3.5 py-2.5 text-sm text-[#374151] focus:border-[#4338CA] focus:outline-none resize-y"
+            />
+          </label>
         </div>
 
-        <div className="flex flex-col gap-4">
-          <div className="flex items-center gap-3">
-            <div className="w-[34px] h-[34px] rounded-full bg-[#2563EB] text-white flex items-center justify-center font-bold text-[15px] flex-shrink-0">
-              D
+        <div className="bg-white border border-[#FDE68A] rounded-[20px] p-6 flex flex-col gap-4">
+          <div className="flex items-start gap-3">
+            <div className="w-9 h-9 rounded-full bg-[#D97706] text-white flex items-center justify-center font-bold text-sm flex-shrink-0">D</div>
+            <div className="flex-1 flex flex-col gap-1">
+              <h2 className="m-0 text-lg font-bold text-[#92400E]">Kesimpulan Konsep</h2>
+              <p className="m-0 text-sm text-[#4B5563]">Lengkapilah kesimpulan berikut.</p>
             </div>
-            <div className="bg-white border border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-full py-2 px-5 text-sm font-bold text-[#2563EB]">
-              Kesimpulan Konsep
-            </div>
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="#FDE68A" stroke="#D97706" strokeWidth="1.6" className="flex-shrink-0" aria-hidden="true">
+              <path d="M9 18h6M10 21h4M12 3a6 6 0 00-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0012 3z" />
+            </svg>
           </div>
-          <div className="bg-[#FEF9E7] border border-[#F5E3A0] rounded-[20px] p-6 flex-1 flex flex-col gap-3">
-            <p className="m-0 text-sm text-[#374151]">Lengkapilah kesimpulan berikut.</p>
-            <div className="bg-white rounded-2xl border border-[#F5E3A0] p-4 flex flex-col gap-2">
-              <p className="m-0 text-sm font-bold text-[#D97706]">Kesimpulan</p>
-              <p className="m-0 text-sm text-[#374151] leading-[1.6]">
-                Suatu susunan bidang datar merupakan jaring-jaring bangun ruang yang valid apabila
-                ...
-              </p>
-              <textarea
-                name="answers.kesimpulan_konsep"
-                defaultValue={getValue("kesimpulan_konsep")}
-                rows={5}
-                required
-                placeholder="Tuliskan kesimpulanmu..."
-                className="w-full rounded-xl border border-[#F5E3A0] bg-[#FFFBEB] px-3.5 py-2.5 text-sm text-[#374151] placeholder:text-[#B45309] focus:border-[#D97706] focus:outline-none transition-colors resize-none"
-              />
-            </div>
+          <div className="bg-[#FEF9E7] border border-[#F5E3A0] rounded-2xl p-5 flex flex-col gap-3">
+            <p className="m-0 text-base font-extrabold text-[#B45309]">Kesimpulan</p>
+            <p className="m-0 text-sm leading-[1.6] text-[#92400E]">
+              Suatu susunan bidang datar merupakan jaring-jaring bangun ruang yang valid apabila ...
+            </p>
+            <textarea
+              name="answers.kesimpulan_konsep"
+              defaultValue={getValue("kesimpulan_konsep")}
+              required
+              rows={5}
+              className="w-full rounded-xl border border-[#F5E3A0] bg-white px-3.5 py-2.5 text-sm text-[#374151] focus:border-[#D97706] focus:outline-none resize-y"
+            />
           </div>
         </div>
       </div>
