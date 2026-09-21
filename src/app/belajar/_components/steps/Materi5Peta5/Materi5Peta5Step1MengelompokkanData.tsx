@@ -19,10 +19,12 @@ const faktorSkala = [
   { key: "3", label: "3" },
 ];
 
-const proses = [
-  { n: 1, label: "Kelompokkan Data" },
-  { n: 2, label: "Bandingkan Perubahan" },
-  { n: 3, label: "Cari Pola" },
+const alur = ["Kelompokkan Data", "Bandingkan Perubahan", "Cari Pola"];
+
+const tips = [
+  "Pastikan semua data dimasukkan dengan rapi dan benar.",
+  "Bandingkan perubahan pada faktor skala yang sama antar bangun.",
+  "Fokuslah menemukan pola, bukan menebak rumus.",
 ];
 
 export default async function Materi5Peta5Step1MengelompokkanData({
@@ -47,58 +49,49 @@ export default async function Materi5Peta5Step1MengelompokkanData({
         <div className="inline-flex items-center bg-[#FDF3C7] text-[#92400E] rounded-full py-1.5 px-3.5 text-xs font-bold tracking-[0.02em] w-fit">
           Tahap 4
         </div>
-        <h1 className="m-0 text-2xl sm:text-[32px] font-extrabold text-[#111827]">
-          Ayo Mengolah Informasi
-        </h1>
-        <p className="m-0 text-sm font-semibold text-[#2563EB]">
-          Temukan pola hubungan skala dan luas dari data yang telah kamu kumpulkan.
-        </p>
+        <h1 className="m-0 text-2xl sm:text-[32px] font-extrabold text-[#111827]">Ayo Mengolah Informasi</h1>
+        <p className="m-0 text-sm font-semibold text-[#2563EB]">Temukan Pola Hubungan Skala dan Luas</p>
       </div>
 
-      <div className="grid lg:grid-cols-12 gap-6 items-stretch">
-        <div className="lg:col-span-8 bg-white border border-[#E5E7EB] rounded-[20px] p-6 shadow-[0_1px_2px_rgba(0,0,0,0.04)] flex flex-col gap-3">
-          <p className="m-0 text-sm leading-[1.6] text-[#374151]">
-            Kamu telah mengumpulkan berbagai data melalui GeoGebra 3D dan Augmented Reality (AR).
-            Sekarang saatnya mengolah data tersebut.
-          </p>
-          <p className="m-0 text-sm leading-[1.6] text-[#374151]">
-            Kelompokkan hasil pengamatanmu, bandingkan perubahan ukuran dengan perubahan luas
-            permukaan, kemudian temukan{" "}
-            <span className="font-bold text-[#2563EB]">pola hubungan</span> di antara keduanya.
+      <div className="grid lg:grid-cols-2 gap-6 items-center">
+        <div className="bg-[#FFF7E6] border border-[#FCD9A0] rounded-[20px] p-6 flex flex-col gap-3">
+          <p className="m-0 text-base font-bold text-[#1E3A8A]">Pengantar</p>
+          <p className="m-0 text-sm leading-[1.7] text-[#374151]">
+            Kamu telah mengumpulkan berbagai data melalui GeoGebra 3D dan Augmented Reality. Sekarang saatnya{" "}
+            <span className="font-bold text-[#1E3A8A]">mengolah</span> data tersebut. Kelompokkan hasil
+            pengamatanmu, bandingkan perubahan ukuran dengan perubahan luas permukaan, kemudian temukan{" "}
+            <span className="font-bold text-[#1E3A8A]">pola hubungan</span> di antara keduanya.
           </p>
         </div>
-        <div className="lg:col-span-4 relative rounded-[20px] overflow-hidden bg-[#EFF4FF]">
-          <EditablePageImage
-            imageKey="M5-P5-L1-1"
-            materi={materi}
-            peta={peta}
-            step={step}
-            urutan="1"
-            src={heroImage}
-            alt="Tiga siswa mengolah data hasil eksplorasi GeoGebra dan AR"
-            editable={editFoto}
-            imageClassName="object-contain"
-            containerClassName="relative w-full h-full min-h-[180px]"
-          />
-        </div>
+        <EditablePageImage
+          imageKey="M5-P5-L1-1"
+          materi={materi}
+          peta={peta}
+          step={step}
+          urutan="1"
+          src={heroImage}
+          alt="Tiga siswa mengolah data hasil eksplorasi GeoGebra dan AR"
+          editable={editFoto}
+          natural
+          containerClassName="relative w-full rounded-[20px] overflow-hidden"
+        />
       </div>
 
-      <div className="flex flex-wrap items-center gap-3 bg-[#F9FAFB] border border-[#E5E7EB] rounded-2xl px-5 py-4">
-        {proses.map((p, i) => (
-          <div key={p.n} className="flex items-center gap-3">
+      <div className="flex flex-wrap items-center gap-3 bg-[#FFF7E6] border border-[#FCD9A0] rounded-2xl px-5 py-4">
+        <span className="text-sm font-bold text-[#92400E]">Alur Tahap</span>
+        {alur.map((label, i) => (
+          <div key={label} className="flex items-center gap-3">
             <div className="flex items-center gap-2">
               <div
                 className={`w-7 h-7 rounded-full flex items-center justify-center font-bold text-xs flex-shrink-0 ${
-                  p.n === 1 ? "bg-[#16A34A] text-white" : "bg-[#E5E7EB] text-[#6B7280]"
+                  i === 0 ? "bg-[#16A34A] text-white" : "bg-[#E5E7EB] text-[#6B7280]"
                 }`}
               >
-                {p.n}
+                {i + 1}
               </div>
-              <span className={`text-sm font-bold ${p.n === 1 ? "text-[#16A34A]" : "text-[#6B7280]"}`}>
-                {p.label}
-              </span>
+              <span className={`text-sm font-bold ${i === 0 ? "text-[#16A34A]" : "text-[#6B7280]"}`}>{label}</span>
             </div>
-            {i < proses.length - 1 && (
+            {i < alur.length - 1 && (
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#9CA3AF" strokeWidth="2.4">
                 <path d="M5 12h14M13 5l7 7-7 7" />
               </svg>
@@ -112,7 +105,7 @@ export default async function Materi5Peta5Step1MengelompokkanData({
           <div className="w-9 h-9 rounded-full bg-[#16A34A] text-white flex items-center justify-center font-bold text-sm flex-shrink-0">
             A
           </div>
-          <h2 className="m-0 text-lg font-bold text-[#111827]">Mengelompokkan Data</h2>
+          <h2 className="m-0 text-lg font-bold text-[#16A34A]">Mengelompokkan Data</h2>
         </div>
         <p className="m-0 px-6 pt-2 text-sm text-[#4B5563]">
           Lengkapilah tabel berikut dengan data yang telah kamu peroleh pada Tahap 3.
@@ -165,13 +158,7 @@ export default async function Materi5Peta5Step1MengelompokkanData({
         </div>
 
         <div className="m-6 mt-5 bg-[#EFFDF4] border border-[#BBF0D3] rounded-2xl p-4 flex flex-col gap-2">
-          <p className="m-0 flex items-center gap-2 text-sm font-bold text-[#16A34A]">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#16A34A" strokeWidth="2.2">
-              <circle cx="12" cy="12" r="9" />
-              <path d="M12 8v5M12 16.5v.01" />
-            </svg>
-            Pertanyaan
-          </p>
+          <p className="m-0 text-sm font-bold text-[#16A34A]">Pertanyaan</p>
           <label htmlFor="manfaat_mengelompokkan" className="text-sm text-[#374151]">
             Apa manfaat mengelompokkan data berdasarkan faktor skala?
           </label>
@@ -179,26 +166,21 @@ export default async function Materi5Peta5Step1MengelompokkanData({
             id="manfaat_mengelompokkan"
             name="answers.manfaat_mengelompokkan"
             defaultValue={getValue("manfaat_mengelompokkan")}
-            rows={2}
+            rows={3}
             required
             placeholder="Jawabanmu..."
             className="w-full rounded-xl border border-[#BBF0D3] bg-white px-3.5 py-2.5 text-sm text-[#374151] placeholder:text-[#9CA3AF] focus:border-[#16A34A] focus:outline-none transition-colors resize-y"
           />
         </div>
+      </div>
 
-        <div className="m-6 mt-0 bg-[#FFFBEB] border border-[#FDE68A] rounded-2xl p-4 flex flex-col gap-1.5">
-          <p className="m-0 flex items-center gap-2 text-sm font-bold text-[#D97706]">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="#D97706">
-              <path d="M12 2l2.6 6.5L21 9.3l-5 4.4 1.5 6.8L12 17l-5.5 3.5L8 13.7 3 9.3l6.4-.8z" />
-            </svg>
-            Tips Mengolah Data
-          </p>
-          <ul className="m-0 pl-5 text-xs leading-[1.8] text-[#92400E] list-disc">
-            <li>Pastikan semua data dimasukkan dengan rapi dan benar.</li>
-            <li>Bandingkan perubahan pada faktor skala yang sama antar bangun.</li>
-            <li>Fokuslah menemukan pola, bukan menebak rumus.</li>
-          </ul>
-        </div>
+      <div className="bg-[#FFFBEB] border border-[#FDE68A] rounded-2xl p-4 flex flex-col gap-1.5">
+        <p className="m-0 text-sm font-bold text-[#D97706]">Tips Mengolah Data</p>
+        <ul className="m-0 pl-5 text-xs leading-[1.8] text-[#92400E] list-disc">
+          {tips.map((t) => (
+            <li key={t}>{t}</li>
+          ))}
+        </ul>
       </div>
 
       <div className="flex justify-end items-center">

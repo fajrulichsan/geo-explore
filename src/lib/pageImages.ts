@@ -230,6 +230,10 @@ export type PageImageKey =
   | "M5-P1-L3-2"
   | "M5-P1-L3-3"
   | "M5-P8-L1-1"
+  | "M5-P8-L1-2"
+  | "M5-P8-L1-3"
+  | "M5-P8-L5-1"
+  | "M5-P8-L5-2"
   | "M5-P4-L1-1"
   | "M5-P4-L2-1"
   | "M5-P4-L3-1"
@@ -256,13 +260,29 @@ export type PageImageKey =
   | "M5-P5-L6-1"
   | "M5-P5-L6-2"
   | "M5-P7-L1-1"
+  | "M5-P7-L3-1"
   | "M5-P7-L4-1"
+  | "M5-P7-L4-2"
   | "M5-P7-L5-1"
   | "M5-P7-L5-2"
   | "M5-P7-L6-1"
+  | "M5-P7-L6-2"
+  | "M5-P7-L6-3"
+  | "M5-P7-L6-4"
+  | "M5-P7-L6-5"
   | "M5-P10-L1-1"
+  | "M5-P10-L2-1"
+  | "M5-P10-L2-2"
   | "M5-P10-L4-1"
+  | "M5-P10-L5-1"
+  | "M5-P10-L5-2"
   | "M5-P9-L1-1"
+  | "M5-P9-L1-2"
+  | "M5-P9-L3-1"
+  | "M5-P9-L4-1"
+  | "M5-P9-L4-2"
+  | "M5-P9-L5-1"
+  | "M5-P9-L5-2"
   | "M6-P1-L1-1"
   | "M6-P1-L1-2"
   | "M6-P1-L1-3"
@@ -538,11 +558,10 @@ export type PageImageKey =
   | "M7-P10-L2-3"
   | "M7-P10-L2-4"
   | "M7-P10-L2-5"
-  | "M5-P9-L4-1"
   | "M5-P6-L1-1"
-  | "M5-P6-L3-1"
   | "M5-P6-L4-1"
   | "M5-P6-L4-2"
+  | "M5-P6-L4-3"
   | "M5-P2-L1-1"
   | "M5-P2-L1-2"
   | "M5-P2-L1-3"
@@ -770,7 +789,11 @@ const DEFAULT_IMAGES: Record<PageImageKey, string> = {
   "M4-P7-L6-1": "https://placehold.co/560x224?text=Barisan+Alas+Limas",
   "M4-P7-L7-1": "https://placehold.co/160x192?text=Dua+Siswa+Jempol",
   "M4-P8-L1-1": "https://placehold.co/320x240?text=Tiga+Siswa+Berdiskusi",
-  "M5-P8-L1-1": "https://placehold.co/320x240?text=Dua+Siswa+Mencatat",
+  "M5-P8-L1-1": "https://placehold.co/931x453?text=Kaca+Pembesar+Lampu+Bangun+Ruang",
+  "M5-P8-L1-2": "https://placehold.co/426x531?text=Siswa+Berpikir",
+  "M5-P8-L1-3": "https://placehold.co/603x525?text=Siswi+Menulis",
+  "M5-P8-L5-1": "https://placehold.co/442x529?text=Siswa+Jempol",
+  "M5-P8-L5-2": "https://placehold.co/300x400?text=Siswi+Hebat",
   "M5-P4-L1-1": "https://placehold.co/625x538.png?text=Tiga+Siswa+Bereksplorasi+Skala",
   "M5-P4-L2-1": "https://placehold.co/300x300.png?text=QR+GeoGebra+3D",
   "M5-P4-L2-2": "https://placehold.co/600x338.png?text=GeoGebra+3D+Faktor+Skala",
@@ -797,18 +820,33 @@ const DEFAULT_IMAGES: Record<PageImageKey, string> = {
   "M5-P5-L6-1": "https://placehold.co/220x220?text=Maskot+Tampak+Berlaku",
   "M5-P5-L6-2": "https://placehold.co/220x220?text=Maskot+Motivasi",
   "M5-P7-L1-1": "https://placehold.co/416x320?text=Tiga+Siswa+Menyimpulkan+Skala",
-  "M5-P7-L4-1": "https://placehold.co/480x320?text=Kubus+%26+Jaring-Jaring+Diskalakan",
+  "M5-P7-L3-1": "https://placehold.co/560x180?text=Kubus+Balok+Limas+Prisma",
+  "M5-P7-L4-1": "https://placehold.co/480x160?text=Kubus+Awal+x+k",
+  "M5-P7-L4-2": "https://placehold.co/480x160?text=Jaring-Jaring+x+k",
   "M5-P7-L5-1": "https://placehold.co/220x280?text=Maskot+Kesimpulan",
   "M5-P7-L5-2": "https://placehold.co/416x224?text=Tiga+Siswa+Membandingkan",
-  "M5-P7-L6-1": "https://placehold.co/200x260?text=Maskot+Jempol",
-  "M5-P10-L1-1": "https://placehold.co/440x320?text=Tiga+Siswa+Berdiskusi+Skala",
-  "M5-P10-L4-1": "https://placehold.co/200x280?text=Maskot+Jempol",
-  "M5-P9-L1-1": "https://placehold.co/416x320?text=Tiga+Siswa+Strategi",
-  "M5-P9-L4-1": "https://placehold.co/280x280?text=Dua+Siswa+Merayakan",
-  "M5-P6-L1-1": "https://placehold.co/416x320?text=Tiga+Siswa+Verifikasi",
-  "M5-P6-L3-1": "https://placehold.co/416x320?text=Tiga+Siswa+Verifikasi",
-  "M5-P6-L4-1": "https://placehold.co/256x320?text=Siswa+Jempol",
-  "M5-P6-L4-2": "https://placehold.co/112x128?text=Maskot+Semangat",
+  "M5-P7-L6-1": "https://placehold.co/220x220?text=Maskot+Hebat",
+  "M5-P7-L6-2": "https://placehold.co/120x120?text=Kubus",
+  "M5-P7-L6-3": "https://placehold.co/120x120?text=Balok",
+  "M5-P7-L6-4": "https://placehold.co/120x120?text=Prisma",
+  "M5-P7-L6-5": "https://placehold.co/120x120?text=Limas",
+  "M5-P10-L1-1": "https://placehold.co/703x478?text=Tiga+Siswa+Berdiskusi",
+  "M5-P10-L2-1": "https://placehold.co/955x448?text=Persegi+a+ke+k.a",
+  "M5-P10-L2-2": "https://placehold.co/400x200?text=Buku+Terbuka",
+  "M5-P10-L4-1": "https://placehold.co/409x199?text=Luas+Awal+ke+Luas+Baru",
+  "M5-P10-L5-1": "https://placehold.co/331x529?text=Siswa+Semangat",
+  "M5-P10-L5-2": "https://placehold.co/1222x487?text=Selanjutnya+Volume+k3",
+  "M5-P9-L1-1": "https://placehold.co/871x538?text=Tiga+Siswa+Strategi",
+  "M5-P9-L1-2": "https://placehold.co/880x505?text=Diagram+Skala+Limas",
+  "M5-P9-L3-1": "https://placehold.co/814x507?text=Bangun+Ruang+Lampu",
+  "M5-P9-L4-1": "https://placehold.co/538x493?text=Kubus+x+k",
+  "M5-P9-L4-2": "https://placehold.co/741x457?text=Prisma+Balok+Limas+x4",
+  "M5-P9-L5-1": "https://placehold.co/888x535?text=Dua+Siswa+Merayakan",
+  "M5-P9-L5-2": "https://placehold.co/411x538?text=Siswi+Ide",
+  "M5-P6-L1-1": "https://placehold.co/666x535?text=Tiga+Siswa+Verifikasi",
+  "M5-P6-L4-1": "https://placehold.co/262x528?text=Siswa+Jempol",
+  "M5-P6-L4-2": "https://placehold.co/240x320?text=Maskot+Semangat",
+  "M5-P6-L4-3": "https://placehold.co/224x224?text=Kaca+Pembesar+Grafik",
   "M5-P2-L1-1": "https://placehold.co/280x224?text=Dua+Siswa+Mengamati+Bangun+Ruang",
   "M5-P2-L1-2": "https://placehold.co/800x400?text=Kubus+Kecil+ke+Besar",
   "M5-P2-L1-3": "https://placehold.co/1000x300?text=Balok+Kecil+ke+Besar",

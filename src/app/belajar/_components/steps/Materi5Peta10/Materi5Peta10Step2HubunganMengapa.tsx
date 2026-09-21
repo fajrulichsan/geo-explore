@@ -3,20 +3,40 @@ import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry"
 import SubmitStepButton from "@/app/belajar/_components/SubmitStepButton";
 import BackLink from "@/app/belajar/_components/BackLink";
 import StepHeader from "@/app/belajar/_components/StepHeader";
+import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
+import { getPageImage } from "@/lib/pageImages";
 
-const tabelSkala = [
-  { k: "1/2", luas: "1/4 kali" },
-  { k: "2", luas: "4 kali" },
-  { k: "3", luas: "9 kali" },
-  { k: "4", luas: "16 kali" },
-  { k: "…", luas: "…" },
-  { k: "k", luas: "k² kali" },
+function SectionTitle({ letter, title }: { letter: string; title: string }) {
+  return (
+    <div className="flex items-center gap-3">
+      <div className="w-[34px] h-[34px] rounded-full bg-[#2563EB] text-white flex items-center justify-center font-bold text-[15px] flex-shrink-0">
+        {letter}
+      </div>
+      <div className="bg-white border border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-full py-2 px-5 text-sm font-bold text-[#2563EB]">
+        {title}
+      </div>
+    </div>
+  );
+}
+
+
+const tabel = [
+  ["½", "¼ kali"],
+  ["2", "4 kali"],
+  ["3", "9 kali"],
+  ["4", "16 kali"],
+  ["…", "…"],
 ];
 
 export default async function Materi5Peta10Step2HubunganMengapa({
   materi,
   peta,
+  step = "2",
+  editFoto,
 }: StepComponentProps) {
+  const diagram = await getPageImage("M5-P10-L2-1");
+  const book = await getPageImage("M5-P10-L2-2");
+
   return (
     <form action={submitStepAction} className="flex flex-col gap-8">
       <input type="hidden" name="materi" value={materi} />
@@ -24,117 +44,122 @@ export default async function Materi5Peta10Step2HubunganMengapa({
       <input type="hidden" name="step" value="2" />
 
       <div className="flex flex-col gap-4">
-        <StepHeader materi={materi} currentStep={2} totalSteps={4} />
+        <StepHeader materi={materi} currentStep={2} totalSteps={5} />
         <h1 className="m-0 text-2xl sm:text-[32px] font-extrabold text-[#111827]">
-          Rangkuman Skala dan Luas Bangun Ruang Sisi Datar
+          Rangkuman: Skala dan Luas Bangun Ruang Sisi Datar
         </h1>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.3fr] gap-5">
-        <div className="flex flex-col gap-4">
-          <div className="flex items-center gap-3">
-            <div className="w-[34px] h-[34px] rounded-full bg-[#2563EB] text-white flex items-center justify-center font-bold text-[15px] flex-shrink-0">
-              C
+      <div className="flex flex-col gap-4">
+        <SectionTitle letter="C" title="Hubungan yang Kamu Temukan" />
+        <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-6 shadow-[0_1px_2px_rgba(0,0,0,0.04)] flex flex-col gap-4">
+          <p className="m-0 text-sm text-[#4B5563]">
+            Tabel berikut merangkum hubungan antara faktor skala (<i>k</i>) dan luas permukaan.
+          </p>
+          <div className="overflow-hidden rounded-xl border-2 border-[#1E3A8A] max-w-xl">
+            <div className="grid grid-cols-2 bg-[#1E3A8A] text-white text-sm font-bold text-center">
+              <div className="py-2.5">Faktor Skala (<i>k</i>)</div>
+              <div className="py-2.5">Luas Permukaan Menjadi</div>
             </div>
-            <div className="bg-white border border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-full py-2 px-5 text-sm font-bold text-[#2563EB]">
-              Hubungan yang Kamu Temukan
-            </div>
+            {[...tabel, ["k", "k² kali"]].map(([k, l]) => (
+              <div key={k} className="grid grid-cols-2 text-center text-[15px] font-semibold text-[#111827] border-t border-[#E5E7EB]">
+                <div className="py-3 border-r border-[#E5E7EB]">{k === "k" ? <i>k</i> : k}</div>
+                <div className="py-3">{l.startsWith("k²") ? <><i>k</i>² kali</> : l}</div>
+              </div>
+            ))}
           </div>
-
-          <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-2 shadow-[0_1px_2px_rgba(0,0,0,0.04)] overflow-x-auto flex-1">
-            <table className="w-full border-collapse text-sm">
-              <thead>
-                <tr className="bg-[#1E3A8A] text-white">
-                  <th className="rounded-tl-xl py-2.5 px-4 text-center font-bold">
-                    Faktor Skala (k)
-                  </th>
-                  <th className="rounded-tr-xl py-2.5 px-4 text-center font-bold">
-                    Luas Permukaan Menjadi
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                {tabelSkala.map((row, i) => (
-                  <tr key={row.k} className={i % 2 === 0 ? "bg-white" : "bg-[#F9FAFB]"}>
-                    <td className="py-2.5 px-4 text-center font-semibold text-[#111827] border-b border-[#F3F4F6]">
-                      {row.k}
-                    </td>
-                    <td className="py-2.5 px-4 text-center font-semibold text-[#111827] border-b border-[#F3F4F6]">
-                      {row.luas}
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-
-          <div className="bg-[#FEF9E7] border border-[#F5E6A8] rounded-2xl px-5 py-3.5 flex items-center gap-3">
-            <span className="text-lg flex-shrink-0">💡</span>
+          <div className="bg-[#FEF9E7] border border-[#F5E6A8] rounded-xl px-4 py-3 flex items-center gap-3">
+            <span className="flex-shrink-0">💡</span>
             <p className="m-0 text-sm text-[#785900]">
-              <span className="font-extrabold">Catatan:</span> hubungan ini berlaku untuk semua
-              nilai k &gt; 0, baik 0 &lt; k &lt; 1 (pengecilan) maupun k &gt; 1 (pembesaran).
+              <span className="font-extrabold">Catatan:</span> berlaku untuk semua nilai <i>k</i> &gt; 0,
+              baik 0 &lt; <i>k</i> &lt; 1 (pengecilan) maupun <i>k</i> &gt; 1 (pembesaran).
             </p>
           </div>
         </div>
+      </div>
 
-        <div className="flex flex-col gap-4">
-          <div className="flex items-center gap-3">
-            <div className="w-[34px] h-[34px] rounded-full bg-[#2563EB] text-white flex items-center justify-center font-bold text-[15px] flex-shrink-0">
-              D
+      <div className="flex flex-col gap-4">
+        <SectionTitle letter="D" title="Mengapa Demikian?" />
+        <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-6 shadow-[0_1px_2px_rgba(0,0,0,0.04)] flex flex-col gap-4 text-sm sm:text-[15px] leading-[1.7] text-[#374151]">
+          <p className="m-0">
+            Setiap sisi bangun ruang merupakan bangun datar. Ketika semua ukuran panjang pada suatu
+            bangun diskalakan dengan faktor <i>k</i>, setiap ukuran panjang pada sisi-sisinya juga
+            menjadi <i>k</i> kali ukuran semula.
+          </p>
+          <p className="m-0">
+            Karena luas adalah besaran dua dimensi, maka luas setiap sisi menjadi <i>k</i> × <i>k</i> = <i>k</i>² kali
+            luas semula. Oleh karena itu, jumlah luas seluruh sisi atau luas permukaan juga
+            menjadi <i>k</i>² kali luas permukaan semula.
+          </p>
+          <EditablePageImage
+            imageKey="M5-P10-L2-1"
+            materi={materi}
+            peta={peta}
+            step={step}
+            urutan="1"
+            src={diagram}
+            alt="Persegi berukuran a dikalikan k menjadi persegi berukuran k·a"
+            editable={editFoto}
+            natural
+            containerClassName="relative w-full max-w-2xl mx-auto rounded-xl overflow-hidden"
+          />
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-[13px]">
+            <div className="rounded-xl border border-[#FCD34D] bg-[#FFFBEB] px-4 py-3">
+              <p className="m-0 font-bold">Sebelum diskalakan</p>
+              <p className="m-0">Panjang sisi = <i>a</i> = 3</p>
+              <p className="m-0">Luas = <i>a</i>² = 3²</p>
             </div>
-            <div className="bg-white border border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-full py-2 px-5 text-sm font-bold text-[#2563EB]">
-              Mengapa Demikian?
+            <div className="rounded-xl border border-[#FCD34D] bg-[#FFFBEB] px-4 py-3">
+              <p className="m-0 font-bold">Sesudah diskalakan (<i>k</i> = 2)</p>
+              <p className="m-0">Panjang sisi = <i>k</i>·<i>a</i> = 6</p>
+              <p className="m-0">Luas = (<i>k</i>·<i>a</i>)² = <i>k</i>²<i>a</i>² = 6² = 3² × 2²</p>
             </div>
           </div>
-
-          <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-6 shadow-[0_1px_2px_rgba(0,0,0,0.04)] flex flex-col gap-4 flex-1">
-            <p className="m-0 text-sm text-[#4B5563] leading-[1.6]">
-              Setiap sisi bangun ruang merupakan bangun datar. Ketika semua ukuran panjang pada
-              suatu bangun diskalakan dengan faktor k, setiap ukuran panjang pada sisi-sisinya
-              juga menjadi k kali ukuran semula. Karena luas adalah besaran dua dimensi, maka luas
-              setiap sisi menjadi k × k = k² kali luas semula. Oleh karena itu, jumlah luas
-              seluruh sisi atau luas permukaan juga menjadi k² kali luas permukaan semula.
+          <div className="rounded-xl bg-[#EFF6FF] border border-[#BFDBFE] px-4 py-3 text-center">
+            <p className="m-0 text-sm text-[#1D4ED8] font-semibold">Secara umum:</p>
+            <p className="m-0 text-lg font-serif italic text-[#DC2626]">
+              L′ = (<i>k</i>·<i>a</i>)² = <i>k</i>²<i>a</i>² = <i>k</i>²L
             </p>
-
-            <div className="flex flex-wrap items-center justify-center gap-4 bg-[#F9FAFB] rounded-2xl p-4">
-              <div className="flex flex-col items-center gap-2">
-                <p className="m-0 text-xs font-bold text-[#2563EB]">Sisi sebelum diskalakan</p>
-                <div className="w-16 h-16 rounded-md bg-[#2563EB]" style={{
-                  backgroundImage:
-                    "linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)",
-                  backgroundSize: "25% 25%",
-                }} />
-                <p className="m-0 text-[11px] text-[#6B7280]">a = 3, Luas = a² = 3²</p>
-              </div>
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#9CA3AF" strokeWidth="2.4" className="flex-shrink-0">
-                <path d="M5 12h14M13 5l7 7-7 7" />
-              </svg>
-              <div className="flex flex-col items-center gap-2">
-                <p className="m-0 text-xs font-bold text-[#2563EB]">Sisi sesudah diskalakan (×k)</p>
-                <div className="w-24 h-24 rounded-md bg-[#2563EB]" style={{
-                  backgroundImage:
-                    "linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)",
-                  backgroundSize: "16.66% 16.66%",
-                }} />
-                <p className="m-0 text-[11px] text-[#6B7280]">k·a = 6, Luas = (k·a)² = k²a²</p>
-              </div>
-            </div>
-
-            <div className="bg-[#EFF6FF] rounded-xl py-3 px-4 text-center">
-              <p className="m-0 text-base font-extrabold text-[#1D4ED8]">
-                L&apos; = (k · a)² = k²a² = k²L
-              </p>
-            </div>
-
-            <div className="bg-white/70 border border-dashed border-[#E5E7EB] rounded-xl p-3 flex items-start gap-2">
-              <span className="flex-shrink-0">💡</span>
-              <p className="m-0 text-xs text-[#4B5563] leading-[1.5]">
-                Prinsip yang sama berlaku pada setiap sisi yang mengalami penskalaan seragam.
-                Karena luas diperoleh dari hasil perkalian dua ukuran panjang, faktor skala pada
-                luas selalu menjadi k².
-              </p>
-            </div>
           </div>
+          <div className="bg-[#FEF9E7] border border-[#F5E6A8] rounded-xl px-4 py-3 flex items-start gap-3">
+            <span className="flex-shrink-0">💡</span>
+            <p className="m-0 text-sm text-[#785900]">
+              Prinsip yang sama berlaku pada setiap sisi yang mengalami penskalaan seragam. Karena
+              itu, luas diperoleh dari hasil perkalian dua ukuran panjang, faktor skala pada luas
+              selalu menjadi <i>k</i>².
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+        <div className="rounded-[20px] bg-[#EFF6FF] border border-[#BFDBFE] p-6 flex flex-col gap-3">
+          <span className="self-start rounded-full bg-[#2563EB] text-white text-sm font-bold px-4 py-1.5">⭐ Inti Konsep</span>
+          <p className="m-0 text-[15px] leading-[1.7] text-[#1F2937]">
+            Jika setiap ukuran panjang suatu bangun ruang dikalikan dengan faktor skala <i className="text-[#DC2626]">k</i>,
+            maka luas permukaannya menjadi <b className="text-[#DC2626]"><i>k</i>²</b> kali luas permukaan semula.
+          </p>
+        </div>
+        <div className="rounded-[20px] bg-[#FFF1F0] border border-[#FECACA] p-6 flex items-center gap-4">
+          <div className="flex-1">
+            <p className="m-0 mb-1 text-lg font-extrabold text-[#DC2626]">💡 Ingat!</p>
+            <p className="m-0 text-sm leading-[1.7] text-[#374151]">
+              Hubungan ini diperoleh melalui hasil pengamatan, eksplorasi, verifikasi, dan alasan
+              matematis, bukan sekadar menghafal rumus.
+            </p>
+          </div>
+          <EditablePageImage
+            imageKey="M5-P10-L2-2"
+            materi={materi}
+            peta={peta}
+            step={step}
+            urutan="2"
+            src={book}
+            alt="Buku terbuka dengan bintang berkilau"
+            editable={editFoto}
+            imageClassName="object-contain"
+            containerClassName="relative w-28 h-20 flex-shrink-0"
+          />
         </div>
       </div>
 

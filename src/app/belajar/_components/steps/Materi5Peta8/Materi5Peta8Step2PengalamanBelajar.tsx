@@ -1,4 +1,3 @@
-import PhotoUpload from "@/components/PhotoUpload";
 import { submitStepAction } from "@/app/belajar/actions";
 import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
 import SubmitStepButton from "@/app/belajar/_components/SubmitStepButton";
@@ -9,20 +8,21 @@ const fields = [
   {
     key: "pemahaman_hari_ini",
     label: "Hari ini saya memahami bahwa ...",
-    placeholder: "Tulis pemahamanmu di sini...",
+    color: "#2563EB",
+    bg: "#EFF4FF",
     icon: (
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2563EB" strokeWidth="2.2">
-        <circle cx="11" cy="11" r="7" />
-        <path d="M21 21l-4.35-4.35" />
+        <path d="M8 10h.01M12 10h.01M16 10h.01M21 12c0 4.4-4 8-9 8-1.2 0-2.3-.2-3.3-.5L3 21l1.6-4.3C3.6 15.4 3 13.8 3 12c0-4.4 4-8 9-8s9 3.6 9 8z" />
       </svg>
     ),
   },
   {
     key: "strategi_paling_membantu",
     label: "Strategi yang paling membantu saya adalah ...",
-    placeholder: "Ceritakan strategi tersebut...",
+    color: "#16A34A",
+    bg: "#DCFCE7",
     icon: (
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2563EB" strokeWidth="2.2">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#16A34A" strokeWidth="2.2">
         <path d="M20.5 8.5c1 1 1 2.6 0 3.5-.7.7-1.7.9-2.6.6.3.9.1 1.9-.6 2.6-1 1-2.6 1-3.5 0-.7-.7-.9-1.7-.6-2.6-.9.3-1.9.1-2.6-.6-1-1-1-2.6 0-3.5.7-.7 1.7-.9 2.6-.6-.3-.9-.1-1.9.6-2.6 1-1 2.6-1 3.5 0 .7.7.9 1.7.6 2.6.9-.3 1.9-.1 2.6.6z" />
       </svg>
     ),
@@ -30,9 +30,10 @@ const fields = [
   {
     key: "hal_ingin_dipelajari",
     label: "Hal yang masih ingin saya pelajari adalah ...",
-    placeholder: "Apa yang ingin kamu pelajari lebih lanjut?",
+    color: "#F97316",
+    bg: "#FFEDD5",
     icon: (
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2563EB" strokeWidth="2.2">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#F97316" strokeWidth="2.2">
         <circle cx="12" cy="12" r="10" />
         <path d="M9.1 9a2.9 2.9 0 015.7 1c0 1.9-2.8 2-2.8 3.6M12 17.5v.01" />
       </svg>
@@ -40,7 +41,7 @@ const fields = [
   },
 ];
 
-export default function Materi5Peta8Step2RefleksiPengalaman({ materi, peta, initialAnswers }: StepComponentProps) {
+export default function Materi5Peta8Step2PengalamanBelajar({ materi, peta, initialAnswers }: StepComponentProps) {
   const answers = initialAnswers ?? {};
   const getValue = (key: string) => (typeof answers[key] === "string" ? (answers[key] as string) : "");
 
@@ -53,7 +54,7 @@ export default function Materi5Peta8Step2RefleksiPengalaman({ materi, peta, init
       <div className="flex flex-col gap-4">
         <StepHeader materi={materi} currentStep={2} totalSteps={5} />
         <div className="flex items-center gap-3.5">
-          <div className="w-9 h-9 rounded-full bg-[#2563EB] text-white flex items-center justify-center font-bold text-sm flex-shrink-0">
+          <div className="w-9 h-9 rounded-full bg-[#2563EB] text-white flex items-center justify-center flex-shrink-0">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="#fff">
               <path d="M12 2l2.6 6.5L21 9l-5 4.4L17.4 21 12 17.3 6.6 21 8 13.4 3 9l6.4-.5z" />
             </svg>
@@ -61,12 +62,8 @@ export default function Materi5Peta8Step2RefleksiPengalaman({ materi, peta, init
           <h1 className="m-0 text-2xl sm:text-[32px] font-extrabold text-[#111827]">Refleksi Diri</h1>
         </div>
         <div className="flex items-center gap-3">
-          <div className="w-8 h-8 rounded-full bg-[#2563EB] text-white flex items-center justify-center flex-shrink-0">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.2">
-              <path d="M8 10h.01M12 10h.01M16 10h.01M21 12c0 4.4-4 8-9 8-1.2 0-2.3-.2-3.3-.5L3 21l1.6-4.3C3.6 15.4 3 13.8 3 12c0-4.4 4-8 9-8s9 3.6 9 8z" />
-            </svg>
-          </div>
-          <h2 className="m-0 text-lg font-extrabold text-[#111827]">B. Refleksi Pengalaman Belajar</h2>
+          <div className="w-8 h-8 rounded-full bg-[#2563EB] text-white flex items-center justify-center font-bold text-sm flex-shrink-0">B</div>
+          <h2 className="m-0 text-lg font-extrabold text-[#111827]">Refleksi Pengalaman Belajar</h2>
         </div>
         <p className="m-0 text-sm text-[#6B7280]">Lengkapilah kalimat berikut.</p>
       </div>
@@ -75,32 +72,25 @@ export default function Materi5Peta8Step2RefleksiPengalaman({ materi, peta, init
         {fields.map((f) => (
           <div
             key={f.key}
-            className="bg-white border border-[#E5E7EB] rounded-[20px] p-6 shadow-[0_1px_2px_rgba(0,0,0,0.04)] flex gap-4"
+            className="bg-white border border-[#E5E7EB] rounded-[20px] p-5 sm:p-6 shadow-[0_1px_2px_rgba(0,0,0,0.04)] flex gap-4"
           >
-            <div className="w-10 h-10 rounded-full bg-[#EFF4FF] flex items-center justify-center flex-shrink-0">
+            <div className="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0" style={{ backgroundColor: f.bg }}>
               {f.icon}
             </div>
             <div className="flex-1 flex flex-col gap-3">
-              <label className="text-sm font-bold text-[#111827]">{f.label}</label>
+              <label htmlFor={f.key} className="text-sm font-bold text-[#111827]">{f.label}</label>
               <textarea
+                id={f.key}
                 name={`answers.${f.key}`}
                 defaultValue={getValue(f.key)}
                 rows={3}
-                placeholder={f.placeholder}
+                placeholder="Tuliskan jawabanmu di sini..."
                 required
                 className="w-full resize-none rounded-lg border border-[#E5E7EB] bg-white px-4 py-3 text-sm text-[#374151] placeholder-[#9CA3AF] focus:border-[#2563EB] focus:outline-none transition-colors"
               />
             </div>
           </div>
         ))}
-
-        <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-6 shadow-[0_1px_2px_rgba(0,0,0,0.04)]">
-          <PhotoUpload
-            name="answers.foto_bukti"
-            label="Unggah foto jurnal refleksimu (opsional)"
-            defaultValue={getValue("foto_bukti")}
-          />
-        </div>
       </div>
 
       <div className="flex justify-between items-center">

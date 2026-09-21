@@ -4,19 +4,33 @@ import SubmitStepButton from "@/app/belajar/_components/SubmitStepButton";
 import BackLink from "@/app/belajar/_components/BackLink";
 import StepHeader from "@/app/belajar/_components/StepHeader";
 
+function SectionTitle({ letter, title }: { letter: string; title: string }) {
+  return (
+    <div className="flex items-center gap-3">
+      <div className="w-[34px] h-[34px] rounded-full bg-[#2563EB] text-white flex items-center justify-center font-bold text-[15px] flex-shrink-0">
+        {letter}
+      </div>
+      <div className="bg-white border border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-full py-2 px-5 text-sm font-bold text-[#2563EB]">
+        {title}
+      </div>
+    </div>
+  );
+}
+
+
 const langkah = [
-  { icon: "🔍", teks: "Tentukan faktor skala k." },
-  { icon: "▦", teks: "Tentukan luas permukaan awal L." },
-  { icon: "🔢", teks: "Tentukan kuadrat faktor skala, yaitu k²." },
-  { icon: "🧮", teks: "Hitung luas permukaan baru dengan L' = k²L." },
-  { icon: "🖩", teks: "Periksa kembali hasil dan kewajarannya." },
+  { icon: "🔍", text: <>Tentukan faktor skala <i>k</i>.</>, box: "bg-[#EFF6FF] border-[#BFDBFE]", num: "bg-[#2563EB]" },
+  { icon: "▦", text: <>Tentukan luas permukaan awal <i>L</i>.</>, box: "bg-[#F0FDF4] border-[#BBF7D0]", num: "bg-[#16A34A]" },
+  { icon: "k²", text: <>Tentukan kuadrat faktor skala, yaitu <b className="text-[#DC2626]"><i>k</i>²</b>.</>, box: "bg-[#FFF7ED] border-[#FED7AA]", num: "bg-[#F97316]" },
+  { icon: "✏️", text: <>Hitung luas permukaan baru dengan <b className="text-[#DC2626]">L′ = <i>k</i>² L</b>.</>, box: "bg-[#FAF5FF] border-[#E9D5FF]", num: "bg-[#7C3AED]" },
+  { icon: "🧮", text: <>Periksa kembali hasil dan kewajarannya.</>, box: "bg-[#EFF6FF] border-[#BFDBFE]", num: "bg-[#1D4ED8]" },
 ];
 
 const strategi = [
-  { no: 1, icon: "🔗", judul: "Hubungan Langsung", teks: "Menggunakan hubungan langsung antara faktor skala dan luas permukaan (k²)." },
-  { no: 2, icon: "🧮", judul: "Hitung Bertahap", teks: "Menghitung luas setiap sisi setelah semua ukuran panjang diskalakan, kemudian menjumlahkannya." },
-  { no: 3, icon: "💻", judul: "Model / Visualisasi", teks: "Gunakan GeoGebra 3D untuk memeriksa nilai/perhitungan dan AR untuk memvisualisasikan perubahan skala." },
-  { no: 4, icon: "⚖️", judul: "Bandingkan Beberapa Cara", teks: "Membandingkan beberapa strategi dan memilih yang paling efisien, serta memberikan alasan." },
+  { icon: "🔗", judul: "Hubungan Langsung", desc: <>Menggunakan hubungan langsung antara faktor skala dan luas permukaan (<b className="text-[#DC2626]"><i>k</i>²</b>).</>, box: "bg-[#EFF6FF] border-[#BFDBFE]" },
+  { icon: "🧮", judul: "Hitung Bertahap", desc: <>Menghitung luas setiap sisi setelah semua ukuran panjang diskalakan, kemudian menjumlahkannya.</>, box: "bg-[#F0FDF4] border-[#BBF7D0]" },
+  { icon: "🖥️", judul: "Model / Visualisasi", desc: <>Gunakan GeoGebra 3D untuk memeriksa nilai/perhitungan dan AR untuk memvisualisasikan perubahan skala.</>, box: "bg-[#FFF1F0] border-[#FECACA]" },
+  { icon: "⚖️", judul: "Bandingkan Beberapa Cara", desc: <>Membandingkan beberapa strategi dan memilih yang paling efisien, serta memberikan alasan.</>, box: "bg-[#FAF5FF] border-[#E9D5FF]" },
 ];
 
 export default async function Materi5Peta10Step3LangkahDanStrategi({
@@ -30,80 +44,63 @@ export default async function Materi5Peta10Step3LangkahDanStrategi({
       <input type="hidden" name="step" value="3" />
 
       <div className="flex flex-col gap-4">
-        <StepHeader materi={materi} currentStep={3} totalSteps={4} />
+        <StepHeader materi={materi} currentStep={3} totalSteps={5} />
         <h1 className="m-0 text-2xl sm:text-[32px] font-extrabold text-[#111827]">
-          Rangkuman Skala dan Luas Bangun Ruang Sisi Datar
+          Rangkuman: Skala dan Luas Bangun Ruang Sisi Datar
         </h1>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <div className="flex flex-col gap-4">
-          <div className="flex items-center gap-3">
-            <div className="w-[34px] h-[34px] rounded-full bg-[#2563EB] text-white flex items-center justify-center font-bold text-[15px] flex-shrink-0">
-              E
-            </div>
-            <div className="bg-white border border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-full py-2 px-5 text-sm font-bold text-[#2563EB]">
-              Langkah Menyelesaikan Masalah Skala dan Luas
-            </div>
-          </div>
-          <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-6 shadow-[0_1px_2px_rgba(0,0,0,0.04)] flex-1">
-            <div className="flex flex-col">
-              {langkah.map((l, i) => (
-                <div key={l.teks} className="flex items-start gap-3">
-                  <div className="flex flex-col items-center flex-shrink-0">
-                    <div className="w-9 h-9 rounded-full bg-[#DCFCE7] text-[#15803D] flex items-center justify-center font-bold text-sm">
-                      {i + 1}
-                    </div>
-                    {i < langkah.length - 1 && <div className="w-px flex-1 min-h-[18px] bg-[#D1D5DB]" />}
-                  </div>
-                  <div className="flex items-center gap-2 pb-4 pt-1.5">
-                    <span className="text-base flex-shrink-0">{l.icon}</span>
-                    <p className="m-0 text-sm text-[#374151] font-medium leading-[1.4]">{l.teks}</p>
-                  </div>
+          <SectionTitle letter="E" title="Langkah Menyelesaikan Masalah Skala dan Luas" />
+          <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-5 shadow-[0_1px_2px_rgba(0,0,0,0.04)] flex flex-col gap-2 flex-1">
+            {langkah.map((l, i) => (
+              <div key={i} className="flex flex-col items-center gap-2">
+                <div className={`w-full flex items-center gap-3 rounded-xl border px-4 py-3 ${l.box}`}>
+                  <span className={`w-8 h-8 rounded-full text-white flex items-center justify-center font-bold text-sm flex-shrink-0 ${l.num}`}>{i + 1}</span>
+                  <span className="text-xl w-8 text-center flex-shrink-0 font-bold text-[#DC2626]">{l.icon}</span>
+                  <p className="m-0 text-sm text-[#1F2937] font-medium">{l.text}</p>
                 </div>
-              ))}
-            </div>
-            <div className="bg-[#FEF9E7] border border-[#F5E6A8] rounded-xl px-4 py-3 flex items-start gap-2 mt-1">
+                {i < langkah.length - 1 && (
+                  <svg width="16" height="18" viewBox="0 0 16 18" fill="none" stroke="#1D4ED8" strokeWidth="2.2">
+                    <path d="M8 1v14M2 10l6 6 6-6" />
+                  </svg>
+                )}
+              </div>
+            ))}
+            <div className="rounded-xl bg-[#FFFBEB] border border-[#FDE68A] px-4 py-3 mt-2 flex items-start gap-3">
               <span className="flex-shrink-0">💡</span>
-              <p className="m-0 text-xs text-[#785900] leading-[1.5]">
-                Pada penskalaan seragam, luas permukaan menjadi k² kali luas permukaan semula,
-                bukan k kali.
+              <p className="m-0 text-sm text-[#785900]">
+                <span className="font-extrabold text-[#DC2626]">Ingat!</span> Pada penskalaan seragam,
+                luas permukaan menjadi <b className="text-[#DC2626]"><i>k</i>²</b> kali luas permukaan
+                semula, bukan <b className="text-[#DC2626]"><i>k</i></b> kali.
               </p>
             </div>
           </div>
         </div>
 
         <div className="flex flex-col gap-4">
-          <div className="flex items-center gap-3">
-            <div className="w-[34px] h-[34px] rounded-full bg-[#2563EB] text-white flex items-center justify-center font-bold text-[15px] flex-shrink-0">
-              F
-            </div>
-            <div className="bg-white border border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-full py-2 px-5 text-sm font-bold text-[#2563EB]">
-              Strategi Penyelesaian
-            </div>
-          </div>
-          <p className="m-0 text-sm text-[#4B5563]">
-            Suatu masalah skala dapat diselesaikan dengan berbagai cara, misalnya:
-          </p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 flex-1">
-            {strategi.map((s) => (
-              <div key={s.no} className="bg-white border border-[#E5E7EB] rounded-2xl p-4 flex flex-col gap-2 shadow-[0_1px_2px_rgba(0,0,0,0.04)]">
-                <div className="flex items-center gap-2">
-                  <div className="w-6 h-6 rounded-full bg-[#2563EB] text-white text-xs font-bold flex items-center justify-center flex-shrink-0">
-                    {s.no}
-                  </div>
-                  <span className="text-base flex-shrink-0">{s.icon}</span>
-                  <p className="m-0 text-xs font-extrabold text-[#111827]">{s.judul}</p>
+          <SectionTitle letter="F" title="Strategi Penyelesaian" />
+          <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-5 shadow-[0_1px_2px_rgba(0,0,0,0.04)] flex flex-col gap-3 flex-1">
+            <p className="m-0 text-sm text-[#4B5563]">
+              Suatu masalah skala dapat diselesaikan dengan berbagai cara, misalnya:
+            </p>
+            {strategi.map((s, i) => (
+              <div key={s.judul} className={`flex items-start gap-3 rounded-xl border px-4 py-3 ${s.box}`}>
+                <span className="text-2xl flex-shrink-0">{s.icon}</span>
+                <div>
+                  <p className="m-0 text-sm font-extrabold text-[#1D4ED8]">Strategi {i + 1}</p>
+                  <p className="m-0 text-sm font-bold text-[#1E3A8A]">{s.judul}</p>
+                  <p className="m-0 mt-1 text-xs text-[#4B5563] leading-[1.5]">{s.desc}</p>
                 </div>
-                <p className="m-0 text-[11px] text-[#4B5563] leading-[1.4]">{s.teks}</p>
               </div>
             ))}
-          </div>
-          <div className="bg-[#DBEAFE] border border-[#BFDBFE] rounded-2xl px-5 py-3.5 flex items-start gap-2.5">
-            <span className="flex-shrink-0">⭐</span>
-            <p className="m-0 text-sm text-[#1D4ED8] font-semibold">
-              Semua strategi dapat digunakan apabila disertai alasan matematis yang tepat.
-            </p>
+            <div className="rounded-xl bg-[#FFFBEB] border border-[#FDE68A] px-4 py-3 flex items-center gap-3">
+              <span className="text-xl flex-shrink-0">⭐</span>
+              <p className="m-0 text-sm text-[#785900]">
+                Semua strategi dapat digunakan apabila disertai alasan matematis yang tepat.
+              </p>
+            </div>
           </div>
         </div>
       </div>
