@@ -8,7 +8,7 @@ import { getPageImage } from "@/lib/pageImages";
 
 const pernyataan = [
   { n: 1, label: "Saya dapat membedakan alas dan sisi tegak pada berbagai limas." },
-  { n: 2, label: "Saya memahami bahwa luas permukaan berkaitan dengan seluruh sisi." },
+  { n: 2, label: "Saya memahami bahwa luas permukaan berkaitan dengan seluruh sisi limas." },
   { n: 3, label: "Saya menemukan hal yang ingin saya selidiki lebih lanjut tentang luas permukaan limas." },
 ] as const;
 
@@ -27,7 +27,7 @@ export default async function Materi4Peta2Step6RefleksiSingkat({
 }: StepComponentProps) {
   const answers = initialAnswers ?? {};
   const getValue = (key: string) => (typeof answers[key] === "string" ? (answers[key] as string) : "");
-  const heroImage = await getPageImage("M4-P2-L1-1");
+  const siswaImage = await getPageImage("M4-P2-L6-1");
 
   return (
     <form action={submitStepAction} className="flex flex-col gap-8">
@@ -37,9 +37,14 @@ export default async function Materi4Peta2Step6RefleksiSingkat({
 
       <div className="flex flex-col gap-4">
         <StepHeader materi={materi} currentStep={6} totalSteps={6} />
-        <h1 className="m-0 text-2xl sm:text-[32px] font-extrabold text-[#111827]">
-          Ayo Mengamati dan Berpikir
-        </h1>
+        <div className="inline-flex items-center gap-2 bg-[#1E3A8A] text-white rounded-full py-1.5 px-3.5 text-xs font-bold tracking-[0.02em] w-fit">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2">
+            <circle cx="11" cy="11" r="7" />
+            <path d="M21 21l-4.3-4.3" />
+          </svg>
+          Tahap 1
+        </div>
+        <h1 className="m-0 text-2xl sm:text-[32px] font-extrabold text-[#111827]">Ayo Mengamati dan Berpikir</h1>
       </div>
 
       <div className="flex flex-col gap-4">
@@ -51,10 +56,7 @@ export default async function Materi4Peta2Step6RefleksiSingkat({
             Refleksi Singkat
           </div>
         </div>
-        <p className="m-0 text-xs text-[#6B7280] -mt-2">
-          Beri tanda centang sesuai dengan yang kamu rasakan.
-        </p>
-
+        <p className="m-0 text-xs text-[#6B7280] -mt-2">Beri tanda centang sesuai dengan yang kamu rasakan.</p>
         <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-6 shadow-[0_1px_2px_rgba(0,0,0,0.04)] flex flex-col gap-5">
           {pernyataan.map((p) => (
             <div key={p.n} className="flex flex-col gap-3 border-b border-[#F3F4F6] last:border-0 pb-4 last:pb-0">
@@ -84,36 +86,34 @@ export default async function Materi4Peta2Step6RefleksiSingkat({
         </div>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-[1fr_260px] gap-4 items-start">
-        <div className="bg-[#FFFBEB] border border-[#FDE68A] rounded-2xl p-5 flex items-start gap-3">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D97706" strokeWidth="2" className="flex-shrink-0 mt-0.5">
-            <path d="M12 17.5a1 1 0 100-2 1 1 0 000 2z" />
-            <path d="M6 9a6 6 0 1112 0c0 3-2.5 3.5-2.5 6h-7c0-2.5-2.5-3-2.5-6z" />
-          </svg>
-          <div className="flex flex-col gap-1.5">
-            <p className="m-0 text-sm font-bold text-[#92400E]">Ingat!</p>
-            <ul className="m-0 pl-4 flex flex-col gap-1">
-              <li className="text-xs font-semibold text-[#78350F] leading-[1.5]">
-                Pengamatan hari ini belum menghasilkan rumus.
+      <div className="grid grid-cols-1 md:grid-cols-[1fr_280px] gap-4 items-center bg-[#F0FDF4] border border-[#BBF7D0] rounded-[20px] p-5">
+        <div className="flex flex-col gap-2">
+          <p className="m-0 text-base font-extrabold text-[#166534]">Ingat!</p>
+          <ul className="m-0 p-0 list-none flex flex-col gap-2">
+            {[
+              "Pengamatan hari ini belum menghasilkan rumus.",
+              "Kamu baru mengumpulkan informasi yang akan digunakan untuk menjawab pertanyaan yang lebih mendalam pada tahap berikutnya.",
+            ].map((t) => (
+              <li key={t} className="flex items-start gap-2 text-sm text-[#374151] leading-[1.5]">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#16A34A" strokeWidth="3" className="mt-0.5 flex-shrink-0">
+                  <path d="M5 13l4 4L19 7" />
+                </svg>
+                {t}
               </li>
-              <li className="text-xs font-semibold text-[#78350F] leading-[1.5]">
-                Kamu baru mengumpulkan informasi yang akan digunakan untuk menjawab pertanyaan
-                yang lebih mendalam pada tahap berikutnya.
-              </li>
-            </ul>
-          </div>
+            ))}
+          </ul>
         </div>
         <EditablePageImage
-          imageKey="M4-P2-L1-1"
+          imageKey="M4-P2-L6-1"
           materi={materi}
           peta={peta}
           step={step}
           urutan="1"
-          src={heroImage}
-          alt="Tiga siswa yang telah selesai mengamati bangun ruang limas"
+          src={siswaImage}
+          alt="Tiga siswa belajar bersama menggunakan laptop"
           editable={editFoto}
-          imageClassName="object-contain"
-          containerClassName="relative w-full h-32 rounded-2xl overflow-hidden bg-[#EFF4FF]"
+          natural
+          containerClassName="relative w-full overflow-hidden rounded-2xl"
         />
       </div>
 

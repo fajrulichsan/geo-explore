@@ -6,50 +6,62 @@ import StepHeader from "@/app/belajar/_components/StepHeader";
 import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
 import { getPageImage } from "@/lib/pageImages";
 
-const strategi = [
+type Strategi = {
+  no: number;
+  judul: string;
+  teks: string;
+  rumus?: string;
+  catatan?: string;
+  sorot?: boolean;
+};
+
+const strategi: Strategi[] = [
   {
     no: 1,
     judul: "Menghitung Satu per Satu",
     teks: "Hitung luas alas, kemudian hitung luas setiap sisi tegak satu per satu, lalu jumlahkan.",
-    rumus: "LP = Lₐ + Ls₁ + Ls₂ + Ls₃ + …",
-    sorot: false,
+    rumus: "LP = Lalas + Lsisi1 + Lsisi2 + Lsisi3 + …",
   },
   {
     no: 2,
     judul: "Mengelompokkan Sisi yang Sama (jika ada)",
     teks: "Jika ada sisi-sisi tegak yang kongruen, kelompokkan dan hitung luas satu sisi sebagai perwakilan. Kalikan dengan banyak sisi yang sama, kemudian tambahkan luas alas.",
-    rumus: "LP = Lₐ + (L satu sisi tegak × banyak sisi tegak)",
-    catatan: "Jika tidak kongruen, hitung setiap sisi tegak sesuai ukurannya masing-masing, jumlahkan, lalu + Lₐ.",
-    sorot: false,
+    rumus: "LP = Lalas + (Lsatu sisi tegak × banyak sisi tegak)",
+    catatan: "Jika tidak kongruen, hitung setiap sisi tegak sesuai ukurannya masing-masing, jumlahkan, lalu + Lalas.",
   },
   {
     no: 3,
     judul: "Menggunakan Jaring-jaring",
     teks: "Hitung luas semua bangun datar pada jaring-jaring, kemudian jumlahkan.",
-    rumus: "LP = Lₐ + jumlahkan seluruh sisi tegak",
-    sorot: false,
+    rumus: "LP = Lalas + jumlahkan seluruh sisi tegak",
   },
   {
     no: 4,
     judul: "Menggunakan Rumus Hasil Penemuan",
-    teks: "Gunakan rumus LP = Lₐ + Ls dengan menghitung luas alas dan jumlah luas sisi tegak.",
-    rumus: "LP = Lₐ + jumlahkan seluruh sisi tegak",
-    sorot: false,
+    teks: "Gunakan rumus LP = La + Ls dengan menghitung luas alas dan jumlah luas seluruh sisi tegak.",
+    rumus: "LP = Lalas + jumlahkan seluruh sisi tegak",
   },
   {
     no: 5,
     judul: "Menggunakan Rumus Sisi Tegak (bila diketahui apotema)",
     teks: "Jika sisi-sisi tegaknya kongruen, luas satu sisi tegak dapat dihitung menggunakan apotema (tinggi sisi tegak).",
-    rumus: "L satu sisi tegak = ½ × alas × a\nLs (jumlah sisi tegak) = L satu sisi tegak × banyak sisi tegak\nLP = Lₐ + Ls",
-    catatan: "Jika tidak kongruen, hitung setiap sisi tegak sesuai ukurannya masing-masing, jumlahkan, lalu + Lₐ.",
+    rumus:
+      "Lsatu sisi tegak = ½ × alas × a\nLs (jumlah sisi tegak) = Lsatu sisi tegak × banyak sisi tegak\nLP = Lalas + Ls",
+    catatan: "Jika tidak kongruen, hitung setiap sisi tegak sesuai ukurannya masing-masing, jumlahkan, lalu + Lalas.",
     sorot: true,
   },
   {
     no: 6,
     judul: "Memanfaatkan Simetri",
     teks: "Gunakan sifat simetri limas untuk menentukan sisi yang sama, sehingga perhitungan menjadi lebih efisien.",
-    sorot: false,
   },
+];
+
+const checklist = [
+  "Langkah umum menentukan luas permukaan limas",
+  "Ringkasan konsep dalam peta konsep",
+  "Poin penting sebagai penguat pemahamanmu",
+  "Kata kunci untuk memudahkan mengingat konsep",
 ];
 
 export default async function Materi4Peta10Step3StrategiPenutup({
@@ -58,7 +70,10 @@ export default async function Materi4Peta10Step3StrategiPenutup({
   step = "3",
   editFoto,
 }: StepComponentProps) {
-  const mascotImage = await getPageImage("M4-P10-L3-1");
+  const [mascotImage, jaringImage] = await Promise.all([
+    getPageImage("M4-P10-L3-1"),
+    getPageImage("M4-P10-L3-2"),
+  ]);
 
   return (
     <form action={submitStepAction} className="flex flex-col gap-8">
@@ -102,15 +117,29 @@ export default async function Materi4Peta10Step3StrategiPenutup({
                 <p className="m-0 text-sm font-extrabold text-[#111827] leading-[1.3]">{s.judul}</p>
               </div>
               <p className="m-0 text-xs text-[#4B5563] leading-[1.5]">{s.teks}</p>
+              {s.no === 3 && (
+                <EditablePageImage
+                  imageKey="M4-P10-L3-2"
+                  materi={materi}
+                  peta={peta}
+                  step={step}
+                  urutan="2"
+                  src={jaringImage}
+                  alt="Jaring-jaring limas segiempat"
+                  editable={editFoto}
+                  natural
+                  containerClassName="relative w-28 mx-auto"
+                />
+              )}
               {s.rumus && (
-                <div className="bg-[#F9FAFB] rounded-lg px-3 py-2">
-                  <p className="m-0 text-[11px] font-bold text-[#1E3A8A] whitespace-pre-line leading-[1.6]">
+                <div className="bg-[#FEF9E7] border border-[#F5E6A8] rounded-lg px-3 py-2">
+                  <p className="m-0 text-[11px] font-bold text-[#785900] whitespace-pre-line leading-[1.6]">
                     {s.rumus}
                   </p>
                 </div>
               )}
               {s.catatan && (
-                <p className="m-0 text-[11px] text-[#9CA3AF] leading-[1.4]">
+                <p className="m-0 text-[11px] text-[#6B7280] leading-[1.4]">
                   <span className="font-bold">Catatan:</span> {s.catatan}
                 </p>
               )}
@@ -127,8 +156,16 @@ export default async function Materi4Peta10Step3StrategiPenutup({
         </div>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-[auto_1fr_1fr] gap-5">
-        <div className="bg-[#EFF6FF] border border-[#BFDBFE] rounded-[20px] p-5 flex flex-col items-center gap-3 text-center lg:w-56">
+      <div className="grid grid-cols-1 lg:grid-cols-[1fr_1fr_1fr] gap-5">
+        <div className="bg-[#FFF7E6] border border-[#FDE68A] rounded-[20px] p-5 flex items-center gap-4">
+          <span className="text-5xl flex-shrink-0" aria-hidden="true">🏆</span>
+          <div className="flex flex-col gap-1.5 min-w-0">
+            <p className="m-0 text-base font-extrabold text-[#B45309]">Kamu Hebat!</p>
+            <p className="m-0 text-xs text-[#374151] leading-[1.5]">
+              Kamu telah menemukan konsep penting ini melalui berbagai aktivitas yang bermakna.
+              Teruslah belajar dan berlatih!
+            </p>
+          </div>
           <EditablePageImage
             imageKey="M4-P10-L3-1"
             materi={materi}
@@ -136,16 +173,11 @@ export default async function Materi4Peta10Step3StrategiPenutup({
             step={step}
             urutan="1"
             src={mascotImage}
-            alt="Maskot anak laki-laki memberi jempol tanda semangat"
+            alt="Siswa laki-laki memberi semangat dengan tangan mengepal"
             editable={editFoto}
             imageClassName="object-contain"
             containerClassName="relative w-20 h-28 flex-shrink-0"
           />
-          <p className="m-0 text-sm font-extrabold text-[#1E3A8A]">Kamu Hebat!</p>
-          <p className="m-0 text-xs text-[#374151] leading-[1.5]">
-            Kamu telah menemukan konsep penting ini melalui berbagai aktivitas yang bermakna.
-            Teruslah belajar dan berlatih!
-          </p>
         </div>
 
         <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-5 shadow-[0_1px_2px_rgba(0,0,0,0.04)] flex flex-col gap-2.5">
@@ -153,25 +185,23 @@ export default async function Materi4Peta10Step3StrategiPenutup({
             Pada halaman berikutnya, kamu akan menemukan:
           </p>
           <ul className="m-0 pl-0 flex flex-col gap-1.5 text-xs text-[#4B5563] list-none">
-            {[
-              "Langkah umum menentukan luas permukaan limas",
-              "Ringkasan konsep dalam peta konsep",
-              "Poin penting sebagai penguat pemahamanmu",
-              "Kata kunci untuk memudahkan mengingat konsep",
-            ].map((t) => (
+            {checklist.map((t) => (
               <li key={t} className="flex items-start gap-2">
-                <span className="text-[#16A34A] font-bold flex-shrink-0">✓</span>
+                <span className="text-[#2563EB] font-bold flex-shrink-0">☑</span>
                 {t}
               </li>
             ))}
           </ul>
         </div>
 
-        <div className="bg-[#111827] rounded-[20px] p-5 flex flex-col gap-2.5 justify-center">
-          <p className="m-0 text-sm font-extrabold text-white">Selanjutnya:</p>
-          <p className="m-0 text-xs text-white/80 leading-[1.6]">
-            Setelah memahami rangkuman, kamu akan melanjutkan ke Submateri 5 – Volume Limas.
-          </p>
+        <div className="bg-[#111827] rounded-[20px] p-5 flex items-center gap-4">
+          <div className="flex flex-col gap-2 min-w-0">
+            <p className="m-0 text-sm font-extrabold text-white">Selanjutnya:</p>
+            <p className="m-0 text-xs text-white/80 leading-[1.6]">
+              Setelah memahami rangkuman, kamu akan melanjutkan ke Submateri 5 – Volume Limas.
+            </p>
+          </div>
+          <span className="text-4xl flex-shrink-0" aria-hidden="true">📖</span>
         </div>
       </div>
 
@@ -180,10 +210,10 @@ export default async function Materi4Peta10Step3StrategiPenutup({
           href={`/belajar/${materi}/${peta}/2`}
           className="flex items-center gap-2 bg-transparent text-[#6B7280] border-none rounded-full py-3 px-6 text-sm font-semibold cursor-pointer hover:text-[#374151]"
         />
-        <SubmitStepButton className="flex items-center gap-2 bg-[#2563EB] text-white border-none rounded-full py-3.5 px-7 text-sm font-bold font-inherit shadow-[0_4px_10px_rgba(37,99,235,0.3)] cursor-pointer">
-          LANJUT KE HALAMAN 2
+        <SubmitStepButton className="flex items-center gap-2 bg-[#16A34A] text-white border-none rounded-full py-3.5 px-7 text-sm font-bold font-inherit shadow-[0_4px_10px_rgba(22,163,74,0.3)] cursor-pointer">
+          SELESAI
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.4">
-            <path d="M5 12h14M13 5l7 7-7 7" />
+            <path d="M5 12l5 5 9-10" />
           </svg>
         </SubmitStepButton>
       </div>

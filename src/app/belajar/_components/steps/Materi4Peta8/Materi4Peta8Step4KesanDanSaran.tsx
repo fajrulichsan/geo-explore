@@ -1,13 +1,17 @@
 import PhotoUpload from "@/components/PhotoUpload";
+import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
+import { getPageImage } from "@/lib/pageImages";
 import { submitStepAction } from "@/app/belajar/actions";
 import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
 import SubmitStepButton from "@/app/belajar/_components/SubmitStepButton";
 import BackLink from "@/app/belajar/_components/BackLink";
 import StepHeader from "@/app/belajar/_components/StepHeader";
 
-export default async function Materi4Peta8Step4KesanDanSaran({ materi, peta, initialAnswers }: StepComponentProps) {
+export default async function Materi4Peta8Step4KesanDanSaran({ materi, peta, step = "4", editFoto, initialAnswers }: StepComponentProps) {
   const answers = initialAnswers ?? {};
   const getValue = (key: string) => (typeof answers[key] === "string" ? (answers[key] as string) : "");
+
+  const maskot = await getPageImage("M4-P8-L4-1");
 
   return (
     <form action={submitStepAction} className="flex flex-col gap-8">
@@ -38,8 +42,20 @@ export default async function Materi4Peta8Step4KesanDanSaran({ materi, peta, ini
             <h2 className="m-0 text-lg font-extrabold text-[#111827]">D. Hal yang Paling Berkesan</h2>
           </div>
 
-          <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-6 shadow-[0_1px_2px_rgba(0,0,0,0.04)] flex flex-col gap-5 flex-1">
-            <div className="flex flex-col gap-2">
+          <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-6 shadow-[0_1px_2px_rgba(0,0,0,0.04)] grid grid-cols-[1fr_auto] gap-x-4 gap-y-5 flex-1">
+            <EditablePageImage
+              imageKey="M4-P8-L4-1"
+              materi={materi}
+              peta={peta}
+              step={step}
+              urutan="1"
+              src={maskot}
+              alt="Siswa mengacungkan jari dengan lampu ide di atas kepala"
+              editable={editFoto}
+              natural
+              containerClassName="relative w-24 sm:w-28 row-start-1 col-start-2 row-span-2 self-center overflow-hidden"
+            />
+            <div className="flex flex-col gap-2 col-start-1">
               <label className="flex items-start gap-2 text-sm font-semibold text-[#374151]">
                 <span className="w-6 h-6 rounded-full bg-[#F59E0B] text-white flex items-center justify-center text-xs font-bold flex-shrink-0">1</span>
                 Kegiatan yang paling saya sukai selama mempelajari Submateri 4 adalah ...
@@ -53,7 +69,7 @@ export default async function Materi4Peta8Step4KesanDanSaran({ materi, peta, ini
                 className="w-full rounded-2xl border border-[#E5E7EB] bg-[#F9FAFB] p-4 text-sm text-[#374151] placeholder:text-[#9CA3AF] focus:border-[#2563EB] focus:outline-none focus:ring-0 transition-colors resize-y"
               />
             </div>
-            <div className="flex flex-col gap-2">
+            <div className="flex flex-col gap-2 col-start-1">
               <label className="flex items-start gap-2 text-sm font-semibold text-[#374151]">
                 <span className="w-6 h-6 rounded-full bg-[#F59E0B] text-white flex items-center justify-center text-xs font-bold flex-shrink-0">2</span>
                 Penemuan, pengalaman, atau cara berpikir baru yang saya dapatkan adalah ...

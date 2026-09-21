@@ -3,16 +3,17 @@ import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry"
 import SubmitStepButton from "@/app/belajar/_components/SubmitStepButton";
 import BackLink from "@/app/belajar/_components/BackLink";
 import StepHeader from "@/app/belajar/_components/StepHeader";
-
-const karakteristik = [
-  "Memiliki satu alas berbentuk segi-n (misal persegi, segitiga, atau segi-many).",
-  "Memiliki beberapa sisi tegak berbentuk segitiga.",
-];
+import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
+import { getPageImage } from "@/lib/pageImages";
 
 export default async function Materi4Peta10Step2RumusLuasPermukaan({
   materi,
   peta,
+  step = "2",
+  editFoto,
 }: StepComponentProps) {
+  const limasImage = await getPageImage("M4-P10-L2-1");
+
   return (
     <form action={submitStepAction} className="flex flex-col gap-8">
       <input type="hidden" name="materi" value={materi} />
@@ -36,35 +37,56 @@ export default async function Materi4Peta10Step2RumusLuasPermukaan({
           </div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
-          <div className="bg-[#EFF6FF] border border-[#BFDBFE] rounded-[20px] p-6 flex flex-col gap-4">
-            <p className="m-0 text-sm font-extrabold text-[#1E3A8A]">Karakteristik Limas</p>
-            <ul className="m-0 pl-5 flex flex-col gap-2 text-sm text-[#374151]">
-              {karakteristik.map((k) => (
-                <li key={k}>{k}</li>
-              ))}
+        <div className="grid grid-cols-1 md:grid-cols-[240px_1fr] gap-5 items-center bg-white border border-[#E5E7EB] rounded-[20px] p-5 shadow-[0_1px_2px_rgba(0,0,0,0.04)]">
+          <EditablePageImage
+            imageKey="M4-P10-L2-1"
+            materi={materi}
+            peta={peta}
+            step={step}
+            urutan="1"
+            src={limasImage}
+            alt="Limas segiempat dengan alas berwarna hijau"
+            editable={editFoto}
+            natural
+            containerClassName="relative w-full max-w-[240px] mx-auto"
+          />
+          <div className="flex flex-col gap-3">
+            <span className="w-fit bg-[#DCFCE7] text-[#166534] rounded-full px-3.5 py-1 text-xs font-bold">
+              Karakteristik Limas
+            </span>
+            <ul className="m-0 pl-5 flex flex-col gap-2 text-sm text-[#374151] leading-[1.6]">
+              <li>
+                Memiliki satu alas berbentuk <span className="font-extrabold">segi-n</span> (misal
+                persegi, segitiga, atau segi-many).
+              </li>
+              <li>Memiliki beberapa sisi tegak berbentuk segitiga.</li>
             </ul>
-          </div>
-
-          <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-6 shadow-[0_1px_2px_rgba(0,0,0,0.04)] flex flex-col gap-4">
-            <p className="m-0 text-sm font-extrabold text-[#2563EB]">Rumus Umum</p>
-            <div className="bg-[#DBEAFE] rounded-xl py-4 text-center">
-              <p className="m-0 text-xl font-extrabold text-[#1E3A8A]">LP = Lₐ + Lₛ</p>
-            </div>
-            <div className="flex flex-col gap-1.5 text-xs text-[#4B5563]">
-              <p className="m-0">
-                <span className="font-bold">Lₐ</span> = luas alas
-              </p>
-              <p className="m-0">
-                <span className="font-bold">Lₛ</span> = jumlah luas seluruh sisi tegak
-              </p>
-            </div>
           </div>
         </div>
 
-        <div className="bg-[#F9FAFB] border border-[#E5E7EB] rounded-2xl p-5 flex flex-col gap-2">
-          <p className="m-0 text-sm font-extrabold text-[#111827]">Mengapa rumus ini benar?</p>
-          <p className="m-0 text-sm text-[#4B5563] leading-[1.6]">
+        <div className="rounded-[20px] bg-gradient-to-br from-[#1E3A8A] to-[#2563EB] p-6 flex flex-col sm:flex-row sm:items-center gap-5">
+          <div className="flex flex-col gap-1">
+            <span className="text-xs font-extrabold text-white/80 uppercase tracking-wide">
+              Rumus Umum
+            </span>
+            <p className="m-0 text-3xl sm:text-4xl font-extrabold text-white">
+              LP = L<sub className="text-lg">a</sub> + L<sub className="text-lg">s</sub>
+            </p>
+          </div>
+          <div className="flex flex-col gap-1.5 text-sm text-white/95 sm:ml-auto">
+            <p className="m-0">
+              <span className="font-extrabold">L<sub>a</sub></span> = luas alas
+            </p>
+            <p className="m-0">
+              <span className="font-extrabold">L<sub>s</sub></span> = jumlah luas seluruh sisi
+              tegak
+            </p>
+          </div>
+        </div>
+
+        <div className="bg-[#F0FDF4] border border-[#BBF7D0] rounded-2xl px-5 py-4 flex flex-col gap-1.5">
+          <p className="m-0 text-sm font-extrabold text-[#166534]">Mengapa rumus ini benar?</p>
+          <p className="m-0 text-sm text-[#374151] leading-[1.6]">
             Jika limas dibuka menjadi jaring-jaring, semua sisinya (alas dan sisi tegak) terlihat
             dan tidak saling tumpang tindih. Luas permukaannya adalah jumlah luas alas ditambah
             jumlah luas seluruh sisi tegaknya.

@@ -7,15 +7,14 @@ import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
 import { getPageImage } from "@/lib/pageImages";
 
 const pernyataan = [
-  { key: "bedakan_alas_sisi", label: "Saya dapat membedakan alas dan sisi tegak dengan tepat." },
-  { key: "hitung_luas_alas", label: "Saya dapat menghitung luas alas limas." },
-  { key: "hitung_luas_sisi_tegak", label: "Saya dapat menghitung luas setiap sisi tegak yang diperlukan." },
+  { key: "bedakan_alas", label: "Saya dapat membedakan alas dan sisi tegak dengan tepat." },
+  { key: "hitung_alas", label: "Saya dapat menghitung luas alas limas." },
+  { key: "hitung_tegak", label: "Saya dapat menghitung luas setiap sisi tegak yang diperlukan." },
   {
-    key: "hubungan_luas",
-    label:
-      "Saya mulai menemukan hubungan antara luas alas, luas seluruh sisi tegak, dan luas permukaan limas.",
+    key: "temukan_hubungan",
+    label: "Saya mulai menemukan hubungan antara luas alas, luas seluruh sisi tegak, dan luas permukaan limas.",
   },
-  { key: "lebih_dari_satu_strategi", label: "Saya dapat menuliskan lebih dari satu strategi untuk menentukan luas permukaan limas." },
+  { key: "lebih_dari_satu", label: "Saya dapat menuliskan lebih dari satu strategi untuk menentukan luas permukaan limas." },
   { key: "siap_periksa", label: "Saya siap memeriksa kembali strategi dan rumus sementara pada tahap berikutnya." },
 ];
 
@@ -27,8 +26,8 @@ export default async function Materi4Peta5Step6RefleksiSingkat({
   initialAnswers,
 }: StepComponentProps) {
   const answers = initialAnswers ?? {};
-  const getChecked = (key: string) => answers[key] === "on" || answers[key] === true;
-  const mascotImage = await getPageImage("M4-P5-L6-1");
+  const isChecked = (key: string) => answers[key] === "true" || answers[key] === "on";
+  const [gambarRefleksi, gambarAlat] = await Promise.all([getPageImage("M4-P5-L6-1"), getPageImage("M4-P5-L6-2")]);
 
   return (
     <form action={submitStepAction} className="flex flex-col gap-8">
@@ -38,70 +37,84 @@ export default async function Materi4Peta5Step6RefleksiSingkat({
 
       <div className="flex flex-col gap-4">
         <StepHeader materi={materi} currentStep={6} totalSteps={6} />
-        <div className="inline-flex items-center bg-[#FDF3C7] text-[#92400E] rounded-full py-1.5 px-3.5 text-xs font-bold tracking-[0.02em] w-fit">
-          Tahap 4
+        <div className="inline-flex items-center bg-[#FDF3C7] text-[#92400E] rounded-full py-1.5 px-3.5 text-xs font-bold w-fit">
+          Submateri 4 &middot; Tahap 4 dari 6
         </div>
-        <h1 className="m-0 text-2xl sm:text-[32px] font-extrabold text-[#111827]">
-          Ayo Mengolah Informasi
-        </h1>
-        <p className="m-0 text-sm font-semibold text-[#2563EB]">
-          Centang (&#10003;) pernyataan yang sesuai dengan pengalamanmu pada Tahap 4.
-        </p>
+        <h1 className="m-0 text-2xl sm:text-[32px] font-extrabold text-[#111827]">Ayo Mengolah Informasi</h1>
       </div>
 
-      <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-6 shadow-[0_1px_2px_rgba(0,0,0,0.04)] flex flex-col gap-4">
+      <div className="flex flex-col gap-4">
         <div className="flex items-center gap-3">
-          <div className="w-9 h-9 rounded-full bg-[#DB2777] text-white flex items-center justify-center font-bold text-sm flex-shrink-0">
+          <div className="w-[34px] h-[34px] rounded-full bg-[#DB2777] text-white flex items-center justify-center font-bold text-[15px] flex-shrink-0">
             F
           </div>
-          <h2 className="m-0 text-lg font-bold text-[#111827]">Refleksi Singkat</h2>
+          <div className="flex flex-col">
+            <span className="text-sm font-bold text-[#DB2777]">Refleksi Singkat</span>
+            <span className="text-xs text-[#6B7280]">
+              Centang (&#10003;) pernyataan yang sesuai dengan pengalamanmu pada Tahap 4.
+            </span>
+          </div>
         </div>
-        <div className="flex flex-col gap-2.5">
-          {pernyataan.map((p) => (
-            <label
-              key={p.key}
-              className="flex items-center gap-3 bg-[#F9FAFB] border border-[#E5E7EB] rounded-xl px-4 py-3 cursor-pointer has-[:checked]:bg-[#FDF2F8] has-[:checked]:border-[#DB2777] transition-colors"
-            >
-              <input
-                type="checkbox"
-                name={`answers.${p.key}`}
-                defaultChecked={getChecked(p.key)}
-                className="w-4 h-4 accent-[#DB2777] flex-shrink-0"
-              />
-              <span className="text-sm font-semibold text-[#374151]">{p.label}</span>
-            </label>
-          ))}
-        </div>
-      </div>
 
-      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-[#D97706] to-[#B45309] p-5 flex items-center gap-4">
-        <div className="flex-1 flex flex-col gap-1.5">
-          <p className="m-0 flex items-center gap-2 text-sm font-bold text-white">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="#FDE68A">
-              <path d="M8 21h8l-1-5H9zM12 3a5 5 0 00-5 5v1a5 5 0 0010 0V8a5 5 0 00-5-5zM4 6h3M20 6h-3" />
-            </svg>
-            Hebat!
-          </p>
-          <p className="m-0 text-xs leading-[1.6] text-white/90">
-            Kamu telah mengolah informasi dengan sangat baik! Pada tahap berikutnya, kamu akan
-            memverifikasi apakah strategi dan rumus sementara yang telah dibuat sesuai dengan
-            bukti hasil eksplorasi GeoGebra 3D, Augmented Reality (AR), dan diskusi kelompok.
-          </p>
-        </div>
-        <div className="relative w-16 h-16 flex-shrink-0 rounded-xl overflow-hidden bg-white/10">
+        <div className="grid grid-cols-1 md:grid-cols-[1fr_280px] gap-6 items-center bg-white border border-[#E5E7EB] rounded-[20px] p-5 sm:p-6">
+          <div className="flex flex-col gap-3">
+            {pernyataan.map((p) => (
+              <label
+                key={p.key}
+                className="flex items-start gap-3 bg-[#F9FAFB] border border-[#E5E7EB] rounded-xl px-4 py-3 cursor-pointer has-[:checked]:bg-[#FDF2F8] has-[:checked]:border-[#DB2777] transition-colors"
+              >
+                <input
+                  type="checkbox"
+                  name={`answers.${p.key}`}
+                  defaultChecked={isChecked(p.key)}
+                  required
+                  className="mt-0.5 w-[18px] h-[18px] flex-shrink-0 accent-[#DB2777]"
+                />
+                <span className="text-sm font-semibold text-[#374151] leading-[1.5]">{p.label}</span>
+              </label>
+            ))}
+          </div>
           <EditablePageImage
             imageKey="M4-P5-L6-1"
             materi={materi}
             peta={peta}
             step={step}
             urutan="1"
-            src={mascotImage}
-            alt="Tiga siswa membaca hasil dengan trofi dan bintang"
+            src={gambarRefleksi}
+            alt="Tiga siswa menulis refleksi dengan ikon daftar centang di atas mereka"
             editable={editFoto}
-            imageClassName="object-contain"
-            containerClassName="relative w-full h-full"
+            natural
+            containerClassName="relative w-full rounded-2xl overflow-hidden bg-white"
           />
         </div>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-[1fr_260px] gap-6 items-center bg-[#FEF9E7] border border-[#F5E3A0] rounded-[20px] p-5 sm:p-6">
+        <div className="flex items-start gap-4">
+          <svg width="44" height="44" viewBox="0 0 24 24" fill="#FBBF24" stroke="#D97706" strokeWidth="1.4" className="flex-shrink-0" aria-hidden="true">
+            <path d="M8 3h8v6a4 4 0 0 1-8 0zM8 5H4v2a4 4 0 0 0 4 4M16 5h4v2a4 4 0 0 1-4 4M12 13v4M8 21h8M10 17h4" />
+          </svg>
+          <div className="flex flex-col gap-2">
+            <span className="text-xl font-extrabold text-[#D97706]">Hebat!</span>
+            <p className="m-0 text-sm text-[#78350F] leading-[1.6]">
+              Kamu telah mengolah informasi dengan sangat baik! Pada tahap berikutnya, kamu akan memverifikasi apakah
+              strategi dan rumus sementara yang telah dibuat sesuai dengan bukti hasil eksplorasi GeoGebra 3D,
+              Augmented Reality (AR), dan diskusi kelompok.
+            </p>
+          </div>
+        </div>
+        <EditablePageImage
+          imageKey="M4-P5-L6-2"
+          materi={materi}
+          peta={peta}
+          step={step}
+          urutan="2"
+          src={gambarAlat}
+          alt="Laptop menampilkan GeoGebra 3D dan tablet menampilkan limas dengan Augmented Reality"
+          editable={editFoto}
+          natural
+          containerClassName="relative w-full rounded-2xl overflow-hidden bg-white"
+        />
       </div>
 
       <div className="flex justify-between items-center">
@@ -111,8 +124,8 @@ export default async function Materi4Peta5Step6RefleksiSingkat({
         />
         <SubmitStepButton className="flex items-center gap-2 bg-[#16A34A] text-white border-none rounded-full py-3.5 px-7 text-sm font-bold font-inherit shadow-[0_4px_10px_rgba(22,163,74,0.3)] cursor-pointer">
           SELESAI
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.6">
-            <path d="M5 13l4 4L19 7" />
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.4">
+            <path d="M20 6L9 17l-5-5" />
           </svg>
         </SubmitStepButton>
       </div>

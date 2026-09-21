@@ -5,20 +5,16 @@ import StepHeader from "@/app/belajar/_components/StepHeader";
 import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
 import { getPageImage } from "@/lib/pageImages";
 
-const alurKonsep = [
-  { icon: "🔺", label: "Limas" },
-  { icon: "➕", label: "Jaring-jaring (buka limas)" },
-  { icon: "📏", label: "Hitung luas alas dan seluruh sisi tegak" },
-  { icon: "🎯", label: "Luas Permukaan Limas" },
-];
-
 export default async function Materi4Peta10Step1KonsepDasar({
   materi,
   peta,
   step = "1",
   editFoto,
 }: StepComponentProps) {
-  const heroImage = await getPageImage("M4-P10-L1-1");
+  const [heroImage, alurImage] = await Promise.all([
+    getPageImage("M4-P10-L1-1"),
+    getPageImage("M4-P10-L1-2"),
+  ]);
 
   return (
     <form action={submitStepAction} className="flex flex-col gap-8">
@@ -33,17 +29,20 @@ export default async function Materi4Peta10Step1KonsepDasar({
         </h1>
       </div>
 
-      <div className="relative overflow-hidden rounded-[20px] bg-gradient-to-br from-[#1E3A8A] to-[#2563EB] p-6 grid grid-cols-1 sm:grid-cols-[1fr_auto] gap-5 items-center">
+      <div className="relative overflow-hidden rounded-[20px] bg-gradient-to-br from-[#1E3A8A] to-[#2563EB] p-6 grid grid-cols-1 md:grid-cols-[1fr_320px] gap-5 items-center">
         <div className="absolute -right-10 -top-10 w-40 h-40 rounded-full bg-white/10" />
-        <div className="relative flex flex-col gap-2.5">
-          <p className="m-0 text-sm font-extrabold text-white/80 uppercase tracking-wide">
-            Apa yang telah kamu pelajari?
-          </p>
+        <div className="relative flex flex-col gap-3">
           <p className="m-0 text-sm sm:text-[15px] leading-[1.7] text-white/95 font-medium">
-            Pada submateri ini kamu telah menemukan bahwa luas permukaan limas diperoleh dengan
-            menjumlahkan luas alas dan luas seluruh sisi tegaknya. Melalui kegiatan mengamati,
-            berdiskusi, mengeksplorasi dengan GeoGebra 3D dan AR, mengolah informasi, memverifikasi,
-            serta menyimpulkan, kamu telah memahami konsep ini dengan lebih mendalam.
+            Pada submateri ini kamu telah menemukan bahwa{" "}
+            <span className="font-extrabold text-[#FDE68A]">
+              luas permukaan limas diperoleh dengan menjumlahkan luas alas dan luas seluruh sisi
+              tegaknya.
+            </span>
+          </p>
+          <p className="m-0 text-sm sm:text-[15px] leading-[1.7] text-white/90 font-medium">
+            Melalui kegiatan mengamati, berdiskusi, mengeksplorasi dengan GeoGebra 3D dan AR,
+            mengolah informasi, memverifikasi, serta menyimpulkan, kamu telah memahami konsep ini
+            dengan lebih mendalam.
           </p>
         </div>
         <EditablePageImage
@@ -53,10 +52,10 @@ export default async function Materi4Peta10Step1KonsepDasar({
           step={step}
           urutan="1"
           src={heroImage}
-          alt="Tiga siswa mempresentasikan luas permukaan limas menggunakan laptop dan AR"
+          alt="Tiga siswa belajar luas permukaan limas dengan laptop, buku, dan AR"
           editable={editFoto}
-          imageClassName="object-contain"
-          containerClassName="relative hidden sm:block w-44 h-32 flex-shrink-0 rounded-xl overflow-hidden bg-white/10"
+          natural
+          containerClassName="relative w-full"
         />
       </div>
 
@@ -70,36 +69,27 @@ export default async function Materi4Peta10Step1KonsepDasar({
           </div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-5">
-          <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-6 shadow-[0_1px_2px_rgba(0,0,0,0.04)] flex flex-wrap items-center justify-center gap-3">
-            {alurKonsep.map((a, i) => (
-              <div key={a.label} className="flex items-center gap-3">
-                <div className="flex flex-col items-center gap-2 w-24 text-center">
-                  <div className="w-12 h-12 rounded-2xl bg-[#DBEAFE] text-[#2563EB] flex items-center justify-center text-xl font-bold flex-shrink-0">
-                    {a.icon}
-                  </div>
-                  <p className="m-0 text-[11px] font-semibold text-[#374151] leading-[1.3]">
-                    {a.label}
-                  </p>
-                </div>
-                {i < alurKonsep.length - 1 && (
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#9CA3AF" strokeWidth="2.4" className="flex-shrink-0 hidden sm:block">
-                    <path d="M5 12h14M13 5l7 7-7 7" />
-                  </svg>
-                )}
-              </div>
-            ))}
-          </div>
+        <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-4 sm:p-6 shadow-[0_1px_2px_rgba(0,0,0,0.04)]">
+          <EditablePageImage
+            imageKey="M4-P10-L1-2"
+            materi={materi}
+            peta={peta}
+            step={step}
+            urutan="2"
+            src={alurImage}
+            alt="Alur: limas dibuka menjadi jaring-jaring, hitung luas alas dan seluruh sisi tegak, jumlahkan menjadi luas permukaan limas"
+            editable={editFoto}
+            natural
+            containerClassName="relative w-full"
+          />
+        </div>
 
-          <div className="bg-[#2563EB] rounded-[20px] p-5 flex flex-col gap-2 lg:w-64 justify-center">
-            <p className="m-0 text-sm font-extrabold text-white flex items-center gap-2">
-              <span>⭐</span> Konsep Utamanya
-            </p>
-            <p className="m-0 text-sm text-white/95 leading-[1.6] font-semibold">
-              Luas permukaan limas diperoleh dengan menjumlahkan luas alas dan luas seluruh sisi
-              tegaknya.
-            </p>
-          </div>
+        <div className="bg-[#FEF9E7] border border-[#F5E6A8] rounded-2xl px-5 py-4 flex items-start gap-3">
+          <span className="text-lg flex-shrink-0">⭐</span>
+          <p className="m-0 text-sm text-[#785900] leading-[1.6]">
+            <span className="font-extrabold">Konsep utamanya:</span> Luas permukaan limas diperoleh
+            dengan menjumlahkan luas alas dan luas seluruh sisi tegaknya.
+          </p>
         </div>
       </div>
 

@@ -5,16 +5,28 @@ import StepHeader from "@/app/belajar/_components/StepHeader";
 import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
 import { getPageImage } from "@/lib/pageImages";
 
-const jenisLimas = [
-  { key: "segiempat", label: "Limas Segiempat", sub: "(Wajib)" },
-  { key: "segitiga", label: "Limas Segitiga", sub: "(Opsional sebagai pembanding)" },
+const alur = [
+  { label: "Kelompokkan Data", desc: "Kelompokkan bagian penyusun limas menjadi alas dan sisi tegak.", color: "#2563EB" },
+  { label: "Hitung Luas Sisi", desc: "Hitung luas alas dan luas seluruh sisi tegak.", color: "#16A34A" },
+  { label: "Cari Pola", desc: "Temukan pola dan hubungan antara luas alas, sisi tegak, dan luas permukaan.", color: "#EA580C" },
 ];
 
-const proses = [
-  { n: 1, label: "Kelompokkan Data" },
-  { n: 2, label: "Hitung Luas Sisi" },
-  { n: 3, label: "Cari Pola" },
+const jenisLimas = [
+  { key: "segiempat", label: "Limas Segiempat", sub: "Wajib", required: true },
+  { key: "segitiga", label: "Limas Segitiga", sub: "Opsional sebagai pembanding", required: false },
 ];
+
+const inputClass =
+  "w-full rounded-xl border border-[#E5E7EB] bg-[#F9FAFB] p-3 text-sm text-[#374151] placeholder:text-[#9CA3AF] focus:border-[#2563EB] focus:outline-none transition-colors";
+
+function LimasKecil() {
+  return (
+    <svg width="44" height="44" viewBox="0 0 44 44" fill="#C5DDB0" stroke="#1F2937" strokeWidth="1.4" strokeLinejoin="round">
+      <path d="M22 4L5 38h34z" />
+      <path d="M22 4L22 38" fill="none" strokeDasharray="3 2" />
+    </svg>
+  );
+}
 
 export default async function Materi4Peta5Step1MengelompokkanData({
   materi,
@@ -25,8 +37,7 @@ export default async function Materi4Peta5Step1MengelompokkanData({
 }: StepComponentProps) {
   const answers = initialAnswers ?? {};
   const getValue = (key: string) => (typeof answers[key] === "string" ? (answers[key] as string) : "");
-  const heroImage = await getPageImage("M4-P5-L1-1");
-  const catatanImage = await getPageImage("M4-P5-L1-2");
+  const gambarSiswa = await getPageImage("M4-P5-L1-1");
 
   return (
     <form action={submitStepAction} className="flex flex-col gap-8">
@@ -36,183 +47,136 @@ export default async function Materi4Peta5Step1MengelompokkanData({
 
       <div className="flex flex-col gap-4">
         <StepHeader materi={materi} currentStep={1} totalSteps={6} />
-        <div className="inline-flex items-center bg-[#FDF3C7] text-[#92400E] rounded-full py-1.5 px-3.5 text-xs font-bold tracking-[0.02em] w-fit">
-          Tahap 4
-        </div>
-        <h1 className="m-0 text-2xl sm:text-[32px] font-extrabold text-[#111827]">
-          Ayo Mengolah Informasi
-        </h1>
-        <p className="m-0 text-sm font-semibold text-[#2563EB]">
-          Sekarang saatnya mengolah informasi yang telah kamu kumpulkan pada Tahap 3 untuk
-          menemukan hubungan dan strategi.
-        </p>
-      </div>
-
-      <div className="grid lg:grid-cols-12 gap-6 items-stretch">
-        <div className="lg:col-span-8 bg-white border border-[#E5E7EB] rounded-[20px] p-6 shadow-[0_1px_2px_rgba(0,0,0,0.04)] flex flex-col gap-3">
-          <p className="m-0 text-sm leading-[1.6] text-[#374151]">
-            Kamu telah mengumpulkan berbagai informasi melalui GeoGebra 3D dan Augmented Reality
-            (AR). Sekarang saatnya mengolah informasi tersebut.
-          </p>
-          <p className="m-0 text-sm leading-[1.6] text-[#374151]">
-            Kelompokkan bagian penyusun limas, hitung luas setiap sisinya, kemudian temukan sendiri
-            bagaimana{" "}
-            <span className="font-bold text-[#2563EB]">luas permukaan limas</span> diperoleh.
-          </p>
-        </div>
-        <div className="lg:col-span-4 relative rounded-[20px] overflow-hidden bg-[#EFF4FF]">
-          <EditablePageImage
-            imageKey="M4-P5-L1-1"
-            materi={materi}
-            peta={peta}
-            step={step}
-            urutan="1"
-            src={heroImage}
-            alt="Tiga siswa mengolah data hasil eksplorasi GeoGebra dan AR"
-            editable={editFoto}
-            imageClassName="object-contain"
-            containerClassName="relative w-full h-full min-h-[180px]"
-          />
+        <div className="inline-flex items-center bg-[#FDF3C7] text-[#92400E] rounded-full py-1.5 px-3.5 text-xs font-bold w-fit">
+          Submateri 4 &middot; Tahap 4 dari 6
         </div>
       </div>
 
-      <div className="flex flex-wrap items-center gap-3 bg-[#F9FAFB] border border-[#E5E7EB] rounded-2xl px-5 py-4">
-        {proses.map((p, i) => (
-          <div key={p.n} className="flex items-center gap-3">
-            <div className="flex items-center gap-2">
-              <div
-                className={`w-7 h-7 rounded-full flex items-center justify-center font-bold text-xs flex-shrink-0 ${
-                  p.n === 1 ? "bg-[#16A34A] text-white" : "bg-[#E5E7EB] text-[#6B7280]"
-                }`}
-              >
-                {p.n}
-              </div>
-              <span className={`text-sm font-bold ${p.n === 1 ? "text-[#16A34A]" : "text-[#6B7280]"}`}>
-                {p.label}
-              </span>
+      <div className="grid grid-cols-1 md:grid-cols-[1fr_320px] gap-6 items-center rounded-[28px] bg-gradient-to-br from-[#1E3A8A] to-[#2563EB] p-6 sm:p-9">
+        <div className="flex flex-col gap-3">
+          <h1 className="m-0 text-2xl sm:text-[32px] font-extrabold text-white">Ayo Mengolah Informasi</h1>
+          <p className="m-0 text-sm sm:text-base font-bold text-white/95">
+            Sekarang saatnya mengolah informasi yang telah kamu kumpulkan pada Tahap 3 untuk menemukan hubungan dan
+            strategi.
+          </p>
+          <p className="m-0 text-sm sm:text-[15px] leading-[1.7] text-white/90">
+            Kamu telah mengumpulkan berbagai informasi melalui GeoGebra 3D dan Augmented Reality (AR). Kelompokkan
+            bagian penyusun limas, hitung luas setiap sisinya, kemudian temukan sendiri bagaimana luas permukaan limas
+            diperoleh.
+          </p>
+        </div>
+        <EditablePageImage
+          imageKey="M4-P5-L1-1"
+          materi={materi}
+          peta={peta}
+          step={step}
+          urutan="1"
+          src={gambarSiswa}
+          alt="Tiga siswa mengamati limas di laptop dan tablet"
+          editable={editFoto}
+          natural
+          containerClassName="relative w-full rounded-2xl overflow-hidden bg-white"
+        />
+      </div>
+
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        {alur.map((a, i) => (
+          <div key={a.label} className="bg-white border border-[#E5E7EB] rounded-[20px] p-5 flex flex-col gap-2">
+            <div
+              className="w-8 h-8 rounded-full text-white flex items-center justify-center font-bold text-sm"
+              style={{ backgroundColor: a.color }}
+            >
+              {i + 1}
             </div>
-            {i < proses.length - 1 && (
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#9CA3AF" strokeWidth="2.4">
-                <path d="M5 12h14M13 5l7 7-7 7" />
-              </svg>
-            )}
+            <span className="text-sm font-bold" style={{ color: a.color }}>
+              {a.label}
+            </span>
+            <p className="m-0 text-sm text-[#4B5563] leading-[1.5]">{a.desc}</p>
           </div>
         ))}
       </div>
 
-      <div className="bg-white border border-[#E5E7EB] rounded-[20px] shadow-[0_1px_2px_rgba(0,0,0,0.04)] overflow-hidden">
-        <div className="flex items-center gap-3 px-6 pt-5">
-          <div className="w-9 h-9 rounded-full bg-[#16A34A] text-white flex items-center justify-center font-bold text-sm flex-shrink-0">
+      <div className="flex flex-col gap-4">
+        <div className="flex items-center gap-3">
+          <div className="w-[34px] h-[34px] rounded-full bg-[#2563EB] text-white flex items-center justify-center font-bold text-[15px] flex-shrink-0">
             A
           </div>
-          <h2 className="m-0 text-lg font-bold text-[#111827]">Mengelompokkan Data</h2>
+          <div className="flex flex-col">
+            <span className="text-sm font-bold text-[#2563EB]">Mengelompokkan Data</span>
+            <span className="text-xs text-[#6B7280]">
+              Kelompokkan bagian penyusun limas berdasarkan hasil eksplorasi.
+            </span>
+          </div>
         </div>
-        <p className="m-0 px-6 pt-2 text-sm text-[#4B5563]">
-          Kelompokkan bagian penyusun limas berdasarkan hasil eksplorasimu.
-        </p>
 
-        <div className="px-6 pt-4 overflow-x-auto">
-          <table className="w-full text-left border-collapse min-w-[560px]">
+        <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-4 sm:p-6 overflow-x-auto">
+          <table className="w-full min-w-[560px] border-separate border-spacing-2">
             <thead>
-              <tr>
-                <th className="bg-[#16A34A] text-white text-sm font-bold px-4 py-3 rounded-l-lg w-1/3">
-                  Jenis Limas
-                </th>
-                <th className="bg-[#16A34A] text-white text-sm font-bold px-4 py-3 border-l border-white/20">
-                  Alas (Bentuk &amp; Banyak)
-                </th>
-                <th className="bg-[#16A34A] text-white text-sm font-bold px-4 py-3 border-l border-white/20 rounded-r-lg">
-                  Sisi Tegak (Bentuk &amp; Banyak)
-                </th>
+              <tr className="text-xs font-bold text-white">
+                <th className="bg-[#1E3A8A] rounded-xl p-3 text-left">Jenis Limas</th>
+                <th className="bg-[#1E3A8A] rounded-xl p-3">Alas (Bentuk &amp; Banyak)</th>
+                <th className="bg-[#1E3A8A] rounded-xl p-3">Sisi Tegak (Bentuk &amp; Banyak)</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-[#E5E7EB]">
+            <tbody>
               {jenisLimas.map((j) => (
                 <tr key={j.key}>
-                  <td className="px-4 py-3 align-top">
-                    <p className="m-0 text-sm font-bold text-[#111827]">{j.label}</p>
-                    <p className="m-0 text-xs text-[#9CA3AF] italic">{j.sub}</p>
+                  <td className="p-2 align-middle">
+                    <span className="block text-sm font-bold text-[#2563EB]">{j.label}</span>
+                    <span className="block text-xs text-[#6B7280]">({j.sub})</span>
                   </td>
-                  <td className="px-4 py-3">
-                    <input
-                      type="text"
-                      name={`answers.alas_${j.key}`}
-                      defaultValue={getValue(`alas_${j.key}`)}
-                      placeholder="Ketik di sini..."
-                      required={j.key === "segiempat"}
-                      className="w-full rounded-lg border border-[#E5E7EB] bg-[#F9FAFB] px-3 py-2 text-sm text-[#374151] placeholder:text-[#9CA3AF] focus:border-[#16A34A] focus:outline-none focus:bg-white transition-colors"
-                    />
-                  </td>
-                  <td className="px-4 py-3">
-                    <input
-                      type="text"
-                      name={`answers.sisi_tegak_${j.key}`}
-                      defaultValue={getValue(`sisi_tegak_${j.key}`)}
-                      placeholder="Ketik di sini..."
-                      required={j.key === "segiempat"}
-                      className="w-full rounded-lg border border-[#E5E7EB] bg-[#F9FAFB] px-3 py-2 text-sm text-[#374151] placeholder:text-[#9CA3AF] focus:border-[#16A34A] focus:outline-none focus:bg-white transition-colors"
-                    />
-                  </td>
+                  {(["alas", "tegak"] as const).map((kolom) => (
+                    <td key={kolom} className="align-middle">
+                      <input
+                        name={`answers.${j.key}_${kolom}`}
+                        defaultValue={getValue(`${j.key}_${kolom}`)}
+                        required={j.required}
+                        placeholder="Tulis bentuk & banyaknya"
+                        aria-label={`${j.label} ${kolom === "alas" ? "alas" : "sisi tegak"}`}
+                        className={inputClass}
+                      />
+                    </td>
+                  ))}
                 </tr>
               ))}
             </tbody>
           </table>
         </div>
+      </div>
 
-        <div className="m-6 mt-5 bg-[#EFFDF4] border border-[#BBF0D3] rounded-2xl p-4 flex flex-col gap-2">
-          <p className="m-0 flex items-center gap-2 text-sm font-bold text-[#16A34A]">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#16A34A" strokeWidth="2.2">
-              <circle cx="12" cy="12" r="9" />
-              <path d="M12 8v5M12 16.5v.01" />
-            </svg>
-            Pertanyaan
+      <div className="bg-[#EFF4FF] border border-[#C7D7FE] rounded-[20px] p-5 sm:p-6 flex flex-col gap-3 focus-within:border-[#2563EB] transition-colors">
+        <label htmlFor="alasan_dipisah" className="flex items-start gap-3 text-sm font-bold text-[#1E3A8A] leading-[1.5]">
+          <span className="w-6 h-6 rounded-full bg-[#2563EB] text-white flex items-center justify-center text-xs flex-shrink-0">
+            ?
+          </span>
+          Mengapa alas dan sisi tegak dipisahkan? Jelaskan alasanmu.
+        </label>
+        <textarea
+          id="alasan_dipisah"
+          name="answers.alasan_dipisah"
+          defaultValue={getValue("alasan_dipisah")}
+          rows={3}
+          placeholder="Tulis jawabanmu di sini..."
+          required
+          className="w-full rounded-2xl border border-[#C7D7FE] bg-white p-4 text-sm text-[#374151] placeholder:text-[#9CA3AF] focus:border-[#2563EB] focus:outline-none transition-colors resize-y"
+        />
+      </div>
+
+      <div className="bg-[#FEF9E7] border border-[#F5E3A0] rounded-[20px] p-5 flex items-center gap-4">
+        <div className="flex flex-col gap-1.5 flex-1">
+          <span className="text-base font-extrabold text-[#D97706]">&#9733; Catatan Penting</span>
+          <p className="m-0 text-sm text-[#78350F] leading-[1.6]">
+            Jika sisi-sisi tegaknya tidak sama bentuk dan ukurannya, hitung luas setiap sisi tegak yang berbeda.
           </p>
-          <label htmlFor="alasan_pisah" className="text-sm text-[#374151]">
-            Mengapa alas dan sisi tegak dipisahkan? Jelaskan alasanmu.
-          </label>
-          <textarea
-            id="alasan_pisah"
-            name="answers.alasan_pisah"
-            defaultValue={getValue("alasan_pisah")}
-            rows={2}
-            required
-            placeholder="Jawabanmu..."
-            className="w-full rounded-xl border border-[#BBF0D3] bg-white px-3.5 py-2.5 text-sm text-[#374151] placeholder:text-[#9CA3AF] focus:border-[#16A34A] focus:outline-none transition-colors resize-y"
-          />
         </div>
-
-        <div className="m-6 mt-0 bg-[#FFFBEB] border border-[#FDE68A] rounded-2xl p-4 flex items-center gap-4">
-          <div className="flex-1 flex flex-col gap-1.5">
-            <p className="m-0 flex items-center gap-2 text-sm font-bold text-[#D97706]">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="#D97706">
-                <path d="M12 2l2.6 6.5L21 9.3l-5 4.4 1.5 6.8L12 17l-5.5 3.5L8 13.7 3 9.3l6.4-.8z" />
-              </svg>
-              Catatan Penting
-            </p>
-            <p className="m-0 text-xs leading-[1.7] text-[#92400E]">
-              Jika sisi-sisi tegaknya tidak sama bentuk dan ukurannya, hitung luas setiap sisi
-              tegak yang berbeda.
-            </p>
-          </div>
-          <div className="relative w-24 h-16 flex-shrink-0 rounded-xl overflow-hidden bg-white">
-            <EditablePageImage
-              imageKey="M4-P5-L1-2"
-              materi={materi}
-              peta={peta}
-              step={step}
-              urutan="2"
-              src={catatanImage}
-              alt="Dua bentuk limas dengan sisi tegak berbeda"
-              editable={editFoto}
-              imageClassName="object-contain"
-              containerClassName="relative w-full h-full"
-            />
-          </div>
+        <div className="flex gap-1 flex-shrink-0" aria-hidden="true">
+          <LimasKecil />
+          <LimasKecil />
         </div>
       </div>
 
-      <div className="flex justify-end items-center">
-        <SubmitStepButton className="flex items-center gap-2 bg-[#2563EB] text-white border-none rounded-full py-3.5 px-7 text-sm font-bold font-inherit shadow-[0_4px_10px_rgba(37,99,235,0.3)] cursor-pointer">
+      <div className="flex justify-end">
+        <SubmitStepButton className="flex items-center gap-2 bg-[#2563EB] text-white border-none rounded-full py-3.5 px-7 text-sm font-bold font-inherit shadow-[0_4px_10px_rgba(37,99,235,0.3)] cursor-pointer w-full sm:w-auto justify-center">
           LANJUTKAN
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.4">
             <path d="M5 12h14M13 5l7 7-7 7" />

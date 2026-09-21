@@ -5,5 +5,8 @@
 
 insert into page_images (nama, url, keterangan) values
   ('M4-P10-L1-1', 'https://placehold.co/440x320?text=Tiga+Siswa+GeoGebra+%26+AR', 'Materi 4 Peta 10 Langkah 1 - Tiga siswa mempresentasikan luas permukaan limas dengan laptop dan AR (dummy)'),
-  ('M4-P10-L3-1', 'https://placehold.co/200x280?text=Maskot+Jempol', 'Materi 4 Peta 10 Langkah 3 - Maskot memberi jempol pada penutup rangkuman (dummy)')
+  ('M4-P10-L1-2', 'https://placehold.co/1105x298?text=Alur+Konsep+Limas', 'Materi 4 Peta 10 Langkah 1 - Alur limas, jaring-jaring, hitung luas, luas permukaan (dummy)'),
+  ('M4-P10-L2-1', 'https://placehold.co/300x300?text=Limas', 'Materi 4 Peta 10 Langkah 2 - Ilustrasi limas segiempat (dummy)'),
+  ('M4-P10-L3-1', 'https://placehold.co/200x280?text=Maskot+Jempol', 'Materi 4 Peta 10 Langkah 3 - Maskot memberi jempol pada penutup rangkuman (dummy)'),
+  ('M4-P10-L3-2', 'https://placehold.co/463x456?text=Jaring-jaring+Limas', 'Materi 4 Peta 10 Langkah 3 - Jaring-jaring limas pada strategi 3 (dummy)')
 on conflict (nama) do nothing;

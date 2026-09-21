@@ -19,7 +19,7 @@ export default async function Materi4Peta7Step2RumusUmum({
       <input type="hidden" name="step" value="2" />
 
       <div className="flex flex-col gap-4">
-        <StepHeader materi={materi} currentStep={2} totalSteps={7} />
+        <StepHeader materi={materi} currentStep={2} totalSteps={9} />
         <div className="inline-flex items-center bg-[#FDF3C7] text-[#92400E] rounded-full py-1.5 px-3.5 text-xs font-bold tracking-[0.02em] w-fit">
           Tahap 6
         </div>
@@ -27,61 +27,48 @@ export default async function Materi4Peta7Step2RumusUmum({
         <p className="m-0 text-sm font-semibold text-[#2563EB]">Luas Permukaan Limas</p>
       </div>
 
-      <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-6 shadow-[0_1px_2px_rgba(0,0,0,0.04)] flex flex-col gap-4">
+<div className="flex flex-col gap-4">
         <div className="flex items-center gap-3">
-          <div className="w-9 h-9 rounded-full bg-[#7C3AED] text-white flex items-center justify-center font-bold text-sm flex-shrink-0">
+          <div className="w-[34px] h-[34px] rounded-full bg-[#2563EB] text-white flex items-center justify-center font-bold text-[15px] flex-shrink-0">
             C
           </div>
-          <h2 className="m-0 text-lg font-bold text-[#111827]">Rumus Umum</h2>
-        </div>
-
-        <div className="grid lg:grid-cols-2 gap-5 items-start">
-          <div className="bg-[#F3E8FF] border border-[#DDD6FE] rounded-2xl p-5 flex flex-col gap-4">
-            <p className="m-0 text-sm font-bold text-[#6D28D9]">Rumus luas permukaan limas</p>
-            <div className="bg-white rounded-xl px-5 py-4 text-center">
-              <p className="m-0 text-xl font-extrabold text-[#111827] tracking-wide">LP = L&#8320; + L&#8347;</p>
-            </div>
-            <div className="flex flex-col gap-1.5 text-xs text-[#4B5563]">
-              <p className="m-0">
-                <span className="font-bold text-[#6D28D9]">LP</span> = luas permukaan limas
-              </p>
-              <p className="m-0">
-                <span className="font-bold text-[#6D28D9]">L&#8320;</span> = luas alas
-              </p>
-              <p className="m-0">
-                <span className="font-bold text-[#6D28D9]">L&#8347;</span> = jumlah luas seluruh sisi
-                tegak (semua sisi yang membatasi limas)
-              </p>
-            </div>
+          <div className="bg-white border border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-full py-2 px-5 text-sm font-bold text-[#2563EB]">
+            Rumus Umum
           </div>
-
-          <div className="bg-[#F9FAFB] border border-[#E5E7EB] rounded-2xl p-5 flex flex-col gap-4">
-            <label htmlFor="rumus_perolehan" className="text-sm font-semibold text-[#111827]">
-              Tuliskan rumus yang kamu peroleh dari kegiatanmu di atas beserta keterangannya.
-            </label>
-            <div className="flex flex-col gap-2">
-              <span className="text-xs font-bold text-[#6B7280]">Rumus</span>
-              <input
-                id="rumus_perolehan"
-                type="text"
-                name="answers.rumus_perolehan"
-                defaultValue={getValue("rumus_perolehan")}
-                required
-                placeholder="Tuliskan rumusmu..."
-                className="w-full rounded-lg border border-[#E5E7EB] bg-white px-3.5 py-2.5 text-sm text-[#374151] placeholder:text-[#9CA3AF] focus:border-[#7C3AED] focus:outline-none transition-colors"
-              />
-            </div>
-            <div className="flex flex-col gap-2">
-              <span className="text-xs font-bold text-[#6B7280]">Dengan</span>
-              <textarea
-                name="answers.keterangan_rumus"
-                defaultValue={getValue("keterangan_rumus")}
-                rows={4}
-                required
-                placeholder="Jelaskan setiap bagian rumusmu..."
-                className="w-full rounded-lg border border-[#E5E7EB] bg-white px-3.5 py-2.5 text-sm text-[#374151] placeholder:text-[#9CA3AF] focus:border-[#7C3AED] focus:outline-none transition-colors resize-y"
-              />
-            </div>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="bg-[#EFF4FF] border border-[#BFDBFE] rounded-2xl p-5 flex flex-col gap-3">
+            <p className="m-0 text-sm font-bold text-[#1E3A8A]">Rumus luas permukaan limas</p>
+            <p className="m-0 w-fit bg-white border border-dashed border-[#93C5FD] rounded-xl px-5 py-2.5 text-xl font-extrabold text-[#1E3A8A]">
+              LP = L<sub>a</sub> + L<sub>s</sub>
+            </p>
+            <p className="m-0 text-xs font-semibold text-[#374151]">dengan:</p>
+            <ul className="m-0 p-0 list-none flex flex-col gap-1 text-xs text-[#374151]">
+              <li>LP = luas permukaan limas</li>
+              <li>L<sub>a</sub> = luas alas</li>
+              <li>L<sub>s</sub> = jumlah luas seluruh sisi tegak (semua sisi yang membatasi limas)</li>
+            </ul>
+          </div>
+          <div className="bg-white border border-[#E5E7EB] rounded-2xl p-5 flex flex-col gap-3">
+            <p className="m-0 text-sm font-bold text-[#111827]">Tuliskan rumus yang kamu peroleh dari kegiatanmu di atas beserta keterangannya.</p>
+            <label className="text-xs font-semibold text-[#4B5563]">Rumus:</label>
+            <input
+            type="text"
+            name="answers.rumus"
+            defaultValue={getValue("rumus")}
+            required
+            placeholder="Tuliskan rumusnya..."
+            className="w-full rounded-xl border border-[#E5E7EB] bg-white px-3.5 py-2 text-sm text-[#374151] placeholder:text-[#9CA3AF] focus:border-[#2563EB] focus:outline-none transition-colors "
+          />
+            <label className="text-xs font-semibold text-[#4B5563]">dengan:</label>
+            <textarea
+            name="answers.rumus_keterangan"
+            defaultValue={getValue("rumus_keterangan")}
+            rows={4}
+            required
+            placeholder="Tuliskan keterangan setiap huruf..."
+            className="w-full rounded-xl border border-[#E5E7EB] bg-white px-3.5 py-2.5 text-sm text-[#374151] placeholder:text-[#9CA3AF] focus:border-[#2563EB] focus:outline-none transition-colors resize-none"
+          />
           </div>
         </div>
       </div>

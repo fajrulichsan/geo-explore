@@ -15,7 +15,7 @@ const baris = [
   { key: "banyak_sisi_tegak", label: "Banyak sisi tegak" },
   { key: "bentuk_sisi_tegak", label: "Bentuk sisi tegak" },
   { key: "jumlah_sisi", label: "Jumlah seluruh sisi (alas + sisi tegak)" },
-  { key: "bagian_luas", label: "Bagian penyusun luas permukaan" },
+  { key: "bagian_penyusun", label: "Bagian penyusun luas permukaan" },
 ] as const;
 
 export default async function Materi4Peta2Step4TabelHasilPengamatan({
@@ -34,28 +34,32 @@ export default async function Materi4Peta2Step4TabelHasilPengamatan({
 
       <div className="flex flex-col gap-4">
         <StepHeader materi={materi} currentStep={4} totalSteps={6} />
-        <h1 className="m-0 text-2xl sm:text-[32px] font-extrabold text-[#111827]">
-          Ayo Mengamati dan Berpikir
-        </h1>
+        <div className="inline-flex items-center gap-2 bg-[#1E3A8A] text-white rounded-full py-1.5 px-3.5 text-xs font-bold tracking-[0.02em] w-fit">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2">
+            <circle cx="11" cy="11" r="7" />
+            <path d="M21 21l-4.3-4.3" />
+          </svg>
+          Tahap 1
+        </div>
+        <h1 className="m-0 text-2xl sm:text-[32px] font-extrabold text-[#111827]">Ayo Mengamati dan Berpikir</h1>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-[1.3fr_1fr] gap-5 items-start">
-        <div className="bg-white border border-[#E5E7EB] rounded-[20px] shadow-[0_1px_2px_rgba(0,0,0,0.04)] overflow-hidden">
-          <div className="flex items-center gap-3 px-6 pt-5">
-            <div className="w-9 h-9 rounded-full bg-[#2563EB] text-white flex items-center justify-center font-bold text-sm flex-shrink-0">
-              F
-            </div>
-            <h2 className="m-0 text-lg font-bold text-[#111827]">Tabel Hasil Pengamatan</h2>
+      <div className="grid grid-cols-1 lg:grid-cols-[1.6fr_1fr] gap-5 items-start">
+        <div className="flex flex-col gap-4">
+        <div className="flex items-center gap-3">
+          <div className="w-[34px] h-[34px] rounded-full bg-[#2563EB] text-white flex items-center justify-center font-bold text-[15px] flex-shrink-0">
+            F
           </div>
-          <p className="m-0 px-6 pt-2 text-sm text-[#4B5563]">
-            Lengkapilah tabel berikut berdasarkan pengamatanmu.
-          </p>
-
-          <div className="px-6 pt-4 pb-6 overflow-x-auto">
-            <table className="w-full text-left border-collapse">
+          <div className="bg-white border border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-full py-2 px-5 text-sm font-bold text-[#2563EB]">
+            Tabel Hasil Pengamatan
+          </div>
+        </div>
+          <p className="m-0 text-xs text-[#6B7280] -mt-2">Lengkapilah tabel berikut berdasarkan pengamatanmu.</p>
+          <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-3 shadow-[0_1px_2px_rgba(0,0,0,0.04)] overflow-x-auto">
+            <table className="w-full min-w-[520px] border-separate border-spacing-0">
               <thead>
                 <tr>
-                  <th className="bg-[#1E3A8A] text-white text-xs font-bold px-3 py-3 rounded-l-lg w-1/5">
+                  <th className="bg-[#1E3A8A] text-white text-xs font-bold px-3 py-3 text-left rounded-l-lg">
                     Yang Diamati
                   </th>
                   {kolom.map((k, i) => (
@@ -97,27 +101,24 @@ export default async function Materi4Peta2Step4TabelHasilPengamatan({
           </div>
         </div>
 
-        <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-6 shadow-[0_1px_2px_rgba(0,0,0,0.04)] flex flex-col gap-4">
-          <div className="flex items-center gap-3">
-            <div className="w-[34px] h-[34px] rounded-full bg-[#2563EB] text-white flex items-center justify-center font-bold text-[15px] flex-shrink-0">
+        <div className="bg-[#FFF7ED] border border-[#FED7AA] rounded-[20px] p-5 flex flex-col gap-3">
+          <p className="m-0 flex items-center gap-3">
+            <span className="w-[34px] h-[34px] rounded-full bg-[#EA580C] text-white flex items-center justify-center font-bold text-[15px]">
               G
-            </div>
-            <div className="bg-white border border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-full py-2 px-5 text-sm font-bold text-[#2563EB]">
-              Catatan Penting
-            </div>
-          </div>
+            </span>
+            <span className="text-base font-bold text-[#EA580C]">Catatan Penting</span>
+          </p>
           <label htmlFor="catatan_penting_2" className="text-sm text-[#374151]">
-            Tuliskan hal-hal penting yang kamu perhatikan dari bangun dan jaring-jaring limas di
-            atas.
+            Tuliskan hal-hal penting yang kamu perhatikan dari bangun dan jaring-jaring limas di atas.
           </label>
           <textarea
             id="catatan_penting_2"
             name="answers.catatan_penting_2"
             defaultValue={getValue("catatan_penting_2")}
-            rows={8}
+            rows={9}
             required
-            placeholder="Jawabanmu..."
-            className="w-full rounded-xl border border-[#E5E7EB] bg-[#F9FAFB] p-2.5 text-sm text-[#374151] placeholder:text-[#9CA3AF] focus:border-[#2563EB] focus:outline-none focus:bg-white transition-colors resize-y"
+            placeholder="Catatanmu..."
+            className="w-full rounded-xl border border-[#E5E7EB] bg-white p-2.5 text-sm text-[#374151] placeholder:text-[#9CA3AF] focus:border-[#2563EB] focus:outline-none transition-colors resize-y"
           />
         </div>
       </div>
