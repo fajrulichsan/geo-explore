@@ -24,6 +24,14 @@ export default function Peta6Step5HasilVerifikasi({ materi, peta, initialAnswers
 
       <div className="flex flex-col gap-4">
         <StepHeader materi={materi} currentStep={5} totalSteps={6} />
+        <div className="flex flex-wrap items-center gap-2">
+          <div className="inline-flex items-center gap-2 bg-[#1E3A8A] text-white rounded-full py-1.5 px-4 text-xs font-bold tracking-[0.06em] w-fit">
+            SUBMATERI 1
+          </div>
+          <div className="inline-flex items-center gap-2 bg-[#EFF4FF] text-[#2563EB] border border-[#DBE5FB] rounded-full py-1.5 px-4 text-xs font-bold w-fit">
+            Tahap 5 dari 6 &ndash; Discovery Learning
+          </div>
+        </div>
         <div className="flex items-center gap-3.5">
           <svg
             width="30"

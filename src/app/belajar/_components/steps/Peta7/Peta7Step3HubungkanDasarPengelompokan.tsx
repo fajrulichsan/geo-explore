@@ -1,4 +1,4 @@
-import Link from "next/link";
+import BackLink from "@/app/belajar/_components/BackLink";
 import PhotoUpload from "@/components/PhotoUpload";
 import { submitStepAction } from "@/app/belajar/actions";
 import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
@@ -6,17 +6,43 @@ import SubmitStepButton from "@/app/belajar/_components/SubmitStepButton";
 import StepHeader from "@/app/belajar/_components/StepHeader";
 
 const baris = [
-  { icon: "🔷", label: "Bentuk dan susunan sisi", key: "bentuk_susunan_sisi" },
-  { icon: "📐", label: "Pasangan bidang sisi sejajar", key: "pasangan_bidang_sejajar" },
-  { icon: "🧱", label: "Bentuk sisi yang dipilih sebagai alas", key: "bentuk_sisi_alas" },
-  { icon: "🔢", label: "Jumlah sisi/rusuk/titik sudut", key: "jumlah_sisi_rusuk_titik_sudut" },
+  {
+    key: "bentuk_susunan_sisi",
+    label: "Bentuk dan susunan sisi",
+    icon: (
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="#8B5CF6">
+        <path d="M12 3l9 18H3z" />
+      </svg>
+    ),
+  },
+  {
+    key: "pasangan_bidang_sejajar",
+    label: "Pasangan bidang sisi sejajar",
+    icon: (
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#6366F1" strokeWidth="2">
+        <path d="M12 2l9 5-9 5-9-5z" />
+        <path d="M3 12l9 5 9-5" />
+      </svg>
+    ),
+  },
+  {
+    key: "bentuk_sisi_alas",
+    label: "Bentuk sisi yang dipilih sebagai alas",
+    icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="#16A34A"><rect x="4" y="4" width="16" height="16" rx="2" /></svg>,
+  },
+  {
+    key: "jumlah_sisi_rusuk_titik_sudut",
+    label: "Jumlah sisi/rusuk/titik sudut",
+    icon: (
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2563EB" strokeWidth="2">
+        <path d="M4 8l8-5 8 5v8l-8 5-8-5z" />
+        <path d="M4 8l8 5 8-5M12 13v8" />
+      </svg>
+    ),
+  },
 ];
 
-export default function Peta7Step3HubungkanDasarPengelompokan({
-  materi,
-  peta,
-  initialAnswers,
-}: StepComponentProps) {
+export default function Peta7Step3HubungkanDasarPengelompokan({ materi, peta, initialAnswers }: StepComponentProps) {
   const answers = initialAnswers ?? {};
   const getValue = (key: string) => (typeof answers[key] === "string" ? (answers[key] as string) : "");
 
@@ -27,13 +53,16 @@ export default function Peta7Step3HubungkanDasarPengelompokan({
       <input type="hidden" name="step" value="3" />
 
       <div className="flex flex-col gap-4">
-        <StepHeader materi={materi} currentStep={3} totalSteps={5} />
+        <StepHeader materi={materi} currentStep={3} totalSteps={11} />
         <div className="flex items-center gap-3.5">
           <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#2563EB" strokeWidth="2.4" className="flex-shrink-0">
             <circle cx="11" cy="11" r="7" />
             <path d="M21 21l-4.3-4.3" />
           </svg>
           <h1 className="m-0 text-2xl sm:text-[32px] font-extrabold text-[#111827]">Ayo Menyimpulkan</h1>
+        </div>
+        <div className="inline-flex items-center bg-[#FDF3C7] text-[#92400E] rounded-full py-1.5 px-3.5 text-xs font-bold tracking-[0.02em] w-fit">
+          Tahap 6 dari 6 – Discovery Learning
         </div>
         <p className="m-0 text-[15px] leading-[1.6] text-[#374151] max-w-2xl">
           Perhatikan kembali beberapa dasar pengelompokan yang telah kamu gunakan. Lengkapi hubungan
@@ -46,7 +75,7 @@ export default function Peta7Step3HubungkanDasarPengelompokan({
           C
         </div>
         <div className="bg-white border border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-full py-2 px-5 text-sm font-bold text-[#2563EB]">
-          Hubungkan Dasar Pengelompokan
+          Hubungkan Dasar Pengelompokan dan Kelompok yang Terbentuk
         </div>
       </div>
 
@@ -55,15 +84,9 @@ export default function Peta7Step3HubungkanDasarPengelompokan({
           <table className="w-full text-left border-collapse min-w-[760px]">
             <thead>
               <tr className="bg-[#EFF4FF]">
-                <th className="p-3 text-sm font-bold text-[#2563EB] w-1/3 rounded-l-lg">
-                  Dasar Pengelompokan
-                </th>
-                <th className="p-3 text-sm font-bold text-[#2563EB] w-1/3">
-                  Contoh Bangun yang Memiliki Kemiripan
-                </th>
-                <th className="p-3 text-sm font-bold text-[#2563EB] w-1/3 rounded-r-lg">
-                  Apa yang Dapat Kamu Simpulkan?
-                </th>
+                <th className="p-3 text-sm font-bold text-[#2563EB] w-1/3 rounded-l-lg">Dasar Pengelompokan</th>
+                <th className="p-3 text-sm font-bold text-[#2563EB] w-1/3">Contoh Bangun yang Memiliki Kemiripan</th>
+                <th className="p-3 text-sm font-bold text-[#2563EB] w-1/3 rounded-r-lg">Apa yang Dapat Kamu Simpulkan?</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-[#E5E7EB]">
@@ -71,7 +94,7 @@ export default function Peta7Step3HubungkanDasarPengelompokan({
                 <tr key={b.label}>
                   <td className="p-3 align-top">
                     <div className="flex gap-2 items-start text-sm font-semibold text-[#374151]">
-                      <span>{b.icon}</span>
+                      {b.icon}
                       <span>{b.label}</span>
                     </div>
                   </td>
@@ -101,7 +124,10 @@ export default function Peta7Step3HubungkanDasarPengelompokan({
                 <td className="p-3 align-top">
                   <div className="flex flex-col gap-2 text-sm font-semibold text-[#374151]">
                     <div className="flex gap-2 items-start">
-                      <span>➕</span>
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#6B7280" strokeWidth="2">
+                        <path d="M4 19.5A2.5 2.5 0 016.5 17H20" />
+                        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z" />
+                      </svg>
                       <span>Dasar lain:</span>
                     </div>
                     <input
@@ -159,15 +185,10 @@ export default function Peta7Step3HubungkanDasarPengelompokan({
       </div>
 
       <div className="flex justify-between items-center">
-        <Link
+        <BackLink
           href={`/belajar/${materi}/${peta}/2`}
           className="flex items-center gap-2 bg-transparent text-[#6B7280] border-none rounded-full py-3 px-6 text-sm font-semibold cursor-pointer hover:text-[#374151]"
-        >
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4">
-            <path d="M19 12H5M11 5l-7 7 7 7" />
-          </svg>
-          Kembali
-        </Link>
+        />
         <SubmitStepButton className="flex items-center gap-2 bg-[#2563EB] text-white border-none rounded-full py-3.5 px-7 text-sm font-bold font-inherit shadow-[0_4px_10px_rgba(37,99,235,0.3)] cursor-pointer">
           LANJUTKAN
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.4">

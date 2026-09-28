@@ -17,6 +17,14 @@ export default function Peta6Step3RevisiDugaan({ materi, peta, initialAnswers }:
 
       <div className="flex flex-col gap-4">
         <StepHeader materi={materi} currentStep={3} totalSteps={6} />
+        <div className="flex flex-wrap items-center gap-2">
+          <div className="inline-flex items-center gap-2 bg-[#1E3A8A] text-white rounded-full py-1.5 px-4 text-xs font-bold tracking-[0.06em] w-fit">
+            SUBMATERI 1
+          </div>
+          <div className="inline-flex items-center gap-2 bg-[#EFF4FF] text-[#2563EB] border border-[#DBE5FB] rounded-full py-1.5 px-4 text-xs font-bold w-fit">
+            Tahap 5 dari 6 &ndash; Discovery Learning
+          </div>
+        </div>
         <div className="flex items-center gap-3.5">
           <svg
             width="30"
@@ -80,7 +88,7 @@ export default function Peta6Step3RevisiDugaan({ materi, peta, initialAnswers }:
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-[#E5E7EB]">
-                  {[0, 1].map((i) => (
+                  {[0, 1, 2].map((i) => (
                     <tr key={i}>
                       <td className="py-3 px-3 align-top">
                         <textarea
@@ -125,6 +133,15 @@ export default function Peta6Step3RevisiDugaan({ materi, peta, initialAnswers }:
               />
             </div>
           </div>
+
+        <div className="bg-[#FEF9E7] border border-[#F5E3A0] rounded-[20px] p-5 flex items-start gap-3">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D97706" strokeWidth="2" className="flex-shrink-0 mt-0.5">
+            <path d="M12 20h9M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z" />
+          </svg>
+          <p className="m-0 text-sm text-[#374151] leading-[1.6]">
+            Revisi menunjukkan bahwa kamu menggunakan bukti dan alasan matematis yang lebih kuat.
+          </p>
+        </div>
       </div>
 
       <div className="flex justify-between items-center">

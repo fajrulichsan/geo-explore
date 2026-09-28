@@ -1,10 +1,10 @@
-import Link from "next/link";
 import PhotoUpload from "@/components/PhotoUpload";
 import { submitStepAction } from "@/app/belajar/actions";
 import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
 import SubmitStepButton from "@/app/belajar/_components/SubmitStepButton";
-import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
 import StepHeader from "@/app/belajar/_components/StepHeader";
+import BackLink from "@/app/belajar/_components/BackLink";
+import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
 import { getPageImage } from "@/lib/pageImages";
 
 const badges = [
@@ -27,31 +27,33 @@ export default async function Peta8Step4KotakMotivasi({ materi, peta, step = "4"
 
       <div className="flex flex-col gap-4">
         <StepHeader materi={materi} currentStep={4} totalSteps={4} />
-        <h1 className="m-0 text-[32px] font-extrabold text-[#111827]">Refleksi Diri</h1>
+        <h1 className="m-0 text-2xl sm:text-[32px] leading-tight font-extrabold text-[#111827]">Refleksi Diri</h1>
       </div>
 
-      <div className="flex items-center gap-3">
-        <div className="w-[34px] h-[34px] rounded-full bg-[#2563EB] text-white flex items-center justify-center font-bold text-[15px] flex-shrink-0">
-          D
-        </div>
-        <div className="bg-white border border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-full py-2 px-5 text-sm font-bold text-[#2563EB]">
-          Bekal Motivasi
-        </div>
-      </div>
-
-      <div className="grid grid-cols-2 gap-4">
-        {badges.map((b, i) => (
-          <div
-            key={i}
-            className="flex items-start gap-3 bg-white border border-[#E5E7EB] rounded-[16px] p-4 shadow-[0_1px_2px_rgba(0,0,0,0.04)]"
-          >
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#16A34A" strokeWidth="2.4" className="mt-0.5 flex-shrink-0">
-              <circle cx="12" cy="12" r="10" />
-              <path d="M8 12.5l2.5 2.5L16 9.5" />
-            </svg>
-            <p className="m-0 text-sm font-semibold text-[#374151]">{b.text}</p>
+      <div className="flex flex-col gap-4">
+        <div className="flex items-center gap-3">
+          <div className="w-[34px] h-[34px] rounded-full bg-[#2563EB] text-white flex items-center justify-center font-bold text-[15px] flex-shrink-0">
+            D
           </div>
-        ))}
+          <div className="bg-white border border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-full py-2 px-5 text-sm font-bold text-[#2563EB]">
+            Bekalku untuk Tantangan Open-Ended
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {badges.map((b, i) => (
+            <div
+              key={i}
+              className="flex items-start gap-3 bg-white border border-[#E5E7EB] rounded-[16px] p-4 shadow-[0_1px_2px_rgba(0,0,0,0.04)]"
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#16A34A" strokeWidth="2.4" className="mt-0.5 flex-shrink-0">
+                <circle cx="12" cy="12" r="10" />
+                <path d="M8 12.5l2.5 2.5L16 9.5" />
+              </svg>
+              <p className="m-0 text-sm font-semibold text-[#374151]">{b.text}</p>
+            </div>
+          ))}
+        </div>
       </div>
 
       <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-6 shadow-[0_1px_2px_rgba(0,0,0,0.04)] flex flex-col gap-3">
@@ -100,24 +102,20 @@ export default async function Peta8Step4KotakMotivasi({ materi, peta, step = "4"
           step={step}
           urutan="1"
           src={gambarMotivasi}
-          alt="Ilustrasi kotak motivasi"
+          alt="Ilustrasi piala emas dengan tumpukan buku, melambangkan pencapaian belajar"
           editable={editFoto}
+          imageClassName="object-contain"
           containerClassName="relative w-[120px] h-[120px] flex-shrink-0 rounded-[14px] bg-white/60 overflow-hidden z-[1]"
         />
       </div>
 
       <div className="flex justify-between items-center">
-        <Link
+        <BackLink
           href={`/belajar/${materi}/${peta}/3`}
           className="flex items-center gap-2 bg-transparent text-[#6B7280] border-none rounded-full py-3 px-6 text-sm font-semibold cursor-pointer hover:text-[#374151]"
-        >
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4">
-            <path d="M19 12H5M11 5l-7 7 7 7" />
-          </svg>
-          Kembali
-        </Link>
+        />
         <SubmitStepButton className="flex items-center gap-2 bg-[#16A34A] text-white border-none rounded-full py-3.5 px-7 text-sm font-bold font-inherit shadow-[0_4px_10px_rgba(22,163,74,0.3)] cursor-pointer">
-          Selesai
+          SELESAI
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.4">
             <path d="M5 13l4 4L19 7" />
           </svg>

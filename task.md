@@ -1,6 +1,3 @@
-/belajar/1/7/1
-- pada div alur data , itu cba iconya di ganti pakai image yang bsa di insert lewat ui, bkin div containernya
+/build-peta-step-from-image bkinkan saya materi 1 peta 1, itu cba kamu ambil untuk pagenya itu yang dipakai adalah pada path peta-01-pendahuluan disini ada pkaai 1 page ini, terus bkin page ini sampai selesai sesuai dengan skill, terus untuk kredensial login itu pakai fajrulichsan0208@gmail.com pass: 123123, peta 1 udah kebkin, bongkar aja bkin baru, delete aja page lama
 
-/belajar/1/7/5
-- pada ini itu bkan checkbox, tpi cman dot aja, bkan checkbox
-
+/build-peta-step-from-image bkinkan saya materi 1 peta 2, itu cba kamu ambil untuk pagenya itu yang dipakai adalah pada path peta-02-amati-berfikir disini ada pkaai 2 page ini, terus bkin page ini sampai selesai sesuai dengan skill, terus untuk kredensial login itu pakai fajrulichsan0208@gmail.com pass: 123123, peta 1 udah kebkin, bongkar aja bkin baru, delete aja page lama

@@ -2,6 +2,8 @@ import { submitStepAction } from "@/app/belajar/actions";
 import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
 import SubmitStepButton from "@/app/belajar/_components/SubmitStepButton";
 import StepHeader from "@/app/belajar/_components/StepHeader";
+import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
+import { getPageImage } from "@/lib/pageImages";
 
 const shapes = [
   {
@@ -31,6 +33,7 @@ const shapes = [
       "Sisi tegak berbentuk jajargenjang, atau persegi panjang pada prisma tegak.",
       "Jumlah sisi = n + 2, rusuk = 3n, titik sudut = 2n.",
     ],
+    example: "Contoh: prisma segitiga, prisma segiempat, prisma segilima, ..., prisma segi-n.",
   },
   {
     name: "Limas",
@@ -39,12 +42,15 @@ const shapes = [
     facts: [
       "Mempunyai satu alas berbentuk segi banyak.",
       "Sisi tegak berbentuk segitiga yang bertemu pada satu titik puncak.",
-      "Jumlah sisi = n + 1, rusuk = 2n.",
+      "Jumlah sisi = n + 1, rusuk = 2n, titik sudut = n + 1.",
     ],
+    example: "Contoh: limas segitiga, limas segiempat, limas segilima, ..., limas segi-n.",
   },
 ];
 
-export default function Peta10Step1BentukBangunRuang({ materi, peta }: StepComponentProps) {
+export default async function Peta10Step1BentukBangunRuang({ materi, peta, editFoto }: StepComponentProps) {
+  const limasSegilima = await getPageImage("M1-P10-L1-1");
+
   return (
     <form action={submitStepAction} className="flex flex-col gap-8">
       <input type="hidden" name="materi" value={materi} />
@@ -52,17 +58,31 @@ export default function Peta10Step1BentukBangunRuang({ materi, peta }: StepCompo
       <input type="hidden" name="step" value="1" />
 
       <div className="flex flex-col gap-4">
-        <StepHeader materi={materi} currentStep={1} totalSteps={5} />
+        <StepHeader materi={materi} currentStep={1} totalSteps={6} />
         <div className="flex items-center gap-3.5">
           <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#2563EB" strokeWidth="2.4">
             <path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z" />
             <path d="M3.27 6.96L12 12.01l8.73-5.05M12 22.08V12" />
           </svg>
-          <h1 className="m-0 text-[32px] font-extrabold text-[#111827]">Bentuk Bangun Ruang Sisi Datar</h1>
+          <h1 className="m-0 text-[32px] font-extrabold text-[#111827]">Rangkuman: Bangun Ruang Sisi Datar</h1>
         </div>
         <div className="inline-flex items-center bg-[#FDF3C7] text-[#92400E] rounded-full py-[7px] px-[18px] text-[13px] font-semibold w-fit">
           Submateri 1 – Bangun Ruang Sisi Datar
         </div>
+      </div>
+
+      <div className="bg-[#EFF6FF] border border-[#BFDBFE] rounded-[20px] p-6 flex flex-col gap-2">
+        <div className="flex items-center gap-2 text-[#1D4ED8] font-bold text-sm">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#FACC15" stroke="#D97706" strokeWidth="1">
+            <path d="M9 21h6M12 3a6 6 0 00-3.5 10.9c.4.3.5.7.5 1.1v.5h6v-.5c0-.4.1-.8.5-1.1A6 6 0 0012 3z" />
+          </svg>
+          Apa yang Telah Dipelajari?
+        </div>
+        <p className="m-0 text-sm leading-[1.6] text-[#374151]">
+          Selama enam tahap Discovery Learning dan Tantangan Open-Ended, kamu telah menemukan bahwa bangun ruang sisi
+          datar dapat dikelompokkan berdasarkan berbagai sifat. Pengelompokan dapat dilakukan dengan lebih dari satu
+          cara selama menggunakan dasar yang jelas, diterapkan secara konsisten, dan didukung alasan matematis.
+        </p>
       </div>
 
       <div className="flex flex-col gap-4">
@@ -71,7 +91,7 @@ export default function Peta10Step1BentukBangunRuang({ materi, peta }: StepCompo
             A
           </div>
           <div className="bg-white border border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-full py-2 px-5 text-sm font-bold text-[#2563EB]">
-            Empat Bangun Ruang Sisi Datar
+            Bentuk Bangun Ruang Sisi Datar
           </div>
         </div>
 
@@ -81,16 +101,28 @@ export default function Peta10Step1BentukBangunRuang({ materi, peta }: StepCompo
               key={s.name}
               className="bg-white border border-[#E5E7EB] rounded-[20px] overflow-hidden shadow-[0_1px_2px_rgba(0,0,0,0.04)] flex flex-col"
             >
-              <div
-                className="flex items-center justify-center py-7"
-                style={{ backgroundColor: s.bg }}
-              >
-                <div
-                  className="w-16 h-16 rounded-2xl flex items-center justify-center text-lg font-extrabold"
-                  style={{ backgroundColor: `${s.color}22`, color: s.color, border: `2px solid ${s.color}` }}
-                >
-                  {s.name.slice(0, 2).toUpperCase()}
-                </div>
+              <div className="flex items-center justify-center py-7 gap-3" style={{ backgroundColor: s.bg }}>
+                {s.name === "Limas" ? (
+                  <EditablePageImage
+                    imageKey="M1-P10-L1-1"
+                    materi={materi}
+                    peta={peta}
+                    step="1"
+                    urutan="1"
+                    src={limasSegilima}
+                    alt="Ilustrasi limas segilima"
+                    editable={editFoto}
+                    imageClassName="object-contain"
+                    containerClassName="relative w-16 h-16"
+                  />
+                ) : (
+                  <div
+                    className="w-16 h-16 rounded-2xl flex items-center justify-center text-lg font-extrabold"
+                    style={{ backgroundColor: `${s.color}22`, color: s.color, border: `2px solid ${s.color}` }}
+                  >
+                    {s.name.slice(0, 2).toUpperCase()}
+                  </div>
+                )}
               </div>
               <div className="p-5 flex flex-col gap-3 flex-1">
                 <h3 className="m-0 text-base font-bold text-[#111827] text-center">{s.name}</h3>
@@ -111,6 +143,14 @@ export default function Peta10Step1BentukBangunRuang({ materi, peta }: StepCompo
                     style={{ backgroundColor: s.bg, color: s.color }}
                   >
                     {s.note}
+                  </div>
+                )}
+                {s.example && (
+                  <div
+                    className="mt-auto rounded-lg py-2.5 px-3 text-xs font-semibold"
+                    style={{ backgroundColor: s.bg, color: s.color }}
+                  >
+                    {s.example}
                   </div>
                 )}
               </div>

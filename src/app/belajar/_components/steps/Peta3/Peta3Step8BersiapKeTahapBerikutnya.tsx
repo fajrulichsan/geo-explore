@@ -1,28 +1,38 @@
-import Link from "next/link";
-import PhotoUpload from "@/components/PhotoUpload";
 import { submitStepAction } from "@/app/belajar/actions";
 import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
 import SubmitStepButton from "@/app/belajar/_components/SubmitStepButton";
+import BackLink from "@/app/belajar/_components/BackLink";
 import StepHeader from "@/app/belajar/_components/StepHeader";
 import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
 import { getPageImage } from "@/lib/pageImages";
 
-const rencana = [
-  { text: "Mengamati bentuk bangun ruang" },
-  { text: "Mencatat sifat-sifat bangun" },
-  { text: "Membandingkan dan mencari informasi yang diperlukan" },
+const dipelajari = [
+  {
+    teks: "Mengamati bentuk bangun ruang",
+    stroke: "#6D28D9",
+    icon: <path d="M12 3l8 4.5v9L12 21l-8-4.5v-9zM12 12l8-4.5M12 12v9M12 12L4 7.5" />,
+  },
+  {
+    teks: "Mencatat sifat-sifat bangun",
+    stroke: "#15803D",
+    icon: (
+      <>
+        <circle cx="11" cy="11" r="7" />
+        <path d="M21 21l-4.3-4.3" />
+      </>
+    ),
+  },
+  {
+    teks: "Membandingkan dan mencari informasi yang diperlukan",
+    stroke: "#EA580C",
+    icon: <path d="M12 4v16M6 20h12M4 8h16M4 8l-2 6h4zM20 8l-2 6h4z" />,
+  },
 ];
 
-export default async function Peta3Step8BersiapKeTahapBerikutnya({
-  materi,
-  peta,
-  step = "8",
-  editFoto,
-  initialAnswers,
-}: StepComponentProps) {
+export default async function Peta3Step8BersiapKeTahapBerikutnya({ materi, peta, step = "8", editFoto, initialAnswers }: StepComponentProps) {
   const answers = initialAnswers ?? {};
   const getValue = (key: string) => (typeof answers[key] === "string" ? (answers[key] as string) : "");
-  const gambarIlustrasi = await getPageImage("M1-P3-L8-1");
+  const maskot = await getPageImage("M1-P3-L8-1");
 
   return (
     <form action={submitStepAction} className="flex flex-col gap-8">
@@ -33,104 +43,85 @@ export default async function Peta3Step8BersiapKeTahapBerikutnya({
       <div className="flex flex-col gap-4">
         <StepHeader materi={materi} currentStep={8} totalSteps={8} />
         <div className="flex items-center gap-3.5">
-          <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#2563EB" strokeWidth="2">
-            <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z" />
+          <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#2563EB" strokeWidth="2.2" className="flex-shrink-0">
+            <path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z" />
+            <path d="M8.5 12h.01M12 12h.01M15.5 12h.01" strokeWidth="3" strokeLinecap="round" />
           </svg>
-          <h1 className="m-0 text-[32px] font-extrabold text-[#111827]">Ayo Berdiskusi</h1>
+          <h1 className="m-0 text-2xl sm:text-[32px] leading-tight font-extrabold text-[#111827]">Ayo Berdiskusi</h1>
+        </div>
+        <div className="inline-flex items-center bg-[#FDF3C7] text-[#92400E] rounded-full py-1.5 px-3.5 text-xs font-bold tracking-[0.02em] w-fit">
+          Tahap 2 dari 6 – Discovery Learning
         </div>
       </div>
 
-      <div className="flex items-center gap-3">
-        <div className="w-9 h-9 rounded-full bg-[#2563EB] text-white flex items-center justify-center font-bold text-sm flex-shrink-0">
-          I
-        </div>
-        <h2 className="m-0 text-lg font-bold text-[#2563EB]">Bersiap ke Tahap Berikutnya</h2>
-      </div>
-
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
-        <div className="lg:col-span-5 flex flex-col gap-4">
-          <EditablePageImage
-            imageKey="M1-P3-L8-1"
-            materi={materi}
-            peta={peta}
-            step={step}
-            urutan="1"
-            src={gambarIlustrasi}
-            alt="Ilustrasi persiapan tahap berikutnya"
-            editable={editFoto}
-            containerClassName="relative w-full h-48 rounded-2xl overflow-hidden bg-[#EFF4FF]"
-          />
-          <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-6 shadow-[0_1px_2px_rgba(0,0,0,0.04)] flex flex-col gap-4">
-            <p className="m-0 text-sm leading-[1.6] text-[#374151]">
-              Pada tahap berikutnya, kita akan mengumpulkan informasi menggunakan GeoGebra 3D, Augmented
-              Reality, dan gambar untuk memeriksa dugaan yang telah kita buat.
-            </p>
-            <div>
-              <h3 className="m-0 mb-3 text-sm font-bold text-[#2563EB]">
-                Yang akan kita pelajari pada tahap berikutnya:
-              </h3>
-              <ul className="m-0 p-0 flex flex-col gap-3 list-none">
-                {rencana.map((r) => (
-                  <li key={r.text} className="flex items-center gap-3">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D97706" strokeWidth="2" className="flex-shrink-0">
-                      <path d="M5 13l4 4L19 7" />
-                    </svg>
-                    <span className="text-sm text-[#374151]">{r.text}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
+      <div className="flex flex-col gap-4">
+        <div className="flex items-center gap-3">
+          <div className="w-[34px] h-[34px] rounded-full bg-[#2563EB] text-white flex items-center justify-center font-bold text-[15px] flex-shrink-0">
+            I
+          </div>
+          <div className="bg-white border border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-full py-2 px-5 text-sm font-bold text-[#2563EB]">
+            Bersiap ke Tahap Berikutnya
           </div>
         </div>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 items-stretch">
+          <div className="bg-[#EFF4FF] border border-[#DBE5FB] rounded-[20px] p-6 flex items-center gap-5">
+            <EditablePageImage
+              imageKey="M1-P3-L8-1"
+              materi={materi}
+              peta={peta}
+              step={step}
+              urutan="1"
+              src={maskot}
+              alt="Siswa laki-laki menunjuk ke atas"
+              editable={editFoto}
+              imageClassName="object-contain"
+              containerClassName="relative w-24 h-32 sm:w-28 sm:h-40 flex-shrink-0 bg-white rounded-2xl overflow-hidden"
+            />
+            <div className="flex flex-col gap-4">
+              <p className="m-0 text-sm leading-[1.7] text-[#1E3A8A]">
+                Pada tahap berikutnya, kita akan mengumpulkan informasi menggunakan GeoGebra 3D, Augmented Reality, dan gambar untuk memeriksa dugaan yang telah kita buat.
+              </p>
+              <div className="flex flex-col gap-2">
+                <p className="m-0 text-xs font-bold text-[#374151]">Yang akan kita pelajari pada tahap berikutnya:</p>
+                {dipelajari.map((d) => (
+                  <div key={d.teks} className="flex items-center gap-2.5 text-[13px] font-semibold text-[#1E3A8A]">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={d.stroke} strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" className="flex-shrink-0">
+                      {d.icon}
+                    </svg>
+                    {d.teks}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
 
-        <div className="lg:col-span-7">
-          <div className="bg-white border border-[#E5E7EB] rounded-[20px] shadow-[0_1px_2px_rgba(0,0,0,0.04)] overflow-hidden h-full flex flex-col">
-            <div className="bg-[#EFF4FF] border-b border-[#E5E7EB] p-6 flex items-center justify-between">
-              <div>
-                <h3 className="m-0 text-lg font-bold text-[#2563EB]">Pertanyaan yang Ingin Aku Selidiki</h3>
-                <p className="m-0 mt-1 text-sm text-[#6B7280]">
-                  Tuliskan satu hal yang masih ingin kamu ketahui pada tahap eksplorasi.
-                </p>
-              </div>
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#D97706" strokeWidth="2" className="flex-shrink-0">
-                <path d="M12 20h9M16.5 3.5a2.1 2.1 0 013 3L7 19l-4 1 1-4L16.5 3.5z" />
-              </svg>
-            </div>
-            <div className="p-6 flex-1">
-              <textarea
-                rows={8}
-                name="answers.pertanyaan_selidiki"
-                defaultValue={getValue("pertanyaan_selidiki")}
-                placeholder="Aku ingin menyelidiki..."
-                required
-                className="w-full h-full min-h-[180px] rounded-2xl border border-[#E5E7EB] bg-[#F9FAFB] px-4 py-3 text-sm text-[#374151] placeholder:text-[#9CA3AF] focus:border-[#2563EB] focus:outline-none focus:bg-white transition-colors resize-y"
-              />
-              <div className="mt-4 pt-4 border-t border-[#E5E7EB]">
-                <PhotoUpload
-                  name="answers.foto_bukti"
-                  label="Unggah foto hasil kerja (opsional)"
-                  defaultValue={getValue("foto_bukti")}
-                />
-              </div>
-            </div>
+          <div className="bg-white border border-[#DBE5FB] rounded-[20px] p-6 flex flex-col gap-3 focus-within:border-[#2563EB] transition-colors">
+            <label htmlFor="pertanyaan_selidiki" className="text-base font-extrabold text-[#1E3A8A] cursor-pointer">
+              Pertanyaan yang Ingin Aku Selidiki
+            </label>
+            <p className="m-0 text-[13px] text-[#374151]">Tuliskan satu hal yang masih ingin kamu ketahui pada tahap eksplorasi.</p>
+            <textarea
+              id="pertanyaan_selidiki"
+              name="answers.pertanyaan_selidiki"
+              defaultValue={getValue("pertanyaan_selidiki")}
+              rows={5}
+              placeholder="Ketik pertanyaanmu di sini..."
+              required
+              className="w-full rounded-2xl border border-[#E5E7EB] bg-[#F9FAFB] p-4 text-sm text-[#374151] placeholder:text-[#9CA3AF] focus:border-[#2563EB] focus:outline-none focus:ring-0 transition-colors resize-y"
+            />
           </div>
         </div>
       </div>
 
       <div className="flex justify-between items-center">
-        <Link
+        <BackLink
           href={`/belajar/${materi}/${peta}/7`}
           className="flex items-center gap-2 bg-transparent text-[#6B7280] border-none rounded-full py-3 px-6 text-sm font-semibold cursor-pointer hover:text-[#374151]"
-        >
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4">
-            <path d="M19 12H5M11 5l-7 7 7 7" />
-          </svg>
-          Kembali
-        </Link>
+        />
         <SubmitStepButton className="flex items-center gap-2 bg-[#16A34A] text-white border-none rounded-full py-3.5 px-7 text-sm font-bold font-inherit shadow-[0_4px_10px_rgba(22,163,74,0.3)] cursor-pointer">
-          Selesai
+          SELESAI
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.4">
-            <path d="M5 13l4 4L19 7" />
+            <path d="M20 6L9 17l-5-5" />
           </svg>
         </SubmitStepButton>
       </div>

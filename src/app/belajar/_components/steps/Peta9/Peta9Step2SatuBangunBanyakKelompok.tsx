@@ -1,17 +1,15 @@
-import Link from "next/link";
-import PhotoUpload from "@/components/PhotoUpload";
 import { submitStepAction } from "@/app/belajar/actions";
 import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
 import SubmitStepButton from "@/app/belajar/_components/SubmitStepButton";
+import BackLink from "@/app/belajar/_components/BackLink";
 import StepHeader from "@/app/belajar/_components/StepHeader";
+import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
+import { getPageImage } from "@/lib/pageImages";
 
-export default function Peta9Step2SatuBangunBanyakKelompok({
-  materi,
-  peta,
-  initialAnswers,
-}: StepComponentProps) {
+export default async function Peta9Step2SatuBangunBanyakKelompok({ materi, peta, editFoto, initialAnswers }: StepComponentProps) {
   const answers = initialAnswers ?? {};
   const getValue = (key: string) => (typeof answers[key] === "string" ? (answers[key] as string) : "");
+  const [kubus, limas] = await Promise.all([getPageImage("M1-P9-L2-1"), getPageImage("M1-P9-L2-2")]);
 
   return (
     <form action={submitStepAction} className="flex flex-col gap-8">
@@ -20,84 +18,99 @@ export default function Peta9Step2SatuBangunBanyakKelompok({
       <input type="hidden" name="step" value="2" />
 
       <div className="flex flex-col gap-4">
-        <StepHeader materi={materi} currentStep={2} totalSteps={6} />
-        <div className="flex items-center gap-3.5">
-          <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#2563EB" strokeWidth="2.4">
-            <rect x="3" y="3" width="7" height="7" rx="1" />
-            <rect x="14" y="3" width="7" height="7" rx="1" />
-            <rect x="3" y="14" width="7" height="7" rx="1" />
-            <rect x="14" y="14" width="7" height="7" rx="1" />
-          </svg>
-          <h1 className="m-0 text-[32px] font-extrabold text-[#111827]">
-            Tantangan Open-Ended
-          </h1>
+        <StepHeader materi={materi} currentStep={2} totalSteps={7} />
+        <div className="inline-flex items-center gap-2 bg-[#1E3A8A] text-white rounded-full py-1.5 px-4 text-xs font-bold tracking-[0.06em] w-fit">
+          SUBMATERI 1 &mdash; BANGUN RUANG SISI DATAR
         </div>
+        <h1 className="m-0 text-2xl sm:text-[32px] font-extrabold text-[#111827]">Tantangan Open-Ended</h1>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-6 shadow-[0_1px_2px_rgba(0,0,0,0.04)] flex flex-col gap-6">
-          <div className="flex items-start gap-4">
-            <div className="w-8 h-8 rounded-full bg-[#2563EB] text-white flex items-center justify-center font-bold text-sm flex-shrink-0">
-              1
-            </div>
-            <p className="m-0 text-[15px] leading-[1.6] text-[#374151]">
-              Apakah kubus dapat dimasukkan ke lebih dari satu kelompok? Tuliskan minimal dua
-              kelompok berbeda yang dapat memuat kubus. Berikan alasan matematis.
-            </p>
+      <div className="flex flex-col gap-4">
+        <div className="flex items-center gap-3">
+          <div className="w-[34px] h-[34px] rounded-full bg-[#16A34A] text-white flex items-center justify-center font-bold text-[15px] flex-shrink-0">
+            B
           </div>
-          <div className="mt-auto">
+          <div className="bg-white border border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-full py-2 px-5 text-sm font-bold text-[#16A34A]">
+            Tantangan 2 &ndash; Satu Bangun, Banyak Kelompok
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-5 shadow-[0_1px_2px_rgba(0,0,0,0.04)] flex flex-col gap-3">
+            <div className="flex items-start gap-3">
+              <span className="w-7 h-7 rounded-full bg-[#16A34A] text-white flex items-center justify-center text-xs font-bold flex-shrink-0">1</span>
+              <p className="m-0 text-sm font-bold text-[#111827] leading-[1.5]">
+                Apakah kubus dapat dimasukkan ke lebih dari satu kelompok? Tuliskan minimal dua kelompok berbeda
+                yang dapat memuat kubus. Berikan alasan matematis.
+              </p>
+            </div>
+            <EditablePageImage
+              imageKey="M1-P9-L2-1"
+              materi={materi}
+              peta={peta}
+              step="2"
+              urutan="1"
+              src={kubus}
+              alt="Ilustrasi kubus"
+              editable={editFoto}
+              imageClassName="object-contain"
+              containerClassName="relative w-16 h-16 mx-auto bg-[#EFF4FF] rounded-xl"
+            />
             <textarea
-              name="answers.kubus_kelompok_lain"
-              defaultValue={getValue("kubus_kelompok_lain")}
+              name="answers.kubus_kelompok"
+              defaultValue={getValue("kubus_kelompok")}
               rows={4}
-              placeholder="Tuliskan jawabanmu di sini..."
+              placeholder="Tuliskan minimal dua kelompok dan alasannya..."
               required
-              className="w-full bg-[#F9FAFB] border border-[#E5E7EB] rounded-xl focus:ring-2 focus:ring-[#2563EB]/20 focus:border-[#2563EB] outline-none p-4 text-sm text-[#374151] resize-none min-h-[120px]"
+              className="w-full rounded-lg border border-[#E5E7EB] bg-[#F9FAFB] px-3.5 py-2.5 text-sm resize-y focus:border-[#16A34A] focus:outline-none focus:bg-white transition-colors"
             />
           </div>
-        </div>
 
-        <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-6 shadow-[0_1px_2px_rgba(0,0,0,0.04)] flex flex-col gap-6">
-          <div className="flex items-start gap-4">
-            <div className="w-8 h-8 rounded-full bg-[#2563EB] text-white flex items-center justify-center font-bold text-sm flex-shrink-0">
-              2
+          <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-5 shadow-[0_1px_2px_rgba(0,0,0,0.04)] flex flex-col gap-3">
+            <div className="flex items-start gap-3">
+              <span className="w-7 h-7 rounded-full bg-[#16A34A] text-white flex items-center justify-center text-xs font-bold flex-shrink-0">2</span>
+              <p className="m-0 text-sm font-bold text-[#111827] leading-[1.5]">
+                Pilih satu bangun ruang selain kubus. Apakah bangun tersebut juga dapat termasuk ke lebih dari
+                satu kelompok? Jelaskan alasannya.
+              </p>
             </div>
-            <p className="m-0 text-[15px] leading-[1.6] text-[#374151]">
-              Pilih satu bangun ruang selain kubus. Apakah bangun tersebut juga dapat termasuk ke
-              lebih dari satu kelompok? Jelaskan alasannya.
-            </p>
-          </div>
-          <div className="mt-auto flex flex-col gap-4">
-            <textarea
-              name="answers.bangun_lain_jawaban"
-              defaultValue={getValue("bangun_lain_jawaban")}
-              rows={3}
-              placeholder="Ketik jawaban dan alasanmu di sini..."
+            <EditablePageImage
+              imageKey="M1-P9-L2-2"
+              materi={materi}
+              peta={peta}
+              step="2"
+              urutan="2"
+              src={limas}
+              alt="Ilustrasi limas segitiga"
+              editable={editFoto}
+              imageClassName="object-contain"
+              containerClassName="relative w-16 h-16 mx-auto bg-[#EFF4FF] rounded-xl"
+            />
+            <input
+              type="text"
+              name="answers.bangun_pilihan"
+              defaultValue={getValue("bangun_pilihan")}
+              placeholder="Bangun ruang yang kamu pilih..."
               required
-              className="w-full bg-[#F9FAFB] border border-[#E5E7EB] rounded-xl focus:ring-2 focus:ring-[#2563EB]/20 focus:border-[#2563EB] outline-none p-4 text-sm text-[#374151] resize-none min-h-[100px]"
+              className="w-full rounded-lg border border-[#E5E7EB] bg-[#F9FAFB] px-3.5 py-2.5 text-sm focus:border-[#16A34A] focus:outline-none focus:bg-white transition-colors"
+            />
+            <textarea
+              name="answers.bangun_pilihan_alasan"
+              defaultValue={getValue("bangun_pilihan_alasan")}
+              rows={3}
+              placeholder="Jelaskan alasannya..."
+              required
+              className="w-full rounded-lg border border-[#E5E7EB] bg-[#F9FAFB] px-3.5 py-2.5 text-sm resize-y focus:border-[#16A34A] focus:outline-none focus:bg-white transition-colors"
             />
           </div>
         </div>
-      </div>
-
-      <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-6 shadow-[0_1px_2px_rgba(0,0,0,0.04)]">
-        <PhotoUpload
-          name="answers.foto_bukti"
-          label="Unggah foto hasil kerja (opsional)"
-          defaultValue={getValue("foto_bukti")}
-        />
       </div>
 
       <div className="flex justify-between items-center">
-        <Link
+        <BackLink
           href={`/belajar/${materi}/${peta}/1`}
           className="flex items-center gap-2 bg-transparent text-[#6B7280] border-none rounded-full py-3 px-6 text-sm font-semibold cursor-pointer hover:text-[#374151]"
-        >
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4">
-            <path d="M19 12H5M11 5l-7 7 7 7" />
-          </svg>
-          Kembali
-        </Link>
+        />
         <SubmitStepButton className="flex items-center gap-2 bg-[#2563EB] text-white border-none rounded-full py-3.5 px-7 text-sm font-bold font-inherit shadow-[0_4px_10px_rgba(37,99,235,0.3)] cursor-pointer">
           LANJUTKAN
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.4">
