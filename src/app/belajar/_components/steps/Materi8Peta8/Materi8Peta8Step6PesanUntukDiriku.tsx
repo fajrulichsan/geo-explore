@@ -21,7 +21,7 @@ export default async function Materi8Peta8Step6PesanUntukDiriku({
   editFoto,
   initialAnswers,
 }: StepComponentProps) {
-  const answers = initialAnswers ?? {};
+  const answers = (initialAnswers ?? {}) as Record<string, string | undefined>;
   const gambar = await getPageImage("M8-P8-L6-1");
 
   return (

@@ -9,7 +9,7 @@ export default async function Materi8Peta8Step3RefleksiPengalamanBelajar({
   peta,
   initialAnswers,
 }: StepComponentProps) {
-  const answers = initialAnswers ?? {};
+  const answers = (initialAnswers ?? {}) as Record<string, string | undefined>;
 
   return (
     <form action={submitStepAction} className="flex flex-col gap-8">
