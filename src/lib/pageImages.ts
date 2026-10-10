@@ -7,6 +7,22 @@ export type PageImageKey =
   | "home-hero"
   | "petunjuk2-geogebra"
   | "petunjuk2-ar"
+  | "petunjuk3-bangun-ruang"
+  | "petunjuk3-siswa"
+  | "peta-konsep-kubus"
+  | "peta-konsep-balok"
+  | "peta-konsep-prisma"
+  | "peta-konsep-limas"
+  | "peta-konsep-klasifikasi"
+  | "peta-konsep-jaring-jaring"
+  | "peta-konsep-luas-permukaan"
+  | "peta-konsep-volume"
+  | "peta-konsep-skala"
+  | "peta-aktivitas-papan"
+  | "peta-aktivitas-bangun-ruang"
+  | "peta-aktivitas-buku-awal"
+  | "peta-aktivitas-buku-penutup"
+  | "peta-aktivitas-buku-submateri"
   | "shape-kubus"
   | "shape-balok"
   | "shape-prisma"
@@ -695,6 +711,22 @@ const DEFAULT_IMAGES: Record<PageImageKey, string> = {
   "home-hero": "https://is3.cloudhost.id/assets-geo/home-1.webp",
   "petunjuk2-geogebra": "https://placehold.co/300x180?text=GeoGebra+3D",
   "petunjuk2-ar": "https://placehold.co/300x180?text=Augmented+Reality",
+  "petunjuk3-bangun-ruang": "https://placehold.co/340x240?text=Kubus+Balok+Limas",
+  "petunjuk3-siswa": "https://placehold.co/820x400?text=Empat+Siswa+Belajar",
+  "peta-konsep-kubus": "https://placehold.co/200x160?text=kubus",
+  "peta-konsep-balok": "https://placehold.co/200x160?text=balok",
+  "peta-konsep-prisma": "https://placehold.co/200x160?text=prisma",
+  "peta-konsep-limas": "https://placehold.co/200x160?text=limas",
+  "peta-konsep-klasifikasi": "https://placehold.co/200x160?text=klasifikasi",
+  "peta-konsep-jaring-jaring": "https://placehold.co/200x160?text=jaring+jaring",
+  "peta-konsep-luas-permukaan": "https://placehold.co/200x160?text=luas+permukaan",
+  "peta-konsep-volume": "https://placehold.co/200x160?text=volume",
+  "peta-konsep-skala": "https://placehold.co/200x160?text=skala",
+  "peta-aktivitas-papan": "https://placehold.co/200x160?text=papan",
+  "peta-aktivitas-bangun-ruang": "https://placehold.co/200x160?text=bangun+ruang",
+  "peta-aktivitas-buku-awal": "https://placehold.co/200x160?text=buku+awal",
+  "peta-aktivitas-buku-penutup": "https://placehold.co/200x160?text=buku+penutup",
+  "peta-aktivitas-buku-submateri": "https://placehold.co/200x160?text=buku+submateri",
   "shape-kubus": "https://is3.cloudhost.id/assets-geo/kubus.png",
   "shape-balok": "https://is3.cloudhost.id/assets-geo/balok.png",
   "shape-prisma": "https://is3.cloudhost.id/assets-geo/prima.png",

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { selesaiPetunjukAction } from "@/app/actions";
+import { redirect } from "next/navigation";
 import Footer from "@/app/_components/Footer";
 import SubmitStepButton from "@/app/belajar/_components/SubmitStepButton";
 import BackLink from "@/app/belajar/_components/BackLink";
@@ -19,6 +19,11 @@ const itemsMateri = [
   { num: 9, title: "Volume Limas", href: "#" },
   { num: 10, title: "Skala dan Volume Bangun Ruang Sisi Datar", href: "#" },
 ];
+
+async function goToTujuan() {
+  "use server";
+  redirect("/petunjuk-3");
+}
 
 export default function DaftarIsiPage() {
   return (
@@ -100,9 +105,9 @@ export default function DaftarIsiPage() {
             href="/kata-pengantar"
             className="flex items-center gap-2 bg-transparent text-[#6B7280] border-none rounded-full py-3 px-6 text-sm font-semibold cursor-pointer hover:text-[#374151]"
           />
-          <form action={selesaiPetunjukAction}>
+          <form action={goToTujuan}>
             <SubmitStepButton className="w-full sm:w-auto justify-center inline-flex items-center gap-3 bg-primary hover:bg-primary-dark text-white font-bold py-3 md:py-4 px-6 md:px-8 rounded-2xl text-sm md:text-lg shadow-[0_8px_20px_-5px_rgba(0,72,186,0.4)] hover:shadow-[0_12px_25px_-5px_rgba(0,72,186,0.5)] hover:-translate-y-1 active:translate-y-0 transition-all group">
-              <span className="tracking-wide">SELESAI</span>
+              <span className="tracking-wide">LANJUTKAN</span>
               <i className="fa-solid fa-arrow-right-long group-hover:translate-x-2 transition-transform" />
             </SubmitStepButton>
           </form>
