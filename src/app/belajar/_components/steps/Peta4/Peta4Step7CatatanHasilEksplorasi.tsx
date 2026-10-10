@@ -7,9 +7,9 @@ import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
 import { getPageImage } from "@/lib/pageImages";
 
 const alur = [
-  { key: "M1-P4-L7-1" as const, urutan: "1", label: "GeoGebra 3D", alt: "Laptop menampilkan model kubus di GeoGebra 3D" },
-  { key: "M1-P4-L7-2" as const, urutan: "2", label: "Augmented Reality (AR)", alt: "Tablet menampilkan kubus hijau dalam Augmented Reality" },
-  { key: "M1-P4-L7-3" as const, urutan: "3", label: "Informasi Siap Diolah", alt: "Papan catatan dengan daftar centang dan kaca pembesar" },
+  { key: "M1-P4-L7-1" as const, urutan: "1", alt: "Laptop menampilkan model kubus di GeoGebra 3D" },
+  { key: "M1-P4-L7-2" as const, urutan: "2", alt: "Tablet menampilkan kubus hijau dalam Augmented Reality" },
+  { key: "M1-P4-L7-3" as const, urutan: "3", alt: "Papan catatan dengan daftar centang dan kaca pembesar" },
 ];
 
 export default async function Peta4Step7CatatanHasilEksplorasi({ materi, peta, initialAnswers, editFoto }: StepComponentProps) {
@@ -102,10 +102,10 @@ export default async function Peta4Step7CatatanHasilEksplorasi({ materi, peta, i
             berikutnya, informasi tersebut akan dibandingkan, diolah, dan dicari polanya untuk menyelidiki dugaan
             kelompokmu.
           </p>
-          <div className="grid grid-cols-[1fr_auto_1fr_auto_1fr] items-end gap-2 sm:gap-4">
+          <div className="grid grid-cols-[1fr_auto_1fr_auto_1fr] items-center gap-2 sm:gap-4">
             {alur.map((a, i) => (
               <div key={a.key} className="contents">
-                <div className="flex flex-col items-center gap-2 text-center">
+                <div className="flex flex-col items-center">
                   <EditablePageImage
                     imageKey={a.key}
                     materi={materi}
@@ -118,10 +118,9 @@ export default async function Peta4Step7CatatanHasilEksplorasi({ materi, peta, i
                     imageClassName="object-contain"
                     containerClassName="relative w-full aspect-[4/3]"
                   />
-                  <p className="m-0 text-xs sm:text-sm font-bold text-[#2563EB] leading-tight">{a.label}</p>
                 </div>
                 {i < alur.length - 1 && (
-                  <span className="pb-8 text-2xl font-extrabold text-[#2563EB]">{i === 0 ? "+" : "→"}</span>
+                  <span className="text-2xl font-extrabold text-[#2563EB]">{i === 0 ? "+" : "→"}</span>
                 )}
               </div>
             ))}

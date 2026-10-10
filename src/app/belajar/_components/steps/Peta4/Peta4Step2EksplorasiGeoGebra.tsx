@@ -58,21 +58,28 @@ export default async function Peta4Step2EksplorasiGeoGebra({ materi, peta, editF
 
         <div className="grid grid-cols-1 md:grid-cols-[1fr_1.4fr] gap-5 items-start">
           <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-5 flex flex-col gap-4 shadow-[0_1px_2px_rgba(0,0,0,0.04)]">
-            <div className="flex items-center gap-4">
+            <div className="flex flex-col items-center gap-3">
               <a
                 href="/geogebra"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Buka GeoGebra 3D"
-                className="relative w-28 h-28 flex-shrink-0 rounded-xl border border-[#E5E7EB] bg-white p-1.5"
+                className="relative w-full max-w-[260px] aspect-square rounded-xl border border-[#E5E7EB] bg-white"
               >
-                <Image src={qr} alt="Kode QR untuk membuka GeoGebra 3D" fill sizes="112px" className="object-contain p-1.5" />
+                <Image
+                  src={qr}
+                  alt="Kode QR untuk membuka GeoGebra 3D"
+                  fill
+                  sizes="260px"
+                  unoptimized
+                  className="object-contain p-2"
+                />
               </a>
               <a
                 href="/geogebra"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-[#1E3A8A] text-white rounded-xl py-2 px-3 text-xs font-bold leading-snug"
+                className="inline-flex items-center justify-center gap-2 bg-[#1E3A8A] text-white rounded-xl py-2.5 px-4 text-sm font-bold leading-snug w-full max-w-[260px] text-center"
               >
                 Scan atau klik untuk membuka GeoGebra 3D
               </a>

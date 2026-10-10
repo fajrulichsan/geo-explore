@@ -63,7 +63,7 @@ export default async function Peta4Step5MelengkapiHasilAR({ materi, peta, editFo
         </div>
       </div>
 
-      <div className="bg-[#FEF9E7] border border-[#FDE68A] rounded-[20px] p-5 flex items-center gap-4">
+      <div className="bg-[#FEF9E7] border border-[#FDE68A] rounded-[20px] p-5 flex flex-col md:flex-row md:items-center gap-5">
         <div className="flex flex-col gap-1.5 flex-1">
           <div className="inline-flex items-center gap-2 text-sm font-extrabold text-[#92400E]">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D97706" strokeWidth="2">
@@ -82,10 +82,10 @@ export default async function Peta4Step5MelengkapiHasilAR({ materi, peta, editFo
           step="5"
           urutan="1"
           src={maskot}
-          alt="Maskot siswi berhijab memegang ponsel yang menampilkan model AR"
+          alt="Guru dan siswa belajar bangun ruang dengan AR di dalam kelas"
           editable={editFoto}
-          imageClassName="object-contain"
-          containerClassName="relative w-24 h-32 sm:w-28 sm:h-36 flex-shrink-0"
+          imageClassName="object-cover"
+          containerClassName="relative w-full md:w-[380px] aspect-[3/2] flex-shrink-0 rounded-2xl overflow-hidden"
         />
       </div>
 
@@ -103,52 +103,62 @@ export default async function Peta4Step5MelengkapiHasilAR({ materi, peta, editFo
           menggunakan GeoGebra 3D.
         </p>
 
-        <div className="flex items-center gap-4 bg-white border border-[#E5E7EB] rounded-[20px] p-4 shadow-[0_1px_2px_rgba(0,0,0,0.04)] w-fit">
-          <a
-            href="https://ar.geo-explore.my.id"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Buka Augmented Reality"
-            className="relative w-28 h-28 flex-shrink-0 rounded-xl border border-[#E5E7EB] bg-white p-1.5"
-          >
-            <Image src={qrAr} alt="Kode QR untuk membuka Augmented Reality" fill sizes="112px" className="object-contain p-1.5" />
-          </a>
-          <a
-            href="https://ar.geo-explore.my.id"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 bg-[#1E3A8A] text-white rounded-xl py-2 px-3 text-xs font-bold leading-snug"
-          >
-            Scan atau klik untuk membuka AR
-          </a>
-        </div>
+        <div className="grid grid-cols-1 md:grid-cols-[minmax(0,320px)_1fr] gap-5 items-stretch">
+          <div className="flex flex-col items-center gap-3 bg-white border border-[#E5E7EB] rounded-[20px] p-5 shadow-[0_1px_2px_rgba(0,0,0,0.04)]">
+            <a
+              href="https://ar.geo-explore.my.id"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Buka Augmented Reality"
+              className="relative w-full max-w-[260px] aspect-square rounded-xl border border-[#E5E7EB] bg-white"
+            >
+              <Image
+                src={qrAr}
+                alt="Kode QR untuk membuka Augmented Reality"
+                fill
+                sizes="260px"
+                unoptimized
+                className="object-contain p-2"
+              />
+            </a>
+            <a
+              href="https://ar.geo-explore.my.id"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center bg-[#1E3A8A] text-white rounded-xl py-2.5 px-4 text-sm font-bold leading-snug w-full max-w-[260px] text-center"
+            >
+              Scan atau klik untuk membuka AR
+            </a>
+          </div>
 
-        <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-5 shadow-[0_1px_2px_rgba(0,0,0,0.04)]">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {alur.map((a, i) => (
-              <div key={a.key} className="flex flex-col items-center gap-2 text-center">
-                <span className="w-7 h-7 rounded-full bg-[#1E3A8A] text-white flex items-center justify-center text-xs font-bold">
-                  {i + 1}
-                </span>
-                <EditablePageImage
-                  imageKey={a.key}
-                  materi={materi}
-                  peta={peta}
-                  step="5"
-                  urutan={a.urutan}
-                  src={gambarAlur[i]}
-                  alt={a.alt}
-                  editable={editFoto}
-                  imageClassName="object-contain"
-                  containerClassName="relative w-full aspect-square"
-                />
-                <p className="m-0 text-xs sm:text-sm text-[#374151] leading-snug">{a.label}</p>
-              </div>
-            ))}
+          <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-5 shadow-[0_1px_2px_rgba(0,0,0,0.04)] flex flex-col gap-4">
+            <div className="text-sm font-extrabold text-[#1E3A8A]">Langkah Menggunakan AR</div>
+            <div className="grid grid-cols-2 gap-4 flex-1">
+              {alur.map((a, i) => (
+                <div key={a.key} className="flex flex-col items-center gap-2 text-center">
+                  <span className="w-7 h-7 rounded-full bg-[#1E3A8A] text-white flex items-center justify-center text-xs font-bold">
+                    {i + 1}
+                  </span>
+                  <EditablePageImage
+                    imageKey={a.key}
+                    materi={materi}
+                    peta={peta}
+                    step="5"
+                    urutan={a.urutan}
+                    src={gambarAlur[i]}
+                    alt={a.alt}
+                    editable={editFoto}
+                    imageClassName="object-contain"
+                    containerClassName="relative w-full aspect-[4/3]"
+                  />
+                  <p className="m-0 text-xs sm:text-sm text-[#374151] leading-snug">{a.label}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-[1.4fr_1fr] gap-4 items-start">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-stretch">
           <div className="bg-[#FEF9E7] border border-[#FDE68A] rounded-[20px] p-5 flex flex-col gap-3">
             <div className="text-sm font-extrabold text-[#92400E]">Tips Eksplorasi AR</div>
             <ul className="m-0 p-0 list-none flex flex-col gap-2.5">

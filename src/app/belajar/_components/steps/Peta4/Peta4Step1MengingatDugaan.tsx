@@ -64,8 +64,8 @@ export default async function Peta4Step1MengingatDugaan({ materi, peta, initialA
           src={maskot}
           alt="Maskot siswi berhijab menunjuk ke atas"
           editable={editFoto}
-          imageClassName="object-contain"
-          containerClassName="relative w-24 h-32 sm:w-28 sm:h-36 flex-shrink-0"
+          imageClassName="object-cover"
+          containerClassName="relative w-32 h-40 sm:w-40 sm:h-56 flex-shrink-0 rounded-2xl overflow-hidden"
         />
       </div>
 

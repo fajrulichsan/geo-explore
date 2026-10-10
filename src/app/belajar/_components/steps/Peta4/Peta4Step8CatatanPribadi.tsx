@@ -53,8 +53,8 @@ export default async function Peta4Step8CatatanPribadi({ materi, peta, initialAn
             src={siswa}
             alt="Siswa laki-laki menulis di buku dengan gelembung pikiran bergambar lampu"
             editable={editFoto}
-            imageClassName="object-contain"
-            containerClassName="relative w-32 h-40 sm:w-36 sm:h-44 flex-shrink-0 mx-auto sm:mx-0"
+            imageClassName="object-cover"
+            containerClassName="relative w-full max-w-[320px] sm:w-72 aspect-[3/2] flex-shrink-0 mx-auto sm:mx-0 rounded-2xl overflow-hidden"
           />
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full">
           <div className="rounded-2xl border border-[#E5E7EB] bg-white p-4 flex flex-col gap-3">
