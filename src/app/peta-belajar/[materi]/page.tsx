@@ -25,7 +25,8 @@ const PETA_INFO: Record<string, { icon: string; title: string; desc: string }> =
 };
 
 const PETA_INFO_MATERI_1: Record<string, { icon: string; title: string; desc: string }> = {
-  "10": { icon: "quiz", title: "Quiz", desc: "Mengecek pemahaman melalui soal pilihan ganda." },
+  "9": { icon: "quiz", title: "Quiz", desc: "Mengecek pemahaman melalui soal pilihan ganda." },
+  "10": PETA_INFO["9"],
 };
 
 export default async function PetaBelajarPage(
@@ -65,7 +66,7 @@ export default async function PetaBelajarPage(
     const { peta, total, doneInPeta, complete } = c;
     const unlocked = completions.slice(0, i).every((prev) => prev.complete);
     const firstUnfinishedStep = Array.from({ length: total }, (_, i2) => i2 + 1).find((s) => !done.has(`${peta}-${s}`)) ?? 1;
-    const ikonNum = materi !== "1" && peta === "10" ? "11" : peta;
+    const ikonNum = materi === "1" ? ({ "9": "10", "10": "9" } as Record<string, string>)[peta] ?? peta : peta === "10" ? "11" : peta;
     return {
       peta,
       ikon: images[`peta-aktivitas-ikon-${ikonNum}` as PageImageKey],

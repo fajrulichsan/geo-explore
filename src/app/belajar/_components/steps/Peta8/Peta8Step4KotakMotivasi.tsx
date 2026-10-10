@@ -36,7 +36,7 @@ export default async function Peta8Step4KotakMotivasi({ materi, peta, step = "4"
             D
           </div>
           <div className="bg-white border border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-full py-2 px-5 text-sm font-bold text-[#2563EB]">
-            Bekalku untuk Tantangan Open-Ended
+            Bekalku untuk Quiz
           </div>
         </div>
 
@@ -104,14 +104,14 @@ export default async function Peta8Step4KotakMotivasi({ materi, peta, step = "4"
           src={gambarMotivasi}
           alt="Ilustrasi piala emas dengan tumpukan buku, melambangkan pencapaian belajar"
           editable={editFoto}
-          imageClassName="object-contain"
-          containerClassName="relative w-[120px] h-[120px] flex-shrink-0 rounded-[14px] bg-white/60 overflow-hidden z-[1]"
+          natural
+          containerClassName="relative w-[180px] sm:w-[240px] flex-shrink-0 rounded-[24px] bg-white/60 overflow-hidden z-[1]"
         />
       </div>
 
       <div className="flex flex-col-reverse sm:flex-row justify-between items-center gap-4">
         <BackLink href={`/belajar/${materi}/${peta}/3`} />
-        <NextStepButton variant="green" icon="check">LANJUT KE TANTANGAN OPEN-ENDED</NextStepButton>
+        <NextStepButton variant="green" icon="check">LANJUT KE QUIZ</NextStepButton>
       </div>
     </form>
   );

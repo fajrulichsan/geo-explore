@@ -17,7 +17,6 @@ export default async function Peta9Step4MembandingkanStrategi({ materi, peta, ed
   const answers = initialAnswers ?? {};
   const getValue = (key: string) => (typeof answers[key] === "string" ? (answers[key] as string) : "");
   const hero = await getPageImage("M1-P9-L4-1");
-  const clipboard = await getPageImage("M1-P9-L4-2");
 
   return (
     <form action={submitStepAction} className="flex flex-col gap-8">
@@ -35,18 +34,6 @@ export default async function Peta9Step4MembandingkanStrategi({ materi, peta, ed
 
       <div className="grid grid-cols-1 md:grid-cols-12 gap-4 items-stretch">
         <div className="md:col-span-8 bg-[#EFF4FF] border border-[#DBE5FB] rounded-[20px] p-5 flex flex-col gap-2.5 relative">
-          <EditablePageImage
-            imageKey="M1-P9-L4-2"
-            materi={materi}
-            peta={peta}
-            step="4"
-            urutan="2"
-            src={clipboard}
-            alt="Papan catatan dan pensil"
-            editable={editFoto}
-            imageClassName="object-contain"
-            containerClassName="relative w-16 h-20 self-end"
-          />
           <h3 className="m-0 text-sm font-bold text-[#1D4ED8]">Mengembangkan Strategi Klasifikasi</h3>
           <p className="m-0 text-sm leading-[1.7] text-[#374151]">
             Sekarang bandingkan berbagai strategi yang telah kamu gunakan. Pilih strategi yang menurutmu paling

@@ -94,8 +94,8 @@ export default async function Peta10Step6BekalMotivasi({ materi, peta, editFoto 
             src={motivasi}
             alt="Otak berkacamata dengan bola lampu"
             editable={editFoto}
-            imageClassName="object-contain"
-            containerClassName="relative w-full h-40"
+            natural
+            containerClassName="relative w-64 mx-auto overflow-hidden rounded-2xl"
           />
           <div className="flex items-center gap-2 text-[#2563EB] font-extrabold text-lg">
             Kamu hebat!

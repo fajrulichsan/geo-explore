@@ -68,7 +68,7 @@ export default async function Peta9Step3MenemukanCaraBaru({ materi, peta, initia
               alt="Ilustrasi menemukan cara baru mengelompokkan bangun ruang"
               editable={editFoto}
               imageClassName="object-contain"
-              containerClassName="relative w-full md:w-56 h-40 md:h-auto flex-shrink-0"
+              containerClassName="relative w-full md:w-56 h-40 md:h-auto flex-shrink-0 rounded-xl overflow-hidden"
             />
           </div>
           <div className="flex items-start gap-2.5 bg-white border border-[#FED7AA] rounded-xl px-4 py-3 text-sm font-semibold text-[#9A3412] leading-[1.6]">
@@ -104,7 +104,7 @@ export default async function Peta9Step3MenemukanCaraBaru({ materi, peta, initia
                 alt=""
                 editable={editFoto}
                 imageClassName="object-contain"
-                containerClassName="relative w-14 h-14 flex-shrink-0"
+                containerClassName="relative w-14 h-14 flex-shrink-0 rounded-lg overflow-hidden"
               />
               <span className="text-sm font-semibold text-[#1E3A8A] leading-[1.4]">{b.teks}</span>
             </div>

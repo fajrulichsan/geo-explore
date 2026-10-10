@@ -55,7 +55,7 @@ export default async function Peta8Step3KeyakinanDiriku({ materi, peta, editFoto
         </div>
         <p className="m-0 text-sm text-[#4B5563]">Centang (&#10003;) setiap pernyataan yang sesuai dengan keyakinanmu saat ini.</p>
 
-        <div className="grid sm:grid-cols-[1fr_160px] gap-5 items-start">
+        <div className="grid sm:grid-cols-[1fr_240px] gap-5 items-start">
           <div className="flex flex-col gap-3">
             <div className="inline-flex items-center gap-2 bg-[#FFF1E9] border border-[#FED7AA] rounded-full py-2 px-5 text-sm font-bold text-[#C2410C] w-fit">
               Saya yakin dapat ...
@@ -95,8 +95,8 @@ export default async function Peta8Step3KeyakinanDiriku({ materi, peta, editFoto
               src={bintang}
               alt="Karakter bintang kuning tersenyum, bertaburan bintang kecil di sekitarnya"
               editable={editFoto}
-              imageClassName="object-contain"
-              containerClassName="relative w-full h-40"
+              imageClassName="object-cover"
+              containerClassName="relative w-full h-64 rounded-[20px] overflow-hidden bg-[#FFF1E9]"
             />
             <div className="bg-[#FFF1E9] border border-[#FED7AA] rounded-[16px] p-4 text-center">
               <p className="m-0 text-xs font-bold text-[#C2410C] leading-[1.6]">

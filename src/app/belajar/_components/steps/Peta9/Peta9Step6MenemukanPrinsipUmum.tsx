@@ -66,7 +66,7 @@ export default async function Peta9Step6MenemukanPrinsipUmum({ materi, peta, ini
                   alt=""
                   editable={editFoto}
                   imageClassName="object-contain"
-                  containerClassName="relative w-10 h-10"
+                  containerClassName="relative w-14 h-14 rounded-xl overflow-hidden"
                 />
               ))}
             </div>
@@ -112,7 +112,7 @@ export default async function Peta9Step6MenemukanPrinsipUmum({ materi, peta, ini
               alt=""
               editable={editFoto}
               imageClassName="object-contain"
-              containerClassName="relative w-12 h-14 ml-auto"
+              containerClassName="relative w-16 h-20 ml-auto rounded-xl overflow-hidden"
             />
           </div>
           <p className="m-0 text-sm text-[#4B5563] leading-[1.7]">

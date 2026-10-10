@@ -58,7 +58,7 @@ export default async function Peta9Step7SiapMenujuRangkuman({ materi, peta, edit
               alt="Maskot siswi menunjuk ke atas, siap menuju rangkuman"
               editable={editFoto}
               imageClassName="object-contain"
-              containerClassName="relative w-24 h-32 sm:w-32 sm:h-40 mx-auto"
+              containerClassName="relative w-32 h-40 sm:w-44 sm:h-56 mx-auto"
             />
             <EditablePageImage
               imageKey="M1-P9-L7-2"
@@ -70,7 +70,7 @@ export default async function Peta9Step7SiapMenujuRangkuman({ materi, peta, edit
               alt="Buku catatan Rangkuman"
               editable={editFoto}
               imageClassName="object-contain"
-              containerClassName="relative w-20 h-24 sm:w-24 sm:h-28 mx-auto"
+              containerClassName="relative w-28 h-32 sm:w-36 sm:h-44 mx-auto"
             />
           </div>
         </div>
@@ -87,7 +87,7 @@ export default async function Peta9Step7SiapMenujuRangkuman({ materi, peta, edit
 
       <div className="flex flex-col-reverse sm:flex-row justify-between items-center gap-4">
         <BackLink href={`/belajar/${materi}/${peta}/6`} />
-        <NextStepButton variant="green">LANJUT KE QUIZ</NextStepButton>
+        <NextStepButton variant="green">LANJUT KE RANGKUMAN</NextStepButton>
       </div>
     </form>
   );

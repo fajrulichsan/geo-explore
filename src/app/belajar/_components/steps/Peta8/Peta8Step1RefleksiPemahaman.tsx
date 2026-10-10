@@ -88,8 +88,8 @@ export default async function Peta8Step1RefleksiPemahaman({ materi, peta, editFo
             src={maskot}
             alt="Maskot siswi berhijab dengan bubble hati, merenungkan proses belajar"
             editable={editFoto}
-            imageClassName="object-contain"
-            containerClassName="relative w-16 h-20 sm:w-20 sm:h-24 flex-shrink-0"
+            imageClassName="object-cover"
+            containerClassName="relative w-28 h-32 sm:w-40 sm:h-48 flex-shrink-0 rounded-[24px] overflow-hidden bg-white/90"
           />
         </div>
         <p className="m-0 text-sm leading-[1.7] text-[#DBE4FF] max-w-2xl">
@@ -112,7 +112,7 @@ export default async function Peta8Step1RefleksiPemahaman({ materi, peta, editFo
           Centang (&#10003;) semua pernyataan yang sesuai dengan pemahamanmu setelah belajar hari ini.
         </p>
 
-        <div className="grid sm:grid-cols-[1fr_auto] gap-5 items-start">
+        <div className="grid sm:grid-cols-[1fr_240px] gap-5 items-start">
           <div className="flex flex-col gap-3">
             {checklist.map((c) => (
               <label
@@ -142,7 +142,7 @@ export default async function Peta8Step1RefleksiPemahaman({ materi, peta, editFo
             ))}
           </div>
 
-          <div className="flex flex-col items-center gap-3 sm:w-[200px]">
+          <div className="flex flex-col items-center gap-3 sm:w-full">
             <EditablePageImage
               imageKey="M1-P8-L1-3"
               materi={materi}
@@ -152,8 +152,8 @@ export default async function Peta8Step1RefleksiPemahaman({ materi, peta, editFo
               src={otakIde}
               alt="Karakter otak berkacamata memegang bohlam ide"
               editable={editFoto}
-              imageClassName="object-contain"
-              containerClassName="relative w-32 h-32 sm:w-full sm:h-44 flex-shrink-0"
+              imageClassName="object-cover"
+              containerClassName="relative w-40 h-40 sm:w-full sm:h-60 flex-shrink-0 rounded-[24px] overflow-hidden bg-[#EFF4FF]"
             />
             <div className="bg-[#FEF9E7] border border-[#F5E4A8] rounded-[16px] p-4 text-center">
               <p className="m-0 text-xs font-bold text-[#92400E] leading-[1.6]">

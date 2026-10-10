@@ -188,14 +188,14 @@ export default async function Peta10Quiz({ materi, peta, initialAnswers, editFot
         <ol className="m-0 pl-5 text-sm text-[#78350F] leading-[1.7]">
           <li>Baca setiap soal dengan teliti.</li>
           <li>Klik salah satu jawaban (A, B, C, atau D) yang menurutmu paling tepat.</li>
-          <li>Setelah semua soal terjawab, kamu dapat melanjutkan ke Rangkuman.</li>
+          <li>Setelah semua soal terjawab, kamu dapat melanjutkan ke Tantangan Open-Ended.</li>
         </ol>
       </div>
 
       <Peta10QuizBoard questions={questions} initialAnswers={tersimpan} />
 
       <div className="flex justify-end items-center">
-        <NextStepButton>LANJUT KE RANGKUMAN</NextStepButton>
+        <NextStepButton>LANJUT KE TANTANGAN OPEN-ENDED</NextStepButton>
       </div>
     </form>
   );

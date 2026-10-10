@@ -53,15 +53,15 @@ const penutup = [
   },
   {
     num: 9,
-    icon: "edit",
-    title: "TANTANGAN OPEN-ENDED",
-    desc: "Selesaikan masalah terbuka dengan strategi yang kamu pilih. Jika memungkinkan, temukan dan bandingkan strategi lain.",
-  },
-  {
-    num: 10,
     icon: "quiz",
     title: "QUIZ",
     desc: "Kerjakan beberapa pertanyaan untuk mengecek pemahamanmu terhadap konsep yang telah dipelajari.",
+  },
+  {
+    num: 10,
+    icon: "edit",
+    title: "TANTANGAN OPEN-ENDED",
+    desc: "Selesaikan masalah terbuka dengan strategi yang kamu pilih. Jika memungkinkan, temukan dan bandingkan strategi lain.",
   },
   {
     num: 11,
@@ -70,6 +70,8 @@ const penutup = [
     desc: "Pelajari kembali konsep-konsep penting yang telah kamu temukan selama proses pembelajaran.",
   },
 ];
+
+const ikonNum = (num: number) => (num === 9 ? 10 : num === 10 ? 9 : num);
 
 function SideCard({
   title,
@@ -278,11 +280,11 @@ export default async function PetaAktivitasPage(
                     <div className="flex items-center gap-3 sm:contents">
                       <Illustration
                         imageKey={
-                          `peta-aktivitas-ikon-${s.num}` as PageImageKey
+                          `peta-aktivitas-ikon-${ikonNum(s.num)}` as PageImageKey
                         }
                         urutan={String(s.num + 10)}
                         src={
-                          images[`peta-aktivitas-ikon-${s.num}` as PageImageKey]
+                          images[`peta-aktivitas-ikon-${ikonNum(s.num)}` as PageImageKey]
                         }
                         alt="Ikon kegiatan"
                         editable={editFoto}
@@ -313,11 +315,11 @@ export default async function PetaAktivitasPage(
                     <div className="flex items-center gap-3 sm:contents">
                       <Illustration
                         imageKey={
-                          `peta-aktivitas-ikon-${s.num}` as PageImageKey
+                          `peta-aktivitas-ikon-${ikonNum(s.num)}` as PageImageKey
                         }
                         urutan={String(s.num + 10)}
                         src={
-                          images[`peta-aktivitas-ikon-${s.num}` as PageImageKey]
+                          images[`peta-aktivitas-ikon-${ikonNum(s.num)}` as PageImageKey]
                         }
                         alt="Ikon kegiatan"
                         editable={editFoto}
