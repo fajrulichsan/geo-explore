@@ -58,7 +58,7 @@ export default async function Peta3Step1AyoBerdiskusi({ materi, peta, editFoto }
             alt="Tiga siswa berdiskusi di meja sambil menulis di buku"
             editable={editFoto}
             natural
-            containerClassName="relative w-full max-w-[420px] mx-auto rounded-2xl overflow-hidden bg-white"
+            containerClassName="relative w-full rounded-2xl overflow-hidden bg-white"
           />
           <ul className="m-0 p-0 list-none flex flex-col gap-3">
             {poin.map((teks) => (

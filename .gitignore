@@ -48,3 +48,5 @@ next-env.d.ts
 
 # large source assets
 /assets-source/
+
+.claude/skills/upload-ulang-foto-peta/credentials.local

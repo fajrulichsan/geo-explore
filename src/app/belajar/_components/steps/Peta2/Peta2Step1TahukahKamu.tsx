@@ -16,6 +16,11 @@ const benda = [
   { imageKey: "M1-P2-L1-8", label: "Lemari" },
   { imageKey: "M1-P2-L1-9", label: "Gazebo" },
   { imageKey: "M1-P2-L1-10", label: "Piramida" },
+  { imageKey: "M1-P2-L1-11", label: "Lompat Batu" },
+  { imageKey: "M1-P2-L1-12", label: "Aquarium" },
+  { imageKey: "M1-P2-L1-13", label: "Kotak Kado" },
+  { imageKey: "M1-P2-L1-14", label: "Penghapus" },
+  { imageKey: "M1-P2-L1-15", label: "Kulkas" },
 ] satisfies { imageKey: PageImageKey; label: string }[];
 
 export default async function Peta2Step1TahukahKamu({ materi, peta, step = "1", editFoto }: StepComponentProps) {

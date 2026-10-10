@@ -119,6 +119,11 @@ export type PageImageKey =
   | "M1-P2-L1-8"
   | "M1-P2-L1-9"
   | "M1-P2-L1-10"
+  | "M1-P2-L1-11"
+  | "M1-P2-L1-12"
+  | "M1-P2-L1-13"
+  | "M1-P2-L1-14"
+  | "M1-P2-L1-15"
   | "M1-P2-L2-1"
   | "M1-P2-L3-1"
   | "M1-P2-L4-1"
@@ -126,6 +131,11 @@ export type PageImageKey =
   | "M1-P2-L4-3"
   | "M1-P2-L4-4"
   | "M1-P2-L4-5"
+  | "M1-P2-L4-6"
+  | "M1-P2-L4-7"
+  | "M1-P2-L4-8"
+  | "M1-P2-L4-9"
+  | "M1-P2-L4-10"
   | "M1-P2-L5-1"
   | "M1-P2-L5-2"
   | "M1-P2-L5-3"
@@ -889,6 +899,11 @@ const DEFAULT_IMAGES: Record<PageImageKey, string> = {
   "M1-P2-L1-8": "https://placehold.co/300x375?text=Lemari",
   "M1-P2-L1-9": "https://placehold.co/300x375?text=Gazebo",
   "M1-P2-L1-10": "https://placehold.co/300x375?text=Piramida",
+  "M1-P2-L1-11": "https://placehold.co/300x375?text=Lompat+Batu",
+  "M1-P2-L1-12": "https://placehold.co/300x375?text=Aquarium",
+  "M1-P2-L1-13": "https://placehold.co/300x375?text=Kotak+Kado",
+  "M1-P2-L1-14": "https://placehold.co/300x375?text=Penghapus",
+  "M1-P2-L1-15": "https://placehold.co/300x375?text=Kulkas",
   "M1-P2-L2-1": "https://placehold.co/280x400?text=Siswa+Kaca+Pembesar",
   "M1-P2-L3-1": "https://placehold.co/260x360?text=Siswi+Menunjuk",
   "M1-P2-L4-1": "https://placehold.co/400x300?text=Kubus",
@@ -896,6 +911,11 @@ const DEFAULT_IMAGES: Record<PageImageKey, string> = {
   "M1-P2-L4-3": "https://placehold.co/400x300?text=Prisma+Segitiga",
   "M1-P2-L4-4": "https://placehold.co/400x300?text=Limas+Segiempat",
   "M1-P2-L4-5": "https://placehold.co/400x300?text=Limas+Segitiga",
+  "M1-P2-L4-6": "https://placehold.co/400x300?text=Prisma+Miring",
+  "M1-P2-L4-7": "https://placehold.co/400x300?text=Prisma+Segilima",
+  "M1-P2-L4-8": "https://placehold.co/400x300?text=Prisma+Segienam",
+  "M1-P2-L4-9": "https://placehold.co/400x300?text=Limas+Segilima",
+  "M1-P2-L4-10": "https://placehold.co/400x300?text=Limas+Terpancung",
   "M1-P2-L5-1": "https://placehold.co/520x340?text=GeoGebra+3D",
   "M1-P2-L5-2": "https://placehold.co/360x360?text=Augmented+Reality",
   "M1-P2-L5-3": "https://placehold.co/520x440?text=Tabel+Tampak+Gambar",

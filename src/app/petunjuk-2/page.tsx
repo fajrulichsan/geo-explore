@@ -144,15 +144,6 @@ const setelahTahap = [
     desc: "Renungkan pengalaman dan keyakinanmu setelah menyelesaikan kegiatan pembelajaran.",
   },
   {
-    bg: "bg-green-50",
-    border: "border-green-100",
-    titleColor: "text-green-800",
-    iconColor: "text-green-600",
-    icon: "extension",
-    title: "Tantangan Open-Ended",
-    desc: "Selesaikan masalah menggunakan strategi yang kamu pilih. Jika mungkin, temukan dan bandingkan lebih dari satu strategi.",
-  },
-  {
     bg: "bg-blue-50",
     border: "border-blue-100",
     titleColor: "text-blue-800",
@@ -160,6 +151,15 @@ const setelahTahap = [
     icon: "quiz",
     title: "Quiz",
     desc: "Kerjakan beberapa pertanyaan untuk mengecek pemahamanmu terhadap konsep yang telah dipelajari.",
+  },
+  {
+    bg: "bg-green-50",
+    border: "border-green-100",
+    titleColor: "text-green-800",
+    iconColor: "text-green-600",
+    icon: "extension",
+    title: "Tantangan Open-Ended",
+    desc: "Selesaikan masalah menggunakan strategi yang kamu pilih. Jika mungkin, temukan dan bandingkan lebih dari satu strategi.",
   },
   {
     bg: "bg-orange-50",
