@@ -5,9 +5,9 @@ import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
 import SubmitStepButton from "@/app/belajar/_components/SubmitStepButton";
 import BackLink from "@/app/belajar/_components/BackLink";
 
-async function goToPetunjuk3() {
+async function goToDaftarIsi() {
   "use server";
-  redirect("/petunjuk-3");
+  redirect("/daftar-isi");
 }
 
 export default async function KataPengantarPage(
@@ -55,8 +55,8 @@ export default async function KataPengantarPage(
       </div>
 
       <main className="flex-grow w-full max-w-[1200px] mx-auto px-4 md:px-6 py-8 lg:py-16 flex flex-col md:flex-row gap-8 lg:gap-12 items-stretch relative z-10">
-        <div className="hidden md:flex w-full md:w-5/12 lg:w-1/2 items-center justify-center">
-          <div className="relative w-full aspect-square max-w-[500px]">
+        <div className="hidden md:flex w-full md:w-5/12 lg:w-1/2 items-stretch justify-center">
+          <div className="relative w-full min-h-[500px]">
             <div className="absolute -top-4 -left-4 w-24 h-24 bg-[#ffdf9e] rounded-full opacity-50 mix-blend-multiply blur-xl animate-pulse" />
             <div className="absolute -bottom-8 -right-8 w-32 h-32 bg-[#dbe1ff] rounded-full opacity-60 mix-blend-multiply blur-xl" />
             <div className="bg-white/95 backdrop-blur-[10px] border border-white/20 shadow-[0_10px_30px_-10px_rgba(0,51,138,0.08)] w-full h-full rounded-2xl overflow-hidden relative z-10 border-4 border-white">
@@ -161,10 +161,10 @@ export default async function KataPengantarPage(
 
             <div className="mt-8 pt-6 border-t border-[#e6e8ea] flex flex-col-reverse sm:flex-row justify-between items-center gap-4">
               <BackLink
-                href="/daftar-isi"
+                href="/petunjuk-2"
                 className="w-full sm:w-auto justify-center inline-flex items-center gap-2 bg-white text-[#374151] border border-[#c3c6d6] rounded-full py-2.5 md:py-3 px-5 md:px-6 text-sm md:text-base font-bold cursor-pointer hover:bg-[#f2f4f6]"
               />
-              <form action={goToPetunjuk3} className="w-full sm:w-auto">
+              <form action={goToDaftarIsi} className="w-full sm:w-auto">
                 <SubmitStepButton className="w-full sm:w-auto justify-center inline-flex items-center gap-2 bg-primary hover:bg-primary-dark text-white font-bold py-2.5 md:py-3 px-5 md:px-6 rounded-full text-sm md:text-base group">
                   <span>Lanjutkan</span>
                   <i className="fa-solid fa-arrow-right-long group-hover:translate-x-2 transition-transform" />

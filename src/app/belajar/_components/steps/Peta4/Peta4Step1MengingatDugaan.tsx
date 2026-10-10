@@ -42,7 +42,7 @@ export default async function Peta4Step1MengingatDugaan({ materi, peta, initialA
         </div>
       </div>
 
-      <div className="bg-[#FEF9E7] border border-[#FDE68A] rounded-[20px] p-5 flex items-center gap-4">
+      <div className="bg-[#FEF9E7] border border-[#FDE68A] rounded-[20px] p-5 flex flex-col md:flex-row md:items-center gap-4">
         <div className="flex flex-col gap-1.5 flex-1">
           <div className="inline-flex items-center gap-2 text-sm font-extrabold text-[#92400E]">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D97706" strokeWidth="2">
@@ -65,7 +65,7 @@ export default async function Peta4Step1MengingatDugaan({ materi, peta, initialA
           alt="Maskot siswi berhijab menunjuk ke atas"
           editable={editFoto}
           imageClassName="object-cover"
-          containerClassName="relative w-32 h-40 sm:w-40 sm:h-56 flex-shrink-0 rounded-2xl overflow-hidden"
+          containerClassName="relative w-full md:w-1/2 aspect-[3/2] flex-shrink-0 rounded-2xl overflow-hidden"
         />
       </div>
 

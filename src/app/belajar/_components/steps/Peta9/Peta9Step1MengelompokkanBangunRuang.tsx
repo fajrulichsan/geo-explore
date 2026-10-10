@@ -52,7 +52,7 @@ export default async function Peta9Step1MengelompokkanBangunRuang({ materi, peta
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-12 gap-4 items-stretch">
-        <div className="md:col-span-7 bg-[#FEF9E7] border border-[#F5E3A0] rounded-[20px] p-5 flex flex-col gap-2.5">
+        <div className="md:col-span-6 bg-[#FEF9E7] border border-[#F5E3A0] rounded-[20px] p-5 flex flex-col gap-2.5">
           <h3 className="m-0 text-sm font-bold text-[#111827]">Saatnya Mencoba!</h3>
           <p className="m-0 text-sm leading-[1.7] text-[#374151]">
             Selama enam tahap Discovery Learning, kamu telah menemukan bahwa bangun ruang dapat dikelompokkan
@@ -63,7 +63,7 @@ export default async function Peta9Step1MengelompokkanBangunRuang({ materi, peta
             secara konsisten, serta didukung alasan matematis yang logis.
           </p>
         </div>
-        <div className="md:col-span-5 bg-white border border-[#E5E7EB] rounded-[20px] p-3 shadow-[0_1px_2px_rgba(0,0,0,0.04)] flex items-center justify-center">
+        <div className="md:col-span-6 bg-white border border-[#E5E7EB] rounded-[20px] shadow-[0_1px_2px_rgba(0,0,0,0.04)] relative min-h-[260px] overflow-hidden">
           <EditablePageImage
             imageKey="M1-P9-L1-7"
             materi={materi}
@@ -73,8 +73,8 @@ export default async function Peta9Step1MengelompokkanBangunRuang({ materi, peta
             src={hero}
             alt="Tiga siswa berdiskusi bersemangat mengerjakan tantangan open-ended"
             editable={editFoto}
-            natural
-            containerClassName="relative w-full rounded-[14px] overflow-hidden"
+            imageClassName="object-cover"
+            containerClassName="absolute inset-0"
           />
         </div>
       </div>

@@ -107,7 +107,12 @@ export default async function Peta10Step4HubunganCaraBerpikir({ materi, peta, ed
                       containerClassName="relative w-full h-full"
                     />
                   </div>
-                  {i < alur.length - 1 && <div className="w-px flex-1 bg-[#E5E7EB] my-1" />}
+                  {i < alur.length - 1 && (
+                    <>
+                      <div className="w-px flex-1 bg-[#93C5FD] mt-1" />
+                      <i aria-hidden className="fa-solid fa-arrow-down text-[#2563EB] text-sm mb-1" />
+                    </>
+                  )}
                 </div>
                 <div className="pb-4">
                   <div className="text-sm font-bold" style={{ color: a.color }}>

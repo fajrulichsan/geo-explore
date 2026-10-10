@@ -1,5 +1,6 @@
 import { submitStepAction } from "@/app/belajar/actions";
 import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
+import FileSubmission from "@/components/FileSubmission";
 import NextStepButton from "@/app/belajar/_components/NextStepButton";
 import BackLink from "@/app/belajar/_components/BackLink";
 import StepHeader from "@/app/belajar/_components/StepHeader";
@@ -8,7 +9,7 @@ import { getPageImage } from "@/lib/pageImages";
 
 const ingat = "Klasifikasi bangun ruang dapat dilakukan dengan berbagai cara sesuai dasar yang digunakan. Yang terpenting adalah alasan matematis yang jelas dan konsisten.";
 
-export default async function Peta9Step7SiapMenujuRangkuman({ materi, peta, editFoto }: StepComponentProps) {
+export default async function Peta9Step7SiapMenujuRangkuman({ materi, peta, editFoto, initialAnswers }: StepComponentProps) {
   const maskot = await getPageImage("M1-P9-L7-1");
   const buku = await getPageImage("M1-P9-L7-2");
 
@@ -84,6 +85,12 @@ export default async function Peta9Step7SiapMenujuRangkuman({ materi, peta, edit
           </p>
         </div>
       </div>
+
+      <FileSubmission
+        materi={materi}
+        peta={peta}
+        defaultValue={typeof initialAnswers?.file_hasil_kerja === "string" ? initialAnswers.file_hasil_kerja : undefined}
+      />
 
       <div className="flex flex-col-reverse sm:flex-row justify-between items-center gap-4">
         <BackLink href={`/belajar/${materi}/${peta}/6`} />

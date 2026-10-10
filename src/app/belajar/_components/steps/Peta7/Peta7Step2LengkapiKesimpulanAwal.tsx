@@ -3,6 +3,8 @@ import { submitStepAction } from "@/app/belajar/actions";
 import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
 import NextStepButton from "@/app/belajar/_components/NextStepButton";
 import StepHeader from "@/app/belajar/_components/StepHeader";
+import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
+import { getPageImage } from "@/lib/pageImages";
 
 const pernyataan = [
   {
@@ -22,8 +24,9 @@ const pernyataan = [
   },
 ];
 
-export default function Peta7Step2LengkapiKesimpulanAwal({ materi, peta, initialAnswers }: StepComponentProps) {
+export default async function Peta7Step2LengkapiKesimpulanAwal({ materi, peta, initialAnswers, editFoto }: StepComponentProps) {
   const answers = initialAnswers ?? {};
+  const siswa = await getPageImage("M1-P7-L4-1");
   const getValue = (key: string) => (typeof answers[key] === "string" ? (answers[key] as string) : "");
 
   return (
@@ -80,9 +83,23 @@ export default function Peta7Step2LengkapiKesimpulanAwal({ materi, peta, initial
         ))}
       </div>
 
-      <div className="bg-[#EFF4FF] border border-[#DBE5FB] rounded-[20px] p-4 text-sm text-[#1E3A8A] leading-[1.6]">
-        Selanjutnya, bandingkan kesimpulan awalmu dengan kesimpulan anggota kelompok dan rumuskan
-        generalisasi kelompok pada halaman berikutnya.
+      <div className="bg-[#EFF4FF] border border-[#DBE5FB] rounded-[20px] p-4 flex items-center gap-4 text-sm text-[#1E3A8A] leading-[1.6]">
+        <EditablePageImage
+          imageKey="M1-P7-L4-1"
+          materi={materi}
+          peta={peta}
+          step="4"
+          urutan="1"
+          src={siswa}
+          alt="Siswa laki-laki menunjuk ke atas dengan gelembung pikiran bola lampu"
+          editable={editFoto}
+          imageClassName="object-contain"
+          containerClassName="relative w-24 h-24 sm:w-32 sm:h-32 flex-shrink-0"
+        />
+        <p className="m-0">
+          Selanjutnya, bandingkan kesimpulan awalmu dengan kesimpulan anggota kelompok dan rumuskan
+          generalisasi kelompok pada halaman berikutnya.
+        </p>
       </div>
 
       <div className="flex flex-col-reverse sm:flex-row justify-between items-center gap-4">

@@ -13,6 +13,10 @@ async function goToPetaKonsep() {
 export default async function Petunjuk3Page(props: PageProps<"/petunjuk-3">) {
   const shapesImage = await getPageImage("petunjuk3-bangun-ruang");
   const siswaImage = await getPageImage("petunjuk3-siswa");
+  const badgeImage = await getPageImage("petunjuk3-badge-bab");
+  const judulImage = await getPageImage("petunjuk3-judul-bab");
+  const lampuImage = await getPageImage("petunjuk3-lampu");
+  const bangunRuang2Image = await getPageImage("petunjuk3-bangun-ruang-2");
   const searchParams = await props.searchParams;
   const editFoto = searchParams?.["edit-foto"] === "true";
 
@@ -27,13 +31,30 @@ export default async function Petunjuk3Page(props: PageProps<"/petunjuk-3">) {
       <main className="max-w-[900px] mx-auto px-4 md:px-6 py-6 md:py-8 w-full flex-1">
         <header className="flex items-center justify-between gap-4 mb-6">
           <div className="flex items-center gap-3 md:gap-5">
-            <div className="shrink-0 w-16 h-16 md:w-24 md:h-24 bg-[#00338a] text-white rounded-2xl flex flex-col items-center justify-center leading-none shadow-md">
-              <span className="text-sm md:text-lg font-bold">Bab</span>
-              <span className="text-3xl md:text-5xl font-extrabold">II</span>
-            </div>
-            <h1 className="text-3xl md:text-[56px] leading-[1.1] tracking-tight font-extrabold text-[#00338a]">
-              BANGUN RUANG
-            </h1>
+            <EditablePageImage
+              imageKey="petunjuk3-badge-bab"
+              materi="0"
+              peta="0"
+              step="petunjuk-3"
+              urutan="3"
+              src={badgeImage}
+              alt="Bab II"
+              editable={editFoto}
+              imageClassName="object-contain"
+              containerClassName="relative shrink-0 w-16 h-16 md:w-24 md:h-24"
+            />
+            <EditablePageImage
+              imageKey="petunjuk3-judul-bab"
+              materi="0"
+              peta="0"
+              step="petunjuk-3"
+              urutan="4"
+              src={judulImage}
+              alt="Bangun Ruang"
+              editable={editFoto}
+              imageClassName="object-contain object-left"
+              containerClassName="relative w-44 h-14 md:w-80 md:h-24"
+            />
           </div>
           <EditablePageImage
             imageKey="petunjuk3-bangun-ruang"
@@ -123,14 +144,18 @@ export default async function Petunjuk3Page(props: PageProps<"/petunjuk-3">) {
 
         <div className="bg-white border border-[#dbe1ff] rounded-2xl p-4 flex flex-col md:flex-row md:items-center gap-4 shadow-sm mb-6">
           <div className="flex items-center gap-3 flex-1">
-            <div className="bg-yellow-100 text-yellow-600 p-3 rounded-full shrink-0">
-              <span
-                className="material-symbols-outlined text-2xl"
-                style={{ fontVariationSettings: "'FILL' 1" }}
-              >
-                emoji_objects
-              </span>
-            </div>
+            <EditablePageImage
+              imageKey="petunjuk3-lampu"
+              materi="0"
+              peta="0"
+              step="petunjuk-3"
+              urutan="5"
+              src={lampuImage}
+              alt="Lampu ide"
+              editable={editFoto}
+              imageClassName="object-contain"
+              containerClassName="relative shrink-0 w-12 h-12"
+            />
             <p className="text-sm text-[#00338a]">
               Siap menemukan konsep dan menyelesaikan tantangan seru?
             </p>
@@ -143,11 +168,23 @@ export default async function Petunjuk3Page(props: PageProps<"/petunjuk-3">) {
           <p className="text-sm text-[#00338a] flex-1">
             Yuk, kenali hubungan konsep yang akan kamu pelajari!
           </p>
+          <EditablePageImage
+            imageKey="petunjuk3-bangun-ruang-2"
+            materi="0"
+            peta="0"
+            step="petunjuk-3"
+            urutan="6"
+            src={bangunRuang2Image}
+            alt="Kubus, limas, dan balok"
+            editable={editFoto}
+            imageClassName="object-contain"
+            containerClassName="relative hidden md:block w-28 h-16 shrink-0"
+          />
         </div>
 
         <div className="flex flex-col-reverse sm:flex-row justify-between items-center gap-4 mb-8">
           <BackLink
-            href="/kata-pengantar"
+            href="/daftar-isi"
             className="w-full sm:w-auto justify-center inline-flex items-center gap-2 bg-white text-[#374151] border border-[#c3c6d6] rounded-full py-2.5 md:py-3 px-5 md:px-6 text-sm md:text-base font-bold cursor-pointer hover:bg-[#f2f4f6]"
           />
           <form action={goToPetaKonsep} className="w-full sm:w-auto">

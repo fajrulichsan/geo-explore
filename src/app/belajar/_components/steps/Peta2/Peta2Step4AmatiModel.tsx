@@ -10,13 +10,14 @@ const model = [
   { imageKey: "M1-P2-L4-1", label: "Kubus", note: null },
   { imageKey: "M1-P2-L4-2", label: "Balok", note: null },
   { imageKey: "M1-P2-L4-3", label: "Prisma Segitiga", note: "dua alas segitiga sejajar dan kongruen" },
-  { imageKey: "M1-P2-L4-4", label: "Limas Segiempat", note: "alas berbentuk persegi" },
-  { imageKey: "M1-P2-L4-5", label: "Limas Segitiga", note: "alas berbentuk segitiga" },
-  { imageKey: "M1-P2-L4-6", label: "Prisma Miring", note: "rusuk tegak miring terhadap alas" },
-  { imageKey: "M1-P2-L4-7", label: "Prisma Segilima", note: "alas berbentuk segilima" },
-  { imageKey: "M1-P2-L4-8", label: "Prisma Segienam", note: "alas berbentuk segienam" },
-  { imageKey: "M1-P2-L4-9", label: "Limas Segilima", note: "alas berbentuk segilima" },
-  { imageKey: "M1-P2-L4-10", label: "Limas Terpancung", note: "bagian atas limas dipotong sejajar alas" },
+  { imageKey: "M1-P2-L4-4", label: "Prisma Miring", note: "rusuk tegak miring terhadap alas" },
+  { imageKey: "M1-P2-L4-5", label: "Prisma Segilima", note: "alas berbentuk segilima" },
+  { imageKey: "M1-P2-L4-6", label: "Prisma Segienam", note: "alas berbentuk segienam" },
+  { imageKey: "M1-P2-L4-7", label: "Limas Segitiga", note: "alas berbentuk segitiga" },
+  { imageKey: "M1-P2-L4-8", label: "Limas Segitiga Siku-siku", note: "salah satu rusuk tegak ke alas" },
+  { imageKey: "M1-P2-L4-9", label: "Limas Segiempat", note: "alas berbentuk persegi" },
+  { imageKey: "M1-P2-L4-10", label: "Limas Segilima", note: "alas berbentuk segilima" },
+  { imageKey: "M1-P2-L4-11", label: "Limas Terpancung", note: "bagian atas limas dipotong sejajar alas" },
 ] satisfies { imageKey: PageImageKey; label: string; note: string | null }[];
 
 export default async function Peta2Step4AmatiModel({ materi, peta, step = "4", editFoto }: StepComponentProps) {

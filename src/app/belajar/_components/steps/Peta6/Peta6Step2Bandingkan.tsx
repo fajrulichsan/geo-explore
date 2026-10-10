@@ -61,7 +61,7 @@ export default async function Peta6Step2Bandingkan({ materi, peta, step = "2", e
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-        <div className="lg:col-span-8">
+        <div className="lg:col-span-7">
           <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-6 shadow-[0_1px_2px_rgba(0,0,0,0.04)] flex flex-col gap-5">
             <div className="flex flex-col gap-1.5">
               <label className="text-sm font-bold text-[#111827]">Persamaan</label>
@@ -113,7 +113,7 @@ export default async function Peta6Step2Bandingkan({ materi, peta, step = "2", e
           </div>
         </div>
 
-        <div className="lg:col-span-4">
+        <div className="lg:col-span-5">
           <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-5 shadow-[0_1px_2px_rgba(0,0,0,0.04)] flex flex-col gap-3">
             <span className="text-sm font-bold text-[#111827] flex items-center gap-2">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#D97706" strokeWidth="2">
@@ -130,7 +130,8 @@ export default async function Peta6Step2Bandingkan({ materi, peta, step = "2", e
               src={gambarReferensi}
               alt="Referensi diskusi"
               editable={editFoto}
-              containerClassName="relative rounded-lg bg-[#F9FAFB] aspect-square overflow-hidden"
+              natural
+              containerClassName="relative w-full rounded-lg bg-[#F9FAFB] overflow-hidden"
             />
             <p className="m-0 text-xs text-[#6B7280] text-center italic">
               Perhatikan gambar referensi di atas untuk membantu analisis.

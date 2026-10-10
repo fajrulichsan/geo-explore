@@ -172,9 +172,9 @@ const setelahTahap = [
   },
 ];
 
-async function goToDaftarIsi() {
+async function goToKataPengantar() {
   "use server";
-  redirect("/daftar-isi");
+  redirect("/kata-pengantar");
 }
 
 export default async function Petunjuk2Page(props: PageProps<"/petunjuk-2">) {
@@ -502,7 +502,7 @@ export default async function Petunjuk2Page(props: PageProps<"/petunjuk-2">) {
               className="w-full sm:w-auto justify-center inline-flex items-center gap-2 bg-white text-[#374151] border border-[#c3c6d6] rounded-full py-2.5 md:py-3 px-5 md:px-6 text-sm md:text-base font-bold cursor-pointer hover:bg-[#f2f4f6]"
             />
             <form
-              action={goToDaftarIsi}
+              action={goToKataPengantar}
               className="w-full sm:w-auto flex-shrink-0"
             >
               <SubmitStepButton className="w-full sm:w-auto justify-center inline-flex items-center gap-2 bg-primary hover:bg-primary-dark text-white font-bold py-2.5 md:py-3 px-5 md:px-6 rounded-full text-sm md:text-base group">

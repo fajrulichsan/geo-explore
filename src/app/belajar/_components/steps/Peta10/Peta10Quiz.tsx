@@ -110,12 +110,7 @@ const questions: QuizQuestion[] = [
 ];
 
 export default async function Peta10Quiz({ materi, peta, initialAnswers, editFoto }: StepComponentProps) {
-  const [banner, siswa, siswi, petunjuk] = await Promise.all([
-    getPageImage("M1-PQ-1"),
-    getPageImage("M1-PQ-2"),
-    getPageImage("M1-PQ-3"),
-    getPageImage("M1-PQ-4"),
-  ]);
+  const [banner, petunjuk] = await Promise.all([getPageImage("M1-PQ-1"), getPageImage("M1-PQ-4")]);
   const answers = initialAnswers ?? {};
   const tersimpan: Record<string, number> = {};
   questions.forEach((_, i) => {
@@ -132,44 +127,18 @@ export default async function Peta10Quiz({ materi, peta, initialAnswers, editFot
 
       <div className="flex flex-col gap-4">
         <StepHeader materi={materi} currentStep={1} totalSteps={1} />
-        <div className="flex items-center justify-between gap-3">
-          <EditablePageImage
-            imageKey="M1-PQ-2"
-            materi={materi}
-            peta={peta}
-            step="1"
-            urutan="2"
-            src={siswa}
-            alt="Siswa membawa buku dengan kubus dan balok"
-            editable={editFoto}
-            imageClassName="object-contain"
-            containerClassName="relative hidden sm:block w-40 h-28 flex-shrink-0"
-          />
-          <EditablePageImage
-            imageKey="M1-PQ-1"
-            materi={materi}
-            peta={peta}
-            step="1"
-            urutan="1"
-            src={banner}
-            alt="Quiz Interaktif – Submateri 1: Klasifikasi Bangun Ruang Sisi Datar"
-            editable={editFoto}
-            imageClassName="object-contain"
-            containerClassName="relative flex-1 h-24"
-          />
-          <EditablePageImage
-            imageKey="M1-PQ-3"
-            materi={materi}
-            peta={peta}
-            step="1"
-            urutan="3"
-            src={siswi}
-            alt="Siswi membawa tablet dengan limas"
-            editable={editFoto}
-            imageClassName="object-contain"
-            containerClassName="relative hidden sm:block w-40 h-28 flex-shrink-0"
-          />
-        </div>
+        <EditablePageImage
+          imageKey="M1-PQ-1"
+          materi={materi}
+          peta={peta}
+          step="1"
+          urutan="1"
+          src={banner}
+          alt="Quiz Interaktif – Submateri 1: Klasifikasi Bangun Ruang Sisi Datar"
+          editable={editFoto}
+          natural
+          containerClassName="relative w-full rounded-[20px] overflow-hidden"
+        />
       </div>
 
       <div className="bg-[#FEF9E7] border border-[#FDE68A] rounded-[20px] p-4 flex flex-col sm:flex-row sm:items-center gap-3">

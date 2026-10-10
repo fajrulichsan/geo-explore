@@ -5,24 +5,29 @@ import SubmitStepButton from "@/app/belajar/_components/SubmitStepButton";
 import BackLink from "@/app/belajar/_components/BackLink";
 
 const itemsUtama = [
-  { num: 1, title: "Kata Pengantar", href: "/kata-pengantar" },
-  { num: 2, title: "Petunjuk Penggunaan", href: "/petunjuk-1" },
+  { num: 1, title: "Sampul", href: "/" },
+  { num: 2, title: "Identitas Siswa", href: "/registrasi" },
+  { num: 3, title: "Petunjuk Penggunaan E-Module", href: "/petunjuk-1" },
+  { num: 4, title: "Kata Pengantar", href: "/kata-pengantar" },
 ];
 
 const itemsMateri = [
-  { num: 3, title: "Klasifikasi Bangun Ruang Sisi Datar", href: "#" },
-  { num: 4, title: "Jaring-Jaring Bangun Ruang Sisi Datar", href: "#" },
-  { num: 5, title: "Luas Permukaan Kubus, Balok, dan Prisma", href: "#" },
-  { num: 6, title: "Luas Permukaan Limas", href: "#" },
-  { num: 7, title: "Skala dan Luas Bangun Ruang Sisi Datar", href: "#" },
-  { num: 8, title: "Volume Kubus, Balok, dan Prisma", href: "#" },
-  { num: 9, title: "Volume Limas", href: "#" },
-  { num: 10, title: "Skala dan Volume Bangun Ruang Sisi Datar", href: "#" },
+  { num: 5, title: "Bab II Bangun Ruang Sisi Datar", href: "/petunjuk-3" },
+  { num: 6, title: "Peta Konsep", href: "/peta-konsep" },
+  { num: 7, title: "Peta Aktivitas Pembelajaran", href: "/peta-aktivitas" },
+  { num: 8, title: "Klasifikasi Bangun Ruang Sisi Datar", href: "#" },
+  { num: 9, title: "Jaring-Jaring Bangun Ruang Sisi Datar", href: "#" },
+  { num: 10, title: "Luas Permukaan Kubus, Balok, dan Prisma", href: "#" },
+  { num: 11, title: "Luas Permukaan Limas", href: "#" },
+  { num: 12, title: "Skala dan Luas Bangun Ruang Sisi Datar", href: "#" },
+  { num: 13, title: "Volume Kubus, Balok, dan Prisma", href: "#" },
+  { num: 14, title: "Volume Limas", href: "#" },
+  { num: 15, title: "Skala dan Volume Bangun Ruang Sisi Datar", href: "#" },
 ];
 
-async function goToKataPengantar() {
+async function goToPetunjuk3() {
   "use server";
-  redirect("/kata-pengantar");
+  redirect("/petunjuk-3");
 }
 
 export default function DaftarIsiPage() {
@@ -104,12 +109,12 @@ export default function DaftarIsiPage() {
 
         <div className="max-w-4xl mx-auto mt-10 flex flex-col-reverse sm:flex-row justify-between items-center gap-4 relative z-10">
           <BackLink
-            href="/petunjuk-2"
+            href="/kata-pengantar"
             className="w-full sm:w-auto justify-center inline-flex items-center gap-2 bg-white text-[#374151] border border-[#c3c6d6] rounded-full py-2.5 md:py-3 px-5 md:px-6 text-sm md:text-base font-bold cursor-pointer hover:bg-[#f2f4f6]"
           />
-          <form action={goToKataPengantar}>
+          <form action={goToPetunjuk3}>
             <SubmitStepButton className="w-full sm:w-auto justify-center inline-flex items-center gap-2 bg-primary hover:bg-primary-dark text-white font-bold py-2.5 md:py-3 px-5 md:px-6 rounded-full text-sm md:text-base group">
-              <span>Lanjut ke Kata Pengantar</span>
+              <span>Lanjutkan</span>
               <i className="fa-solid fa-arrow-right-long group-hover:translate-x-2 transition-transform" />
             </SubmitStepButton>
           </form>

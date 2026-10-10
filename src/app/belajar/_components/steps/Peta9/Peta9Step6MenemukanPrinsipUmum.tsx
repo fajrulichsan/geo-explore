@@ -7,9 +7,13 @@ import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
 import { getPageImage } from "@/lib/pageImages";
 
 const refleksi = [
-  { key: "refleksi_belajar", label: "Hari ini saya belajar bahwa ..." },
-  { key: "refleksi_paling_membantu", label: "Strategi klasifikasi yang paling membantu saya adalah ... karena ..." },
-  { key: "refleksi_ingin_pelajari", label: "Hal yang masih ingin saya pelajari adalah ..." },
+  { key: "refleksi_belajar", imageKey: "M1-P9-L6-2" as const, label: "Hari ini saya belajar bahwa ..." },
+  {
+    key: "refleksi_paling_membantu",
+    imageKey: "M1-P9-L6-3" as const,
+    label: "Strategi klasifikasi yang paling membantu saya adalah ... karena ...",
+  },
+  { key: "refleksi_ingin_pelajari", imageKey: "M1-P9-L6-4" as const, label: "Hal yang masih ingin saya pelajari adalah ..." },
 ];
 
 const bekalku = [
@@ -53,42 +57,51 @@ export default async function Peta9Step6MenemukanPrinsipUmum({ materi, peta, ini
             <div className="bg-white border border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-full py-2 px-5 text-sm font-bold text-[#D97706]">
               Refleksi Berpikir
             </div>
-            <div className="flex items-center gap-2 ml-auto">
-              {(["M1-P9-L6-1", "M1-P9-L6-2", "M1-P9-L6-3", "M1-P9-L6-4"] as const).map((k, i) => (
-                <EditablePageImage
-                  key={k}
-                  imageKey={k}
-                  materi={materi}
-                  peta={peta}
-                  step="6"
-                  urutan={String(i + 1)}
-                  src={ikonRefleksi[i]}
-                  alt=""
-                  editable={editFoto}
-                  imageClassName="object-contain"
-                  containerClassName="relative w-14 h-14 rounded-xl overflow-hidden"
-                />
-              ))}
-            </div>
+            <EditablePageImage
+              imageKey="M1-P9-L6-1"
+              materi={materi}
+              peta={peta}
+              step="6"
+              urutan="1"
+              src={ikonRefleksi[0]}
+              alt=""
+              editable={editFoto}
+              imageClassName="object-contain"
+              containerClassName="relative w-14 h-14 ml-auto rounded-xl overflow-hidden"
+            />
           </div>
           <p className="m-0 text-sm text-[#4B5563] leading-[1.7]">
             Lengkapilah kalimat berikut dengan jujur dan terbuka.
           </p>
           <div className="flex flex-col gap-3">
-            {refleksi.map((r) => (
-              <div key={r.key} className="bg-[#FEF9E7] border border-[#FDE68A] rounded-[16px] p-4 flex flex-col gap-2">
-                <label htmlFor={r.key} className="text-sm font-bold text-[#92400E]">
-                  {r.label}
-                </label>
-                <textarea
-                  id={r.key}
-                  name={`answers.${r.key}`}
-                  defaultValue={getValue(r.key)}
-                  rows={2}
-                  placeholder="Ketik jawabanmu di sini..."
-                  required
-                  className="w-full rounded-lg border border-[#FDE68A] bg-white px-3.5 py-2.5 text-sm resize-y focus:border-[#D97706] focus:outline-none transition-colors"
+            {refleksi.map((r, i) => (
+              <div key={r.key} className="flex items-center gap-3">
+                <EditablePageImage
+                  imageKey={r.imageKey}
+                  materi={materi}
+                  peta={peta}
+                  step="6"
+                  urutan={String(i + 2)}
+                  src={ikonRefleksi[i + 1]}
+                  alt=""
+                  editable={editFoto}
+                  imageClassName="object-contain"
+                  containerClassName="relative w-12 h-12 flex-shrink-0"
                 />
+                <div className="flex-1 bg-[#FEF9E7] border border-[#FDE68A] rounded-[16px] p-4 flex flex-col gap-2">
+                  <label htmlFor={r.key} className="text-sm font-bold text-[#92400E]">
+                    {r.label}
+                  </label>
+                  <textarea
+                    id={r.key}
+                    name={`answers.${r.key}`}
+                    defaultValue={getValue(r.key)}
+                    rows={2}
+                    placeholder="Ketik jawabanmu di sini..."
+                    required
+                    className="w-full rounded-lg border border-[#FDE68A] bg-white px-3.5 py-2.5 text-sm resize-y focus:border-[#D97706] focus:outline-none transition-colors"
+                  />
+                </div>
               </div>
             ))}
           </div>

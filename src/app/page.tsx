@@ -167,14 +167,23 @@ export default async function Home(props: PageProps<"/">) {
               <p className="text-primary font-semibold italic text-sm md:text-base">
                 Temukan, jelaskan, dan bandingkan strategimu.
               </p>
-              <div className="absolute top-4 right-6 text-7xl font-extrabold text-slate-100 select-none pointer-events-none">
-                ?
-              </div>
+              <EditablePageImage
+                imageKey="cover-tanda-tanya"
+                materi="0"
+                peta="0"
+                step="home"
+                urutan="tanda-tanya"
+                src={images["cover-tanda-tanya"]}
+                alt="Tanda tanya"
+                editable={editFoto}
+                imageClassName="object-contain"
+                containerClassName="absolute top-4 right-5 w-14 h-16 md:w-16 md:h-20"
+              />
             </div>
 
             {/* Shapes showcase */}
             <div className="bg-white rounded-[2rem] p-5 shadow-card border border-slate-100">
-              <p className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-3 text-center">
+              <p className="text-base md:text-xl font-extrabold text-primary uppercase tracking-wide mb-3 text-center">
                 Jelajahi Bangun Ruang
               </p>
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">

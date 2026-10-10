@@ -1,6 +1,7 @@
 import BackLink from "@/app/belajar/_components/BackLink";
 import { submitStepAction } from "@/app/belajar/actions";
 import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
+import FileSubmission from "@/components/FileSubmission";
 import NextStepButton from "@/app/belajar/_components/NextStepButton";
 import StepHeader from "@/app/belajar/_components/StepHeader";
 import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
@@ -15,6 +16,7 @@ export default async function Peta7Step11GeneralisasiAkhirku({
   const answers = initialAnswers ?? {};
   const getValue = (key: string) => (typeof answers[key] === "string" ? (answers[key] as string) : "");
   const anakBerpikir = await getPageImage("M1-P7-L11-1");
+  const bintang = await getPageImage("M1-P7-L11-2");
 
   return (
     <form action={submitStepAction} className="flex flex-col gap-8">
@@ -59,46 +61,54 @@ export default async function Peta7Step11GeneralisasiAkhirku({
         />
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 items-stretch">
-        <div className="lg:col-span-4 bg-[#F9FAFB] border border-[#E5E7EB] rounded-[20px] p-4 flex items-center justify-center">
+      <div className="flex flex-col gap-4">
+        <EditablePageImage
+          imageKey="M1-P7-L11-1"
+          materi={materi}
+          peta={peta}
+          step="11"
+          urutan="1"
+          src={anakBerpikir}
+          alt="Siswa laki-laki bersemangat: Hebat! Kamu telah menyelesaikan 6 Tahap Discovery Learning"
+          editable={editFoto}
+          natural
+          containerClassName="relative w-full rounded-[20px] overflow-hidden"
+        />
+        <div className="bg-[#EFF4FF] border border-[#DBE5FB] rounded-[20px] p-5 flex items-center gap-4">
+          <p className="m-0 flex-1 text-sm leading-[1.6] text-[#1E3A8A]">
+            Kamu telah menemukan bahwa bangun ruang dapat dikelompokkan dengan berbagai cara. Yang
+            penting, dasar pengelompokan jelas, digunakan secara konsisten, dan didukung alasan
+            matematis yang logis.
+          </p>
           <EditablePageImage
-            imageKey="M1-P7-L11-1"
+            imageKey="M1-P7-L11-2"
             materi={materi}
             peta={peta}
             step="11"
-            urutan="1"
-            src={anakBerpikir}
-            alt="Anak laki-laki berpikir dengan gelembung pikiran berisi bola lampu"
+            urutan="2"
+            src={bintang}
+            alt="Bintang"
             editable={editFoto}
-            imageClassName="object-contain"
-            containerClassName="relative w-32 h-40 max-w-full mx-auto"
+            imageClassName="object-contain mix-blend-multiply"
+            containerClassName="relative w-20 h-20 sm:w-28 sm:h-28 flex-shrink-0"
           />
         </div>
-        <div className="lg:col-span-8 flex flex-col gap-3">
-          <div className="bg-[#EFF4FF] border border-[#DBE5FB] rounded-[20px] p-5 flex flex-col gap-2">
-            <div className="flex items-center gap-2 text-[#1E3A8A] font-bold text-sm">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="#FACC15" stroke="#D97706" strokeWidth="1.5">
-                <path d="M12 2l2.6 5.6 6.1.7-4.5 4.2 1.2 6L12 15.5 6.6 18.5l1.2-6L3.3 8.3l6.1-.7z" />
-              </svg>
-              Hebat! Kamu telah menyelesaikan 6 Tahap Discovery Learning!
-            </div>
-            <p className="m-0 text-sm leading-[1.6] text-[#1E3A8A]">
-              Kamu telah menemukan bahwa bangun ruang dapat dikelompokkan dengan berbagai cara. Yang
-              penting, dasar pengelompokan jelas, digunakan secara konsisten, dan didukung alasan
-              matematis yang logis.
-            </p>
-          </div>
-          <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-4 flex items-center gap-3">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2563EB" strokeWidth="2" className="flex-shrink-0">
-              <path d="M12 20h9" />
-              <path d="M16.5 3.5a2.1 2.1 0 013 3L7 19l-4 1 1-4z" />
-            </svg>
-            <p className="m-0 text-sm text-[#374151]">
-              Selanjutnya, renungkan kembali pengalaman belajarmu pada bagian Refleksi Diri.
-            </p>
-          </div>
+        <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-4 flex items-center gap-3">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2563EB" strokeWidth="2" className="flex-shrink-0">
+            <path d="M12 20h9" />
+            <path d="M16.5 3.5a2.1 2.1 0 013 3L7 19l-4 1 1-4z" />
+          </svg>
+          <p className="m-0 text-sm text-[#374151]">
+            Selanjutnya, renungkan kembali pengalaman belajarmu pada bagian Refleksi Diri.
+          </p>
         </div>
       </div>
+
+      <FileSubmission
+        materi={materi}
+        peta={peta}
+        defaultValue={typeof initialAnswers?.file_hasil_kerja === "string" ? initialAnswers.file_hasil_kerja : undefined}
+      />
 
       <div className="flex flex-col-reverse sm:flex-row justify-between items-center gap-4">
         <BackLink href={`/belajar/${materi}/${peta}/7`} />

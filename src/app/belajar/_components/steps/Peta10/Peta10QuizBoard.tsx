@@ -22,7 +22,8 @@ export default function Peta10QuizBoard({
   const [jawab, setJawab] = useState<Record<string, number>>(initialAnswers);
 
   const answeredCount = Object.keys(jawab).length;
-  const skor = questions.reduce((n, q, i) => n + (jawab[String(i)] === q.jawaban ? 1 : 0), 0);
+  const benarCount = questions.reduce((n, q, i) => n + (jawab[String(i)] === q.jawaban ? 1 : 0), 0);
+  const skor = Math.round((benarCount / questions.length) * 100);
   const q = questions[current];
   const dijawab = jawab[String(current)];
 
@@ -73,6 +74,20 @@ export default function Peta10QuizBoard({
         <p className="m-0 text-xs text-[#6B7280]">
           Terjawab {answeredCount} dari {questions.length}
         </p>
+        <ul className="m-0 p-0 list-none flex flex-col gap-2 pt-2 border-t border-[#E5E7EB] text-xs text-[#374151]">
+          <li className="flex items-center gap-2">
+            <span className="w-4 h-4 rounded bg-[#2563EB] flex-shrink-0" />
+            Soal yang sedang dikerjakan
+          </li>
+          <li className="flex items-center gap-2">
+            <span className="w-4 h-4 rounded border border-[#E5E7EB] bg-white flex-shrink-0" />
+            Soal yang belum dijawab
+          </li>
+          <li className="flex items-center gap-2">
+            <span className="w-4 h-4 rounded bg-[#DCFCE7] border border-[#86EFAC] flex-shrink-0" />
+            Soal yang sudah dijawab
+          </li>
+        </ul>
       </aside>
 
       <section className="bg-white border border-[#E5E7EB] rounded-[20px] p-6 flex flex-col gap-5 shadow-[0_1px_2px_rgba(0,0,0,0.04)]">
@@ -161,7 +176,7 @@ export default function Peta10QuizBoard({
 
         {answeredCount === questions.length && (
           <div className="rounded-xl bg-[#EFF4FF] border border-[#DBE5FB] p-4 text-sm text-[#1E3A8A] font-semibold">
-            Kamu telah menjawab semua soal. Skormu: {skor} dari {questions.length}.
+            Kamu telah menjawab semua soal. Skormu: {skor} dari 100.
           </div>
         )}
       </section>

@@ -4,6 +4,24 @@ import { supabase } from "@/lib/supabase";
 /** Keys match the `nama` column in the `page_images` table (supabase/migrations_manual/0002_page_images.sql). */
 export type PageImageKey =
   | "logo-kampus"
+  | "M1-P10-L3-3"
+  | "M1-P7-L6-1"
+  | "M1-P7-L4-1"
+  | "M1-P7-L11-2"
+  | "M1-P3-L5-5"
+  | "M1-P3-L5-4"
+  | "M1-P3-L5-3"
+  | "M1-P3-L5-2"
+  | "M1-P2-L4-11"
+  | "cover-tanda-tanya"
+  | "petunjuk3-badge-bab"
+  | "petunjuk3-judul-bab"
+  | "petunjuk3-lampu"
+  | "petunjuk3-bangun-ruang-2"
+  | "peta-konsep-judul"
+  | "peta-konsep-diagram"
+  | "peta-konsep-target"
+  | "peta-aktivitas-infografis"
   | "home-hero"
   | "M1-P5-L5-1"
   | "M1-P7-L1-2"
@@ -783,6 +801,24 @@ export type PageImageKey =
   | "M5-P2-L9-1";
 
 const DEFAULT_IMAGES: Record<PageImageKey, string> = {
+  "M1-P10-L3-3": "https://placehold.co/686x752?text=Catatan+Penting",
+  "M1-P7-L6-1": "https://placehold.co/1379x920?text=Siswa+Rumuskan+Generalisasi",
+  "M1-P7-L4-1": "https://placehold.co/400x300?text=Siswa+Bandingkan",
+  "M1-P7-L11-2": "https://placehold.co/200x200?text=Bintang",
+  "M1-P3-L5-5": "https://placehold.co/160x160?text=Daftar",
+  "M1-P3-L5-4": "https://placehold.co/160x160?text=Dugaan",
+  "M1-P3-L5-3": "https://placehold.co/160x160?text=Cari",
+  "M1-P3-L5-2": "https://placehold.co/160x160?text=Orang",
+  "M1-P2-L4-11": "https://placehold.co/400x300?text=Limas+Terpancung",
+  "cover-tanda-tanya": "https://placehold.co/210x241?text=Tanda+Tanya",
+  "petunjuk3-badge-bab": "https://placehold.co/496x496?text=Bab+II",
+  "petunjuk3-judul-bab": "https://placehold.co/1194x398?text=Bangun+Ruang",
+  "petunjuk3-lampu": "https://placehold.co/466x386?text=Lampu",
+  "petunjuk3-bangun-ruang-2": "https://placehold.co/755x413?text=Bangun+Ruang",
+  "peta-konsep-judul": "https://placehold.co/481x160?text=Peta+Konsep",
+  "peta-konsep-diagram": "https://placehold.co/1380x757?text=Peta+Konsep+BRSD",
+  "peta-konsep-target": "https://placehold.co/128x109?text=Target",
+  "peta-aktivitas-infografis": "https://placehold.co/1149x1369?text=Peta+Aktivitas+Pembelajaran",
   "logo-kampus": "https://is3.cloudhost.id/assets-geo/logo-kampus.png",
   "home-hero": "https://is3.cloudhost.id/assets-geo/home-1.webp",
   "M1-P5-L5-1": "https://placehold.co/300x300?text=M1-P5-L5-1",

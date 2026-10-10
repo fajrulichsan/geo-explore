@@ -8,6 +8,7 @@ import { getPageImage } from "@/lib/pageImages";
 
 export default async function Peta10Step3PetaKonsep({ materi, peta, editFoto }: StepComponentProps) {
   const petaKonsep = await getPageImage("M1-P10-L3-2");
+  const catatan = await getPageImage("M1-P10-L3-3");
 
   return (
     <form action={submitStepAction} className="flex flex-col gap-8">
@@ -52,19 +53,18 @@ export default async function Peta10Step3PetaKonsep({ materi, peta, editFoto }: 
           />
         </div>
 
-        <div className="bg-[#FEF9E7] border border-[#FDE68A] rounded-[20px] p-6 flex flex-col gap-3">
-          <div className="flex items-center gap-2 text-[#92400E] font-bold text-sm">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#92400E" strokeWidth="2">
-              <circle cx="11" cy="11" r="7" />
-              <path d="M21 21l-4.3-4.3" />
-            </svg>
-            Catatan Penting
-          </div>
-          <p className="m-0 text-sm leading-[1.6] text-[#78350F]">
-            Cara pengelompokan yang kamu pilih pada Tantangan Open-Ended adalah contoh penerapan berbagai dasar
-            klasifikasi di atas.
-          </p>
-        </div>
+        <EditablePageImage
+          imageKey="M1-P10-L3-3"
+          materi={materi}
+          peta={peta}
+          step="3"
+          urutan="3"
+          src={catatan}
+          alt="Catatan penting: cara pengelompokan yang kamu pilih pada Tantangan Open-Ended adalah contoh penerapan berbagai dasar klasifikasi di atas"
+          editable={editFoto}
+          natural
+          containerClassName="relative w-full h-fit rounded-[20px] overflow-hidden"
+        />
       </div>
 
       <div className="flex flex-col-reverse sm:flex-row justify-between items-center gap-4">

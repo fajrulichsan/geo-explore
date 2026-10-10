@@ -1,21 +1,8 @@
-import PhotoUpload from "@/components/PhotoUpload";
-import { submitStepAction } from "@/app/belajar/actions";
 import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
-import NextStepButton from "@/app/belajar/_components/NextStepButton";
-import BackLink from "@/app/belajar/_components/BackLink";
 import StepHeader from "@/app/belajar/_components/StepHeader";
 import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
 import { getPageImage } from "@/lib/pageImages";
-
-const verifikasi = [
-  { key: "bentuk_sisi", aspek: "Bentuk sisi" },
-  { key: "susunan_sisi", aspek: "Susunan sisi" },
-  { key: "pasangan_sisi", aspek: "Pasangan bidang sisi sejajar" },
-  { key: "sisi_alas", aspek: "Bentuk sisi yang dipilih sebagai alas" },
-  { key: "jumlah_sisi", aspek: "Jumlah sisi" },
-  { key: "jumlah_rusuk", aspek: "Jumlah rusuk" },
-  { key: "jumlah_titik_sudut", aspek: "Jumlah titik sudut" },
-];
+import Peta6Step1PeriksaKembaliForm from "./Peta6Step1PeriksaKembaliForm";
 
 const ingat = [
   "Periksa kembali menggunakan data yang telah kamu kumpulkan.",
@@ -25,16 +12,15 @@ const ingat = [
 ];
 
 export default async function Peta6Step1PeriksaKembali({ materi, peta, step = "1", editFoto, initialAnswers }: StepComponentProps) {
-  const answers = initialAnswers ?? {};
-  const getValue = (key: string) => (typeof answers[key] === "string" ? (answers[key] as string) : "");
   const maskot = await getPageImage("M1-P6-L1-1");
 
   return (
-    <form action={submitStepAction} className="flex flex-col gap-8">
-      <input type="hidden" name="materi" value={materi} />
-      <input type="hidden" name="peta" value={peta} />
-      <input type="hidden" name="step" value="1" />
-
+    <Peta6Step1PeriksaKembaliForm
+      materi={materi}
+      peta={peta}
+      initialAnswers={initialAnswers ?? {}}
+      header={
+        <>
       <div className="flex flex-col gap-4">
         <StepHeader materi={materi} currentStep={1} totalSteps={6} />
         <div className="flex flex-wrap items-center gap-2">
@@ -62,8 +48,12 @@ export default async function Peta6Step1PeriksaKembali({ materi, peta, step = "1
         </div>
       </div>
 
+        </>
+      }
+      ingat={
+        <>
       <div className="grid grid-cols-1 md:grid-cols-12 gap-4 items-stretch">
-        <div className="md:col-span-8 bg-[#FEF9E7] border border-[#F5E3A0] rounded-[20px] p-5 flex gap-4 items-start">
+        <div className="md:col-span-6 bg-[#FEF9E7] border border-[#F5E3A0] rounded-[20px] p-5 flex gap-4 items-start">
           <div className="bg-[#D97706] text-white rounded-full p-2 flex-shrink-0 mt-0.5">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2">
               <path d="M9 18h6M10 22h4M12 2a7 7 0 00-4 12.7c.6.5 1 1.2 1 2.3h6c0-1.1.4-1.8 1-2.3A7 7 0 0012 2z" />
@@ -84,7 +74,7 @@ export default async function Peta6Step1PeriksaKembali({ materi, peta, step = "1
           </div>
         </div>
 
-        <div className="md:col-span-4 bg-white border border-[#E5E7EB] rounded-[20px] p-3 shadow-[0_1px_2px_rgba(0,0,0,0.04)] flex items-center justify-center">
+        <div className="md:col-span-6 bg-white border border-[#E5E7EB] rounded-[20px] p-3 shadow-[0_1px_2px_rgba(0,0,0,0.04)] flex items-center justify-center">
           <EditablePageImage
             imageKey="M1-P6-L1-1"
             materi={materi}
@@ -108,128 +98,8 @@ export default async function Peta6Step1PeriksaKembali({ materi, peta, step = "1
         </p>
       </div>
 
-      <div className="flex items-center gap-3">
-        <div className="w-[34px] h-[34px] rounded-full bg-[#2563EB] text-white flex items-center justify-center font-bold text-[15px] flex-shrink-0">
-          A
-        </div>
-        <div className="bg-white border border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-full py-2 px-5 text-sm font-bold text-[#2563EB]">
-          Periksa Kembali Hasil Pengolahanmu
-        </div>
-      </div>
-
-      <div className="flex flex-col gap-6">
-        <div className="flex flex-col gap-3">
-          <p className="m-0 text-sm leading-[1.6] text-[#374151] max-w-2xl">
-            Buka kembali hasil Tahap 3 dan hasil pengolahan Tahap 4 (pola dan klasifikasimu). Periksa apakah
-            setiap dugaanmu didukung oleh data yang kamu miliki.
-          </p>
-          <div className="flex flex-wrap gap-3">
-            <div className="inline-flex items-center gap-2 bg-[#F3F4F6] border border-[#E5E7EB] rounded-full py-2 px-4 text-xs font-semibold text-[#374151]">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#2563EB" strokeWidth="2">
-                <rect x="2" y="4" width="20" height="13" rx="2" />
-                <path d="M2 20h20" />
-              </svg>
-              Hasil Tahap 3 (Data Pengamatan)
-            </div>
-            <div className="inline-flex items-center gap-2 bg-[#F3F4F6] border border-[#E5E7EB] rounded-full py-2 px-4 text-xs font-semibold text-[#374151]">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#2563EB" strokeWidth="2">
-                <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2" />
-                <rect x="9" y="3" width="6" height="4" rx="1" />
-              </svg>
-              Hasil Tahap 4 (Hasil Pengolahan Sementara)
-            </div>
-          </div>
-        </div>
-
-        <div className="bg-white border border-[#E5E7EB] rounded-[20px] shadow-[0_1px_2px_rgba(0,0,0,0.04)] overflow-hidden">
-          <div className="bg-[#EFF4FF] border-b border-[#E5E7EB] p-5 flex items-center gap-3">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2563EB" strokeWidth="2">
-              <path d="M9 11l3 3L22 4" />
-              <path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11" />
-            </svg>
-            <h2 className="m-0 text-lg font-bold text-[#2563EB]">Tabel Verifikasi</h2>
-          </div>
-          <p className="m-0 px-5 pt-4 text-xs text-[#6B7280]">
-            Periksa kembali setiap aspek berikut berdasarkan data yang kamu miliki.
-          </p>
-          <div className="overflow-x-auto">
-            <table className="w-full text-left border-collapse min-w-[560px]">
-              <thead>
-                <tr className="border-b border-[#E5E7EB]">
-                  <th className="py-3 px-4 text-xs font-bold text-[#6B7280] w-1/4">Aspek / Hasil yang Diperiksa</th>
-                  <th className="py-3 px-4 text-xs font-bold text-[#6B7280] w-1/4">Bukti dari Data</th>
-                  <th className="py-3 px-4 text-xs font-bold text-[#6B7280] w-1/6 text-center">Sudah Sesuai?</th>
-                  <th className="py-3 px-4 text-xs font-bold text-[#6B7280] w-1/3">Jika Belum, Apa yang Diperbaiki?</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-[#E5E7EB]">
-                {verifikasi.map((v) => (
-                  <tr key={v.key}>
-                    <td className="py-3 px-4 align-top text-sm font-semibold text-[#111827]">{v.aspek}</td>
-                    <td className="py-3 px-4 align-top">
-                      <input
-                        type="text"
-                        name={`answers.bukti_${v.key}`}
-                        defaultValue={getValue(`bukti_${v.key}`)}
-                        placeholder="Tulis bukti..."
-                        required
-                        className="w-full rounded-lg border border-[#E5E7EB] bg-white px-3 py-2 text-sm text-[#374151] placeholder:text-[#9CA3AF] focus:border-[#2563EB] focus:outline-none"
-                      />
-                    </td>
-                    <td className="py-3 px-4 align-top">
-                      <div className="flex flex-row gap-3 items-center justify-center">
-                        <label className="inline-flex items-center gap-1.5 text-xs text-[#374151]">
-                          <input
-                            type="radio"
-                            name={`answers.sesuai_${v.key}`}
-                            value="ya"
-                            defaultChecked={getValue(`sesuai_${v.key}`) === "ya"}
-                            required
-                            className="w-4 h-4 text-[#2563EB]"
-                          />
-                          Ya
-                        </label>
-                        <label className="inline-flex items-center gap-1.5 text-xs text-[#374151]">
-                          <input
-                            type="radio"
-                            name={`answers.sesuai_${v.key}`}
-                            value="belum"
-                            defaultChecked={getValue(`sesuai_${v.key}`) === "belum"}
-                            className="w-4 h-4 text-[#DC2626]"
-                          />
-                          Belum
-                        </label>
-                      </div>
-                    </td>
-                    <td className="py-3 px-4 align-top">
-                      <textarea
-                        rows={2}
-                        name={`answers.perbaikan_${v.key}`}
-                        defaultValue={getValue(`perbaikan_${v.key}`)}
-                        placeholder="Catatan perbaikan..."
-                        required
-                        className="w-full rounded-lg border border-[#E5E7EB] bg-white px-3 py-2 text-sm text-[#374151] placeholder:text-[#9CA3AF] focus:border-[#2563EB] focus:outline-none resize-none"
-                      />
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-          <div className="p-6 pt-0">
-            <PhotoUpload
-              name="answers.foto_bukti"
-              label="Unggah foto hasil verifikasi (opsional)"
-              defaultValue={getValue("foto_bukti")}
-            />
-          </div>
-        </div>
-      </div>
-
-      <div className="flex flex-col-reverse sm:flex-row justify-between items-center gap-4">
-        <BackLink href={`/belajar/${materi}/4/8`} />
-        <NextStepButton />
-      </div>
-    </form>
+        </>
+      }
+    />
   );
 }

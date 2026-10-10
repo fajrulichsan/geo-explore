@@ -87,7 +87,7 @@ export default async function Peta6Step4EvaluasiVerifikasi({ materi, peta, step 
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-12 gap-4 items-stretch">
-        <div className="md:col-span-8 bg-[#FEF9E7] border border-[#F5E3A0] rounded-[20px] p-5 flex gap-4 items-start">
+        <div className="md:col-span-6 bg-[#FEF9E7] border border-[#F5E3A0] rounded-[20px] p-5 flex gap-4 items-start">
           <div className="bg-[#D97706] text-white rounded-full p-2 flex-shrink-0 mt-0.5">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2">
               <path d="M9 18h6M10 22h4M12 2a7 7 0 00-4 12.7c.6.5 1 1.2 1 2.3h6c0-1.1.4-1.8 1-2.3A7 7 0 0012 2z" />
@@ -108,7 +108,7 @@ export default async function Peta6Step4EvaluasiVerifikasi({ materi, peta, step 
           </div>
         </div>
 
-        <div className="md:col-span-4 bg-white border border-[#E5E7EB] rounded-[20px] p-3 shadow-[0_1px_2px_rgba(0,0,0,0.04)] flex items-center justify-center">
+        <div className="md:col-span-6 bg-white border border-[#E5E7EB] rounded-[20px] p-3 shadow-[0_1px_2px_rgba(0,0,0,0.04)] flex items-center justify-center">
           <EditablePageImage
             imageKey="M1-P6-L4-1"
             materi={materi}

@@ -33,7 +33,7 @@ export default async function Peta9Step4MembandingkanStrategi({ materi, peta, ed
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-12 gap-4 items-stretch">
-        <div className="md:col-span-8 bg-[#EFF4FF] border border-[#DBE5FB] rounded-[20px] p-5 flex flex-col gap-2.5 relative">
+        <div className="md:col-span-6 bg-[#EFF4FF] border border-[#DBE5FB] rounded-[20px] p-5 flex flex-col gap-2.5 relative">
           <h3 className="m-0 text-sm font-bold text-[#1D4ED8]">Mengembangkan Strategi Klasifikasi</h3>
           <p className="m-0 text-sm leading-[1.7] text-[#374151]">
             Sekarang bandingkan berbagai strategi yang telah kamu gunakan. Pilih strategi yang menurutmu paling
@@ -41,7 +41,7 @@ export default async function Peta9Step4MembandingkanStrategi({ materi, peta, ed
             pengamatan.
           </p>
         </div>
-        <div className="md:col-span-4 bg-white border border-[#E5E7EB] rounded-[20px] p-3 shadow-[0_1px_2px_rgba(0,0,0,0.04)] flex items-center justify-center">
+        <div className="md:col-span-6 bg-white border border-[#E5E7EB] rounded-[20px] shadow-[0_1px_2px_rgba(0,0,0,0.04)] relative min-h-[260px] overflow-hidden">
           <EditablePageImage
             imageKey="M1-P9-L4-1"
             materi={materi}
@@ -51,8 +51,8 @@ export default async function Peta9Step4MembandingkanStrategi({ materi, peta, ed
             src={hero}
             alt="Tiga siswa berdiskusi membandingkan strategi klasifikasi"
             editable={editFoto}
-            natural
-            containerClassName="relative w-full rounded-[14px] overflow-hidden"
+            imageClassName="object-cover"
+            containerClassName="absolute inset-0"
           />
         </div>
       </div>

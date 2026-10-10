@@ -85,7 +85,7 @@ export default async function Peta4Step5MelengkapiHasilAR({ materi, peta, editFo
           alt="Guru dan siswa belajar bangun ruang dengan AR di dalam kelas"
           editable={editFoto}
           imageClassName="object-cover"
-          containerClassName="relative w-full md:w-[380px] aspect-[3/2] flex-shrink-0 rounded-2xl overflow-hidden"
+          containerClassName="relative w-full md:w-1/2 aspect-[3/2] flex-shrink-0 rounded-2xl overflow-hidden"
         />
       </div>
 
@@ -129,6 +129,21 @@ export default async function Peta4Step5MelengkapiHasilAR({ materi, peta, editFo
             >
               Scan atau klik untuk membuka AR
             </a>
+          <div className="bg-[#FEF9E7] border border-[#FDE68A] rounded-2xl p-4 flex flex-col gap-3 w-full">
+            <div className="text-sm font-extrabold text-[#92400E]">Tips Eksplorasi AR</div>
+            <ul className="m-0 p-0 list-none flex flex-col gap-2.5">
+              {tips.map((teks) => (
+                <li key={teks} className="flex items-start gap-2.5 text-sm text-[#78350F] leading-[1.5]">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2563EB" strokeWidth="2.4" className="flex-shrink-0 mt-0.5">
+                    <circle cx="12" cy="12" r="10" />
+                    <path d="M8 12l3 3 5-6" />
+                  </svg>
+                  {teks}
+                </li>
+              ))}
+            </ul>
+          </div>
+
           </div>
 
           <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-5 shadow-[0_1px_2px_rgba(0,0,0,0.04)] flex flex-col gap-4">
@@ -158,35 +173,18 @@ export default async function Peta4Step5MelengkapiHasilAR({ materi, peta, editFo
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-stretch">
-          <div className="bg-[#FEF9E7] border border-[#FDE68A] rounded-[20px] p-5 flex flex-col gap-3">
-            <div className="text-sm font-extrabold text-[#92400E]">Tips Eksplorasi AR</div>
-            <ul className="m-0 p-0 list-none flex flex-col gap-2.5">
-              {tips.map((teks) => (
-                <li key={teks} className="flex items-start gap-2.5 text-sm text-[#78350F] leading-[1.5]">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2563EB" strokeWidth="2.4" className="flex-shrink-0 mt-0.5">
-                    <circle cx="12" cy="12" r="10" />
-                    <path d="M8 12l3 3 5-6" />
-                  </svg>
-                  {teks}
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div className="bg-[#EFF4FF] border border-[#DBE5FB] rounded-[20px] p-5 flex flex-col gap-3">
-            <div className="text-sm font-extrabold text-[#1E3A8A]">Hal yang Diamati</div>
-            <ul className="m-0 p-0 list-none flex flex-col gap-2">
-              {diamati.map((teks, i) => (
-                <li key={teks} className="flex items-center gap-2.5 text-sm text-[#1E3A8A]">
-                  <span className="w-5 h-5 rounded-full bg-[#1E3A8A] text-white flex items-center justify-center text-[10px] font-bold flex-shrink-0">
-                    {i + 1}
-                  </span>
-                  {teks}
-                </li>
-              ))}
-            </ul>
-          </div>
+        <div className="bg-[#EFF4FF] border border-[#DBE5FB] rounded-[20px] p-5 flex flex-col gap-3">
+          <div className="text-sm font-extrabold text-[#1E3A8A]">Hal yang Diamati</div>
+          <ul className="m-0 p-0 list-none grid grid-cols-1 sm:grid-cols-2 md:grid-flow-col md:grid-cols-4 md:grid-rows-2 gap-x-4 gap-y-2">
+            {diamati.map((teks, i) => (
+              <li key={teks} className="flex items-center gap-2.5 text-sm text-[#1E3A8A]">
+                <span className="w-5 h-5 rounded-full bg-[#1E3A8A] text-white flex items-center justify-center text-[10px] font-bold flex-shrink-0">
+                  {i + 1}
+                </span>
+                {teks}
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
 

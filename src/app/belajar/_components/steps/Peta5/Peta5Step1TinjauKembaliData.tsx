@@ -57,7 +57,7 @@ export default async function Peta5Step1TinjauKembaliData({ materi, peta, editFo
             untuk menemukan persamaan, perbedaan, dan pola pada bangun ruang.
           </p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-[1fr_auto] gap-4 items-end">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-center">
           <div className="bg-[#FEF9E7] border border-dashed border-[#F5C542] rounded-[20px] p-5 flex flex-col gap-3">
             <div className="flex items-center gap-3">
               <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#B45309" strokeWidth="1.8" className="flex-shrink-0">
@@ -86,7 +86,7 @@ export default async function Peta5Step1TinjauKembaliData({ materi, peta, editFo
             alt="Tiga siswa berdiskusi sambil menulis di buku"
             editable={editFoto}
             natural
-            containerClassName="relative w-full max-w-[280px] mx-auto md:mx-0 rounded-2xl overflow-hidden bg-white"
+            containerClassName="relative w-full rounded-2xl overflow-hidden bg-white"
           />
         </div>
       </div>

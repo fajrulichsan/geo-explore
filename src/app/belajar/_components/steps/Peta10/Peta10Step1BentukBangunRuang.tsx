@@ -80,7 +80,7 @@ export default async function Peta10Step1BentukBangunRuang({ materi, peta, editF
             alt="Kelas belajar dengan papan rangkuman"
             editable={editFoto}
             imageClassName="object-cover rounded-xl"
-            containerClassName="relative ml-auto hidden sm:block w-80 h-48"
+            containerClassName="relative ml-auto hidden sm:block w-[26rem] max-w-[55%] h-64"
           />
         </div>
         <div className="inline-flex items-center bg-[#FDF3C7] text-[#92400E] rounded-full py-[7px] px-[18px] text-[13px] font-semibold w-fit">

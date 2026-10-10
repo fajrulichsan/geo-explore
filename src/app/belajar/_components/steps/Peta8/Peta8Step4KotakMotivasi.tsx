@@ -77,7 +77,8 @@ export default async function Peta8Step4KotakMotivasi({ materi, peta, step = "4"
         <div className="pt-2 border-t border-[#E5E7EB]">
           <PhotoUpload
             name="answers.foto_bukti"
-            label="Unggah foto jurnal refleksimu (opsional)"
+            label="Kirim jurnal refleksimu dalam bentuk foto, Word, atau PDF (opsional)"
+            docs
             defaultValue={getValue("foto_bukti")}
           />
         </div>

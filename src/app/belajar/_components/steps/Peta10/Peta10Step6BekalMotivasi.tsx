@@ -62,7 +62,7 @@ export default async function Peta10Step6BekalMotivasi({ materi, peta, editFoto 
               alt="Jaring-jaring kubus"
               editable={editFoto}
               natural
-              containerClassName="relative w-40"
+              containerClassName="relative w-full max-w-[320px] mx-auto"
             />
           </div>
         </div>

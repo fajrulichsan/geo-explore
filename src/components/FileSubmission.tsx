@@ -1,7 +1,9 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { uploadFile } from "@/app/belajar/upload-actions";
+
+const ACCEPT = "image/*,.pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document";
 
 function fileToBase64(file: File): Promise<string> {
   return new Promise((resolve, reject) => {
@@ -12,63 +14,36 @@ function fileToBase64(file: File): Promise<string> {
   });
 }
 
-export default function PhotoUpload({
-  name,
-  label,
+function isImageUrl(url: string) {
+  return /\.(png|jpe?g|gif|webp|heic)$/i.test(url);
+}
+
+export default function FileSubmission({
+  name = "answers.file_hasil_kerja",
   defaultValue,
   materi,
   peta,
-  docs,
+  title = "Kirim hasil kegiatanmu",
 }: {
-  name: string;
-  label?: string;
+  name?: string;
   defaultValue?: string;
-  materi?: string;
-  peta?: string;
-  docs?: boolean;
+  materi: string;
+  peta: string;
+  title?: string;
 }) {
   const [url, setUrl] = useState(defaultValue ?? "");
+  const [fileName, setFileName] = useState("");
   const [status, setStatus] = useState<"idle" | "uploading" | "error">("idle");
   const fileInputRef = useRef<HTMLInputElement>(null);
   const cameraInputRef = useRef<HTMLInputElement>(null);
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  // Kalau foto bukti sudah diunggah, field lain di step ini tidak wajib diisi lagi.
-  useEffect(() => {
-    const form = containerRef.current?.closest("form");
-    if (!form) return;
-
-    if (url) {
-      form.querySelectorAll<HTMLInputElement | HTMLTextAreaElement>("[required]").forEach((field) => {
-        field.dataset.wasRequired = "1";
-        field.required = false;
-      });
-    } else {
-      form
-        .querySelectorAll<HTMLInputElement | HTMLTextAreaElement>("[data-was-required]")
-        .forEach((field) => {
-          field.required = true;
-          delete field.dataset.wasRequired;
-        });
-    }
-
-    // SubmitStepButton hanya memeriksa ulang validitas form saat event
-    // input/change; ubah hidden input via setUrl tidak memicu itu sendiri.
-    form.dispatchEvent(new Event("change", { bubbles: true }));
-  }, [url]);
 
   async function handleFile(file: File | undefined) {
     if (!file) return;
     setStatus("uploading");
     try {
-      const base64Data = await fileToBase64(file);
-      const publicUrl = await uploadFile(
-        file.name,
-        file.type,
-        base64Data,
-        materi && peta ? { materi, peta } : undefined
-      );
+      const publicUrl = await uploadFile(file.name, file.type, await fileToBase64(file), { materi, peta });
       setUrl(publicUrl);
+      setFileName(file.name);
       setStatus("idle");
     } catch {
       setStatus("error");
@@ -76,43 +51,53 @@ export default function PhotoUpload({
   }
 
   return (
-    <div ref={containerRef} className="flex flex-col gap-3">
-      {label && <span className="text-sm font-bold text-[#111827]">{label}</span>}
+    <div className="bg-white border border-dashed border-[#BFD0FF] rounded-[20px] p-5 flex flex-col gap-3">
+      <div className="flex items-center gap-2.5">
+        <i className="fa-solid fa-cloud-arrow-up text-[#2563EB] text-lg" />
+        <span className="text-base font-bold text-[#1E3A8A]">{title}</span>
+        <span className="text-xs font-semibold text-[#6B7280]">(opsional)</span>
+      </div>
+      <p className="m-0 text-sm text-[#4B5563]">
+        Kamu dapat mengirim file hasil kerjamu dalam bentuk foto, dokumen Word, atau PDF.
+      </p>
       <input type="hidden" name={name} value={url} />
 
       {url ? (
-        <div className="relative w-full max-w-xs">
-          {/\.(pdf|docx?)$/i.test(url) ? (
+        <div className="flex items-center gap-3 flex-wrap">
+          {isImageUrl(url) ? (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img src={url} alt="File terkirim" className="w-32 rounded-xl border border-[#E5E7EB] object-cover" />
+          ) : (
             <a
               href={url}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center gap-2 bg-[#F3F6FF] border border-[#DBE5FB] rounded-xl py-3 px-4 text-sm font-semibold text-[#1E3A8A]"
+              className="inline-flex items-center gap-2 bg-[#F3F6FF] border border-[#DBE5FB] rounded-full py-2 px-4 text-sm font-semibold text-[#1E3A8A]"
             >
               <i className="fa-solid fa-file" />
-              Lihat file terkirim
+              {fileName || "Lihat file terkirim"}
             </a>
-          ) : (
-            // eslint-disable-next-line @next/next/no-img-element
-            <img src={url} alt={label ?? "Foto"} className="w-full rounded-xl border border-[#E5E7EB] object-cover" />
           )}
           <button
             type="button"
-            onClick={() => setUrl("")}
-            className="absolute top-2 right-2 bg-white/90 text-[#374151] rounded-full w-7 h-7 flex items-center justify-center text-xs font-bold shadow"
+            onClick={() => {
+              setUrl("");
+              setFileName("");
+            }}
+            className="text-sm font-semibold text-[#DC2626]"
           >
-            ✕
+            Hapus
           </button>
         </div>
       ) : (
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-3 flex-wrap">
           <button
             type="button"
             onClick={() => fileInputRef.current?.click()}
             disabled={status === "uploading"}
             className="flex items-center gap-2 bg-[#F9FAFB] border border-[#E5E7EB] rounded-full py-2.5 px-5 text-sm font-semibold text-[#374151] disabled:opacity-60"
           >
-            {status === "uploading" ? "Mengunggah..." : docs ? "Pilih File (Foto / Word / PDF)" : "Pilih File"}
+            {status === "uploading" ? "Mengunggah..." : "Pilih File (Foto / Word / PDF)"}
           </button>
           <button
             type="button"
@@ -132,7 +117,7 @@ export default function PhotoUpload({
       <input
         ref={fileInputRef}
         type="file"
-        accept={docs ? "image/*,.pdf,.doc,.docx" : "image/*"}
+        accept={ACCEPT}
         className="hidden"
         onChange={(e) => handleFile(e.target.files?.[0])}
       />

@@ -1,60 +1,22 @@
+import { Fragment } from "react";
 import { submitStepAction } from "@/app/belajar/actions";
 import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
 import NextStepButton from "@/app/belajar/_components/NextStepButton";
 import BackLink from "@/app/belajar/_components/BackLink";
 import StepHeader from "@/app/belajar/_components/StepHeader";
 import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
-import { getPageImage } from "@/lib/pageImages";
+import { getPageImage, type PageImageKey } from "@/lib/pageImages";
 
 const langkah = [
-  {
-    n: 1,
-    teks: "Tinjau kembali hasil diskusimu.",
-    box: "border-[#DBE5FB] bg-[#F5F8FF]",
-    icon: (
-      <>
-        <circle cx="9" cy="8" r="3" />
-        <circle cx="17" cy="9" r="2.4" />
-        <path d="M3 19c0-3.3 2.7-5.5 6-5.5s6 2.2 6 5.5M15.5 14c3 0 5.5 1.7 5.5 4.6" />
-      </>
-    ),
-    stroke: "#2563EB",
-  },
-  {
-    n: 2,
-    teks: "Tentukan informasi apa yang masih perlu dicari.",
-    box: "border-[#FED7AA] bg-[#FFF7ED]",
-    icon: (
-      <>
-        <circle cx="11" cy="11" r="7" />
-        <path d="M21 21l-4.3-4.3" />
-      </>
-    ),
-    stroke: "#EA580C",
-  },
-  {
-    n: 3,
-    teks: "Rumuskan dugaan kelompok yang akan diselidiki.",
-    box: "border-[#BBF7D0] bg-[#F0FDF4]",
-    icon: <path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z" />,
-    stroke: "#16A34A",
-  },
-  {
-    n: 4,
-    teks: "Siapkan eksplorasi pada tahap berikutnya.",
-    box: "border-[#DBE5FB] bg-[#F5F8FF]",
-    icon: (
-      <>
-        <rect x="5" y="4" width="14" height="17" rx="2" />
-        <path d="M9 4h6v3H9zM9 12l1.5 1.5L13 11M9 17h6" />
-      </>
-    ),
-    stroke: "#1E3A8A",
-  },
-];
+  { n: 1, teks: "Tinjau kembali hasil diskusimu.", box: "border-[#DBE5FB] bg-[#F5F8FF]", imageKey: "M1-P3-L5-2" },
+  { n: 2, teks: "Tentukan informasi apa yang masih perlu dicari.", box: "border-[#FED7AA] bg-[#FFF7ED]", imageKey: "M1-P3-L5-3" },
+  { n: 3, teks: "Rumuskan dugaan kelompok yang akan diselidiki.", box: "border-[#BBF7D0] bg-[#F0FDF4]", imageKey: "M1-P3-L5-4" },
+  { n: 4, teks: "Siapkan eksplorasi pada tahap berikutnya.", box: "border-[#DBE5FB] bg-[#F5F8FF]", imageKey: "M1-P3-L5-5" },
+] satisfies { n: number; teks: string; box: string; imageKey: PageImageKey }[];
 
 export default async function Peta3Step5MenyiapkanEksplorasi({ materi, peta, editFoto }: StepComponentProps) {
   const diskusi = await getPageImage("M1-P3-L5-1");
+  const ikon = await Promise.all(langkah.map((l) => getPageImage(l.imageKey)));
 
   return (
     <form action={submitStepAction} className="flex flex-col gap-8">
@@ -99,23 +61,40 @@ export default async function Peta3Step5MenyiapkanEksplorasi({ materi, peta, edi
             alt="Tiga siswa berdiskusi di meja sambil menulis di buku"
             editable={editFoto}
             natural
-            containerClassName="relative w-full max-w-[260px] rounded-2xl overflow-hidden flex-shrink-0 bg-white"
+            containerClassName="relative w-full max-w-[460px] rounded-2xl overflow-hidden flex-shrink-0 bg-white"
           />
         </div>
 
-        <ol className="m-0 p-0 list-none grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
-          {langkah.map((l) => (
-            <li key={l.n} className={`rounded-2xl border p-4 flex flex-col items-center text-center gap-3 ${l.box}`}>
-              <div className="flex items-center gap-3">
-                <span className="w-[34px] h-[34px] rounded-full bg-[#1E3A8A] text-white flex items-center justify-center font-bold text-[15px]">
-                  {l.n}
-                </span>
-                <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke={l.stroke} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-                  {l.icon}
-                </svg>
-              </div>
-              <p className="m-0 text-sm font-semibold leading-[1.5] text-[#1E3A8A]">{l.teks}</p>
-            </li>
+        <ol className="m-0 p-0 list-none flex flex-col lg:flex-row lg:items-stretch gap-3">
+          {langkah.map((l, i) => (
+            <Fragment key={l.n}>
+              <li className={`flex-1 rounded-2xl border p-4 flex flex-col items-center text-center gap-3 ${l.box}`}>
+                <div className="flex items-center gap-3">
+                  <span className="w-[34px] h-[34px] rounded-full bg-[#1E3A8A] text-white flex items-center justify-center font-bold text-[15px]">
+                    {l.n}
+                  </span>
+                  <EditablePageImage
+                    imageKey={l.imageKey}
+                    materi={materi}
+                    peta={peta}
+                    step="5"
+                    urutan={String(l.n + 1)}
+                    src={ikon[i]}
+                    alt={`Ikon langkah ${l.n}`}
+                    editable={editFoto}
+                    imageClassName="object-contain mix-blend-multiply"
+                    containerClassName="relative w-12 h-12"
+                  />
+                </div>
+                <p className="m-0 text-sm font-semibold leading-[1.5] text-[#1E3A8A]">{l.teks}</p>
+              </li>
+              {i < langkah.length - 1 && (
+                <li aria-hidden className="self-center text-[#2563EB] text-xl">
+                  <i className="fa-solid fa-arrow-down lg:hidden" />
+                  <i className="fa-solid fa-arrow-right hidden lg:inline" />
+                </li>
+              )}
+            </Fragment>
           ))}
         </ol>
 

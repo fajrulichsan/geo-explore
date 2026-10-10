@@ -95,7 +95,7 @@ export default async function Peta8Step3KeyakinanDiriku({ materi, peta, editFoto
               src={bintang}
               alt="Karakter bintang kuning tersenyum, bertaburan bintang kecil di sekitarnya"
               editable={editFoto}
-              imageClassName="object-cover"
+              imageClassName="object-contain p-3"
               containerClassName="relative w-full h-64 rounded-[20px] overflow-hidden bg-[#FFF1E9]"
             />
             <div className="bg-[#FFF1E9] border border-[#FED7AA] rounded-[16px] p-4 text-center">

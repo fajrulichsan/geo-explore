@@ -1,8 +1,11 @@
+import { Fragment } from "react";
 import { submitStepAction } from "@/app/belajar/actions";
 import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
+import FileSubmission from "@/components/FileSubmission";
 import NextStepButton from "@/app/belajar/_components/NextStepButton";
 import BackLink from "@/app/belajar/_components/BackLink";
 import StepHeader from "@/app/belajar/_components/StepHeader";
+import FlowConnector from "@/app/belajar/_components/FlowConnector";
 import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
 import { getPageImage, type PageImageKey } from "@/lib/pageImages";
 
@@ -13,6 +16,8 @@ const alur: { label: string; key: PageImageKey }[] = [
   { label: "Siap ke Tahap 5 – Ayo Verifikasi", key: "M1-P5-L9-4" },
 ];
 
+const sambungan = ["plus", "arrow", "arrow"] as const;
+
 const selesai = [
   "Mengolah data hasil eksplorasi",
   "Menemukan pola pengelompokan",
@@ -22,7 +27,7 @@ const selesai = [
 
 const ingatKembali = ["Gunakan data untuk mendukung pola dan hasil pengolahanmu.", "Diskusikan dengan teman kelompokmu."];
 
-export default async function Peta5Step9SiapKeTahapBerikutnya({ materi, peta, editFoto }: StepComponentProps) {
+export default async function Peta5Step9SiapKeTahapBerikutnya({ materi, peta, editFoto, initialAnswers }: StepComponentProps) {
   const gambar = await Promise.all(alur.map((a) => getPageImage(a.key)));
 
   return (
@@ -55,26 +60,26 @@ export default async function Peta5Step9SiapKeTahapBerikutnya({ materi, peta, ed
           </div>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+        <div className="flex flex-col lg:flex-row lg:items-stretch gap-2">
           {alur.map((a, i) => (
-            <div key={a.label} className="relative bg-white border border-[#E5E7EB] rounded-[20px] p-5 shadow-[0_1px_2px_rgba(0,0,0,0.04)] flex flex-col items-center gap-3 text-center">
-              <EditablePageImage
-                imageKey={a.key}
-                materi={materi}
-                peta={peta}
-                step="9"
-                urutan={String(i + 1)}
-                src={gambar[i]}
-                alt={a.label}
-                editable={editFoto}
-                imageClassName="object-contain"
-                containerClassName="relative w-full h-28"
-              />
-              <p className="m-0 text-sm font-bold text-[#1E3A8A] leading-[1.5]">{a.label}</p>
-              {i < alur.length - 1 && (
-                <span className="absolute -bottom-3 left-1/2 -translate-x-1/2 sm:hidden text-[#2563EB] font-bold">↓</span>
-              )}
-            </div>
+            <Fragment key={a.label}>
+              <div className="flex-1 bg-white border border-[#E5E7EB] rounded-[20px] p-5 shadow-[0_1px_2px_rgba(0,0,0,0.04)] flex flex-col items-center gap-3 text-center">
+                <EditablePageImage
+                  imageKey={a.key}
+                  materi={materi}
+                  peta={peta}
+                  step="9"
+                  urutan={String(i + 1)}
+                  src={gambar[i]}
+                  alt={a.label}
+                  editable={editFoto}
+                  imageClassName="object-contain"
+                  containerClassName="relative w-full h-28"
+                />
+                <p className="m-0 text-sm font-bold text-[#1E3A8A] leading-[1.5]">{a.label}</p>
+              </div>
+              {i < alur.length - 1 && <FlowConnector kind={sambungan[i]} />}
+            </Fragment>
           ))}
         </div>
 
@@ -114,6 +119,12 @@ export default async function Peta5Step9SiapKeTahapBerikutnya({ materi, peta, ed
           </div>
         </div>
       </div>
+
+      <FileSubmission
+        materi={materi}
+        peta={peta}
+        defaultValue={typeof initialAnswers?.file_hasil_kerja === "string" ? initialAnswers.file_hasil_kerja : undefined}
+      />
 
       <div className="flex flex-col-reverse sm:flex-row justify-between items-center gap-4">
         <BackLink href={`/belajar/${materi}/${peta}/8`} />

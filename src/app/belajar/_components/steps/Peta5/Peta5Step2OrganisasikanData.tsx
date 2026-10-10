@@ -81,7 +81,7 @@ export default async function Peta5Step2OrganisasikanData({ materi, peta, initia
                   <th key={b.key} className="py-3 px-2 text-sm font-bold">
                     <span className="flex items-center justify-center gap-2">
                       {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img src={bangunUrls[i]} alt="" className="w-7 h-7 object-contain bg-white rounded-md p-0.5" />
+                      <img src={bangunUrls[i]} alt="" className="w-10 h-10 object-contain bg-white rounded-md p-0.5" />
                       {b.label}
                     </span>
                   </th>
