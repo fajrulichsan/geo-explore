@@ -1,10 +1,12 @@
-import Image from "next/image";
+import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
 import Footer from "@/app/_components/Footer";
 import { getPageImage } from "@/lib/pageImages";
 import LoginForm from "./_components/LoginForm";
 
-export default async function LoginPage() {
-  const heroImage = await getPageImage("home-hero");
+export default async function LoginPage(props: PageProps<"/login">) {
+  const heroImage = await getPageImage("login-hero");
+  const searchParams = await props.searchParams;
+  const editFoto = searchParams?.["edit-foto"] === "true";
 
   return (
     <div className="min-h-screen flex flex-col bg-[#f7f9fb] bg-[radial-gradient(circle_at_100%_0%,rgba(219,225,255,0.4)_0%,transparent_50%),radial-gradient(circle_at_0%_100%,rgba(255,223,158,0.2)_0%,transparent_50%)] relative overflow-hidden">
@@ -43,12 +45,17 @@ export default async function LoginPage() {
 
           {/* Illustration */}
           <div className="relative w-full aspect-[16/9] rounded-3xl overflow-hidden shadow-[0_8px_30px_-4px_rgba(0,51,138,0.12)] mt-4">
-            <Image
+            <EditablePageImage
+              imageKey="login-hero"
+              materi="0"
+              peta="0"
+              step="login"
+              urutan="1"
               src={heroImage}
               alt="Belajar bersama, eksplorasi bangun ruang"
-              fill
-              sizes="(min-width: 1024px) 50vw, 100vw"
-              className="object-cover"
+              editable={editFoto}
+              imageClassName="object-cover"
+              containerClassName="absolute inset-0"
             />
           </div>
         </div>

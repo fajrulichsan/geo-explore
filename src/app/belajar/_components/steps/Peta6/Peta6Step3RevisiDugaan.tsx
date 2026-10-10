@@ -1,9 +1,11 @@
 import PhotoUpload from "@/components/PhotoUpload";
 import { submitStepAction } from "@/app/belajar/actions";
 import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
-import SubmitStepButton from "@/app/belajar/_components/SubmitStepButton";
+import NextStepButton from "@/app/belajar/_components/NextStepButton";
 import BackLink from "@/app/belajar/_components/BackLink";
 import StepHeader from "@/app/belajar/_components/StepHeader";
+
+const bangunRuang = ["Kubus", "Balok", "Prisma Segitiga", "Limas Segiempat", "Limas Segitiga"];
 
 export default function Peta6Step3RevisiDugaan({ materi, peta, initialAnswers }: StepComponentProps) {
   const answers = initialAnswers ?? {};
@@ -52,9 +54,9 @@ export default function Peta6Step3RevisiDugaan({ materi, peta, initialAnswers }:
           </div>
         </div>
         <p className="m-0 text-[15px] leading-[1.6] text-[#374151] max-w-2xl">
-          Berdasarkan hasil eksplorasi pada langkah sebelumnya, tinjau kembali dugaan awalmu. Gunakan tabel
+          Berdasarkan hasil eksplorasi pada langkah sebelumnya, tinjau kembali dugaan awalmu. Pilih bangun ruang yang ingin kamu verifikasi, lalu gunakan tabel
           di bawah ini untuk mencatat perbaikan yang diperlukan dengan menyertakan alasan dan bukti
-          pendukung.
+          pendukung. Cukup isi satu baris jika hanya satu bangun yang ingin kamu verifikasi.
         </p>
       </div>
 
@@ -79,24 +81,38 @@ export default function Peta6Step3RevisiDugaan({ materi, peta, initialAnswers }:
               </button>
             </div>
             <div className="overflow-x-auto">
-              <table className="w-full text-left border-collapse min-w-[560px]">
+              <table className="w-full text-left border-collapse min-w-[720px]">
                 <thead>
                   <tr className="border-b border-[#E5E7EB]">
-                    <th className="py-3 px-3 text-xs font-bold text-[#6B7280] w-1/3">Bagian yang Direvisi</th>
-                    <th className="py-3 px-3 text-xs font-bold text-[#6B7280] w-1/3">Alasan Revisi</th>
-                    <th className="py-3 px-3 text-xs font-bold text-[#6B7280] w-1/3">Bukti Pendukung</th>
+                    <th className="py-3 px-3 text-xs font-bold text-[#6B7280] w-[16%]">Bangun Ruang</th>
+                    <th className="py-3 px-3 text-xs font-bold text-[#6B7280] w-[28%]">Bagian yang Direvisi</th>
+                    <th className="py-3 px-3 text-xs font-bold text-[#6B7280] w-[28%]">Alasan Revisi</th>
+                    <th className="py-3 px-3 text-xs font-bold text-[#6B7280] w-[28%]">Bukti Pendukung</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-[#E5E7EB]">
                   {[0, 1, 2].map((i) => (
                     <tr key={i}>
                       <td className="py-3 px-3 align-top">
+                        <select
+                          name={`answers.revisi_${i}_bangun`}
+                          defaultValue={getValue(`revisi_${i}_bangun`)}
+                          required={i === 0}
+                          className="w-full rounded-lg border border-[#E5E7EB] bg-white px-2 py-2 text-sm text-[#374151] focus:border-[#2563EB] focus:outline-none"
+                        >
+                          <option value="">Pilih bangun</option>
+                          {bangunRuang.map((b) => (
+                            <option key={b}>{b}</option>
+                          ))}
+                        </select>
+                      </td>
+                      <td className="py-3 px-3 align-top">
                         <textarea
                           rows={3}
                           name={`answers.revisi_${i}_bagian`}
                           defaultValue={getValue(`revisi_${i}_bagian`)}
                           placeholder="Misal: Sudut A tidak sama dengan Sudut B..."
-                          required
+                          required={i === 0}
                           className="w-full rounded-lg border border-[#E5E7EB] bg-white px-3 py-2 text-sm text-[#374151] placeholder:text-[#9CA3AF] focus:border-[#2563EB] focus:outline-none resize-none"
                         />
                       </td>
@@ -106,7 +122,7 @@ export default function Peta6Step3RevisiDugaan({ materi, peta, initialAnswers }:
                           name={`answers.revisi_${i}_alasan`}
                           defaultValue={getValue(`revisi_${i}_alasan`)}
                           placeholder="Jelaskan mengapa dugaan awal salah..."
-                          required
+                          required={i === 0}
                           className="w-full rounded-lg border border-[#E5E7EB] bg-white px-3 py-2 text-sm text-[#374151] placeholder:text-[#9CA3AF] focus:border-[#2563EB] focus:outline-none resize-none"
                         />
                       </td>
@@ -116,7 +132,7 @@ export default function Peta6Step3RevisiDugaan({ materi, peta, initialAnswers }:
                           name={`answers.revisi_${i}_bukti`}
                           defaultValue={getValue(`revisi_${i}_bukti`)}
                           placeholder="Tuliskan perhitungan atau teorema yang mendukung..."
-                          required
+                          required={i === 0}
                           className="w-full rounded-lg border border-[#E5E7EB] bg-white px-3 py-2 text-sm text-[#374151] placeholder:text-[#9CA3AF] focus:border-[#2563EB] focus:outline-none resize-none"
                         />
                       </td>
@@ -144,17 +160,9 @@ export default function Peta6Step3RevisiDugaan({ materi, peta, initialAnswers }:
         </div>
       </div>
 
-      <div className="flex justify-between items-center">
-        <BackLink
-          href={`/belajar/${materi}/${peta}/2`}
-          className="flex items-center gap-2 bg-transparent text-[#6B7280] border-none rounded-full py-3 px-6 text-sm font-semibold cursor-pointer hover:text-[#374151]"
-        />
-        <SubmitStepButton className="flex items-center gap-2 bg-[#2563EB] text-white border-none rounded-full py-3.5 px-7 text-sm font-bold font-inherit shadow-[0_4px_10px_rgba(37,99,235,0.3)] cursor-pointer">
-          LANJUTKAN
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.4">
-            <path d="M5 12h14M13 5l7 7-7 7" />
-          </svg>
-        </SubmitStepButton>
+      <div className="flex flex-col-reverse sm:flex-row justify-between items-center gap-4">
+        <BackLink href={`/belajar/${materi}/${peta}/2`} />
+        <NextStepButton />
       </div>
     </form>
   );

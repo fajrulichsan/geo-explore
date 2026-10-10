@@ -1,6 +1,6 @@
 import { submitStepAction } from "@/app/belajar/actions";
 import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
-import SubmitStepButton from "@/app/belajar/_components/SubmitStepButton";
+import NextStepButton from "@/app/belajar/_components/NextStepButton";
 import BackLink from "@/app/belajar/_components/BackLink";
 import StepHeader from "@/app/belajar/_components/StepHeader";
 import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
@@ -10,6 +10,7 @@ const ingat = "Klasifikasi bangun ruang dapat dilakukan dengan berbagai cara ses
 
 export default async function Peta9Step7SiapMenujuRangkuman({ materi, peta, editFoto }: StepComponentProps) {
   const maskot = await getPageImage("M1-P9-L7-1");
+  const buku = await getPageImage("M1-P9-L7-2");
 
   return (
     <form action={submitStepAction} className="flex flex-col gap-8">
@@ -46,7 +47,7 @@ export default async function Peta9Step7SiapMenujuRangkuman({ materi, peta, edit
               Sekarang saatnya merangkum seluruh konsep yang telah kamu pelajari.
             </p>
           </div>
-          <div className="md:col-span-4 bg-white border border-[#E5E7EB] rounded-[20px] p-3 shadow-[0_1px_2px_rgba(0,0,0,0.04)] flex items-center justify-center">
+          <div className="md:col-span-4 bg-white border border-[#E5E7EB] rounded-[20px] p-3 shadow-[0_1px_2px_rgba(0,0,0,0.04)] flex items-center justify-center gap-2">
             <EditablePageImage
               imageKey="M1-P9-L7-1"
               materi={materi}
@@ -58,6 +59,18 @@ export default async function Peta9Step7SiapMenujuRangkuman({ materi, peta, edit
               editable={editFoto}
               imageClassName="object-contain"
               containerClassName="relative w-24 h-32 sm:w-32 sm:h-40 mx-auto"
+            />
+            <EditablePageImage
+              imageKey="M1-P9-L7-2"
+              materi={materi}
+              peta={peta}
+              step="7"
+              urutan="2"
+              src={buku}
+              alt="Buku catatan Rangkuman"
+              editable={editFoto}
+              imageClassName="object-contain"
+              containerClassName="relative w-20 h-24 sm:w-24 sm:h-28 mx-auto"
             />
           </div>
         </div>
@@ -72,17 +85,9 @@ export default async function Peta9Step7SiapMenujuRangkuman({ materi, peta, edit
         </div>
       </div>
 
-      <div className="flex justify-between items-center">
-        <BackLink
-          href={`/belajar/${materi}/${peta}/6`}
-          className="flex items-center gap-2 bg-transparent text-[#6B7280] border-none rounded-full py-3 px-6 text-sm font-semibold cursor-pointer hover:text-[#374151]"
-        />
-        <SubmitStepButton className="flex items-center gap-2 bg-[#16A34A] text-white border-none rounded-full py-3.5 px-7 text-sm font-bold font-inherit shadow-[0_4px_10px_rgba(22,163,74,0.3)] cursor-pointer">
-          SELESAI
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.4">
-            <path d="M20 6L9 17l-5-5" />
-          </svg>
-        </SubmitStepButton>
+      <div className="flex flex-col-reverse sm:flex-row justify-between items-center gap-4">
+        <BackLink href={`/belajar/${materi}/${peta}/6`} />
+        <NextStepButton variant="green">LANJUT KE QUIZ</NextStepButton>
       </div>
     </form>
   );

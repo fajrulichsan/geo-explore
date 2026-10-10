@@ -1,9 +1,11 @@
+import Image from "next/image";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { supabase } from "@/lib/supabase";
 import { getSessionUserId } from "@/lib/session";
 import { getMateriProgress, isMateriUnlocked } from "@/lib/progress";
 import { getMateriMeta } from "@/lib/materiMeta";
+import { getPageImages, type PageImageKey } from "@/lib/pageImages";
 import { getPetaOrder, getPetaStructure, getTotalStepsInStructure } from "@/lib/learningStructure";
 import Navbar from "@/app/_components/Navbar";
 import Footer from "@/app/_components/Footer";
@@ -19,6 +21,11 @@ const PETA_INFO: Record<string, { icon: string; title: string; desc: string }> =
   "8": { icon: "psychology", title: "Refleksi Diri", desc: "Merefleksikan pemahaman dan pengalaman belajar." },
   "9": { icon: "category", title: "Tantangan Open-Ended", desc: "Menyelesaikan permasalahan terbuka dengan berbagai kemungkinan strategi dan jawaban." },
   "10": { icon: "workspaces", title: "Rangkuman", desc: "Merangkum konsep dan hal penting yang telah dipelajari." },
+  "11": { icon: "workspaces", title: "Rangkuman", desc: "Merangkum konsep dan hal penting yang telah dipelajari." },
+};
+
+const PETA_INFO_MATERI_1: Record<string, { icon: string; title: string; desc: string }> = {
+  "10": { icon: "quiz", title: "Quiz", desc: "Mengecek pemahaman melalui soal pilihan ganda." },
 };
 
 export default async function PetaBelajarPage(
@@ -33,10 +40,11 @@ export default async function PetaBelajarPage(
     redirect("/dashboard");
   }
 
-  const [rows, materiMeta, { data: user }] = await Promise.all([
+  const [rows, materiMeta, { data: user }, images] = await Promise.all([
     getMateriProgress(userId, materi),
     getMateriMeta(materi),
     supabase.from("users").select("nama_lengkap").eq("id", userId).maybeSingle(),
+    getPageImages(),
   ]);
 
   const structure = getPetaStructure(materi);
@@ -57,15 +65,17 @@ export default async function PetaBelajarPage(
     const { peta, total, doneInPeta, complete } = c;
     const unlocked = completions.slice(0, i).every((prev) => prev.complete);
     const firstUnfinishedStep = Array.from({ length: total }, (_, i2) => i2 + 1).find((s) => !done.has(`${peta}-${s}`)) ?? 1;
+    const ikonNum = materi !== "1" && peta === "10" ? "11" : peta;
     return {
       peta,
+      ikon: images[`peta-aktivitas-ikon-${ikonNum}` as PageImageKey],
       total,
       doneInPeta,
       complete,
       unlocked,
       active: unlocked && !complete,
       firstUnfinishedStep,
-      info: PETA_INFO[peta] ?? { icon: "map", title: `Peta ${peta}`, desc: "" },
+      info: (materi === "1" ? PETA_INFO_MATERI_1[peta] : undefined) ?? PETA_INFO[peta] ?? { icon: "map", title: `Peta ${peta}`, desc: "" },
     };
   });
 
@@ -134,8 +144,8 @@ export default async function PetaBelajarPage(
                   className={`relative z-10 flex flex-col md:flex-row items-center w-full mb-8 ${alignRight ? "md:justify-end" : "md:justify-start"}`}
                 >
                   {!alignRight && <div className="hidden md:block w-1/2" />}
-                  <div className="absolute left-6 md:left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-14 h-14 bg-gradient-to-br from-[#e6f4ea] to-[#ceead6] rounded-full border-4 border-white flex items-center justify-center text-[#137333] shadow-lg">
-                    <span className="material-symbols-outlined text-[28px]">{card.info.icon}</span>
+                  <div className="absolute left-6 md:left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-14 h-14 bg-white rounded-full border-4 border-white flex items-center justify-center overflow-hidden text-[#137333] shadow-lg">
+                    <span className="relative block w-full h-full"><Image src={card.ikon} alt="" fill sizes="64px" className="object-contain mix-blend-multiply p-1" /></span>
                   </div>
                   <div className={`w-full md:w-1/2 pl-14 sm:pl-16 md:pl-0 ${alignRight ? "md:pr-12 md:text-right" : "md:pl-12"}`}>
                     <Link href={`/belajar/${materi}/${card.peta}/1`} className="block">
@@ -193,10 +203,10 @@ export default async function PetaBelajarPage(
                     </div>
                   </div>
                   <div
-                    className="absolute left-6 md:left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 bg-gradient-to-br from-[#fdc003] to-[#ffdf9e] rounded-full border-4 border-white flex items-center justify-center text-[#6c5000] shadow-[0_0_20px_rgba(253,192,3,0.5)] z-20 animate-bounce"
+                    className="absolute left-6 md:left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 bg-gradient-to-br from-[#fdc003] to-[#ffdf9e] rounded-full border-4 border-white flex items-center justify-center overflow-hidden text-[#6c5000] shadow-[0_0_20px_rgba(253,192,3,0.5)] z-20 animate-bounce"
                     style={{ animationDuration: "2s" }}
                   >
-                    <span className="material-symbols-outlined text-[32px]">{card.info.icon}</span>
+                    <span className="relative block w-full h-full"><Image src={card.ikon} alt="" fill sizes="64px" className="object-contain mix-blend-multiply p-1" /></span>
                   </div>
                   {alignRight && <div className="hidden md:block w-1/2" />}
                 </div>

@@ -166,7 +166,7 @@ export default async function Materi2Peta6Step4RevisiRefleksi({
       <div className="flex justify-between items-center">
         <BackLink
           href={`/belajar/${materi}/${peta}/3`}
-          className="flex items-center gap-2 bg-transparent text-[#6B7280] border-none rounded-full py-3 px-6 text-sm font-semibold cursor-pointer hover:text-[#374151]"
+          className="flex items-center gap-2 bg-transparent text-[#6B7280] border-none rounded-full py-3.5 px-7 text-sm font-semibold cursor-pointer hover:text-[#374151]"
         />
         <SubmitStepButton className="flex items-center gap-2 bg-[#16A34A] text-white border-none rounded-full py-3.5 px-7 text-sm font-bold font-inherit shadow-[0_4px_10px_rgba(22,163,74,0.3)] cursor-pointer">
           SELESAI

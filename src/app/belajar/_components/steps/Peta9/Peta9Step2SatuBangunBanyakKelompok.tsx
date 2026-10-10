@@ -1,6 +1,6 @@
 import { submitStepAction } from "@/app/belajar/actions";
 import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
-import SubmitStepButton from "@/app/belajar/_components/SubmitStepButton";
+import NextStepButton from "@/app/belajar/_components/NextStepButton";
 import BackLink from "@/app/belajar/_components/BackLink";
 import StepHeader from "@/app/belajar/_components/StepHeader";
 import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
@@ -9,7 +9,7 @@ import { getPageImage } from "@/lib/pageImages";
 export default async function Peta9Step2SatuBangunBanyakKelompok({ materi, peta, editFoto, initialAnswers }: StepComponentProps) {
   const answers = initialAnswers ?? {};
   const getValue = (key: string) => (typeof answers[key] === "string" ? (answers[key] as string) : "");
-  const [kubus, limas] = await Promise.all([getPageImage("M1-P9-L2-1"), getPageImage("M1-P9-L2-2")]);
+  const kubus = await getPageImage("M1-P9-L2-1");
 
   return (
     <form action={submitStepAction} className="flex flex-col gap-8">
@@ -31,7 +31,7 @@ export default async function Peta9Step2SatuBangunBanyakKelompok({ materi, peta,
             B
           </div>
           <div className="bg-white border border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-full py-2 px-5 text-sm font-bold text-[#16A34A]">
-            Tantangan 2 &ndash; Satu Bangun, Banyak Kelompok
+            Tantangan 2. Satu Bangun, Banyak Kelompok
           </div>
         </div>
 
@@ -74,18 +74,6 @@ export default async function Peta9Step2SatuBangunBanyakKelompok({ materi, peta,
                 satu kelompok? Jelaskan alasannya.
               </p>
             </div>
-            <EditablePageImage
-              imageKey="M1-P9-L2-2"
-              materi={materi}
-              peta={peta}
-              step="2"
-              urutan="2"
-              src={limas}
-              alt="Ilustrasi limas segitiga"
-              editable={editFoto}
-              imageClassName="object-contain"
-              containerClassName="relative w-16 h-16 mx-auto bg-[#EFF4FF] rounded-xl"
-            />
             <input
               type="text"
               name="answers.bangun_pilihan"
@@ -106,17 +94,9 @@ export default async function Peta9Step2SatuBangunBanyakKelompok({ materi, peta,
         </div>
       </div>
 
-      <div className="flex justify-between items-center">
-        <BackLink
-          href={`/belajar/${materi}/${peta}/1`}
-          className="flex items-center gap-2 bg-transparent text-[#6B7280] border-none rounded-full py-3 px-6 text-sm font-semibold cursor-pointer hover:text-[#374151]"
-        />
-        <SubmitStepButton className="flex items-center gap-2 bg-[#2563EB] text-white border-none rounded-full py-3.5 px-7 text-sm font-bold font-inherit shadow-[0_4px_10px_rgba(37,99,235,0.3)] cursor-pointer">
-          LANJUTKAN
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.4">
-            <path d="M5 12h14M13 5l7 7-7 7" />
-          </svg>
-        </SubmitStepButton>
+      <div className="flex flex-col-reverse sm:flex-row justify-between items-center gap-4">
+        <BackLink href={`/belajar/${materi}/${peta}/1`} />
+        <NextStepButton />
       </div>
     </form>
   );

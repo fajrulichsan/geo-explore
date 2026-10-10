@@ -1,6 +1,6 @@
 import { submitStepAction } from "@/app/belajar/actions";
 import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
-import SubmitStepButton from "@/app/belajar/_components/SubmitStepButton";
+import NextStepButton from "@/app/belajar/_components/NextStepButton";
 import BackLink from "@/app/belajar/_components/BackLink";
 import StepHeader from "@/app/belajar/_components/StepHeader";
 import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
@@ -28,10 +28,10 @@ const rows = [
   { key: "jumlah_titik_sudut", label: "Jumlah titik sudut" },
 ];
 
-export default async function Peta5Step5BandingkanHasilKelompok({ materi, peta, initialAnswers }: StepComponentProps) {
+export default async function Peta5Step5BandingkanHasilKelompok({ materi, peta, initialAnswers, editFoto }: StepComponentProps) {
   const answers = initialAnswers ?? {};
   const getValue = (key: string) => (typeof answers[key] === "string" ? (answers[key] as string) : "");
-  const siswa = await getPageImage("M1-P5-L1-6");
+  const siswa = await getPageImage("M1-P5-L5-1");
 
   return (
     <form action={submitStepAction} className="flex flex-col gap-8">
@@ -73,14 +73,14 @@ export default async function Peta5Step5BandingkanHasilKelompok({ materi, peta, 
             </ul>
           </div>
           <EditablePageImage
-            imageKey="M1-P5-L1-6"
+            imageKey="M1-P5-L5-1"
             materi={materi}
             peta={peta}
-            step="1"
-            urutan="6"
+            step="5"
+            urutan="1"
             src={siswa}
             alt="Tiga siswa berdiskusi sambil menulis di buku"
-            editable={false}
+            editable={editFoto}
             natural
             containerClassName="relative w-full max-w-[280px] mx-auto md:mx-0 rounded-2xl overflow-hidden bg-white"
           />
@@ -98,6 +98,27 @@ export default async function Peta5Step5BandingkanHasilKelompok({ materi, peta, 
         <p className="m-0 text-sm font-semibold text-[#374151]">
           Bandingkan data hasil pengamatan kelompokmu dengan dua kelompok lain. Tuliskan persamaan, perbedaan, dan alasan yang mendukung setiap hasil pengamatan.
         </p>
+
+        <div className="flex justify-end">
+          <div className="inline-flex items-center gap-2 bg-white border border-[#E5E7EB] rounded-full py-2 px-4 shadow-[0_1px_2px_rgba(0,0,0,0.04)]">
+            <span className="text-xs font-semibold text-[#6B7280]">Model yang sudah diamati:</span>
+            <select
+              name="answers.f_model_diamati"
+              defaultValue={getValue("f_model_diamati")}
+              required
+              className="bg-[#EFF4FF] text-[#2563EB] text-xs font-bold rounded-full py-1 px-3 border-none focus:outline-none cursor-pointer"
+            >
+              <option value="" disabled>
+                Pilih Bangun
+              </option>
+              <option>Kubus</option>
+              <option>Balok</option>
+              <option>Prisma Segitiga</option>
+              <option>Limas Segiempat</option>
+              <option>Limas Segitiga</option>
+            </select>
+          </div>
+        </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-[3fr_2fr] gap-6 items-start">
           <div className="overflow-x-auto rounded-[20px] border border-[#E5E7EB] bg-white shadow-[0_1px_2px_rgba(0,0,0,0.04)]">
@@ -169,17 +190,9 @@ export default async function Peta5Step5BandingkanHasilKelompok({ materi, peta, 
         </div>
       </div>
 
-      <div className="flex justify-between items-center">
-        <BackLink
-          href={`/belajar/${materi}/${peta}/4`}
-          className="flex items-center gap-2 bg-transparent text-[#6B7280] border-none rounded-full py-3 px-6 text-sm font-semibold cursor-pointer hover:text-[#374151]"
-        />
-        <SubmitStepButton className="flex items-center gap-2 bg-[#2563EB] text-white border-none rounded-full py-3.5 px-7 text-sm font-bold font-inherit shadow-[0_4px_10px_rgba(37,99,235,0.3)] cursor-pointer">
-          LANJUTKAN
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.4">
-            <path d="M5 12h14M13 5l7 7-7 7" />
-          </svg>
-        </SubmitStepButton>
+      <div className="flex flex-col-reverse sm:flex-row justify-between items-center gap-4">
+        <BackLink href={`/belajar/${materi}/${peta}/4`} />
+        <NextStepButton />
       </div>
     </form>
   );

@@ -28,12 +28,36 @@ const sebelumMemulai = [
 ];
 
 const navigasi = [
-  { icon: "fa-solid fa-house", title: "Beranda", desc: "Kembali ke menu utama." },
-  { icon: "fa-solid fa-arrow-left", title: "Kembali", desc: "Kembali ke halaman sebelumnya." },
-  { icon: "fa-solid fa-arrow-right", title: "Lanjut", desc: "Menuju halaman berikutnya." },
-  { icon: "fa-solid fa-bars", title: "Menu", desc: "Membuka daftar bagian e-module." },
-  { icon: "fa-solid fa-magnifying-glass", title: "Eksplorasi", desc: "Membuka aktivitas interaktif." },
-  { icon: "fa-solid fa-floppy-disk", title: "Simpan", desc: "Menyimpan input/aktivitas." },
+  {
+    icon: "fa-solid fa-house",
+    title: "Beranda",
+    desc: "Kembali ke menu utama.",
+  },
+  {
+    icon: "fa-solid fa-arrow-left",
+    title: "Kembali",
+    desc: "Kembali ke halaman sebelumnya.",
+  },
+  {
+    icon: "fa-solid fa-arrow-right",
+    title: "Lanjut",
+    desc: "Menuju halaman berikutnya.",
+  },
+  {
+    icon: "fa-solid fa-bars",
+    title: "Menu",
+    desc: "Membuka daftar bagian e-module.",
+  },
+  {
+    icon: "fa-solid fa-magnifying-glass",
+    title: "Eksplorasi",
+    desc: "Membuka aktivitas interaktif.",
+  },
+  {
+    icon: "fa-solid fa-floppy-disk",
+    title: "Simpan",
+    desc: "Menyimpan input/aktivitas.",
+  },
 ];
 
 const tanda = [
@@ -75,7 +99,7 @@ async function goToPetunjuk2() {
 }
 
 export default async function Petunjuk1Page(props: PageProps<"/petunjuk-1">) {
-  const heroImage = await getPageImage("home-hero");
+  const heroImage = await getPageImage("petunjuk1-hero");
   const searchParams = await props.searchParams;
   const editFoto = searchParams?.["edit-foto"] === "true";
   return (
@@ -102,13 +126,14 @@ export default async function Petunjuk1Page(props: PageProps<"/petunjuk-1">) {
                 </span>
               </h1>
               <p className="text-sm md:text-lg text-slate-600 font-medium">
-                Kenali cara menggunakan e-module sebelum memulai perjalanan belajarmu.
+                Kenali cara menggunakan e-module sebelum memulai perjalanan
+                belajarmu.
               </p>
             </div>
           </div>
           <div className="w-full md:w-1/3 max-w-sm shrink-0">
             <EditablePageImage
-              imageKey="home-hero"
+              imageKey="petunjuk1-hero"
               materi="0"
               peta="0"
               step="petunjuk-1"
@@ -130,11 +155,16 @@ export default async function Petunjuk1Page(props: PageProps<"/petunjuk-1">) {
               <div className="bg-white text-primary w-8 h-8 rounded-full flex items-center justify-center shrink-0">
                 <i className="fa-solid fa-clipboard-list" />
               </div>
-              <h2 className="font-bold text-sm tracking-wide">A. SEBELUM MEMULAI</h2>
+              <h2 className="font-bold text-sm tracking-wide">
+                A. SEBELUM MEMULAI
+              </h2>
             </div>
             <ul className="space-y-6 mt-4 flex-1">
               {sebelumMemulai.map((item, i) => (
-                <li key={item.title} className="flex gap-4 items-start bg-white p-3 rounded-2xl shadow-sm">
+                <li
+                  key={item.title}
+                  className="flex gap-4 items-start bg-white p-3 rounded-2xl shadow-sm"
+                >
                   <div className="w-12 h-12 bg-blue-100 text-primary rounded-xl flex items-center justify-center text-xl shrink-0">
                     <i className={item.icon} />
                   </div>
@@ -143,9 +173,13 @@ export default async function Petunjuk1Page(props: PageProps<"/petunjuk-1">) {
                       <span className="w-5 h-5 bg-primary text-white text-xs rounded-full flex items-center justify-center font-bold">
                         {i + 1}
                       </span>
-                      <h3 className="font-bold text-slate-800 text-sm">{item.title}</h3>
+                      <h3 className="font-bold text-slate-800 text-sm">
+                        {item.title}
+                      </h3>
                     </div>
-                    <p className="text-xs text-slate-600 leading-relaxed">{item.desc}</p>
+                    <p className="text-xs text-slate-600 leading-relaxed">
+                      {item.desc}
+                    </p>
                   </div>
                 </li>
               ))}
@@ -153,7 +187,8 @@ export default async function Petunjuk1Page(props: PageProps<"/petunjuk-1">) {
             <div className="mt-6 bg-yellow-50 p-4 rounded-xl flex items-start gap-3 border border-yellow-200">
               <i className="fa-solid fa-star text-yellow-400 mt-1" />
               <p className="text-xs text-slate-700 leading-relaxed font-medium">
-                Mengikuti langkah-langkah di atas akan membantumu belajar lebih terarah dan menyenangkan!
+                Mengikuti langkah-langkah di atas akan membantumu belajar lebih
+                terarah dan menyenangkan!
               </p>
             </div>
           </div>
@@ -164,25 +199,35 @@ export default async function Petunjuk1Page(props: PageProps<"/petunjuk-1">) {
               <div className="bg-white text-secondary w-8 h-8 rounded-full flex items-center justify-center shrink-0">
                 <i className="fa-solid fa-arrow-pointer" />
               </div>
-              <h2 className="font-bold text-sm tracking-wide">B. KENALI TOMBOL NAVIGASI</h2>
+              <h2 className="font-bold text-sm tracking-wide">
+                B. KENALI TOMBOL NAVIGASI
+              </h2>
             </div>
             <ul className="space-y-4 mt-4 flex-1">
               {navigasi.map((item) => (
-                <li key={item.title} className="flex items-center gap-4 bg-white p-3 rounded-xl shadow-sm">
+                <li
+                  key={item.title}
+                  className="flex items-center gap-4 bg-white p-3 rounded-xl shadow-sm"
+                >
                   <div className="w-10 h-10 bg-primary text-white rounded-lg flex items-center justify-center shrink-0">
                     <i className={item.icon} />
                   </div>
                   <div className="flex-1">
-                    <h3 className="font-bold text-primary text-sm">{item.title}</h3>
+                    <h3 className="font-bold text-primary text-sm">
+                      {item.title}
+                    </h3>
                   </div>
-                  <p className="text-xs text-slate-600 text-right w-1/2">{item.desc}</p>
+                  <p className="text-xs text-slate-600 text-right w-1/2">
+                    {item.desc}
+                  </p>
                 </li>
               ))}
             </ul>
             <div className="mt-6 bg-green-100/50 p-4 rounded-xl flex items-center justify-center gap-3 border border-green-200">
               <i className="fa-regular fa-lightbulb text-green-600 text-lg" />
               <p className="text-xs text-slate-700 text-center font-medium">
-                Tombol-tombol ini akan membantumu menjelajahi e-module dengan mudah.
+                Tombol-tombol ini akan membantumu menjelajahi e-module dengan
+                mudah.
               </p>
             </div>
           </div>
@@ -193,7 +238,9 @@ export default async function Petunjuk1Page(props: PageProps<"/petunjuk-1">) {
               <div className="bg-white text-accent w-8 h-8 rounded-full flex items-center justify-center shrink-0">
                 <i className="fa-solid fa-circle-exclamation" />
               </div>
-              <h2 className="font-bold text-sm tracking-wide">C. PERHATIKAN TANDA &amp; INSTRUKSI</h2>
+              <h2 className="font-bold text-sm tracking-wide">
+                C. PERHATIKAN TANDA &amp; INSTRUKSI
+              </h2>
             </div>
             <ul className="space-y-4 mt-4 flex-1">
               {tanda.map((item, i) => (
@@ -203,12 +250,18 @@ export default async function Petunjuk1Page(props: PageProps<"/petunjuk-1">) {
                     i < tanda.length - 1 ? "border-b border-orange-100" : ""
                   }`}
                 >
-                  <div className={`w-10 h-10 flex items-center justify-center text-2xl ${item.color} shrink-0 drop-shadow-md`}>
+                  <div
+                    className={`w-10 h-10 flex items-center justify-center text-2xl ${item.color} shrink-0 drop-shadow-md`}
+                  >
                     <i className={item.icon} />
                   </div>
                   <div>
-                    <h3 className="font-bold text-accent text-sm mb-1">{item.title}</h3>
-                    <p className="text-xs text-slate-600 leading-tight">{item.desc}</p>
+                    <h3 className="font-bold text-accent text-sm mb-1">
+                      {item.title}
+                    </h3>
+                    <p className="text-xs text-slate-600 leading-tight">
+                      {item.desc}
+                    </p>
                   </div>
                 </li>
               ))}
@@ -216,7 +269,8 @@ export default async function Petunjuk1Page(props: PageProps<"/petunjuk-1">) {
             <div className="mt-4 bg-orange-100/50 p-4 rounded-xl flex items-start gap-3 border border-orange-200">
               <i className="fa-solid fa-circle-info text-accent mt-0.5" />
               <p className="text-[11px] text-slate-700 leading-relaxed font-medium">
-                Perhatikan tanda dan instruksi ini agar kamu tahu bagaimana cara belajar dan beraktivitas di e-module.
+                Perhatikan tanda dan instruksi ini agar kamu tahu bagaimana cara
+                belajar dan beraktivitas di e-module.
               </p>
             </div>
           </div>
@@ -229,7 +283,9 @@ export default async function Petunjuk1Page(props: PageProps<"/petunjuk-1">) {
               <i className="fa-solid fa-check-circle text-2xl" />
             </div>
             <div>
-              <p className="text-sm text-slate-600">Sudah mengenal tombol dan petunjuknya?</p>
+              <p className="text-sm text-slate-600">
+                Sudah mengenal tombol dan petunjuknya?
+              </p>
               <p className="font-bold text-primary">
                 Yuk, kenali perjalanan belajarmu{" "}
                 <br className="hidden sm:block" />
@@ -238,8 +294,8 @@ export default async function Petunjuk1Page(props: PageProps<"/petunjuk-1">) {
             </div>
           </div>
           <form action={goToPetunjuk2} className="w-full sm:w-auto">
-            <SubmitStepButton className="w-full sm:w-auto justify-center inline-flex items-center gap-3 bg-primary hover:bg-primary-dark text-white font-bold py-3 md:py-4 px-6 md:px-8 rounded-2xl text-sm md:text-lg shadow-[0_8px_20px_-5px_rgba(0,72,186,0.4)] hover:shadow-[0_12px_25px_-5px_rgba(0,72,186,0.5)] hover:-translate-y-1 active:translate-y-0 transition-all group">
-              <span className="tracking-wide">LANJUTKAN</span>
+            <SubmitStepButton className="w-full sm:w-auto justify-center inline-flex items-center gap-2 bg-primary hover:bg-primary-dark text-white font-bold py-2.5 md:py-3 px-5 md:px-6 rounded-full text-sm md:text-base group">
+              <span>Lanjutkan</span>
               <i className="fa-solid fa-arrow-right-long group-hover:translate-x-2 transition-transform" />
             </SubmitStepButton>
           </form>

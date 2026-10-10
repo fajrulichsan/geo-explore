@@ -3,7 +3,10 @@
 import { useRouter } from "next/navigation";
 import { useTransition } from "react";
 
-export default function BackLink({ href, className }: { href: string; className: string }) {
+const DEFAULT_CLASS =
+  "w-full sm:w-auto justify-center inline-flex items-center gap-2 bg-white text-[#374151] border border-[#c3c6d6] rounded-full py-2.5 md:py-3 px-5 md:px-6 text-sm md:text-base font-bold cursor-pointer hover:bg-[#f2f4f6]";
+
+export default function BackLink({ href, className = DEFAULT_CLASS }: { href: string; className?: string }) {
   const router = useRouter();
   const [isPending, startTransition] = useTransition();
 

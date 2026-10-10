@@ -1,6 +1,6 @@
 import { submitStepAction } from "@/app/belajar/actions";
 import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
-import SubmitStepButton from "@/app/belajar/_components/SubmitStepButton";
+import NextStepButton from "@/app/belajar/_components/NextStepButton";
 import BackLink from "@/app/belajar/_components/BackLink";
 import StepHeader from "@/app/belajar/_components/StepHeader";
 import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
@@ -53,8 +53,8 @@ const langkah = [
   },
 ];
 
-export default async function Peta3Step5MenyiapkanEksplorasi({ materi, peta }: StepComponentProps) {
-  const diskusi = await getPageImage("M1-P3-L1-1");
+export default async function Peta3Step5MenyiapkanEksplorasi({ materi, peta, editFoto }: StepComponentProps) {
+  const diskusi = await getPageImage("M1-P3-L5-1");
 
   return (
     <form action={submitStepAction} className="flex flex-col gap-8">
@@ -90,13 +90,14 @@ export default async function Peta3Step5MenyiapkanEksplorasi({ materi, peta }: S
             Pada tahap ini, ikuti langkah berikut sebelum kita mengumpulkan informasi pada tahap berikutnya.
           </p>
           <EditablePageImage
-            imageKey="M1-P3-L1-1"
+            imageKey="M1-P3-L5-1"
             materi={materi}
             peta={peta}
-            step="1"
+            step="5"
             urutan="1"
             src={diskusi}
             alt="Tiga siswa berdiskusi di meja sambil menulis di buku"
+            editable={editFoto}
             natural
             containerClassName="relative w-full max-w-[260px] rounded-2xl overflow-hidden flex-shrink-0 bg-white"
           />
@@ -128,17 +129,9 @@ export default async function Peta3Step5MenyiapkanEksplorasi({ materi, peta }: S
         </div>
       </div>
 
-      <div className="flex justify-between items-center">
-        <BackLink
-          href={`/belajar/${materi}/${peta}/4`}
-          className="flex items-center gap-2 bg-transparent text-[#6B7280] border-none rounded-full py-3 px-6 text-sm font-semibold cursor-pointer hover:text-[#374151]"
-        />
-        <SubmitStepButton className="flex items-center gap-2 bg-[#2563EB] text-white border-none rounded-full py-3.5 px-7 text-sm font-bold font-inherit shadow-[0_4px_10px_rgba(37,99,235,0.3)] cursor-pointer">
-          LANJUTKAN
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.4">
-            <path d="M5 12h14M13 5l7 7-7 7" />
-          </svg>
-        </SubmitStepButton>
+      <div className="flex flex-col-reverse sm:flex-row justify-between items-center gap-4">
+        <BackLink href={`/belajar/${materi}/${peta}/4`} />
+        <NextStepButton />
       </div>
     </form>
   );

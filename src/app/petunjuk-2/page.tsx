@@ -111,9 +111,21 @@ const caraBelajar = [
 ];
 
 const caraMenjawab = [
-  { icon: "edit_square", title: "Tuliskan", desc: "Jawab aktivitas pada kolom yang tersedia." },
-  { icon: "search", title: "Periksa", desc: "Periksa kembali jawaban sebelum melanjutkan." },
-  { icon: "save", title: "Simpan", desc: "Gunakan tombol Simpan jika tersedia pada aktivitas." },
+  {
+    icon: "edit_square",
+    title: "Tuliskan",
+    desc: "Jawab aktivitas pada kolom yang tersedia.",
+  },
+  {
+    icon: "search",
+    title: "Periksa",
+    desc: "Periksa kembali jawaban sebelum melanjutkan.",
+  },
+  {
+    icon: "save",
+    title: "Simpan",
+    desc: "Gunakan tombol Simpan jika tersedia pada aktivitas.",
+  },
   {
     icon: "sync",
     title: "Perbaiki",
@@ -141,6 +153,15 @@ const setelahTahap = [
     desc: "Selesaikan masalah menggunakan strategi yang kamu pilih. Jika mungkin, temukan dan bandingkan lebih dari satu strategi.",
   },
   {
+    bg: "bg-blue-50",
+    border: "border-blue-100",
+    titleColor: "text-blue-800",
+    iconColor: "text-blue-600",
+    icon: "quiz",
+    title: "Quiz",
+    desc: "Kerjakan beberapa pertanyaan untuk mengecek pemahamanmu terhadap konsep yang telah dipelajari.",
+  },
+  {
     bg: "bg-orange-50",
     border: "border-orange-100",
     titleColor: "text-orange-800",
@@ -151,9 +172,9 @@ const setelahTahap = [
   },
 ];
 
-async function goToKataPengantar() {
+async function goToDaftarIsi() {
   "use server";
-  redirect("/kata-pengantar");
+  redirect("/daftar-isi");
 }
 
 export default async function Petunjuk2Page(props: PageProps<"/petunjuk-2">) {
@@ -184,7 +205,9 @@ export default async function Petunjuk2Page(props: PageProps<"/petunjuk-2">) {
             <h1 className="text-2xl md:text-[48px] leading-[1.2] tracking-tight font-extrabold text-[#00338a] mb-1 md:mb-2">
               PETUNJUK PENGGUNAAN E-MODULE
             </h1>
-            <p className="text-sm md:text-lg text-[#434653]">Kenali perjalanan belajarmu dengan e-module ini.</p>
+            <p className="text-sm md:text-lg text-[#434653]">
+              Kenali perjalanan belajarmu dengan e-module ini.
+            </p>
           </div>
         </header>
 
@@ -197,7 +220,10 @@ export default async function Petunjuk2Page(props: PageProps<"/petunjuk-2">) {
             </div>
             <div className="mt-14 sm:mt-8 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
               {discoverySteps.map((step) => (
-                <div key={step.num} className="flex flex-col items-center text-center relative">
+                <div
+                  key={step.num}
+                  className="flex flex-col items-center text-center relative"
+                >
                   {step.num > 1 && (
                     <div className="hidden lg:block absolute top-5 left-[-50%] w-full h-[2px] bg-[#00338a]/20 -z-10" />
                   )}
@@ -212,7 +238,11 @@ export default async function Petunjuk2Page(props: PageProps<"/petunjuk-2">) {
                   >
                     {step.icon}
                   </span>
-                  <h3 className={`font-semibold text-sm ${step.titleColor} mb-2`}>{step.title}</h3>
+                  <h3
+                    className={`font-semibold text-sm ${step.titleColor} mb-2`}
+                  >
+                    {step.title}
+                  </h3>
                   <p className="text-xs text-[#434653]">{step.desc}</p>
                 </div>
               ))}
@@ -224,13 +254,17 @@ export default async function Petunjuk2Page(props: PageProps<"/petunjuk-2">) {
         <div className="grid grid-cols-1 gap-4 mb-8">
           <section className={`${glass} rounded-xl p-6 relative`}>
             <div className="absolute -top-4 left-4 right-4 sm:left-6 sm:right-auto sm:w-auto bg-[#00338a] text-white font-bold text-base sm:text-2xl px-4 sm:px-6 py-2 rounded-2xl sm:rounded-full shadow-md flex items-center gap-2">
-              <span className="material-symbols-outlined shrink-0">view_in_ar</span>
+              <span className="material-symbols-outlined shrink-0">
+                view_in_ar
+              </span>
               B. EKSPLORASI DENGAN GEOGEBRA 3D &amp; AR
             </div>
             <div className="mt-14 sm:mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
               {/* GeoGebra 3D */}
               <div className="bg-[#f7f9fb] rounded-xl border border-[#dbe1ff] p-6 flex flex-col h-full">
-                <h3 className="text-2xl font-semibold text-[#00338a] text-center mb-4">GeoGebra 3D</h3>
+                <h3 className="text-2xl font-semibold text-[#00338a] text-center mb-4">
+                  GeoGebra 3D
+                </h3>
                 <div className="flex flex-col sm:flex-row items-center gap-4 mb-6">
                   <EditablePageImage
                     imageKey="petunjuk2-geogebra"
@@ -245,18 +279,44 @@ export default async function Petunjuk2Page(props: PageProps<"/petunjuk-2">) {
                     containerClassName="relative w-full sm:w-1/2 rounded-lg bg-[#eceef0] h-32 overflow-hidden"
                   />
                   <p className="text-base text-[#434653] w-full sm:w-1/2">
-                    Gunakan GeoGebra 3D untuk memutar, mengamati, dan memanipulasi model bangun ruang sesuai
-                    petunjuk pada kegiatan eksplorasi.
+                    Gunakan GeoGebra 3D untuk memutar, mengamati, dan
+                    memanipulasi model bangun ruang sesuai petunjuk pada
+                    kegiatan eksplorasi.
                   </p>
                 </div>
-                <div className="flex justify-between items-start mt-auto relative">
+                <div className="flex items-start gap-3 rounded-xl border border-yellow-200 bg-yellow-50 p-3 mb-4 mt-auto">
+                  <span
+                    className="material-symbols-outlined text-yellow-500 text-2xl shrink-0"
+                    style={{ fontVariationSettings: "'FILL' 1" }}
+                  >
+                    emoji_objects
+                  </span>
+                  <div>
+                    <h4 className="font-bold text-[#00338a] text-sm">
+                      Kenali Simbol Kegiatan
+                    </h4>
+                    <p className="text-xs text-[#434653]">
+                      Perhatikan simbol-simbol berikut. Simbol ini akan kamu
+                      temukan selama kegiatan pembelajaran sebagai petunjuk saat
+                      menggunakan GeoGebra 3D dan AR.
+                    </p>
+                  </div>
+                </div>
+                <div className="flex justify-between items-start relative">
                   <div className="hidden sm:block absolute top-6 left-10 right-10 h-[2px] bg-[#c3c6d6] -z-10" />
                   {geogebraSteps.map((s) => (
-                    <div key={s.label} className="flex flex-col items-center text-center w-1/4">
+                    <div
+                      key={s.label}
+                      className="flex flex-col items-center text-center w-1/4"
+                    >
                       <div className="bg-[#f7f9fb] border border-[#c3c6d6] rounded-lg p-2 mb-2 z-10">
-                        <span className="material-symbols-outlined text-[#00338a]">{s.icon}</span>
+                        <span className="material-symbols-outlined text-[#00338a]">
+                          {s.icon}
+                        </span>
                       </div>
-                      <span className="text-xs text-[#191c1e] font-medium">{s.label}</span>
+                      <span className="text-xs text-[#191c1e] font-medium">
+                        {s.label}
+                      </span>
                     </div>
                   ))}
                 </div>
@@ -281,18 +341,43 @@ export default async function Petunjuk2Page(props: PageProps<"/petunjuk-2">) {
                     containerClassName="relative w-full sm:w-1/2 rounded-lg bg-[#eceef0] h-32 overflow-hidden"
                   />
                   <p className="text-base text-[#434653] w-full sm:w-1/2">
-                    Gunakan AR untuk mengamati model bangun ruang tiga dimensi dari berbagai arah sesuai
-                    petunjuk yang tersedia.
+                    Gunakan AR untuk mengamati model bangun ruang tiga dimensi
+                    dari berbagai arah sesuai petunjuk yang tersedia.
                   </p>
                 </div>
-                <div className="flex justify-between items-start mt-auto relative">
+                <div className="flex items-start gap-3 rounded-xl border border-yellow-200 bg-yellow-50 p-3 mb-4 mt-auto">
+                  <span
+                    className="material-symbols-outlined text-yellow-500 text-2xl shrink-0"
+                    style={{ fontVariationSettings: "'FILL' 1" }}
+                  >
+                    emoji_objects
+                  </span>
+                  <div>
+                    <h4 className="font-bold text-[#00338a] text-sm">
+                      Kenali Simbol Kegiatan
+                    </h4>
+                    <p className="text-xs text-[#434653]">
+                      Perhatikan simbol-simbol berikut. Simbol ini akan kamu
+                      temukan selama kegiatan pembelajaran sebagai petunjuk saat
+                      menggunakan GeoGebra 3D dan AR.
+                    </p>
+                  </div>
+                </div>
+                <div className="flex justify-between items-start relative">
                   <div className="hidden sm:block absolute top-6 left-10 right-10 h-[2px] bg-[#c3c6d6] -z-10" />
                   {arSteps.map((s) => (
-                    <div key={s.label} className="flex flex-col items-center text-center w-1/4">
+                    <div
+                      key={s.label}
+                      className="flex flex-col items-center text-center w-1/4"
+                    >
                       <div className="bg-[#f7f9fb] border border-[#c3c6d6] rounded-lg p-2 mb-2 z-10">
-                        <span className="material-symbols-outlined text-[#00338a]">{s.icon}</span>
+                        <span className="material-symbols-outlined text-[#00338a]">
+                          {s.icon}
+                        </span>
                       </div>
-                      <span className="text-xs text-[#191c1e] font-medium">{s.label}</span>
+                      <span className="text-xs text-[#191c1e] font-medium">
+                        {s.label}
+                      </span>
                     </div>
                   ))}
                 </div>
@@ -303,14 +388,18 @@ export default async function Petunjuk2Page(props: PageProps<"/petunjuk-2">) {
 
         {/* Sections C + D */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 mb-8">
-          <section className={`lg:col-span-5 ${glass} rounded-xl p-6 relative flex flex-col`}>
+          <section
+            className={`lg:col-span-5 ${glass} rounded-xl p-6 relative flex flex-col`}
+          >
             <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-[#00338a] text-white font-bold text-sm sm:text-2xl px-4 sm:px-6 py-2 rounded-full shadow-md whitespace-nowrap">
               C. KENALI CARA BELAJARMU
             </div>
             <div className="mt-8 flex flex-col gap-4 flex-grow justify-center">
               {caraBelajar.map((item) => (
                 <div key={item.title} className="flex items-start gap-4">
-                  <div className={`${item.bg} ${item.color} p-2 rounded-full flex-shrink-0`}>
+                  <div
+                    className={`${item.bg} ${item.color} p-2 rounded-full flex-shrink-0`}
+                  >
                     <span
                       className="material-symbols-outlined"
                       style={{ fontVariationSettings: "'FILL' 1" }}
@@ -319,7 +408,9 @@ export default async function Petunjuk2Page(props: PageProps<"/petunjuk-2">) {
                     </span>
                   </div>
                   <div>
-                    <h4 className={`font-semibold text-sm ${item.color}`}>{item.title}</h4>
+                    <h4 className={`font-semibold text-sm ${item.color}`}>
+                      {item.title}
+                    </h4>
                     <p className="text-xs text-[#434653]">{item.desc}</p>
                   </div>
                 </div>
@@ -336,14 +427,20 @@ export default async function Petunjuk2Page(props: PageProps<"/petunjuk-2">) {
                 <Fragment key={item.title}>
                   <div className="flex flex-col items-center text-center sm:w-1/4 relative">
                     <div className="bg-white border-2 border-[#00338a] text-[#00338a] rounded-xl p-3 mb-3 z-10">
-                      <span className="material-symbols-outlined text-3xl">{item.icon}</span>
+                      <span className="material-symbols-outlined text-3xl">
+                        {item.icon}
+                      </span>
                     </div>
-                    <h4 className="font-semibold text-sm text-[#00338a] mb-1">{item.title}</h4>
+                    <h4 className="font-semibold text-sm text-[#00338a] mb-1">
+                      {item.title}
+                    </h4>
                     <p className="text-xs text-[#434653]">{item.desc}</p>
                   </div>
                   {i < caraMenjawab.length - 1 && (
                     <div className="hidden sm:flex flex-col justify-center items-center h-16 w-8">
-                      <span className="material-symbols-outlined text-[#c3c6d6]">arrow_forward</span>
+                      <span className="material-symbols-outlined text-[#c3c6d6]">
+                        arrow_forward
+                      </span>
                     </div>
                   )}
                 </Fragment>
@@ -357,14 +454,18 @@ export default async function Petunjuk2Page(props: PageProps<"/petunjuk-2">) {
           <div className="absolute -top-4 left-4 right-4 sm:left-auto sm:right-6 bg-[#00338a] text-white font-bold text-sm sm:text-2xl px-4 sm:px-6 py-2 rounded-2xl sm:rounded-full shadow-md text-center sm:whitespace-nowrap">
             E. SETELAH 6 TAHAP, LANJUTKAN KE:
           </div>
-          <div className="mt-14 sm:mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="mt-14 sm:mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {setelahTahap.map((item) => (
               <div
                 key={item.title}
                 className={`${item.bg} rounded-xl p-6 text-center border ${item.border} flex flex-col items-center`}
               >
-                <h4 className={`font-semibold text-sm ${item.titleColor} mb-4`}>{item.title}</h4>
-                <span className={`material-symbols-outlined text-5xl ${item.iconColor} mb-4`}>
+                <h4 className={`font-semibold text-sm ${item.titleColor} mb-4`}>
+                  {item.title}
+                </h4>
+                <span
+                  className={`material-symbols-outlined text-5xl ${item.iconColor} mb-4`}
+                >
                   {item.icon}
                 </span>
                 <p className="text-xs text-[#434653]">{item.desc}</p>
@@ -385,21 +486,27 @@ export default async function Petunjuk2Page(props: PageProps<"/petunjuk-2">) {
               </span>
             </div>
             <div>
-              <span className="text-lg md:text-2xl text-[#00338a] font-bold mr-2">INGAT!</span>
+              <span className="text-lg md:text-2xl text-[#00338a] font-bold mr-2">
+                INGAT!
+              </span>
               <span className="text-sm md:text-base text-[#434653]">
-                Jangan terburu-buru mencari jawaban akhir. Amati, coba berbagai strategi, jelaskan
-                alasanmu, bandingkan hasilnya, dan perbaiki pemikiranmu jika diperlukan.
+                Jangan terburu-buru mencari jawaban akhir. Amati, coba berbagai
+                strategi, jelaskan alasanmu, bandingkan hasilnya, dan perbaiki
+                pemikiranmu jika diperlukan.
               </span>
             </div>
           </div>
           <div className="flex flex-col-reverse md:flex-row justify-between items-center gap-4">
             <BackLink
               href="/petunjuk-1"
-              className="flex items-center gap-2 bg-transparent text-[#6B7280] border-none rounded-full py-3 px-6 text-sm font-semibold cursor-pointer hover:text-[#374151]"
+              className="w-full sm:w-auto justify-center inline-flex items-center gap-2 bg-white text-[#374151] border border-[#c3c6d6] rounded-full py-2.5 md:py-3 px-5 md:px-6 text-sm md:text-base font-bold cursor-pointer hover:bg-[#f2f4f6]"
             />
-            <form action={goToKataPengantar} className="w-full sm:w-auto flex-shrink-0">
-              <SubmitStepButton className="w-full sm:w-auto justify-center inline-flex items-center gap-3 bg-primary hover:bg-primary-dark text-white font-bold py-3 md:py-4 px-6 md:px-8 rounded-2xl text-sm md:text-lg shadow-[0_8px_20px_-5px_rgba(0,72,186,0.4)] hover:shadow-[0_12px_25px_-5px_rgba(0,72,186,0.5)] hover:-translate-y-1 active:translate-y-0 transition-all group">
-                <span className="tracking-wide">LANJUTKAN</span>
+            <form
+              action={goToDaftarIsi}
+              className="w-full sm:w-auto flex-shrink-0"
+            >
+              <SubmitStepButton className="w-full sm:w-auto justify-center inline-flex items-center gap-2 bg-primary hover:bg-primary-dark text-white font-bold py-2.5 md:py-3 px-5 md:px-6 rounded-full text-sm md:text-base group">
+                <span>Lanjutkan</span>
                 <i className="fa-solid fa-arrow-right-long group-hover:translate-x-2 transition-transform" />
               </SubmitStepButton>
             </form>

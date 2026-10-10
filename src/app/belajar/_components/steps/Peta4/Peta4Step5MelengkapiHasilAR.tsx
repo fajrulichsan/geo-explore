@@ -1,6 +1,7 @@
+import Image from "next/image";
 import { submitStepAction } from "@/app/belajar/actions";
 import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
-import SubmitStepButton from "@/app/belajar/_components/SubmitStepButton";
+import NextStepButton from "@/app/belajar/_components/NextStepButton";
 import StepHeader from "@/app/belajar/_components/StepHeader";
 import BackLink from "@/app/belajar/_components/BackLink";
 import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
@@ -34,8 +35,9 @@ const diamati = [
 ];
 
 export default async function Peta4Step5MelengkapiHasilAR({ materi, peta, editFoto }: StepComponentProps) {
-  const [maskot, ...gambarAlur] = await Promise.all([
+  const [maskot, qrAr, ...gambarAlur] = await Promise.all([
     getPageImage("M1-P4-L5-1"),
+    getPageImage("qr-ar"),
     ...alur.map((a) => getPageImage(a.key)),
   ]);
 
@@ -101,6 +103,26 @@ export default async function Peta4Step5MelengkapiHasilAR({ materi, peta, editFo
           menggunakan GeoGebra 3D.
         </p>
 
+        <div className="flex items-center gap-4 bg-white border border-[#E5E7EB] rounded-[20px] p-4 shadow-[0_1px_2px_rgba(0,0,0,0.04)] w-fit">
+          <a
+            href="https://ar.geo-explore.my.id"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Buka Augmented Reality"
+            className="relative w-28 h-28 flex-shrink-0 rounded-xl border border-[#E5E7EB] bg-white p-1.5"
+          >
+            <Image src={qrAr} alt="Kode QR untuk membuka Augmented Reality" fill sizes="112px" className="object-contain p-1.5" />
+          </a>
+          <a
+            href="https://ar.geo-explore.my.id"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 bg-[#1E3A8A] text-white rounded-xl py-2 px-3 text-xs font-bold leading-snug"
+          >
+            Scan atau klik untuk membuka AR
+          </a>
+        </div>
+
         <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-5 shadow-[0_1px_2px_rgba(0,0,0,0.04)]">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {alur.map((a, i) => (
@@ -158,17 +180,9 @@ export default async function Peta4Step5MelengkapiHasilAR({ materi, peta, editFo
         </div>
       </div>
 
-      <div className="flex justify-between items-center">
-        <BackLink
-          href={`/belajar/${materi}/${peta}/4`}
-          className="flex items-center gap-2 bg-transparent text-[#6B7280] border-none rounded-full py-3 px-6 text-sm font-semibold cursor-pointer hover:text-[#374151]"
-        />
-        <SubmitStepButton className="flex items-center gap-2 bg-[#2563EB] text-white border-none rounded-full py-3.5 px-7 text-sm font-bold font-inherit shadow-[0_4px_10px_rgba(37,99,235,0.3)] cursor-pointer">
-          LANJUTKAN
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.4">
-            <path d="M5 12h14M13 5l7 7-7 7" />
-          </svg>
-        </SubmitStepButton>
+      <div className="flex flex-col-reverse sm:flex-row justify-between items-center gap-4">
+        <BackLink href={`/belajar/${materi}/${peta}/4`} />
+        <NextStepButton />
       </div>
     </form>
   );

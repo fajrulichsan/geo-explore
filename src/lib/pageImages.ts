@@ -5,6 +5,72 @@ import { supabase } from "@/lib/supabase";
 export type PageImageKey =
   | "logo-kampus"
   | "home-hero"
+  | "M1-P5-L5-1"
+  | "M1-P7-L1-2"
+  | "M1-P7-L1-3"
+  | "M1-P7-L1-4"
+  | "M1-P7-L1-5"
+  | "M1-P9-L3-1"
+  | "M1-P9-L3-2"
+  | "M1-P9-L3-3"
+  | "M1-P9-L3-4"
+  | "M1-P9-L3-5"
+  | "M1-P9-L4-1"
+  | "M1-P9-L4-2"
+  | "M1-P9-L6-1"
+  | "M1-P9-L6-2"
+  | "M1-P9-L6-3"
+  | "M1-P9-L6-4"
+  | "M1-P9-L6-5"
+  | "M1-P9-L7-2"
+  | "M1-P10-L1-2"
+  | "M1-P10-L1-3"
+  | "M1-P10-L1-4"
+  | "M1-P10-L1-5"
+  | "M1-P10-L2-2"
+  | "M1-P10-L2-3"
+  | "M1-P10-L2-4"
+  | "M1-P10-L2-5"
+  | "M1-P10-L2-6"
+  | "M1-P10-L3-2"
+  | "M1-P10-L4-1"
+  | "M1-P10-L4-2"
+  | "M1-P10-L4-3"
+  | "M1-P10-L4-4"
+  | "M1-P10-L4-5"
+  | "M1-P10-L4-6"
+  | "M1-P10-L4-7"
+  | "M1-P10-L4-8"
+  | "M1-P10-L4-9"
+  | "M1-P10-L4-10"
+  | "M1-P10-L4-11"
+  | "M1-P10-L4-12"
+  | "M1-P10-L5-1"
+  | "M1-P10-L6-2"
+  | "M1-PQ-1"
+  | "M1-PQ-2"
+  | "M1-PQ-3"
+  | "M1-PQ-4"
+  | "login-hero"
+  | "registrasi-hero"
+  | "petunjuk1-hero"
+  | "kata-pengantar-hero"
+  | "peta-aktivitas-ikon-1"
+  | "peta-aktivitas-ikon-2"
+  | "peta-aktivitas-ikon-3"
+  | "peta-aktivitas-ikon-4"
+  | "peta-aktivitas-ikon-5"
+  | "peta-aktivitas-ikon-6"
+  | "peta-aktivitas-ikon-7"
+  | "peta-aktivitas-ikon-8"
+  | "peta-aktivitas-ikon-9"
+  | "peta-aktivitas-ikon-10"
+  | "peta-aktivitas-ikon-11"
+  | "M1-P3-L5-1"
+  | "M1-P5-L9-1"
+  | "M1-P5-L9-2"
+  | "M1-P5-L9-3"
+  | "M1-P5-L9-4"
   | "petunjuk2-geogebra"
   | "petunjuk2-ar"
   | "petunjuk3-bangun-ruang"
@@ -709,6 +775,72 @@ export type PageImageKey =
 const DEFAULT_IMAGES: Record<PageImageKey, string> = {
   "logo-kampus": "https://is3.cloudhost.id/assets-geo/logo-kampus.png",
   "home-hero": "https://is3.cloudhost.id/assets-geo/home-1.webp",
+  "M1-P5-L5-1": "https://placehold.co/300x300?text=M1-P5-L5-1",
+  "M1-P7-L1-2": "https://placehold.co/300x300?text=M1-P7-L1-2",
+  "M1-P7-L1-3": "https://placehold.co/300x300?text=M1-P7-L1-3",
+  "M1-P7-L1-4": "https://placehold.co/300x300?text=M1-P7-L1-4",
+  "M1-P7-L1-5": "https://placehold.co/300x300?text=M1-P7-L1-5",
+  "M1-P9-L3-1": "https://placehold.co/300x300?text=M1-P9-L3-1",
+  "M1-P9-L3-2": "https://placehold.co/300x300?text=M1-P9-L3-2",
+  "M1-P9-L3-3": "https://placehold.co/300x300?text=M1-P9-L3-3",
+  "M1-P9-L3-4": "https://placehold.co/300x300?text=M1-P9-L3-4",
+  "M1-P9-L3-5": "https://placehold.co/300x300?text=M1-P9-L3-5",
+  "M1-P9-L4-1": "https://placehold.co/300x300?text=M1-P9-L4-1",
+  "M1-P9-L4-2": "https://placehold.co/300x300?text=M1-P9-L4-2",
+  "M1-P9-L6-1": "https://placehold.co/300x300?text=M1-P9-L6-1",
+  "M1-P9-L6-2": "https://placehold.co/300x300?text=M1-P9-L6-2",
+  "M1-P9-L6-3": "https://placehold.co/300x300?text=M1-P9-L6-3",
+  "M1-P9-L6-4": "https://placehold.co/300x300?text=M1-P9-L6-4",
+  "M1-P9-L6-5": "https://placehold.co/300x300?text=M1-P9-L6-5",
+  "M1-P9-L7-2": "https://placehold.co/300x300?text=M1-P9-L7-2",
+  "M1-P10-L1-2": "https://placehold.co/300x300?text=M1-P10-L1-2",
+  "M1-P10-L1-3": "https://placehold.co/300x300?text=M1-P10-L1-3",
+  "M1-P10-L1-4": "https://placehold.co/300x300?text=M1-P10-L1-4",
+  "M1-P10-L1-5": "https://placehold.co/300x300?text=M1-P10-L1-5",
+  "M1-P10-L2-2": "https://placehold.co/300x300?text=M1-P10-L2-2",
+  "M1-P10-L2-3": "https://placehold.co/300x300?text=M1-P10-L2-3",
+  "M1-P10-L2-4": "https://placehold.co/300x300?text=M1-P10-L2-4",
+  "M1-P10-L2-5": "https://placehold.co/300x300?text=M1-P10-L2-5",
+  "M1-P10-L2-6": "https://placehold.co/300x300?text=M1-P10-L2-6",
+  "M1-P10-L3-2": "https://placehold.co/300x300?text=M1-P10-L3-2",
+  "M1-P10-L4-1": "https://placehold.co/300x300?text=M1-P10-L4-1",
+  "M1-P10-L4-2": "https://placehold.co/300x300?text=M1-P10-L4-2",
+  "M1-P10-L4-3": "https://placehold.co/300x300?text=M1-P10-L4-3",
+  "M1-P10-L4-4": "https://placehold.co/300x300?text=M1-P10-L4-4",
+  "M1-P10-L4-5": "https://placehold.co/300x300?text=M1-P10-L4-5",
+  "M1-P10-L4-6": "https://placehold.co/300x300?text=M1-P10-L4-6",
+  "M1-P10-L4-7": "https://placehold.co/300x300?text=M1-P10-L4-7",
+  "M1-P10-L4-8": "https://placehold.co/300x300?text=M1-P10-L4-8",
+  "M1-P10-L4-9": "https://placehold.co/300x300?text=M1-P10-L4-9",
+  "M1-P10-L4-10": "https://placehold.co/300x300?text=M1-P10-L4-10",
+  "M1-P10-L4-11": "https://placehold.co/300x300?text=M1-P10-L4-11",
+  "M1-P10-L4-12": "https://placehold.co/300x300?text=M1-P10-L4-12",
+  "M1-P10-L5-1": "https://placehold.co/300x300?text=M1-P10-L5-1",
+  "M1-P10-L6-2": "https://placehold.co/300x300?text=M1-P10-L6-2",
+  "M1-PQ-1": "https://placehold.co/300x300?text=M1-PQ-1",
+  "M1-PQ-2": "https://placehold.co/300x300?text=M1-PQ-2",
+  "M1-PQ-3": "https://placehold.co/300x300?text=M1-PQ-3",
+  "M1-PQ-4": "https://placehold.co/300x300?text=M1-PQ-4",
+  "login-hero": "https://is3.cloudhost.id/assets-geo/home-1.webp",
+  "registrasi-hero": "https://is3.cloudhost.id/assets-geo/home-1.webp",
+  "petunjuk1-hero": "https://is3.cloudhost.id/assets-geo/home-1.webp",
+  "kata-pengantar-hero": "https://is3.cloudhost.id/assets-geo/home-1.webp",
+  "M1-P3-L5-1": "https://placehold.co/500x360?text=Siswa+Berdiskusi",
+  "peta-aktivitas-ikon-1": "https://placehold.co/200x200?text=ikon+1",
+  "peta-aktivitas-ikon-2": "https://placehold.co/200x200?text=ikon+2",
+  "peta-aktivitas-ikon-3": "https://placehold.co/200x200?text=ikon+3",
+  "peta-aktivitas-ikon-4": "https://placehold.co/200x200?text=ikon+4",
+  "peta-aktivitas-ikon-5": "https://placehold.co/200x200?text=ikon+5",
+  "peta-aktivitas-ikon-6": "https://placehold.co/200x200?text=ikon+6",
+  "peta-aktivitas-ikon-7": "https://placehold.co/200x200?text=ikon+7",
+  "peta-aktivitas-ikon-8": "https://placehold.co/200x200?text=ikon+8",
+  "peta-aktivitas-ikon-9": "https://placehold.co/200x200?text=ikon+9",
+  "peta-aktivitas-ikon-10": "https://placehold.co/200x200?text=ikon+10",
+  "peta-aktivitas-ikon-11": "https://placehold.co/200x200?text=ikon+11",
+  "M1-P5-L9-1": "https://placehold.co/300x300?text=Alur+1",
+  "M1-P5-L9-2": "https://placehold.co/300x300?text=Alur+2",
+  "M1-P5-L9-3": "https://placehold.co/300x300?text=Alur+3",
+  "M1-P5-L9-4": "https://placehold.co/300x300?text=Alur+4",
   "petunjuk2-geogebra": "https://placehold.co/300x180?text=GeoGebra+3D",
   "petunjuk2-ar": "https://placehold.co/300x180?text=Augmented+Reality",
   "petunjuk3-bangun-ruang": "https://placehold.co/340x240?text=Kubus+Balok+Limas",

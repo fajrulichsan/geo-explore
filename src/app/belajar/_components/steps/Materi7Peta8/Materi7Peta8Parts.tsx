@@ -213,7 +213,7 @@ export function StepFooter({
       {step > 1 ? (
         <BackLink
           href={`/belajar/${materi}/${peta}/${step - 1}`}
-          className="flex items-center gap-2 bg-transparent text-[#6B7280] border-none rounded-full py-3 px-6 text-sm font-semibold cursor-pointer hover:text-[#374151]"
+          className="flex items-center gap-2 bg-transparent text-[#6B7280] border-none rounded-full py-3.5 px-7 text-sm font-semibold cursor-pointer hover:text-[#374151]"
         />
       ) : (
         <span />

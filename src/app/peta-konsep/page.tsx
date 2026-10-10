@@ -44,7 +44,12 @@ const bentuk: Bentuk[] = [
   },
 ];
 
-type Submateri = { key: PageImageKey; icon: string; title: string; desc: string };
+type Submateri = {
+  key: PageImageKey;
+  icon: string;
+  title: string;
+  desc: string;
+};
 
 const submateri: Submateri[] = [
   {
@@ -120,7 +125,9 @@ export default async function PetaKonsepPage(props: PageProps<"/peta-konsep">) {
             >
               map
             </span>
-            <span className="text-xl md:text-3xl font-extrabold text-[#0b2a8a]">PETA KONSEP</span>
+            <span className="text-xl md:text-3xl font-extrabold text-[#0b2a8a]">
+              PETA KONSEP
+            </span>
           </div>
 
           <div className="max-w-[640px] mx-auto bg-white border-2 border-[#0b2a8a] rounded-2xl overflow-hidden shadow-md">
@@ -139,7 +146,10 @@ export default async function PetaKonsepPage(props: PageProps<"/peta-konsep">) {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-4 gap-y-8 mt-2">
           {bentuk.map((b) => (
-            <div key={b.title} className={`relative bg-white rounded-2xl border-2 ${b.border} pt-6 pb-4 px-4`}>
+            <div
+              key={b.title}
+              className={`relative bg-white rounded-2xl border-2 ${b.border} pt-6 pb-4 px-4`}
+            >
               <span
                 className={`absolute -top-4 left-1/2 -translate-x-1/2 ${b.pill} text-white font-bold text-sm md:text-lg rounded-full px-8 py-1 shadow`}
               >
@@ -158,7 +168,9 @@ export default async function PetaKonsepPage(props: PageProps<"/peta-konsep">) {
                   imageClassName="object-contain mix-blend-multiply"
                   containerClassName="relative w-24 h-28 shrink-0"
                 />
-                <p className="text-sm md:text-base leading-6 text-[#191c1e]">{b.desc}</p>
+                <p className="text-sm md:text-base leading-6 text-[#191c1e]">
+                  {b.desc}
+                </p>
               </div>
             </div>
           ))}
@@ -170,12 +182,19 @@ export default async function PetaKonsepPage(props: PageProps<"/peta-konsep">) {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 mt-2">
           {submateri.map((s, i) => (
-            <div key={s.title} className="bg-white rounded-2xl border-2 border-[#bfd0ff] p-4 flex flex-col">
+            <div
+              key={s.title}
+              className="bg-white rounded-2xl border-2 border-[#bfd0ff] p-4 flex flex-col"
+            >
               <div className="flex items-center gap-3 mb-2">
                 <span className="shrink-0 w-11 h-11 rounded-full bg-[#0b2a8a] text-white flex items-center justify-center">
-                  <span className="material-symbols-outlined text-2xl">{s.icon}</span>
+                  <span className="material-symbols-outlined text-2xl">
+                    {s.icon}
+                  </span>
                 </span>
-                <h3 className="text-sm font-extrabold text-[#0b2a8a] leading-tight">{s.title}</h3>
+                <h3 className="text-sm font-extrabold text-[#0b2a8a] leading-tight">
+                  {s.title}
+                </h3>
               </div>
               <div className="h-[2px] bg-[#bfd0ff] mb-3" />
               <div className="flex items-center gap-3">
@@ -191,33 +210,48 @@ export default async function PetaKonsepPage(props: PageProps<"/peta-konsep">) {
                   imageClassName="object-contain mix-blend-multiply"
                   containerClassName="relative w-16 h-20 shrink-0"
                 />
-                <p className="text-xs md:text-sm leading-5 text-[#191c1e]">{s.desc}</p>
+                <p className="text-xs md:text-sm leading-5 text-[#191c1e]">
+                  {s.desc}
+                </p>
               </div>
             </div>
           ))}
         </div>
 
         <div className="mt-6 bg-white border-2 border-[#bfd0ff] rounded-2xl p-4 flex items-center gap-4">
-          <svg width="56" height="56" viewBox="0 0 48 48" fill="none" className="shrink-0" aria-hidden="true">
+          <svg
+            width="56"
+            height="56"
+            viewBox="0 0 48 48"
+            fill="none"
+            className="shrink-0"
+            aria-hidden="true"
+          >
             <circle cx="24" cy="24" r="21" stroke="#0b2a8a" strokeWidth="3" />
             <circle cx="24" cy="24" r="13" stroke="#0b2a8a" strokeWidth="3" />
             <circle cx="24" cy="24" r="5" fill="#0b2a8a" />
-            <path d="M24 24 L40 8" stroke="#f59e0b" strokeWidth="3" strokeLinecap="round" />
+            <path
+              d="M24 24 L40 8"
+              stroke="#f59e0b"
+              strokeWidth="3"
+              strokeLinecap="round"
+            />
           </svg>
           <p className="text-sm md:text-lg text-[#0b2a8a]">
-            Peta konsep ini menunjukkan hubungan antar submateri Bangun Ruang Sisi Datar. Gunakan sebagai
-            panduan awal sebelum mempelajari setiap submateri secara lebih mendalam.
+            Peta konsep ini menunjukkan hubungan antar submateri Bangun Ruang
+            Sisi Datar. Gunakan sebagai panduan awal sebelum mempelajari setiap
+            submateri secara lebih mendalam.
           </p>
         </div>
 
         <div className="flex flex-col-reverse sm:flex-row justify-between items-center gap-4 mt-8 mb-8">
           <BackLink
             href="/petunjuk-3"
-            className="flex items-center gap-2 bg-transparent text-[#6B7280] border-none rounded-full py-3 px-6 text-sm font-semibold cursor-pointer hover:text-[#374151]"
+            className="w-full sm:w-auto justify-center inline-flex items-center gap-2 bg-white text-[#374151] border border-[#c3c6d6] rounded-full py-2.5 md:py-3 px-5 md:px-6 text-sm md:text-base font-bold cursor-pointer hover:bg-[#f2f4f6]"
           />
           <form action={goToPetaAktivitas} className="w-full sm:w-auto">
-            <SubmitStepButton className="w-full sm:w-auto justify-center inline-flex items-center gap-3 bg-primary hover:bg-primary-dark text-white font-bold py-3 md:py-4 px-6 md:px-8 rounded-2xl text-sm md:text-lg shadow-[0_8px_20px_-5px_rgba(0,72,186,0.4)] hover:shadow-[0_12px_25px_-5px_rgba(0,72,186,0.5)] hover:-translate-y-1 active:translate-y-0 transition-all group">
-              <span className="tracking-wide">LANJUTKAN</span>
+            <SubmitStepButton className="w-full sm:w-auto justify-center inline-flex items-center gap-2 bg-primary hover:bg-primary-dark text-white font-bold py-2.5 md:py-3 px-5 md:px-6 rounded-full text-sm md:text-base group">
+              <span>Lanjutkan</span>
               <i className="fa-solid fa-arrow-right-long group-hover:translate-x-2 transition-transform" />
             </SubmitStepButton>
           </form>

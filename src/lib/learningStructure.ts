@@ -2,6 +2,9 @@ import { stepRegistry } from "@/app/belajar/_components/stepRegistry";
 
 export const TOTAL_MATERI = 8;
 
+/** Petas that exist only for materi that explicitly register them (no global fallback). */
+const MATERI_SPECIFIC_PETAS = new Set(["11"]);
+
 /**
  * Materi generally share the same peta/step layout, but a materi may define fewer (or more)
  * steps for a given peta than the others — e.g. a peta with genuinely different content. When
@@ -22,6 +25,7 @@ export function getPetaStructure(materi?: string): Record<string, number> {
 
   const structure: Record<string, number> = {};
   for (const peta of Object.keys(global)) {
+    if (MATERI_SPECIFIC_PETAS.has(peta) && !perMateri[materi]?.[peta]) continue;
     structure[peta] = perMateri[materi]?.[peta] ?? global[peta];
   }
   return structure;

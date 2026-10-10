@@ -81,7 +81,7 @@ export default async function Materi8Peta8Step5RefleksiCaraBerpikirku({
       <div className="flex justify-between items-center">
         <BackLink
           href={`/belajar/${materi}/${peta}/4`}
-          className="flex items-center gap-2 bg-transparent text-[#6B7280] border-none rounded-full py-3 px-6 text-sm font-semibold cursor-pointer hover:text-[#374151]"
+          className="flex items-center gap-2 bg-transparent text-[#6B7280] border-none rounded-full py-3.5 px-7 text-sm font-semibold cursor-pointer hover:text-[#374151]"
         />
         <SubmitStepButton className="flex items-center gap-2 text-white border-none rounded-full py-3.5 px-7 text-sm font-bold font-inherit cursor-pointer bg-[#2563EB] shadow-[0_4px_10px_rgba(37,99,235,0.3)]">
           LANJUTKAN

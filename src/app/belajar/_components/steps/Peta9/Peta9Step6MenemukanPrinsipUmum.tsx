@@ -1,8 +1,10 @@
 import { submitStepAction } from "@/app/belajar/actions";
 import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
-import SubmitStepButton from "@/app/belajar/_components/SubmitStepButton";
+import NextStepButton from "@/app/belajar/_components/NextStepButton";
 import BackLink from "@/app/belajar/_components/BackLink";
 import StepHeader from "@/app/belajar/_components/StepHeader";
+import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
+import { getPageImage } from "@/lib/pageImages";
 
 const refleksi = [
   { key: "refleksi_belajar", label: "Hari ini saya belajar bahwa ..." },
@@ -19,10 +21,14 @@ const bekalku = [
   "Menerapkan konsep klasifikasi pada situasi baru.",
 ];
 
-export default async function Peta9Step6MenemukanPrinsipUmum({ materi, peta, initialAnswers }: StepComponentProps) {
+export default async function Peta9Step6MenemukanPrinsipUmum({ materi, peta, initialAnswers, editFoto }: StepComponentProps) {
   const answers = initialAnswers ?? {};
   const getValue = (key: string) => (typeof answers[key] === "string" ? (answers[key] as string) : "");
   const getChecked = (key: string) => Boolean(answers[key]);
+  const ikonRefleksi = await Promise.all(
+    (["M1-P9-L6-1", "M1-P9-L6-2", "M1-P9-L6-3", "M1-P9-L6-4"] as const).map((k) => getPageImage(k))
+  );
+  const ikonBekalku = await getPageImage("M1-P9-L6-5");
 
   return (
     <form action={submitStepAction} className="flex flex-col gap-8">
@@ -46,6 +52,23 @@ export default async function Peta9Step6MenemukanPrinsipUmum({ materi, peta, ini
             </div>
             <div className="bg-white border border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-full py-2 px-5 text-sm font-bold text-[#D97706]">
               Refleksi Berpikir
+            </div>
+            <div className="flex items-center gap-2 ml-auto">
+              {(["M1-P9-L6-1", "M1-P9-L6-2", "M1-P9-L6-3", "M1-P9-L6-4"] as const).map((k, i) => (
+                <EditablePageImage
+                  key={k}
+                  imageKey={k}
+                  materi={materi}
+                  peta={peta}
+                  step="6"
+                  urutan={String(i + 1)}
+                  src={ikonRefleksi[i]}
+                  alt=""
+                  editable={editFoto}
+                  imageClassName="object-contain"
+                  containerClassName="relative w-10 h-10"
+                />
+              ))}
             </div>
           </div>
           <p className="m-0 text-sm text-[#4B5563] leading-[1.7]">
@@ -79,6 +102,18 @@ export default async function Peta9Step6MenemukanPrinsipUmum({ materi, peta, ini
             <div className="bg-white border border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-full py-2 px-5 text-sm font-bold text-[#2563EB]">
               Bekalku Setelah Tantangan
             </div>
+            <EditablePageImage
+              imageKey="M1-P9-L6-5"
+              materi={materi}
+              peta={peta}
+              step="6"
+              urutan="5"
+              src={ikonBekalku}
+              alt=""
+              editable={editFoto}
+              imageClassName="object-contain"
+              containerClassName="relative w-12 h-14 ml-auto"
+            />
           </div>
           <p className="m-0 text-sm text-[#4B5563] leading-[1.7]">
             Setelah menyelesaikan Tantangan Open-Ended, centang hal-hal yang sudah kamu mampu.
@@ -99,17 +134,9 @@ export default async function Peta9Step6MenemukanPrinsipUmum({ materi, peta, ini
         </div>
       </div>
 
-      <div className="flex justify-between items-center">
-        <BackLink
-          href={`/belajar/${materi}/${peta}/5`}
-          className="flex items-center gap-2 bg-transparent text-[#6B7280] border-none rounded-full py-3 px-6 text-sm font-semibold cursor-pointer hover:text-[#374151]"
-        />
-        <SubmitStepButton className="flex items-center gap-2 bg-[#2563EB] text-white border-none rounded-full py-3.5 px-7 text-sm font-bold font-inherit shadow-[0_4px_10px_rgba(37,99,235,0.3)] cursor-pointer">
-          LANJUTKAN
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.4">
-            <path d="M5 12h14M13 5l7 7-7 7" />
-          </svg>
-        </SubmitStepButton>
+      <div className="flex flex-col-reverse sm:flex-row justify-between items-center gap-4">
+        <BackLink href={`/belajar/${materi}/${peta}/5`} />
+        <NextStepButton />
       </div>
     </form>
   );

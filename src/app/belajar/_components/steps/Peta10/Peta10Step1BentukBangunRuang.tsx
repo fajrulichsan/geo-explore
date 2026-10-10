@@ -1,6 +1,6 @@
 import { submitStepAction } from "@/app/belajar/actions";
 import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
-import SubmitStepButton from "@/app/belajar/_components/SubmitStepButton";
+import NextStepButton from "@/app/belajar/_components/NextStepButton";
 import StepHeader from "@/app/belajar/_components/StepHeader";
 import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
 import { getPageImage } from "@/lib/pageImages";
@@ -8,6 +8,7 @@ import { getPageImage } from "@/lib/pageImages";
 const shapes = [
   {
     name: "Kubus",
+    key: "M1-P10-L1-2" as const,
     color: "#16A34A",
     bg: "#F0FDF4",
     facts: ["Seluruh sisinya berbentuk persegi.", "12 rusuk sama panjang.", "8 titik sudut."],
@@ -15,6 +16,7 @@ const shapes = [
   },
   {
     name: "Balok",
+    key: "M1-P10-L1-3" as const,
     color: "#2563EB",
     bg: "#EFF6FF",
     facts: [
@@ -26,6 +28,7 @@ const shapes = [
   },
   {
     name: "Prisma",
+    key: "M1-P10-L1-4" as const,
     color: "#EA580C",
     bg: "#FFF7ED",
     facts: [
@@ -37,6 +40,7 @@ const shapes = [
   },
   {
     name: "Limas",
+    key: "M1-P10-L1-1" as const,
     color: "#D97706",
     bg: "#FFFBEB",
     facts: [
@@ -49,7 +53,8 @@ const shapes = [
 ];
 
 export default async function Peta10Step1BentukBangunRuang({ materi, peta, editFoto }: StepComponentProps) {
-  const limasSegilima = await getPageImage("M1-P10-L1-1");
+  const gambarBangun = await Promise.all(shapes.map((s) => getPageImage(s.key)));
+  const banner = await getPageImage("M1-P10-L1-5");
 
   return (
     <form action={submitStepAction} className="flex flex-col gap-8">
@@ -64,7 +69,19 @@ export default async function Peta10Step1BentukBangunRuang({ materi, peta, editF
             <path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z" />
             <path d="M3.27 6.96L12 12.01l8.73-5.05M12 22.08V12" />
           </svg>
-          <h1 className="m-0 text-[32px] font-extrabold text-[#111827]">Rangkuman: Bangun Ruang Sisi Datar</h1>
+          <h1 className="m-0 text-[32px] font-extrabold text-[#111827]">Rangkuman</h1>
+          <EditablePageImage
+            imageKey="M1-P10-L1-5"
+            materi={materi}
+            peta={peta}
+            step="1"
+            urutan="5"
+            src={banner}
+            alt="Kelas belajar dengan papan rangkuman"
+            editable={editFoto}
+            imageClassName="object-cover rounded-xl"
+            containerClassName="relative ml-auto hidden sm:block w-48 h-28"
+          />
         </div>
         <div className="inline-flex items-center bg-[#FDF3C7] text-[#92400E] rounded-full py-[7px] px-[18px] text-[13px] font-semibold w-fit">
           Submateri 1 – Bangun Ruang Sisi Datar
@@ -101,28 +118,19 @@ export default async function Peta10Step1BentukBangunRuang({ materi, peta, editF
               key={s.name}
               className="bg-white border border-[#E5E7EB] rounded-[20px] overflow-hidden shadow-[0_1px_2px_rgba(0,0,0,0.04)] flex flex-col"
             >
-              <div className="flex items-center justify-center py-7 gap-3" style={{ backgroundColor: s.bg }}>
-                {s.name === "Limas" ? (
-                  <EditablePageImage
-                    imageKey="M1-P10-L1-1"
-                    materi={materi}
-                    peta={peta}
-                    step="1"
-                    urutan="1"
-                    src={limasSegilima}
-                    alt="Ilustrasi limas segilima"
-                    editable={editFoto}
-                    imageClassName="object-contain"
-                    containerClassName="relative w-16 h-16"
-                  />
-                ) : (
-                  <div
-                    className="w-16 h-16 rounded-2xl flex items-center justify-center text-lg font-extrabold"
-                    style={{ backgroundColor: `${s.color}22`, color: s.color, border: `2px solid ${s.color}` }}
-                  >
-                    {s.name.slice(0, 2).toUpperCase()}
-                  </div>
-                )}
+              <div className="flex items-center justify-center py-4 px-3 gap-3" style={{ backgroundColor: s.bg }}>
+                <EditablePageImage
+                  imageKey={s.key}
+                  materi={materi}
+                  peta={peta}
+                  step="1"
+                  urutan={String(shapes.indexOf(s) + 1)}
+                  src={gambarBangun[shapes.indexOf(s)]}
+                  alt={`Ilustrasi ${s.name}`}
+                  editable={editFoto}
+                  imageClassName="object-contain"
+                  containerClassName="relative w-full h-28"
+                />
               </div>
               <div className="p-5 flex flex-col gap-3 flex-1">
                 <h3 className="m-0 text-base font-bold text-[#111827] text-center">{s.name}</h3>
@@ -160,12 +168,7 @@ export default async function Peta10Step1BentukBangunRuang({ materi, peta, editF
       </div>
 
       <div className="flex justify-end">
-        <SubmitStepButton className="flex items-center gap-2 bg-[#2563EB] text-white border-none rounded-full py-3.5 px-7 text-sm font-bold font-inherit shadow-[0_4px_10px_rgba(37,99,235,0.3)] cursor-pointer">
-          LANJUTKAN
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.4">
-            <path d="M5 12h14M13 5l7 7-7 7" />
-          </svg>
-        </SubmitStepButton>
+        <NextStepButton />
       </div>
     </form>
   );

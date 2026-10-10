@@ -1,7 +1,7 @@
 import BackLink from "@/app/belajar/_components/BackLink";
 import { submitStepAction } from "@/app/belajar/actions";
 import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
-import SubmitStepButton from "@/app/belajar/_components/SubmitStepButton";
+import NextStepButton from "@/app/belajar/_components/NextStepButton";
 import StepHeader from "@/app/belajar/_components/StepHeader";
 
 const pertanyaan = [
@@ -46,10 +46,10 @@ export default function Peta7Step4PertanyaanGeneralisasi({ materi, peta, initial
     <form action={submitStepAction} className="flex flex-col gap-8">
       <input type="hidden" name="materi" value={materi} />
       <input type="hidden" name="peta" value={peta} />
-      <input type="hidden" name="step" value="4" />
+      <input type="hidden" name="step" value="3" />
 
       <div className="flex flex-col gap-4">
-        <StepHeader materi={materi} currentStep={4} totalSteps={11} />
+        <StepHeader materi={materi} currentStep={3} totalSteps={8} />
         <div className="flex items-center gap-3.5">
           <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#2563EB" strokeWidth="2.4" className="flex-shrink-0">
             <circle cx="11" cy="11" r="7" />
@@ -67,7 +67,7 @@ export default function Peta7Step4PertanyaanGeneralisasi({ materi, peta, initial
 
       <div className="flex items-center gap-3">
         <div className="w-[34px] h-[34px] rounded-full bg-[#2563EB] text-white flex items-center justify-center font-bold text-[15px] flex-shrink-0">
-          D
+          C
         </div>
         <div className="bg-white border border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-full py-2 px-5 text-sm font-bold text-[#2563EB]">
           Pertanyaan Generalisasi
@@ -96,17 +96,9 @@ export default function Peta7Step4PertanyaanGeneralisasi({ materi, peta, initial
         ))}
       </div>
 
-      <div className="flex justify-between items-center">
-        <BackLink
-          href={`/belajar/${materi}/${peta}/3`}
-          className="flex items-center gap-2 bg-transparent text-[#6B7280] border-none rounded-full py-3 px-6 text-sm font-semibold cursor-pointer hover:text-[#374151]"
-        />
-        <SubmitStepButton className="flex items-center gap-2 bg-[#2563EB] text-white border-none rounded-full py-3.5 px-7 text-sm font-bold font-inherit shadow-[0_4px_10px_rgba(37,99,235,0.3)] cursor-pointer">
-          LANJUTKAN
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.4">
-            <path d="M5 12h14M13 5l7 7-7 7" />
-          </svg>
-        </SubmitStepButton>
+      <div className="flex flex-col-reverse sm:flex-row justify-between items-center gap-4">
+        <BackLink href={`/belajar/${materi}/${peta}/2`} />
+        <NextStepButton />
       </div>
     </form>
   );

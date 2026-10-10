@@ -5,13 +5,15 @@ import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
 import SubmitStepButton from "@/app/belajar/_components/SubmitStepButton";
 import BackLink from "@/app/belajar/_components/BackLink";
 
-async function goToDaftarIsi() {
+async function goToPetunjuk3() {
   "use server";
-  redirect("/daftar-isi");
+  redirect("/petunjuk-3");
 }
 
-export default async function KataPengantarPage(props: PageProps<"/kata-pengantar">) {
-  const heroImage = await getPageImage("home-hero");
+export default async function KataPengantarPage(
+  props: PageProps<"/kata-pengantar">,
+) {
+  const heroImage = await getPageImage("kata-pengantar-hero");
   const searchParams = await props.searchParams;
   const editFoto = searchParams?.["edit-foto"] === "true";
   return (
@@ -31,16 +33,24 @@ export default async function KataPengantarPage(props: PageProps<"/kata-penganta
           style={{ animationDuration: "8s" }}
         />
         <div className="absolute top-20 left-[15%] opacity-20 rotate-12">
-          <span className="material-symbols-outlined text-[80px] text-[#00338a]">deployed_code</span>
+          <span className="material-symbols-outlined text-[80px] text-[#00338a]">
+            deployed_code
+          </span>
         </div>
         <div className="absolute bottom-40 left-[10%] opacity-10 -rotate-12">
-          <span className="material-symbols-outlined text-[120px] text-[#785900]">category</span>
+          <span className="material-symbols-outlined text-[120px] text-[#785900]">
+            category
+          </span>
         </div>
         <div className="absolute top-1/4 right-[15%] opacity-15 rotate-45">
-          <span className="material-symbols-outlined text-[60px] text-[#0048ba]">pentagon</span>
+          <span className="material-symbols-outlined text-[60px] text-[#0048ba]">
+            pentagon
+          </span>
         </div>
         <div className="absolute bottom-20 right-[20%] opacity-20 -rotate-6">
-          <span className="material-symbols-outlined text-[100px] text-[#00338a]">polyline</span>
+          <span className="material-symbols-outlined text-[100px] text-[#00338a]">
+            polyline
+          </span>
         </div>
       </div>
 
@@ -51,7 +61,7 @@ export default async function KataPengantarPage(props: PageProps<"/kata-penganta
             <div className="absolute -bottom-8 -right-8 w-32 h-32 bg-[#dbe1ff] rounded-full opacity-60 mix-blend-multiply blur-xl" />
             <div className="bg-white/95 backdrop-blur-[10px] border border-white/20 shadow-[0_10px_30px_-10px_rgba(0,51,138,0.08)] w-full h-full rounded-2xl overflow-hidden relative z-10 border-4 border-white">
               <EditablePageImage
-                imageKey="home-hero"
+                imageKey="kata-pengantar-hero"
                 materi="0"
                 peta="0"
                 step="kata-pengantar"
@@ -68,13 +78,20 @@ export default async function KataPengantarPage(props: PageProps<"/kata-penganta
               style={{ animationDuration: "3s" }}
             >
               <div className="w-10 h-10 rounded-full bg-[#dbe1ff] flex items-center justify-center text-[#00338a]">
-                <span className="material-symbols-outlined" style={{ fontVariationSettings: "'FILL' 1" }}>
+                <span
+                  className="material-symbols-outlined"
+                  style={{ fontVariationSettings: "'FILL' 1" }}
+                >
                   architecture
                 </span>
               </div>
               <div>
-                <p className="text-xs text-[#434653] uppercase tracking-wider">E-Module</p>
-                <p className="text-sm text-[#191c1e] font-semibold">Discovery Learning</p>
+                <p className="text-xs text-[#434653] uppercase tracking-wider">
+                  E-Module
+                </p>
+                <p className="text-sm text-[#191c1e] font-semibold">
+                  Discovery Learning
+                </p>
               </div>
             </div>
           </div>
@@ -83,7 +100,9 @@ export default async function KataPengantarPage(props: PageProps<"/kata-penganta
         <div className="w-full md:w-7/12 lg:w-1/2 flex flex-col justify-center">
           <div className="bg-white/95 backdrop-blur-[10px] border border-white/20 shadow-[0_10px_30px_-10px_rgba(0,51,138,0.08)] p-8 lg:p-12 rounded-[32px] h-full flex flex-col relative overflow-hidden">
             <div className="absolute top-0 right-0 p-8 opacity-[0.03] text-[120px] pointer-events-none">
-              <span className="material-symbols-outlined text-[120px]">format_quote</span>
+              <span className="material-symbols-outlined text-[120px]">
+                format_quote
+              </span>
             </div>
             <div className="mb-8 border-b border-[#e6e8ea] pb-6">
               <div className="flex items-center gap-3 mb-3">
@@ -94,49 +113,60 @@ export default async function KataPengantarPage(props: PageProps<"/kata-penganta
               <h1 className="text-4xl md:text-5xl font-extrabold text-[#00338a] mb-2 tracking-tight">
                 Kata Pengantar
               </h1>
-              <p className="text-[#434653]">Modul Pembelajaran Geometri Berbasis Discovery Learning</p>
+              <p className="text-[#434653]">
+                Modul Pembelajaran Geometri Berbasis Open-Ended Problem
+                berbantuan GeoGebra dan Augmented Reality (AR)
+              </p>
             </div>
 
             <div className="text-[#191c1e] leading-relaxed flex-grow overflow-y-auto pr-4">
               <p className="mb-4">
-                Puji syukur kehadirat Tuhan Yang Maha Esa atas segala rahmat dan karunia-Nya sehingga
-                E-Module Geometri berbasis <em>Discovery Learning</em> ini dapat diselesaikan dengan
+                Puji syukur kehadirat Tuhan Yang Maha Esa atas segala rahmat dan
+                karunia-Nya sehingga E-Module Geometri berbasis{" "}
+                <em>Open-Ended Problem</em> berbantuan <em>GeoGebra</em> dan{" "}
+                <em>Augmented Reality</em> (AR) ini dapat diselesaikan dengan
                 baik.
               </p>
               <p className="mb-4">
-                E-module ini dikembangkan secara khusus untuk memfasilitasi siswa dalam mempelajari
-                materi Bangun Ruang Sisi Datar (Kubus, Balok, Prisma, dan Limas). Dengan menggunakan
-                pendekatan <em>Discovery Learning</em>, e-module ini dirancang tidak hanya untuk
-                menyajikan informasi, tetapi juga untuk membimbing siswa menemukan konsep-konsep
-                geometri secara mandiri melalui serangkaian aktivitas yang terstruktur dan interaktif.
+                E-module ini dikembangkan secara khusus untuk memfasilitasi
+                siswa dalam mempelajari materi Bangun Ruang Sisi Datar (Kubus,
+                Balok, Prisma, dan Limas). Dengan menggunakan pendekatan{" "}
+                <em>Discovery Learning</em>, e-module ini dirancang tidak hanya
+                untuk menyajikan informasi, tetapi juga untuk membimbing siswa
+                menemukan konsep-konsep geometri secara mandiri melalui
+                serangkaian aktivitas yang terstruktur dan interaktif.
               </p>
               <p className="mb-4">
-                Di dalam e-module ini, siswa akan diajak untuk mengamati, menanya, mengumpulkan data,
-                mengasosiasi, dan mengkomunikasikan hasil penemuan mereka. Harapannya, pendekatan ini
-                dapat meningkatkan kemampuan pemahaman konsep matematis, berpikir kritis, serta
-                kemandirian belajar siswa.
+                Di dalam e-module ini, siswa akan diajak untuk mengamati,
+                menanya, mengumpulkan data, mengasosiasi, dan mengkomunikasikan
+                hasil penemuan mereka. Harapannya, pendekatan ini dapat
+                meningkatkan kemampuan pemahaman konsep matematis, berpikir
+                kritis, serta kemandirian belajar siswa.
               </p>
               <p className="mb-6">
-                Kami menyadari bahwa e-module ini masih jauh dari kata sempurna. Oleh karena itu,
-                kritik dan saran yang membangun sangat kami harapkan untuk perbaikan di masa
-                mendatang. Akhir kata, semoga e-module ini dapat memberikan manfaat yang nyata dan
-                pengalaman belajar yang menyenangkan bagi siswa sekalian. Selamat belajar dan
-                bereksplorasi!
+                Kami menyadari bahwa e-module ini masih jauh dari kata sempurna.
+                Oleh karena itu, kritik dan saran yang membangun sangat kami
+                harapkan untuk perbaikan di masa mendatang. Akhir kata, semoga
+                e-module ini dapat memberikan manfaat yang nyata dan pengalaman
+                belajar yang menyenangkan bagi siswa sekalian. Selamat belajar
+                dan bereksplorasi!
               </p>
               <div className="text-right mt-8">
                 <p className="text-[#434653]">Penyusun,</p>
-                <p className="text-sm font-semibold text-[#00338a] mt-1">Tim Pengembang E-Module</p>
+                <p className="text-sm font-semibold text-[#00338a] mt-1">
+                  Tim Pengembang E-Module
+                </p>
               </div>
             </div>
 
             <div className="mt-8 pt-6 border-t border-[#e6e8ea] flex flex-col-reverse sm:flex-row justify-between items-center gap-4">
               <BackLink
-                href="/petunjuk-2"
-                className="flex items-center gap-2 bg-transparent text-[#6B7280] border-none rounded-full py-3 px-6 text-sm font-semibold cursor-pointer hover:text-[#374151]"
+                href="/daftar-isi"
+                className="w-full sm:w-auto justify-center inline-flex items-center gap-2 bg-white text-[#374151] border border-[#c3c6d6] rounded-full py-2.5 md:py-3 px-5 md:px-6 text-sm md:text-base font-bold cursor-pointer hover:bg-[#f2f4f6]"
               />
-              <form action={goToDaftarIsi} className="w-full sm:w-auto">
-                <SubmitStepButton className="w-full sm:w-auto justify-center inline-flex items-center gap-3 bg-primary hover:bg-primary-dark text-white font-bold py-3 md:py-4 px-6 md:px-8 rounded-2xl text-sm md:text-lg shadow-[0_8px_20px_-5px_rgba(0,72,186,0.4)] hover:shadow-[0_12px_25px_-5px_rgba(0,72,186,0.5)] hover:-translate-y-1 active:translate-y-0 transition-all group">
-                  <span className="tracking-wide">Lanjutkan ke Daftar Isi</span>
+              <form action={goToPetunjuk3} className="w-full sm:w-auto">
+                <SubmitStepButton className="w-full sm:w-auto justify-center inline-flex items-center gap-2 bg-primary hover:bg-primary-dark text-white font-bold py-2.5 md:py-3 px-5 md:px-6 rounded-full text-sm md:text-base group">
+                  <span>Lanjutkan</span>
                   <i className="fa-solid fa-arrow-right-long group-hover:translate-x-2 transition-transform" />
                 </SubmitStepButton>
               </form>

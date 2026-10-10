@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import Footer from "@/app/_components/Footer";
+import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
 import { getPageImages } from "@/lib/pageImages";
 
 const steps = [
@@ -54,13 +55,15 @@ const stats = [
   { value: "3D", label: "Visualisasi GeoGebra & AR" },
 ];
 
-export default async function Home() {
+export default async function Home(props: PageProps<"/">) {
   const images = await getPageImages();
+  const searchParams = await props.searchParams;
+  const editFoto = searchParams?.["edit-foto"] === "true";
   const shapes = [
-    { name: "KUBUS", image: images["shape-kubus"], scale: 1.15 },
-    { name: "BALOK", image: images["shape-balok"], scale: 0.65 },
-    { name: "PRISMA", image: images["shape-prisma"], scale: 1 },
-    { name: "LIMAS", image: images["shape-limas"], scale: 1.3 },
+    { name: "KUBUS", key: "shape-kubus" as const, image: images["shape-kubus"] },
+    { name: "BALOK", key: "shape-balok" as const, image: images["shape-balok"] },
+    { name: "PRISMA", key: "shape-prisma" as const, image: images["shape-prisma"] },
+    { name: "LIMAS", key: "shape-limas" as const, image: images["shape-limas"] },
   ];
 
   return (
@@ -102,7 +105,7 @@ export default async function Home() {
         <div className="flex flex-col items-center text-center relative z-20 mx-auto max-w-3xl pt-6 md:pt-10">
           <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-blue-100 text-primary font-bold text-sm mb-6 shadow-sm">
             <i className="fa-solid fa-shapes" />
-            <span>E-MODUL GEOMETRI</span>
+            <span>E-MODULE GEOMETRI</span>
           </div>
           <h2 className="text-4xl sm:text-5xl md:text-7xl font-extrabold text-slate-900 leading-tight mb-4 tracking-tight">
             BANGUN RUANG
@@ -112,7 +115,10 @@ export default async function Home() {
             </span>
           </h2>
           <p className="text-base md:text-lg font-medium text-slate-600 leading-relaxed mb-8">
-            Berbasis <span className="text-primary font-bold italic">Open-Ended Problem</span>
+            Berbasis <span className="text-primary font-bold italic">Open-Ended Problem</span>{" "}
+            berbantuan{" "}
+            <span className="text-primary font-bold italic">GeoGebra</span> dan{" "}
+            <span className="text-primary font-bold italic">Augmented Reality</span>
             <br />
             dalam <span className="text-primary font-bold italic">Discovery Learning</span>
           </p>
@@ -174,16 +180,21 @@ export default async function Home() {
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
                 {shapes.map((shape) => (
                   <div key={shape.name} className="flex flex-col items-center group">
-                    <div className="w-32 h-32 md:w-40 md:h-40 flex items-center justify-center relative overflow-visible group-hover:-translate-y-1 transition-all duration-300">
-                      <Image
-                        src={shape.image}
-                        alt={shape.name}
-                        width={128}
-                        height={128}
-                        sizes="160px"
-                        style={{ transform: `scale(${shape.scale})` }}
-                        className="w-full h-full object-contain drop-shadow-md transition-transform duration-300 group-hover:!scale-[1.15]"
-                      />
+                    <div className="w-full aspect-square p-2 relative group-hover:-translate-y-1 transition-all duration-300">
+                      <div className="relative w-full h-full">
+                        <EditablePageImage
+                          imageKey={shape.key}
+                          materi="0"
+                          peta="0"
+                          step="home"
+                          urutan={shape.name.toLowerCase()}
+                          src={shape.image}
+                          alt={shape.name}
+                          editable={editFoto}
+                          imageClassName="object-contain"
+                          containerClassName="absolute inset-0"
+                        />
+                      </div>
                     </div>
                     <span className="mt-0.5 font-bold text-[10px] md:text-xs tracking-widest text-slate-700 group-hover:text-primary transition-colors">
                       {shape.name}
@@ -195,12 +206,17 @@ export default async function Home() {
 
             {/* Illustration: kids learning */}
             <div className="relative w-full aspect-[16/9] rounded-[2rem] shadow-card border border-slate-100 overflow-hidden">
-              <Image
+              <EditablePageImage
+                imageKey="home-hero"
+                materi="0"
+                peta="0"
+                step="home"
+                urutan="1"
                 src={images["home-hero"]}
                 alt="Belajar bersama, eksplorasi bangun ruang"
-                fill
-                sizes="(min-width: 1024px) 50vw, 100vw"
-                className="object-cover"
+                editable={editFoto}
+                imageClassName="object-cover"
+                containerClassName="absolute inset-0"
               />
             </div>
           </div>

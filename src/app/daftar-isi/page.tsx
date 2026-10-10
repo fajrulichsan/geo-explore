@@ -20,9 +20,9 @@ const itemsMateri = [
   { num: 10, title: "Skala dan Volume Bangun Ruang Sisi Datar", href: "#" },
 ];
 
-async function goToTujuan() {
+async function goToKataPengantar() {
   "use server";
-  redirect("/petunjuk-3");
+  redirect("/kata-pengantar");
 }
 
 export default function DaftarIsiPage() {
@@ -45,7 +45,9 @@ export default function DaftarIsiPage() {
           <h1 className="text-3xl md:text-[48px] leading-[1.2] tracking-tight font-extrabold text-[#00338a] mb-2 relative z-10">
             DAFTAR ISI
           </h1>
-          <p className="text-sm md:text-lg text-[#434653] relative z-10">E-Module Bangun Ruang Sisi Datar</p>
+          <p className="text-sm md:text-lg text-[#434653] relative z-10">
+            E-Module Bangun Ruang Sisi Datar
+          </p>
           <div className="h-1 w-24 bg-[#fdc003] mx-auto mt-4 rounded-full relative z-10" />
         </div>
 
@@ -102,12 +104,12 @@ export default function DaftarIsiPage() {
 
         <div className="max-w-4xl mx-auto mt-10 flex flex-col-reverse sm:flex-row justify-between items-center gap-4 relative z-10">
           <BackLink
-            href="/kata-pengantar"
-            className="flex items-center gap-2 bg-transparent text-[#6B7280] border-none rounded-full py-3 px-6 text-sm font-semibold cursor-pointer hover:text-[#374151]"
+            href="/petunjuk-2"
+            className="w-full sm:w-auto justify-center inline-flex items-center gap-2 bg-white text-[#374151] border border-[#c3c6d6] rounded-full py-2.5 md:py-3 px-5 md:px-6 text-sm md:text-base font-bold cursor-pointer hover:bg-[#f2f4f6]"
           />
-          <form action={goToTujuan}>
-            <SubmitStepButton className="w-full sm:w-auto justify-center inline-flex items-center gap-3 bg-primary hover:bg-primary-dark text-white font-bold py-3 md:py-4 px-6 md:px-8 rounded-2xl text-sm md:text-lg shadow-[0_8px_20px_-5px_rgba(0,72,186,0.4)] hover:shadow-[0_12px_25px_-5px_rgba(0,72,186,0.5)] hover:-translate-y-1 active:translate-y-0 transition-all group">
-              <span className="tracking-wide">LANJUTKAN</span>
+          <form action={goToKataPengantar}>
+            <SubmitStepButton className="w-full sm:w-auto justify-center inline-flex items-center gap-2 bg-primary hover:bg-primary-dark text-white font-bold py-2.5 md:py-3 px-5 md:px-6 rounded-full text-sm md:text-base group">
+              <span>Lanjut ke Kata Pengantar</span>
               <i className="fa-solid fa-arrow-right-long group-hover:translate-x-2 transition-transform" />
             </SubmitStepButton>
           </form>

@@ -21,7 +21,7 @@ export default async function StepHeader({ materi, currentStep, totalSteps }: St
         {title.toUpperCase()}
       </div>
       <div className="inline-flex items-center bg-[#FDF3C7] text-[#92400E] rounded-full py-1.5 px-3.5 text-xs font-bold tracking-[0.02em] w-fit">
-        Langkah {currentStep}/{totalSteps}
+        Halaman {currentStep}/{totalSteps}
       </div>
     </div>
   );

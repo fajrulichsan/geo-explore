@@ -73,23 +73,36 @@ export default async function Petunjuk3Page(props: PageProps<"/petunjuk-3">) {
               <circle cx="24" cy="24" r="21" stroke="#00338a" strokeWidth="3" />
               <circle cx="24" cy="24" r="13" stroke="#00338a" strokeWidth="3" />
               <circle cx="24" cy="24" r="5" fill="#00338a" />
-              <path d="M24 24 L40 8" stroke="#f59e0b" strokeWidth="3" strokeLinecap="round" />
+              <path
+                d="M24 24 L40 8"
+                stroke="#f59e0b"
+                strokeWidth="3"
+                strokeLinecap="round"
+              />
             </svg>
             <div>
-              <h3 className="text-lg md:text-2xl font-bold text-[#00338a] mb-3">Tujuan Pembelajaran</h3>
+              <h3 className="text-lg md:text-2xl font-bold text-[#00338a] mb-3">
+                Tujuan Pembelajaran
+              </h3>
               <p className="text-sm md:text-base leading-7 md:leading-8 text-[#191c1e]">
-                Setelah mempelajari materi Bangun Ruang Sisi Datar melalui kegiatan pembelajaran berbasis{" "}
-                <em>Open-Ended Problem</em> dengan bantuan <em>GeoGebra 3D</em> dan{" "}
-                <em>Augmented Reality</em> (AR), kamu diharapkan mampu memahami konsep kubus, balok, prisma,
-                dan limas melalui kegiatan mengamati, mengeksplorasi, berdiskusi, menguji, dan menyimpulkan,
-                mengidentifikasi sifat-sifat bangun ruang sisi datar, membuat dan menganalisis berbagai
-                jaring-jaring, menentukan luas permukaan dan volume, serta menganalisis hubungan perubahan
-                skala terhadap luas dan volume. Selain itu, kamu diharapkan mampu menggunakan berbagai
-                strategi penyelesaian, memberikan alasan matematis yang logis, membandingkan alternatif
-                solusi, serta merefleksikan proses berpikir dalam menyelesaikan permasalahan terbuka.
-                Selama proses pembelajaran, kamu juga diharapkan semakin percaya diri dalam mengemukakan
-                ide, berdiskusi, bekerja sama dengan teman, dan terus berusaha menghadapi berbagai
-                tantangan dalam belajar matematika.
+                Setelah mempelajari materi Bangun Ruang Sisi Datar melalui
+                kegiatan pembelajaran berbasis <em>Open-Ended Problem</em>{" "}
+                dengan bantuan <em>GeoGebra 3D</em> dan{" "}
+                <em>Augmented Reality</em> (AR), kamu diharapkan mampu memahami
+                konsep kubus, balok, prisma, dan limas melalui kegiatan
+                mengamati, mengeksplorasi, berdiskusi, menguji, dan
+                menyimpulkan, mengidentifikasi sifat-sifat bangun ruang sisi
+                datar, membuat dan menganalisis berbagai jaring-jaring,
+                menentukan luas permukaan dan volume, serta menganalisis
+                hubungan perubahan skala terhadap luas dan volume. Selain itu,
+                kamu diharapkan mampu menggunakan berbagai strategi
+                penyelesaian, memberikan alasan matematis yang logis,
+                membandingkan alternatif solusi, serta merefleksikan proses
+                berpikir dalam menyelesaikan permasalahan terbuka. Selama proses
+                pembelajaran, kamu juga diharapkan semakin percaya diri dalam
+                mengemukakan ide, berdiskusi, bekerja sama dengan teman, dan
+                terus berusaha menghadapi berbagai tantangan dalam belajar
+                matematika.
               </p>
             </div>
           </div>
@@ -118,22 +131,28 @@ export default async function Petunjuk3Page(props: PageProps<"/petunjuk-3">) {
                 emoji_objects
               </span>
             </div>
-            <p className="text-sm text-[#00338a]">Siap menemukan konsep dan menyelesaikan tantangan seru?</p>
+            <p className="text-sm text-[#00338a]">
+              Siap menemukan konsep dan menyelesaikan tantangan seru?
+            </p>
           </div>
           <div className="hidden md:block">
-            <span className="material-symbols-outlined text-[#00338a]">arrow_forward</span>
+            <span className="material-symbols-outlined text-[#00338a]">
+              arrow_forward
+            </span>
           </div>
-          <p className="text-sm text-[#00338a] flex-1">Yuk, kenali hubungan konsep yang akan kamu pelajari!</p>
+          <p className="text-sm text-[#00338a] flex-1">
+            Yuk, kenali hubungan konsep yang akan kamu pelajari!
+          </p>
         </div>
 
         <div className="flex flex-col-reverse sm:flex-row justify-between items-center gap-4 mb-8">
           <BackLink
-            href="/daftar-isi"
-            className="flex items-center gap-2 bg-transparent text-[#6B7280] border-none rounded-full py-3 px-6 text-sm font-semibold cursor-pointer hover:text-[#374151]"
+            href="/kata-pengantar"
+            className="w-full sm:w-auto justify-center inline-flex items-center gap-2 bg-white text-[#374151] border border-[#c3c6d6] rounded-full py-2.5 md:py-3 px-5 md:px-6 text-sm md:text-base font-bold cursor-pointer hover:bg-[#f2f4f6]"
           />
           <form action={goToPetaKonsep} className="w-full sm:w-auto">
-            <SubmitStepButton className="w-full sm:w-auto justify-center inline-flex items-center gap-3 bg-primary hover:bg-primary-dark text-white font-bold py-3 md:py-4 px-6 md:px-8 rounded-2xl text-sm md:text-lg shadow-[0_8px_20px_-5px_rgba(0,72,186,0.4)] hover:shadow-[0_12px_25px_-5px_rgba(0,72,186,0.5)] hover:-translate-y-1 active:translate-y-0 transition-all group">
-              <span className="tracking-wide">LANJUT KE PETA KONSEP</span>
+            <SubmitStepButton className="w-full sm:w-auto justify-center inline-flex items-center gap-2 bg-primary hover:bg-primary-dark text-white font-bold py-2.5 md:py-3 px-5 md:px-6 rounded-full text-sm md:text-base group">
+              <span>Lanjutkan</span>
               <i className="fa-solid fa-arrow-right-long group-hover:translate-x-2 transition-transform" />
             </SubmitStepButton>
           </form>

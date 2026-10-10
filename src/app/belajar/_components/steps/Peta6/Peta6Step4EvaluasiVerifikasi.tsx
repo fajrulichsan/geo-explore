@@ -1,7 +1,7 @@
 import PhotoUpload from "@/components/PhotoUpload";
 import { submitStepAction } from "@/app/belajar/actions";
 import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
-import SubmitStepButton from "@/app/belajar/_components/SubmitStepButton";
+import NextStepButton from "@/app/belajar/_components/NextStepButton";
 import BackLink from "@/app/belajar/_components/BackLink";
 import StepHeader from "@/app/belajar/_components/StepHeader";
 import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
@@ -51,7 +51,7 @@ const ingatHal2 = [
 export default async function Peta6Step4EvaluasiVerifikasi({ materi, peta, step = "4", editFoto, initialAnswers }: StepComponentProps) {
   const answers = initialAnswers ?? {};
   const getValue = (key: string) => (typeof answers[key] === "string" ? (answers[key] as string) : "");
-  const maskot = await getPageImage("M1-P6-L1-1");
+  const maskot = await getPageImage("M1-P6-L4-1");
 
   return (
     <form action={submitStepAction} className="flex flex-col gap-8">
@@ -110,7 +110,7 @@ export default async function Peta6Step4EvaluasiVerifikasi({ materi, peta, step 
 
         <div className="md:col-span-4 bg-white border border-[#E5E7EB] rounded-[20px] p-3 shadow-[0_1px_2px_rgba(0,0,0,0.04)] flex items-center justify-center">
           <EditablePageImage
-            imageKey="M1-P6-L1-1"
+            imageKey="M1-P6-L4-1"
             materi={materi}
             peta={peta}
             step={step}
@@ -178,17 +178,9 @@ export default async function Peta6Step4EvaluasiVerifikasi({ materi, peta, step 
         />
       </div>
 
-      <div className="flex justify-between items-center">
-        <BackLink
-          href={`/belajar/${materi}/${peta}/3`}
-          className="flex items-center gap-2 bg-transparent text-[#6B7280] border-none rounded-full py-3 px-6 text-sm font-semibold cursor-pointer hover:text-[#374151]"
-        />
-        <SubmitStepButton className="flex items-center gap-2 bg-[#2563EB] text-white border-none rounded-full py-3.5 px-7 text-sm font-bold font-inherit shadow-[0_4px_10px_rgba(37,99,235,0.3)] cursor-pointer">
-          LANJUTKAN
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.4">
-            <path d="M5 12h14M13 5l7 7-7 7" />
-          </svg>
-        </SubmitStepButton>
+      <div className="flex flex-col-reverse sm:flex-row justify-between items-center gap-4">
+        <BackLink href={`/belajar/${materi}/${peta}/3`} />
+        <NextStepButton />
       </div>
     </form>
   );
