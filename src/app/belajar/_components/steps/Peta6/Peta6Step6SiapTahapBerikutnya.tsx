@@ -179,7 +179,7 @@ export default async function Peta6Step6SiapTahapBerikutnya({ materi, peta, step
 
       <div className="flex flex-col-reverse sm:flex-row justify-between items-center gap-4">
         <BackLink href={`/belajar/${materi}/${peta}/5`} />
-        <NextStepButton>LANJUT KE TAHAP AYO MENYIMPULKAN</NextStepButton>
+        <NextStepButton variant="green" icon="check">LANJUT KE TAHAP AYO MENYIMPULKAN</NextStepButton>
       </div>
     </form>
   );
