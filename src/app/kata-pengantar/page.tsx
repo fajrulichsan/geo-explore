@@ -55,8 +55,8 @@ export default async function KataPengantarPage(
       </div>
 
       <main className="flex-grow w-full max-w-[1200px] mx-auto px-4 md:px-6 py-8 lg:py-16 flex flex-col md:flex-row gap-8 lg:gap-12 items-stretch relative z-10">
-        <div className="hidden md:flex w-full md:w-5/12 lg:w-1/2 items-center justify-center">
-          <div className="relative w-full aspect-square">
+        <div className="hidden md:flex w-full md:w-5/12 lg:w-1/2 items-stretch justify-center">
+          <div className="relative w-full h-full min-h-[480px]">
             <div className="absolute -top-4 -left-4 w-24 h-24 bg-[#ffdf9e] rounded-full opacity-50 mix-blend-multiply blur-xl animate-pulse" />
             <div className="absolute -bottom-8 -right-8 w-32 h-32 bg-[#dbe1ff] rounded-full opacity-60 mix-blend-multiply blur-xl" />
             <div className="bg-white/95 backdrop-blur-[10px] border border-white/20 shadow-[0_10px_30px_-10px_rgba(0,51,138,0.08)] w-full h-full rounded-2xl overflow-hidden relative z-10 border-4 border-white">
