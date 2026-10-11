@@ -1,7 +1,7 @@
 import { submitStepAction } from "@/app/belajar/actions";
 import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
 import FileSubmission from "@/components/FileSubmission";
-import NextStepButton from "@/app/belajar/_components/NextStepButton";
+import Peta9ScoreCheck from "./Peta9ScoreCheck";
 import BackLink from "@/app/belajar/_components/BackLink";
 import StepHeader from "@/app/belajar/_components/StepHeader";
 import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
@@ -12,6 +12,8 @@ const ingat = "Klasifikasi bangun ruang dapat dilakukan dengan berbagai cara ses
 export default async function Peta9Step7SiapMenujuRangkuman({ materi, peta, editFoto, initialAnswers }: StepComponentProps) {
   const maskot = await getPageImage("M1-P9-L7-1");
   const buku = await getPageImage("M1-P9-L7-2");
+  const savedScoreRaw = Number(initialAnswers?.ai_score);
+  const savedScore = initialAnswers?.ai_score !== undefined && initialAnswers.ai_score !== "" && Number.isFinite(savedScoreRaw) ? savedScoreRaw : undefined;
 
   return (
     <form action={submitStepAction} className="flex flex-col gap-8">
@@ -94,7 +96,7 @@ export default async function Peta9Step7SiapMenujuRangkuman({ materi, peta, edit
 
       <div className="flex flex-col-reverse sm:flex-row justify-between items-center gap-4">
         <BackLink href={`/belajar/${materi}/${peta}/6`} />
-        <NextStepButton variant="green">LANJUT KE RANGKUMAN</NextStepButton>
+        <Peta9ScoreCheck savedScore={savedScore} />
       </div>
     </form>
   );
