@@ -119,6 +119,24 @@ export default function Peta9ScoreCheck({ savedScore }: { savedScore?: number })
             </div>
             <p className="m-0 text-sm leading-[1.7] text-[#374151]">{result.summary}</p>
 
+            <div className="w-full flex flex-col gap-2.5 text-left">
+              {result.sections.map((sec) => (
+                <div key={sec.id} className="flex flex-col gap-1">
+                  <div className="flex items-center justify-between gap-3 text-xs font-bold text-[#111827]">
+                    <span>{sec.label}</span>
+                    <span style={{ color: gradeFor(sec.score).color }}>{sec.score}</span>
+                  </div>
+                  <div className="h-2 rounded-full bg-[#E5E7EB] overflow-hidden">
+                    <div
+                      className="h-full rounded-full"
+                      style={{ width: `${sec.score}%`, background: gradeFor(sec.score).color }}
+                    />
+                  </div>
+                  {sec.note && <p className="m-0 text-xs text-[#6B7280] leading-[1.5]">{sec.note}</p>}
+                </div>
+              ))}
+            </div>
+
             {result.strengths.length > 0 && (
               <div className="w-full text-left bg-[#F0FDF4] border border-[#BBF7D0] rounded-2xl p-4">
                 <h3 className="m-0 mb-1.5 text-sm font-bold text-[#15803D]">Yang sudah bagus</h3>
