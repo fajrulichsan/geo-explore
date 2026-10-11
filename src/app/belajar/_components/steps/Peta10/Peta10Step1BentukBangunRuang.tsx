@@ -84,7 +84,7 @@ export default async function Peta10Step1BentukBangunRuang({ materi, peta, editF
           alt="Kelas belajar dengan papan rangkuman"
           editable={editFoto}
           natural
-          containerClassName="relative w-full max-w-[760px] mx-auto rounded-2xl overflow-hidden"
+          containerClassName="relative w-full rounded-2xl overflow-hidden"
         />
       </div>
 
