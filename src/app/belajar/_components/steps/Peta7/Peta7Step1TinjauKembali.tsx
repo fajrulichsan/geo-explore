@@ -119,7 +119,7 @@ export default async function Peta7Step1TinjauKembali({
                     {a.label}
                   </p>
                 </div>
-                {!isLast && <FlowConnector kind={sambungan[i]} />}
+                {!isLast && <FlowConnector kind={sambungan[i]} panahGambar />}
               </Fragment>
             );
           })}

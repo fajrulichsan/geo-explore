@@ -113,7 +113,7 @@ export default async function Peta6Step6SiapTahapBerikutnya({ materi, peta, step
               <h3 className={`m-0 text-sm font-bold ${k.aktif ? "" : "text-[#111827]"}`}>{k.label}</h3>
               <p className={`m-0 text-xs ${k.aktif ? "text-white/80" : "text-[#6B7280]"}`}>{k.desc}</p>
             </div>
-            {i < kartu.length - 1 && <FlowConnector kind={sambungan[i]} />}
+            {i < kartu.length - 1 && <FlowConnector kind={sambungan[i]} panahGambar />}
           </Fragment>
         ))}
       </div>

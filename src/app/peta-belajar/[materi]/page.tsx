@@ -12,7 +12,7 @@ import Footer from "@/app/_components/Footer";
 
 const PETA_INFO: Record<string, { icon: string; title: string; desc: string }> = {
   "1": { icon: "menu_book", title: "Pendahuluan", desc: "Mengenal tujuan dan konteks pembelajaran sebelum memulai." },
-  "2": { icon: "search", title: "Ayo Mengamati", desc: "Mengamati permasalahan atau fenomena yang diberikan." },
+  "2": { icon: "search", title: "Ayo Mengamati dan Berpikir", desc: "Mengamati permasalahan atau fenomena yang diberikan." },
   "3": { icon: "forum", title: "Ayo Berdiskusi", desc: "Berdiskusi dan bertukar ide untuk memahami permasalahan." },
   "4": { icon: "explore", title: "Ayo Bereksplorasi", desc: "Mengeksplorasi konsep melalui aktivitas dan percobaan." },
   "5": { icon: "table_chart", title: "Ayo Mengolah Informasi", desc: "Mengolah informasi dan menemukan pola atau konsep." },

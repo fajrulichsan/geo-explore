@@ -1,4 +1,5 @@
 import { Fragment } from "react";
+import Image from "next/image";
 import { submitStepAction } from "@/app/belajar/actions";
 import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
 import NextStepButton from "@/app/belajar/_components/NextStepButton";
@@ -89,9 +90,14 @@ export default async function Peta3Step5MenyiapkanEksplorasi({ materi, peta, edi
                 <p className="m-0 text-sm font-semibold leading-[1.5] text-[#1E3A8A]">{l.teks}</p>
               </li>
               {i < langkah.length - 1 && (
-                <li aria-hidden className="self-center text-[#2563EB] text-xl">
-                  <i className="fa-solid fa-arrow-down lg:hidden" />
-                  <i className="fa-solid fa-arrow-right hidden lg:inline" />
+                <li aria-hidden className="self-center">
+                  <Image
+                    src="/panah-biru-transparan.png"
+                    alt=""
+                    width={48}
+                    height={48}
+                    className="w-8 h-8 rotate-90 lg:rotate-0"
+                  />
                 </li>
               )}
             </Fragment>

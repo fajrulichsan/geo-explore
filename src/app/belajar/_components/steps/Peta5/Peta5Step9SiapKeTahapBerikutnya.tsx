@@ -78,7 +78,7 @@ export default async function Peta5Step9SiapKeTahapBerikutnya({ materi, peta, ed
                 />
                 <p className="m-0 text-sm font-bold text-[#1E3A8A] leading-[1.5]">{a.label}</p>
               </div>
-              {i < alur.length - 1 && <FlowConnector kind={sambungan[i]} />}
+              {i < alur.length - 1 && <FlowConnector kind={sambungan[i]} panahGambar />}
             </Fragment>
           ))}
         </div>

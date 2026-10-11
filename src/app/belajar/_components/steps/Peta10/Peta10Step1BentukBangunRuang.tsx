@@ -70,22 +70,22 @@ export default async function Peta10Step1BentukBangunRuang({ materi, peta, editF
             <path d="M3.27 6.96L12 12.01l8.73-5.05M12 22.08V12" />
           </svg>
           <h1 className="m-0 text-[32px] font-extrabold text-[#111827]">Rangkuman</h1>
-          <EditablePageImage
-            imageKey="M1-P10-L1-5"
-            materi={materi}
-            peta={peta}
-            step="1"
-            urutan="5"
-            src={banner}
-            alt="Kelas belajar dengan papan rangkuman"
-            editable={editFoto}
-            imageClassName="object-cover rounded-xl"
-            containerClassName="relative ml-auto hidden sm:block w-[26rem] max-w-[55%] h-64"
-          />
         </div>
         <div className="inline-flex items-center bg-[#FDF3C7] text-[#92400E] rounded-full py-[7px] px-[18px] text-[13px] font-semibold w-fit">
           Submateri 1 – Bangun Ruang Sisi Datar
         </div>
+        <EditablePageImage
+          imageKey="M1-P10-L1-5"
+          materi={materi}
+          peta={peta}
+          step="1"
+          urutan="5"
+          src={banner}
+          alt="Kelas belajar dengan papan rangkuman"
+          editable={editFoto}
+          natural
+          containerClassName="relative w-full max-w-[760px] mx-auto rounded-2xl overflow-hidden"
+        />
       </div>
 
       <div className="bg-[#EFF6FF] border border-[#BFDBFE] rounded-[20px] p-6 flex flex-col gap-2">

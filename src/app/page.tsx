@@ -214,7 +214,7 @@ export default async function Home(props: PageProps<"/">) {
             </div>
 
             {/* Illustration: kids learning */}
-            <div className="relative w-full aspect-[16/9] rounded-[2rem] shadow-card border border-slate-100 overflow-hidden">
+            <div className="relative w-full aspect-[4/3] rounded-[2rem] shadow-card border border-slate-100 overflow-hidden">
               <EditablePageImage
                 imageKey="home-hero"
                 materi="0"

@@ -40,7 +40,7 @@ export default async function Petunjuk3Page(props: PageProps<"/petunjuk-3">) {
               src={badgeImage}
               alt="Bab II"
               editable={editFoto}
-              imageClassName="object-contain"
+              imageClassName="object-contain mix-blend-multiply"
               containerClassName="relative shrink-0 w-16 h-16 md:w-24 md:h-24"
             />
             <EditablePageImage
@@ -52,7 +52,7 @@ export default async function Petunjuk3Page(props: PageProps<"/petunjuk-3">) {
               src={judulImage}
               alt="Bangun Ruang"
               editable={editFoto}
-              imageClassName="object-contain object-left"
+              imageClassName="object-contain object-left mix-blend-multiply"
               containerClassName="relative w-44 h-14 md:w-80 md:h-24"
             />
           </div>
