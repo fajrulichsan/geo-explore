@@ -11,9 +11,9 @@ const baris = [
   { key: "susunan_sisi", label: "Susunan sisi", type: "text" as const },
   { key: "pasangan_bidang", label: "Pasangan bidang sejajar", type: "text" as const },
   { key: "bentuk_alas", label: "Bentuk alas", type: "text" as const },
-  { key: "jumlah_sisi", label: "Jumlah sisi", type: "number" as const },
-  { key: "jumlah_rusuk", label: "Jumlah rusuk", type: "number" as const },
-  { key: "jumlah_titik_sudut", label: "Jumlah titik sudut", type: "number" as const },
+  { key: "jumlah_sisi", label: "Banyaknya sisi", type: "number" as const },
+  { key: "jumlah_rusuk", label: "Banyaknya rusuk", type: "number" as const },
+  { key: "jumlah_titik_sudut", label: "Banyaknya titik sudut", type: "number" as const },
   { key: "informasi_tambahan", label: "Informasi tambahan", type: "textarea" as const },
 ];
 

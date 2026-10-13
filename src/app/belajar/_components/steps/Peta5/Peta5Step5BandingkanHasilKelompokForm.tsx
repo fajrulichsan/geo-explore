@@ -11,9 +11,9 @@ const baris = [
   { key: "susunan_sisi", label: "Susunan sisi" },
   { key: "pasangan_bidang", label: "Pasangan bidang sejajar" },
   { key: "bentuk_alas", label: "Bentuk alas" },
-  { key: "jumlah_sisi", label: "Jumlah sisi" },
-  { key: "jumlah_rusuk", label: "Jumlah rusuk" },
-  { key: "jumlah_titik_sudut", label: "Jumlah titik sudut" },
+  { key: "jumlah_sisi", label: "Banyaknya sisi" },
+  { key: "jumlah_rusuk", label: "Banyaknya rusuk" },
+  { key: "jumlah_titik_sudut", label: "Banyaknya titik sudut" },
   { key: "catatan_lain", label: "Catatan lain" },
 ] as const;
 

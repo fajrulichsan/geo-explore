@@ -11,9 +11,9 @@ const verifikasi = [
   { key: "susunan_sisi", aspek: "Susunan sisi" },
   { key: "pasangan_sisi", aspek: "Pasangan bidang sejajar" },
   { key: "sisi_alas", aspek: "Bentuk alas" },
-  { key: "jumlah_sisi", aspek: "Jumlah sisi" },
-  { key: "jumlah_rusuk", aspek: "Jumlah rusuk" },
-  { key: "jumlah_titik_sudut", aspek: "Jumlah titik sudut" },
+  { key: "jumlah_sisi", aspek: "Banyaknya sisi" },
+  { key: "jumlah_rusuk", aspek: "Banyaknya rusuk" },
+  { key: "jumlah_titik_sudut", aspek: "Banyaknya titik sudut" },
 ] as const;
 
 const MODEL = ["Kubus", "Balok", "Prisma Segitiga", "Limas Segiempat", "Limas Segitiga"];

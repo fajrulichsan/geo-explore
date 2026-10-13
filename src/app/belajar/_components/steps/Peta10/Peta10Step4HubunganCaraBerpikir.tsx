@@ -13,7 +13,7 @@ const alur = [
     key: "M1-P10-L4-2" as const,
     color: "#16A34A",
     bg: "#F0FDF4",
-    desc: "Mencatat berbagai sifat seperti bentuk sisi, pasangan bidang sisi sejajar, jumlah sisi, rusuk, titik sudut, dan lainnya.",
+    desc: "Mencatat berbagai sifat seperti bentuk sisi, pasangan bidang sisi sejajar, banyaknya sisi, rusuk, titik sudut, dan lainnya.",
   },
   {
     label: "Mengelompokkan",
@@ -133,7 +133,7 @@ export default async function Peta10Step4HubunganCaraBerpikir({ materi, peta, ed
             <h2 className="m-0 text-base font-bold text-[#15803D]">Cara Berpikir yang Telah Dipelajari</h2>
           </div>
           <p className="m-0 text-sm leading-[1.6] text-[#166534]">
-            Setelah melalui Tahap 1–6, quiz dan tantangan open-ended, saya mampu:
+            Setelah melalui Tahap 1–6, quiz dan tantangan terbuka, saya mampu:
           </p>
           <ul className="m-0 p-0 flex flex-col gap-2.5 list-none">
             {caraBerpikir.map((c, i) => (

@@ -6,7 +6,7 @@ import StepHeader from "@/app/belajar/_components/StepHeader";
 import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
 import { getPageImage } from "@/lib/pageImages";
 
-export default async function Peta10Step6BekalMotivasi({ materi, peta, editFoto }: StepComponentProps) {
+export default async function Peta10Step6BekalMotivasi({ materi, peta, editFoto, from }: StepComponentProps) {
   const jaringKubus = await getPageImage("M1-P10-L6-1");
   const motivasi = await getPageImage("M1-P10-L6-2");
 
@@ -108,7 +108,13 @@ export default async function Peta10Step6BekalMotivasi({ materi, peta, editFoto 
 
       <div className="flex flex-col-reverse sm:flex-row justify-between items-center gap-4">
         <BackLink href={`/belajar/${materi}/${peta}/5`} />
-        <NextStepButton variant="green" icon="check">LANJUT KE SUBMATERI 2</NextStepButton>
+        <NextStepButton variant="green" icon="check">
+          {from === "tantangan-terbuka"
+            ? "KEMBALI KE TANTANGAN TERBUKA"
+            : from === "quiz"
+              ? "KEMBALI KE QUIZ"
+              : "LANJUT KE SUBMATERI 2"}
+        </NextStepButton>
       </div>
     </form>
   );

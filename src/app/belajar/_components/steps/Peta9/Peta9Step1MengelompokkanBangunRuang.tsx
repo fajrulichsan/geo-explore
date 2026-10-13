@@ -47,7 +47,7 @@ export default async function Peta9Step1MengelompokkanBangunRuang({ materi, peta
             <circle cx="12" cy="12" r="5" />
             <circle cx="12" cy="12" r="1.2" />
           </svg>
-          <h1 className="m-0 text-2xl sm:text-[32px] font-extrabold text-[#111827]">Tantangan Open-Ended</h1>
+          <h1 className="m-0 text-2xl sm:text-[32px] font-extrabold text-[#111827]">Tantangan Terbuka</h1>
         </div>
       </div>
 
@@ -71,7 +71,7 @@ export default async function Peta9Step1MengelompokkanBangunRuang({ materi, peta
             step="1"
             urutan="7"
             src={hero}
-            alt="Tiga siswa berdiskusi bersemangat mengerjakan tantangan open-ended"
+            alt="Tiga siswa berdiskusi bersemangat mengerjakan tantangan terbuka"
             editable={editFoto}
             imageClassName="object-cover"
             containerClassName="absolute inset-0"

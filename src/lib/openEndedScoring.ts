@@ -17,7 +17,7 @@ const bandingLabels = [
   { key: "kekurangan", label: "Kekurangan" },
 ];
 
-/** Every open-ended field of Materi 1 / Peta 10 (steps 1-6), in the order the student answers them. */
+/** Every open-ended field of Materi 1 / Peta 9 (steps 1-6), in the order the student answers them. */
 export const PETA10_OPEN_ENDED_QUESTIONS: Question[] = [
   ...[1, 2, 3].flatMap((n) => [
     { step: "1", key: `klasifikasi_${n}_dasar`, label: `Tantangan 1, baris ${n}: dasar klasifikasi` },
@@ -31,7 +31,7 @@ export const PETA10_OPEN_ENDED_QUESTIONS: Question[] = [
       "Tantangan 2: Apakah kubus dapat dimasukkan ke lebih dari satu kelompok? Tuliskan minimal dua kelompok berbeda yang dapat memuat kubus dan alasan matematisnya.",
   },
   { step: "2", key: "bangun_pilihan", label: "Tantangan 2: bangun ruang lain yang dipilih siswa" },
-  { step: "2", key: "bangun_pilihan_alasan", label: "Tantangan 2: alasan bangun ruang pilihan dapat masuk ke beberapa kelompok" },
+  { step: "2", key: "bangun_pilihan_alasan", label: "Tantangan 2: apakah bangun ruang pilihan dapat dikelompokkan dengan lebih dari satu cara, beserta alasan berdasarkan sifat-sifatnya" },
   {
     step: "3",
     key: "cara_baru",
@@ -80,7 +80,7 @@ const SECTIONS = [
   { id: "refleksi", label: "Refleksi Berpikir", weight: 5 },
 ] as const;
 
-const SYSTEM_PROMPT = `Kamu adalah guru matematika SMP yang menilai Tantangan Open-Ended "Klasifikasi Bangun Ruang Sisi Datar" secara objektif: tidak terlalu murah hati, tidak pelit.
+const SYSTEM_PROMPT = `Kamu adalah guru matematika SMP yang menilai Tantangan Terbuka "Klasifikasi Bangun Ruang Sisi Datar" secara objektif: tidak terlalu murah hati, tidak pelit.
 
 FAKTA BANGUN RUANG (gunakan ini untuk memeriksa kebenaran; kunci jawaban guru kadang salah ketik):
 - Kubus: 6 sisi, 12 rusuk, 8 titik sudut, alas persegi, prisma segiempat, sisi sejajar 3 pasang, tanpa titik puncak.

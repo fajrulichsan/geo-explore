@@ -66,7 +66,7 @@ const ASPECTS: {
   },
   {
     id: 2,
-    label: "Jumlah rusuk",
+    label: "Banyaknya rusuk",
     target: "segment",
     prompt:
       "Klik setiap rusuk satu per satu. Rusuk yang sudah dihitung berubah hijau dan tidak dihitung dua kali.",
@@ -102,7 +102,7 @@ const ASPECTS: {
   },
   {
     id: 6,
-    label: "Jumlah sisi",
+    label: "Banyaknya sisi",
     target: "polygon",
     prompt:
       "Klik setiap sisi satu per satu. Sisi yang sudah dihitung berubah oranye dan tidak dihitung dua kali.",
@@ -111,7 +111,7 @@ const ASPECTS: {
   },
   {
     id: 7,
-    label: "Jumlah titik sudut",
+    label: "Banyaknya titik sudut",
     target: "point",
     prompt:
       "Klik setiap titik sudut satu per satu. Titik yang sudah dihitung berubah merah. Gunakan tombol untuk menampilkan atau menyembunyikan semua titik.",

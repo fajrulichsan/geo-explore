@@ -22,7 +22,7 @@ export default async function Peta9Step2SatuBangunBanyakKelompok({ materi, peta,
         <div className="inline-flex items-center gap-2 bg-[#1E3A8A] text-white rounded-full py-1.5 px-4 text-xs font-bold tracking-[0.06em] w-fit">
           SUBMATERI 1 &mdash; BANGUN RUANG SISI DATAR
         </div>
-        <h1 className="m-0 text-2xl sm:text-[32px] font-extrabold text-[#111827]">Tantangan Open-Ended</h1>
+        <h1 className="m-0 text-2xl sm:text-[32px] font-extrabold text-[#111827]">Tantangan Terbuka</h1>
       </div>
 
       <div className="flex flex-col gap-4">
@@ -70,8 +70,8 @@ export default async function Peta9Step2SatuBangunBanyakKelompok({ materi, peta,
             <div className="flex items-start gap-3">
               <span className="w-7 h-7 rounded-full bg-[#16A34A] text-white flex items-center justify-center text-xs font-bold flex-shrink-0">2</span>
               <p className="m-0 text-sm font-bold text-[#111827] leading-[1.5]">
-                Pilih satu bangun ruang selain kubus. Apakah bangun tersebut juga dapat termasuk ke lebih dari
-                satu kelompok? Jelaskan alasannya.
+                Pilih satu bangun ruang selain kubus. Menurutmu, apakah bangun ruang tersebut dapat dikelompokkan
+                dengan lebih dari satu cara? Jelaskan alasanmu berdasarkan sifat-sifat bangun ruang tersebut!
               </p>
             </div>
             <input

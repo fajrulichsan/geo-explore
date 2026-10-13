@@ -26,7 +26,7 @@ export default async function Peta9Step7SiapMenujuRangkuman({ materi, peta, edit
         <div className="inline-flex items-center gap-2 bg-[#1E3A8A] text-white rounded-full py-1.5 px-4 text-xs font-bold tracking-[0.06em] w-fit">
           SUBMATERI 1 &mdash; BANGUN RUANG SISI DATAR
         </div>
-        <h1 className="m-0 text-2xl sm:text-[32px] font-extrabold text-[#111827]">Tantangan Open-Ended</h1>
+        <h1 className="m-0 text-2xl sm:text-[32px] font-extrabold text-[#111827]">Tantangan Terbuka</h1>
       </div>
 
       <div className="flex flex-col gap-4">
@@ -35,7 +35,7 @@ export default async function Peta9Step7SiapMenujuRangkuman({ materi, peta, edit
             J
           </div>
           <div className="bg-white border border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-full py-2 px-5 text-sm font-bold text-[#7C3AED]">
-            Siap Menuju Rangkuman
+            Hasil Tantangan Terbuka
           </div>
         </div>
 
@@ -47,7 +47,7 @@ export default async function Peta9Step7SiapMenujuRangkuman({ materi, peta, edit
               kamu pilih dan pertahankan.
             </p>
             <p className="m-0 text-sm leading-[1.7] text-[#374151]">
-              Sekarang saatnya merangkum seluruh konsep yang telah kamu pelajari.
+              Sekarang cek skormu untuk melihat apakah kamu sudah bisa melanjutkan ke Quiz.
             </p>
           </div>
           <div className="md:col-span-4 bg-white border border-[#E5E7EB] rounded-[20px] p-3 shadow-[0_1px_2px_rgba(0,0,0,0.04)] flex items-center justify-center gap-2">
@@ -96,7 +96,7 @@ export default async function Peta9Step7SiapMenujuRangkuman({ materi, peta, edit
 
       <div className="flex flex-col-reverse sm:flex-row justify-between items-center gap-4">
         <BackLink href={`/belajar/${materi}/${peta}/6`} />
-        <Peta9ScoreCheck savedScore={savedScore} />
+        <Peta9ScoreCheck savedScore={savedScore} materi={materi} peta={peta} />
       </div>
     </form>
   );

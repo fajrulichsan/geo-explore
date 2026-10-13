@@ -1,9 +1,9 @@
 import { submitStepAction } from "@/app/belajar/actions";
 import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
-import NextStepButton from "@/app/belajar/_components/NextStepButton";
 import StepHeader from "@/app/belajar/_components/StepHeader";
 import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
 import { getPageImage } from "@/lib/pageImages";
+import { acak } from "@/lib/acak";
 import Peta10QuizBoard, { type QuizQuestion } from "./Peta10QuizBoard";
 
 const questions: QuizQuestion[] = [
@@ -11,7 +11,6 @@ const questions: QuizQuestion[] = [
     soal: "Bangun ruang manakah yang seluruh sisinya berbentuk persegi dan sama besar?",
     pilihan: ["Kubus", "Balok", "Prisma segitiga", "Limas segiempat"],
     jawaban: 0,
-    pembahasan: "Kubus memiliki enam sisi berbentuk persegi yang sama besar.",
   },
   {
     soal: "Apa ciri utama yang membedakan prisma dengan limas?",
@@ -22,8 +21,6 @@ const questions: QuizQuestion[] = [
       "Semua sisi prisma berbentuk segitiga",
     ],
     jawaban: 1,
-    pembahasan:
-      "Prisma memiliki dua alas sejajar dan kongruen, sedangkan limas memiliki satu alas dan sisi-sisi tegak yang bertemu pada satu titik puncak.",
   },
   {
     soal: "Kubus dan balok dapat dikelompokkan bersama berdasarkan ciri berikut, yaitu…",
@@ -34,13 +31,11 @@ const questions: QuizQuestion[] = [
       "Memiliki sisi tegak berbentuk segitiga",
     ],
     jawaban: 1,
-    pembahasan: "Kubus dan balok sama-sama mempunyai 6 sisi, 12 rusuk, dan 8 titik sudut.",
   },
   {
     soal: "Bangun ruang memiliki dua sisi segitiga yang sejajar dan kongruen serta tiga sisi tegak berbentuk persegi panjang. Bangun tersebut adalah …",
     pilihan: ["Limas segitiga", "Prisma segitiga", "Kubus", "Limas segiempat"],
     jawaban: 1,
-    pembahasan: "Bangun tersebut merupakan prisma segitiga karena memiliki dua alas segitiga sejajar dan kongruen.",
   },
   {
     soal: "Kelompok A mengelompokkan kubus, balok, dan prisma segitiga berdasarkan jumlah sisi yang sama. Apakah pengelompokan tersebut tepat?",
@@ -51,7 +46,6 @@ const questions: QuizQuestion[] = [
       "Tidak tepat, karena kubus memiliki delapan sisi",
     ],
     jawaban: 2,
-    pembahasan: "Kubus dan balok memiliki 6 sisi, sedangkan prisma segitiga memiliki 5 sisi. Jadi, jumlah sisinya tidak sama.",
   },
   {
     soal: "Dua kelompok menghasilkan klasifikasi bangun ruang yang berbeda. Kapan kedua klasifikasi tersebut dapat dianggap benar?",
@@ -62,14 +56,11 @@ const questions: QuizQuestion[] = [
       "Jika kedua kelompok menggunakan urutan bangun yang sama",
     ],
     jawaban: 2,
-    pembahasan:
-      "Klasifikasi yang berbeda dapat sama-sama benar apabila didasarkan pada karakteristik matematis yang tepat dan diterapkan secara konsisten.",
   },
   {
     soal: "Sebuah limas segiempat memiliki jumlah sisi, rusuk, dan titik sudut berturut-turut sebanyak …",
     pilihan: ["5, 8, dan 5", "6, 8, dan 5", "5, 6, dan 4", "4, 8, dan 5"],
     jawaban: 0,
-    pembahasan: "Limas segiempat memiliki 5 sisi, 8 rusuk, dan 5 titik sudut.",
   },
   {
     soal: "Seorang siswa menyatakan bahwa setiap bangun ruang yang memiliki sisi berbentuk segitiga pasti merupakan limas. Pernyataan tersebut …",
@@ -80,8 +71,6 @@ const questions: QuizQuestion[] = [
       "Tidak benar, karena limas tidak memiliki sisi segitiga",
     ],
     jawaban: 2,
-    pembahasan:
-      "Prisma segitiga juga memiliki sisi berbentuk segitiga. Oleh karena itu, bentuk satu sisi saja belum cukup untuk menentukan jenis bangun ruang.",
   },
   {
     soal: "Kelompok B mengelompokkan prisma segitiga dan limas segiempat karena keduanya memiliki lima sisi. Bagaimana penilaianmu?",
@@ -92,8 +81,6 @@ const questions: QuizQuestion[] = [
       "Benar, karena keduanya memiliki jumlah rusuk yang sama",
     ],
     jawaban: 0,
-    pembahasan:
-      "Prisma segitiga dan limas segiempat sama-sama memiliki 5 sisi, sehingga dapat dikelompokkan berdasarkan jumlah sisi meskipun bentuk dan jenis bangunnya berbeda.",
   },
   {
     soal: "Seorang siswa mengelompokkan kubus dan balok berdasarkan jumlah titik sudut, sedangkan siswa lain mengelompokkan kubus dan prisma segitiga berdasarkan jenis bangunnya sebagai prisma. Kesimpulan yang paling tepat adalah …",
@@ -104,8 +91,6 @@ const questions: QuizQuestion[] = [
       "Kedua pengelompokan salah karena menghasilkan anggota yang berbeda",
     ],
     jawaban: 2,
-    pembahasan:
-      "Kubus dan balok sama-sama memiliki 8 titik sudut. Kubus juga merupakan prisma segiempat khusus, sehingga kedua pengelompokan benar berdasarkan kriterianya masing-masing.",
   },
 ];
 
@@ -157,15 +142,16 @@ export default async function Peta10Quiz({ materi, peta, initialAnswers, editFot
         <ol className="m-0 pl-5 text-sm text-[#78350F] leading-[1.7]">
           <li>Baca setiap soal dengan teliti.</li>
           <li>Klik salah satu jawaban (A, B, C, atau D) yang menurutmu paling tepat.</li>
-          <li>Setelah semua soal terjawab, kamu dapat melanjutkan ke Tantangan Open-Ended.</li>
+          <li>Setelah semua soal terjawab, kamu dapat melihat hasil Quiz-mu.</li>
         </ol>
       </div>
 
-      <Peta10QuizBoard questions={questions} initialAnswers={tersimpan} />
-
-      <div className="flex justify-end items-center">
-        <NextStepButton>LANJUT KE TANTANGAN OPEN-ENDED</NextStepButton>
-      </div>
+      <Peta10QuizBoard
+        questions={questions}
+        initialAnswers={tersimpan}
+        rangkumanHref={`/belajar/${materi}/11/1?from=quiz`}
+        urutanAwal={acak(questions.length)}
+      />
     </form>
   );
 }

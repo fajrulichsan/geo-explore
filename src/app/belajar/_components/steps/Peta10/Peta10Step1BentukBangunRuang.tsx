@@ -34,7 +34,7 @@ const shapes = [
     facts: [
       "Dua sisi sejajar dan kongruen (alas dan tutup).",
       "Sisi tegak berbentuk jajargenjang, atau persegi panjang pada prisma tegak.",
-      "Jumlah sisi = n + 2, rusuk = 3n, titik sudut = 2n.",
+      "Banyaknya sisi = n + 2, rusuk = 3n, titik sudut = 2n.",
     ],
     example: "Contoh: prisma segitiga, prisma segiempat, prisma segilima, ..., prisma segi-n.",
   },
@@ -46,7 +46,7 @@ const shapes = [
     facts: [
       "Mempunyai satu alas berbentuk segi banyak.",
       "Sisi tegak berbentuk segitiga yang bertemu pada satu titik puncak.",
-      "Jumlah sisi = n + 1, rusuk = 2n, titik sudut = n + 1.",
+      "Banyaknya sisi = n + 1, rusuk = 2n, titik sudut = n + 1.",
     ],
     example: "Contoh: limas segitiga, limas segiempat, limas segilima, ..., limas segi-n.",
   },
@@ -96,7 +96,7 @@ export default async function Peta10Step1BentukBangunRuang({ materi, peta, editF
           Apa yang Telah Dipelajari?
         </div>
         <p className="m-0 text-sm leading-[1.6] text-[#374151]">
-          Selama enam tahap Discovery Learning dan Tantangan Open-Ended, kamu telah menemukan bahwa bangun ruang sisi
+          Selama enam tahap Discovery Learning dan Tantangan Terbuka, kamu telah menemukan bahwa bangun ruang sisi
           datar dapat dikelompokkan berdasarkan berbagai sifat. Pengelompokan dapat dilakukan dengan lebih dari satu
           cara selama menggunakan dasar yang jelas, diterapkan secara konsisten, dan didukung alasan matematis.
         </p>

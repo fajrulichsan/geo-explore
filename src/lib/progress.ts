@@ -74,6 +74,10 @@ export function isStepUnlockedFromRows(
 
   const done = new Set(rows.filter((r) => r.status === "selesai").map((r) => `${r.peta}-${r.step}`));
 
+  // Materi 1: Rangkuman stays reachable from a failed Tantangan Terbuka/Quiz, so it only needs
+  // the answering steps of Tantangan Terbuka (peta 9, step 1-6) to be done.
+  if (materi === "1" && peta === "11" && stepNum === 1) return done.has("9-6");
+
   if (stepNum === 1) {
     const prevPeta = String(petaNum - 1);
     const prevTotal = structure[prevPeta];

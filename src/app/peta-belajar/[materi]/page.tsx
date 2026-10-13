@@ -19,14 +19,15 @@ const PETA_INFO: Record<string, { icon: string; title: string; desc: string }> =
   "6": { icon: "fact_check", title: "Ayo Memverifikasi", desc: "Memeriksa dan menguji kebenaran hasil yang diperoleh." },
   "7": { icon: "lightbulb", title: "Ayo Menyimpulkan", desc: "Merumuskan kesimpulan berdasarkan hasil pembelajaran." },
   "8": { icon: "psychology", title: "Refleksi Diri", desc: "Merefleksikan pemahaman dan pengalaman belajar." },
-  "9": { icon: "category", title: "Tantangan Open-Ended", desc: "Menyelesaikan permasalahan terbuka dengan berbagai kemungkinan strategi dan jawaban." },
+  "9": { icon: "category", title: "Tantangan Terbuka", desc: "Menyelesaikan permasalahan terbuka dengan berbagai kemungkinan strategi dan jawaban." },
   "10": { icon: "workspaces", title: "Rangkuman", desc: "Merangkum konsep dan hal penting yang telah dipelajari." },
   "11": { icon: "workspaces", title: "Rangkuman", desc: "Merangkum konsep dan hal penting yang telah dipelajari." },
 };
 
 const PETA_INFO_MATERI_1: Record<string, { icon: string; title: string; desc: string }> = {
-  "9": { icon: "quiz", title: "Quiz", desc: "Mengecek pemahaman melalui soal pilihan ganda." },
-  "10": PETA_INFO["9"],
+  "9": PETA_INFO["9"],
+  "10": { icon: "quiz", title: "Quiz", desc: "Mengecek pemahaman melalui soal pilihan ganda." },
+  "11": PETA_INFO["11"],
 };
 
 export default async function PetaBelajarPage(
@@ -66,7 +67,7 @@ export default async function PetaBelajarPage(
     const { peta, total, doneInPeta, complete } = c;
     const unlocked = completions.slice(0, i).every((prev) => prev.complete);
     const firstUnfinishedStep = Array.from({ length: total }, (_, i2) => i2 + 1).find((s) => !done.has(`${peta}-${s}`)) ?? 1;
-    const ikonNum = materi === "1" ? ({ "9": "10", "10": "9" } as Record<string, string>)[peta] ?? peta : peta === "10" ? "11" : peta;
+    const ikonNum = materi !== "1" && peta === "10" ? "11" : peta;
     return {
       peta,
       ikon: images[`peta-aktivitas-ikon-${ikonNum}` as PageImageKey],

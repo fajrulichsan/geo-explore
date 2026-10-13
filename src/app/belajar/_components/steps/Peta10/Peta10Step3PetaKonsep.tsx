@@ -60,7 +60,7 @@ export default async function Peta10Step3PetaKonsep({ materi, peta, editFoto }: 
           step="3"
           urutan="3"
           src={catatan}
-          alt="Catatan penting: cara pengelompokan yang kamu pilih pada Tantangan Open-Ended adalah contoh penerapan berbagai dasar klasifikasi di atas"
+          alt="Catatan penting: cara pengelompokan yang kamu pilih pada Tantangan Terbuka adalah contoh penerapan berbagai dasar klasifikasi di atas"
           editable={editFoto}
           natural
           containerClassName="relative w-full h-fit rounded-[20px] overflow-hidden"

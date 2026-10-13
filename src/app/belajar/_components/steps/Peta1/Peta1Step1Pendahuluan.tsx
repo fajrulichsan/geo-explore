@@ -51,7 +51,7 @@ export default async function Peta1Step1Pendahuluan({ materi, peta, editFoto }: 
               Di sekitar kita banyak benda yang memiliki bentuk berbeda-beda. Jika kita perhatikan, benda-benda
               tersebut dapat dikelompokkan berdasarkan{" "}
               <span className="text-[#2563EB] font-bold">
-                sifat-sifat tertentu, seperti bentuk sisi, jumlah rusuk, atau jumlah titik sudutnya
+                sifat-sifat tertentu, seperti bentuk sisi, banyaknya rusuk, atau banyaknya titik sudutnya
               </span>
               .
             </p>

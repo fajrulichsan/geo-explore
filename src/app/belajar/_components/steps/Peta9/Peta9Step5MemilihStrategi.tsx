@@ -19,7 +19,7 @@ export default async function Peta9Step5MemilihStrategi({ materi, peta, initialA
         <div className="inline-flex items-center gap-2 bg-[#1E3A8A] text-white rounded-full py-1.5 px-4 text-xs font-bold tracking-[0.06em] w-fit">
           SUBMATERI 1 &mdash; BANGUN RUANG SISI DATAR
         </div>
-        <h1 className="m-0 text-2xl sm:text-[32px] font-extrabold text-[#111827]">Tantangan Open-Ended</h1>
+        <h1 className="m-0 text-2xl sm:text-[32px] font-extrabold text-[#111827]">Tantangan Terbuka</h1>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

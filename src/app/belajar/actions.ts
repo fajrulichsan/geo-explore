@@ -1,5 +1,6 @@
 "use server";
 
+import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 import { supabase } from "@/lib/supabase";
 import { getSessionUserId } from "@/lib/session";
@@ -21,6 +22,11 @@ function collectAnswers(formData: FormData): Record<string, unknown> {
   }
   return answers;
 }
+
+const RANGKUMAN_RETURN: Record<string, string> = {
+  "tantangan-terbuka": "/belajar/1/9/1",
+  quiz: "/belajar/1/10/1",
+};
 
 function getNextStepUrl(materi: string, peta: string, step: string): string {
   const structure = getPetaStructure(materi);
@@ -62,6 +68,18 @@ export async function submitStepAction(formData: FormData) {
     },
     { onConflict: "user_id,materi,peta,step" }
   );
+
+  // Rangkuman (Materi 1) can be opened from a failed Tantangan Terbuka / Quiz via `?from=...`;
+  // the param is carried from the page URL (Referer) through the steps and decides where it ends.
+  if (materi === "1" && peta === "11") {
+    const referer = (await headers()).get("referer");
+    const from = referer ? new URL(referer).searchParams.get("from") : null;
+    const returnTo = from ? RANGKUMAN_RETURN[from] : undefined;
+    if (returnTo) {
+      const isLast = Number(step) >= (getPetaStructure(materi)["11"] ?? 0);
+      redirect(isLast ? returnTo : `${getNextStepUrl(materi, peta, step)}?from=${from}`);
+    }
+  }
 
   redirect(getNextStepUrl(materi, peta, step));
 }

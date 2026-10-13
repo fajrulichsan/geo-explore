@@ -39,6 +39,7 @@ export default async function BelajarStepPage(
           peta={peta}
           step={step}
           editFoto={editFoto}
+          from={typeof searchParams?.from === "string" ? searchParams.from : undefined}
           initialAnswers={initialAnswers}
         />
       ) : (

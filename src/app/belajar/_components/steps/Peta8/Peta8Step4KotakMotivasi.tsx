@@ -36,7 +36,7 @@ export default async function Peta8Step4KotakMotivasi({ materi, peta, step = "4"
             D
           </div>
           <div className="bg-white border border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-full py-2 px-5 text-sm font-bold text-[#2563EB]">
-            Bekalku untuk Quiz
+            Bekalku untuk Tantangan Terbuka
           </div>
         </div>
 
@@ -112,7 +112,7 @@ export default async function Peta8Step4KotakMotivasi({ materi, peta, step = "4"
 
       <div className="flex flex-col-reverse sm:flex-row justify-between items-center gap-4">
         <BackLink href={`/belajar/${materi}/${peta}/3`} />
-        <NextStepButton variant="green" icon="check">LANJUT KE QUIZ</NextStepButton>
+        <NextStepButton variant="green" icon="check">LANJUT KE TANTANGAN TERBUKA</NextStepButton>
       </div>
     </form>
   );

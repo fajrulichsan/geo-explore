@@ -32,7 +32,7 @@ const baris = [
   },
   {
     key: "jumlah_sisi_rusuk_titik_sudut",
-    label: "Jumlah sisi/rusuk/titik sudut",
+    label: "Banyaknya sisi/rusuk/titik sudut",
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2563EB" strokeWidth="2">
         <path d="M4 8l8-5 8 5v8l-8 5-8-5z" />

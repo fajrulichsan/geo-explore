@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { supabase } from "@/lib/supabase";
@@ -89,7 +90,7 @@ export default async function DashboardPage({
                 Modul Geometri Interaktif
               </span>
               <h1 className="text-xl sm:text-3xl md:text-5xl font-extrabold mb-2 text-white leading-tight">
-                Selamat Datang, {firstName}!
+                Ayo Lanjutkan Belajarmu, {firstName}!
               </h1>
               <p className="text-sm sm:text-lg mb-6 sm:mb-8 text-white/90 max-w-md">
                 Siap untuk menjelajahi dunia 3D? Yuk lanjutkan perjalanan belajarmu.
@@ -103,6 +104,15 @@ export default async function DashboardPage({
                   <span className="material-symbols-outlined text-sm">arrow_forward</span>
                 </Link>
               )}
+            </div>
+            <div className="relative w-48 h-32 sm:w-64 sm:h-44 md:w-80 md:h-56 flex-shrink-0">
+              <Image
+                src="/images/materi-1/maskot-ayo-lanjutkan.png"
+                alt="Maskot siswi bersemangat membawa buku"
+                fill
+                sizes="(min-width: 768px) 320px, 256px"
+                className="object-contain"
+              />
             </div>
           </div>
         </div>

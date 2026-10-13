@@ -28,9 +28,9 @@ const diamati = [
   "Susunan sisi",
   "Pasangan bidang sejajar",
   "Bentuk alas",
-  "Jumlah sisi",
-  "Jumlah rusuk",
-  "Jumlah titik sudut",
+  "Banyaknya sisi",
+  "Banyaknya rusuk",
+  "Banyaknya titik sudut",
   "Informasi tambahan",
 ];
 

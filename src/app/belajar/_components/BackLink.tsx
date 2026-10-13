@@ -1,6 +1,6 @@
 "use client";
 
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useTransition } from "react";
 
 const DEFAULT_CLASS =
@@ -8,13 +8,15 @@ const DEFAULT_CLASS =
 
 export default function BackLink({ href, className = DEFAULT_CLASS }: { href: string; className?: string }) {
   const router = useRouter();
+  const from = useSearchParams().get("from");
+  const target = from && !href.includes("?") ? `${href}?from=${from}` : href;
   const [isPending, startTransition] = useTransition();
 
   return (
     <button
       type="button"
       disabled={isPending}
-      onClick={() => startTransition(() => router.push(href))}
+      onClick={() => startTransition(() => router.push(target))}
       className={`${className} active:scale-95 disabled:opacity-60 disabled:cursor-wait transition-transform`}
     >
       {isPending ? (

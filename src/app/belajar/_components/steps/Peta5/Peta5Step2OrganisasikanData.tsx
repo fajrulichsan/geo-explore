@@ -22,9 +22,9 @@ const rows = [
   { key: "susunan_sisi", label: "Susunan sisi" },
   { key: "pasangan_sejajar", label: "Pasangan bidang sisi sejajar" },
   { key: "bentuk_alas", label: "Bentuk sisi yang dipilih sebagai alas" },
-  { key: "jumlah_sisi", label: "Jumlah sisi" },
-  { key: "jumlah_rusuk", label: "Jumlah rusuk" },
-  { key: "jumlah_titik_sudut", label: "Jumlah titik sudut" },
+  { key: "jumlah_sisi", label: "Banyaknya sisi" },
+  { key: "jumlah_rusuk", label: "Banyaknya rusuk" },
+  { key: "jumlah_titik_sudut", label: "Banyaknya titik sudut" },
 ];
 
 export default async function Peta5Step2OrganisasikanData({ materi, peta, initialAnswers }: StepComponentProps) {
