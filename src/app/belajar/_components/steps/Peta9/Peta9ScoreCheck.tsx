@@ -121,7 +121,7 @@ export default function Peta9ScoreCheck({
       <input type="hidden" name="answers.ai_score" value={score ?? ""} />
 
       {score === null ? (
-        <CheckButton pending={pending} onClick={checkScore} label="Check Score" />
+        <CheckButton pending={pending} onClick={checkScore} label="Check Your Score" />
       ) : (
         <div className="w-full flex flex-col gap-4">
           <div className="flex flex-wrap items-center gap-3 sm:justify-end">
@@ -144,7 +144,7 @@ export default function Peta9ScoreCheck({
               disabled={pending}
               className="text-sm font-semibold text-[#7C3AED] underline disabled:opacity-60"
             >
-              {pending ? "AI sedang menilai..." : "Nilai ulang jawabanku"}
+              {pending ? "Sedang menilai..." : "Nilai ulang jawabanku"}
             </button>
           </div>
 
@@ -314,7 +314,7 @@ function CheckButton({ pending, onClick, label }: { pending: boolean; onClick: (
             <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="2.4" strokeOpacity="0.25" />
             <path d="M21 12a9 9 0 00-9-9" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" />
           </svg>
-          AI sedang menilai...
+          Sedang menilai...
         </>
       ) : (
         <>

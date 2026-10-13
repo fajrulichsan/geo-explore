@@ -3,19 +3,15 @@ import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry"
 import NextStepButton from "@/app/belajar/_components/NextStepButton";
 import BackLink from "@/app/belajar/_components/BackLink";
 import StepHeader from "@/app/belajar/_components/StepHeader";
-import { getPageImage, type PageImageKey } from "@/lib/pageImages";
+import Image from "next/image";
 
-type Bangun = { key: PageImageKey; label: string };
-
-const bangun: Bangun[] = [
-  { key: "M1-P5-L1-1", label: "Kubus" },
-  { key: "M1-P5-L1-2", label: "Balok" },
-  { key: "M1-P5-L1-3", label: "Prisma Segitiga" },
-  { key: "M1-P5-L1-4", label: "Limas Segiempat" },
-  { key: "M1-P5-L1-5", label: "Limas Segitiga" },
+const bangun = [
+  { key: "kubus", label: "Kubus", src: "/images/materi-1/bangun-kubus-warna.png" },
+  { key: "balok", label: "Balok", src: "/images/materi-1/bangun-balok-warna.png" },
+  { key: "prisma_segitiga", label: "Prisma Segitiga", src: "/images/materi-1/bangun-prisma-segitiga-warna.png" },
+  { key: "limas_segiempat", label: "Limas Segiempat", src: "/images/materi-1/bangun-limas-segiempat-warna.png" },
+  { key: "limas_segitiga", label: "Limas Segitiga", src: "/images/materi-1/bangun-limas-segitiga-warna.png" },
 ];
-
-const shapeKeys = ["kubus","balok","prisma_segitiga","limas_segiempat","limas_segitiga"];
 
 const rows = [
   { key: "bentuk_sisi", label: "Bentuk sisi" },
@@ -27,10 +23,9 @@ const rows = [
   { key: "jumlah_titik_sudut", label: "Banyaknya titik sudut" },
 ];
 
-export default async function Peta5Step2OrganisasikanData({ materi, peta, initialAnswers }: StepComponentProps) {
+export default function Peta5Step2OrganisasikanData({ materi, peta, initialAnswers }: StepComponentProps) {
   const answers = initialAnswers ?? {};
   const getValue = (key: string) => (typeof answers[key] === "string" ? (answers[key] as string) : "");
-  const bangunUrls = await Promise.all(bangun.map((b) => getPageImage(b.key)));
 
   return (
     <form action={submitStepAction} className="flex flex-col gap-8">
@@ -77,11 +72,10 @@ export default async function Peta5Step2OrganisasikanData({ materi, peta, initia
             <thead>
               <tr className="bg-[#1E3A8A] text-white">
                 <th className="text-left text-sm font-bold py-3 px-4 w-[190px]">Yang Dibandingkan</th>
-                {bangun.map((b, i) => (
+                {bangun.map((b) => (
                   <th key={b.key} className="py-3 px-2 text-sm font-bold">
                     <span className="flex items-center justify-center gap-2">
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img src={bangunUrls[i]} alt="" className="w-10 h-10 object-contain bg-white rounded-md p-0.5" />
+                      <Image src={b.src} alt="" width={40} height={40} className="w-10 h-10 object-contain bg-white rounded-md p-0.5" />
                       {b.label}
                     </span>
                   </th>
@@ -92,11 +86,11 @@ export default async function Peta5Step2OrganisasikanData({ materi, peta, initia
               {rows.map((r) => (
                 <tr key={r.key} className="border-t border-[#E5E7EB]">
                   <th scope="row" className="text-left text-[13px] font-bold text-[#1E3A8A] py-2.5 px-4">{r.label}</th>
-                  {shapeKeys.map((s, i) => (
-                    <td key={s} className="py-2 px-2">
+                  {bangun.map((b, i) => (
+                    <td key={b.key} className="py-2 px-2">
                       <input
-                        name={`answers.b_${r.key}_${s}`}
-                        defaultValue={getValue(`b_${r.key}_${s}`)}
+                        name={`answers.b_${r.key}_${b.key}`}
+                        defaultValue={getValue(`b_${r.key}_${b.key}`)}
                         type="text"
                         required
                         aria-label={`${r.label} ${bangun[i].label}`}

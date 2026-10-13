@@ -9,7 +9,7 @@ const bangun = [
   { key: "M1-P9-L1-1", label: "Kubus" },
   { key: "M1-P9-L1-2", label: "Balok" },
   { key: "M1-P9-L1-3", label: "Prisma Segitiga" },
-  { key: "M1-P9-L1-4", label: "Prisma Segi Lima" },
+  { key: "M1-P9-L1-4", label: "Prisma Segilima" },
   { key: "M1-P9-L1-5", label: "Limas Segitiga" },
   { key: "M1-P9-L1-6", label: "Limas Segiempat" },
 ] as const;
