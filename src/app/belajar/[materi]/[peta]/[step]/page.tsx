@@ -1,5 +1,6 @@
 import { redirect } from "next/navigation";
 import BelajarShell from "@/app/belajar/_components/BelajarShell";
+import { StepDraftProvider } from "@/app/belajar/_components/StepDraftProvider";
 import ComingSoon from "@/app/belajar/_components/ComingSoon";
 import { getStepComponent } from "@/app/belajar/_components/stepRegistry";
 import { getSessionUserId } from "@/lib/session";
@@ -33,6 +34,7 @@ export default async function BelajarStepPage(
 
   return (
     <BelajarShell userName={user?.nama_lengkap ?? "Siswa"} materi={materi}>
+      <StepDraftProvider storageKey={/^[1-8]$/.test(materi) ? `step-draft:${userId}:${materi}:${peta}:${step}` : null}>
       {StepComponent ? (
         <StepComponent
           materi={materi}
@@ -45,6 +47,7 @@ export default async function BelajarStepPage(
       ) : (
         <ComingSoon materi={materi} peta={peta} step={step} />
       )}
+      </StepDraftProvider>
     </BelajarShell>
   );
 }

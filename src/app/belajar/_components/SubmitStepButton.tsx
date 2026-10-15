@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import { useFormStatus } from "react-dom";
+import { useStepDraft } from "./useStepDraft";
 
 function isFormValid(form: HTMLFormElement): boolean {
   if (!form.checkValidity()) return false;
@@ -23,6 +24,8 @@ export default function SubmitStepButton({
   const buttonRef = useRef<HTMLButtonElement>(null);
   const [valid, setValid] = useState(false);
   const { pending } = useFormStatus();
+
+  useStepDraft(buttonRef);
 
   useEffect(() => {
     const form = buttonRef.current?.form;
