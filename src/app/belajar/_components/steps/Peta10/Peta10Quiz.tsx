@@ -151,6 +151,7 @@ export default async function Peta10Quiz({ materi, peta, initialAnswers, editFot
         initialAnswers={tersimpan}
         rangkumanHref={`/belajar/${materi}/11/1?from=quiz`}
         urutanAwal={acak(questions.length)}
+        submateriBerikutnya={2}
       />
     </form>
   );

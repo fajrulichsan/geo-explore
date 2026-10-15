@@ -69,6 +69,26 @@ export type PageImageKey =
   | "M1-PQ-2"
   | "M1-PQ-3"
   | "M1-PQ-4"
+  | "M2-PQ-1"
+  | "M3-PQ-S2"
+  | "M3-PQ-S3"
+  | "M3-PQ-S4"
+  | "M3-PQ-S6"
+  | "M3-PQ-S7"
+  | "M3-PQ-S9"
+  | "M3-PQ-1"
+  | "M4-PQ-S1"
+  | "M4-PQ-S5"
+  | "M4-PQ-S6"
+  | "M4-PQ-S7"
+  | "M4-PQ-1"
+  | "M5-PQ-S1"
+  | "M5-PQ-S2"
+  | "M5-PQ-S4"
+  | "M5-PQ-S5"
+  | "M5-PQ-S7"
+  | "M5-PQ-S10"
+  | "M5-PQ-1"
   | "login-hero"
   | "registrasi-hero"
   | "petunjuk1-hero"
@@ -867,6 +887,26 @@ const DEFAULT_IMAGES: Record<PageImageKey, string> = {
   "M1-PQ-2": "https://placehold.co/300x300?text=M1-PQ-2",
   "M1-PQ-3": "https://placehold.co/300x300?text=M1-PQ-3",
   "M1-PQ-4": "https://placehold.co/300x300?text=M1-PQ-4",
+  "M2-PQ-1": "https://placehold.co/300x300?text=M2-PQ-1",
+  "M3-PQ-S2": "https://placehold.co/300x300?text=M3-PQ-S2",
+  "M3-PQ-S3": "https://placehold.co/300x300?text=M3-PQ-S3",
+  "M3-PQ-S4": "https://placehold.co/300x300?text=M3-PQ-S4",
+  "M3-PQ-S6": "https://placehold.co/300x300?text=M3-PQ-S6",
+  "M3-PQ-S7": "https://placehold.co/300x300?text=M3-PQ-S7",
+  "M3-PQ-S9": "https://placehold.co/300x300?text=M3-PQ-S9",
+  "M3-PQ-1": "https://placehold.co/300x300?text=M3-PQ-1",
+  "M4-PQ-S1": "https://placehold.co/300x300?text=M4-PQ-S1",
+  "M4-PQ-S5": "https://placehold.co/300x300?text=M4-PQ-S5",
+  "M4-PQ-S6": "https://placehold.co/300x300?text=M4-PQ-S6",
+  "M4-PQ-S7": "https://placehold.co/300x300?text=M4-PQ-S7",
+  "M4-PQ-1": "https://placehold.co/300x300?text=M4-PQ-1",
+  "M5-PQ-S1": "https://placehold.co/300x300?text=M5-PQ-S1",
+  "M5-PQ-S2": "https://placehold.co/300x300?text=M5-PQ-S2",
+  "M5-PQ-S4": "https://placehold.co/300x300?text=M5-PQ-S4",
+  "M5-PQ-S5": "https://placehold.co/300x300?text=M5-PQ-S5",
+  "M5-PQ-S7": "https://placehold.co/300x300?text=M5-PQ-S7",
+  "M5-PQ-S10": "https://placehold.co/300x300?text=M5-PQ-S10",
+  "M5-PQ-1": "https://placehold.co/300x300?text=M5-PQ-1",
   "login-hero": "https://is3.cloudhost.id/assets-geo/home-1.webp",
   "registrasi-hero": "https://is3.cloudhost.id/assets-geo/home-1.webp",
   "petunjuk1-hero": "https://is3.cloudhost.id/assets-geo/home-1.webp",

@@ -4,7 +4,7 @@ import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 import { supabase } from "@/lib/supabase";
 import { getSessionUserId } from "@/lib/session";
-import { getPetaStructure } from "@/lib/learningStructure";
+import { MATERI_WITH_QUIZ, getPetaStructure } from "@/lib/learningStructure";
 import { isStepUnlocked } from "@/lib/progress";
 
 /** Reads every `answers.<field>` entry a step form submitted into one JSON object. */
@@ -23,10 +23,11 @@ function collectAnswers(formData: FormData): Record<string, unknown> {
   return answers;
 }
 
-const RANGKUMAN_RETURN: Record<string, string> = {
-  "tantangan-terbuka": "/belajar/1/9/1",
-  quiz: "/belajar/1/10/1",
-};
+function getRangkumanReturn(materi: string, from: string): string | undefined {
+  if (from === "quiz") return `/belajar/${materi}/10/1`;
+  if (from === "tantangan-terbuka" && materi === "1") return "/belajar/1/9/1";
+  return undefined;
+}
 
 function getNextStepUrl(materi: string, peta: string, step: string): string {
   const structure = getPetaStructure(materi);
@@ -69,12 +70,12 @@ export async function submitStepAction(formData: FormData) {
     { onConflict: "user_id,materi,peta,step" }
   );
 
-  // Rangkuman (Materi 1) can be opened from a failed Tantangan Terbuka / Quiz via `?from=...`;
+  // Rangkuman (Materi with a Quiz) can be opened from a failed Tantangan Terbuka / Quiz via `?from=...`;
   // the param is carried from the page URL (Referer) through the steps and decides where it ends.
-  if (materi === "1" && peta === "11") {
+  if (MATERI_WITH_QUIZ.has(materi) && peta === "11") {
     const referer = (await headers()).get("referer");
     const from = referer ? new URL(referer).searchParams.get("from") : null;
-    const returnTo = from ? RANGKUMAN_RETURN[from] : undefined;
+    const returnTo = from ? getRangkumanReturn(materi, from) : undefined;
     if (returnTo) {
       const isLast = Number(step) >= (getPetaStructure(materi)["11"] ?? 0);
       redirect(isLast ? returnTo : `${getNextStepUrl(materi, peta, step)}?from=${from}`);

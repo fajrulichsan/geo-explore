@@ -233,6 +233,7 @@ import Materi2Peta5Step1BandingkanKelompokkan from "./steps/Materi2Peta5/Materi2
 import Materi2Peta5Step2HubunganKlasifikasi from "./steps/Materi2Peta5/Materi2Peta5Step2HubunganKlasifikasi";
 import Materi2Peta5Step3DugaanKelompok from "./steps/Materi2Peta5/Materi2Peta5Step3DugaanKelompok";
 import Materi2Peta5Step4RefleksiSingkat from "./steps/Materi2Peta5/Materi2Peta5Step4RefleksiSingkat";
+import Materi2Peta10Quiz from "./steps/Materi2Peta10/Materi2Peta10Quiz";
 import Materi2Peta10Step1HubunganJaring from "./steps/Materi2Peta10/Materi2Peta10Step1HubunganJaring";
 import Materi2Peta10Step2ValidTidakValid from "./steps/Materi2Peta10/Materi2Peta10Step2ValidTidakValid";
 import Materi2Peta10Step3PetaKonsepKataKunci from "./steps/Materi2Peta10/Materi2Peta10Step3PetaKonsepKataKunci";
@@ -266,6 +267,7 @@ import Materi3Peta9Step1MasalahDanStrategi from "./steps/Materi3Peta9/Materi3Pet
 import Materi3Peta9Step2BandingkanStrategi from "./steps/Materi3Peta9/Materi3Peta9Step2BandingkanStrategi";
 import Materi3Peta9Step3AlasanDanTransfer from "./steps/Materi3Peta9/Materi3Peta9Step3AlasanDanTransfer";
 import Materi3Peta9Step4RefleksiSingkat from "./steps/Materi3Peta9/Materi3Peta9Step4RefleksiSingkat";
+import Materi3Peta10Quiz from "./steps/Materi3Peta10/Materi3Peta10Quiz";
 import Materi3Peta10Step1HeroKonsepDasar from "./steps/Materi3Peta10/Materi3Peta10Step1HeroKonsepDasar";
 import Materi3Peta10Step2LuasKubusBalokPrisma from "./steps/Materi3Peta10/Materi3Peta10Step2LuasKubusBalokPrisma";
 import Materi3Peta10Step3LangkahStrategi from "./steps/Materi3Peta10/Materi3Peta10Step3LangkahStrategi";
@@ -298,6 +300,7 @@ import Materi5Peta8Step2PengalamanBelajar from "./steps/Materi5Peta8/Materi5Peta
 import Materi5Peta8Step3KeyakinanDiriku from "./steps/Materi5Peta8/Materi5Peta8Step3KeyakinanDiriku";
 import Materi5Peta8Step4CaraBerpikirku from "./steps/Materi5Peta8/Materi5Peta8Step4CaraBerpikirku";
 import Materi5Peta8Step5PesanDanTarget from "./steps/Materi5Peta8/Materi5Peta8Step5PesanDanTarget";
+import Materi4Peta10Quiz from "./steps/Materi4Peta10/Materi4Peta10Quiz";
 import Materi4Peta10Step1KonsepDasar from "./steps/Materi4Peta10/Materi4Peta10Step1KonsepDasar";
 import Materi4Peta10Step2RumusLuasPermukaan from "./steps/Materi4Peta10/Materi4Peta10Step2RumusLuasPermukaan";
 import Materi4Peta10Step3StrategiPenutup from "./steps/Materi4Peta10/Materi4Peta10Step3StrategiPenutup";
@@ -370,6 +373,7 @@ import Materi5Peta5Step3CariPola from "./steps/Materi5Peta5/Materi5Peta5Step3Car
 import Materi5Peta5Step4MenemukanStrategi from "./steps/Materi5Peta5/Materi5Peta5Step4MenemukanStrategi";
 import Materi5Peta5Step5HubunganMatematika from "./steps/Materi5Peta5/Materi5Peta5Step5HubunganMatematika";
 import Materi5Peta5Step6RefleksiSingkat from "./steps/Materi5Peta5/Materi5Peta5Step6RefleksiSingkat";
+import Materi5Peta10Quiz from "./steps/Materi5Peta10/Materi5Peta10Quiz";
 import Materi5Peta10Step1ApaYangDipelajari from "./steps/Materi5Peta10/Materi5Peta10Step1ApaYangDipelajari";
 import Materi5Peta10Step2HubunganMengapa from "./steps/Materi5Peta10/Materi5Peta10Step2HubunganMengapa";
 import Materi5Peta10Step3LangkahDanStrategi from "./steps/Materi5Peta10/Materi5Peta10Step3LangkahDanStrategi";
@@ -574,10 +578,11 @@ export const stepRegistry: Record<string, ComponentType<StepComponentProps>> = {
   "2-9-2": Materi2Peta9Step2RancangJaring,
   "2-9-3": Materi2Peta9Step3StrategiDanPola,
   "2-9-4": Materi2Peta9Step4BandingkanDanRefleksi,
-  "2-10-1": Materi2Peta10Step1HubunganJaring,
-  "2-10-2": Materi2Peta10Step2ValidTidakValid,
-  "2-10-3": Materi2Peta10Step3PetaKonsepKataKunci,
-  "2-10-4": Materi2Peta10Step4HalPentingPenutup,
+  "2-10-1": Materi2Peta10Quiz,
+  "2-11-1": Materi2Peta10Step1HubunganJaring,
+  "2-11-2": Materi2Peta10Step2ValidTidakValid,
+  "2-11-3": Materi2Peta10Step3PetaKonsepKataKunci,
+  "2-11-4": Materi2Peta10Step4HalPentingPenutup,
   "3-1-1": Materi3Peta1Step1TahukahKamu,
   "3-1-2": Materi3Peta1Step2AlurLuasPermukaan,
   "3-1-3": Materi3Peta1Step3EksplorasiDigital,
@@ -613,10 +618,11 @@ export const stepRegistry: Record<string, ComponentType<StepComponentProps>> = {
   "3-9-2": Materi3Peta9Step2BandingkanStrategi,
   "3-9-3": Materi3Peta9Step3AlasanDanTransfer,
   "3-9-4": Materi3Peta9Step4RefleksiSingkat,
-  "3-10-1": Materi3Peta10Step1HeroKonsepDasar,
-  "3-10-2": Materi3Peta10Step2LuasKubusBalokPrisma,
-  "3-10-3": Materi3Peta10Step3LangkahStrategi,
-  "3-10-4": Materi3Peta10Step4PetaKonsepPoinKunci,
+  "3-10-1": Materi3Peta10Quiz,
+  "3-11-1": Materi3Peta10Step1HeroKonsepDasar,
+  "3-11-2": Materi3Peta10Step2LuasKubusBalokPrisma,
+  "3-11-3": Materi3Peta10Step3LangkahStrategi,
+  "3-11-4": Materi3Peta10Step4PetaKonsepPoinKunci,
   "3-7-1": Materi3Peta7Step1AapaYangKamuTemukan,
   "3-7-2": Materi3Peta7Step2JaringDanRumus,
   "3-7-3": Materi3Peta7Step3KesimpulanKelompok,
@@ -887,9 +893,10 @@ export const stepRegistry: Record<string, ComponentType<StepComponentProps>> = {
   "4-5-4": Materi4Peta5Step4MenemukanStrategi,
   "4-5-5": Materi4Peta5Step5RumusSementara,
   "4-5-6": Materi4Peta5Step6RefleksiSingkat,
-  "4-10-1": Materi4Peta10Step1KonsepDasar,
-  "4-10-2": Materi4Peta10Step2RumusLuasPermukaan,
-  "4-10-3": Materi4Peta10Step3StrategiPenutup,
+  "4-10-1": Materi4Peta10Quiz,
+  "4-11-1": Materi4Peta10Step1KonsepDasar,
+  "4-11-2": Materi4Peta10Step2RumusLuasPermukaan,
+  "4-11-3": Materi4Peta10Step3StrategiPenutup,
   "5-4-1": Materi5Peta4Step1Pendahuluan,
   "5-4-2": Materi5Peta4Step2EksplorasiGeoGebra,
   "5-4-3": Materi5Peta4Step3EksplorasiAR,
@@ -908,11 +915,12 @@ export const stepRegistry: Record<string, ComponentType<StepComponentProps>> = {
   "5-8-3": Materi5Peta8Step3KeyakinanDiriku,
   "5-8-4": Materi5Peta8Step4CaraBerpikirku,
   "5-8-5": Materi5Peta8Step5PesanDanTarget,
-  "5-10-1": Materi5Peta10Step1ApaYangDipelajari,
-  "5-10-2": Materi5Peta10Step2HubunganMengapa,
-  "5-10-3": Materi5Peta10Step3LangkahDanStrategi,
-  "5-10-4": Materi5Peta10Step4PetaKonsepKataKunci,
-  "5-10-5": Materi5Peta10Step5HebatDanSelanjutnya,
+  "5-10-1": Materi5Peta10Quiz,
+  "5-11-1": Materi5Peta10Step1ApaYangDipelajari,
+  "5-11-2": Materi5Peta10Step2HubunganMengapa,
+  "5-11-3": Materi5Peta10Step3LangkahDanStrategi,
+  "5-11-4": Materi5Peta10Step4PetaKonsepKataKunci,
+  "5-11-5": Materi5Peta10Step5HebatDanSelanjutnya,
   "5-9-1": Materi5Peta9Step1MasalahOpenEnded,
   "5-9-2": Materi5Peta9Step2TampilkanStrategi,
   "5-9-3": Materi5Peta9Step3BandingkanStrategi,

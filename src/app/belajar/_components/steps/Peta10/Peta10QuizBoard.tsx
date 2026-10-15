@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, type ReactNode } from "react";
 import { acak } from "@/lib/acak";
 import NextStepButton from "@/app/belajar/_components/NextStepButton";
 
@@ -16,27 +16,27 @@ const KKM = 71;
 
 const KATEGORI = [
   {
-    min: 9,
+    min: 90,
     kategori: "Sangat Baik / Tuntas",
     color: "#16A34A",
     umpanBalik: "Hebat sekali! 🌟 Kamu sudah memahami materi dengan sangat baik. Pertahankan prestasimu!",
   },
   {
-    min: 8,
+    min: 80,
     kategori: "Baik / Tuntas",
     color: "#2563EB",
     umpanBalik:
       "Bagus! 👏 Kamu sudah memahami sebagian besar materi dan berhasil mencapai nilai minimal. Terus tingkatkan kemampuanmu!",
   },
   {
-    min: 6,
+    min: 60,
     kategori: "Cukup",
     color: "#D97706",
     umpanBalik:
       "Tetap semangat! 📚 Kamu sudah memahami beberapa bagian materi. Yuk, pelajari kembali bagian yang belum kamu pahami, lalu coba lagi!",
   },
   {
-    min: 4,
+    min: 40,
     kategori: "Perlu Bimbingan",
     color: "#EA580C",
     umpanBalik: "Jangan menyerah! 💪 Kamu sudah berusaha. Pelajari kembali materi dengan teliti agar hasilmu semakin baik!",
@@ -56,11 +56,15 @@ export default function Peta10QuizBoard({
   initialAnswers,
   rangkumanHref,
   urutanAwal,
+  submateriBerikutnya,
+  gambar,
 }: {
   questions: QuizQuestion[];
   initialAnswers: Record<string, number>;
   rangkumanHref: string;
   urutanAwal: number[];
+  submateriBerikutnya: number;
+  gambar?: Record<number, ReactNode>;
 }) {
   const [current, setCurrent] = useState(0);
   const [urutan, setUrutan] = useState<number[]>(urutanAwal);
@@ -71,7 +75,7 @@ export default function Peta10QuizBoard({
   const benarCount = questions.reduce((n, q, i) => n + (jawab[String(i)] === q.jawaban ? 1 : 0), 0);
   const skor = Math.round((benarCount / questions.length) * 100);
   const lulus = skor >= KKM;
-  const kategori = KATEGORI.find((k) => benarCount >= k.min) ?? KATEGORI[KATEGORI.length - 1];
+  const kategori = KATEGORI.find((k) => skor >= k.min) ?? KATEGORI[KATEGORI.length - 1];
   const idxSoal = urutan[current];
   const q = questions[idxSoal];
   const dijawab = jawab[String(idxSoal)];
@@ -158,6 +162,7 @@ export default function Peta10QuizBoard({
         </div>
 
         <p className="m-0 text-base font-bold text-[#111827] leading-[1.6]">{q.soal}</p>
+        {gambar?.[idxSoal]}
 
         <div className="flex flex-col gap-2.5">
           {q.pilihan.map((p, idx) => {
@@ -252,7 +257,7 @@ export default function Peta10QuizBoard({
                 Hebat! Kamu sudah mencapai nilai minimal {KKM} dan berhasil menyelesaikan Quiz dengan baik.
               </p>
               <p className="m-0 text-sm leading-[1.7] text-[#374151]">
-                Sekarang, Submateri 2 sudah terbuka dan kamu bisa melanjutkan pembelajaran.
+                Sekarang, Submateri {submateriBerikutnya} sudah terbuka dan kamu bisa melanjutkan pembelajaran.
               </p>
               <p className="m-0 text-sm leading-[1.7] text-[#374151]">
                 Jika ingin meningkatkan nilaimu, kamu juga bisa mengerjakan Quiz kembali dengan memilih tombol
@@ -260,7 +265,7 @@ export default function Peta10QuizBoard({
               </p>
               <p className="m-0 text-sm font-semibold text-[#15803D]">Tetap semangat dan terus tingkatkan kemampuanmu! 🌟</p>
               <div className="flex flex-col sm:flex-row gap-3 pt-1">
-                <NextStepButton variant="green">Lanjut ke Submateri 2</NextStepButton>
+                <NextStepButton variant="green">Lanjut ke Submateri {submateriBerikutnya}</NextStepButton>
                 <button
                   type="button"
                   onClick={ulangi}
@@ -275,7 +280,7 @@ export default function Peta10QuizBoard({
             <div className="bg-[#FFF7ED] border border-[#FED7AA] rounded-[20px] p-5 flex flex-col gap-3">
               <h4 className="m-0 text-lg font-extrabold text-[#C2410C]">📚 Yuk, Coba Lagi!</h4>
               <p className="m-0 text-sm leading-[1.7] text-[#374151]">
-                Nilai Quiz kamu belum mencapai {KKM}, sehingga kamu belum bisa melanjutkan ke Submateri 2.
+                Nilai Quiz kamu belum mencapai {KKM}, sehingga kamu belum bisa melanjutkan ke Submateri {submateriBerikutnya}.
               </p>
               <p className="m-0 text-sm leading-[1.7] text-[#374151]">
                 Jangan menyerah! Kamu bisa memilih tombol Rangkuman untuk mempelajari kembali materi yang belum
@@ -286,7 +291,7 @@ export default function Peta10QuizBoard({
                 Jika kamu sudah merasa siap, kamu juga bisa langsung memilih Ulangi Quiz.
               </p>
               <p className="m-0 text-sm leading-[1.7] text-[#374151]">
-                Setelah mencapai nilai minimal {KKM}, kamu dapat melanjutkan ke Submateri 2.
+                Setelah mencapai nilai minimal {KKM}, kamu dapat melanjutkan ke Submateri {submateriBerikutnya}.
               </p>
               <p className="m-0 text-sm font-semibold text-[#C2410C]">Tetap semangat! Kamu pasti bisa! 💪</p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">

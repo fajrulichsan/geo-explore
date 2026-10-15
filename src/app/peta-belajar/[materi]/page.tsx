@@ -6,7 +6,7 @@ import { getSessionUserId } from "@/lib/session";
 import { getMateriProgress, isMateriUnlocked } from "@/lib/progress";
 import { getMateriMeta } from "@/lib/materiMeta";
 import { getPageImages, type PageImageKey } from "@/lib/pageImages";
-import { getPetaOrder, getPetaStructure, getTotalStepsInStructure } from "@/lib/learningStructure";
+import { MATERI_WITH_QUIZ, getPetaOrder, getPetaStructure, getTotalStepsInStructure } from "@/lib/learningStructure";
 import Navbar from "@/app/_components/Navbar";
 import Footer from "@/app/_components/Footer";
 
@@ -24,7 +24,7 @@ const PETA_INFO: Record<string, { icon: string; title: string; desc: string }> =
   "11": { icon: "workspaces", title: "Rangkuman", desc: "Merangkum konsep dan hal penting yang telah dipelajari." },
 };
 
-const PETA_INFO_MATERI_1: Record<string, { icon: string; title: string; desc: string }> = {
+const PETA_INFO_WITH_QUIZ: Record<string, { icon: string; title: string; desc: string }> = {
   "9": PETA_INFO["9"],
   "10": { icon: "quiz", title: "Quiz", desc: "Mengecek pemahaman melalui soal pilihan ganda." },
   "11": PETA_INFO["11"],
@@ -67,7 +67,7 @@ export default async function PetaBelajarPage(
     const { peta, total, doneInPeta, complete } = c;
     const unlocked = completions.slice(0, i).every((prev) => prev.complete);
     const firstUnfinishedStep = Array.from({ length: total }, (_, i2) => i2 + 1).find((s) => !done.has(`${peta}-${s}`)) ?? 1;
-    const ikonNum = materi !== "1" && peta === "10" ? "11" : peta;
+    const ikonNum = !MATERI_WITH_QUIZ.has(materi) && peta === "10" ? "11" : peta;
     return {
       peta,
       ikon: images[`peta-aktivitas-ikon-${ikonNum}` as PageImageKey],
@@ -77,7 +77,7 @@ export default async function PetaBelajarPage(
       unlocked,
       active: unlocked && !complete,
       firstUnfinishedStep,
-      info: (materi === "1" ? PETA_INFO_MATERI_1[peta] : undefined) ?? PETA_INFO[peta] ?? { icon: "map", title: `Peta ${peta}`, desc: "" },
+      info: (MATERI_WITH_QUIZ.has(materi) ? PETA_INFO_WITH_QUIZ[peta] : undefined) ?? PETA_INFO[peta] ?? { icon: "map", title: `Peta ${peta}`, desc: "" },
     };
   });
 
