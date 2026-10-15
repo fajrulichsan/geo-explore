@@ -86,6 +86,26 @@ const soal: QuizSoal[] = [
     ],
     jawaban: 0,
   },
+  {
+    soal: "Sebuah limas segiempat memiliki alas berbentuk persegi panjang berukuran 8 cm × 6 cm. Dua sisi tegak yang beralas 8 cm memiliki tinggi segitiga 5 cm, sedangkan dua sisi tegak yang beralas 6 cm memiliki tinggi segitiga 7 cm. Strategi yang tepat untuk menentukan luas permukaannya adalah …",
+    pilihan: [
+      "Mengalikan luas alas dengan empat karena limas mempunyai empat sisi tegak.",
+      "Menggunakan satu tinggi sisi tegak saja untuk menghitung keempat segitiga.",
+      "Menjumlahkan luas alas, dua segitiga beralas 8 cm dan tinggi 5 cm, serta dua segitiga beralas 6 cm dan tinggi 7 cm.",
+      "Menjumlahkan keliling alas dengan keempat tinggi sisi tegak.",
+    ],
+    jawaban: 2,
+  },
+  {
+    soal: "Seorang siswa menyatakan, “jika dua limas memiliki luas alas yang sama, luas permukaannya pasti sama.” Pernyataan yang paling tepat adalah …",
+    pilihan: [
+      "Benar, karena luas permukaan hanya bergantung pada luas alas.",
+      "Tidak selalu benar, karena seluruh sisi tegaknya dapat berbeda meskipun luas alasnya sama.",
+      "Benar, karena setiap limas memiliki satu alas.",
+      "Tidak benar, karena limas tidak mempunyai sisi tegak.",
+    ],
+    jawaban: 1,
+  },
 ];
 
 export default function Materi4Peta10Quiz(props: StepComponentProps) {
