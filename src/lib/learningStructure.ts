@@ -3,7 +3,7 @@ import { stepRegistry } from "@/app/belajar/_components/stepRegistry";
 export const TOTAL_MATERI = 8;
 
 /** Materi whose peta 10 is a Quiz followed by Rangkuman at peta 11. */
-export const MATERI_WITH_QUIZ = new Set(["1", "2", "3", "4", "5"]);
+export const MATERI_WITH_QUIZ = new Set(["1", "2", "3", "4", "5", "6", "7", "8"]);
 
 /** Petas that exist only for materi that explicitly register them (no global fallback). */
 const MATERI_SPECIFIC_PETAS = new Set(["11"]);

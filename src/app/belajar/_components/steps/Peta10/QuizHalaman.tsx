@@ -12,7 +12,7 @@ type QuizHalamanProps = StepComponentProps & {
   soal: QuizSoal[];
   bannerKey: PageImageKey;
   bannerAlt: string;
-  submateriBerikutnya: number;
+  submateriBerikutnya: number | null;
 };
 
 export default async function QuizHalaman({

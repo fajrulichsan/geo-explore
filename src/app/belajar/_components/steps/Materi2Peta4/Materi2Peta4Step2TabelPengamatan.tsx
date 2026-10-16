@@ -1,6 +1,6 @@
 import { submitStepAction } from "@/app/belajar/actions";
 import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
-import SubmitStepButton from "@/app/belajar/_components/SubmitStepButton";
+import NextStepButton from "@/app/belajar/_components/NextStepButton";
 import BackLink from "@/app/belajar/_components/BackLink";
 import StepHeader from "@/app/belajar/_components/StepHeader";
 
@@ -58,9 +58,9 @@ export default async function Materi2Peta4Step2TabelPengamatan({
           kemudian isilah tabel berikut berdasarkan hasil pengamatanmu.
         </p>
 
-        <div className="hidden md:block overflow-hidden rounded-[20px] border border-[#E5E7EB] bg-white shadow-[0_1px_2px_rgba(0,0,0,0.04)]">
-          <table className="w-full border-collapse">
-            <thead>
+        <div className="md:overflow-hidden md:rounded-[20px] md:border md:border-[#E5E7EB] md:bg-white md:shadow-[0_1px_2px_rgba(0,0,0,0.04)]">
+          <table className="block md:table w-full border-collapse">
+            <thead className="hidden md:table-header-group">
               <tr className="bg-[#EFF4FF]">
                 <th className="text-left text-xs font-bold text-[#1D4ED8] p-4 border-b border-[#E5E7EB] w-[22%]">
                   Aspek yang Diamati
@@ -72,12 +72,16 @@ export default async function Materi2Peta4Step2TabelPengamatan({
                 ))}
               </tr>
             </thead>
-            <tbody>
+            <tbody className="flex flex-col gap-4 md:table-row-group">
               {aspek.map((a) => (
-                <tr key={a.key} className="border-b border-[#F3F4F6] last:border-0">
-                  <td className="p-3 text-sm font-semibold text-[#111827] align-middle">{a.label}</td>
+                <tr
+                  key={a.key}
+                  className="flex flex-col gap-3 bg-white border border-[#E5E7EB] rounded-[20px] p-4 shadow-[0_1px_2px_rgba(0,0,0,0.04)] md:table-row md:rounded-none md:border-0 md:border-b md:border-[#F3F4F6] md:p-0 md:shadow-none md:last:border-b-0"
+                >
+                  <td className="text-sm font-bold md:font-semibold text-[#111827] md:p-3 md:align-middle">{a.label}</td>
                   {kolom.map((k) => (
-                    <td key={k.key} className="p-3 align-middle">
+                    <td key={k.key} className="flex flex-col gap-1 md:table-cell md:p-3 md:align-middle">
+                      <span className="text-xs font-semibold text-[#1D4ED8] md:hidden">{k.label}</span>
                       <input
                         type="text"
                         name={`answers.${a.key}_${k.key}`}
@@ -93,39 +97,11 @@ export default async function Materi2Peta4Step2TabelPengamatan({
             </tbody>
           </table>
         </div>
-
-        <div className="md:hidden flex flex-col gap-4">
-          {aspek.map((a) => (
-            <div key={a.key} className="bg-white border border-[#E5E7EB] rounded-[20px] p-4 shadow-[0_1px_2px_rgba(0,0,0,0.04)] flex flex-col gap-3">
-              <p className="m-0 text-sm font-bold text-[#111827]">{a.label}</p>
-              {kolom.map((k) => (
-                <label key={k.key} className="flex flex-col gap-1">
-                  <span className="text-xs font-semibold text-[#1D4ED8]">{k.label}</span>
-                  <input
-                    type="text"
-                    name={`answers.${a.key}_${k.key}`}
-                    defaultValue={getValue(`${a.key}_${k.key}`)}
-                    required
-                    className={inputClass}
-                  />
-                </label>
-              ))}
-            </div>
-          ))}
-        </div>
       </div>
 
-      <div className="flex justify-between items-center">
-        <BackLink
-          href={`/belajar/${materi}/${peta}/1`}
-          className="flex items-center gap-2 bg-transparent text-[#6B7280] border-none rounded-full py-3.5 px-7 text-sm font-semibold cursor-pointer hover:text-[#374151]"
-        />
-        <SubmitStepButton className="flex items-center gap-2 bg-[#2563EB] text-white border-none rounded-full py-3.5 px-7 text-sm font-bold font-inherit shadow-[0_4px_10px_rgba(37,99,235,0.3)] cursor-pointer">
-          LANJUTKAN
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.4">
-            <path d="M5 12h14M13 5l7 7-7 7" />
-          </svg>
-        </SubmitStepButton>
+      <div className="flex flex-col-reverse sm:flex-row justify-between items-center gap-4">
+        <BackLink href={`/belajar/${materi}/${peta}/1`} />
+        <NextStepButton />
       </div>
     </form>
   );

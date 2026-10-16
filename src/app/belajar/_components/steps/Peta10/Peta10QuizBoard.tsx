@@ -63,7 +63,7 @@ export default function Peta10QuizBoard({
   initialAnswers: Record<string, number>;
   rangkumanHref: string;
   urutanAwal: number[];
-  submateriBerikutnya: number;
+  submateriBerikutnya: number | null;
   gambar?: Record<number, ReactNode>;
 }) {
   const [current, setCurrent] = useState(0);
@@ -71,6 +71,7 @@ export default function Peta10QuizBoard({
   const [jawab, setJawab] = useState<Record<string, number>>(initialAnswers);
   const [selesai, setSelesai] = useState(Object.keys(initialAnswers).length === questions.length);
 
+  const tujuan = submateriBerikutnya === null ? "menyelesaikan seluruh pembelajaran" : `melanjutkan ke Submateri ${submateriBerikutnya}`;
   const answeredCount = Object.keys(jawab).length;
   const benarCount = questions.reduce((n, q, i) => n + (jawab[String(i)] === q.jawaban ? 1 : 0), 0);
   const skor = Math.round((benarCount / questions.length) * 100);
@@ -257,7 +258,9 @@ export default function Peta10QuizBoard({
                 Hebat! Kamu sudah mencapai nilai minimal {KKM} dan berhasil menyelesaikan Quiz dengan baik.
               </p>
               <p className="m-0 text-sm leading-[1.7] text-[#374151]">
-                Sekarang, Submateri {submateriBerikutnya} sudah terbuka dan kamu bisa melanjutkan pembelajaran.
+                {submateriBerikutnya === null
+                  ? "Selamat, kamu sudah sampai di akhir seluruh pembelajaran!"
+                  : `Sekarang, Submateri ${submateriBerikutnya} sudah terbuka dan kamu bisa melanjutkan pembelajaran.`}
               </p>
               <p className="m-0 text-sm leading-[1.7] text-[#374151]">
                 Jika ingin meningkatkan nilaimu, kamu juga bisa mengerjakan Quiz kembali dengan memilih tombol
@@ -265,7 +268,7 @@ export default function Peta10QuizBoard({
               </p>
               <p className="m-0 text-sm font-semibold text-[#15803D]">Tetap semangat dan terus tingkatkan kemampuanmu! 🌟</p>
               <div className="flex flex-col sm:flex-row gap-3 pt-1">
-                <NextStepButton variant="green">Lanjut ke Submateri {submateriBerikutnya}</NextStepButton>
+                <NextStepButton variant="green">{submateriBerikutnya === null ? "Selesaikan Quiz" : `Lanjut ke Submateri ${submateriBerikutnya}`}</NextStepButton>
                 <button
                   type="button"
                   onClick={ulangi}
@@ -280,7 +283,7 @@ export default function Peta10QuizBoard({
             <div className="bg-[#FFF7ED] border border-[#FED7AA] rounded-[20px] p-5 flex flex-col gap-3">
               <h4 className="m-0 text-lg font-extrabold text-[#C2410C]">📚 Yuk, Coba Lagi!</h4>
               <p className="m-0 text-sm leading-[1.7] text-[#374151]">
-                Nilai Quiz kamu belum mencapai {KKM}, sehingga kamu belum bisa melanjutkan ke Submateri {submateriBerikutnya}.
+                Nilai Quiz kamu belum mencapai {KKM}, sehingga kamu belum bisa {tujuan}.
               </p>
               <p className="m-0 text-sm leading-[1.7] text-[#374151]">
                 Jangan menyerah! Kamu bisa memilih tombol Rangkuman untuk mempelajari kembali materi yang belum
@@ -291,7 +294,7 @@ export default function Peta10QuizBoard({
                 Jika kamu sudah merasa siap, kamu juga bisa langsung memilih Ulangi Quiz.
               </p>
               <p className="m-0 text-sm leading-[1.7] text-[#374151]">
-                Setelah mencapai nilai minimal {KKM}, kamu dapat melanjutkan ke Submateri {submateriBerikutnya}.
+                Setelah mencapai nilai minimal {KKM}, kamu dapat {tujuan}.
               </p>
               <p className="m-0 text-sm font-semibold text-[#C2410C]">Tetap semangat! Kamu pasti bisa! 💪</p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">

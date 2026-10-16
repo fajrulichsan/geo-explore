@@ -88,6 +88,22 @@ export type PageImageKey =
   | "M5-PQ-S5"
   | "M5-PQ-S7"
   | "M5-PQ-S10"
+  | "M6-PQ-S1"
+  | "M6-PQ-S4"
+  | "M6-PQ-S6"
+  | "M6-PQ-S7"
+  | "M6-PQ-S9"
+  | "M6-PQ-1"
+  | "M7-PQ-S2"
+  | "M7-PQ-S4"
+  | "M7-PQ-S8"
+  | "M7-PQ-S10"
+  | "M7-PQ-1"
+  | "M8-PQ-S2"
+  | "M8-PQ-S5"
+  | "M8-PQ-S7"
+  | "M8-PQ-S10"
+  | "M8-PQ-1"
   | "M5-PQ-1"
   | "login-hero"
   | "registrasi-hero"
@@ -906,6 +922,22 @@ const DEFAULT_IMAGES: Record<PageImageKey, string> = {
   "M5-PQ-S5": "https://placehold.co/300x300?text=M5-PQ-S5",
   "M5-PQ-S7": "https://placehold.co/300x300?text=M5-PQ-S7",
   "M5-PQ-S10": "https://placehold.co/300x300?text=M5-PQ-S10",
+  "M6-PQ-S1": "https://placehold.co/300x300?text=M6-PQ-S1",
+  "M6-PQ-S4": "https://placehold.co/300x300?text=M6-PQ-S4",
+  "M6-PQ-S6": "https://placehold.co/300x300?text=M6-PQ-S6",
+  "M6-PQ-S7": "https://placehold.co/300x300?text=M6-PQ-S7",
+  "M6-PQ-S9": "https://placehold.co/300x300?text=M6-PQ-S9",
+  "M6-PQ-1": "https://placehold.co/300x300?text=M6-PQ-1",
+  "M7-PQ-S2": "https://placehold.co/300x300?text=M7-PQ-S2",
+  "M7-PQ-S4": "https://placehold.co/300x300?text=M7-PQ-S4",
+  "M7-PQ-S8": "https://placehold.co/300x300?text=M7-PQ-S8",
+  "M7-PQ-S10": "https://placehold.co/300x300?text=M7-PQ-S10",
+  "M7-PQ-1": "https://placehold.co/300x300?text=M7-PQ-1",
+  "M8-PQ-S2": "https://placehold.co/300x300?text=M8-PQ-S2",
+  "M8-PQ-S5": "https://placehold.co/300x300?text=M8-PQ-S5",
+  "M8-PQ-S7": "https://placehold.co/300x300?text=M8-PQ-S7",
+  "M8-PQ-S10": "https://placehold.co/300x300?text=M8-PQ-S10",
+  "M8-PQ-1": "https://placehold.co/300x300?text=M8-PQ-1",
   "M5-PQ-1": "https://placehold.co/300x300?text=M5-PQ-1",
   "login-hero": "https://is3.cloudhost.id/assets-geo/home-1.webp",
   "registrasi-hero": "https://is3.cloudhost.id/assets-geo/home-1.webp",

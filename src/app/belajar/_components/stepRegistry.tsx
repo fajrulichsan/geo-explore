@@ -39,6 +39,7 @@ import Materi6Peta7Step5RefleksiEvaluasi from "./steps/Materi6Peta7/Materi6Peta7
 import Materi6Peta7Step6UjiPemahaman from "./steps/Materi6Peta7/Materi6Peta7Step6UjiPemahaman";
 import Materi6Peta8Step1PengantarPemahamanStrategi from "./steps/Materi6Peta8/Materi6Peta8Step1PengantarPemahamanStrategi";
 import Materi6Peta8Step2KeyakinanTarget from "./steps/Materi6Peta8/Materi6Peta8Step2KeyakinanTarget";
+import Materi6Peta10Quiz from "./steps/Materi6Peta10/Materi6Peta10Quiz";
 import Materi6Peta10Step1PengantarKonsep from "./steps/Materi6Peta10/Materi6Peta10Step1PengantarKonsep";
 import Materi6Peta10Step2RingkasanRumus from "./steps/Materi6Peta10/Materi6Peta10Step2RingkasanRumus";
 import Materi6Peta10Step3RumusOpenEnded from "./steps/Materi6Peta10/Materi6Peta10Step3RumusOpenEnded";
@@ -100,6 +101,7 @@ import Materi7Peta8Step1RefleksiPemahaman from "./steps/Materi7Peta8/Materi7Peta
 import Materi7Peta8Step2RefleksiStrategi from "./steps/Materi7Peta8/Materi7Peta8Step2RefleksiStrategi";
 import Materi7Peta8Step3RefleksiKeyakinan from "./steps/Materi7Peta8/Materi7Peta8Step3RefleksiKeyakinan";
 import Materi7Peta8Step4TargetBelajar from "./steps/Materi7Peta8/Materi7Peta8Step4TargetBelajar";
+import Materi7Peta10Quiz from "./steps/Materi7Peta10/Materi7Peta10Quiz";
 import Materi7Peta10Step1RangkumanHalaman1 from "./steps/Materi7Peta10/Materi7Peta10Step1RangkumanHalaman1";
 import Materi7Peta10Step2RangkumanHalaman2 from "./steps/Materi7Peta10/Materi7Peta10Step2RangkumanHalaman2";
 import Materi6Peta4Step1PetunjukGeoGebra from "./steps/Materi6Peta4/Materi6Peta4Step1PetunjukGeoGebra";
@@ -407,6 +409,7 @@ import Materi8Peta6Step3BandingkanKelompokLain from "@/app/belajar/_components/s
 import Materi8Peta6Step4UjiHubunganFaktorSkalaVolume from "@/app/belajar/_components/steps/Materi8Peta6/Materi8Peta6Step4UjiHubunganFaktorSkalaVolume";
 import Materi8Peta6Step5JelaskanAlasanMatematis from "@/app/belajar/_components/steps/Materi8Peta6/Materi8Peta6Step5JelaskanAlasanMatematis";
 import Materi8Peta6Step6PerbaikiDugaan from "@/app/belajar/_components/steps/Materi8Peta6/Materi8Peta6Step6PerbaikiDugaan";
+import Materi8Peta10Quiz from "./steps/Materi8Peta10/Materi8Peta10Quiz";
 import Materi8Peta10Step1ApaYangTelahKamuPelajari from "@/app/belajar/_components/steps/Materi8Peta10/Materi8Peta10Step1ApaYangTelahKamuPelajari";
 import Materi8Peta10Step2KonsepDasarDanHubungan from "@/app/belajar/_components/steps/Materi8Peta10/Materi8Peta10Step2KonsepDasarDanHubungan";
 import Materi8Peta10Step3MengapaDemikian from "@/app/belajar/_components/steps/Materi8Peta10/Materi8Peta10Step3MengapaDemikian";
@@ -692,11 +695,12 @@ export const stepRegistry: Record<string, ComponentType<StepComponentProps>> = {
   "6-7-6": Materi6Peta7Step6UjiPemahaman,
   "6-8-1": Materi6Peta8Step1PengantarPemahamanStrategi,
   "6-8-2": Materi6Peta8Step2KeyakinanTarget,
-  "6-10-1": Materi6Peta10Step1PengantarKonsep,
-  "6-10-2": Materi6Peta10Step2RingkasanRumus,
-  "6-10-3": Materi6Peta10Step3RumusOpenEnded,
-  "6-10-4": Materi6Peta10Step4KataKunci,
-  "6-10-5": Materi6Peta10Step5GeneralisasiPesanAkhir,
+  "6-10-1": Materi6Peta10Quiz,
+  "6-11-1": Materi6Peta10Step1PengantarKonsep,
+  "6-11-2": Materi6Peta10Step2RingkasanRumus,
+  "6-11-3": Materi6Peta10Step3RumusOpenEnded,
+  "6-11-4": Materi6Peta10Step4KataKunci,
+  "6-11-5": Materi6Peta10Step5GeneralisasiPesanAkhir,
   "7-1-1": Materi7Peta1Step1Pendahuluan,
   "7-1-2": Materi7Peta1Step2TujuanMedia,
   "7-1-3": Materi7Peta1Step3BuatDugaan,
@@ -734,13 +738,14 @@ export const stepRegistry: Record<string, ComponentType<StepComponentProps>> = {
   "8-6-5": Materi8Peta6Step5JelaskanAlasanMatematis,
   "8-6-6": Materi8Peta6Step6PerbaikiDugaan,
   "8-6-7": Materi8Peta6Step7RefleksiSingkat,
-  "8-10-1": Materi8Peta10Step1ApaYangTelahKamuPelajari,
-  "8-10-2": Materi8Peta10Step2KonsepDasarDanHubungan,
-  "8-10-3": Materi8Peta10Step3MengapaDemikian,
-  "8-10-4": Materi8Peta10Step4LangkahMenyelesaikanMasalah,
-  "8-10-5": Materi8Peta10Step5StrategiPenyelesaian,
-  "8-10-6": Materi8Peta10Step6PetaKonsepDanPoinPenting,
-  "8-10-7": Materi8Peta10Step7KataKunciDanPenutup,
+  "8-10-1": Materi8Peta10Quiz,
+  "8-11-1": Materi8Peta10Step1ApaYangTelahKamuPelajari,
+  "8-11-2": Materi8Peta10Step2KonsepDasarDanHubungan,
+  "8-11-3": Materi8Peta10Step3MengapaDemikian,
+  "8-11-4": Materi8Peta10Step4LangkahMenyelesaikanMasalah,
+  "8-11-5": Materi8Peta10Step5StrategiPenyelesaian,
+  "8-11-6": Materi8Peta10Step6PetaKonsepDanPoinPenting,
+  "8-11-7": Materi8Peta10Step7KataKunciDanPenutup,
   "8-7-1": Materi8Peta7Step1Pengantar,
   "8-7-2": Materi8Peta7Step2ApaYangKamuTemukan,
   "8-7-3": Materi8Peta7Step3FaktorPerubahanVolume,
@@ -823,8 +828,9 @@ export const stepRegistry: Record<string, ComponentType<StepComponentProps>> = {
   "7-8-2": Materi7Peta8Step2RefleksiStrategi,
   "7-8-3": Materi7Peta8Step3RefleksiKeyakinan,
   "7-8-4": Materi7Peta8Step4TargetBelajar,
-  "7-10-1": Materi7Peta10Step1RangkumanHalaman1,
-  "7-10-2": Materi7Peta10Step2RangkumanHalaman2,
+  "7-10-1": Materi7Peta10Quiz,
+  "7-11-1": Materi7Peta10Step1RangkumanHalaman1,
+  "7-11-2": Materi7Peta10Step2RangkumanHalaman2,
   "6-4-1": Materi6Peta4Step1PetunjukGeoGebra,
   "6-4-2": Materi6Peta4Step2LangkahEksplorasi,
   "6-4-3": Materi6Peta4Step3ContohGeoGebra,
