@@ -5,24 +5,24 @@ import BackLink from "@/app/belajar/_components/BackLink";
 import StepHeader from "@/app/belajar/_components/StepHeader";
 
 const pertanyaan = [
-  { key: "persamaan", text: "Apa persamaan jaring-jaring yang berhasil dilipat menjadi bangun ruang?" },
-  { key: "perbedaan", text: "Apa perbedaan jaring-jaring yang gagal dilipat?" },
+  { key: "persamaan", text: "Apa persamaan yang kalian temukan pada susunan bidang datar yang berhasil membentuk bangun ruang?" },
+  { key: "perbedaan", text: "Apa perbedaan antara susunan bidang datar yang berhasil dan yang tidak berhasil membentuk bangun ruang?" },
   {
     key: "penentu",
-    text: "Menurutmu, bagian atau hubungan apa yang paling menentukan apakah suatu susunan bidang datar dapat menjadi jaring-jaring yang valid?",
+    text: "Menurut kelompokmu, apa yang membuat suatu susunan bidang datar dapat membentuk jaring-jaring yang valid?",
   },
   {
     key: "jumlah_sisi",
-    text: "Apakah semua jaring-jaring dengan jumlah sisi yang sama pasti dapat dilipat? Jelaskan alasanmu.",
+    text: "Apakah susunan bidang datar dengan jumlah dan bentuk sisi yang sama selalu dapat membentuk bangun ruang yang sama? Jelaskan alasanmu.",
   },
 ];
 
 const dasar = [
-  { key: "valid", label: "Jaring-jaring valid" },
+  { key: "valid", label: "Susunan yang valid sebagai jaring-jaring" },
   { key: "tidak_valid", label: "Susunan yang tidak valid sebagai jaring-jaring" },
-  { key: "lebih_dari_satu", label: "Memiliki lebih dari satu alternatif jaring-jaring" },
-  { key: "satu_alternatif", label: "Memiliki satu alternatif jaring-jaring" },
-  { key: "cara_lain", label: "Cara lain menurut kelompok" },
+  { key: "lebih_dari_satu", label: "Bangun ruang yang ditemukan memiliki lebih dari satu alternatif jaring-jaring" },
+  { key: "satu_alternatif", label: "Bangun ruang yang baru ditemukan memiliki satu alternatif jaring-jaring" },
+  { key: "cara_lain", label: "Pengelompokan lain menurut kelompokmu" },
 ];
 
 const textareaClass =
@@ -66,7 +66,7 @@ export default async function Materi2Peta5Step2HubunganKlasifikasi({
         </div>
         <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-6 shadow-[0_1px_2px_rgba(0,0,0,0.04)] flex flex-col gap-5">
           <p className="m-0 text-sm text-[#4B5563]">
-            Jawablah pertanyaan berikut berdasarkan hasil eksplorasi dan informasi yang telah kalian kumpulkan.
+            Jawablah pertanyaan berikut berdasarkan hasil eksplorasi dan informasi yang telah kalian kelompokkan.
           </p>
           <div className="flex flex-col">
             {pertanyaan.map((q, i) => (
@@ -108,7 +108,7 @@ export default async function Materi2Peta5Step2HubunganKlasifikasi({
         </div>
         <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-6 shadow-[0_1px_2px_rgba(0,0,0,0.04)] flex flex-col gap-4">
           <p className="m-0 text-sm text-[#4B5563]">
-            Lengkapilah tabel klasifikasi awal berdasarkan hasil pengolahan informasimu.
+            Berdasarkan hasil pengolahan informasi, kelompokkan temuanmu sesuai dengan kategori berikut. Tuliskan contoh dan alasan yang mendukung pengelompokan tersebut.
           </p>
           <div className="flex flex-col gap-3">
             {dasar.map((d) => (
@@ -117,7 +117,7 @@ export default async function Materi2Peta5Step2HubunganKlasifikasi({
                 <textarea
                   name={`answers.klasifikasi_${d.key}`}
                   defaultValue={getValue(`klasifikasi_${d.key}`)}
-                  placeholder="Contoh (tuliskan/tempel gambar)..."
+                  placeholder="Tuliskan contoh dan alasannya..."
                   required
                   rows={2}
                   className={textareaClass}

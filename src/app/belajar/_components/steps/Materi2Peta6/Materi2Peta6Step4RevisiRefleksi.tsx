@@ -1,3 +1,4 @@
+import FileSubmission from "@/components/FileSubmission";
 import { submitStepAction } from "@/app/belajar/actions";
 import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
 import NextStepButton from "@/app/belajar/_components/NextStepButton";
@@ -29,7 +30,7 @@ export default async function Materi2Peta6Step4RevisiRefleksi({
 }: StepComponentProps) {
   const answers = initialAnswers ?? {};
   const getValue = (key: string) => (typeof answers[key] === "string" ? (answers[key] as string) : "");
-  const mascot = await getPageImage("M2-P6-L4-1");
+  const [mascot, ingatImage] = await Promise.all([getPageImage("M2-P6-L4-1"), getPageImage("M2-P6-L4-2")]);
 
   return (
     <form action={submitStepAction} className="flex flex-col gap-8">
@@ -127,7 +128,21 @@ export default async function Materi2Peta6Step4RevisiRefleksi({
       </div>
 
       <div className="bg-[#FEF9E7] border border-[#F5E3A0] rounded-2xl p-5 flex flex-col gap-3">
-        <p className="m-0 text-base font-extrabold text-[#92400E]">Kotak Ingat</p>
+        <div className="flex items-center justify-between gap-3">
+          <p className="m-0 text-base font-extrabold text-[#92400E]">Kotak Ingat</p>
+          <EditablePageImage
+            imageKey="M2-P6-L4-2"
+            materi={materi}
+            peta={peta}
+            step={step}
+            urutan="2"
+            src={ingatImage}
+            alt="Papan catatan dengan tanda centang dan pensil"
+            editable={editFoto}
+            imageClassName="object-contain"
+            containerClassName="relative w-16 h-16 flex-shrink-0"
+          />
+        </div>
         <ul className="m-0 p-0 list-none flex flex-col gap-2">
           {kotakIngat.map((item) => (
             <li key={item} className="flex items-start gap-2 text-xs leading-[1.5] text-[#92400E]">
@@ -163,9 +178,15 @@ export default async function Materi2Peta6Step4RevisiRefleksi({
         </div>
       </div>
 
+      <FileSubmission
+        materi={materi}
+        peta={peta}
+        defaultValue={typeof initialAnswers?.file_hasil_kerja === "string" ? initialAnswers.file_hasil_kerja : undefined}
+      />
+
       <div className="flex flex-col-reverse sm:flex-row justify-between items-center gap-4">
         <BackLink href={`/belajar/${materi}/${peta}/3`} />
-        <NextStepButton variant="green" icon="check">Selesai</NextStepButton>
+        <NextStepButton variant="green" icon="check">Lanjutkan ke Tahap Ayo Menyimpulkan</NextStepButton>
       </div>
     </form>
   );

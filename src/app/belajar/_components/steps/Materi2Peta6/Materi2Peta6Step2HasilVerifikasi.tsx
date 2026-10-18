@@ -40,8 +40,9 @@ export default async function Materi2Peta6Step2HasilVerifikasi({
             <h2 className="m-0 text-lg font-bold text-[#111827]">Hasil Verifikasi Dugaan Kelompok</h2>
           </div>
           <p className="m-0 text-sm text-[#4B5563]">
-            Tuliskan hasil verifikasimu terhadap setiap dugaan kelompok yang telah kalian buat pada
-            tahap sebelumnya.
+            Tuliskan dugaan yang telah dibuat kelompokmu pada Tahap 4 (Ayo Mengolah Informasi). Periksa kembali
+            dugaan tersebut menggunakan GeoGebra 3D atau AR, kemudian tentukan hasil verifikasinya dan jelaskan alasan
+            berdasarkan bukti yang kalian temukan. Minimal isi 2 dugaan kelompok.
           </p>
         </div>
 
@@ -50,12 +51,12 @@ export default async function Materi2Peta6Step2HasilVerifikasi({
             <li key={n} className="rounded-2xl border border-[#DBEAFE] bg-[#F8FAFF] p-4 flex flex-col gap-3">
               <div className="flex items-center gap-2.5">
                 <span className="w-7 h-7 rounded-full bg-[#1E3A8A] text-white flex items-center justify-center text-xs font-bold flex-shrink-0">{n}</span>
-                <span className="text-sm font-bold text-[#1E3A8A]">Dugaan Kelompok</span>
+                <span className="text-sm font-bold text-[#1E3A8A]">Dugaan Kelompok {n}</span>
               </div>
               <textarea
                 name={`answers.dugaan_${n}`}
                 defaultValue={getValue(`dugaan_${n}`)}
-                required
+                required={n <= 2}
                 rows={2}
                 placeholder="Tuliskan dugaan kelompokmu"
                 className="w-full rounded-lg border border-[#E5E7EB] bg-white px-3 py-2 text-sm text-[#374151] placeholder:text-[#9CA3AF] focus:border-[#2563EB] focus:outline-none transition-colors resize-y"
@@ -69,7 +70,7 @@ export default async function Materi2Peta6Step2HasilVerifikasi({
                       name={`answers.hasil_${n}`}
                       value={opt.value}
                       defaultChecked={getValue(`hasil_${n}`) === opt.value}
-                      required
+                      required={n <= 2}
                       className="peer sr-only"
                     />
                     <span className="inline-block rounded-full border border-[#D1D5DB] bg-white px-3.5 py-1.5 text-xs font-semibold text-[#4B5563] peer-checked:bg-[#2563EB] peer-checked:text-white peer-checked:border-[#2563EB] peer-focus-visible:ring-2 peer-focus-visible:ring-[#2563EB]">
@@ -81,7 +82,7 @@ export default async function Materi2Peta6Step2HasilVerifikasi({
               <textarea
                 name={`answers.alasan_${n}`}
                 defaultValue={getValue(`alasan_${n}`)}
-                required
+                required={n <= 2}
                 rows={2}
                 placeholder="Alasan"
                 className="w-full rounded-lg border border-[#E5E7EB] bg-white px-3 py-2 text-sm text-[#374151] placeholder:text-[#9CA3AF] focus:border-[#2563EB] focus:outline-none transition-colors resize-y"

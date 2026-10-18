@@ -1,6 +1,7 @@
 import { submitStepAction } from "@/app/belajar/actions";
 import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
 import NextStepButton from "@/app/belajar/_components/NextStepButton";
+import QrLink from "@/app/belajar/_components/QrLink";
 import StepHeader from "@/app/belajar/_components/StepHeader";
 import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
 import { getPageImage } from "@/lib/pageImages";
@@ -31,9 +32,9 @@ export default async function Materi2Peta4Step1Eksplorasi({
   const [mascotImage, geogebraImage, qrGeogebra, arImage, qrAr] = await Promise.all([
     getPageImage("M2-P4-L1-1"),
     getPageImage("M2-P4-L1-2"),
-    getPageImage("M2-P4-L1-3"),
+    getPageImage("qr-geogebra"),
     getPageImage("M2-P4-L1-4"),
-    getPageImage("M2-P4-L1-5"),
+    getPageImage("qr-ar"),
   ]);
 
   return (
@@ -115,20 +116,7 @@ export default async function Materi2Peta4Step1Eksplorasi({
               natural
               containerClassName="relative flex-1 min-w-0"
             />
-            <div className="flex flex-col items-center gap-1 flex-shrink-0">
-              <EditablePageImage
-                imageKey="M2-P4-L1-3"
-                materi={materi}
-                peta={peta}
-                step={step}
-                urutan="3"
-                src={qrGeogebra}
-                alt="QR code menuju GeoGebra 3D"
-                editable={editFoto}
-                imageClassName="object-contain"
-                containerClassName="relative w-24 h-24 sm:w-28 sm:h-28 rounded-xl overflow-hidden bg-white"
-              />
-            </div>
+            <QrLink href="/geogebra" src={qrGeogebra} alt="QR code" label="Scan atau klik: GeoGebra 3D" />
           </div>
           <div className="flex flex-col gap-2">
             <span className="text-xs font-bold text-[#111827]">Langkah Eksplorasi</span>
@@ -169,20 +157,7 @@ export default async function Materi2Peta4Step1Eksplorasi({
               natural
               containerClassName="relative flex-1 min-w-0"
             />
-            <div className="flex flex-col items-center gap-1 flex-shrink-0">
-              <EditablePageImage
-                imageKey="M2-P4-L1-5"
-                materi={materi}
-                peta={peta}
-                step={step}
-                urutan="5"
-                src={qrAr}
-                alt="QR code menuju pengalaman AR"
-                editable={editFoto}
-                imageClassName="object-contain"
-                containerClassName="relative w-24 h-24 sm:w-28 sm:h-28 rounded-xl overflow-hidden bg-white"
-              />
-            </div>
+            <QrLink href="https://ar.geo-explore.my.id" src={qrAr} alt="QR code" label="Scan atau klik: AR" />
           </div>
           <div className="flex flex-col gap-2">
             <span className="text-xs font-bold text-[#111827]">Langkah Eksplorasi</span>

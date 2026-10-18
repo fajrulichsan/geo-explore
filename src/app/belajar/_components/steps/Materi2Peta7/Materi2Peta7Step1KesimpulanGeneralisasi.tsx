@@ -20,19 +20,6 @@ const generalisasi = [
   },
 ];
 
-const validCells: [number, number][] = [[1, 0], [0, 1], [1, 1], [2, 1], [1, 2], [1, 3]];
-const invalidCells: [number, number][] = [[0, 0], [1, 0], [0, 1], [1, 1], [1, 2], [1, 3]];
-
-function NetCross({ fill, stroke, cells }: { fill: string; stroke: string; cells: [number, number][] }) {
-  return (
-    <svg width="56" height="72" viewBox="0 0 60 80" aria-hidden="true">
-      {cells.map(([x, y]) => (
-        <rect key={`${x}-${y}`} x={x * 20} y={y * 20} width="20" height="20" fill={fill} stroke={stroke} strokeWidth="1.5" />
-      ))}
-    </svg>
-  );
-}
-
 export default async function Materi2Peta7Step1KesimpulanGeneralisasi({
   materi,
   peta,
@@ -42,7 +29,11 @@ export default async function Materi2Peta7Step1KesimpulanGeneralisasi({
 }: StepComponentProps) {
   const answers = initialAnswers ?? {};
   const getValue = (key: string) => (typeof answers[key] === "string" ? (answers[key] as string) : "");
-  const mascotImage = await getPageImage("M2-P7-L1-1");
+  const [mascotImage, jaringHijau, jaringOranye] = await Promise.all([
+    getPageImage("M2-P7-L1-1"),
+    getPageImage("M2-P7-L1-2"),
+    getPageImage("M2-P7-L1-3"),
+  ]);
 
   return (
     <form action={submitStepAction} className="flex flex-col gap-8">
@@ -120,13 +111,37 @@ export default async function Materi2Peta7Step1KesimpulanGeneralisasi({
             <div className="w-9 h-9 rounded-full bg-[#16A34A] text-white flex items-center justify-center font-bold text-sm flex-shrink-0">B</div>
             <h2 className="m-0 text-lg font-bold text-[#166534]">Generalisasi</h2>
           </div>
-          <div className="flex items-center gap-3 bg-[#F0FDF4] rounded-xl px-4 py-3">
-            <NetCross cells={validCells} fill="#BBF7D0" stroke="#16A34A" />
-            <span className="text-xs text-[#166534] font-semibold">Jaring-jaring valid</span>
-            <NetCross cells={invalidCells} fill="#FBCFE8" stroke="#DB2777" />
-            <span className="text-xs text-[#9D174D] font-semibold">Belum tentu valid</span>
+          <p className="m-0 text-sm text-[#4B5563]">
+            Berdasarkan hasil verifikasi yang telah kalian lakukan, amati kedua susunan bidang datar berikut.
+            Perhatikan perbedaannya, kemudian pikirkan mengapa suatu susunan dapat membentuk jaring-jaring yang
+            valid, sedangkan susunan lainnya tidak.
+          </p>
+          <div className="flex items-center justify-center gap-6 bg-[#F0FDF4] rounded-xl px-4 py-4">
+            <EditablePageImage
+              imageKey="M2-P7-L1-2"
+              materi={materi}
+              peta={peta}
+              step={step}
+              urutan="2"
+              src={jaringHijau}
+              alt="Susunan bidang datar berwarna hijau"
+              editable={editFoto}
+              imageClassName="object-contain"
+              containerClassName="relative w-24 h-32"
+            />
+            <EditablePageImage
+              imageKey="M2-P7-L1-3"
+              materi={materi}
+              peta={peta}
+              step={step}
+              urutan="3"
+              src={jaringOranye}
+              alt="Susunan bidang datar berwarna oranye"
+              editable={editFoto}
+              imageClassName="object-contain"
+              containerClassName="relative w-40 h-24"
+            />
           </div>
-          <p className="m-0 text-sm text-[#4B5563]">Jawablah pertanyaan berikut.</p>
           {generalisasi.map((g, i) => (
             <label key={g.key} className="flex flex-col gap-2">
               <span className="flex items-start gap-3 text-sm font-semibold text-[#1F2937]">

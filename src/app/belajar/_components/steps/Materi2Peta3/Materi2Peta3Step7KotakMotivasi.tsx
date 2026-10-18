@@ -1,3 +1,4 @@
+import FileSubmission from "@/components/FileSubmission";
 import { submitStepAction } from "@/app/belajar/actions";
 import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
 import NextStepButton from "@/app/belajar/_components/NextStepButton";
@@ -11,8 +12,13 @@ export default async function Materi2Peta3Step7KotakMotivasi({
   peta,
   step = "7",
   editFoto,
+  initialAnswers,
 }: StepComponentProps) {
-  const motivasiImage = await getPageImage("M2-P3-L7-1");
+  const [motivasiImage, bintangImage, roketImage] = await Promise.all([
+    getPageImage("M2-P3-L7-1"),
+    getPageImage("M2-P3-L7-2"),
+    getPageImage("M2-P3-L7-3"),
+  ]);
 
   return (
     <form action={submitStepAction} className="flex flex-col gap-8">
@@ -39,9 +45,18 @@ export default async function Materi2Peta3Step7KotakMotivasi({
         </div>
         <div className="bg-[#FEF9E7] border border-[#F5E3A0] rounded-[20px] p-5 sm:p-6 flex flex-col md:flex-row md:items-center gap-5">
           <div className="flex items-start gap-4 md:flex-1">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#D97706" strokeWidth="2" className="flex-shrink-0">
-              <path d="M12 2l2.9 6.2 6.8.7-5 4.7 1.4 6.7L12 17l-6.1 3.3 1.4-6.7-5-4.7 6.8-.7z" />
-            </svg>
+            <EditablePageImage
+              imageKey="M2-P3-L7-2"
+              materi={materi}
+              peta={peta}
+              step={step}
+              urutan="2"
+              src={bintangImage}
+              alt="Bintang"
+              editable={editFoto}
+              imageClassName="object-contain"
+              containerClassName="relative w-10 h-10 flex-shrink-0"
+            />
             <p className="m-0 text-sm leading-[1.6] text-[#374151]">
               Perbedaan pendapat bukan berarti salah. Melalui diskusi, kita dapat menemukan berbagai
               kemungkinan jawaban yang akan dibuktikan pada tahap eksplorasi!
@@ -65,10 +80,18 @@ export default async function Materi2Peta3Step7KotakMotivasi({
       <div className="relative overflow-hidden rounded-[28px] bg-gradient-to-br from-[#2563EB] to-[#1D4ED8] px-7 py-8 sm:px-10 sm:py-9">
         <div className="absolute -right-10 -top-16 w-56 h-56 rounded-full bg-white/10" />
         <div className="relative flex items-center gap-3 mb-3">
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.2" className="flex-shrink-0">
-            <path d="M12 2c3 3 5 6.5 5 10.5A5 5 0 0112 18a5 5 0 01-5-5.5C7 8.5 9 5 12 2z" />
-            <path d="M9 18l-2 3M15 18l2 3" />
-          </svg>
+          <EditablePageImage
+            imageKey="M2-P3-L7-3"
+            materi={materi}
+            peta={peta}
+            step={step}
+            urutan="3"
+            src={roketImage}
+            alt="Roket"
+            editable={editFoto}
+            imageClassName="object-contain"
+            containerClassName="relative w-10 h-10 flex-shrink-0"
+          />
           <div className="bg-white/15 border border-white/25 rounded-full py-2 px-5 text-sm font-bold text-white">
             Menuju Tahap 3
           </div>
@@ -79,9 +102,15 @@ export default async function Materi2Peta3Step7KotakMotivasi({
         </p>
       </div>
 
+      <FileSubmission
+        materi={materi}
+        peta={peta}
+        defaultValue={typeof initialAnswers?.file_hasil_kerja === "string" ? initialAnswers.file_hasil_kerja : undefined}
+      />
+
       <div className="flex flex-col-reverse sm:flex-row justify-between items-center gap-4">
         <BackLink href={`/belajar/${materi}/${peta}/6`} />
-        <NextStepButton variant="green" icon="check">Selesai</NextStepButton>
+        <NextStepButton variant="green" icon="check">Lanjutkan ke Tahap Ayo Bereksplorasi</NextStepButton>
       </div>
     </form>
   );

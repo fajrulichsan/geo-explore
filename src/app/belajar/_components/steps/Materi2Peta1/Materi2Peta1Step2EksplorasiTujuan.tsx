@@ -194,7 +194,7 @@ export default async function Materi2Peta1Step2EksplorasiTujuan({ materi, peta, 
 
       <div className="flex flex-col-reverse sm:flex-row justify-between items-center gap-4">
         <BackLink href={`/belajar/${materi}/${peta}/1`} />
-        <NextStepButton variant="green" icon="check">Selesai</NextStepButton>
+        <NextStepButton variant="green" icon="check">Lanjut ke Tahap Ayo Mengamati dan Berpikir</NextStepButton>
       </div>
     </form>
   );

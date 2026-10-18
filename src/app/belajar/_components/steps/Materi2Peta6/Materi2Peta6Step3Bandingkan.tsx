@@ -8,7 +8,7 @@ const kotak = [
   {
     key: "persamaan",
     judul: "Persamaan",
-    tanya: "Apa hasil yang sama?",
+    tanya: "Apa persamaan hasil verifikasi kelompokmu dengan kelompok lain?",
     wrap: "border-[#BBF7D0] bg-[#F3FCF6]",
     title: "text-[#166534]",
     ring: "focus:border-[#16A34A]",
@@ -17,7 +17,7 @@ const kotak = [
   {
     key: "perbedaan",
     judul: "Perbedaan",
-    tanya: "Apa hasil yang berbeda?",
+    tanya: "Apa perbedaan hasil verifikasi kelompokmu dengan kelompok lain?",
     wrap: "border-[#FECACA] bg-[#FFF5F5]",
     title: "text-[#B91C1C]",
     ring: "focus:border-[#DC2626]",
@@ -26,7 +26,7 @@ const kotak = [
   {
     key: "mengapa_berbeda",
     judul: "Mengapa Berbeda?",
-    tanya: "Apa kemungkinan penyebab perbedaan tersebut?",
+    tanya: "Menurut kelompokmu, apa yang menyebabkan perbedaan hasil verifikasi tersebut?",
     wrap: "border-[#FDE68A] bg-[#FFFBEB]",
     title: "text-[#B45309]",
     ring: "focus:border-[#D97706]",
@@ -58,7 +58,7 @@ export default async function Materi2Peta6Step3Bandingkan({ materi, peta, initia
             <div className="w-9 h-9 rounded-full bg-[#2563EB] text-white flex items-center justify-center font-bold text-sm flex-shrink-0">C</div>
             <h2 className="m-0 text-lg font-bold text-[#111827]">Bandingkan dengan Kelompok Lain</h2>
           </div>
-          <p className="m-0 text-sm text-[#4B5563]">Bandingkan hasil verifikasimu dengan kelompok lain.</p>
+          <p className="m-0 text-sm text-[#4B5563]">Bandingkan hasil verifikasi kelompokmu dengan kelompok lain. Temukan persamaan dan perbedaannya, kemudian diskusikan alasan yang mendukung hasil tersebut.</p>
         </div>
 
         <div className="flex flex-col gap-4">
@@ -71,6 +71,7 @@ export default async function Materi2Peta6Step3Bandingkan({ materi, peta, initia
                 defaultValue={getValue(k.key)}
                 required
                 rows={k.rows}
+                placeholder="Tuliskan hasil diskusi kelompokmu..."
                 className={`w-full rounded-lg border border-[#E5E7EB] bg-white px-3 py-2 text-sm text-[#374151] placeholder:text-[#9CA3AF] focus:outline-none transition-colors resize-y ${k.ring}`}
               />
             </div>

@@ -1,6 +1,7 @@
 import { submitStepAction } from "@/app/belajar/actions";
 import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
 import NextStepButton from "@/app/belajar/_components/NextStepButton";
+import QrLink from "@/app/belajar/_components/QrLink";
 import StepHeader from "@/app/belajar/_components/StepHeader";
 import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
 import { getPageImage } from "@/lib/pageImages";
@@ -66,9 +67,9 @@ export default async function Materi2Peta6Step1VerifikasiGeoGebraAR({
   const [mascot, geogebra, qrGeogebra, arStrip, qrAr] = await Promise.all([
     getPageImage("M2-P6-L1-1"),
     getPageImage("M2-P6-L1-2"),
-    getPageImage("M2-P6-L1-3"),
+    getPageImage("qr-geogebra"),
     getPageImage("M2-P6-L1-4"),
-    getPageImage("M2-P6-L1-5"),
+    getPageImage("qr-ar"),
   ]);
 
   return (
@@ -158,21 +159,7 @@ export default async function Materi2Peta6Step1VerifikasiGeoGebraAR({
                 natural
                 containerClassName="relative w-full sm:flex-1 min-w-0"
               />
-              <div className="flex flex-col items-center gap-1.5 rounded-xl border border-[#BFDBFE] bg-white p-2.5 flex-shrink-0">
-                <EditablePageImage
-                  imageKey="M2-P6-L1-3"
-                  materi={materi}
-                  peta={peta}
-                  step={step}
-                  urutan="3"
-                  src={qrGeogebra}
-                  alt="QR code GeoGebra 3D"
-                  editable={editFoto}
-                  imageClassName="object-contain"
-                  containerClassName="relative w-24 h-24"
-                />
-                <span className="text-[11px] font-semibold text-[#1E3A8A] text-center">Scan untuk GeoGebra 3D</span>
-              </div>
+              <QrLink href="/geogebra" src={qrGeogebra} alt="QR code" label="Scan atau klik: GeoGebra 3D" />
             </div>
             <Checklist items={cekGeoGebra} accent="#2563EB" checked={checked} />
           </div>
@@ -201,21 +188,7 @@ export default async function Materi2Peta6Step1VerifikasiGeoGebraAR({
                   Bangun ruang utuh → Proses membuka → Jaring-jaring terbentuk
                 </p>
               </div>
-              <div className="flex flex-col items-center gap-1.5 rounded-xl border border-[#BBF7D0] bg-white p-2.5 flex-shrink-0">
-                <EditablePageImage
-                  imageKey="M2-P6-L1-5"
-                  materi={materi}
-                  peta={peta}
-                  step={step}
-                  urutan="5"
-                  src={qrAr}
-                  alt="QR code AR"
-                  editable={editFoto}
-                  imageClassName="object-contain"
-                  containerClassName="relative w-24 h-24"
-                />
-                <span className="text-[11px] font-semibold text-[#166534] text-center">Scan untuk AR</span>
-              </div>
+              <QrLink href="https://ar.geo-explore.my.id" src={qrAr} alt="QR code" label="Scan atau klik: AR" />
             </div>
             <Checklist items={cekAr} accent="#16A34A" checked={checked} />
           </div>

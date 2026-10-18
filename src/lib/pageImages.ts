@@ -307,6 +307,11 @@ export type PageImageKey =
   | "M2-P6-L1-4"
   | "M2-P6-L1-5"
   | "M2-P6-L4-1"
+  | "M2-P6-L4-2"
+  | "M2-P3-L7-2"
+  | "M2-P3-L7-3"
+  | "M2-P7-L1-2"
+  | "M2-P7-L1-3"
   | "M2-P7-L1-1"
   | "M2-P7-L4-1"
   | "M2-P8-L1-1"
@@ -1141,6 +1146,11 @@ const DEFAULT_IMAGES: Record<PageImageKey, string> = {
   "M2-P6-L1-4": "https://placehold.co/480x220?text=Proses+AR",
   "M2-P6-L1-5": "https://placehold.co/220x220?text=QR+AR",
   "M2-P6-L4-1": "https://placehold.co/300x400?text=Siswi+Ide",
+  "M2-P6-L4-2": "https://placehold.co/200x200?text=Kotak+Ingat",
+  "M2-P3-L7-2": "https://placehold.co/80x80?text=Bintang",
+  "M2-P3-L7-3": "https://placehold.co/80x80?text=Roket",
+  "M2-P7-L1-2": "https://placehold.co/190x260?text=Jaring+Hijau",
+  "M2-P7-L1-3": "https://placehold.co/260x140?text=Jaring+Oranye",
   "M2-P7-L1-1": "https://placehold.co/280x360?text=Maskot+Menyimpulkan",
   "M2-P7-L4-1": "https://placehold.co/160x200?text=Maskot+Jempol",
   "M2-P8-L1-1": "https://placehold.co/400x400?text=Maskot+Refleksi+Diri",

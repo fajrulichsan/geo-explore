@@ -1,6 +1,7 @@
 import { submitStepAction } from "@/app/belajar/actions";
 import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
 import NextStepButton from "@/app/belajar/_components/NextStepButton";
+import BangunDaftarTabel from "@/app/belajar/_components/BangunDaftarTabel";
 import StepHeader from "@/app/belajar/_components/StepHeader";
 import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
 import { getPageImage } from "@/lib/pageImages";
@@ -9,15 +10,16 @@ const aspek = [
   { key: "banyak_bentuk", label: "Banyak bentuk jaring-jaring yang ditemukan" },
   { key: "jaring_valid", label: "Jaring-jaring valid yang ditemukan" },
   { key: "susunan_tidak_valid", label: "Susunan yang tidak valid sebagai jaring-jaring yang ditemukan" },
-  { key: "alasan_kelompok", label: "Alasan menurut kelompok" },
+  { key: "alasan_1", label: "Alasan menurut kelompok" },
+  { key: "alasan_2", label: "Alasan menurut kelompok" },
 ];
 
 const kelompok = [
-  { key: "banyak_alternatif", label: "Memiliki banyak alternatif jaring-jaring" },
-  { key: "sedikit_alternatif", label: "Memiliki sedikit alternatif jaring-jaring" },
-  { key: "sisi_tersambung", label: "Seluruh sisi tersambung dengan benar" },
-  { key: "sisi_bertumpuk", label: "Ada sisi yang saling bertumpuk" },
-  { key: "lainnya", label: "Lainnya (temuan unik kelompokmu)" },
+  { key: "banyak_alternatif", label: "Bangun ruang yang memiliki beberapa susunan jaring-jaring berbeda." },
+  { key: "bentuk_sesuai", label: "Susunan dengan jumlah dan bentuk bidang datar yang sesuai dengan bangun ruang yang akan dibentuk." },
+  { key: "sisi_tersambung", label: "Susunan dengan semua bidang datar saling tersambung melalui sisi-sisinya." },
+  { key: "sisi_bertumpuk", label: "Susunan dengan bidang datar yang saling menumpuk saat dilipat." },
+  { key: "lainnya", label: "Karakteristik lain yang ditemukan kelompokmu selama eksplorasi." },
 ];
 
 const inputClass =
@@ -79,7 +81,7 @@ export default async function Materi2Peta5Step1BandingkanKelompokkan({
           <path d="M9 18h6M10 22h4M12 2a7 7 0 00-4 12.7c.6.5 1 1.2 1 2.3h6c0-1.1.4-1.8 1-2.3A7 7 0 0012 2z" />
         </svg>
         <div>
-          <p className="m-0 text-sm font-bold text-[#92400E] mb-1">Tujuan Tahap</p>
+          <p className="m-0 text-sm font-bold text-[#92400E] mb-1">Tujuan</p>
           <p className="m-0 text-sm leading-[1.6] text-[#374151]">
             Mengolah hasil eksplorasi untuk menemukan pola hubungan antar jaring-jaring dan menyusun
             klasifikasi awal berdasarkan alasan matematis.
@@ -98,23 +100,16 @@ export default async function Materi2Peta5Step1BandingkanKelompokkan({
         </div>
         <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-6 shadow-[0_1px_2px_rgba(0,0,0,0.04)] flex flex-col gap-4">
           <p className="m-0 text-sm text-[#4B5563]">
-            Bandingkan hasil eksplorasimu dengan anggota kelompok. Lengkapi tabel berikut.
+            Bandingkan hasil eksplorasimu dengan anggota kelompok. Pilih bangun ruang, isi tabel berikut, lalu tambahkan ke daftar.
           </p>
-          <div className="flex flex-col gap-3">
-            {aspek.map((a) => (
-              <div key={a.key} className="grid grid-cols-1 sm:grid-cols-[1fr_1.3fr] gap-2 sm:gap-4 items-start rounded-xl border border-[#E5E7EB] bg-[#F9FAFB] p-4">
-                <span className="text-sm font-bold text-[#111827]">{a.label}</span>
-                <input
-                  type="text"
-                  name={`answers.aspek_${a.key}`}
-                  defaultValue={getValue(`aspek_${a.key}`)}
-                  placeholder="Hasil kelompok..."
-                  required
-                  className={inputClass}
-                />
-              </div>
-            ))}
-          </div>
+          <BangunDaftarTabel
+            answerKey="aspek_bangun"
+            initialValue={answers.aspek_bangun}
+            selectLabel="Model yang sudah diamati:"
+            rows={aspek}
+            columns={[{ key: "hasil", label: "Hasil kelompok" }]}
+            entryTitle="Bangun Ruang yang Sudah Ditambahkan"
+          />
         </div>
       </div>
 
@@ -129,7 +124,7 @@ export default async function Materi2Peta5Step1BandingkanKelompokkan({
         </div>
         <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-6 shadow-[0_1px_2px_rgba(0,0,0,0.04)] flex flex-col gap-4">
           <p className="m-0 text-sm text-[#4B5563]">
-            Kelompokkan seluruh hasil eksplorasi berdasarkan karakteristiknya.
+            Kelompokkan hasil eksplorasi kelompokmu berdasarkan karakteristik berikut. Tuliskan contoh hasil eksplorasi yang sesuai pada setiap kategori. Satu hasil eksplorasi boleh masuk ke lebih dari satu kategori.
           </p>
           <div className="flex flex-col gap-3">
             {kelompok.map((k) => (
