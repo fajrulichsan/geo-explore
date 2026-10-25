@@ -6,7 +6,7 @@ import BackLink from "@/app/belajar/_components/BackLink";
 import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
 import { getPageImage, type PageImageKey } from "@/lib/pageImages";
 
-const bangun: { key: PageImageKey; urutan: string; nama: string; jaring: string; tip: string; warna: string }[] = [
+const bangun: { key: PageImageKey; urutan: string; nama: string; jaring: string; tip: string; warna: string; ikon?: PageImageKey }[] = [
   {
     key: "M3-P2-L4-2",
     urutan: "2",
@@ -22,6 +22,7 @@ const bangun: { key: PageImageKey; urutan: string; nama: string; jaring: string;
     jaring: "Jaring-jaring balok terdiri atas 6 persegi panjang.",
     tip: "Perhatikan ukuran sisi-sisinya. Apakah ada yang sama?",
     warna: "#60A5FA",
+    ikon: "M3-P2-L4-5",
   },
   {
     key: "M3-P2-L4-4",
@@ -30,6 +31,7 @@ const bangun: { key: PageImageKey; urutan: string; nama: string; jaring: string;
     jaring: "Jaring-jaring prisma segitiga terdiri atas 5 sisi (2 segitiga dan 3 persegi panjang).",
     tip: "Dua segitiga adalah alas dan tutup prisma yang kongruen.",
     warna: "#6BAA5E",
+    ikon: "M3-P2-L4-6",
   },
 ];
 
@@ -44,6 +46,7 @@ export default async function Materi3Peta2Step4LanjutkanPengamatan({ materi, pet
     getPageImage("M3-P2-L4-1"),
     ...bangun.map((b) => getPageImage(b.key)),
   ]);
+  const ikon = await Promise.all(bangun.map((b) => (b.ikon ? getPageImage(b.ikon) : null)));
 
   return (
     <form action={submitStepAction} className="flex flex-col gap-8">
@@ -59,7 +62,7 @@ export default async function Materi3Peta2Step4LanjutkanPengamatan({ materi, pet
             <path d="M21 21l-4.3-4.3" />
           </svg>
           <h1 className="m-0 text-2xl sm:text-[32px] font-extrabold text-[#111827]">Ayo Mengamati dan Berpikir</h1>
-          <span className="rounded-full bg-[#2563EB] text-white text-xs font-bold px-3 py-1">Tahap 1 dari 6</span>
+          <div className="basis-full"><span className="rounded-full bg-[#2563EB] text-white text-xs font-bold px-3 py-1">Tahap 1 dari 6</span></div>
         </div>
       </div>
 
@@ -79,8 +82,9 @@ export default async function Materi3Peta2Step4LanjutkanPengamatan({ materi, pet
         <div className="flex flex-col gap-2">
           <h2 className="m-0 text-xl font-extrabold text-[#1E3A8A]">Lanjutkan Pengamatan!</h2>
           <p className="m-0 text-sm text-[#1E3A8A] leading-[1.7]">
-            Pada halaman sebelumnya kamu telah mengamati bentuk jaring-jaring. Sekarang, amatilah ukuran setiap sisi
-            pada jaring-jaring tersebut. Perhatikan sisi-sisi yang memiliki ukuran sama.
+            Pada halaman sebelumnya, kamu telah mengamati bentuk jaring-jaring kubus, balok, dan prisma segitiga.
+            Sekarang, perhatikan bentuk dan ukuran setiap sisinya. Sisi mana saja yang memiliki bentuk dan ukuran
+            yang sama?
           </p>
         </div>
       </div>
@@ -118,7 +122,22 @@ export default async function Materi3Peta2Step4LanjutkanPengamatan({ materi, pet
                 {b.jaring}
               </p>
               <div className="flex items-center gap-3">
-                <span className="w-7 h-7 rounded-md flex-shrink-0" style={{ backgroundColor: b.warna }} />
+                {b.ikon && ikon[i] ? (
+                  <EditablePageImage
+                    imageKey={b.ikon}
+                    materi={materi}
+                    peta={peta}
+                    step={step}
+                    urutan={String(i + 4)}
+                    src={ikon[i]}
+                    alt={`Bentuk sisi ${b.nama}`}
+                    editable={editFoto}
+                    imageClassName="object-contain"
+                    containerClassName="relative w-10 h-8 flex-shrink-0"
+                  />
+                ) : (
+                  <span className="w-7 h-7 rounded-md flex-shrink-0" style={{ backgroundColor: b.warna }} />
+                )}
                 <p className="m-0 text-sm text-[#1E3A8A]">{b.tip}</p>
               </div>
             </div>
@@ -127,8 +146,9 @@ export default async function Materi3Peta2Step4LanjutkanPengamatan({ materi, pet
 
         <div className="rounded-2xl bg-[#FEF9E7] border border-[#F5E3A0] px-5 py-4 text-sm text-[#1E3A8A] leading-[1.7]">
           <span className="font-bold">Catatan: </span>
-          Alas prisma dapat berupa berbagai jenis segitiga (siku-siku, sama kaki, atau sama sisi). Amatilah apakah
-          bentuk alas yang berbeda mengubah gagasan bahwa seluruh sisi bangun ruang perlu diperhatikan.
+          Alas prisma dapat berbentuk segitiga, segiempat, segilima, atau segi banyak lainnya. Amatilah bentuk dan
+          ukuran sisi-sisi pada jaring-jaring prisma segitiga di atas. Menurutmu, bagaimana bentuk dan susunan
+          sisi-sisinya jika alas prisma berbentuk segiempat atau segilima?
         </div>
 
         <div className="rounded-2xl bg-white border border-[#E5E7EB] px-5 py-4 flex flex-col sm:flex-row sm:flex-wrap gap-3 sm:gap-6 text-xs text-[#374151]">

@@ -11,7 +11,7 @@ const ukuran = [
   { label: "Tinggi", value: "5 cm" },
 ];
 
-const alur = ["Menyimpulkan", "Tantangan Open-Ended", "Rangkuman"] as const;
+const alur = ["Menyimpulkan", "Tantangan Terbuka", "Rangkuman"] as const;
 
 const strategiFields = [
   { key: "cara", label: "Cara yang saya gunakan", rows: 2 },
@@ -20,10 +20,10 @@ const strategiFields = [
 ] as const;
 
 const ingat = [
-  "cara berpikir",
-  "alasan matematis",
-  "kemampuan membandingkan strategi",
-  "kemampuan memperbaiki penyelesaian",
+  "Cara berpikir dalam menyelesaikan masalah.",
+  "Kemampuan membandingkan berbagai strategi penyelesaian.",
+  "Alasan matematis yang mendukung jawaban.",
+  "Kemampuan memperbaiki dan menyempurnakan penyelesaian.",
 ];
 
 const textareaClass =
@@ -51,10 +51,10 @@ export default async function Materi3Peta9Step1MasalahDanStrategi({
 
       <StepHeader materi={materi} currentStep={1} totalSteps={4} />
 
-      <div className="rounded-[24px] bg-gradient-to-br from-[#EFF4FF] to-[#F5F3FF] border border-[#E5E7EB] p-6 sm:p-8 flex flex-col md:flex-row md:items-center gap-6">
+      <div className="rounded-[24px] bg-gradient-to-br from-[#EFF4FF] to-[#F5F3FF] border border-[#E5E7EB] p-6 sm:p-8 flex flex-col gap-6">
         <div className="flex-1 flex flex-col gap-3">
           <h1 className="m-0 text-2xl sm:text-[32px] font-extrabold text-[#111827]">
-            Tantangan Open-Ended
+            Tantangan Terbuka
           </h1>
           <p className="m-0 text-sm font-bold text-[#2563EB]">
             Saatnya menunjukkan berbagai strategimu!
@@ -79,7 +79,7 @@ export default async function Materi3Peta9Step1MasalahDanStrategi({
           alt="Tiga siswa berdiskusi di meja dengan bangun ruang, tablet, dan laptop"
           editable={editFoto}
           natural
-          containerClassName="relative w-full md:w-[340px] flex-shrink-0 rounded-2xl overflow-hidden"
+          containerClassName="relative w-full rounded-2xl overflow-hidden"
         />
       </div>
 
@@ -110,7 +110,7 @@ export default async function Materi3Peta9Step1MasalahDanStrategi({
             A
           </div>
           <div className="bg-white border border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-full py-2 px-5 text-sm font-bold text-[#2563EB]">
-            Masalah Open-Ended
+            Masalah Terbuka
           </div>
         </div>
         <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-6 shadow-[0_1px_2px_rgba(0,0,0,0.04)] grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
@@ -217,8 +217,9 @@ export default async function Materi3Peta9Step1MasalahDanStrategi({
       <div className="bg-[#FEF9E7] border border-[#F5E3A0] rounded-2xl p-5 flex flex-col gap-2">
         <p className="m-0 text-sm font-bold text-[#92400E]">Ingat!</p>
         <p className="m-0 text-xs font-semibold text-[#78350F] leading-[1.5]">
-          Open-Ended berarti membuka kesempatan munculnya berbagai strategi. Yang dinilai bukan
-          hanya hasil akhir, tetapi juga:
+          Tantangan Terbuka memberikan kesempatan kepada kamu untuk menyelesaikan masalah dengan
+          berbagai cara atau strategi. Penilaian tidak hanya berfokus pada jawaban akhir, tetapi juga
+          memperhatikan:
         </p>
         <ul className="m-0 pl-4 grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-0.5 list-disc">
           {ingat.map((t) => (

@@ -3,6 +3,7 @@ import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry"
 import NextStepButton from "@/app/belajar/_components/NextStepButton";
 import BackLink from "@/app/belajar/_components/BackLink";
 import StepHeader from "@/app/belajar/_components/StepHeader";
+import FileSubmission from "@/components/FileSubmission";
 import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
 import { getPageImage } from "@/lib/pageImages";
 
@@ -14,10 +15,10 @@ const pernyataan = [
 ];
 
 const ingat = [
-  "cara berpikir",
-  "alasan matematis",
-  "kemampuan membandingkan strategi",
-  "kemampuan memperbaiki penyelesaian",
+  "Cara berpikir dalam menyelesaikan masalah.",
+  "Kemampuan membandingkan berbagai strategi penyelesaian.",
+  "Alasan matematis yang mendukung jawaban.",
+  "Kemampuan memperbaiki dan menyempurnakan penyelesaian.",
 ];
 
 export default async function Materi3Peta9Step4RefleksiSingkat({
@@ -43,7 +44,7 @@ export default async function Materi3Peta9Step4RefleksiSingkat({
       <div className="flex flex-col gap-4">
         <StepHeader materi={materi} currentStep={4} totalSteps={4} />
         <h1 className="m-0 text-2xl sm:text-[32px] font-extrabold text-[#111827]">
-          Tantangan Open-Ended
+          Tantangan Terbuka
         </h1>
       </div>
 
@@ -118,8 +119,9 @@ export default async function Materi3Peta9Step4RefleksiSingkat({
         <div className="bg-[#FEF9E7] border border-[#F5E3A0] rounded-2xl p-5 flex flex-col gap-2">
           <p className="m-0 text-sm font-bold text-[#92400E]">Ingat!</p>
           <p className="m-0 text-xs font-semibold text-[#78350F] leading-[1.5]">
-            Open-Ended berarti membuka kesempatan munculnya berbagai strategi. Yang dinilai bukan
-            hanya hasil akhir, tetapi juga:
+            Tantangan Terbuka memberikan kesempatan kepada kamu untuk menyelesaikan masalah dengan
+            berbagai cara atau strategi. Penilaian tidak hanya berfokus pada jawaban akhir, tetapi juga
+            memperhatikan:
           </p>
           <ul className="m-0 pl-4 flex flex-col gap-0.5 list-disc">
             {ingat.map((t) => (
@@ -142,9 +144,15 @@ export default async function Materi3Peta9Step4RefleksiSingkat({
         </p>
       </div>
 
+      <FileSubmission
+        materi={materi}
+        peta={peta}
+        defaultValue={typeof answers.file_hasil_kerja === "string" ? answers.file_hasil_kerja : undefined}
+      />
+
       <div className="flex flex-col-reverse sm:flex-row justify-between items-center gap-4">
         <BackLink href={`/belajar/${materi}/${peta}/3`} />
-        <NextStepButton variant="green" icon="check">Selesai</NextStepButton>
+        <NextStepButton variant="green" icon="check">Lanjutkan ke Quiz</NextStepButton>
       </div>
     </form>
   );

@@ -3,13 +3,8 @@ import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry"
 import NextStepButton from "@/app/belajar/_components/NextStepButton";
 import BackLink from "@/app/belajar/_components/BackLink";
 import StepHeader from "@/app/belajar/_components/StepHeader";
-
-const alurLanjutan = [
-  { n: 3, label: "Catatan Hasil", desc: "Kumpulkan data hasil pengamatan pada Halaman 1." },
-  { n: 4, label: "Lengkapi Data", desc: "Periksa dan lengkapi semua informasi penting yang kamu temukan." },
-  { n: 5, label: "Temuan Sementara", desc: "Catat temuan sementara dari hasil eksplorasi sebagai bahan tahap berikutnya." },
-  { n: 6, label: "Refleksi", desc: "Nilai proses eksplorasi dan persiapanmu menuju Tahap 4." },
-];
+import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
+import { getPageImage } from "@/lib/pageImages";
 
 const baris = [
   { key: "banyak_sisi", label: "Banyak sisi" },
@@ -26,7 +21,8 @@ const kolom = [
   { key: "prisma", label: "Prisma" },
 ] as const;
 
-export default async function Materi3Peta4Step5RingkasHasil({ materi, peta, initialAnswers }: StepComponentProps) {
+export default async function Materi3Peta4Step5RingkasHasil({ materi, peta, step = "5", initialAnswers, editFoto }: StepComponentProps) {
+  const gambarAlur = await getPageImage("M3-P4-L5-1");
   const answers = initialAnswers ?? {};
   const getValue = (key: string) => (typeof answers[key] === "string" ? (answers[key] as string) : "");
 
@@ -40,23 +36,23 @@ export default async function Materi3Peta4Step5RingkasHasil({ materi, peta, init
         <StepHeader materi={materi} currentStep={5} totalSteps={8} />
         <div className="flex items-center gap-3.5 flex-wrap">
           <h1 className="m-0 text-2xl sm:text-[32px] font-extrabold text-[#111827]">Ayo Bereksplorasi</h1>
-          <span className="rounded-full bg-[#EFF4FF] text-[#2563EB] text-xs font-bold py-1 px-3">Tahap 3 dari 6</span>
+          <div className="basis-full"><span className="rounded-full bg-[#EFF4FF] text-[#2563EB] text-xs font-bold py-1 px-3">Tahap 3 dari 6</span></div>
         </div>
       </div>
 
-      <div className="bg-gradient-to-br from-[#2563EB] to-[#1E3A8A] rounded-[24px] p-6 sm:p-7 text-white flex flex-col gap-5">
-        <p className="m-0 text-lg font-extrabold">Ayo lanjutkan hasil eksplorasimu!</p>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
-          {alurLanjutan.map((a) => (
-            <div key={a.n} className="bg-white/10 border border-white/20 rounded-2xl p-4 flex flex-col gap-1.5">
-              <span className="w-7 h-7 rounded-full bg-white text-[#1E3A8A] flex items-center justify-center font-bold text-xs">
-                {a.n}
-              </span>
-              <p className="m-0 text-sm font-bold">{a.label}</p>
-              <p className="m-0 text-xs text-white/80 leading-[1.5]">{a.desc}</p>
-            </div>
-          ))}
-        </div>
+      <div className="rounded-[24px] overflow-hidden border border-[#E5E7EB] bg-white">
+        <EditablePageImage
+          imageKey="M3-P4-L5-1"
+          materi={materi}
+          peta={peta}
+          step={step}
+          urutan="1"
+          src={gambarAlur}
+          alt="Ayo lanjutkan hasil eksplorasimu: Catatan Hasil, Lengkapi Data, Temuan Sementara, Refleksi"
+          editable={editFoto}
+          natural
+          containerClassName="relative w-full"
+        />
       </div>
 
       <div className="flex flex-col gap-4">

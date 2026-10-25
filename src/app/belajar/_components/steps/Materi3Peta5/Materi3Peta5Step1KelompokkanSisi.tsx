@@ -37,7 +37,7 @@ export default async function Materi3Peta5Step1KelompokkanSisi({
       <div className="flex flex-col gap-4">
         <StepHeader materi={materi} currentStep={1} totalSteps={6} />
         <div className="inline-flex items-center bg-[#FDF3C7] text-[#92400E] rounded-full py-1.5 px-3.5 text-xs font-bold tracking-[0.02em] w-fit">
-          Tahap 4
+          Tahap 4 dari 6
         </div>
         <h1 className="m-0 text-2xl sm:text-[32px] font-extrabold text-[#111827]">
           Ayo Mengolah Informasi
@@ -45,8 +45,8 @@ export default async function Materi3Peta5Step1KelompokkanSisi({
         <p className="m-0 text-sm font-semibold text-[#2563EB]">Temukan Pola Luas Permukaan</p>
       </div>
 
-      <div className="grid lg:grid-cols-12 gap-6 items-center">
-        <div className="lg:col-span-5 bg-[#EFF4FF] border border-[#BFDBFE] rounded-[20px] p-6 flex flex-col gap-3">
+      <div className="flex flex-col gap-6">
+        <div className="bg-[#EFF4FF] border border-[#BFDBFE] rounded-[20px] p-6 flex flex-col gap-3">
           <p className="m-0 text-sm leading-[1.7] text-[#374151]">
             Kamu telah mengumpulkan berbagai informasi melalui GeoGebra 3D dan Augmented Reality.
             Sekarang saatnya mengolah informasi tersebut.
@@ -58,7 +58,7 @@ export default async function Materi3Peta5Step1KelompokkanSisi({
             diperoleh.
           </p>
         </div>
-        <div className="lg:col-span-7 rounded-[20px] overflow-hidden bg-white border border-[#E5E7EB]">
+        <div className="rounded-[20px] overflow-hidden bg-white border border-[#E5E7EB]">
           <EditablePageImage
             imageKey="M3-P5-L1-1"
             materi={materi}

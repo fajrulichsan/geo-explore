@@ -20,8 +20,9 @@ const bangun = [
 ] as const;
 
 export default async function Materi3Peta1Step5SiapMengeksplorasi({ materi, peta, step = "5", editFoto }: StepComponentProps) {
-  const [gambarSiswa, ...gambarBangun] = await Promise.all([
+  const [gambarSiswa, gambarRoket, ...gambarBangun] = await Promise.all([
     getPageImage("M3-P1-L5-1"),
+    getPageImage("M3-P1-L5-5"),
     ...bangun.map((b) => getPageImage(b.key)),
   ]);
 
@@ -39,7 +40,7 @@ export default async function Materi3Peta1Step5SiapMengeksplorasi({ materi, peta
             <rect x="4" y="4" width="16" height="16" rx="2" />
           </svg>
           <h1 className="m-0 text-2xl sm:text-[32px] font-extrabold text-[#111827]">
-            Pendahuluan: Luas Permukaan Kubus, Balok, dan Prisma
+            Luas Permukaan Kubus, Balok, dan Prisma
           </h1>
         </div>
       </div>
@@ -72,12 +73,26 @@ export default async function Materi3Peta1Step5SiapMengeksplorasi({ materi, peta
           alt="Siswa menulis di buku dengan jaring-jaring warna-warni dan kalkulator di meja"
           editable={editFoto}
             natural
-          containerClassName="relative w-full mt-auto rounded-2xl overflow-hidden bg-white"
+          containerClassName="relative w-full max-w-[220px] mx-auto mt-auto rounded-2xl overflow-hidden bg-white"
         />
           </div>
 
           <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-6 shadow-[0_1px_2px_rgba(0,0,0,0.04)] flex flex-col gap-4">
-            <p className="m-0 text-base font-extrabold text-[#111827]">Siap Mengeksplorasi?</p>
+            <div className="flex items-center gap-3">
+              <p className="m-0 text-base font-extrabold text-[#111827]">Siap Mengeksplorasi?</p>
+              <EditablePageImage
+                imageKey="M3-P1-L5-5"
+                materi={materi}
+                peta={peta}
+                step={step}
+                urutan="5"
+                src={gambarRoket}
+                alt="Roket"
+                editable={editFoto}
+                imageClassName="object-contain"
+                containerClassName="relative w-12 h-14 flex-shrink-0"
+              />
+            </div>
             <p className="m-0 text-sm text-[#4B5563] leading-[1.6]">
               Gunakan pengamatan, logika, GeoGebra 3D, dan AR untuk menemukan sendiri bagaimana
               rumus luas permukaan terbentuk.
@@ -114,7 +129,7 @@ export default async function Materi3Peta1Step5SiapMengeksplorasi({ materi, peta
 
       <div className="flex flex-col-reverse sm:flex-row justify-between items-center gap-4">
         <BackLink href={`/belajar/${materi}/${peta}/4`} />
-        <NextStepButton variant="green" icon="check">Selesai</NextStepButton>
+        <NextStepButton variant="green" icon="check">Lanjut ke Tahap Ayo Mengamati dan Berpikir</NextStepButton>
       </div>
     </form>
   );

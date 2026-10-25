@@ -34,7 +34,7 @@ export default async function Materi3Peta10Step1HeroKonsepDasar({
         </h1>
       </div>
 
-      <div className="rounded-[20px] bg-[#FEF9E7] border border-[#F5E6A8] p-5 sm:p-6 grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+      <div className="rounded-[20px] bg-[#FEF9E7] border border-[#F5E6A8] p-5 sm:p-6 flex flex-col gap-6">
         <div className="flex flex-col gap-3.5">
           <div className="flex items-center gap-3">
             <div className="w-11 h-11 rounded-full bg-[#FACC15] flex items-center justify-center text-xl flex-shrink-0">

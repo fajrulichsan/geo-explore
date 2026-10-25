@@ -32,7 +32,7 @@ export default async function Materi3Peta1Step4TujuanPembelajaran({ materi, peta
             <rect x="4" y="4" width="16" height="16" rx="2" />
           </svg>
           <h1 className="m-0 text-2xl sm:text-[32px] font-extrabold text-[#111827]">
-            Pendahuluan: Luas Permukaan Kubus, Balok, dan Prisma
+            Luas Permukaan Kubus, Balok, dan Prisma
           </h1>
         </div>
       </div>
@@ -43,9 +43,12 @@ export default async function Materi3Peta1Step4TujuanPembelajaran({ materi, peta
             D
           </div>
           <div className="bg-white border border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-full py-2 px-5 text-sm font-bold text-[#2563EB]">
-            Tujuan Pembelajaran: setelah mempelajari submateri ini, kamu diharapkan mampu
+            Tujuan Pembelajaran
           </div>
         </div>
+        <p className="m-0 text-sm font-bold text-[#374151]">
+          Setelah mempelajari submateri ini, kamu diharapkan mampu:
+        </p>
 
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_240px] gap-5 items-end">
           <ol className="m-0 p-0 list-none flex flex-col gap-3">

@@ -30,7 +30,11 @@ export default async function Materi3Peta10Step3LangkahStrategi({
   step = "3",
   editFoto,
 }: StepComponentProps) {
-  const jaringImage = await getPageImage("M3-P10-L3-1");
+  const [jaringImage, langkahImage, kelompokImage] = await Promise.all([
+    getPageImage("M3-P10-L3-1"),
+    getPageImage("M3-P10-L3-2"),
+    getPageImage("M3-P10-L3-3"),
+  ]);
 
   return (
     <form action={submitStepAction} className="flex flex-col gap-8">
@@ -55,7 +59,8 @@ export default async function Materi3Peta10Step3LangkahStrategi({
           </div>
         </div>
 
-        <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-5 sm:p-6 shadow-[0_1px_2px_rgba(0,0,0,0.04)] flex flex-col">
+        <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-5 sm:p-6 shadow-[0_1px_2px_rgba(0,0,0,0.04)] grid grid-cols-1 lg:grid-cols-[1fr_320px] gap-6 items-center">
+          <div className="flex flex-col">
           {langkah.map((l, i) => (
             <div key={l.text} className="flex gap-4">
               <div className="flex flex-col items-center">
@@ -80,6 +85,19 @@ export default async function Materi3Peta10Step3LangkahStrategi({
               Langkah ini dapat dilakukan dengan berbagai cara atau strategi.
             </p>
           </div>
+          </div>
+          <EditablePageImage
+            imageKey="M3-P10-L3-2"
+            materi={materi}
+            peta={peta}
+            step={step}
+            urutan="2"
+            src={langkahImage}
+            alt="Kubus, balok, dan prisma segitiga beserta jaring-jaringnya"
+            editable={editFoto}
+            natural
+            containerClassName="relative w-full max-w-[320px] mx-auto"
+          />
         </div>
       </div>
 
@@ -115,6 +133,19 @@ export default async function Materi3Peta10Step3LangkahStrategi({
                     urutan="1"
                     src={jaringImage}
                     alt="Jaring-jaring bangun ruang"
+                    editable={editFoto}
+                    imageClassName="object-contain mix-blend-multiply"
+                    containerClassName="relative w-24 h-16"
+                  />
+                ) : i === 1 ? (
+                  <EditablePageImage
+                    imageKey="M3-P10-L3-3"
+                    materi={materi}
+                    peta={peta}
+                    step={step}
+                    urutan="3"
+                    src={kelompokImage}
+                    alt="Kubus dengan sisi-sisi kongruen dikelompokkan berdasarkan warna"
                     editable={editFoto}
                     imageClassName="object-contain mix-blend-multiply"
                     containerClassName="relative w-24 h-16"

@@ -25,7 +25,7 @@ export default async function Materi3Peta4Step7TemuanKelompok({ materi, peta, in
         <StepHeader materi={materi} currentStep={7} totalSteps={8} />
         <div className="flex items-center gap-3.5 flex-wrap">
           <h1 className="m-0 text-2xl sm:text-[32px] font-extrabold text-[#111827]">Ayo Bereksplorasi</h1>
-          <span className="rounded-full bg-[#EFF4FF] text-[#2563EB] text-xs font-bold py-1 px-3">Tahap 3 dari 6</span>
+          <div className="basis-full"><span className="rounded-full bg-[#EFF4FF] text-[#2563EB] text-xs font-bold py-1 px-3">Tahap 3 dari 6</span></div>
         </div>
       </div>
 

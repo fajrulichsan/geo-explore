@@ -3,6 +3,7 @@ import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry"
 import NextStepButton from "@/app/belajar/_components/NextStepButton";
 import StepHeader from "@/app/belajar/_components/StepHeader";
 import BackLink from "@/app/belajar/_components/BackLink";
+import FileSubmission from "@/components/FileSubmission";
 import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
 import { getPageImage } from "@/lib/pageImages";
 
@@ -38,7 +39,7 @@ export default async function Materi3Peta2Step6DugaanSementaraRefleksi({
             <path d="M21 21l-4.3-4.3" />
           </svg>
           <h1 className="m-0 text-2xl sm:text-[32px] font-extrabold text-[#111827]">Ayo Mengamati dan Berpikir</h1>
-          <span className="rounded-full bg-[#2563EB] text-white text-xs font-bold px-3 py-1">Tahap 1 dari 6</span>
+          <div className="basis-full"><span className="rounded-full bg-[#2563EB] text-white text-xs font-bold px-3 py-1">Tahap 1 dari 6</span></div>
         </div>
       </div>
 
@@ -100,7 +101,7 @@ export default async function Materi3Peta2Step6DugaanSementaraRefleksi({
               alt="Siswa laki-laki menulis di buku"
               editable={editFoto}
               imageClassName="object-contain"
-              containerClassName="relative w-36 h-32 flex-shrink-0"
+              containerClassName="relative w-48 h-64 flex-shrink-0"
             />
           </div>
         </div>
@@ -127,9 +128,15 @@ export default async function Materi3Peta2Step6DugaanSementaraRefleksi({
         />
       </div>
 
+      <FileSubmission
+        materi={materi}
+        peta={peta}
+        defaultValue={typeof answers.file_hasil_kerja === "string" ? answers.file_hasil_kerja : undefined}
+      />
+
       <div className="flex flex-col-reverse sm:flex-row justify-between items-center gap-4">
         <BackLink href={`/belajar/${materi}/${peta}/5`} />
-        <NextStepButton>LANJUT KE TAHAP 2</NextStepButton>
+        <NextStepButton variant="green" icon="check">Lanjutkan ke Tahap Ayo Berdiskusi</NextStepButton>
       </div>
     </form>
   );

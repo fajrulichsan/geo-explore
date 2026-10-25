@@ -3,6 +3,7 @@ import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry"
 import NextStepButton from "@/app/belajar/_components/NextStepButton";
 import BackLink from "@/app/belajar/_components/BackLink";
 import StepHeader from "@/app/belajar/_components/StepHeader";
+import QrLink from "@/app/belajar/_components/QrLink";
 import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
 import { getPageImage, type PageImageKey } from "@/lib/pageImages";
 
@@ -49,7 +50,7 @@ export default async function Materi3Peta4Step2EksplorasiGeoGebra({
         <StepHeader materi={materi} currentStep={2} totalSteps={8} />
         <div className="flex items-center gap-3.5 flex-wrap">
           <h1 className="m-0 text-2xl sm:text-[32px] font-extrabold text-[#111827]">Ayo Bereksplorasi</h1>
-          <span className="rounded-full bg-[#EFF4FF] text-[#2563EB] text-xs font-bold py-1 px-3">Tahap 3 dari 6</span>
+          <div className="basis-full"><span className="rounded-full bg-[#EFF4FF] text-[#2563EB] text-xs font-bold py-1 px-3">Tahap 3 dari 6</span></div>
         </div>
       </div>
 
@@ -94,7 +95,7 @@ export default async function Materi3Peta4Step2EksplorasiGeoGebra({
                   src={gambarTahapan[i]}
                   alt={t.alt}
                   editable={editFoto}
-                  imageClassName="object-contain"
+                  imageClassName={i === 0 ? "object-contain scale-[0.8]" : "object-contain"}
                   containerClassName="relative w-full aspect-square"
                 />
                 <p className="m-0 text-xs font-semibold text-[#6B7280] text-center">{t.label}</p>
@@ -116,18 +117,7 @@ export default async function Materi3Peta4Step2EksplorasiGeoGebra({
         <div className="grid grid-cols-1 md:grid-cols-[220px_1fr] gap-5 items-stretch">
           <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-5 flex flex-col items-center gap-3">
             <span className="text-xs font-bold text-[#2563EB]">Scan GeoGebra 3D</span>
-            <EditablePageImage
-              imageKey="qr-geogebra"
-              materi={materi}
-              peta={peta}
-              step={step}
-              urutan="5"
-              src={gambarQr}
-              alt="QR code menuju model GeoGebra 3D"
-              editable={editFoto}
-              imageClassName="object-contain"
-              containerClassName="relative w-36 h-36 bg-white"
-            />
+            <QrLink href="/geogebra" src={gambarQr} alt="QR code menuju model GeoGebra 3D" label="Scan atau klik: GeoGebra 3D" />
             <p className="m-0 text-center text-xs text-[#6B7280]">Scan untuk membuka model interaktif.</p>
           </div>
 

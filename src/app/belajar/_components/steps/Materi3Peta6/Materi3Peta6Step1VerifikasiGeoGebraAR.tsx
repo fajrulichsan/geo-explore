@@ -2,6 +2,7 @@ import { submitStepAction } from "@/app/belajar/actions";
 import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
 import NextStepButton from "@/app/belajar/_components/NextStepButton";
 import StepHeader from "@/app/belajar/_components/StepHeader";
+import QrLink from "@/app/belajar/_components/QrLink";
 import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
 import { getPageImage } from "@/lib/pageImages";
 
@@ -31,7 +32,11 @@ export default async function Materi3Peta6Step1VerifikasiGeoGebraAR({
 }: StepComponentProps) {
   const answers = initialAnswers ?? {};
   const getValue = (key: string) => (typeof answers[key] === "string" ? (answers[key] as string) : "");
-  const heroImage = await getPageImage("M3-P6-L1-1");
+  const [heroImage, qrGeogebra, qrAr] = await Promise.all([
+    getPageImage("M3-P6-L1-1"),
+    getPageImage("qr-geogebra"),
+    getPageImage("qr-ar"),
+  ]);
 
   return (
     <form action={submitStepAction} className="flex flex-col gap-8">
@@ -48,7 +53,7 @@ export default async function Materi3Peta6Step1VerifikasiGeoGebraAR({
         <p className="m-0 text-sm font-semibold text-[#2563EB]">Periksa Kembali Hasil Penemuanmu</p>
       </div>
 
-      <div className="rounded-[24px] bg-white border border-[#DBEAFE] overflow-hidden grid md:grid-cols-2 items-center">
+      <div className="rounded-[24px] bg-white border border-[#DBEAFE] overflow-hidden flex flex-col">
         <div className="p-6 md:p-8 flex flex-col gap-3">
           <p className="m-0 text-sm leading-[1.7] text-[#374151]">
             Kamu telah menemukan cara menentukan luas permukaan berdasarkan hasil eksplorasi dan
@@ -112,6 +117,10 @@ export default async function Materi3Peta6Step1VerifikasiGeoGebraAR({
                 </li>
               ))}
             </ul>
+            <div className="flex flex-wrap items-start gap-5">
+              <QrLink href="/geogebra" src={qrGeogebra} alt="QR code GeoGebra 3D" label="Scan atau klik: GeoGebra 3D" />
+              <QrLink href="https://ar.geo-explore.my.id" src={qrAr} alt="QR code AR" label="Scan atau klik: AR" />
+            </div>
             <div className="bg-[#FEF9E7] border border-[#F5E3A0] rounded-2xl p-3.5 flex items-start gap-2.5">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#D97706" strokeWidth="2" className="flex-shrink-0 mt-0.5">
                 <path d="M9 18h6M10 21h4M12 3a6 6 0 00-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0012 3z" />

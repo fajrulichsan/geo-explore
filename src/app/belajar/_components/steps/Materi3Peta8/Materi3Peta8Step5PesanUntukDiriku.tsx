@@ -3,6 +3,7 @@ import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry"
 import NextStepButton from "@/app/belajar/_components/NextStepButton";
 import StepHeader from "@/app/belajar/_components/StepHeader";
 import BackLink from "@/app/belajar/_components/BackLink";
+import FileSubmission from "@/components/FileSubmission";
 import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
 import { getPageImage } from "@/lib/pageImages";
 
@@ -101,15 +102,21 @@ export default async function Materi3Peta8Step5PesanUntukDiriku({ materi, peta, 
             <path d="M3 10v4h4l6 4V6L7 10H3zM17 9a4 4 0 010 6M19.5 6.5a8 8 0 010 11" />
           </svg>
           <p className="m-0 text-sm font-bold text-[#1D4ED8] leading-[1.6]">
-            Selanjutnya, tantang dirimu melalui kegiatan Tantangan Open-Ended untuk menemukan lebih banyak
+            Selanjutnya, tantang dirimu melalui kegiatan Tantangan Terbuka untuk menemukan lebih banyak
             strategi dalam menyelesaikan masalah luas permukaan.
           </p>
         </div>
       </div>
 
+      <FileSubmission
+        materi={materi}
+        peta={peta}
+        defaultValue={typeof answers.file_hasil_kerja === "string" ? answers.file_hasil_kerja : undefined}
+      />
+
       <div className="flex flex-col-reverse sm:flex-row justify-between items-center gap-4">
         <BackLink href={`/belajar/${materi}/${peta}/4`} />
-        <NextStepButton variant="green" icon="check">Selesai</NextStepButton>
+        <NextStepButton variant="green" icon="check">Lanjutkan ke Tantangan Terbuka</NextStepButton>
       </div>
     </form>
   );

@@ -52,24 +52,26 @@ export default async function Materi3Peta2Step1AmatiJaringJaring({ materi, peta,
             <path d="M21 21l-4.3-4.3" />
           </svg>
           <h1 className="m-0 text-2xl sm:text-[32px] font-extrabold text-[#111827]">Ayo Mengamati dan Berpikir</h1>
-          <span className="rounded-full bg-[#2563EB] text-white text-xs font-bold px-3 py-1">Tahap 1 dari 6</span>
+          <div className="basis-full"><span className="rounded-full bg-[#2563EB] text-white text-xs font-bold px-3 py-1">Tahap 1 dari 6</span></div>
         </div>
       </div>
 
-      <div className="rounded-[24px] bg-[#EFF4FF] px-6 py-5 flex flex-col sm:flex-row items-center gap-6">
-        <EditablePageImage
-          imageKey="M3-P2-L1-1"
-          materi={materi}
-          peta={peta}
-          step={step}
-          urutan="1"
-          src={maskot}
-          alt="Siswa laki-laki memegang kaca pembesar"
-          editable={editFoto}
-          imageClassName="object-contain"
-          containerClassName="relative w-40 h-32 flex-shrink-0"
-        />
-        <div className="flex flex-col gap-3">
+      <div className="flex flex-col gap-4">
+        <div className="rounded-[24px] overflow-hidden border border-[#E5E7EB] bg-white">
+          <EditablePageImage
+            imageKey="M3-P2-L1-1"
+            materi={materi}
+            peta={peta}
+            step={step}
+            urutan="1"
+            src={maskot}
+            alt="Siswa di kelas mengamati kubus, balok, prisma segitiga, dan jaring-jaringnya"
+            editable={editFoto}
+            natural
+            containerClassName="relative w-full"
+          />
+        </div>
+        <div className="rounded-[24px] bg-[#EFF4FF] px-6 py-5 flex flex-col gap-3">
           <p className="m-0 text-sm sm:text-base text-[#1E3A8A] leading-[1.7]">
             Amatilah bagaimana setiap bangun ruang dapat dibuka menjadi jaring-jaringnya. Perhatikan bentuk dan
             jumlah sisi yang tampak.

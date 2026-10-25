@@ -5,12 +5,6 @@ import StepHeader from "@/app/belajar/_components/StepHeader";
 import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
 import { getPageImage } from "@/lib/pageImages";
 
-const alur = [
-  { title: "GeoGebra 3D", desc: "Amati perubahan bangun ruang menjadi jaring-jaring.", color: "#2563EB" },
-  { title: "AR", desc: "Amati ukuran setiap sisi pada model bangun ruang secara nyata.", color: "#7C3AED" },
-  { title: "Catatan Hasil", desc: "Tuliskan semua informasi penting yang kamu temukan.", color: "#16A34A" },
-];
-
 const langkah = [
   "Scan QR Code.",
   "Pilih bangun ruang (Kubus, Balok, Prisma).",
@@ -26,7 +20,11 @@ export default async function Materi3Peta4Step1AyoBereksplorasi({
   step = "1",
   editFoto,
 }: StepComponentProps) {
-  const gambarSiswa = await getPageImage("M3-P4-L1-1");
+  const [gambarSiswa, gambarAlur, gambarLangkah] = await Promise.all([
+    getPageImage("M3-P4-L1-1"),
+    getPageImage("M3-P4-L1-2"),
+    getPageImage("M3-P4-L1-3"),
+  ]);
 
   return (
     <form action={submitStepAction} className="flex flex-col gap-8">
@@ -38,7 +36,7 @@ export default async function Materi3Peta4Step1AyoBereksplorasi({
         <StepHeader materi={materi} currentStep={1} totalSteps={8} />
         <div className="flex items-center gap-3.5 flex-wrap">
           <h1 className="m-0 text-2xl sm:text-[32px] font-extrabold text-[#111827]">Ayo Bereksplorasi</h1>
-          <span className="rounded-full bg-[#EFF4FF] text-[#2563EB] text-xs font-bold py-1 px-3">Tahap 3 dari 6</span>
+          <div className="basis-full"><span className="rounded-full bg-[#EFF4FF] text-[#2563EB] text-xs font-bold py-1 px-3">Tahap 3 dari 6</span></div>
         </div>
       </div>
 
@@ -67,27 +65,23 @@ export default async function Materi3Peta4Step1AyoBereksplorasi({
         />
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        {alur.map((a, i) => (
-          <div
-            key={a.title}
-            className="relative bg-white border border-[#E5E7EB] rounded-[20px] p-5 shadow-[0_1px_2px_rgba(0,0,0,0.04)] flex flex-col gap-2"
-          >
-            <div
-              className="w-9 h-9 rounded-full text-white flex items-center justify-center font-bold text-sm"
-              style={{ backgroundColor: a.color }}
-            >
-              {i + 1}
-            </div>
-            <p className="m-0 text-[15px] font-extrabold" style={{ color: a.color }}>
-              {a.title}
-            </p>
-            <p className="m-0 text-sm text-[#4B5563] leading-[1.6]">{a.desc}</p>
-          </div>
-        ))}
+      <div className="rounded-[24px] overflow-hidden border border-[#E5E7EB] bg-white">
+        <EditablePageImage
+          imageKey="M3-P4-L1-2"
+          materi={materi}
+          peta={peta}
+          step={step}
+          urutan="2"
+          src={gambarAlur}
+          alt="Alur kegiatan: GeoGebra 3D, AR, lalu Catatan Hasil"
+          editable={editFoto}
+          natural
+          containerClassName="relative w-full"
+        />
       </div>
 
-      <div className="bg-[#F9FAFB] border border-[#E5E7EB] rounded-[20px] p-6">
+      <div className="bg-[#F9FAFB] border border-[#E5E7EB] rounded-[20px] p-6 grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-6 items-center">
+        <div>
         <p className="m-0 mb-4 text-base font-extrabold text-[#111827]">Langkah Kegiatan</p>
         <ol className="m-0 p-0 list-none flex flex-col gap-3">
           {langkah.map((l, i) => (
@@ -99,6 +93,19 @@ export default async function Materi3Peta4Step1AyoBereksplorasi({
             </li>
           ))}
         </ol>
+        </div>
+        <EditablePageImage
+          imageKey="M3-P4-L1-3"
+          materi={materi}
+          peta={peta}
+          step={step}
+          urutan="3"
+          src={gambarLangkah}
+          alt="Kubus dibuka menjadi jaring-jaring"
+          editable={editFoto}
+          natural
+          containerClassName="relative w-full"
+        />
       </div>
 
       <div className="flex justify-end">

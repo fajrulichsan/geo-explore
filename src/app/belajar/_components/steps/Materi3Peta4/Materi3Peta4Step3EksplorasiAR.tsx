@@ -3,6 +3,7 @@ import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry"
 import NextStepButton from "@/app/belajar/_components/NextStepButton";
 import BackLink from "@/app/belajar/_components/BackLink";
 import StepHeader from "@/app/belajar/_components/StepHeader";
+import QrLink from "@/app/belajar/_components/QrLink";
 import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
 import { getPageImage } from "@/lib/pageImages";
 
@@ -32,7 +33,7 @@ export default async function Materi3Peta4Step3EksplorasiAR({
         <StepHeader materi={materi} currentStep={3} totalSteps={8} />
         <div className="flex items-center gap-3.5 flex-wrap">
           <h1 className="m-0 text-2xl sm:text-[32px] font-extrabold text-[#111827]">Ayo Bereksplorasi</h1>
-          <span className="rounded-full bg-[#EFF4FF] text-[#2563EB] text-xs font-bold py-1 px-3">Tahap 3 dari 6</span>
+          <div className="basis-full"><span className="rounded-full bg-[#EFF4FF] text-[#2563EB] text-xs font-bold py-1 px-3">Tahap 3 dari 6</span></div>
         </div>
       </div>
 
@@ -65,18 +66,7 @@ export default async function Materi3Peta4Step3EksplorasiAR({
 
           <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-5 flex flex-col items-center gap-3">
             <span className="text-xs font-bold text-[#16A34A]">Scan Marker AR</span>
-            <EditablePageImage
-              imageKey="qr-ar"
-              materi={materi}
-              peta={peta}
-              step={step}
-              urutan="2"
-              src={gambarMarker}
-              alt="Marker AR untuk menampilkan model 3D"
-              editable={editFoto}
-              imageClassName="object-contain"
-              containerClassName="relative w-36 h-36 bg-white"
-            />
+            <QrLink href="https://ar.geo-explore.my.id" src={gambarMarker} alt="QR code menuju AR" label="Scan atau klik: AR" />
             <p className="m-0 text-center text-xs text-[#6B7280]">Scan marker AR untuk menampilkan model 3D secara nyata.</p>
           </div>
         </div>

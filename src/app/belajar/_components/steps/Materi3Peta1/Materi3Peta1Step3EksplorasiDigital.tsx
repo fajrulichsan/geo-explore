@@ -39,7 +39,7 @@ export default async function Materi3Peta1Step3EksplorasiDigital({ materi, peta,
             <rect x="4" y="4" width="16" height="16" rx="2" />
           </svg>
           <h1 className="m-0 text-2xl sm:text-[32px] font-extrabold text-[#111827]">
-            Pendahuluan: Luas Permukaan Kubus, Balok, dan Prisma
+            Luas Permukaan Kubus, Balok, dan Prisma
           </h1>
         </div>
       </div>

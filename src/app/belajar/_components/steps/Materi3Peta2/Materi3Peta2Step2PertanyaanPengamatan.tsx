@@ -38,7 +38,7 @@ export default async function Materi3Peta2Step2PertanyaanPengamatan({
             <path d="M21 21l-4.3-4.3" />
           </svg>
           <h1 className="m-0 text-2xl sm:text-[32px] font-extrabold text-[#111827]">Ayo Mengamati dan Berpikir</h1>
-          <span className="rounded-full bg-[#2563EB] text-white text-xs font-bold px-3 py-1">Tahap 1 dari 6</span>
+          <div className="basis-full"><span className="rounded-full bg-[#2563EB] text-white text-xs font-bold px-3 py-1">Tahap 1 dari 6</span></div>
         </div>
       </div>
 

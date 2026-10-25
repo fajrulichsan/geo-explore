@@ -7,10 +7,10 @@ import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
 import { getPageImage } from "@/lib/pageImages";
 
 const bangunRuang = [
-  { nama: "Kubus", warna: "#A78BCA" },
-  { nama: "Balok", warna: "#60A5FA" },
-  { nama: "Prisma Segitiga", warna: "#6BAA5E" },
-];
+  { nama: "Kubus", key: "M3-P2-L5-1" },
+  { nama: "Balok", key: "M3-P2-L5-2" },
+  { nama: "Prisma Segitiga", key: "M3-P2-L5-3" },
+] as const;
 
 const pemantik = [
   "Mengapa semua sisi perlu diperhatikan untuk mengetahui luas permukaan?",
@@ -28,7 +28,10 @@ export default async function Materi3Peta2Step5CariPolaPemantik({
 }: StepComponentProps) {
   const answers = initialAnswers ?? {};
   const getValue = (key: string) => (typeof answers[key] === "string" ? (answers[key] as string) : "");
-  const maskot = await getPageImage("M3-P2-L2-1");
+  const [maskot, ...gambarBangun] = await Promise.all([
+    getPageImage("M3-P2-L2-1"),
+    ...bangunRuang.map((b) => getPageImage(b.key)),
+  ]);
 
   return (
     <form action={submitStepAction} className="flex flex-col gap-8">
@@ -44,7 +47,7 @@ export default async function Materi3Peta2Step5CariPolaPemantik({
             <path d="M21 21l-4.3-4.3" />
           </svg>
           <h1 className="m-0 text-2xl sm:text-[32px] font-extrabold text-[#111827]">Ayo Mengamati dan Berpikir</h1>
-          <span className="rounded-full bg-[#2563EB] text-white text-xs font-bold px-3 py-1">Tahap 1 dari 6</span>
+          <div className="basis-full"><span className="rounded-full bg-[#2563EB] text-white text-xs font-bold px-3 py-1">Tahap 1 dari 6</span></div>
         </div>
       </div>
 
@@ -57,6 +60,10 @@ export default async function Materi3Peta2Step5CariPolaPemantik({
             Cari Pola!
           </div>
         </div>
+        <div className="hidden sm:flex items-center gap-3 px-4 text-sm font-bold text-[#1E3A8A]">
+          <span className="w-48 flex-shrink-0">Bangun Ruang</span>
+          <span>Apa persamaan dan perbedaannya?</span>
+        </div>
         <div className="flex flex-col gap-3">
           {bangunRuang.map((b, i) => (
             <div
@@ -64,7 +71,18 @@ export default async function Materi3Peta2Step5CariPolaPemantik({
               className="bg-white border border-[#E5E7EB] rounded-[20px] p-4 shadow-[0_1px_2px_rgba(0,0,0,0.04)] flex flex-col sm:flex-row sm:items-center gap-3"
             >
               <div className="flex items-center gap-3 sm:w-48 flex-shrink-0">
-                <span className="w-8 h-8 rounded-lg flex-shrink-0" style={{ backgroundColor: b.warna }} />
+                <EditablePageImage
+                  imageKey={b.key}
+                  materi={materi}
+                  peta={peta}
+                  step={step}
+                  urutan={String(i + 2)}
+                  src={gambarBangun[i]}
+                  alt={b.nama}
+                  editable={editFoto}
+                  imageClassName="object-contain"
+                  containerClassName="relative w-16 h-14 flex-shrink-0"
+                />
                 <span className="text-sm font-bold text-[#1E3A8A]">{b.nama}</span>
               </div>
               <textarea

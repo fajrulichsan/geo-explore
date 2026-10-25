@@ -30,16 +30,10 @@ const kataKunci = [
   "Alasan Matematis",
 ];
 
-const rumus = [
-  { bangun: "Kubus", tone: "bg-[#DCFCE7] text-[#166534]", rumus: <>6s<sup>2</sup></> },
-  { bangun: "Balok", tone: "bg-[#DBEAFE] text-[#1E40AF]", rumus: "2(pl + pt + lt)" },
-  { bangun: "Prisma", tone: "bg-[#FFEDD5] text-[#9A3412]", rumus: <>2L<sub>a</sub> + L<sub>s</sub></> },
-];
-
 const limas = [
-  { key: "M3-P10-L4-2", urutan: "2", alt: "Limas oranye" },
-  { key: "M3-P10-L4-3", urutan: "3", alt: "Limas biru" },
-  { key: "M3-P10-L4-4", urutan: "4", alt: "Limas segi lima hijau" },
+  { key: "M3-P10-L4-2", urutan: "2", alt: "Limas segitiga" },
+  { key: "M3-P10-L4-3", urutan: "3", alt: "Limas segiempat" },
+  { key: "M3-P10-L4-4", urutan: "4", alt: "Limas segilima" },
 ] as const;
 
 const sectionBadge = (letter: string, title: string, color: string) => (
@@ -65,7 +59,11 @@ export default async function Materi3Peta10Step4PetaKonsepPoinKunci({
   step = "4",
   editFoto,
 }: StepComponentProps) {
-  const mascotImage = await getPageImage("M3-P10-L4-1");
+  const [mascotImage, siswaImage, petaKonsepImage] = await Promise.all([
+    getPageImage("M3-P10-L4-1"),
+    getPageImage("M3-P10-L4-5"),
+    getPageImage("M3-P10-L4-6"),
+  ]);
   const limasImages = await Promise.all(limas.map((l) => getPageImage(l.key)));
 
   return (
@@ -84,47 +82,29 @@ export default async function Materi3Peta10Step4PetaKonsepPoinKunci({
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <div className="flex flex-col gap-4">
           {sectionBadge("G", "Peta Konsep Mini", "#7C3AED")}
-          <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-5 shadow-[0_1px_2px_rgba(0,0,0,0.04)] flex flex-col items-center gap-3 flex-1">
-            <div className="rounded-xl bg-[#F3E8FF] border border-[#E9D5FF] px-6 py-2 text-sm font-extrabold text-[#6B21A8]">
-              LUAS PERMUKAAN
-            </div>
-            <div className="w-0.5 h-3 bg-[#9CA3AF]" />
-            <div className="rounded-xl bg-[#F3E8FF] border border-[#E9D5FF] px-5 py-2 text-sm font-semibold text-[#6B21A8] text-center">
-              Jumlah seluruh luas sisi
-            </div>
-            <div className="w-0.5 h-3 bg-[#9CA3AF]" />
-            <div className="grid grid-cols-3 gap-3 w-full">
-              {rumus.map((r) => (
-                <div key={r.bangun} className="flex flex-col items-center gap-2">
-                  <div className={`w-full rounded-xl px-2 py-2 text-center text-sm font-bold ${r.tone}`}>
-                    {r.bangun}
-                  </div>
-                  <span className="text-[#9CA3AF]">↓</span>
-                  <div className="w-full rounded-xl border border-[#E5E7EB] bg-white px-2 py-2 text-center text-xs sm:text-sm font-bold text-[#111827]">
-                    {r.rumus}
-                  </div>
-                </div>
-              ))}
-            </div>
-            <div className="w-full rounded-xl bg-[#EFF6FF] border border-[#DBEAFE] px-4 py-3 text-xs text-[#1E3A8A] leading-[1.7]">
-              <p className="m-0">
-                <span className="font-extrabold">L<sub>a</sub></span> = luas alas
-              </p>
-              <p className="m-0">
-                <span className="font-extrabold">L<sub>s</sub></span> = luas selimut (jumlah luas
-                seluruh sisi tegak)
-              </p>
-            </div>
+          <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-5 shadow-[0_1px_2px_rgba(0,0,0,0.04)] flex flex-col items-center justify-center flex-1">
+            <EditablePageImage
+              imageKey="M3-P10-L4-6"
+              materi={materi}
+              peta={peta}
+              step={step}
+              urutan="6"
+              src={petaKonsepImage}
+              alt="Peta konsep mini: luas permukaan adalah jumlah seluruh luas sisi kubus, balok, dan prisma"
+              editable={editFoto}
+              natural
+              containerClassName="relative w-full"
+            />
           </div>
         </div>
 
         <div className="flex flex-col gap-4">
           {sectionBadge("H", "Poin Penting", "#EA580C")}
           <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-5 shadow-[0_1px_2px_rgba(0,0,0,0.04)] flex flex-col gap-3.5 flex-1 justify-center">
-            {poinPenting.map((p) => (
+            {poinPenting.map((p, i) => (
               <div key={p} className="flex items-start gap-3">
-                <span className="w-5 h-5 rounded-full bg-[#16A34A] text-white flex items-center justify-center text-[11px] flex-shrink-0 mt-0.5">
-                  ✓
+                <span className="w-5 h-5 rounded-full bg-[#16A34A] text-white flex items-center justify-center text-[11px] font-bold flex-shrink-0 mt-0.5">
+                  {i + 1}
                 </span>
                 <p className="m-0 text-sm text-[#374151] leading-[1.5]">{p}</p>
               </div>
@@ -145,19 +125,7 @@ export default async function Materi3Peta10Step4PetaKonsepPoinKunci({
       </div>
 
       <div className="bg-[#FDF3C7] rounded-[20px] p-6 flex flex-col sm:flex-row items-center gap-5">
-        <EditablePageImage
-          imageKey="M3-P10-L4-1"
-          materi={materi}
-          peta={peta}
-          step={step}
-          urutan="1"
-          src={mascotImage}
-          alt="Maskot siswi mengacungkan jempol karena telah menyelesaikan rangkuman"
-          editable={editFoto}
-          imageClassName="object-contain mix-blend-multiply"
-          containerClassName="relative w-40 h-36 flex-shrink-0"
-        />
-        <div className="text-center sm:text-left">
+        <div className="text-center sm:text-left flex-1">
           <h2 className="m-0 mb-1.5 text-2xl font-extrabold text-[#DC2626]">🏆 Hebat!</h2>
           <p className="m-0 text-sm text-[#785900] font-medium leading-[1.6]">
             Kamu telah menemukan sendiri bagaimana luas permukaan kubus, balok, dan prisma
@@ -165,6 +133,32 @@ export default async function Materi3Peta10Step4PetaKonsepPoinKunci({
             memberikan alasan matematis, serta percaya pada kemampuanmu dalam menyelesaikan
             masalah matematika!
           </p>
+        </div>
+        <div className="flex items-end gap-3 flex-shrink-0">
+          <EditablePageImage
+            imageKey="M3-P10-L4-1"
+            materi={materi}
+            peta={peta}
+            step={step}
+            urutan="1"
+            src={mascotImage}
+            alt="Siswi mengacungkan jempol karena telah menyelesaikan rangkuman"
+            editable={editFoto}
+            imageClassName="object-contain"
+            containerClassName="relative w-28 h-40"
+          />
+          <EditablePageImage
+            imageKey="M3-P10-L4-5"
+            materi={materi}
+            peta={peta}
+            step={step}
+            urutan="5"
+            src={siswaImage}
+            alt="Siswa mengepalkan tangan semangat karena telah menyelesaikan rangkuman"
+            editable={editFoto}
+            imageClassName="object-contain"
+            containerClassName="relative w-28 h-40"
+          />
         </div>
       </div>
 
@@ -201,7 +195,7 @@ export default async function Materi3Peta10Step4PetaKonsepPoinKunci({
 
       <div className="flex flex-col-reverse sm:flex-row justify-between items-center gap-4">
         <BackLink href={`/belajar/${materi}/${peta}/3`} />
-        <NextStepButton variant="green" icon="check">Selesai</NextStepButton>
+        <NextStepButton variant="green" icon="check">Lanjutkan ke Submateri 4</NextStepButton>
       </div>
     </form>
   );

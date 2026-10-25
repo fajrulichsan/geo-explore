@@ -41,7 +41,7 @@ export default async function Materi3Peta3Step1DiskusikanBersama({
 
       <div className="flex flex-col gap-4">
         <StepHeader materi={materi} currentStep={1} totalSteps={6} />
-        <div className="grid lg:grid-cols-[1.1fr_1fr] gap-5 items-center">
+        <div className="flex flex-col gap-5">
           <div className="flex flex-col gap-4">
         <div className="inline-flex items-center bg-[#FDF3C7] text-[#92400E] rounded-full py-1.5 px-3.5 text-xs font-bold tracking-[0.02em] w-fit">
           Tahap 2 dari 6 &ndash; Ayo Berdiskusi

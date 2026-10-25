@@ -41,7 +41,7 @@ export default async function Materi3Peta8Step1RefleksiPemahaman({ materi, peta,
         <p className="m-0 text-[15px] font-semibold text-[#2563EB]">Apa yang Sudah Kamu Pelajari Hari Ini?</p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-[1fr_1.2fr] gap-5 items-center bg-gradient-to-br from-[#EFF4FF] to-[#DCE6FB] border border-[#DBE4FF] rounded-[20px] p-6">
+      <div className="flex flex-col gap-5 bg-gradient-to-br from-[#EFF4FF] to-[#DCE6FB] border border-[#DBE4FF] rounded-[20px] p-6">
         <div className="flex items-start gap-4">
           <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#166534" strokeWidth="1.8" className="flex-shrink-0">
             <rect x="5" y="4" width="14" height="17" rx="2" />
