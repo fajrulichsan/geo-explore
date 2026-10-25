@@ -3,7 +3,6 @@ import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry"
 import NextStepButton from "@/app/belajar/_components/NextStepButton";
 import BackLink from "@/app/belajar/_components/BackLink";
 import StepHeader from "@/app/belajar/_components/StepHeader";
-import FileSubmission from "@/components/FileSubmission";
 import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
 import { getPageImage } from "@/lib/pageImages";
 
@@ -42,7 +41,7 @@ export default async function Materi3Peta9Step4RefleksiSingkat({
       <input type="hidden" name="step" value="4" />
 
       <div className="flex flex-col gap-4">
-        <StepHeader materi={materi} currentStep={4} totalSteps={4} />
+        <StepHeader materi={materi} currentStep={4} totalSteps={5} />
         <h1 className="m-0 text-2xl sm:text-[32px] font-extrabold text-[#111827]">
           Tantangan Terbuka
         </h1>
@@ -139,20 +138,13 @@ export default async function Materi3Peta9Step4RefleksiSingkat({
         </svg>
         <p className="m-0 text-xs font-semibold text-[#1E3A8A] leading-[1.6]">
           Hebat! Kamu telah mencoba berbagai strategi untuk menentukan luas permukaan.
-          Selanjutnya, bacalah Rangkuman Submateri 3 untuk memperkuat konsep-konsep penting yang
-          telah kamu temukan.
+          Selanjutnya, cek skormu untuk melihat apakah kamu sudah bisa melanjutkan ke Quiz.
         </p>
       </div>
 
-      <FileSubmission
-        materi={materi}
-        peta={peta}
-        defaultValue={typeof answers.file_hasil_kerja === "string" ? answers.file_hasil_kerja : undefined}
-      />
-
       <div className="flex flex-col-reverse sm:flex-row justify-between items-center gap-4">
         <BackLink href={`/belajar/${materi}/${peta}/3`} />
-        <NextStepButton variant="green" icon="check">Lanjutkan ke Quiz</NextStepButton>
+        <NextStepButton />
       </div>
     </form>
   );

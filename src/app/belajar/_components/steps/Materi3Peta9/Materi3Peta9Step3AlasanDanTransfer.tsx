@@ -36,7 +36,7 @@ export default async function Materi3Peta9Step3AlasanDanTransfer({
       <input type="hidden" name="step" value="3" />
 
       <div className="flex flex-col gap-4">
-        <StepHeader materi={materi} currentStep={3} totalSteps={4} />
+        <StepHeader materi={materi} currentStep={3} totalSteps={5} />
         <h1 className="m-0 text-2xl sm:text-[32px] font-extrabold text-[#111827]">
           Tantangan Terbuka
         </h1>

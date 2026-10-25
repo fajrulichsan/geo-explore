@@ -49,7 +49,7 @@ export default async function Materi3Peta9Step1MasalahDanStrategi({
       <input type="hidden" name="peta" value={peta} />
       <input type="hidden" name="step" value="1" />
 
-      <StepHeader materi={materi} currentStep={1} totalSteps={4} />
+      <StepHeader materi={materi} currentStep={1} totalSteps={5} />
 
       <div className="rounded-[24px] bg-gradient-to-br from-[#EFF4FF] to-[#F5F3FF] border border-[#E5E7EB] p-6 sm:p-8 flex flex-col gap-6">
         <div className="flex-1 flex flex-col gap-3">
