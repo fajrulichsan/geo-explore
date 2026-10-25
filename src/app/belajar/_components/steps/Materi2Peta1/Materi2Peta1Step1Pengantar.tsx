@@ -5,8 +5,6 @@ import StepHeader from "@/app/belajar/_components/StepHeader";
 import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
 import { getPageImage } from "@/lib/pageImages";
 
-const tahapProses = ["1. Bangun Ruang", "2. Membuka", "3. Jaring-Jaring", "4. Melipat", "5. Bangun Ruang Kembali"];
-
 export default async function Materi2Peta1Step1Pengantar({ materi, peta, editFoto }: StepComponentProps) {
   const [gambarSiswa, gambarProses] = await Promise.all([
     getPageImage("M2-P1-L1-1"),
@@ -21,7 +19,7 @@ export default async function Materi2Peta1Step1Pengantar({ materi, peta, editFot
 
       <div className="flex flex-col gap-4">
         <StepHeader materi={materi} currentStep={1} totalSteps={2} />
-        <div className="rounded-[24px] bg-gradient-to-br from-[#EFF4FF] to-white border border-[#DBE7FF] p-6 sm:p-8 flex flex-col-reverse sm:flex-row items-center gap-6">
+        <div className="rounded-[24px] bg-gradient-to-br from-[#EFF4FF] to-white border border-[#DBE7FF] p-6 sm:p-8 flex flex-col gap-6">
           <div className="flex-1 flex flex-col gap-3">
             <div className="inline-flex items-center gap-2 bg-[#1E3A8A] text-white rounded-full py-1.5 px-4 text-xs font-bold w-fit">
               SUBMATERI 2
@@ -41,7 +39,7 @@ export default async function Materi2Peta1Step1Pengantar({ materi, peta, editFot
             alt="Tiga siswa belajar bersama sambil menulis di buku"
             editable={editFoto}
             natural
-            containerClassName="relative w-full max-w-[280px] sm:max-w-[320px] flex-shrink-0 rounded-[16px] overflow-hidden"
+            containerClassName="relative w-full rounded-[16px] overflow-hidden"
           />
         </div>
       </div>
@@ -91,17 +89,6 @@ export default async function Materi2Peta1Step1Pengantar({ materi, peta, editFot
         </div>
 
         <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-6 shadow-[0_1px_2px_rgba(0,0,0,0.04)] flex flex-col gap-5">
-          <ol className="m-0 p-0 list-none flex flex-wrap justify-center gap-2">
-            {tahapProses.map((tahap) => (
-              <li
-                key={tahap}
-                className="bg-white border border-[#2563EB] text-[#2563EB] px-4 py-2 rounded-full text-xs font-bold"
-              >
-                {tahap}
-              </li>
-            ))}
-          </ol>
-
           <EditablePageImage
             imageKey="M2-P1-L1-2"
             materi={materi}

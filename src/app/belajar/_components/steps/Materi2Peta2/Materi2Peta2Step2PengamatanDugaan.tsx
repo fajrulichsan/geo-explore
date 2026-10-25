@@ -92,7 +92,7 @@ export default async function Materi2Peta2Step2PengamatanDugaan({
               alt="Siswi berhijab menunjuk ke atas sambil berpikir"
               editable={editFoto}
               imageClassName="object-contain"
-              containerClassName="relative w-20 h-32 flex-shrink-0"
+              containerClassName="relative w-24 h-36 sm:w-48 sm:h-64 flex-shrink-0"
             />
             <div className="flex-1 flex flex-col gap-2.5">
               <span className="inline-flex w-fit rounded-full bg-[#F9A8D4] text-[#831843] text-sm font-extrabold px-4 py-1">

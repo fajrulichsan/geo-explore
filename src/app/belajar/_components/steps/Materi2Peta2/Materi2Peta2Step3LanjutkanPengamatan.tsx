@@ -49,37 +49,39 @@ export default async function Materi2Peta2Step3LanjutkanPengamatan({
         </div>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
-        <div className="rounded-[24px] bg-[#EFF4FF] p-5 flex items-center gap-4">
-          <EditablePageImage
-            imageKey="M2-P2-L3-1"
-            materi={materi}
-            peta={peta}
-            step={step}
-            urutan="1"
-            src={mascotImage}
-            alt="Siswa laki-laki memegang kaca pembesar"
-            editable={editFoto}
-            imageClassName="object-contain"
-            containerClassName="relative w-32 h-32 flex-shrink-0"
-          />
-          <p className="m-0 text-sm leading-[1.7] text-[#1E3A8A]">
-            Masih ingat pengamatanmu pada halaman sebelumnya? Sekarang amati susunan yang berbeda, lalu bandingkan
-            persamaan dan <span className="font-bold text-[#DC2626]">perbedaannya</span>.
-          </p>
-        </div>
-        <div className="rounded-[24px] bg-[#FEF9E7] border border-[#FDE68A] p-5 flex flex-col gap-2">
-          <div className="flex items-center gap-2 text-[#B45309] font-extrabold text-lg">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="#F59E0B">
-              <path d="M12 2l3 6.5 7 .8-5.2 4.8 1.5 7-6.3-3.6L5.7 21l1.5-7L2 9.3l7-.8z" />
-            </svg>
-            Ingat!
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-5 items-center">
+        <div className="flex flex-col gap-5">
+          <div className="rounded-[24px] bg-[#EFF4FF] p-5">
+            <p className="m-0 text-sm leading-[1.7] text-[#1E3A8A]">
+              Masih ingat pengamatanmu pada halaman sebelumnya? Sekarang amati susunan yang berbeda, lalu bandingkan
+              persamaan dan <span className="font-bold text-[#DC2626]">perbedaannya</span>.
+            </p>
           </div>
-          <ul className="m-0 pl-5 text-sm leading-[1.7] text-[#78350F] flex flex-col gap-1">
-            <li>Perhatikan jumlah bidang, posisi setiap bidang, dan hubungan antarbidang.</li>
-            <li>Perubahan kecil pada susunan dapat membuat hasil lipatan berbeda.</li>
-          </ul>
+          <div className="rounded-[24px] bg-[#FEF9E7] border border-[#FDE68A] p-5 flex flex-col gap-2">
+            <div className="flex items-center gap-2 text-[#B45309] font-extrabold text-lg">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="#F59E0B">
+                <path d="M12 2l3 6.5 7 .8-5.2 4.8 1.5 7-6.3-3.6L5.7 21l1.5-7L2 9.3l7-.8z" />
+              </svg>
+              Ingat!
+            </div>
+            <ul className="m-0 pl-5 text-sm leading-[1.7] text-[#78350F] flex flex-col gap-1">
+              <li>Perhatikan jumlah bidang, posisi setiap bidang, dan hubungan antarbidang.</li>
+              <li>Perubahan kecil pada susunan dapat membuat hasil lipatan berbeda.</li>
+            </ul>
+          </div>
         </div>
+        <EditablePageImage
+          imageKey="M2-P2-L3-1"
+          materi={materi}
+          peta={peta}
+          step={step}
+          urutan="1"
+          src={mascotImage}
+          alt="Siswa laki-laki memegang kaca pembesar"
+          editable={editFoto}
+          natural
+          containerClassName="relative w-full"
+        />
       </div>
 
       <div className="flex flex-col gap-4">

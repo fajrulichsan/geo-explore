@@ -1,3 +1,10 @@
-/build-peta-step-from-image bkinkan saya materi 1 peta 1, itu cba kamu ambil untuk pagenya itu yang dipakai adalah pada path peta-01-pendahuluan disini ada pkaai 1 page ini, terus bkin page ini sampai selesai sesuai dengan skill, terus untuk kredensial login itu pakai fajrulichsan0208@gmail.com pass: 123123, peta 1 udah kebkin, bongkar aja bkin baru, delete aja page lama
+/belajar/2/2/1
+- ini bannernya di bwah tulisan ini "Amati berbagai susunan bidang datar di bawah ini dengan cermat!" 
 
-/build-peta-step-from-image bkinkan saya materi 1 peta 2, itu cba kamu ambil untuk pagenya itu yang dipakai adalah pada path peta-02-amati-berfikir disini ada pkaai 2 page ini, terus bkin page ini sampai selesai sesuai dengan skill, terus untuk kredensial login itu pakai fajrulichsan0208@gmail.com pass: 123123, peta 1 udah kebkin, bongkar aja bkin baru, delete aja page lama
+/belajar/2/6/1
+- page ini di row baru ya bannernya, 
+
+/belajar/2/7/1
+- ini bannernya blum ada, cba kamu lihat di file feedback sudah ada blom imagenya, ini sepertinya blum kamu upload, terus bannernya cba kmau bkin di row baru 
+
+

@@ -39,9 +39,9 @@ export default async function Materi2Peta9Step4BandingkanDanRefleksi({
       <input type="hidden" name="step" value="4" />
 
       <div className="flex flex-col gap-4">
-        <StepHeader materi={materi} currentStep={4} totalSteps={4} />
+        <StepHeader materi={materi} currentStep={4} totalSteps={5} />
         <h1 className="m-0 text-2xl sm:text-[32px] font-extrabold text-[#111827]">
-          Tantangan Open-Ended
+          Tantangan Terbuka
         </h1>
       </div>
 
@@ -175,7 +175,7 @@ export default async function Materi2Peta9Step4BandingkanDanRefleksi({
 
       <div className="flex flex-col-reverse sm:flex-row justify-between items-center gap-4">
         <BackLink href={`/belajar/${materi}/${peta}/3`} />
-        <NextStepButton variant="green" icon="check">Selesai</NextStepButton>
+        <NextStepButton>Lanjutkan</NextStepButton>
       </div>
     </form>
   );

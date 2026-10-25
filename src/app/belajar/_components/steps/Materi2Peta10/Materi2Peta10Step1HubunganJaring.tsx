@@ -110,28 +110,26 @@ export default async function Materi2Peta10Step1HubunganJaring({
 
       <div className="flex flex-col gap-4">
         <StepHeader materi={materi} currentStep={1} totalSteps={4} />
-        <div className="flex items-center gap-3 flex-wrap">
-          <h1 className="m-0 text-2xl sm:text-[32px] font-extrabold text-[#111827]">Rangkuman</h1>
-          <span className="bg-[#FACC15] text-[#1E3A8A] rounded-full py-1 px-4 text-xs font-bold">
-            Halaman 1 dari 2
-          </span>
-        </div>
+        <h1 className="m-0 text-2xl sm:text-[32px] font-extrabold text-[#111827]">Rangkuman</h1>
+      </div>
+
+      <div className="rounded-[20px] overflow-hidden border border-[#DBEAFE]">
+        <EditablePageImage
+          imageKey="M2-P10-L1-1"
+          materi={materi}
+          peta={peta}
+          step={step}
+          urutan="1"
+          src={img["M2-P10-L1-1"]}
+          alt="Guru dan siswa merangkum jaring-jaring bangun ruang di kelas"
+          editable={editFoto}
+          natural
+          containerClassName="relative w-full"
+        />
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-[1.4fr_1fr] gap-5">
         <div className="rounded-[20px] bg-[#EFF4FF] border border-[#DBEAFE] p-5 flex items-center gap-4">
-          <EditablePageImage
-            imageKey="M2-P10-L1-1"
-            materi={materi}
-            peta={peta}
-            step={step}
-            urutan="1"
-            src={img["M2-P10-L1-1"]}
-            alt="Maskot siswi berhijab menunjuk ke atas sambil menulis di buku"
-            editable={editFoto}
-            imageClassName="object-contain"
-            containerClassName="relative w-28 h-36 sm:w-32 sm:h-40 flex-shrink-0"
-          />
           <p className="m-0 text-sm leading-[1.8] text-[#374151]">
             Pada submateri ini, kamu telah belajar tentang{" "}
             <span className="font-extrabold text-[#1E3A8A]">jaring-jaring bangun ruang sisi datar</span>.

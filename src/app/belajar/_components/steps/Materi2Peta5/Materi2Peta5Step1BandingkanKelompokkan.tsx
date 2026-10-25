@@ -56,25 +56,26 @@ export default async function Materi2Peta5Step1BandingkanKelompokkan({
       </div>
 
       <div className="flex flex-col sm:flex-row sm:items-center gap-5">
-        <EditablePageImage
-          imageKey="M2-P5-L1-1"
-          materi={materi}
-          peta={peta}
-          step={step}
-          urutan="1"
-          src={mascotImage}
-          alt="Siswi berhijab menulis di buku sambil menunjuk ke atas"
-          editable={editFoto}
-          imageClassName="object-contain"
-          containerClassName="relative w-40 h-32 flex-shrink-0"
-        />
-        <div className="relative bg-white border border-[#E5E7EB] rounded-2xl sm:rounded-l-sm shadow-[0_1px_2px_rgba(0,0,0,0.04)] py-3.5 px-5 flex-1">
+        <div className="relative bg-white border border-[#E5E7EB] rounded-2xl shadow-[0_1px_2px_rgba(0,0,0,0.04)] py-3.5 px-5 flex-1">
           <p className="m-0 text-sm leading-[1.6] text-[#374151]">
             Sekarang, olah semua informasi yang telah kalian peroleh dari GeoGebra 3D dan AR! Bandingkan,
             kelompokkan, temukan pola, lalu susun dugaan kelompokmu.
           </p>
         </div>
       </div>
+
+      <EditablePageImage
+        imageKey="M2-P5-L1-1"
+        materi={materi}
+        peta={peta}
+        step={step}
+        urutan="1"
+        src={mascotImage}
+        alt="Siswi berhijab menulis di buku sambil menunjuk ke atas"
+        editable={editFoto}
+        natural
+        containerClassName="relative w-full"
+      />
 
       <div className="bg-[#FEF9E7] border border-[#F5E3A0] rounded-[20px] p-6 flex items-start gap-4">
         <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#D97706" strokeWidth="2" className="flex-shrink-0">

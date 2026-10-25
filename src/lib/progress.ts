@@ -1,5 +1,6 @@
 import { supabase } from "@/lib/supabase";
 import { MATERI_WITH_QUIZ, getPetaStructure, getTotalStepsInStructure } from "@/lib/learningStructure";
+import { MATERI_WITH_OPEN_ENDED_SCORE } from "@/lib/openEndedScoring";
 
 export type ProgressRow = {
   peta: string;
@@ -74,10 +75,10 @@ export function isStepUnlockedFromRows(
 
   const done = new Set(rows.filter((r) => r.status === "selesai").map((r) => `${r.peta}-${r.step}`));
 
-  // Materi with a Quiz: Rangkuman stays reachable from a failed Quiz (and Materi 1's Tantangan
+  // Materi with a Quiz: Rangkuman stays reachable from a failed Quiz (and a scored Tantangan
   // Terbuka), so it only needs the answering steps of peta 9 to be done.
   if (peta === "11" && stepNum === 1 && MATERI_WITH_QUIZ.has(materi)) {
-    return done.has(`9-${materi === "1" ? 6 : structure["9"]}`);
+    return done.has(`9-${MATERI_WITH_OPEN_ENDED_SCORE.has(materi) ? structure["9"] - 1 : structure["9"]}`);
   }
 
   if (stepNum === 1) {

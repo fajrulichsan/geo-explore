@@ -37,7 +37,7 @@ export default async function Materi2Peta2Step1Amati({ materi, peta, step = "1",
         </div>
       </div>
 
-      <div className="flex flex-col sm:flex-row sm:items-center gap-5">
+      <div className="flex flex-col gap-5">
         <EditablePageImage
           imageKey="M2-P2-L1-1"
           materi={materi}
@@ -47,8 +47,8 @@ export default async function Materi2Peta2Step1Amati({ materi, peta, step = "1",
           src={mascotImage}
           alt="Siswi berhijab mengamati buku dengan kaca pembesar"
           editable={editFoto}
-          imageClassName="object-contain"
-          containerClassName="relative w-40 h-32 sm:w-44 sm:h-36 flex-shrink-0"
+          natural
+          containerClassName="relative w-full"
         />
         <div className="flex-1 flex flex-col gap-3">
           <div className="flex items-center gap-3.5">

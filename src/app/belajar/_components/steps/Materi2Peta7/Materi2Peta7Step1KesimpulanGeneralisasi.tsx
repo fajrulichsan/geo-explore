@@ -46,23 +46,26 @@ export default async function Materi2Peta7Step1KesimpulanGeneralisasi({
         <div className="inline-flex items-center bg-[#FDF3C7] text-[#92400E] rounded-full py-1.5 px-3.5 text-xs font-bold tracking-[0.02em] w-fit">
           Tahap 6 dari 6
         </div>
-        <h1 className="m-0 text-2xl sm:text-[32px] font-extrabold text-[#111827]">Ayo Menyimpulkan (Generalisasi)</h1>
+        <h1 className="m-0 text-2xl sm:text-[32px] font-extrabold text-[#111827]">Ayo Menyimpulkan</h1>
+      </div>
+
+      <div className="rounded-[24px] overflow-hidden border border-[#BFDBFE]">
+        <EditablePageImage
+          imageKey="M2-P7-L1-1"
+          materi={materi}
+          peta={peta}
+          step={step}
+          urutan="1"
+          src={mascotImage}
+          alt="Siswa berdiskusi dalam kelompok tentang jaring-jaring bangun ruang di kelas"
+          editable={editFoto}
+          natural
+          containerClassName="relative w-full"
+        />
       </div>
 
       <div className="grid md:grid-cols-5 gap-4">
         <div className="md:col-span-3 rounded-[24px] bg-white border border-[#BFDBFE] p-5 flex items-center gap-4">
-          <EditablePageImage
-            imageKey="M2-P7-L1-1"
-            materi={materi}
-            peta={peta}
-            step={step}
-            urutan="1"
-            src={mascotImage}
-            alt="Siswi berhijab menulis di buku sambil menunjuk ke atas"
-            editable={editFoto}
-            imageClassName="object-contain"
-            containerClassName="relative w-32 h-28 sm:w-40 sm:h-36 flex-shrink-0"
-          />
           <p className="m-0 text-sm leading-[1.7] text-[#1E3A8A]">
             Selamat! Kamu telah melalui proses mengamati, berdiskusi, mengeksplorasi, mengolah informasi, dan
             memverifikasi hasil. Sekarang saatnya menyusun <span className="font-bold">kesimpulan umum</span>{" "}
@@ -109,7 +112,7 @@ export default async function Materi2Peta7Step1KesimpulanGeneralisasi({
         <div className="bg-white border border-[#BBF7D0] rounded-[20px] p-6 flex flex-col gap-5">
           <div className="flex items-center gap-3">
             <div className="w-9 h-9 rounded-full bg-[#16A34A] text-white flex items-center justify-center font-bold text-sm flex-shrink-0">B</div>
-            <h2 className="m-0 text-lg font-bold text-[#166534]">Generalisasi</h2>
+            <h2 className="m-0 text-lg font-bold text-[#166534]">Kesimpulan Umum</h2>
           </div>
           <p className="m-0 text-sm text-[#4B5563]">
             Berdasarkan hasil verifikasi yang telah kalian lakukan, amati kedua susunan bidang datar berikut.

@@ -4,6 +4,7 @@ import NextStepButton from "@/app/belajar/_components/NextStepButton";
 import BackLink from "@/app/belajar/_components/BackLink";
 import StepHeader from "@/app/belajar/_components/StepHeader";
 import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
+import QrLink from "@/app/belajar/_components/QrLink";
 import { getPageImage } from "@/lib/pageImages";
 
 export default async function Materi2Peta3Step3DugaanKelompok({
@@ -16,9 +17,10 @@ export default async function Materi2Peta3Step3DugaanKelompok({
   const answers = initialAnswers ?? {};
   const getValue = (key: string) => (typeof answers[key] === "string" ? (answers[key] as string) : "");
 
-  const [geogebraImage, qrImage] = await Promise.all([
+  const [geogebraImage, qrGeogebra, qrAr] = await Promise.all([
     getPageImage("M2-P3-L3-1"),
-    getPageImage("M2-P3-L3-2"),
+    getPageImage("qr-geogebra"),
+    getPageImage("qr-ar"),
   ]);
 
   return (
@@ -116,18 +118,8 @@ export default async function Materi2Peta3Step3DugaanKelompok({
               imageClassName="object-contain"
               containerClassName="relative w-52 sm:w-64 aspect-[233/113]"
             />
-            <EditablePageImage
-              imageKey="M2-P3-L3-2"
-              materi={materi}
-              peta={peta}
-              step={step}
-              urutan="2"
-              src={qrImage}
-              alt="Kode QR"
-              editable={editFoto}
-              imageClassName="object-contain"
-              containerClassName="relative w-20 h-20 flex-shrink-0"
-            />
+            <QrLink href="/geogebra" src={qrGeogebra} alt="QR code GeoGebra 3D" label="GeoGebra 3D" />
+            <QrLink href="https://ar.geo-explore.my.id" src={qrAr} alt="QR code AR" label="AR" />
           </div>
         </div>
       </div>

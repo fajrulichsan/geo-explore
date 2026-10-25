@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState, useTransition } from "react";
 import NextStepButton from "@/app/belajar/_components/NextStepButton";
-import { scorePeta10OpenEndedAction } from "@/app/belajar/openended-actions";
+import { scoreOpenEndedAction } from "@/app/belajar/openended-actions";
 import type { OpenEndedResult } from "@/lib/openEndedScoring";
 import Fireworks from "./Fireworks";
 
@@ -105,7 +105,7 @@ export default function Peta9ScoreCheck({
   function checkScore() {
     setError("");
     startTransition(async () => {
-      const res = await scorePeta10OpenEndedAction();
+      const res = await scoreOpenEndedAction(materi);
       if (!res.ok) {
         setError(res.error);
         return;

@@ -53,18 +53,6 @@ export default async function Materi2Peta4Step1Eksplorasi({
       <div className="relative overflow-hidden rounded-[28px] bg-gradient-to-br from-[#1E3A8A] to-[#2563EB] px-6 py-7 sm:px-9 sm:py-8">
         <div className="absolute -right-14 -top-16 w-56 h-56 rounded-full bg-white/10" />
         <div className="relative flex flex-col sm:flex-row sm:items-center gap-5">
-          <EditablePageImage
-            imageKey="M2-P4-L1-1"
-            materi={materi}
-            peta={peta}
-            step={step}
-            urutan="1"
-            src={mascotImage}
-            alt="Maskot siswi memegang tablet"
-            editable={editFoto}
-            imageClassName="object-contain"
-            containerClassName="relative w-28 h-36 sm:w-32 sm:h-40 flex-shrink-0 rounded-2xl overflow-hidden bg-white/10"
-          />
           <div className="flex-1 flex flex-col gap-3">
             <h1 className="m-0 text-2xl sm:text-[32px] font-extrabold text-white">Ayo Bereksplorasi</h1>
             <p className="m-0 text-sm font-semibold text-[#FDE68A]">
@@ -89,6 +77,19 @@ export default async function Materi2Peta4Step1Eksplorasi({
           </div>
         </div>
       </div>
+
+      <EditablePageImage
+        imageKey="M2-P4-L1-1"
+        materi={materi}
+        peta={peta}
+        step={step}
+        urutan="1"
+        src={mascotImage}
+        alt="Maskot siswi memegang tablet"
+        editable={editFoto}
+        natural
+        containerClassName="relative w-full"
+      />
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-start">
         <div className="flex flex-col gap-4 bg-white border border-[#E5E7EB] rounded-[20px] p-5 sm:p-6 shadow-[0_1px_2px_rgba(0,0,0,0.04)]">

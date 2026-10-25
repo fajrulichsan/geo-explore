@@ -1,6 +1,7 @@
 import { submitStepAction } from "@/app/belajar/actions";
 import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
 import NextStepButton from "@/app/belajar/_components/NextStepButton";
+import FileSubmission from "@/components/FileSubmission";
 import StepHeader from "@/app/belajar/_components/StepHeader";
 import BackLink from "@/app/belajar/_components/BackLink";
 import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
@@ -142,14 +143,20 @@ export default async function Materi2Peta8Step5SikapTarget({ materi, peta, step 
         <div>
           <p className="m-0 text-sm font-bold text-[#1D4ED8]">Menuju Langkah Selanjutnya</p>
           <p className="m-0 text-sm text-[#1D4ED8] leading-[1.6]">
-            Kamu telah menyimpulkan dan merefleksikan hasil belajarmu. Sekarang, terapkan pemahamanmu melalui Tantangan Open-Ended!
+            Kamu telah menyimpulkan dan merefleksikan hasil belajarmu. Sekarang, terapkan pemahamanmu melalui Tantangan Terbuka!
           </p>
         </div>
       </div>
 
+      <FileSubmission
+        materi={materi}
+        peta={peta}
+        defaultValue={typeof initialAnswers?.file_hasil_kerja === "string" ? initialAnswers.file_hasil_kerja : undefined}
+      />
+
       <div className="flex flex-col-reverse sm:flex-row justify-between items-center gap-4">
         <BackLink href={`/belajar/${materi}/${peta}/4`} />
-        <NextStepButton variant="green" icon="check">Selesai</NextStepButton>
+        <NextStepButton variant="green" icon="check">Lanjutkan ke Tantangan Terbuka</NextStepButton>
       </div>
     </form>
   );

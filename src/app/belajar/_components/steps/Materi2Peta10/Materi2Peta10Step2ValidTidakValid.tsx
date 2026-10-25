@@ -55,12 +55,7 @@ export default async function Materi2Peta10Step2ValidTidakValid({
 
       <div className="flex flex-col gap-4">
         <StepHeader materi={materi} currentStep={2} totalSteps={4} />
-        <div className="flex items-center gap-3 flex-wrap">
-          <h1 className="m-0 text-2xl sm:text-[32px] font-extrabold text-[#111827]">Rangkuman</h1>
-          <span className="bg-[#FACC15] text-[#1E3A8A] rounded-full py-1 px-4 text-xs font-bold">
-            Halaman 1 dari 2
-          </span>
-        </div>
+        <h1 className="m-0 text-2xl sm:text-[32px] font-extrabold text-[#111827]">Rangkuman</h1>
       </div>
 
       <div className="flex flex-col gap-4">

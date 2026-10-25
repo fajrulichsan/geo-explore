@@ -58,13 +58,13 @@ export default async function Materi2Peta9Step1TantanganKubus({
       <input type="hidden" name="step" value="1" />
 
       <div className="flex flex-col gap-4">
-        <StepHeader materi={materi} currentStep={1} totalSteps={4} />
+        <StepHeader materi={materi} currentStep={1} totalSteps={5} />
         <h1 className="m-0 text-2xl sm:text-[32px] font-extrabold text-[#111827]">
-          Tantangan Open-Ended
+          Tantangan Terbuka
         </h1>
       </div>
 
-      <div className="rounded-[24px] bg-gradient-to-br from-[#EFF4FF] via-white to-[#FEF9E7] border border-[#DBE5FB] p-5 sm:p-7 flex flex-col sm:flex-row items-center gap-6">
+      <div className="rounded-[24px] overflow-hidden border border-[#DBE5FB]">
         <EditablePageImage
           imageKey="M2-P9-L1-1"
           materi={materi}
@@ -72,11 +72,14 @@ export default async function Materi2Peta9Step1TantanganKubus({
           step={step}
           urutan="1"
           src={mascotImage}
-          alt="Siswi berhijab menunjuk ke atas dengan buku terbuka di meja"
+          alt="Siswa mengerjakan Tantangan Terbuka tentang jaring-jaring di kelas"
           editable={editFoto}
-          imageClassName="object-contain"
-          containerClassName="relative w-48 sm:w-56 aspect-[576/528] flex-shrink-0"
+          natural
+          containerClassName="relative w-full"
         />
+      </div>
+
+      <div className="rounded-[24px] bg-gradient-to-br from-[#EFF4FF] via-white to-[#FEF9E7] border border-[#DBE5FB] p-5 sm:p-7 flex flex-col sm:flex-row items-center gap-6">
         <div className="flex-1 flex flex-col gap-4 w-full">
           <div className="flex flex-col gap-1.5">
             <p className="m-0 text-lg font-extrabold text-[#1E3A8A]">Tunjukkan kemampuanmu!</p>
@@ -127,7 +130,7 @@ export default async function Materi2Peta9Step1TantanganKubus({
             A
           </div>
           <div className="bg-white border border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-full py-2 px-5 text-sm font-bold text-[#7C3AED]">
-            Masalah Open-Ended
+            Masalah Terbuka
           </div>
         </div>
 

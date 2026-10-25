@@ -6,13 +6,6 @@ import StepHeader from "@/app/belajar/_components/StepHeader";
 import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
 import { getPageImages, type PageImageKey } from "@/lib/pageImages";
 
-const syarat = [
-  { ikon: "🧩", teks: "Seluruh sisi lengkap" },
-  { ikon: "🔗", teks: "Seluruh sisi saling terhubung (bertemu pada rusuk yang sama)" },
-  { ikon: "🚫", teks: "Tidak ada sisi yang bertumpuk saat dilipat" },
-  { ikon: "↩️", teks: "Dapat dilipat" },
-];
-
 const ingat = [
   "Jaring-jaring merupakan susunan sisi-sisi bangun ruang pada bidang datar.",
   "Jaring-jaring valid dapat dilipat membentuk bangun ruang tanpa saling bertumpuk.",
@@ -31,7 +24,6 @@ const temuan = [
 const kataKunci = [
   { label: "Jaring-jaring", ikon: "✚" },
   { label: "Garis lipatan", ikon: "┄" },
-  { label: "Lipatan", ikon: "📦" },
   { label: "Garis potong", ikon: "✂️" },
 ];
 
@@ -68,12 +60,7 @@ export default async function Materi2Peta10Step3PetaKonsepKataKunci({
 
       <div className="flex flex-col gap-4">
         <StepHeader materi={materi} currentStep={3} totalSteps={4} />
-        <div className="flex items-center gap-3 flex-wrap">
-          <h1 className="m-0 text-2xl sm:text-[32px] font-extrabold text-[#111827]">Rangkuman</h1>
-          <span className="bg-[#FACC15] text-[#1E3A8A] rounded-full py-1 px-4 text-xs font-bold">
-            Halaman 2 dari 2
-          </span>
-        </div>
+        <h1 className="m-0 text-2xl sm:text-[32px] font-extrabold text-[#111827]">Rangkuman</h1>
       </div>
 
       <div className="flex flex-col gap-4">
@@ -86,37 +73,35 @@ export default async function Materi2Peta10Step3PetaKonsepKataKunci({
           </div>
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_18rem] gap-5">
-          <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-5 flex flex-col items-center gap-2 shadow-[0_1px_2px_rgba(0,0,0,0.04)]">
-            <p className="m-0 rounded-xl bg-[#F5F0FF] border border-[#DDD0FA] py-2 px-6 text-sm font-extrabold text-[#5B21B6] text-center">
-              Bangun Ruang Sisi Datar
-            </p>
-            <span className="text-[#1E3A8A]">↓</span>
-            <p className="m-0 rounded-xl bg-[#F0FDF4] border border-[#BBF7D0] py-2 px-6 text-sm font-extrabold text-[#15803D]">
-              Jaring-jaring
-            </p>
-            <span className="text-xs font-bold text-[#1E3A8A]">↓ harus memenuhi</span>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 w-full">
-              {syarat.map((s, i) => (
-                <div key={s.teks} className="rounded-xl bg-[#FEF9E7] border border-[#F5E6A8] p-3 flex flex-col items-center text-center gap-1.5">
-                  <span className="text-2xl">{s.ikon}</span>
-                  <p className="m-0 text-[13px] font-bold text-[#1E3A8A] leading-[1.4]">
-                    {i + 1}. {s.teks}
-                  </p>
-                </div>
-              ))}
-            </div>
-            <span className="text-xs font-bold text-[#1E3A8A]">↓ sehingga membentuk</span>
-            <p className="m-0 rounded-xl bg-[#EFF6FF] border border-[#DBEAFE] py-2 px-6 text-sm font-extrabold text-[#1E3A8A]">
-              Bangun ruang utuh
-            </p>
-            <span className="text-xs font-bold text-[#1E3A8A]">↓ satu bangun ruang dapat memiliki</span>
-            <p className="m-0 rounded-xl bg-[#FEF2F2] border border-[#FECACA] py-2 px-6 text-sm font-extrabold text-[#B91C1C] text-center">
-              Banyak jaring-jaring (lebih dari satu)
-            </p>
+          <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-3 shadow-[0_1px_2px_rgba(0,0,0,0.04)]">
+            <EditablePageImage
+              imageKey="M2-P10-L3-3"
+              materi={materi}
+              peta={peta}
+              step={step}
+              urutan="3"
+              src={img["M2-P10-L3-3"]}
+              alt="Peta konsep: bangun ruang sisi datar, jaring-jaring, empat syarat, bangun ruang utuh, banyak jaring-jaring"
+              editable={editFoto}
+              natural
+              containerClassName="relative w-full"
+            />
           </div>
 
           <div className="bg-[#FEF9E7] border border-[#F5E6A8] rounded-[20px] p-5 flex flex-col gap-2.5">
             <p className="m-0 text-base font-extrabold text-[#1E3A8A]">💡 Ingat!</p>
+            <EditablePageImage
+              imageKey="M2-P10-L3-4"
+              materi={materi}
+              peta={peta}
+              step={step}
+              urutan="4"
+              src={img["M2-P10-L3-4"]}
+              alt="Potongan puzzle ungu dengan bintang dan roda gigi"
+              editable={editFoto}
+              imageClassName="object-contain"
+              containerClassName="relative w-full h-24"
+            />
             <ul className="m-0 p-0 list-none flex flex-col gap-2">
               {ingat.map((t) => (
                 <li key={t} className="flex items-start gap-2 text-[13px] leading-[1.5] text-[#374151]">
@@ -159,27 +144,35 @@ export default async function Materi2Peta10Step3PetaKonsepKataKunci({
           </div>
         </div>
           <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-4 grid grid-cols-2 sm:grid-cols-4 gap-3">
-            {kataKunci.map((k) => (
+            {kataKunci.slice(0, 2).map((k) => (
               <div key={k.label} className="rounded-xl bg-[#F8FAFF] border border-[#E5E7EB] p-2 flex flex-col items-center gap-1">
                 <p className="m-0 text-[11px] font-bold text-[#1E3A8A] text-center">{k.label}</p>
                 <span className="text-2xl h-14 flex items-center">{k.ikon}</span>
               </div>
             ))}
+            <div className="rounded-xl bg-[#F8FAFF] border border-[#E5E7EB] p-2 flex flex-col items-center gap-1">
+              <p className="m-0 text-[11px] font-bold text-[#1E3A8A] text-center">Lipatan</p>
+              {ikon({ kunci: "M2-P10-L3-5", urutan: "5", alt: "Lipatan jaring-jaring" })}
+            </div>
+            <div className="rounded-xl bg-[#F8FAFF] border border-[#E5E7EB] p-2 flex flex-col items-center gap-1">
+              <p className="m-0 text-[11px] font-bold text-[#1E3A8A] text-center">{kataKunci[2].label}</p>
+              <span className="text-2xl h-14 flex items-center">{kataKunci[2].ikon}</span>
+            </div>
             <div className="col-span-2 rounded-xl bg-[#F0FDF4] border border-[#BBF7D0] p-3 flex flex-col items-center gap-1">
               <p className="m-0 text-[11px] font-bold text-[#1E3A8A]">Jaring-jaring valid</p>
-              <span className="text-3xl text-[#16A34A]">✔</span>
+              {ikon({ kunci: "M2-P10-L3-6", urutan: "6", alt: "Tanda centang hijau" })}
             </div>
             <div className="col-span-2 rounded-xl bg-[#FEF2F2] border border-[#FECACA] p-3 flex flex-col items-center gap-1">
               <p className="m-0 text-[11px] font-bold text-[#1E3A8A]">Jaring-jaring tidak valid</p>
-              <span className="text-3xl text-[#DC2626]">✖</span>
+              {ikon({ kunci: "M2-P10-L3-7", urutan: "7", alt: "Tanda silang merah" })}
             </div>
             <div className="rounded-xl bg-[#F5F0FF] border border-[#DDD0FA] p-2 flex flex-col items-center gap-1">
               <p className="m-0 text-[11px] font-bold text-[#1E3A8A]">Kubus</p>
-              <span className="text-3xl h-14 flex items-center">🟪</span>
+              {ikon({ kunci: "M2-P10-L3-8", urutan: "8", alt: "Bangun kubus" })}
             </div>
             <div className="rounded-xl bg-[#EFF6FF] border border-[#DBEAFE] p-2 flex flex-col items-center gap-1">
               <p className="m-0 text-[11px] font-bold text-[#1E3A8A]">Balok</p>
-              <span className="text-3xl h-14 flex items-center">🟦</span>
+              {ikon({ kunci: "M2-P10-L3-9", urutan: "9", alt: "Bangun balok" })}
             </div>
             <div className="rounded-xl bg-[#F0FDF4] border border-[#BBF7D0] p-2 flex flex-col items-center gap-1">
               <p className="m-0 text-[11px] font-bold text-[#1E3A8A]">Prisma</p>

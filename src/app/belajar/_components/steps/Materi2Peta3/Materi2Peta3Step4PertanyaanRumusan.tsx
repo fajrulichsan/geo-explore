@@ -60,19 +60,20 @@ export default async function Materi2Peta3Step4PertanyaanRumusan({
           Sekarang, mari kita merumuskan masalah dan membuat dugaan kelompok. Pertanyaan-pertanyaan ini akan
           kita buktikan pada tahap berikutnya!
         </p>
-        <EditablePageImage
-          imageKey="M2-P3-L1-2"
-          materi={materi}
-          peta={peta}
-          step="1"
-          urutan="2"
-          src={kelompokImage}
-          alt="Ilustrasi empat siswa berdiskusi"
-          editable={editFoto}
-          imageClassName="object-contain"
-          containerClassName="relative hidden md:block w-56 aspect-[3/2] flex-shrink-0"
-        />
       </div>
+
+      <EditablePageImage
+        imageKey="M2-P3-L1-2"
+        materi={materi}
+        peta={peta}
+        step="1"
+        urutan="2"
+        src={kelompokImage}
+        alt="Ilustrasi empat siswa berdiskusi"
+        editable={editFoto}
+        natural
+        containerClassName="relative w-full"
+      />
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-start">
         <div className="flex flex-col gap-4">

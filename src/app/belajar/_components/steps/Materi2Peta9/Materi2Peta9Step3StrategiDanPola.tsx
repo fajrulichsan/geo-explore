@@ -3,13 +3,18 @@ import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry"
 import NextStepButton from "@/app/belajar/_components/NextStepButton";
 import BackLink from "@/app/belajar/_components/BackLink";
 import StepHeader from "@/app/belajar/_components/StepHeader";
+import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
+import { getPageImage } from "@/lib/pageImages";
 
-export default function Materi2Peta9Step3StrategiDanPola({
+export default async function Materi2Peta9Step3StrategiDanPola({
   materi,
   peta,
+  step = "3",
+  editFoto,
   initialAnswers,
 }: StepComponentProps) {
   const answers = initialAnswers ?? {};
+  const brainImage = await getPageImage("M2-P9-L3-1");
   const getValue = (key: string) => (typeof answers[key] === "string" ? (answers[key] as string) : "");
 
   return (
@@ -19,9 +24,9 @@ export default function Materi2Peta9Step3StrategiDanPola({
       <input type="hidden" name="step" value="3" />
 
       <div className="flex flex-col gap-4">
-        <StepHeader materi={materi} currentStep={3} totalSteps={4} />
+        <StepHeader materi={materi} currentStep={3} totalSteps={5} />
         <h1 className="m-0 text-2xl sm:text-[32px] font-extrabold text-[#111827]">
-          Tantangan Open-Ended
+          Tantangan Terbuka
         </h1>
       </div>
 
@@ -37,9 +42,18 @@ export default function Materi2Peta9Step3StrategiDanPola({
           </div>
           <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-6 shadow-[0_1px_2px_rgba(0,0,0,0.04)] flex-1 flex flex-col gap-4">
             <div className="flex items-start gap-3">
-              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#EC4899" strokeWidth="1.8" className="flex-shrink-0">
-                <path d="M9 4a3 3 0 00-3 3 3 3 0 00-2 5 3 3 0 002 4 3 3 0 003 3h1V4zM15 4a3 3 0 013 3 3 3 0 012 5 3 3 0 01-2 4 3 3 0 01-3 3h-1V4z" />
-              </svg>
+              <EditablePageImage
+                imageKey="M2-P9-L3-1"
+                materi={materi}
+                peta={peta}
+                step={step}
+                urutan="1"
+                src={brainImage}
+                alt="Otak dengan bola lampu menyala"
+                editable={editFoto}
+                imageClassName="object-contain"
+                containerClassName="relative w-12 h-10 flex-shrink-0"
+              />
               <p className="m-0 text-sm text-[#374151] leading-[1.6]">
                 Tuliskan berbagai cara atau strategi yang kamu gunakan untuk menemukan
                 jaring-jaring kubus.

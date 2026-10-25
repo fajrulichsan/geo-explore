@@ -44,7 +44,7 @@ export default async function Materi2Peta3Step1BagikanPersamaan({
         <h1 className="m-0 text-2xl sm:text-[32px] font-extrabold text-[#111827]">Ayo Berdiskusi</h1>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-[auto_1fr_auto] items-center gap-5 rounded-[28px] bg-white border border-[#DBE7FF] p-5 sm:p-6">
+      <div className="grid grid-cols-1 lg:grid-cols-[auto_1fr] items-center gap-5 rounded-[28px] bg-white border border-[#DBE7FF] p-5 sm:p-6">
         <div className="flex items-center gap-4">
           <EditablePageImage
             imageKey="M2-P3-L1-1"
@@ -74,19 +74,20 @@ export default async function Materi2Peta3Step1BagikanPersamaan({
             <b className="text-[#2563EB]">dengarkan</b> pendapat mereka.
           </p>
         </div>
-        <EditablePageImage
-          imageKey="M2-P3-L1-2"
-          materi={materi}
-          peta={peta}
-          step={step}
-          urutan="2"
-          src={kelompokImage}
-          alt="Ilustrasi empat siswa berdiskusi"
-          editable={editFoto}
-          imageClassName="object-contain"
-          containerClassName="relative w-full sm:w-64 aspect-[3/2] mx-auto"
-        />
       </div>
+
+      <EditablePageImage
+        imageKey="M2-P3-L1-2"
+        materi={materi}
+        peta={peta}
+        step={step}
+        urutan="2"
+        src={kelompokImage}
+        alt="Ilustrasi empat siswa berdiskusi"
+        editable={editFoto}
+        natural
+        containerClassName="relative w-full"
+      />
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
         <div className="lg:col-span-7 flex flex-col gap-4">

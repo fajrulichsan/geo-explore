@@ -6,6 +6,7 @@ import { supabase } from "@/lib/supabase";
 import { getSessionUserId } from "@/lib/session";
 import { MATERI_WITH_QUIZ, getPetaStructure } from "@/lib/learningStructure";
 import { isStepUnlocked } from "@/lib/progress";
+import { MATERI_WITH_OPEN_ENDED_SCORE } from "@/lib/openEndedScoring";
 
 /** Reads every `answers.<field>` entry a step form submitted into one JSON object. */
 function collectAnswers(formData: FormData): Record<string, unknown> {
@@ -25,7 +26,7 @@ function collectAnswers(formData: FormData): Record<string, unknown> {
 
 function getRangkumanReturn(materi: string, from: string): string | undefined {
   if (from === "quiz") return `/belajar/${materi}/10/1`;
-  if (from === "tantangan-terbuka" && materi === "1") return "/belajar/1/9/1";
+  if (from === "tantangan-terbuka" && MATERI_WITH_OPEN_ENDED_SCORE.has(materi)) return `/belajar/${materi}/9/1`;
   return undefined;
 }
 

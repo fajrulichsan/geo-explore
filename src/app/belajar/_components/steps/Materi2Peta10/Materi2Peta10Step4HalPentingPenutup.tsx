@@ -30,12 +30,7 @@ export default async function Materi2Peta10Step4HalPentingPenutup({
 
       <div className="flex flex-col gap-4">
         <StepHeader materi={materi} currentStep={4} totalSteps={4} />
-        <div className="flex items-center gap-3 flex-wrap">
-          <h1 className="m-0 text-2xl sm:text-[32px] font-extrabold text-[#111827]">Rangkuman</h1>
-          <span className="bg-[#FACC15] text-[#1E3A8A] rounded-full py-1 px-4 text-xs font-bold">
-            Halaman 2 dari 2
-          </span>
-        </div>
+        <h1 className="m-0 text-2xl sm:text-[32px] font-extrabold text-[#111827]">Rangkuman</h1>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
@@ -106,7 +101,7 @@ export default async function Materi2Peta10Step4HalPentingPenutup({
               alt="Maskot siswi berhijab mengepalkan tangan memberi semangat"
               editable={editFoto}
               imageClassName="object-contain"
-              containerClassName="relative w-28 h-36 sm:w-32 sm:h-40 flex-shrink-0"
+              containerClassName="relative w-32 h-40 sm:w-40 sm:h-48 flex-shrink-0"
             />
           </div>
         </div>
@@ -123,6 +118,9 @@ export default async function Materi2Peta10Step4HalPentingPenutup({
             memahami luas permukaan bangun ruang sisi datar.
           </p>
         </div>
+      </div>
+
+      <div className="bg-white border border-[#E5E7EB] rounded-[20px] overflow-hidden">
         <EditablePageImage
           imageKey="M2-P10-L4-3"
           materi={materi}
@@ -133,13 +131,13 @@ export default async function Materi2Peta10Step4HalPentingPenutup({
           alt="Alur dari jaring-jaring, pembukaan sisi, perhitungan luas, hingga luas permukaan bangun ruang"
           editable={editFoto}
           natural
-          containerClassName="relative w-full md:w-80 flex-shrink-0"
+          containerClassName="relative w-full"
         />
       </div>
 
       <div className="flex flex-col-reverse sm:flex-row justify-between items-center gap-4">
         <BackLink href={`/belajar/${materi}/${peta}/3`} />
-        <NextStepButton variant="green" icon="check">Selesai</NextStepButton>
+        <NextStepButton variant="green" icon="check">Lanjutkan ke Submateri 3</NextStepButton>
       </div>
     </form>
   );

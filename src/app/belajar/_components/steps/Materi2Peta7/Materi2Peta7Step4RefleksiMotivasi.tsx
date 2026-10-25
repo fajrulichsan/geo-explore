@@ -36,7 +36,7 @@ export default async function Materi2Peta7Step4RefleksiMotivasi({
         <div className="inline-flex items-center bg-[#FDF3C7] text-[#92400E] rounded-full py-1.5 px-3.5 text-xs font-bold tracking-[0.02em] w-fit">
           Tahap 6 dari 6
         </div>
-        <h1 className="m-0 text-2xl sm:text-[32px] font-extrabold text-[#111827]">Ayo Menyimpulkan (Generalisasi)</h1>
+        <h1 className="m-0 text-2xl sm:text-[32px] font-extrabold text-[#111827]">Ayo Menyimpulkan</h1>
       </div>
 
       <div className="bg-white border border-[#BBF7D0] rounded-[20px] overflow-hidden grid md:grid-cols-3">
@@ -71,7 +71,7 @@ export default async function Materi2Peta7Step4RefleksiMotivasi({
             alt="Siswa mengacungkan jempol dengan tanda centang hijau"
             editable={editFoto}
             imageClassName="object-contain"
-            containerClassName="relative w-28 h-44"
+            containerClassName="relative w-40 h-64 sm:w-48 sm:h-72"
           />
         </div>
       </div>
