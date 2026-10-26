@@ -20,15 +20,6 @@ type EditablePageImageProps = {
   containerClassName: string;
 };
 
-function fileToBase64(file: File): Promise<string> {
-  return new Promise((resolve, reject) => {
-    const reader = new FileReader();
-    reader.onload = () => resolve((reader.result as string).split(",")[1]);
-    reader.onerror = reject;
-    reader.readAsDataURL(file);
-  });
-}
-
 export default function EditablePageImage({
   imageKey,
   materi,
@@ -55,8 +46,7 @@ export default function EditablePageImage({
     setUploading(true);
     setError(null);
     try {
-      const base64Data = await fileToBase64(file);
-      await uploadPageImage(materi, peta, step, urutan, file.name, file.type, base64Data, imageKey);
+      await uploadPageImage(materi, peta, step, urutan, file, imageKey);
       router.refresh();
     } catch (err) {
       setError(err instanceof Error ? err.message : "Gagal mengunggah foto");

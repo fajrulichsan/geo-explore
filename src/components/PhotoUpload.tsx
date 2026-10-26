@@ -3,15 +3,6 @@
 import { useEffect, useRef, useState } from "react";
 import { uploadFile } from "@/app/belajar/upload-actions";
 
-function fileToBase64(file: File): Promise<string> {
-  return new Promise((resolve, reject) => {
-    const reader = new FileReader();
-    reader.onload = () => resolve((reader.result as string).split(",")[1]);
-    reader.onerror = reject;
-    reader.readAsDataURL(file);
-  });
-}
-
 export default function PhotoUpload({
   name,
   label,
@@ -61,13 +52,7 @@ export default function PhotoUpload({
     if (!file) return;
     setStatus("uploading");
     try {
-      const base64Data = await fileToBase64(file);
-      const publicUrl = await uploadFile(
-        file.name,
-        file.type,
-        base64Data,
-        materi && peta ? { materi, peta } : undefined
-      );
+      const publicUrl = await uploadFile(file, materi && peta ? { materi, peta } : undefined);
       setUrl(publicUrl);
       setStatus("idle");
     } catch {

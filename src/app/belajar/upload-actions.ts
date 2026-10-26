@@ -34,14 +34,14 @@ async function findAvailableKey(baseKey: string, ext: string) {
   return `${baseKey}-v${version}.${ext}`;
 }
 
-async function putObject(key: string, base64Data: string, contentType: string) {
-  const body = Buffer.from(base64Data, "base64");
+async function putObject(key: string, file: File) {
+  const body = Buffer.from(await file.arrayBuffer());
   await s3Client.send(
     new PutObjectCommand({
       Bucket: S3_BUCKET,
       Key: key,
       Body: body,
-      ContentType: contentType,
+      ContentType: file.type,
       ACL: "public-read",
     })
   );
@@ -49,9 +49,7 @@ async function putObject(key: string, base64Data: string, contentType: string) {
 }
 
 export async function uploadFile(
-  fileName: string,
-  contentType: string,
-  base64Data: string,
+  file: File,
   folder?: { materi: string; peta: string }
 ) {
   const userId = await getSessionUserId();
@@ -59,12 +57,12 @@ export async function uploadFile(
     throw new Error("Unauthorized");
   }
 
-  const ext = extensionFromFileName(fileName);
+  const ext = extensionFromFileName(file.name);
   const key = folder
     ? `answers/materi-${folder.materi}/peta-${folder.peta}/${randomUUID()}.${ext}`
     : `uploads/${userId}/${randomUUID()}.${ext}`;
 
-  return putObject(key, base64Data, contentType);
+  return putObject(key, file);
 }
 
 export async function uploadPageImage(
@@ -72,9 +70,7 @@ export async function uploadPageImage(
   peta: string,
   step: string,
   urutan: string,
-  fileName: string,
-  contentType: string,
-  base64Data: string,
+  file: File,
   imageKey: PageImageKey
 ) {
   const userId = await getSessionUserId();
@@ -82,11 +78,11 @@ export async function uploadPageImage(
     throw new Error("Unauthorized");
   }
 
-  const ext = extensionFromFileName(fileName);
+  const ext = extensionFromFileName(file.name);
   const baseKey = `materi-${materi}/peta-${peta}/langkah-${step}-${urutan}`;
   const key = await findAvailableKey(baseKey, ext);
 
-  const publicUrl = await putObject(key, base64Data, contentType);
+  const publicUrl = await putObject(key, file);
 
   const { error } = await supabase
     .from("page_images")

@@ -5,15 +5,6 @@ import { uploadFile } from "@/app/belajar/upload-actions";
 
 const ACCEPT = "image/*,.pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document";
 
-function fileToBase64(file: File): Promise<string> {
-  return new Promise((resolve, reject) => {
-    const reader = new FileReader();
-    reader.onload = () => resolve((reader.result as string).split(",")[1]);
-    reader.onerror = reject;
-    reader.readAsDataURL(file);
-  });
-}
-
 function isImageUrl(url: string) {
   return /\.(png|jpe?g|gif|webp|heic)$/i.test(url);
 }
@@ -41,7 +32,7 @@ export default function FileSubmission({
     if (!file) return;
     setStatus("uploading");
     try {
-      const publicUrl = await uploadFile(file.name, file.type, await fileToBase64(file), { materi, peta });
+      const publicUrl = await uploadFile(file, { materi, peta });
       setUrl(publicUrl);
       setFileName(file.name);
       setStatus("idle");
