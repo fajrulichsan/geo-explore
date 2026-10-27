@@ -6,6 +6,7 @@ import { s3Client, S3_BUCKET, buildPublicUrl } from "@/lib/s3";
 import { getSessionUserId } from "@/lib/session";
 import { supabase } from "@/lib/supabase";
 import type { PageImageKey } from "@/lib/pageImages";
+import { MAX_UPLOAD_BYTES, MAX_UPLOAD_MESSAGE } from "@/lib/uploadLimits";
 
 function extensionFromFileName(fileName: string) {
   return fileName.includes(".") ? fileName.split(".").pop()! : "bin";
@@ -35,6 +36,7 @@ async function findAvailableKey(baseKey: string, ext: string) {
 }
 
 async function putObject(key: string, file: File) {
+  if (file.size > MAX_UPLOAD_BYTES) throw new Error(MAX_UPLOAD_MESSAGE);
   const body = Buffer.from(await file.arrayBuffer());
   await s3Client.send(
     new PutObjectCommand({

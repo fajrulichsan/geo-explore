@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { uploadFile } from "@/app/belajar/upload-actions";
+import { MAX_UPLOAD_BYTES, MAX_UPLOAD_MESSAGE } from "@/lib/uploadLimits";
 
 export default function PhotoUpload({
   name,
@@ -19,7 +20,7 @@ export default function PhotoUpload({
   docs?: boolean;
 }) {
   const [url, setUrl] = useState(defaultValue ?? "");
-  const [status, setStatus] = useState<"idle" | "uploading" | "error">("idle");
+  const [status, setStatus] = useState<"idle" | "uploading" | "error" | "toolarge">("idle");
   const fileInputRef = useRef<HTMLInputElement>(null);
   const cameraInputRef = useRef<HTMLInputElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -50,6 +51,10 @@ export default function PhotoUpload({
 
   async function handleFile(file: File | undefined) {
     if (!file) return;
+    if (file.size > MAX_UPLOAD_BYTES) {
+      setStatus("toolarge");
+      return;
+    }
     setStatus("uploading");
     try {
       const publicUrl = await uploadFile(file, materi && peta ? { materi, peta } : undefined);
@@ -110,6 +115,9 @@ export default function PhotoUpload({
         </div>
       )}
 
+      {status === "toolarge" && (
+        <span className="text-xs font-semibold text-[#DC2626]">{MAX_UPLOAD_MESSAGE}</span>
+      )}
       {status === "error" && (
         <span className="text-xs font-semibold text-[#DC2626]">Gagal mengunggah, coba lagi.</span>
       )}

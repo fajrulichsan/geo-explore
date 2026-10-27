@@ -4,56 +4,83 @@ import NextStepButton from "@/app/belajar/_components/NextStepButton";
 import BackLink from "@/app/belajar/_components/BackLink";
 import StepHeader from "@/app/belajar/_components/StepHeader";
 import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
-import { getPageImage } from "@/lib/pageImages";
+import { getPageImage, type PageImageKey } from "@/lib/pageImages";
+import type { ReactNode } from "react";
 
 type Strategi = {
   no: number;
   judul: string;
   teks: string;
-  rumus?: string;
-  catatan?: string;
+  rumus?: ReactNode;
+  rumusImageKey?: PageImageKey;
+  gambarKey?: PageImageKey;
+  catatan?: ReactNode;
   sorot?: boolean;
 };
+
+const La = (
+  <>
+    L<sub>a</sub>
+  </>
+);
+
+const catatanTidakKongruen = (
+  <>
+    Jika tidak kongruen, hitung setiap sisi tegak sesuai ukurannya masing-masing, jumlahkan, lalu dijumlahkan dengan{" "}
+    {La}.
+  </>
+);
 
 const strategi: Strategi[] = [
   {
     no: 1,
     judul: "Menghitung Satu per Satu",
     teks: "Hitung luas alas, kemudian hitung luas setiap sisi tegak satu per satu, lalu jumlahkan.",
-    rumus: "LP = Lalas + Lsisi1 + Lsisi2 + Lsisi3 + …",
+    gambarKey: "M4-P10-L3-3",
+    rumus: (
+      <>
+        LP = {La} + L<sub>s1</sub> + L<sub>s2</sub> + L<sub>s3</sub> + …
+      </>
+    ),
   },
   {
     no: 2,
     judul: "Mengelompokkan Sisi yang Sama (jika ada)",
     teks: "Jika ada sisi-sisi tegak yang kongruen, kelompokkan dan hitung luas satu sisi sebagai perwakilan. Kalikan dengan banyak sisi yang sama, kemudian tambahkan luas alas.",
-    rumus: "LP = Lalas + (Lsatu sisi tegak × banyak sisi tegak)",
-    catatan: "Jika tidak kongruen, hitung setiap sisi tegak sesuai ukurannya masing-masing, jumlahkan, lalu + Lalas.",
+    gambarKey: "M4-P10-L3-4",
+    rumus: (
+      <>
+        LP = {La} + (L<sub>satu sisi tegak</sub> × banyak sisi tegak)
+      </>
+    ),
+    catatan: catatanTidakKongruen,
   },
   {
     no: 3,
     judul: "Menggunakan Jaring-jaring",
     teks: "Hitung luas semua bangun datar pada jaring-jaring, kemudian jumlahkan.",
-    rumus: "LP = Lalas + jumlahkan seluruh sisi tegak",
+    rumus: <>LP = {La} + jumlah seluruh sisi tegak</>,
   },
   {
     no: 4,
     judul: "Menggunakan Rumus Hasil Penemuan",
     teks: "Gunakan rumus LP = La + Ls dengan menghitung luas alas dan jumlah luas seluruh sisi tegak.",
-    rumus: "LP = Lalas + jumlahkan seluruh sisi tegak",
+    gambarKey: "M4-P10-L3-5",
+    rumus: <>LP = {La} + jumlah seluruh sisi tegak</>,
   },
   {
     no: 5,
     judul: "Menggunakan Rumus Sisi Tegak (bila diketahui apotema)",
     teks: "Jika sisi-sisi tegaknya kongruen, luas satu sisi tegak dapat dihitung menggunakan apotema (tinggi sisi tegak).",
-    rumus:
-      "Lsatu sisi tegak = ½ × alas × a\nLs (jumlah sisi tegak) = Lsatu sisi tegak × banyak sisi tegak\nLP = Lalas + Ls",
-    catatan: "Jika tidak kongruen, hitung setiap sisi tegak sesuai ukurannya masing-masing, jumlahkan, lalu + Lalas.",
+    gambarKey: "M4-P10-L3-6",
+    catatan: catatanTidakKongruen,
     sorot: true,
   },
   {
     no: 6,
     judul: "Memanfaatkan Simetri",
     teks: "Gunakan sifat simetri limas untuk menentukan sisi yang sama, sehingga perhitungan menjadi lebih efisien.",
+    gambarKey: "M4-P10-L3-7",
   },
 ];
 
@@ -70,9 +97,12 @@ export default async function Materi4Peta10Step3StrategiPenutup({
   step = "3",
   editFoto,
 }: StepComponentProps) {
-  const [mascotImage, jaringImage] = await Promise.all([
+  const [mascotImage, jaringImage, gambarPiala, gambarBuku, ...strategiImages] = await Promise.all([
     getPageImage("M4-P10-L3-1"),
     getPageImage("M4-P10-L3-2"),
+    getPageImage("M4-P10-L3-8"),
+    getPageImage("M4-P10-L3-9"),
+    ...strategi.map((s) => (s.gambarKey ? getPageImage(s.gambarKey) : Promise.resolve(null))),
   ]);
 
   return (
@@ -103,7 +133,7 @@ export default async function Materi4Peta10Step3StrategiPenutup({
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {strategi.map((s) => (
+          {strategi.map((s, i) => (
             <div
               key={s.no}
               className={`flex flex-col gap-2.5 rounded-2xl border p-4 ${
@@ -129,6 +159,20 @@ export default async function Materi4Peta10Step3StrategiPenutup({
                   editable={editFoto}
                   natural
                   containerClassName="relative w-28 mx-auto"
+                />
+              )}
+              {s.gambarKey && strategiImages[i] && (
+                <EditablePageImage
+                  imageKey={s.gambarKey}
+                  materi={materi}
+                  peta={peta}
+                  step={step}
+                  urutan={s.gambarKey.split("-").pop() ?? "1"}
+                  src={strategiImages[i]}
+                  alt={`Ilustrasi strategi ${s.no}`}
+                  editable={editFoto}
+                  natural
+                  containerClassName="relative w-full"
                 />
               )}
               {s.rumus && (
@@ -158,7 +202,7 @@ export default async function Materi4Peta10Step3StrategiPenutup({
 
       <div className="grid grid-cols-1 lg:grid-cols-[1fr_1fr_1fr] gap-5">
         <div className="bg-[#FFF7E6] border border-[#FDE68A] rounded-[20px] p-5 flex items-center gap-4">
-          <span className="text-5xl flex-shrink-0" aria-hidden="true">🏆</span>
+          <EditablePageImage imageKey="M4-P10-L3-8" materi={materi} peta={peta} step={step} urutan="8" src={gambarPiala} alt="Piala emas" editable={editFoto} imageClassName="object-contain" containerClassName="relative w-14 h-14 flex-shrink-0" />
           <div className="flex flex-col gap-1.5 min-w-0">
             <p className="m-0 text-base font-extrabold text-[#B45309]">Kamu Hebat!</p>
             <p className="m-0 text-xs text-[#374151] leading-[1.5]">
@@ -194,20 +238,20 @@ export default async function Materi4Peta10Step3StrategiPenutup({
           </ul>
         </div>
 
-        <div className="bg-[#111827] rounded-[20px] p-5 flex items-center gap-4">
+        <div className="bg-gradient-to-br from-[#1E3A8A] to-[#2563EB] rounded-[20px] p-5 flex items-center gap-4">
           <div className="flex flex-col gap-2 min-w-0">
             <p className="m-0 text-sm font-extrabold text-white">Selanjutnya:</p>
             <p className="m-0 text-xs text-white/80 leading-[1.6]">
               Setelah memahami rangkuman, kamu akan melanjutkan ke Submateri 5 – Volume Limas.
             </p>
           </div>
-          <span className="text-4xl flex-shrink-0" aria-hidden="true">📖</span>
+          <EditablePageImage imageKey="M4-P10-L3-9" materi={materi} peta={peta} step={step} urutan="9" src={gambarBuku} alt="Buku terbuka dengan panah ke Submateri 5" editable={editFoto} imageClassName="object-contain" containerClassName="relative w-16 h-16 flex-shrink-0" />
         </div>
       </div>
 
       <div className="flex flex-col-reverse sm:flex-row justify-between items-center gap-4">
         <BackLink href={`/belajar/${materi}/${peta}/2`} />
-        <NextStepButton variant="green" icon="check">Selesai</NextStepButton>
+        <NextStepButton variant="green" icon="check">Lanjut ke Submateri 5</NextStepButton>
       </div>
     </form>
   );

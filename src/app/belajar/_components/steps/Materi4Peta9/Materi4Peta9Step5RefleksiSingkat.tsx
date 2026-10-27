@@ -36,7 +36,7 @@ export default async function Materi4Peta9Step5RefleksiSingkat({
 }: StepComponentProps) {
   const answers = initialAnswers ?? {};
   const getValue = (key: string) => (typeof answers[key] === "string" ? (answers[key] as string) : "");
-  const siswaImage = await getPageImage("M4-P9-L5-1");
+  const [siswaImage, setelahImage] = await Promise.all([getPageImage("M4-P9-L5-1"), getPageImage("M4-P9-L5-2")]);
 
   return (
     <form action={submitStepAction} className="flex flex-col gap-8">
@@ -45,12 +45,9 @@ export default async function Materi4Peta9Step5RefleksiSingkat({
       <input type="hidden" name="step" value="5" />
 
       <div className="flex flex-col gap-4">
-        <StepHeader materi={materi} currentStep={5} totalSteps={5} />
+        <StepHeader materi={materi} currentStep={5} totalSteps={6} />
         <div className="flex items-center gap-3 flex-wrap">
-          <h1 className="m-0 text-2xl sm:text-[32px] font-extrabold text-[#1E3A8A]">Tantangan Open-Ended</h1>
-          <span className="inline-flex items-center gap-1.5 bg-[#FDF3C7] text-[#92400E] rounded-full py-1 px-3 text-xs font-bold">
-            Submateri 4 · Halaman 2 dari 2
-          </span>
+          <h1 className="m-0 text-2xl sm:text-[32px] font-extrabold text-[#1E3A8A]">Tantangan Terbuka</h1>
         </div>
       </div>
 
@@ -58,7 +55,7 @@ export default async function Materi4Peta9Step5RefleksiSingkat({
         <div className="flex items-center gap-3 flex-wrap">
           <div className="w-[34px] h-[34px] rounded-full bg-[#7C3AED] text-white flex items-center justify-center font-bold text-[15px] flex-shrink-0">F</div>
           <div className="bg-white border border-[#DDD6FE] rounded-full py-2 px-5 text-sm font-bold text-[#6D28D9]">Refleksi Singkat</div>
-          <p className="m-0 text-xs text-[#6B7280]">Berilah tanda centang (✓) pada kolom yang sesuai dengan pengalamanmu setelah menyelesaikan tantangan ini.</p>
+          <p className="m-0 w-full text-base font-semibold text-[#111827]">Berilah tanda centang (✓) pada kolom yang sesuai dengan pengalamanmu setelah menyelesaikan tantangan ini.</p>
         </div>
         <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-6 shadow-[0_1px_2px_rgba(0,0,0,0.04)] flex flex-col gap-5">
           {pernyataan.map((p) => (
@@ -111,25 +108,28 @@ export default async function Materi4Peta9Step5RefleksiSingkat({
             containerClassName="relative w-full max-w-[220px] flex-shrink-0"
           />
         </div>
-        <div className="bg-[#EFF4FF] border border-[#BFDBFE] rounded-2xl p-5 flex flex-col gap-2">
-          <p className="m-0 text-sm font-bold text-[#1E3A8A]">Setelah menyelesaikan halaman ini</p>
-          <ul className="m-0 pl-4 flex flex-col gap-1">
-            {setelah.map((t) => (
-              <li key={t} className="text-xs font-semibold text-[#1D4ED8] leading-[1.5]">
-                {t}
-              </li>
-            ))}
-          </ul>
+        <div className="bg-[#EFF4FF] border border-[#BFDBFE] rounded-2xl p-5 flex items-center gap-4">
+          <div className="flex flex-col gap-2 flex-1">
+            <p className="m-0 text-sm font-bold text-[#1E3A8A]">Setelah menyelesaikan halaman ini</p>
+            <ul className="m-0 pl-4 flex flex-col gap-1">
+              {setelah.map((t) => (
+                <li key={t} className="text-xs font-semibold text-[#1D4ED8] leading-[1.5]">
+                  {t}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <EditablePageImage imageKey="M4-P9-L5-2" materi={materi} peta={peta} step={step} urutan="2" src={setelahImage} alt="Siswa memberi semangat" editable={editFoto} imageClassName="object-contain" containerClassName="relative w-24 h-24 flex-shrink-0" />
         </div>
       </div>
 
       <div className="bg-[#FEF9E7] border border-[#F5E3A0] rounded-2xl p-5 text-xs font-semibold text-[#78350F] leading-[1.6]">
-        Setiap cara adalah berharga, setiap alasan membuatmu luar biasa! Selanjutnya, bacalah Rangkuman Submateri 4.
+        Setiap cara adalah berharga, setiap alasan membuatmu luar biasa! Selanjutnya, lihat hasil Tantangan Terbukamu.
       </div>
 
       <div className="flex flex-col-reverse sm:flex-row justify-between items-center gap-4">
         <BackLink href={`/belajar/${materi}/${peta}/4`} />
-        <NextStepButton variant="green" icon="check">Selesai</NextStepButton>
+        <NextStepButton />
       </div>
     </form>
   );

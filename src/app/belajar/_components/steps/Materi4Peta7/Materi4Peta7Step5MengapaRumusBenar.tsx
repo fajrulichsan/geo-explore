@@ -26,10 +26,9 @@ export default async function Materi4Peta7Step5MengapaRumusBenar({
       <div className="flex flex-col gap-4">
         <StepHeader materi={materi} currentStep={5} totalSteps={9} />
         <div className="inline-flex items-center bg-[#FDF3C7] text-[#92400E] rounded-full py-1.5 px-3.5 text-xs font-bold tracking-[0.02em] w-fit">
-          Tahap 6
+          Tahap 6 dari 6
         </div>
         <h1 className="m-0 text-2xl sm:text-[32px] font-extrabold text-[#111827]">Ayo Menyimpulkan</h1>
-        <p className="m-0 text-sm font-semibold text-[#2563EB]">Luas Permukaan Limas</p>
       </div>
 
 <div className="flex flex-col gap-4">
@@ -44,7 +43,7 @@ export default async function Materi4Peta7Step5MengapaRumusBenar({
         <p className="m-0 text-sm text-[#4B5563]">
           Jelaskan alasan matematis mengapa luas permukaan limas dapat dinyatakan dengan rumus LP = L<sub>a</sub> + L<sub>s</sub>.
         </p>
-        <div className="grid grid-cols-1 md:grid-cols-[minmax(0,240px)_minmax(0,1fr)] gap-4 items-start">
+        <div className="grid grid-cols-1 md:grid-cols-[minmax(0,240px)_minmax(0,1fr)] gap-4 items-stretch">
           <EditablePageImage
             imageKey="M4-P7-L5-1"
             materi={materi}
@@ -72,7 +71,7 @@ export default async function Materi4Peta7Step5MengapaRumusBenar({
             rows={8}
             required
             placeholder="Tuliskan alasanmu..."
-            className="w-full rounded-xl border border-[#E5E7EB] bg-white px-3.5 py-2.5 text-sm text-[#374151] placeholder:text-[#9CA3AF] focus:border-[#2563EB] focus:outline-none transition-colors resize-none"
+            className="w-full rounded-xl border border-[#E5E7EB] bg-white px-3.5 py-2.5 text-sm text-[#374151] placeholder:text-[#9CA3AF] focus:border-[#2563EB] focus:outline-none transition-colors resize-none flex-1 min-h-[160px]"
           />
           </div>
         </div>

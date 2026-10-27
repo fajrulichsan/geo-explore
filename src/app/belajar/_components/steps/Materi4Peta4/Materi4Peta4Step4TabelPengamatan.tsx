@@ -2,14 +2,13 @@ import { submitStepAction } from "@/app/belajar/actions";
 import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
 import NextStepButton from "@/app/belajar/_components/NextStepButton";
 import BackLink from "@/app/belajar/_components/BackLink";
+import BangunDaftarTabel from "@/app/belajar/_components/BangunDaftarTabel";
+import { Fragment } from "react";
+import FlowConnector from "@/app/belajar/_components/FlowConnector";
+import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
+import PhotoUpload from "@/components/PhotoUpload";
+import { getPageImage, type PageImageKey } from "@/lib/pageImages";
 import StepHeader from "@/app/belajar/_components/StepHeader";
-
-const alur = [
-  "Kumpulkan data hasil pengamatan pada langkah sebelumnya.",
-  "Amati keterkaitan awal antara luas alas dan luas sisi-sisi tegak.",
-  "Susun dugaan cara menentukan luas permukaan limas.",
-  "Nilai proses eksplorasimu dan siapkan diri menuju Tahap 4.",
-];
 
 const alurJudul = ["Catatan Hasil", "Temukan Keterkaitan Awal", "Dugaan Baru", "Refleksi"];
 
@@ -28,10 +27,12 @@ const baris = [
 export default async function Materi4Peta4Step4TabelPengamatan({
   materi,
   peta,
+  step = "4",
+  editFoto,
   initialAnswers,
 }: StepComponentProps) {
+  const alurGambar = await Promise.all([1, 2, 3, 4].map((n) => getPageImage(`M4-P4-L4-${n}` as PageImageKey)));
   const answers = initialAnswers ?? {};
-  const getValue = (key: string) => (typeof answers[key] === "string" ? (answers[key] as string) : "");
 
   return (
     <form action={submitStepAction} className="flex flex-col gap-8">
@@ -46,15 +47,23 @@ export default async function Materi4Peta4Step4TabelPengamatan({
 
       <div className="bg-[#EFF4FF] border border-[#BFDBFE] rounded-[20px] p-5 sm:p-6 flex flex-col gap-4">
         <p className="m-0 text-base font-bold text-[#1D4ED8]">Ayo lanjutkan hasil eksplorasimu!</p>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
-          {alur.map((a, i) => (
-            <div key={a} className="bg-white rounded-2xl p-4 flex flex-col gap-1.5">
-              <div className="w-7 h-7 rounded-full bg-[#1E3A8A] text-white flex items-center justify-center font-bold text-xs">
-                {i + 1}
-              </div>
-              <span className="text-sm font-bold text-[#1E3A8A]">{alurJudul[i]}</span>
-              <p className="m-0 text-xs text-[#4B5563] leading-[1.5]">{a}</p>
-            </div>
+        <div className="flex flex-col lg:flex-row lg:items-center gap-3">
+          {alurGambar.map((src, i) => (
+            <Fragment key={i}>
+              <EditablePageImage
+                imageKey={`M4-P4-L4-${i + 1}` as PageImageKey}
+                materi={materi}
+                peta={peta}
+                step={step}
+                urutan={String(i + 1)}
+                src={src}
+                alt={alurJudul[i]}
+                editable={editFoto}
+                natural
+                containerClassName="relative w-full max-w-[220px] mx-auto lg:flex-1"
+              />
+              {i < alurGambar.length - 1 && <FlowConnector kind="arrow" panahGambar />}
+            </Fragment>
           ))}
         </div>
       </div>
@@ -69,29 +78,24 @@ export default async function Materi4Peta4Step4TabelPengamatan({
         </div>
       </div>
 
-      <div className="bg-white border border-[#E5E7EB] rounded-[20px] overflow-hidden">
-        <div className="grid grid-cols-[1fr_1.4fr] bg-[#1E3A8A] text-white text-sm font-bold">
-          <div className="px-4 py-3">Bagian yang Diamati</div>
-          <div className="px-4 py-3 border-l border-white/20">Hasil Pengamatan</div>
-        </div>
-        {baris.map((b) => (
-          <div key={b.key} className="grid grid-cols-[1fr_1.4fr] border-t border-[#E5E7EB] items-center">
-            <label htmlFor={b.key} className="px-4 py-3 text-sm font-semibold text-[#1D4ED8]">
-              {b.label}
-            </label>
-            <div className="px-3 py-2 border-l border-[#E5E7EB]">
-              <input
-                id={b.key}
-                type="text"
-                name={`answers.${b.key}`}
-                defaultValue={getValue(b.key)}
-                placeholder="Tulis hasil pengamatanmu..."
-                required
-                className="w-full rounded-lg border border-[#E5E7EB] bg-[#F9FAFB] px-3 py-2 text-sm text-[#374151] placeholder:text-[#9CA3AF] focus:border-[#2563EB] focus:outline-none focus:bg-white transition-colors"
-              />
-            </div>
-          </div>
-        ))}
+      <BangunDaftarTabel
+        answerKey="pengamatan_limas"
+        initialValue={answers.pengamatan_limas}
+        selectLabel="Limas yang diamati:"
+        rows={baris}
+        columns={[{ key: "hasil", label: "Hasil Pengamatan" }]}
+        entryTitle="Hasil Pengamatan yang Sudah Ditambahkan"
+        bangunList={["Limas Segitiga", "Limas Segiempat", "Limas Segilima", "Limas Segienam"]}
+      />
+
+      <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-6 shadow-[0_1px_2px_rgba(0,0,0,0.04)]">
+        <PhotoUpload
+          name="answers.foto_catatan_eksplorasi"
+          label="Unggah foto catatan hasil eksplorasimu (opsional)"
+          defaultValue={typeof answers.foto_catatan_eksplorasi === "string" ? answers.foto_catatan_eksplorasi : undefined}
+          materi={materi}
+          peta={peta}
+        />
       </div>
 
       <div className="flex flex-col-reverse sm:flex-row justify-between items-center gap-4">

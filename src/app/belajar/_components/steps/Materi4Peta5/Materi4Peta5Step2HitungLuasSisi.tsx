@@ -2,6 +2,8 @@ import { submitStepAction } from "@/app/belajar/actions";
 import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
 import NextStepButton from "@/app/belajar/_components/NextStepButton";
 import BackLink from "@/app/belajar/_components/BackLink";
+import { getPageImage } from "@/lib/pageImages";
+import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
 import StepHeader from "@/app/belajar/_components/StepHeader";
 
 const baris = [
@@ -18,7 +20,8 @@ const tips = [
 const inputClass =
   "w-full rounded-xl border border-[#E5E7EB] bg-[#F9FAFB] p-3 text-sm text-[#374151] placeholder:text-[#9CA3AF] focus:border-[#16A34A] focus:outline-none transition-colors";
 
-export default async function Materi4Peta5Step2HitungLuasSisi({ materi, peta, initialAnswers }: StepComponentProps) {
+export default async function Materi4Peta5Step2HitungLuasSisi({ materi, peta, initialAnswers, step = "2", editFoto }: StepComponentProps) {
+  const gambarBalon = await getPageImage("M4-P5-L2-1");
   const answers = initialAnswers ?? {};
   const getValue = (key: string) => (typeof answers[key] === "string" ? (answers[key] as string) : "");
 
@@ -31,7 +34,7 @@ export default async function Materi4Peta5Step2HitungLuasSisi({ materi, peta, in
       <div className="flex flex-col gap-4">
         <StepHeader materi={materi} currentStep={2} totalSteps={6} />
         <div className="inline-flex items-center bg-[#FDF3C7] text-[#92400E] rounded-full py-1.5 px-3.5 text-xs font-bold w-fit">
-          Submateri 4 &middot; Tahap 4 dari 6
+          Tahap 4 dari 6
         </div>
         <h1 className="m-0 text-2xl sm:text-[32px] font-extrabold text-[#111827]">Ayo Mengolah Informasi</h1>
       </div>
@@ -115,7 +118,7 @@ export default async function Materi4Peta5Step2HitungLuasSisi({ materi, peta, in
       </div>
 
       <div className="bg-[#FEF9E7] border border-[#F5E3A0] rounded-[20px] p-5 flex flex-col gap-2">
-        <span className="text-base font-extrabold text-[#D97706]">Tips</span>
+        <div className="flex items-center gap-2"><EditablePageImage imageKey="M4-P5-L2-1" materi={materi} peta={peta} step={step} urutan="1" src={gambarBalon} alt="Balon ceria" editable={editFoto} imageClassName="object-contain" containerClassName="relative w-8 h-8 flex-shrink-0" /><span className="text-base font-extrabold text-[#D97706]">Tips</span></div>
         <ul className="m-0 pl-5 flex flex-col gap-1.5 text-sm text-[#78350F] leading-[1.6]">
           {tips.map((t) => (
             <li key={t}>{t}</li>

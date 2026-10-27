@@ -1,6 +1,7 @@
 import { submitStepAction } from "@/app/belajar/actions";
 import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
 import NextStepButton from "@/app/belajar/_components/NextStepButton";
+import FileSubmission from "@/components/FileSubmission";
 import BackLink from "@/app/belajar/_components/BackLink";
 import StepHeader from "@/app/belajar/_components/StepHeader";
 import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
@@ -32,7 +33,7 @@ export default async function Materi4Peta3Step6PersiapanRefleksi({
   const answers = initialAnswers ?? {};
   const isChecked = (key: string) => answers[key] === "on" || answers[key] === "true";
 
-  const [mascot, perangkat] = await Promise.all([getPageImage("M4-P3-L1-1"), getPageImage("M4-P3-L6-1")]);
+  const [mascot, perangkat] = await Promise.all([getPageImage("M4-P3-L6-2"), getPageImage("M4-P3-L6-1")]);
 
   return (
     <form action={submitStepAction} className="flex flex-col gap-8">
@@ -43,7 +44,7 @@ export default async function Materi4Peta3Step6PersiapanRefleksi({
       <div className="flex flex-col gap-4">
         <StepHeader materi={materi} currentStep={6} totalSteps={6} />
         <div className="inline-flex items-center bg-[#FDF3C7] text-[#92400E] rounded-full py-1.5 px-3.5 text-xs font-bold tracking-[0.02em] w-fit">
-          Tahap 2 &ndash; Halaman 2 dari 2
+          Tahap 2 dari 6
         </div>
         <h1 className="m-0 text-2xl sm:text-[32px] font-extrabold text-[#111827]">Ayo Berdiskusi</h1>
       </div>
@@ -88,7 +89,7 @@ export default async function Materi4Peta3Step6PersiapanRefleksi({
           </div>
           <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-6 shadow-[0_1px_2px_rgba(0,0,0,0.04)] flex flex-col gap-3">
             <EditablePageImage
-              imageKey="M4-P3-L1-1"
+              imageKey="M4-P3-L6-2"
               materi={materi}
               peta={peta}
               step={step}
@@ -163,9 +164,15 @@ export default async function Materi4Peta3Step6PersiapanRefleksi({
         />
       </div>
 
+      <FileSubmission
+        materi={materi}
+        peta={peta}
+        defaultValue={typeof answers.file_hasil_kerja === "string" ? answers.file_hasil_kerja : undefined}
+      />
+
       <div className="flex flex-col-reverse sm:flex-row justify-between items-center gap-4">
         <BackLink href={`/belajar/${materi}/${peta}/5`} />
-        <NextStepButton variant="green" icon="check">Selesai</NextStepButton>
+        <NextStepButton variant="green" icon="check">Lanjut ke Tahap Ayo Bereksplorasi</NextStepButton>
       </div>
     </form>
   );

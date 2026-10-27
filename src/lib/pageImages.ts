@@ -519,6 +519,53 @@ export type PageImageKey =
   | "M4-P7-L9-1"
   | "M4-P8-L1-1"
   | "M4-P8-L4-1"
+  | "M4-P1-L2-7"
+  | "M4-P1-L3-5"
+  | "M4-P10-L2-2"
+  | "M4-P10-L3-3"
+  | "M4-P10-L3-4"
+  | "M4-P10-L3-5"
+  | "M4-P10-L3-6"
+  | "M4-P10-L3-7"
+  | "M4-P10-L3-8"
+  | "M4-P10-L3-9"
+  | "M4-P3-L2-1"
+  | "M4-P3-L4-1"
+  | "M4-P3-L5-1"
+  | "M4-P3-L5-2"
+  | "M4-P3-L6-2"
+  | "M4-P4-L2-2"
+  | "M4-P4-L2-3"
+  | "M4-P4-L2-4"
+  | "M4-P4-L3-3"
+  | "M4-P4-L4-1"
+  | "M4-P4-L4-2"
+  | "M4-P4-L4-3"
+  | "M4-P4-L4-4"
+  | "M4-P4-L6-3"
+  | "M4-P5-L1-2"
+  | "M4-P5-L1-3"
+  | "M4-P5-L1-4"
+  | "M4-P5-L1-5"
+  | "M4-P5-L2-1"
+  | "M4-P5-L3-2"
+  | "M4-P6-L1-2"
+  | "M4-P6-L1-3"
+  | "M4-P6-L1-4"
+  | "M4-P6-L1-5"
+  | "M4-P6-L1-6"
+  | "M4-P6-L4-1"
+  | "M4-P6-L5-2"
+  | "M4-P6-L5-3"
+  | "M4-P6-L5-4"
+  | "M4-P7-L1-2"
+  | "M4-P7-L9-2"
+  | "M4-P7-L9-3"
+  | "M4-P9-L1-3"
+  | "M4-P9-L1-4"
+  | "M4-P9-L1-5"
+  | "M4-P9-L1-6"
+  | "M4-P9-L5-2"
   | "M5-P1-L1-1"
   | "M5-P1-L1-2"
   | "M5-P1-L2-1"
@@ -1365,6 +1412,53 @@ const DEFAULT_IMAGES: Record<PageImageKey, string> = {
   "M4-P10-L2-1": "https://placehold.co/300x300?text=Limas",
   "M4-P10-L3-1": "https://placehold.co/200x280?text=Maskot+Jempol",
   "M4-P10-L3-2": "https://placehold.co/463x456?text=Jaring-jaring+Limas",
+  "M4-P1-L2-7": "https://placehold.co/300x300?text=M4+P1+L2+7",
+  "M4-P1-L3-5": "https://placehold.co/245x240?text=M4+P1+L3+5",
+  "M4-P10-L2-2": "https://placehold.co/587x196?text=M4+P10+L2+2",
+  "M4-P10-L3-3": "https://placehold.co/1135x378?text=M4+P10+L3+3",
+  "M4-P10-L3-4": "https://placehold.co/881x440?text=M4+P10+L3+4",
+  "M4-P10-L3-5": "https://placehold.co/587x196?text=M4+P10+L3+5",
+  "M4-P10-L3-6": "https://placehold.co/1049x379?text=M4+P10+L3+6",
+  "M4-P10-L3-7": "https://placehold.co/1216x608?text=M4+P10+L3+7",
+  "M4-P10-L3-8": "https://placehold.co/504x487?text=M4+P10+L3+8",
+  "M4-P10-L3-9": "https://placehold.co/554x506?text=M4+P10+L3+9",
+  "M4-P3-L2-1": "https://placehold.co/1515x1010?text=M4+P3+L2+1",
+  "M4-P3-L4-1": "https://placehold.co/1515x1010?text=M4+P3+L4+1",
+  "M4-P3-L5-1": "https://placehold.co/616x410?text=M4+P3+L5+1",
+  "M4-P3-L5-2": "https://placehold.co/711x355?text=M4+P3+L5+2",
+  "M4-P3-L6-2": "https://placehold.co/1515x1010?text=M4+P3+L6+2",
+  "M4-P4-L2-2": "https://placehold.co/402x508?text=M4+P4+L2+2",
+  "M4-P4-L2-3": "https://placehold.co/670x457?text=M4+P4+L2+3",
+  "M4-P4-L2-4": "https://placehold.co/364x328?text=M4+P4+L2+4",
+  "M4-P4-L3-3": "https://placehold.co/200x200?text=M4+P4+L3+3",
+  "M4-P4-L4-1": "https://placehold.co/332x498?text=M4+P4+L4+1",
+  "M4-P4-L4-2": "https://placehold.co/332x498?text=M4+P4+L4+2",
+  "M4-P4-L4-3": "https://placehold.co/332x498?text=M4+P4+L4+3",
+  "M4-P4-L4-4": "https://placehold.co/332x498?text=M4+P4+L4+4",
+  "M4-P4-L6-3": "https://placehold.co/200x200?text=M4+P4+L6+3",
+  "M4-P5-L1-2": "https://placehold.co/500x230?text=M4+P5+L1+2",
+  "M4-P5-L1-3": "https://placehold.co/500x230?text=M4+P5+L1+3",
+  "M4-P5-L1-4": "https://placehold.co/500x230?text=M4+P5+L1+4",
+  "M4-P5-L1-5": "https://placehold.co/500x230?text=M4+P5+L1+5",
+  "M4-P5-L2-1": "https://placehold.co/200x200?text=M4+P5+L2+1",
+  "M4-P5-L3-2": "https://placehold.co/200x200?text=M4+P5+L3+2",
+  "M4-P6-L1-2": "https://placehold.co/200x200?text=M4+P6+L1+2",
+  "M4-P6-L1-3": "https://placehold.co/380x380?text=M4+P6+L1+3",
+  "M4-P6-L1-4": "https://placehold.co/380x380?text=M4+P6+L1+4",
+  "M4-P6-L1-5": "https://placehold.co/380x380?text=M4+P6+L1+5",
+  "M4-P6-L1-6": "https://placehold.co/380x380?text=M4+P6+L1+6",
+  "M4-P6-L4-1": "https://placehold.co/439x532?text=M4+P6+L4+1",
+  "M4-P6-L5-2": "https://placehold.co/200x200?text=M4+P6+L5+2",
+  "M4-P6-L5-3": "https://placehold.co/285x259?text=M4+P6+L5+3",
+  "M4-P6-L5-4": "https://placehold.co/301x278?text=M4+P6+L5+4",
+  "M4-P7-L1-2": "https://placehold.co/1514x646?text=M4+P7+L1+2",
+  "M4-P7-L9-2": "https://placehold.co/837x1256?text=M4+P7+L9+2",
+  "M4-P7-L9-3": "https://placehold.co/1512x504?text=M4+P7+L9+3",
+  "M4-P9-L1-3": "https://placehold.co/427x193?text=M4+P9+L1+3",
+  "M4-P9-L1-4": "https://placehold.co/427x193?text=M4+P9+L1+4",
+  "M4-P9-L1-5": "https://placehold.co/427x193?text=M4+P9+L1+5",
+  "M4-P9-L1-6": "https://placehold.co/427x193?text=M4+P9+L1+6",
+  "M4-P9-L5-2": "https://placehold.co/316x288?text=M4+P9+L5+2",
   "M4-P6-L1-1": "https://placehold.co/560x440?text=Tiga+Siswa+Verifikasi",
   "M4-P6-L2-1": "https://placehold.co/780x515?text=Dua+Siswa+Jempol",
   "M4-P6-L5-1": "https://placehold.co/675x538?text=Tiga+Siswa+Refleksi",

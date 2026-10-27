@@ -1,6 +1,8 @@
 import { submitStepAction } from "@/app/belajar/actions";
 import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
 import NextStepButton from "@/app/belajar/_components/NextStepButton";
+import { Fragment } from "react";
+import FlowConnector from "@/app/belajar/_components/FlowConnector";
 import StepHeader from "@/app/belajar/_components/StepHeader";
 import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
 import { getPageImage } from "@/lib/pageImages";
@@ -28,7 +30,7 @@ export default async function Materi4Peta4Step1AyoBereksplorasi({
       <div className="flex flex-col gap-4">
         <StepHeader materi={materi} currentStep={1} totalSteps={6} />
         <div className="inline-flex items-center bg-[#FDF3C7] text-[#92400E] rounded-full py-1.5 px-3.5 text-xs font-bold w-fit">
-          Submateri 4 &middot; Tahap 3
+          Tahap 3 dari 6
         </div>
       </div>
 
@@ -59,9 +61,10 @@ export default async function Materi4Peta4Step1AyoBereksplorasi({
         />
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+      <div className="flex flex-col lg:flex-row lg:items-stretch gap-4">
         {alur.map((a, i) => (
-          <div key={a.label} className="bg-white border border-[#E5E7EB] rounded-[20px] p-5 flex flex-col gap-2">
+          <Fragment key={a.label}>
+          <div className="flex-1 bg-white border border-[#E5E7EB] rounded-[20px] p-5 flex flex-col gap-2">
             <div
               className="w-8 h-8 rounded-full text-white flex items-center justify-center font-bold text-sm"
               style={{ backgroundColor: a.color }}
@@ -73,6 +76,8 @@ export default async function Materi4Peta4Step1AyoBereksplorasi({
             </span>
             <p className="m-0 text-sm text-[#4B5563] leading-[1.5]">{a.desc}</p>
           </div>
+          {i < alur.length - 1 && <FlowConnector kind="arrow" />}
+          </Fragment>
         ))}
       </div>
 

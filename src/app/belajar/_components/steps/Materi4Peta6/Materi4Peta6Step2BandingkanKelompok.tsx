@@ -35,7 +35,7 @@ export default async function Materi4Peta6Step2BandingkanKelompok({
       <div className="flex flex-col gap-4">
         <StepHeader materi={materi} currentStep={2} totalSteps={5} />
         <div className="inline-flex items-center bg-[#FDF3C7] text-[#92400E] rounded-full py-1.5 px-3.5 text-xs font-bold w-fit">
-          Submateri 4 &middot; Tahap 5
+          Tahap 5 dari 6
         </div>
         <h1 className="m-0 text-2xl sm:text-[32px] font-extrabold text-[#111827]">Ayo Verifikasi</h1>
       </div>

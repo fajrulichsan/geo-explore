@@ -29,7 +29,7 @@ export default async function Materi4Peta3Step4BandingkanHasil({
 }: StepComponentProps) {
   const answers = initialAnswers ?? {};
   const getValue = (key: string) => (typeof answers[key] === "string" ? (answers[key] as string) : "");
-  const mascot = await getPageImage("M4-P3-L1-1");
+  const mascot = await getPageImage("M4-P3-L4-1");
 
   return (
     <form action={submitStepAction} className="flex flex-col gap-8">
@@ -40,7 +40,7 @@ export default async function Materi4Peta3Step4BandingkanHasil({
       <div className="flex flex-col gap-4">
         <StepHeader materi={materi} currentStep={4} totalSteps={6} />
         <div className="inline-flex items-center bg-[#FDF3C7] text-[#92400E] rounded-full py-1.5 px-3.5 text-xs font-bold tracking-[0.02em] w-fit">
-          Tahap 2 &ndash; Halaman 2 dari 2
+          Tahap 2 dari 6
         </div>
         <h1 className="m-0 text-2xl sm:text-[32px] font-extrabold text-[#111827]">Ayo Berdiskusi</h1>
       </div>
@@ -59,7 +59,7 @@ export default async function Materi4Peta3Step4BandingkanHasil({
           </p>
         </div>
         <EditablePageImage
-          imageKey="M4-P3-L1-1"
+          imageKey="M4-P3-L4-1"
           materi={materi}
           peta={peta}
           step={step}

@@ -29,8 +29,9 @@ const jenisLimas = [
 ];
 
 export default async function Materi4Peta1Step3TujuanSiap({ materi, peta, step = "3", editFoto }: StepComponentProps) {
-  const [gambarMaskot, ...gambarJenis] = await Promise.all([
+  const [gambarMaskot, gambarTarget, ...gambarJenis] = await Promise.all([
     getPageImage("M4-P1-L3-1"),
+    getPageImage("M4-P1-L3-5"),
     ...jenisLimas.map((j) => getPageImage(j.key)),
   ]);
 
@@ -65,11 +66,7 @@ export default async function Materi4Peta1Step3TujuanSiap({ materi, peta, step =
 
         <div className="bg-[#F5F3FF] border border-[#DDD6FE] rounded-[20px] p-5 sm:p-6 flex flex-col gap-3">
           <div className="flex items-center gap-3">
-            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#DC2626" strokeWidth="2" className="flex-shrink-0">
-              <circle cx="12" cy="12" r="9" />
-              <circle cx="12" cy="12" r="5" />
-              <circle cx="12" cy="12" r="1.5" fill="#DC2626" />
-            </svg>
+            <EditablePageImage imageKey="M4-P1-L3-5" materi={materi} peta={peta} step={step} urutan="5" src={gambarTarget} alt="Papan sasaran dengan anak panah" editable={editFoto} imageClassName="object-contain" containerClassName="relative w-12 h-12 flex-shrink-0" />
             <p className="m-0 text-sm text-[#4B5563]">Setelah mempelajari submateri ini, kamu diharapkan mampu:</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
@@ -169,7 +166,7 @@ export default async function Materi4Peta1Step3TujuanSiap({ materi, peta, step =
 
       <div className="flex flex-col-reverse sm:flex-row justify-between items-center gap-4">
         <BackLink href={`/belajar/${materi}/${peta}/2`} />
-        <NextStepButton variant="green" icon="check">Selesai</NextStepButton>
+        <NextStepButton variant="green" icon="check">Lanjutkan ke Tahap Ayo Mengamati dan Berpikir</NextStepButton>
       </div>
     </form>
   );

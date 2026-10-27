@@ -77,12 +77,12 @@ export default async function Materi4Peta2Step1AyoMengamati({
             <circle cx="11" cy="11" r="7" />
             <path d="M21 21l-4.3-4.3" />
           </svg>
-          Tahap 1
+          Tahap 1 dari 6
         </div>
         <h1 className="m-0 text-2xl sm:text-[32px] font-extrabold text-[#111827]">Ayo Mengamati dan Berpikir</h1>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-[1fr_360px] gap-5 items-center bg-[#FEF9E7] border border-[#F5E3A0] rounded-[20px] p-5 sm:p-6">
+      <div className="grid grid-cols-1 md:grid-cols-[1fr_540px] gap-5 items-center bg-[#FEF9E7] border border-[#F5E3A0] rounded-[20px] p-5 sm:p-6">
         <div className="flex flex-col gap-2">
           <p className="m-0 text-base font-bold text-[#2563EB]">Ayo Mengamati!</p>
           <p className="m-0 text-sm leading-[1.7] text-[#374151]">

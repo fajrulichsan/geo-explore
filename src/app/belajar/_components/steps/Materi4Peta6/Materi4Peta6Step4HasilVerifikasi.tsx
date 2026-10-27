@@ -2,9 +2,12 @@ import { submitStepAction } from "@/app/belajar/actions";
 import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
 import NextStepButton from "@/app/belajar/_components/NextStepButton";
 import BackLink from "@/app/belajar/_components/BackLink";
+import { getPageImage } from "@/lib/pageImages";
+import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
 import StepHeader from "@/app/belajar/_components/StepHeader";
 
-export default async function Materi4Peta6Step4HasilVerifikasi({ materi, peta, initialAnswers }: StepComponentProps) {
+export default async function Materi4Peta6Step4HasilVerifikasi({ materi, peta, initialAnswers, step = "4", editFoto }: StepComponentProps) {
+  const gambarLimas = await getPageImage("M4-P6-L4-1");
   const answers = initialAnswers ?? {};
   const getValue = (key: string) => (typeof answers[key] === "string" ? (answers[key] as string) : "");
 
@@ -17,7 +20,7 @@ export default async function Materi4Peta6Step4HasilVerifikasi({ materi, peta, i
       <div className="flex flex-col gap-4">
         <StepHeader materi={materi} currentStep={4} totalSteps={5} />
         <div className="inline-flex items-center bg-[#FDF3C7] text-[#92400E] rounded-full py-1.5 px-3.5 text-xs font-bold w-fit">
-          Submateri 4 &middot; Tahap 5
+          Tahap 5 dari 6
         </div>
         <h1 className="m-0 text-2xl sm:text-[32px] font-extrabold text-[#111827]">Ayo Verifikasi</h1>
       </div>
@@ -48,12 +51,7 @@ export default async function Materi4Peta6Step4HasilVerifikasi({ materi, peta, i
           />
         </div>
         <div className="sm:col-span-2 flex flex-col items-center gap-3">
-          <svg viewBox="0 0 160 150" className="w-36 h-auto" role="img" aria-label="Ilustrasi limas segiempat">
-            <polygon points="20,115 80,140 140,115 80,100" fill="#DCFCE7" stroke="#86EFAC" />
-            <polygon points="80,10 32,112 80,132" fill="#4D7C0F" />
-            <polygon points="80,10 80,132 128,112" fill="#65A30D" />
-            <polygon points="80,10 32,112 20,115 80,100" fill="none" stroke="#3F6212" strokeWidth="1" />
-          </svg>
+          <EditablePageImage imageKey="M4-P6-L4-1" materi={materi} peta={peta} step={step} urutan="1" src={gambarLimas} alt="Ilustrasi limas segiempat" editable={editFoto} imageClassName="object-contain" containerClassName="relative w-36 aspect-[439/532]" />
           <p className="m-0 text-xs text-[#374151] bg-white border border-[#BBF7D0] rounded-2xl px-3 py-2 leading-[1.5]">
             Ingat hubungan antara luas alas, luas seluruh sisi tegak, dan luas permukaan limas.
           </p>

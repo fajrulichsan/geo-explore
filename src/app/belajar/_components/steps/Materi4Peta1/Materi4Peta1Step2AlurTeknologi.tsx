@@ -29,9 +29,10 @@ const aktivitasAR = [
 ];
 
 export default async function Materi4Peta1Step2AlurTeknologi({ materi, peta, step = "2", editFoto }: StepComponentProps) {
-  const [gambarGeoGebra, gambarAR, ...gambarAlur] = await Promise.all([
+  const [gambarGeoGebra, gambarAR, gambarHasil, ...gambarAlur] = await Promise.all([
     getPageImage("M4-P1-L2-5"),
     getPageImage("M4-P1-L2-6"),
+    getPageImage("M4-P1-L2-7"),
     ...alur.map((a) => getPageImage(a.key)),
   ]);
 
@@ -90,15 +91,7 @@ export default async function Materi4Peta1Step2AlurTeknologi({ materi, peta, ste
               <div className="w-7 h-7 rounded-full bg-[#2563EB] text-white flex items-center justify-center font-bold text-xs self-start">
                 5
               </div>
-              <div className="w-full aspect-[2/1] lg:aspect-square rounded-xl border border-[#BFDBFE] flex flex-col items-center justify-center gap-2">
-                <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#1D4ED8" strokeWidth="1.8">
-                  <rect x="4" y="2" width="16" height="20" rx="2" />
-                  <path d="M15 7H9l4 5-4 5h6" />
-                </svg>
-                <svg width="26" height="26" viewBox="0 0 24 24" fill="#F59E0B" stroke="#D97706" strokeWidth="1.4">
-                  <path d="M12 2l3 6.5 7 .8-5.2 4.8 1.5 7L12 17.5 5.7 21l1.5-7L2 9.3l7-.8z" />
-                </svg>
-              </div>
+              <EditablePageImage imageKey="M4-P1-L2-7" materi={materi} peta={peta} step={step} urutan="5" src={gambarHasil} alt="Papan klip dengan lambang jumlah" editable={editFoto} imageClassName="object-contain" containerClassName="relative w-full aspect-[2/1] lg:aspect-square rounded-xl border border-[#BFDBFE] overflow-hidden" />
               <p className="m-0 text-center text-xs font-semibold text-[#374151] leading-[1.4]">
                 Jumlahkan luas semua sisi = Luas Permukaan Limas
               </p>

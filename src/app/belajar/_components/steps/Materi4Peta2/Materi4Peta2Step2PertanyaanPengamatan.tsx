@@ -56,7 +56,7 @@ export default async function Materi4Peta2Step2PertanyaanPengamatan({
             <circle cx="11" cy="11" r="7" />
             <path d="M21 21l-4.3-4.3" />
           </svg>
-          Tahap 1
+          Tahap 1 dari 6
         </div>
         <h1 className="m-0 text-2xl sm:text-[32px] font-extrabold text-[#111827]">Ayo Mengamati dan Berpikir</h1>
       </div>
@@ -112,7 +112,7 @@ export default async function Materi4Peta2Step2PertanyaanPengamatan({
             <span className="text-base font-bold text-[#EA580C]">Catatan Penting</span>
           </p>
           <label htmlFor="catatan_penting_1" className="text-sm text-[#374151]">
-            Tuliskan hal-hal penting yang kamu perhatikan dari bangun dan jaring-jaring limas di atas.
+            Amati kembali bangun limas dan jaring-jaringnya pada gambar di atas. Kemudian, tuliskan hal-hal penting yang kamu temukan berdasarkan hasil pengamatanmu.
           </label>
           <textarea
             id="catatan_penting_1"

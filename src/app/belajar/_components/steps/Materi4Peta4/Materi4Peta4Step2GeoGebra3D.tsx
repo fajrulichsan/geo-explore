@@ -3,8 +3,11 @@ import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry"
 import NextStepButton from "@/app/belajar/_components/NextStepButton";
 import BackLink from "@/app/belajar/_components/BackLink";
 import StepHeader from "@/app/belajar/_components/StepHeader";
+import QrLink from "@/app/belajar/_components/QrLink";
 import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
-import { getPageImage } from "@/lib/pageImages";
+import { Fragment } from "react";
+import FlowConnector from "@/app/belajar/_components/FlowConnector";
+import { getPageImage, type PageImageKey } from "@/lib/pageImages";
 
 const langkah = [
   "Pindai QR Code GeoGebra 3D.",
@@ -35,7 +38,10 @@ const tips = [
 const tahapTransisi = ["Limas segiempat", "Sedikit terbuka", "Lebih terbuka", "Jaring-jaring limas"];
 
 export default async function Materi4Peta4Step2GeoGebra3D({ materi, peta, step = "2", editFoto }: StepComponentProps) {
-  const [gambarTransisi, gambarQr] = await Promise.all([getPageImage("M4-P4-L2-1"), getPageImage("qr-geogebra")]);
+  const [gambarTransisi, gambarQr] = await Promise.all([
+    Promise.all(tahapTransisi.map((_, i) => getPageImage(`M4-P4-L2-${i + 1}` as PageImageKey))),
+    getPageImage("qr-geogebra"),
+  ]);
 
   return (
     <form action={submitStepAction} className="flex flex-col gap-8">
@@ -59,23 +65,28 @@ export default async function Materi4Peta4Step2GeoGebra3D({ materi, peta, step =
 
       <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-5 sm:p-6 flex flex-col gap-3">
         <span className="text-sm font-bold text-[#1D4ED8]">Transisi Limas &rarr; Jaring-Jaring</span>
-        <EditablePageImage
-          imageKey="M4-P4-L2-1"
-          materi={materi}
-          peta={peta}
-          step={step}
-          urutan="1"
-          src={gambarTransisi}
-          alt="Transisi limas segiempat menjadi jaring-jaring pada GeoGebra 3D"
-          editable={editFoto}
-          natural
-          containerClassName="relative w-full"
-        />
-        <div className="grid grid-cols-4 gap-2 text-center text-[11px] sm:text-xs font-semibold text-[#6B7280]">
+        <div className="flex flex-col sm:flex-row sm:items-start gap-3">
           {tahapTransisi.map((t, i) => (
-            <span key={t}>
-              {i + 1}. {t}
-            </span>
+            <Fragment key={t}>
+              <div className="flex-1 flex flex-col items-center gap-2">
+                <EditablePageImage
+                  imageKey={`M4-P4-L2-${i + 1}` as PageImageKey}
+                  materi={materi}
+                  peta={peta}
+                  step={step}
+                  urutan={String(i + 1)}
+                  src={gambarTransisi[i]}
+                  alt={t}
+                  editable={editFoto}
+                  imageClassName="object-contain"
+                  containerClassName="relative w-full aspect-[4/3]"
+                />
+                <span className="text-center text-[11px] sm:text-xs font-semibold text-[#6B7280]">
+                  {i + 1}. {t}
+                </span>
+              </div>
+              {i < tahapTransisi.length - 1 && <FlowConnector kind="arrow" panahGambar />}
+            </Fragment>
           ))}
         </div>
       </div>
@@ -94,18 +105,7 @@ export default async function Materi4Peta4Step2GeoGebra3D({ materi, peta, step =
             ))}
           </div>
           <div className="flex items-center gap-4 pt-4 border-t border-[#E5E7EB]">
-            <EditablePageImage
-              imageKey="qr-geogebra"
-              materi={materi}
-              peta={peta}
-              step={step}
-              urutan="2"
-              src={gambarQr}
-              alt="QR code menuju model GeoGebra 3D limas"
-              editable={editFoto}
-              imageClassName="object-contain p-2"
-              containerClassName="relative w-24 h-24 flex-shrink-0 rounded-xl overflow-hidden bg-white border border-[#E5E7EB]"
-            />
+            <QrLink href="/geogebra" src={gambarQr} alt="QR code menuju model GeoGebra 3D limas" label="Scan atau klik: GeoGebra 3D" />
             <span className="text-sm font-bold text-[#2563EB]">QR Code GeoGebra 3D</span>
           </div>
         </div>

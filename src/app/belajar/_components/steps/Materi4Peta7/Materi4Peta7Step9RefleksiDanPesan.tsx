@@ -1,6 +1,7 @@
 import { submitStepAction } from "@/app/belajar/actions";
 import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
 import NextStepButton from "@/app/belajar/_components/NextStepButton";
+import FileSubmission from "@/components/FileSubmission";
 import BackLink from "@/app/belajar/_components/BackLink";
 import StepHeader from "@/app/belajar/_components/StepHeader";
 import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
@@ -16,7 +17,7 @@ export default async function Materi4Peta7Step9RefleksiDanPesan({
   const answers = initialAnswers ?? {};
   const refleksi = Array.isArray(answers.refleksi) ? (answers.refleksi as string[]) : typeof answers.refleksi === "string" ? [answers.refleksi] : [];
   const refleksiImage = await getPageImage("M4-P7-L9-1");
-  const thumbsImage = await getPageImage("M4-P7-L4-1");
+  const [thumbsImage, pesanImage] = await Promise.all([getPageImage("M4-P7-L9-3"), getPageImage("M4-P7-L9-2")]);
 
   return (
     <form action={submitStepAction} className="flex flex-col gap-8">
@@ -27,10 +28,9 @@ export default async function Materi4Peta7Step9RefleksiDanPesan({
       <div className="flex flex-col gap-4">
         <StepHeader materi={materi} currentStep={9} totalSteps={9} />
         <div className="inline-flex items-center bg-[#FDF3C7] text-[#92400E] rounded-full py-1.5 px-3.5 text-xs font-bold tracking-[0.02em] w-fit">
-          Tahap 6
+          Tahap 6 dari 6
         </div>
         <h1 className="m-0 text-2xl sm:text-[32px] font-extrabold text-[#111827]">Ayo Menyimpulkan</h1>
-        <p className="m-0 text-sm font-semibold text-[#2563EB]">Luas Permukaan Limas</p>
       </div>
 
 <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 items-start">
@@ -89,17 +89,7 @@ export default async function Materi4Peta7Step9RefleksiDanPesan({
             Pesan Penting
           </div>
         </div>
-          <div className="flex items-center gap-4 bg-white border border-[#F5E3A0] rounded-xl p-5">
-            <div className="flex flex-col gap-3">
-              <p className="m-0 text-lg font-extrabold text-[#111827] leading-[1.5]">
-                “Luas permukaan limas bukan sekadar rumus yang dihafal, tetapi jumlah luas seluruh sisi yang membatasi bangun.”
-              </p>
-              <p className="m-0 text-sm text-[#4B5563] leading-[1.6]">
-                Rumus membantu kita menghitung dengan efektif, tetapi pemahaman adalah kunci!
-              </p>
-            </div>
-            <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#D97706" strokeWidth="1.8" className="flex-shrink-0 hidden sm:block"><path d="M9 18h6M10 21h4M12 3a6 6 0 00-4 10.5c.7.7 1 1.5 1 2.5h6c0-1 .3-1.8 1-2.5A6 6 0 0012 3z" /></svg>
-          </div>
+          <EditablePageImage imageKey="M4-P7-L9-2" materi={materi} peta={peta} step={step} urutan="2" src={pesanImage} alt="Pesan penting: luas permukaan limas bukan sekadar rumus yang dihafal, tetapi jumlah luas seluruh sisi yang membatasi bangun" editable={editFoto} natural containerClassName="relative w-full max-w-xs mx-auto" />
         </div>
       </div>
 
@@ -111,26 +101,18 @@ export default async function Materi4Peta7Step9RefleksiDanPesan({
           <p className="m-0 text-base font-extrabold text-[#92400E]">Hebat!</p>
           <p className="m-0 text-xs text-[#92400E] leading-[1.6]">Kamu telah berhasil menemukan, memahami, dan menyimpulkan konsep luas permukaan limas melalui proses yang sistematis. Teruslah belajar dan gunakan pengetahuan ini pada berbagai situasi!</p>
         </div>
-        <EditablePageImage
-            imageKey="M4-P7-L4-1"
-            materi={materi}
-            peta={peta}
-            step={step}
-            urutan="1"
-            src={thumbsImage}
-            alt="Dua siswa memberi jempol tanda semangat"
-            editable={editFoto}
-            imageClassName="object-contain"
-            containerClassName="relative w-32 h-16 sm:w-40 sm:h-20 flex-shrink-0 rounded-xl overflow-hidden bg-[#EEF4FF]"
-          />
-        <p className="m-0 hidden sm:block bg-[#EFF4FF] text-[#2563EB] rounded-xl px-4 py-3 text-xs font-semibold leading-[1.5] max-w-[190px]">
-          Teruslah berpikir kritis dan yakin pada kemampuanmu!
-        </p>
+        <EditablePageImage imageKey="M4-P7-L9-3" materi={materi} peta={peta} step={step} urutan="3" src={thumbsImage} alt="Dua siswa mengacungkan jempol: Kesimpulan hari ini adalah langkah besar menuju pemahaman yang lebih mendalam" editable={editFoto} natural containerClassName="relative w-full sm:w-96 flex-shrink-0" />
       </div>
+
+      <FileSubmission
+        materi={materi}
+        peta={peta}
+        defaultValue={typeof answers.file_hasil_kerja === "string" ? answers.file_hasil_kerja : undefined}
+      />
 
       <div className="flex flex-col-reverse sm:flex-row justify-between items-center gap-4">
         <BackLink href={`/belajar/${materi}/${peta}/8`} />
-        <NextStepButton variant="green" icon="check">Selesai</NextStepButton>
+        <NextStepButton variant="green" icon="check">Lanjut ke Refleksi Diri</NextStepButton>
       </div>
     </form>
   );

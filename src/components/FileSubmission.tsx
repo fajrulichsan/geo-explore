@@ -2,6 +2,7 @@
 
 import { useRef, useState } from "react";
 import { uploadFile } from "@/app/belajar/upload-actions";
+import { MAX_UPLOAD_BYTES, MAX_UPLOAD_MESSAGE } from "@/lib/uploadLimits";
 
 const ACCEPT = "image/*,.pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document";
 
@@ -24,12 +25,16 @@ export default function FileSubmission({
 }) {
   const [url, setUrl] = useState(defaultValue ?? "");
   const [fileName, setFileName] = useState("");
-  const [status, setStatus] = useState<"idle" | "uploading" | "error">("idle");
+  const [status, setStatus] = useState<"idle" | "uploading" | "error" | "toolarge">("idle");
   const fileInputRef = useRef<HTMLInputElement>(null);
   const cameraInputRef = useRef<HTMLInputElement>(null);
 
   async function handleFile(file: File | undefined) {
     if (!file) return;
+    if (file.size > MAX_UPLOAD_BYTES) {
+      setStatus("toolarge");
+      return;
+    }
     setStatus("uploading");
     try {
       const publicUrl = await uploadFile(file, { materi, peta });
@@ -101,6 +106,9 @@ export default function FileSubmission({
         </div>
       )}
 
+      {status === "toolarge" && (
+        <span className="text-xs font-semibold text-[#DC2626]">{MAX_UPLOAD_MESSAGE}</span>
+      )}
       {status === "error" && (
         <span className="text-xs font-semibold text-[#DC2626]">Gagal mengunggah, coba lagi.</span>
       )}

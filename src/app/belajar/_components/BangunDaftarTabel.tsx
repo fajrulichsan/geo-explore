@@ -27,6 +27,7 @@ export default function BangunDaftarTabel({
   rows,
   columns,
   entryTitle,
+  bangunList = BANGUN,
 }: {
   answerKey: string;
   initialValue: unknown;
@@ -34,6 +35,7 @@ export default function BangunDaftarTabel({
   rows: Item[];
   columns: Item[];
   entryTitle: string;
+  bangunList?: string[];
 }) {
   const [entries, setEntries] = useState<Entry[]>(() => parseEntries(initialValue));
   const [bangun, setBangun] = useState("");
@@ -86,7 +88,7 @@ export default function BangunDaftarTabel({
             <option value="" disabled>
               Pilih Bangun
             </option>
-            {BANGUN.map((b) => (
+            {bangunList.map((b) => (
               <option key={b}>{b}</option>
             ))}
           </select>

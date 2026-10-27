@@ -3,6 +3,7 @@ import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry"
 import NextStepButton from "@/app/belajar/_components/NextStepButton";
 import BackLink from "@/app/belajar/_components/BackLink";
 import StepHeader from "@/app/belajar/_components/StepHeader";
+import QrLink from "@/app/belajar/_components/QrLink";
 import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
 import { getPageImage } from "@/lib/pageImages";
 
@@ -32,6 +33,7 @@ const istilah = [
 ];
 
 export default async function Materi4Peta4Step3AugmentedReality({ materi, peta, step = "3", editFoto }: StepComponentProps) {
+  const gambarBalon = await getPageImage("M4-P4-L3-3");
   const [gambarLimas, gambarQr] = await Promise.all([getPageImage("M4-P4-L3-1"), getPageImage("qr-ar")]);
 
   return (
@@ -82,18 +84,7 @@ export default async function Materi4Peta4Step3AugmentedReality({ materi, peta, 
 
         <div className="bg-[#F0FDF4] border border-[#BBF7D0] rounded-[20px] p-5 flex flex-col items-center justify-center gap-3">
           <span className="text-sm font-bold text-[#16A34A]">Scan QR Code AR</span>
-          <EditablePageImage
-            imageKey="qr-ar"
-            materi={materi}
-            peta={peta}
-            step={step}
-            urutan="2"
-            src={gambarQr}
-            alt="QR code menuju model AR limas"
-            editable={editFoto}
-            imageClassName="object-contain p-2"
-            containerClassName="relative w-32 h-32 rounded-xl overflow-hidden bg-white border border-[#BBF7D0]"
-          />
+          <QrLink href="https://ar.geo-explore.my.id" src={gambarQr} alt="QR code menuju model AR limas" label="Scan atau klik: AR" />
           <span className="text-xs font-bold text-[#16A34A] tracking-wide">TERSEDIA</span>
         </div>
       </div>
@@ -125,7 +116,7 @@ export default async function Materi4Peta4Step3AugmentedReality({ materi, peta, 
       </div>
 
       <div className="bg-[#FEF9E7] border border-[#F5E3A0] rounded-xl py-3.5 px-[18px] flex flex-col gap-1.5">
-        <p className="m-0 text-base font-extrabold text-[#D97706]">Ingat!</p>
+        <div className="flex items-center gap-2"><EditablePageImage imageKey="M4-P4-L3-3" materi={materi} peta={peta} step={step} urutan="1" src={gambarBalon} alt="Balon ceria" editable={editFoto} imageClassName="object-contain" containerClassName="relative w-8 h-8 flex-shrink-0" /><p className="m-0 text-base font-extrabold text-[#D97706]">Ingat!</p></div>
         <p className="m-0 text-sm text-[#78350F] leading-[1.6]">
           GeoGebra 3D dan AR membantumu mengumpulkan informasi dengan lebih baik. Jangan langsung membuat rumus.
           Gunakan hasil pengamatanmu sebagai dasar untuk menemukan pola pada tahap berikutnya.

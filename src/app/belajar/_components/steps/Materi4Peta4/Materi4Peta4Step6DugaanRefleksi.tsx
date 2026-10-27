@@ -1,6 +1,7 @@
 import { submitStepAction } from "@/app/belajar/actions";
 import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
 import NextStepButton from "@/app/belajar/_components/NextStepButton";
+import FileSubmission from "@/components/FileSubmission";
 import BackLink from "@/app/belajar/_components/BackLink";
 import StepHeader from "@/app/belajar/_components/StepHeader";
 import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
@@ -22,6 +23,7 @@ export default async function Materi4Peta4Step6DugaanRefleksi({
   editFoto,
   initialAnswers,
 }: StepComponentProps) {
+  const gambarBalon = await getPageImage("M4-P4-L6-3");
   const answers = initialAnswers ?? {};
   const getValue = (key: string) => (typeof answers[key] === "string" ? (answers[key] as string) : "");
   const isChecked = (key: string) => answers[key] === "true" || answers[key] === "on";
@@ -78,7 +80,7 @@ export default async function Materi4Peta4Step6DugaanRefleksi({
                   type="checkbox"
                   name={`answers.${p.key}`}
                   defaultChecked={isChecked(p.key)}
-                  required
+                  data-require-group="refleksi-eksplorasi"
                   className="mt-0.5 w-[18px] h-[18px] flex-shrink-0 accent-[#DC2626]"
                 />
                 <span className="text-sm font-semibold text-[#374151] leading-[1.5] group-has-[:checked]:text-[#111827]">
@@ -104,7 +106,7 @@ export default async function Materi4Peta4Step6DugaanRefleksi({
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
         <div className="bg-[#FEF9E7] border border-[#F5E3A0] rounded-[20px] p-5 flex flex-col gap-2">
-          <span className="text-base font-extrabold text-[#D97706]">Ingat!</span>
+          <div className="flex items-center gap-2"><EditablePageImage imageKey="M4-P4-L6-3" materi={materi} peta={peta} step={step} urutan="1" src={gambarBalon} alt="Balon ceria" editable={editFoto} imageClassName="object-contain" containerClassName="relative w-8 h-8 flex-shrink-0" /><span className="text-base font-extrabold text-[#D97706]">Ingat!</span></div>
           <p className="m-0 text-sm text-[#78350F] leading-[1.6]">
             GeoGebra 3D dan AR membantumu mengumpulkan informasi dengan lebih baik. Jangan langsung membuat rumus.
             Gunakan hasil pengamatanmu sebagai dasar untuk menemukan pola pada tahap berikutnya.
@@ -133,9 +135,15 @@ export default async function Materi4Peta4Step6DugaanRefleksi({
         </div>
       </div>
 
+      <FileSubmission
+        materi={materi}
+        peta={peta}
+        defaultValue={typeof answers.file_hasil_kerja === "string" ? answers.file_hasil_kerja : undefined}
+      />
+
       <div className="flex flex-col-reverse sm:flex-row justify-between items-center gap-4">
         <BackLink href={`/belajar/${materi}/${peta}/5`} />
-        <NextStepButton variant="green" icon="check">Selesai</NextStepButton>
+        <NextStepButton variant="green" icon="check">Lanjut ke Tahap Ayo Mengolah Informasi</NextStepButton>
       </div>
     </form>
   );

@@ -3,13 +3,11 @@ import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry"
 import NextStepButton from "@/app/belajar/_components/NextStepButton";
 import StepHeader from "@/app/belajar/_components/StepHeader";
 import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
-import { getPageImage } from "@/lib/pageImages";
+import { Fragment } from "react";
+import FlowConnector from "@/app/belajar/_components/FlowConnector";
+import { getPageImage, type PageImageKey } from "@/lib/pageImages";
 
-const alur = [
-  { label: "Kelompokkan Data", desc: "Kelompokkan bagian penyusun limas menjadi alas dan sisi tegak.", color: "#2563EB" },
-  { label: "Hitung Luas Sisi", desc: "Hitung luas alas dan luas seluruh sisi tegak.", color: "#16A34A" },
-  { label: "Cari Pola", desc: "Temukan pola dan hubungan antara luas alas, sisi tegak, dan luas permukaan.", color: "#EA580C" },
-];
+const alurLabel = ["Kelompokkan Data", "Hitung Luas Sisi", "Cari Pola"];
 
 const jenisLimas = [
   { key: "segiempat", label: "Limas Segiempat", sub: "Wajib", required: true },
@@ -18,15 +16,6 @@ const jenisLimas = [
 
 const inputClass =
   "w-full rounded-xl border border-[#E5E7EB] bg-[#F9FAFB] p-3 text-sm text-[#374151] placeholder:text-[#9CA3AF] focus:border-[#2563EB] focus:outline-none transition-colors";
-
-function LimasKecil() {
-  return (
-    <svg width="44" height="44" viewBox="0 0 44 44" fill="#C5DDB0" stroke="#1F2937" strokeWidth="1.4" strokeLinejoin="round">
-      <path d="M22 4L5 38h34z" />
-      <path d="M22 4L22 38" fill="none" strokeDasharray="3 2" />
-    </svg>
-  );
-}
 
 export default async function Materi4Peta5Step1MengelompokkanData({
   materi,
@@ -37,7 +26,11 @@ export default async function Materi4Peta5Step1MengelompokkanData({
 }: StepComponentProps) {
   const answers = initialAnswers ?? {};
   const getValue = (key: string) => (typeof answers[key] === "string" ? (answers[key] as string) : "");
-  const gambarSiswa = await getPageImage("M4-P5-L1-1");
+  const [gambarSiswa, gambarCatatan, ...alurGambar] = await Promise.all([
+    getPageImage("M4-P5-L1-1"),
+    getPageImage("M4-P5-L1-5"),
+    ...alurLabel.map((_, i) => getPageImage(`M4-P5-L1-${i + 2}` as PageImageKey)),
+  ]);
 
   return (
     <form action={submitStepAction} className="flex flex-col gap-8">
@@ -48,7 +41,7 @@ export default async function Materi4Peta5Step1MengelompokkanData({
       <div className="flex flex-col gap-4">
         <StepHeader materi={materi} currentStep={1} totalSteps={6} />
         <div className="inline-flex items-center bg-[#FDF3C7] text-[#92400E] rounded-full py-1.5 px-3.5 text-xs font-bold w-fit">
-          Submateri 4 &middot; Tahap 4 dari 6
+          Tahap 4 dari 6
         </div>
       </div>
 
@@ -79,20 +72,23 @@ export default async function Materi4Peta5Step1MengelompokkanData({
         />
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-        {alur.map((a, i) => (
-          <div key={a.label} className="bg-white border border-[#E5E7EB] rounded-[20px] p-5 flex flex-col gap-2">
-            <div
-              className="w-8 h-8 rounded-full text-white flex items-center justify-center font-bold text-sm"
-              style={{ backgroundColor: a.color }}
-            >
-              {i + 1}
-            </div>
-            <span className="text-sm font-bold" style={{ color: a.color }}>
-              {a.label}
-            </span>
-            <p className="m-0 text-sm text-[#4B5563] leading-[1.5]">{a.desc}</p>
-          </div>
+      <div className="flex flex-col lg:flex-row lg:items-center gap-3">
+        {alurGambar.map((src, i) => (
+          <Fragment key={alurLabel[i]}>
+            <EditablePageImage
+              imageKey={`M4-P5-L1-${i + 2}` as PageImageKey}
+              materi={materi}
+              peta={peta}
+              step={step}
+              urutan={String(i + 2)}
+              src={src}
+              alt={alurLabel[i]}
+              editable={editFoto}
+              natural
+              containerClassName="relative w-full lg:flex-1"
+            />
+            {i < alurGambar.length - 1 && <FlowConnector kind="arrow" panahGambar />}
+          </Fragment>
         ))}
       </div>
 
@@ -169,10 +165,18 @@ export default async function Materi4Peta5Step1MengelompokkanData({
             Jika sisi-sisi tegaknya tidak sama bentuk dan ukurannya, hitung luas setiap sisi tegak yang berbeda.
           </p>
         </div>
-        <div className="flex gap-1 flex-shrink-0" aria-hidden="true">
-          <LimasKecil />
-          <LimasKecil />
-        </div>
+        <EditablePageImage
+          imageKey="M4-P5-L1-5"
+          materi={materi}
+          peta={peta}
+          step={step}
+          urutan="5"
+          src={gambarCatatan}
+          alt="Dua limas dengan sisi tegak berbeda"
+          editable={editFoto}
+          natural
+          containerClassName="relative w-48 flex-shrink-0"
+        />
       </div>
 
       <div className="flex justify-end">

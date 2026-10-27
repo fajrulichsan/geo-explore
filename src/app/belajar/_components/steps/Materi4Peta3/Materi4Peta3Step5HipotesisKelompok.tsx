@@ -18,7 +18,7 @@ export default async function Materi4Peta3Step5HipotesisKelompok({
 }: StepComponentProps) {
   const answers = initialAnswers ?? {};
   const getValue = (key: string) => (typeof answers[key] === "string" ? (answers[key] as string) : "");
-  const perangkat = await getPageImage("M4-P3-L3-1");
+  const [perangkat, gambarDugaan] = await Promise.all([getPageImage("M4-P3-L5-1"), getPageImage("M4-P3-L5-2")]);
 
   return (
     <form action={submitStepAction} className="flex flex-col gap-8">
@@ -29,7 +29,7 @@ export default async function Materi4Peta3Step5HipotesisKelompok({
       <div className="flex flex-col gap-4">
         <StepHeader materi={materi} currentStep={5} totalSteps={6} />
         <div className="inline-flex items-center bg-[#FDF3C7] text-[#92400E] rounded-full py-1.5 px-3.5 text-xs font-bold tracking-[0.02em] w-fit">
-          Tahap 2 &ndash; Halaman 2 dari 2
+          Tahap 2 dari 6
         </div>
         <h1 className="m-0 text-2xl sm:text-[32px] font-extrabold text-[#111827]">Ayo Berdiskusi</h1>
       </div>
@@ -92,7 +92,7 @@ export default async function Materi4Peta3Step5HipotesisKelompok({
               menggunakan GeoGebra 3D dan Augmented Reality (AR).
             </p>
             <EditablePageImage
-              imageKey="M4-P3-L3-1"
+              imageKey="M4-P3-L5-1"
               materi={materi}
               peta={peta}
               step={step}
@@ -144,11 +144,7 @@ export default async function Materi4Peta3Step5HipotesisKelompok({
               className={textareaClass}
             />
           </div>
-          <svg width="120" height="120" viewBox="0 0 120 120" className="flex-shrink-0 self-center" aria-hidden="true">
-            <polygon points="60,10 108,98 12,98" fill="#86C062" stroke="#3F6B22" strokeWidth="2.5" />
-            <polygon points="60,10 108,98 78,104" fill="#6FAF4A" stroke="#3F6B22" strokeWidth="2.5" />
-            <path d="M60 10 L60 98" stroke="#3F6B22" strokeWidth="2" strokeDasharray="5 4" />
-          </svg>
+          <EditablePageImage imageKey="M4-P3-L5-2" materi={materi} peta={peta} step={step} urutan="2" src={gambarDugaan} alt="Lampu ide dan limas hijau" editable={editFoto} natural containerClassName="relative w-full sm:w-56 flex-shrink-0 self-center" />
         </div>
       </div>
 

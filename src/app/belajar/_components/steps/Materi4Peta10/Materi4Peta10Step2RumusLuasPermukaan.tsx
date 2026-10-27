@@ -12,7 +12,7 @@ export default async function Materi4Peta10Step2RumusLuasPermukaan({
   step = "2",
   editFoto,
 }: StepComponentProps) {
-  const limasImage = await getPageImage("M4-P10-L2-1");
+  const [limasImage, rumusImage] = await Promise.all([getPageImage("M4-P10-L2-1"), getPageImage("M4-P10-L2-2")]);
 
   return (
     <form action={submitStepAction} className="flex flex-col gap-8">
@@ -57,7 +57,7 @@ export default async function Materi4Peta10Step2RumusLuasPermukaan({
             <ul className="m-0 pl-5 flex flex-col gap-2 text-sm text-[#374151] leading-[1.6]">
               <li>
                 Memiliki satu alas berbentuk <span className="font-extrabold">segi-n</span> (misal
-                persegi, segitiga, atau segi-many).
+                persegi, segitiga, segilima, atau segi-n).
               </li>
               <li>Memiliki beberapa sisi tegak berbentuk segitiga.</li>
             </ul>
@@ -69,9 +69,18 @@ export default async function Materi4Peta10Step2RumusLuasPermukaan({
             <span className="text-xs font-extrabold text-white/80 uppercase tracking-wide">
               Rumus Umum
             </span>
-            <p className="m-0 text-3xl sm:text-4xl font-extrabold text-white">
-              LP = L<sub className="text-lg">a</sub> + L<sub className="text-lg">s</sub>
-            </p>
+            <EditablePageImage
+              imageKey="M4-P10-L2-2"
+              materi={materi}
+              peta={peta}
+              step={step}
+              urutan="2"
+              src={rumusImage}
+              alt="Rumus umum: La ditambah Ls sama dengan LP"
+              editable={editFoto}
+              natural
+              containerClassName="relative w-full max-w-[320px] rounded-xl overflow-hidden bg-white"
+            />
           </div>
           <div className="flex flex-col gap-1.5 text-sm text-white/95 sm:ml-auto">
             <p className="m-0">

@@ -34,12 +34,9 @@ export default async function Materi4Peta9Step3BandingkanStrategi({
       <input type="hidden" name="step" value="3" />
 
       <div className="flex flex-col gap-4">
-        <StepHeader materi={materi} currentStep={3} totalSteps={5} />
+        <StepHeader materi={materi} currentStep={3} totalSteps={6} />
         <div className="flex items-center gap-3 flex-wrap">
-          <h1 className="m-0 text-2xl sm:text-[32px] font-extrabold text-[#1E3A8A]">Tantangan Open-Ended</h1>
-          <span className="inline-flex items-center gap-1.5 bg-[#FDF3C7] text-[#92400E] rounded-full py-1 px-3 text-xs font-bold">
-            Submateri 4 · Halaman 2 dari 2
-          </span>
+          <h1 className="m-0 text-2xl sm:text-[32px] font-extrabold text-[#1E3A8A]">Tantangan Terbuka</h1>
         </div>
       </div>
 
@@ -47,7 +44,7 @@ export default async function Materi4Peta9Step3BandingkanStrategi({
         <div className="flex items-center gap-3 flex-wrap">
           <div className="w-[34px] h-[34px] rounded-full bg-[#7C3AED] text-white flex items-center justify-center font-bold text-[15px] flex-shrink-0">C</div>
           <div className="bg-white border border-[#DDD6FE] rounded-full py-2 px-5 text-sm font-bold text-[#6D28D9]">Bandingkan Strategimu</div>
-          <p className="m-0 text-xs text-[#6B7280]">Perbandingkan kedua strategi yang kamu gunakan pada halaman sebelumnya!</p>
+          <p className="m-0 w-full text-base font-semibold text-[#111827]">Perbandingkan kedua strategi yang kamu gunakan pada halaman sebelumnya!</p>
         </div>
 
         <div className="flex flex-col gap-4">

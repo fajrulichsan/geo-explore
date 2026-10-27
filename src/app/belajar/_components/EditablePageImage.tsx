@@ -76,6 +76,7 @@ export default function EditablePageImage({
           <input
             ref={inputRef}
             type="file"
+            data-image-key={imageKey}
             accept="image/*"
             className="hidden"
             onClick={(e) => e.stopPropagation()}

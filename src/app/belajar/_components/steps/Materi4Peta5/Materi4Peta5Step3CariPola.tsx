@@ -29,6 +29,7 @@ export default async function Materi4Peta5Step3CariPola({
   editFoto,
   initialAnswers,
 }: StepComponentProps) {
+  const gambarLampu = await getPageImage("M4-P5-L3-2");
   const answers = initialAnswers ?? {};
   const getValue = (key: string) => (typeof answers[key] === "string" ? (answers[key] as string) : "");
   const gambarIngat = await getPageImage("M4-P5-L3-1");
@@ -42,7 +43,7 @@ export default async function Materi4Peta5Step3CariPola({
       <div className="flex flex-col gap-4">
         <StepHeader materi={materi} currentStep={3} totalSteps={6} />
         <div className="inline-flex items-center bg-[#FDF3C7] text-[#92400E] rounded-full py-1.5 px-3.5 text-xs font-bold w-fit">
-          Submateri 4 &middot; Tahap 4 dari 6
+          Tahap 4 dari 6
         </div>
         <h1 className="m-0 text-2xl sm:text-[32px] font-extrabold text-[#111827]">Ayo Mengolah Informasi</h1>
       </div>
@@ -112,9 +113,7 @@ export default async function Materi4Peta5Step3CariPola({
 
       <div className="bg-[#FEF9E7] border border-[#F5E3A0] rounded-[20px] p-5 sm:p-6 flex flex-col gap-4">
         <div className="flex items-start gap-3">
-          <svg width="36" height="36" viewBox="0 0 24 24" fill="#FBBF24" stroke="#D97706" strokeWidth="1.5" className="flex-shrink-0" aria-hidden="true">
-            <path d="M9 21h6M10 17h4M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z" />
-          </svg>
+          <EditablePageImage imageKey="M4-P5-L3-2" materi={materi} peta={peta} step={step} urutan="1" src={gambarLampu} alt="Ikon lampu tanda ingat" editable={editFoto} imageClassName="object-contain" containerClassName="relative w-10 h-10 flex-shrink-0" />
           <div className="flex flex-col gap-1.5">
             <span className="text-base font-extrabold text-[#D97706]">Ingat!</span>
             <p className="m-0 text-sm text-[#78350F] leading-[1.6]">

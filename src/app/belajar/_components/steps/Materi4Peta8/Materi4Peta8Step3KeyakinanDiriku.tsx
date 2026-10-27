@@ -44,7 +44,7 @@ export default async function Materi4Peta8Step3KeyakinanDiriku({ materi, peta, i
       <div className="flex flex-col gap-4">
         <div className="flex items-center gap-3">
           <div className="w-8 h-8 rounded-full bg-[#7C3AED] text-white flex items-center justify-center font-bold text-sm flex-shrink-0">C</div>
-          <h2 className="m-0 text-lg font-extrabold text-[#111827]">Keyakinan Diriku (Self-Efficacy)</h2>
+          <h2 className="m-0 text-lg font-extrabold text-[#111827]">Keyakinan Diriku</h2>
         </div>
         <p className="m-0 text-sm text-[#6B7280]">Berilah tanda centang (✓) pada kolom yang sesuai dengan keyakinanmu.</p>
         <LikertMatrix prefix="keyakinan" pernyataan={pernyataan} opsi={opsi} answers={answers} />
