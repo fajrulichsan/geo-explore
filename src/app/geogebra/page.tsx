@@ -1,15 +1,21 @@
 import type { Metadata } from "next";
-import GeoGebraExplorer from "./GeoGebraExplorer";
+import GeoGebraApp from "./GeoGebraApp";
 
 export const metadata: Metadata = {
-  title: "GeoGebra 3D - Kubus | E-Modul Geometri",
-  description: "Eksplorasi interaktif bangun ruang kubus menggunakan GeoGebra 3D Calculator.",
+  title: "GeoGebra 3D - Eksplorasi Bangun Ruang | E-Modul Geometri",
+  description:
+    "Eksplorasi interaktif bangun ruang sisi datar menggunakan GeoGebra 3D Calculator, per submateri.",
 };
 
-export default function GeogebraPage() {
+export default async function GeogebraPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ materi?: string }>;
+}) {
+  const { materi } = await searchParams;
   return (
     <div className="fixed inset-0 bg-[#F9FAFB]">
-      <GeoGebraExplorer />
+      <GeoGebraApp initial={materi} />
     </div>
   );
 }
