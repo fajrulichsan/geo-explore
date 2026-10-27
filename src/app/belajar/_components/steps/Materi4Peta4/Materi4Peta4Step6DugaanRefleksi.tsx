@@ -71,7 +71,21 @@ export default async function Materi4Peta4Step6DugaanRefleksi({
           </div>
           <span className="text-sm font-bold text-[#DC2626]">Refleksi Eksplorasi</span>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-[1fr_280px] gap-6 items-center bg-white border border-[#E5E7EB] rounded-[20px] p-5 sm:p-6">
+        <div className="rounded-[20px] overflow-hidden border border-[#E5E7EB] bg-white">
+          <EditablePageImage
+            imageKey="M4-P4-L6-1"
+            materi={materi}
+            peta={peta}
+            step={step}
+            urutan="1"
+            src={gambarKelompok}
+            alt="Tiga siswa berdiskusi dengan tiga bintang di atas kepala"
+            editable={editFoto}
+            natural
+            containerClassName="relative w-full"
+          />
+        </div>
+        <div className="flex flex-col gap-3.5 bg-white border border-[#E5E7EB] rounded-[20px] p-5 sm:p-6">
           <div className="flex flex-col gap-3.5">
             <p className="m-0 text-sm text-[#4B5563]">Centang (&#10003;) pernyataan yang sesuai denganmu.</p>
             {pernyataan.map((p) => (
@@ -89,18 +103,6 @@ export default async function Materi4Peta4Step6DugaanRefleksi({
               </label>
             ))}
           </div>
-          <EditablePageImage
-            imageKey="M4-P4-L6-1"
-            materi={materi}
-            peta={peta}
-            step={step}
-            urutan="1"
-            src={gambarKelompok}
-            alt="Tiga siswa berdiskusi dengan tiga bintang di atas kepala"
-            editable={editFoto}
-            natural
-            containerClassName="relative w-full rounded-2xl overflow-hidden bg-white"
-          />
         </div>
       </div>
 

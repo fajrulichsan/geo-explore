@@ -216,7 +216,11 @@ const QUESTIONS_M4: Question[] = [
   ]),
   { step: "2", key: "strategi_lain", label: "Tantangan 1: strategi lain (opsional)" },
   ...["langkah", "sisi_tegak", "permukaan", "kemudahan", "kelebihan", "kekurangan"].flatMap((k) =>
-    ["s1", "s2"].map((n) => ({ step: "3", key: `${n}_${k}`, label: `Tantangan 2, ${n === "s1" ? "strategi 1" : "strategi 2"}: ${k} (membandingkan dua strategi)` }))
+    ["s1", "s2", "catatan"].map((n) => ({
+      step: "3",
+      key: `${k}_${n}`,
+      label: `Tantangan 2, ${n === "s1" ? "strategi 1" : n === "s2" ? "strategi 2" : "catatanku (opsional)"}: ${k} (membandingkan dua strategi)`,
+    }))
   ),
   { step: "4", key: "alasan_sama", label: "Tantangan 3: Mengapa kedua strategi menghasilkan luas permukaan yang sama?" },
   { step: "4", key: "transfer_konsep", label: "Tantangan 4: limas baru dengan alas persegi sisi 12 cm dan apotema 15 cm. Apakah strategi sebelumnya masih dapat digunakan? Jelaskan alasan matematisnya." },
@@ -234,17 +238,36 @@ const PROMPT_M4 = `Kamu adalah guru matematika SMP yang menilai Tantangan Terbuk
 
 SOAL: Limas segiempat tegak beralas persegi dengan panjang sisi 10 cm dan tinggi sisi tegak (apotema) 13 cm. Siswa menentukan luas permukaannya dengan minimal DUA strategi yang berbeda secara matematis, membandingkannya, menjelaskan mengapa hasilnya sama, lalu memakai strategi pada limas baru (alas persegi sisi 12 cm, apotema 15 cm).
 
-FAKTA:
+FAKTA (gunakan ini untuk memeriksa kebenaran; kunci jawaban guru kadang salah ketik):
+- Limas segiempat tegak: 1 alas persegi + 4 sisi tegak berupa segitiga kongruen, tinggi tiap segitiga = apotema (tinggi sisi tegak), bukan tinggi limas.
 - Luas alas = 10 x 10 = 100 cm2.
-- Luas satu sisi tegak (segitiga) = 1/2 x 10 x 13 = 65 cm2; ada 4 sisi tegak sehingga luas seluruh sisi tegak = 4 x 65 = 260 cm2.
+- Luas satu sisi tegak (segitiga) = 1/2 x 10 x 13 = 65 cm2; ada 4 sisi tegak sehingga luas seluruh sisi tegak = 4 x 65 = 260 cm2. Keliling alas = 4 x 10 = 40 cm, 1/2 x 40 x 13 = 260 cm2.
 - Luas permukaan = 100 + 260 = 360 cm2.
-- Limas baru: luas alas = 12 x 12 = 144; luas satu sisi tegak = 1/2 x 12 x 15 = 90; luas empat sisi tegak = 360; luas permukaan = 144 + 360 = 504 cm2.
+- Dua segitiga kongruen = 1 jajargenjang (alas 10, tinggi 13, luas 130); 4 segitiga = 2 jajargenjang = 260 cm2.
+- Empat segitiga juga setara satu persegi panjang 20 x 13 = 260 cm2 (atau dua persegi panjang 10 x 13). Panjang/lebar yang disebut siswa harus menghasilkan 260.
+- Limas baru: alas 12 x 12 = 144; satu sisi tegak = 1/2 x 12 x 15 = 90; empat sisi tegak = 360; keliling alas = 48, 1/2 x 48 x 15 = 360; luas permukaan = 144 + 360 = 504 cm2. Jajargenjang 12 x 15 = 180 (dua = 360); persegi panjang 24 x 15 = 360.
 
 KUNCI JAWABAN GURU (alternatif jawaban yang diterima; bukan satu-satunya yang benar):
-T1 (strategi 1 dan 2, masing-masing cara, perhitungan, alasan): (a) jaring-jaring: hitung luas satu persegi alas lalu empat segitiga satu per satu dan jumlahkan; (b) LP = luas alas + (luas satu sisi tegak x banyak sisi tegak) = 100 + (65 x 4); (c) LP = luas alas + jumlah luas seluruh sisi tegak karena keempat segitiga kongruen; (d) LP = luas alas + 1/2 x keliling alas x apotema = 100 + 1/2 x 40 x 13 (keempat segitiga dirangkai menjadi satu bangun dengan alas keliling alas); (e) LP = L alas + 4 x (1/2 x a x t); (f) memakai GeoGebra/AR untuk mengamati lalu menghitung. Dua strategi harus berbeda secara matematis, bukan hanya beda urutan hitung. Hasil akhir harus 360 cm2.
-T2 (tabel membandingkan dua strategi: langkah penyelesaian, cara menghitung luas sisi tegak, cara memperoleh luas permukaan, kemudahan perhitungan, kelebihan, kekurangan): isian relevan dengan strategi yang dipilih siswa pada T1 dan masuk akal.
-T3 (mengapa kedua strategi menghasilkan luas yang sama): karena kedua strategi menghitung seluruh permukaan limas yang sama, yaitu satu alas dan empat sisi tegak, tepat satu kali; perbedaannya hanya cara mengelompokkan dan menjumlahkan; hasil tetap 360 cm2.
-T4 (transfer ke alas 12 cm, apotema 15 cm): siswa menjawab bahwa strategi yang sama tetap dapat digunakan (bentuk bangun tetap limas segiempat, hanya ukuran berubah), memakai strategi dengan benar sampai 504 cm2, dan memberi alasan matematis (permukaan tetap terdiri atas satu alas dan empat sisi tegak kongruen sehingga cara menghitungnya berlaku).
+T1 (strategi 1 dan 2, masing-masing cara, perhitungan, alasan; hasil akhir harus 360 cm2):
+ (a) Menghitung luas alas dan empat segitiga satu per satu: L alas = 10 x 10 = 100; L satu sisi tegak = 1/2 x 10 x 13 = 65; L = 100 + 4 x 65 = 360. Alasan: limas punya satu alas persegi dan empat sisi tegak segitiga, kelima sisi dihitung tanpa terlewat atau ganda.
+ (b) Menggunakan keliling alas: K alas = 4 x 10 = 40; L sisi tegak = 1/2 x 40 x 13 = 260; L alas = 100; L = 100 + 260 = 360. Alasan: keempat segitiga punya tinggi sisi tegak sama sehingga luas seluruh sisi tegak dapat dihitung dari keliling alas.
+ (c) Menggunakan jaring-jaring limas: satu persegi (100) dan empat segitiga (65 masing-masing); L = L persegi + 4 x L segitiga = 100 + 260 = 360. Alasan: saat dibuka menjadi jaring-jaring, luas tiap sisi tidak berubah.
+ (d) Menggabungkan empat segitiga menjadi dua jajargenjang: L satu jajargenjang = 10 x 13 = 130; dua = 260; L alas = 100; L = 360. Alasan: dua segitiga kongruen dapat disusun menjadi jajargenjang tanpa mengubah luas.
+ (e) Menyusun empat segitiga menjadi persegi panjang pengganti: 20 x 13 = 260 (atau dua persegi panjang 10 x 13); L alas = 100; L = 360. Alasan: segitiga dapat disusun ulang tanpa celah atau tumpang tindih sehingga luasnya tetap.
+ (f) Strategi lain yang valid, mis. L = L alas + 4 x (1/2 x a x t) dalam satu rumus, atau mengamati dengan GeoGebra/AR lalu menghitung. Dua strategi harus berbeda secara matematis, bukan hanya beda urutan hitung.
+T2 (tabel membandingkan dua strategi: langkah penyelesaian, cara menghitung luas sisi tegak, cara memperoleh luas permukaan, kemudahan perhitungan, kelebihan, kekurangan, plus Catatanku opsional). Isian harus relevan dengan strategi yang dipilih siswa pada T1 dan masuk akal. Contoh kunci:
+ - Setiap sisi vs keliling alas: langkah (hitung alas + empat segitiga lalu jumlahkan vs hitung keliling alas, luas seluruh sisi tegak, tambah luas alas); sisi tegak (satu segitiga lalu dijumlahkan empat kali vs 1/2 x keliling alas x tinggi sisi tegak); hasil sama 360 cm2 (100 + 65 + 65 + 65 + 65 = 360; 100 + 1/2 x 40 x 13 = 360); kemudahan (mudah dipahami tetapi banyak penjumlahan vs lebih singkat); kelebihan (membantu memahami luas tiap sisi vs lebih praktis); kekurangan (perlu teliti agar tidak ada segitiga terlewat vs harus paham hubungan keliling alas dengan luas sisi tegak).
+ - Jaring-jaring vs jajargenjang: langkah (buka limas jadi jaring-jaring, hitung tiap bagian, jumlahkan vs susun empat segitiga jadi dua jajargenjang lalu tambah luas alas); sisi tegak (hitung empat segitiga vs hitung dua jajargenjang, luas sisi tegak tetap sama walau susunan berubah); hasil 360 cm2 (100 + 4(65); 100 + 2 x 10 x 13); kemudahan (semua sisi terlihat vs lebih ringkas setelah disusun); kelebihan (melihat seluruh sisi vs luas tetap saat disusun ulang tanpa celah/tumpang tindih); kekurangan (menghitung beberapa bagian terpisah vs perlu membayangkan susunan baru).
+ - Sisi satu per satu vs persegi panjang: sisi tegak 65 + 65 + 65 + 65 = 260 vs 2 x 10 x 13 = 260; permukaan 100 + 260 = 360; kemudahan (hanya rumus segitiga dan persegi vs lebih ringkas tetapi harus paham penyusunan ulang); kelebihan (langkah jelas dan mudah diperiksa vs mengurangi penjumlahan); kekurangan (lebih banyak perhitungan vs bisa salah jika penyusunan segitiga tidak tepat).
+ Pilihan "strategi mana yang lebih mudah/cepat" di Catatanku bersifat pendapat pribadi, nilai dari kewajaran alasan.
+T3 (mengapa kedua strategi menghasilkan luas yang sama), alternatif: (1) kedua strategi sama-sama menghitung luas alas dan empat sisi tegak; yang satu menghitung tiap segitiga, yang lain memakai keliling alas sekaligus; (2) jaring-jaring menjumlahkan satu persegi dan empat segitiga, sedangkan penyusunan ulang menjadi dua jajargenjang tidak mengubah luas; (3) luas empat segitiga sama dengan luas dua persegi panjang bentukan, tidak ada bagian hilang atau bertumpuk; (4) kedua strategi menghitung seluruh sisi limas, hanya cara mengelompokkannya berbeda; (5) sisi tegak 260 cm2 dan alas 100 cm2 sehingga tetap 360 cm2; (6) empat segitiga satu per satu sama dengan setengah keliling alas dikalikan tinggi sisi tegak (4 x 1/2 x 10 x 13 = 260). Jawaban lain yang menyatakan bagian permukaan yang dihitung sama, tepat satu kali, dan hanya cara menghitung berbeda, diterima.
+T4 (transfer ke alas 12 cm, apotema 15 cm; hasil 504 cm2): siswa menjawab ya, strategi yang sama tetap dapat digunakan, dengan perhitungan benar dan alasan matematis. Alternatif yang diterima:
+ (1) setiap sisi: L alas = 12 x 12 = 144; satu sisi tegak = 1/2 x 12 x 15 = 90; L = 144 + 4 x 90 = 504; alasan: jumlah dan bentuk sisi tetap, yaitu satu alas persegi dan empat segitiga walau ukuran berubah.
+ (2) keliling alas: K = 4 x 12 = 48; L sisi tegak = 1/2 x 48 x 15 = 360; L alas = 144; L = 504; alasan: keempat sisi tegak punya apotema sama.
+ (3) jaring-jaring: persegi 144 dan empat segitiga 90; L = 144 + 360 = 504; alasan: luas tiap sisi tidak berubah saat limas dibuka.
+ (4) dua jajargenjang: satu = 12 x 15 = 180, dua = 360, alas 144, L = 504; alasan: dua segitiga kongruen dapat disusun menjadi jajargenjang tanpa mengubah luas.
+ (5) persegi panjang pengganti: sisi tegak = 24 x 15 = 360 (atau dua persegi panjang 12 x 15), alas 144, L = 504; alasan: segitiga dapat disusun ulang tanpa celah atau tumpang tindih sehingga luas sisi tegak tetap.
+ Alasan harus menyebut mengapa strategi masih berlaku (bentuk limas sama, hanya ukuran berubah). Hasil akhir bukan 504 atau alasan hanya "karena iya" dikurangi.
 Refleksi (pilihan sikap, tidak ada benar-salah): tidak dinilai sebagai bagian terpisah; abaikan.
 
 CARA MENILAI:

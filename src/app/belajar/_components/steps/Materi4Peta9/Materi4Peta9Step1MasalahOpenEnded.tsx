@@ -34,7 +34,22 @@ export default async function Materi4Peta9Step1MasalahOpenEnded({
         </div>
       </div>
 
-      <div className="rounded-[24px] bg-gradient-to-br from-[#EFF4FF] to-[#F5F3FF] border border-[#E5E7EB] p-6 sm:p-8 flex flex-col sm:flex-row sm:items-center gap-6">
+      <div className="rounded-[24px] overflow-hidden border border-[#E5E7EB]">
+        <EditablePageImage
+          imageKey="M4-P9-L1-1"
+          materi={materi}
+          peta={peta}
+          step={step}
+          urutan="1"
+          src={heroImage}
+          alt="Tiga siswa berdiskusi dengan laptop, buku, dan tablet AR"
+          editable={editFoto}
+          natural
+          containerClassName="relative w-full"
+        />
+      </div>
+
+      <div className="rounded-[24px] bg-gradient-to-br from-[#EFF4FF] to-[#F5F3FF] border border-[#E5E7EB] p-6 sm:p-8 flex flex-col gap-6">
         <div className="flex-1 flex flex-col gap-3">
           <p className="m-0 text-lg font-extrabold text-[#111827]">Tidak hanya satu cara yang benar.</p>
           <p className="m-0 text-sm leading-[1.7] text-[#374151]">
@@ -71,18 +86,6 @@ export default async function Materi4Peta9Step1MasalahOpenEnded({
             ))}
           </div>
         </div>
-        <EditablePageImage
-          imageKey="M4-P9-L1-1"
-          materi={materi}
-          peta={peta}
-          step={step}
-          urutan="1"
-          src={heroImage}
-          alt="Tiga siswa berdiskusi dengan laptop, buku, dan tablet AR"
-          editable={editFoto}
-          natural
-          containerClassName="relative w-full sm:w-72 flex-shrink-0"
-        />
       </div>
 
       <div className="flex flex-col gap-4">
