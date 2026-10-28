@@ -30,12 +30,29 @@ export default async function Materi5Peta4Step1Pendahuluan({
 
       <div className="flex flex-col gap-4">
         <StepHeader materi={materi} currentStep={1} totalSteps={6} />
+        <div className="inline-flex items-center bg-[#FDF3C7] text-[#92400E] rounded-full py-1.5 px-3.5 text-xs font-bold tracking-[0.02em] w-fit">
+          Tahap 3 dari 6
+        </div>
         <h1 className="m-0 text-2xl sm:text-[32px] font-extrabold text-[#111827]">Ayo Bereksplorasi</h1>
       </div>
 
-      <div className="rounded-[24px] bg-gradient-to-br from-[#1E3A8A] to-[#2563EB] p-5 sm:p-7 grid grid-cols-1 md:grid-cols-[1fr_320px] gap-6 items-center">
+      <div className="rounded-[24px] overflow-hidden border border-[#E5E7EB]">
+        <EditablePageImage
+          imageKey="M5-P4-L1-1"
+          materi={materi}
+          peta={peta}
+          step={step}
+          urutan="1"
+          src={gambar}
+          alt="Tiga siswa mengamati bangun ruang pada laptop dan tablet sambil mengisi tabel pengamatan"
+          editable={editFoto}
+          natural
+          containerClassName="relative w-full"
+        />
+      </div>
+
+      <div className="rounded-[24px] bg-gradient-to-br from-[#1E3A8A] to-[#2563EB] p-5 sm:p-7 flex flex-col gap-3">
         <div className="flex flex-col gap-4 text-white">
-          <span className="inline-flex w-fit bg-white/15 rounded-full py-1 px-3 text-xs font-bold">Tahap 3</span>
           <h2 className="m-0 text-xl sm:text-2xl font-extrabold leading-[1.3]">
             Kumpulkan Data Perubahan Skala dan Luas Permukaan
           </h2>
@@ -57,18 +74,6 @@ export default async function Materi5Peta4Step1Pendahuluan({
           </div>
         </div>
 
-        <EditablePageImage
-          imageKey="M5-P4-L1-1"
-          materi={materi}
-          peta={peta}
-          step={step}
-          urutan="1"
-          src={gambar}
-          alt="Tiga siswa mengamati bangun ruang pada laptop dan tablet sambil mengisi tabel pengamatan"
-          editable={editFoto}
-          natural
-          containerClassName="relative w-full rounded-2xl overflow-hidden bg-white"
-        />
       </div>
 
       <div className="bg-[#FEF9E7] rounded-2xl py-4 px-5 flex flex-col gap-3">

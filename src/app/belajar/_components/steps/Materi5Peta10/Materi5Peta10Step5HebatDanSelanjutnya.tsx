@@ -29,7 +29,7 @@ export default async function Materi5Peta10Step5HebatDanSelanjutnya({
         </h1>
       </div>
 
-      <div className="bg-[#FDF3C7] rounded-[20px] p-6 sm:p-8 grid grid-cols-1 sm:grid-cols-[auto_1fr] gap-6 items-center">
+      <div className="bg-[#FDF3C7] rounded-[20px] p-6 sm:p-8 grid grid-cols-1 sm:grid-cols-[1fr_auto] gap-6 items-center">
         <EditablePageImage
           imageKey="M5-P10-L5-1"
           materi={materi}
@@ -40,7 +40,7 @@ export default async function Materi5Peta10Step5HebatDanSelanjutnya({
           alt="Siswa laki-laki mengepalkan tangan tanda semangat"
           editable={editFoto}
           imageClassName="object-contain"
-          containerClassName="relative w-32 h-44 mx-auto flex-shrink-0 rounded-2xl overflow-hidden bg-white"
+          containerClassName="relative w-32 h-44 mx-auto sm:order-2 flex-shrink-0 rounded-2xl overflow-hidden bg-white"
         />
         <div>
           <h2 className="m-0 mb-2 text-2xl font-extrabold text-[#92400E]">🏆 Hebat!</h2>
@@ -87,7 +87,7 @@ export default async function Materi5Peta10Step5HebatDanSelanjutnya({
 
       <div className="flex flex-col-reverse sm:flex-row justify-between items-center gap-4">
         <BackLink href={`/belajar/${materi}/${peta}/4`} />
-        <NextStepButton variant="green" icon="check">Selesai</NextStepButton>
+        <NextStepButton variant="green" icon="check">Lanjut ke Submateri 6</NextStepButton>
       </div>
     </form>
   );

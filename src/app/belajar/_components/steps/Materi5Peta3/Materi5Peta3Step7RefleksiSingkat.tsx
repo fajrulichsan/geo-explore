@@ -3,6 +3,7 @@ import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry"
 import NextStepButton from "@/app/belajar/_components/NextStepButton";
 import BackLink from "@/app/belajar/_components/BackLink";
 import StepHeader from "@/app/belajar/_components/StepHeader";
+import FileSubmission from "@/components/FileSubmission";
 import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
 import { getPageImage, type PageImageKey } from "@/lib/pageImages";
 
@@ -23,7 +24,7 @@ export default async function Materi5Peta3Step7RefleksiSingkat({
   const answers = initialAnswers ?? {};
 
   const [laptopImage, ...pernyataanImages] = await Promise.all([
-    getPageImage("M5-P3-L3-1"),
+    getPageImage("M5-P3-L7-5"),
     ...pernyataan.map((p) => getPageImage(p.imageKey)),
   ]);
 
@@ -39,7 +40,7 @@ export default async function Materi5Peta3Step7RefleksiSingkat({
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2">
             <path d="M21 11.5a8.4 8.4 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.4 8.4 0 01-3.8-.9L3 21l1.9-5.7a8.4 8.4 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.4 8.4 0 013.8-.9h.5a8.5 8.5 0 018 8z" />
           </svg>
-          Tahap 2
+          Tahap 2 dari 6
         </div>
         <h1 className="m-0 text-2xl sm:text-[32px] font-extrabold text-[#111827]">Ayo Berdiskusi</h1>
       </div>
@@ -118,11 +119,11 @@ export default async function Materi5Peta3Step7RefleksiSingkat({
           </p>
         </div>
         <EditablePageImage
-          imageKey="M5-P3-L3-1"
+          imageKey="M5-P3-L7-5"
           materi={materi}
           peta={peta}
           step={step}
-          urutan="1"
+          urutan="5"
           src={laptopImage}
           alt="Laptop menampilkan kubus 3D GeoGebra"
           editable={editFoto}
@@ -132,9 +133,15 @@ export default async function Materi5Peta3Step7RefleksiSingkat({
         />
       </div>
 
+      <FileSubmission
+        materi={materi}
+        peta={peta}
+        defaultValue={typeof answers.file_hasil_kerja === "string" ? answers.file_hasil_kerja : undefined}
+      />
+
       <div className="flex flex-col-reverse sm:flex-row justify-between items-center gap-4">
         <BackLink href={`/belajar/${materi}/${peta}/6`} />
-        <NextStepButton variant="green" icon="check">Selesai</NextStepButton>
+        <NextStepButton variant="green" icon="check">Lanjut ke Tahap Ayo Bereksplorasi</NextStepButton>
       </div>
     </form>
   );

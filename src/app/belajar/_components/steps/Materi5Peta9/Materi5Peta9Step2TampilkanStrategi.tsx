@@ -31,9 +31,9 @@ export default async function Materi5Peta9Step2TampilkanStrategi({
       <input type="hidden" name="step" value="2" />
 
       <div className="flex flex-col gap-4">
-        <StepHeader materi={materi} currentStep={2} totalSteps={5} />
+        <StepHeader materi={materi} currentStep={2} totalSteps={6} />
         <h1 className="m-0 text-2xl sm:text-[32px] font-extrabold text-[#111827]">
-          Tantangan Open-Ended
+          Tantangan Terbuka
         </h1>
       </div>
 

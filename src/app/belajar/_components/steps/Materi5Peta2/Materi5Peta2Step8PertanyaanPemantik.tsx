@@ -31,7 +31,7 @@ export default async function Materi5Peta2Step8PertanyaanPemantik({
             <circle cx="11" cy="11" r="7" />
             <path d="M21 21l-4.3-4.3" />
           </svg>
-          Tahap 1
+          Tahap 1 dari 6
         </div>
         <h1 className="m-0 text-2xl sm:text-[32px] font-extrabold text-[#111827]">Ayo Mengamati dan Berpikir</h1>
       </div>

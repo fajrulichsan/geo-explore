@@ -16,6 +16,7 @@ type Bangun = {
   alt: string;
   pertanyaan?: string;
   opsi?: { value: string; label: string }[];
+  multi?: boolean;
   petunjuk: string;
 };
 
@@ -30,6 +31,7 @@ const bangunList: Bangun[] = [
     urutan: "2",
     alt: "Kubus kecil dengan rusuk 4 cm diperbesar dengan k = 2 menjadi kubus besar dengan rusuk 8 cm",
     pertanyaan: "Apa yang berubah?",
+    multi: true,
     opsi: [
       { value: "panjang_rusuk", label: "panjang rusuk" },
       { value: "jumlah_sisi", label: "jumlah sisi" },
@@ -80,6 +82,12 @@ const bangunList: Bangun[] = [
     imageKey: "M5-P2-L1-5",
     urutan: "5",
     alt: "Limas segiempat kecil dengan apotema 5 cm diperbesar dengan k = 2 menjadi limas besar dengan apotema 10 cm",
+    pertanyaan: "Ukuran mana yang berubah?",
+    opsi: [
+      { value: "sisi_alas", label: "sisi alas" },
+      { value: "apotema", label: "apotema (tinggi sisi tegak)" },
+      { value: "tinggi_limas", label: "tinggi limas" },
+    ],
     petunjuk: "Amati semua ukuran (sisi alas dan apotema) setelah skala diterapkan.",
   },
 ];
@@ -111,7 +119,7 @@ export default async function Materi5Peta2Step1AyoMengamati({
             <circle cx="11" cy="11" r="7" />
             <path d="M21 21l-4.3-4.3" />
           </svg>
-          Tahap 1
+          Tahap 1 dari 6
         </div>
         <h1 className="m-0 text-2xl sm:text-[32px] font-extrabold text-[#111827]">Ayo Mengamati dan Berpikir</h1>
       </div>
@@ -126,13 +134,7 @@ export default async function Materi5Peta2Step1AyoMengamati({
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-[1fr_320px] gap-5 items-center bg-[#FEF9E7] border border-[#F5E3A0] rounded-[20px] p-5 sm:p-6">
-          <p className="m-0 text-sm leading-[1.7] text-[#374151]">
-            Perhatikan setiap pasangan bangun ruang di bawah ini. Bentuknya sama, tetapi ukurannya berbeda
-            karena diperbesar dengan faktor skala <span className="font-bold text-[#2563EB]">k = 2</span>. Amati
-            perubahan ukuran setiap bangun, kemudian pikirkan apakah perubahan tersebut juga memengaruhi luas
-            permukaannya.
-          </p>
+        <div className="rounded-[24px] overflow-hidden border border-[#E5E7EB]">
           <EditablePageImage
             imageKey="M5-P2-L1-1"
             materi={materi}
@@ -143,8 +145,17 @@ export default async function Materi5Peta2Step1AyoMengamati({
             alt="Siswa laki-laki dengan kaca pembesar dan siswa perempuan memegang penggaris mengamati bangun ruang"
             editable={editFoto}
             natural
-            containerClassName="relative w-full overflow-hidden rounded-2xl"
+            containerClassName="relative w-full"
           />
+        </div>
+
+        <div className="bg-[#FEF9E7] border border-[#F5E3A0] rounded-[20px] p-5 sm:p-6">
+          <p className="m-0 text-sm leading-[1.7] text-[#374151]">
+            Perhatikan setiap pasangan bangun ruang di bawah ini. Bentuknya sama, tetapi ukurannya berbeda
+            karena diperbesar dengan faktor skala <span className="font-bold text-[#2563EB]">k = 2</span>. Amati
+            perubahan ukuran setiap bangun, kemudian pikirkan apakah perubahan tersebut juga memengaruhi luas
+            permukaannya.
+          </p>
         </div>
 
         <div className="grid grid-cols-1 gap-5">
@@ -180,14 +191,23 @@ export default async function Materi5Peta2Step1AyoMengamati({
                     <legend className="px-1 text-xs font-bold text-[#374151]">{b.pertanyaan}</legend>
                     {b.opsi.map((o) => (
                       <label key={o.value} className="flex items-center gap-2 text-sm text-[#374151] cursor-pointer">
-                        <input
-                          type="radio"
-                          name={`answers.${b.key}_berubah`}
-                          value={o.value}
-                          defaultChecked={getValue(`${b.key}_berubah`) === o.value}
-                          required
-                          className="accent-[#2563EB]"
-                        />
+                        {b.multi ? (
+                          <input
+                            type="checkbox"
+                            name={`answers.${b.key}_berubah_${o.value}`}
+                            defaultChecked={answers[`${b.key}_berubah_${o.value}`] === "on"}
+                            className="accent-[#2563EB]"
+                          />
+                        ) : (
+                          <input
+                            type="radio"
+                            name={`answers.${b.key}_berubah`}
+                            value={o.value}
+                            defaultChecked={getValue(`${b.key}_berubah`) === o.value}
+                            required
+                            className="accent-[#2563EB]"
+                          />
+                        )}
                         {o.label}
                       </label>
                     ))}

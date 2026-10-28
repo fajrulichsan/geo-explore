@@ -37,12 +37,27 @@ export default async function Materi5Peta3Step4BandingkanDugaanKelompok({
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2">
             <path d="M21 11.5a8.4 8.4 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.4 8.4 0 01-3.8-.9L3 21l1.9-5.7a8.4 8.4 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.4 8.4 0 013.8-.9h.5a8.5 8.5 0 018 8z" />
           </svg>
-          Tahap 2
+          Tahap 2 dari 6
         </div>
         <h1 className="m-0 text-2xl sm:text-[32px] font-extrabold text-[#111827]">Ayo Berdiskusi</h1>
       </div>
 
-      <div className="grid sm:grid-cols-[1fr_1.1fr] gap-5 items-center bg-gradient-to-br from-[#FEF9E7] to-[#FFF7ED] border border-[#F5E3A0] rounded-[24px] p-5 sm:p-6">
+      <div className="rounded-[24px] overflow-hidden border border-[#E5E7EB]">
+        <EditablePageImage
+          imageKey="M5-P3-L4-1"
+          materi={materi}
+          peta={peta}
+          step={step}
+          urutan="1"
+          src={heroImage}
+          alt="Tiga siswa berdiskusi mengelilingi meja berisi tabel hasil pengamatan"
+          editable={editFoto}
+          natural
+          containerClassName="relative w-full"
+        />
+      </div>
+
+      <div className="bg-gradient-to-br from-[#FEF9E7] to-[#FFF7ED] border border-[#F5E3A0] rounded-[24px] p-5 sm:p-6 flex flex-col gap-3">
         <div className="flex flex-col gap-2">
           <p className="m-0 text-sm font-bold text-[#78350F] flex items-center gap-2">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D97706" strokeWidth="2">
@@ -54,18 +69,6 @@ export default async function Materi5Peta3Step4BandingkanDugaanKelompok({
             Sekarang bandingkan dugaan kelompokmu dengan kelompok lain. Apakah semuanya memiliki dugaan yang sama?
           </p>
         </div>
-        <EditablePageImage
-          imageKey="M5-P3-L1-1"
-          materi={materi}
-          peta={peta}
-          step={step}
-          urutan="1"
-          src={heroImage}
-          alt="Tiga siswa berdiskusi mengelilingi meja berisi tabel hasil pengamatan"
-          editable={editFoto}
-          natural
-          containerClassName="relative w-full rounded-2xl overflow-hidden"
-        />
       </div>
 
       <div className="flex flex-col gap-4">

@@ -62,7 +62,7 @@ export default async function Materi5Peta1Step3TujuanSiap({
             Tujuan Pembelajaran
           </div>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-[1fr_220px] gap-5 items-center bg-[#F5F3FF] border border-[#DDD6FE] rounded-[20px] p-5 sm:p-6">
+        <div className="grid grid-cols-1 md:grid-cols-[1fr_340px] gap-5 items-center bg-[#F5F3FF] border border-[#DDD6FE] rounded-[20px] p-5 sm:p-6">
           <div className="flex flex-col gap-3">
             <p className="m-0 text-sm text-[#4B5563]">
               Setelah mempelajari submateri ini, kamu diharapkan dapat:
@@ -86,7 +86,7 @@ export default async function Materi5Peta1Step3TujuanSiap({
             alt="Siswa laki-laki mengukur balok biru dengan penggaris sambil mencatat"
             editable={editFoto}
             imageClassName="object-contain mix-blend-multiply"
-            containerClassName="relative w-40 h-40 md:w-full md:h-56 mx-auto"
+            containerClassName="relative w-56 h-56 md:w-full md:h-80 mx-auto"
           />
         </div>
       </div>
@@ -153,7 +153,7 @@ export default async function Materi5Peta1Step3TujuanSiap({
 
       <div className="flex flex-col-reverse sm:flex-row justify-between items-center gap-4">
         <BackLink href={`/belajar/${materi}/${peta}/2`} />
-        <NextStepButton variant="green" icon="check">Selesai</NextStepButton>
+        <NextStepButton variant="green" icon="check">Lanjut ke Tahap Ayo Mengamati dan Berpikir</NextStepButton>
       </div>
     </form>
   );

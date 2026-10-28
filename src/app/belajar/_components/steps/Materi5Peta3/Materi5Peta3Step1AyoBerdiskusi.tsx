@@ -46,22 +46,12 @@ export default async function Materi5Peta3Step1AyoBerdiskusi({
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2">
             <path d="M21 11.5a8.4 8.4 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.4 8.4 0 01-3.8-.9L3 21l1.9-5.7a8.4 8.4 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.4 8.4 0 013.8-.9h.5a8.5 8.5 0 018 8z" />
           </svg>
-          Tahap 2
+          Tahap 2 dari 6
         </div>
         <h1 className="m-0 text-2xl sm:text-[32px] font-extrabold text-[#111827]">Ayo Berdiskusi</h1>
       </div>
 
-      <div className="grid sm:grid-cols-[1fr_1.1fr] gap-5 items-center bg-gradient-to-br from-[#EFF4FF] to-white border border-[#DBEAFE] rounded-[24px] p-5 sm:p-6">
-        <div className="flex flex-col gap-3">
-          <p className="m-0 text-sm font-bold text-[#1E3A8A]">Ayo Berdiskusi!</p>
-          <p className="m-0 text-sm leading-[1.6] text-[#4B5563]">
-            Diskusikan hasil pengamatan yang telah kalian lakukan pada Tahap 1 bersama teman satu kelompok.
-          </p>
-          <p className="m-0 text-sm leading-[1.6] text-[#4B5563]">
-            Bandingkan jawaban setiap anggota. Jika terdapat perbedaan pendapat, berikan alasan berdasarkan hasil
-            pengamatan yang telah dilakukan.
-          </p>
-        </div>
+      <div className="rounded-[24px] overflow-hidden border border-[#E5E7EB]">
         <EditablePageImage
           imageKey="M5-P3-L1-1"
           materi={materi}
@@ -72,8 +62,21 @@ export default async function Materi5Peta3Step1AyoBerdiskusi({
           alt="Tiga siswa berdiskusi mengelilingi meja berisi tabel hasil pengamatan"
           editable={editFoto}
           natural
-          containerClassName="relative w-full rounded-2xl overflow-hidden"
+          containerClassName="relative w-full"
         />
+      </div>
+
+      <div className="bg-gradient-to-br from-[#EFF4FF] to-white border border-[#DBEAFE] rounded-[24px] p-5 sm:p-6 flex flex-col gap-3">
+        <div className="flex flex-col gap-3">
+          <p className="m-0 text-sm font-bold text-[#1E3A8A]">Ayo Berdiskusi!</p>
+          <p className="m-0 text-sm leading-[1.6] text-[#4B5563]">
+            Diskusikan hasil pengamatan yang telah kalian lakukan pada Tahap 1 bersama teman satu kelompok.
+          </p>
+          <p className="m-0 text-sm leading-[1.6] text-[#4B5563]">
+            Bandingkan jawaban setiap anggota. Jika terdapat perbedaan pendapat, berikan alasan berdasarkan hasil
+            pengamatan yang telah dilakukan.
+          </p>
+        </div>
       </div>
 
       <div className="bg-[#FEF9E7] border border-[#F5E3A0] rounded-2xl py-3 px-4 flex items-start gap-2.5">

@@ -6,12 +6,26 @@ import { useStepDraft } from "./useStepDraft";
 
 function isFormValid(form: HTMLFormElement): boolean {
   if (!form.checkValidity()) return false;
-  const groups = new Map<string, boolean>();
+  const groups = new Map<string, { checked: number; min: number }>();
   form.querySelectorAll<HTMLInputElement>("[data-require-group]").forEach((el) => {
     const key = el.dataset.requireGroup!;
-    groups.set(key, (groups.get(key) ?? false) || el.checked);
+    const group = groups.get(key) ?? { checked: 0, min: Number(el.dataset.requireMin ?? 1) };
+    if (el.checked) group.checked += 1;
+    groups.set(key, group);
   });
-  return Array.from(groups.values()).every(Boolean);
+  if (!Array.from(groups.values()).every((g) => g.checked >= g.min)) return false;
+
+  const unitGroups = new Map<string, { min: number; units: Map<string, boolean> }>();
+  form.querySelectorAll<HTMLInputElement>("[data-unit-group]").forEach((el) => {
+    const key = el.dataset.unitGroup!;
+    const group = unitGroups.get(key) ?? { min: Number(el.dataset.unitMin ?? 1), units: new Map() };
+    const unit = el.dataset.unit!;
+    group.units.set(unit, (group.units.get(unit) ?? true) && el.value.trim() !== "");
+    unitGroups.set(key, group);
+  });
+  return Array.from(unitGroups.values()).every(
+    (g) => Array.from(g.units.values()).filter(Boolean).length >= g.min
+  );
 }
 
 export default function SubmitStepButton({

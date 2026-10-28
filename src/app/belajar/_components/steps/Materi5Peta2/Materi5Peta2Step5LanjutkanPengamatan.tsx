@@ -50,8 +50,17 @@ const bangunList: Bangun[] = [
   },
 ];
 
-export default async function Materi5Peta2Step5LanjutkanPengamatan({ materi, peta, step = "5" }: StepComponentProps) {
-  const images = await Promise.all(bangunList.map((b) => getPageImage(b.imageKey)));
+export default async function Materi5Peta2Step5LanjutkanPengamatan({
+  materi,
+  peta,
+  step = "5",
+  editFoto,
+}: StepComponentProps) {
+  const [bannerImage, lampuImage, ...images] = await Promise.all([
+    getPageImage("M5-P2-L5-1"),
+    getPageImage("M5-P2-L5-2"),
+    ...bangunList.map((b) => getPageImage(b.imageKey)),
+  ]);
 
   return (
     <form action={submitStepAction} className="flex flex-col gap-8">
@@ -66,9 +75,24 @@ export default async function Materi5Peta2Step5LanjutkanPengamatan({ materi, pet
             <circle cx="11" cy="11" r="7" />
             <path d="M21 21l-4.3-4.3" />
           </svg>
-          Tahap 1
+          Tahap 1 dari 6
         </div>
         <h1 className="m-0 text-2xl sm:text-[32px] font-extrabold text-[#111827]">Ayo Mengamati dan Berpikir</h1>
+      </div>
+
+      <div className="rounded-[24px] overflow-hidden border border-[#E5E7EB]">
+        <EditablePageImage
+          imageKey="M5-P2-L5-1"
+          materi={materi}
+          peta={peta}
+          step={step}
+          urutan="1"
+          src={bannerImage}
+          alt="Siswa-siswa di kelas mengamati bangun ruang sebelum dan sesudah diperbesar"
+          editable={editFoto}
+          natural
+          containerClassName="relative w-full"
+        />
       </div>
 
       <div className="bg-[#FEF9E7] border border-[#F5E3A0] rounded-[20px] p-5 sm:p-6 flex flex-col gap-2">
@@ -111,9 +135,21 @@ export default async function Materi5Peta2Step5LanjutkanPengamatan({ materi, pet
                 natural
                 containerClassName="relative w-full overflow-hidden"
               />
-              <p className="m-0 bg-[#F0FDF4] border border-[#BBF7D0] rounded-xl py-2.5 px-3.5 text-sm text-[#374151]">
-                {b.catatan}
-              </p>
+              <div className="flex items-center gap-3 bg-[#F0FDF4] border border-[#BBF7D0] rounded-xl py-2.5 px-3.5">
+                <EditablePageImage
+                  imageKey="M5-P2-L5-2"
+                  materi={materi}
+                  peta={peta}
+                  step={step}
+                  urutan="2"
+                  src={lampuImage}
+                  alt="Lampu ide"
+                  editable={editFoto && i === 0}
+                  imageClassName="object-contain"
+                  containerClassName="relative w-9 h-9 flex-shrink-0"
+                />
+                <p className="m-0 text-sm text-[#374151]">{b.catatan}</p>
+              </div>
             </div>
           ))}
         </div>

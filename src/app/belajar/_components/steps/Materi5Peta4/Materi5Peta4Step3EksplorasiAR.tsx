@@ -25,6 +25,21 @@ export default async function Materi5Peta4Step3EksplorasiAR({
 
   const [gambarQr, gambarAr] = await Promise.all([getPageImage("M5-P4-L3-1"), getPageImage("M5-P4-L3-2")]);
 
+  const qrImage = (
+    <EditablePageImage
+      imageKey="M5-P4-L3-1"
+      materi={materi}
+      peta={peta}
+      step={step}
+      urutan="1"
+      src={gambarQr}
+      alt="QR code menuju model bangun ruang Augmented Reality"
+      editable={editFoto}
+      imageClassName="object-contain p-1.5"
+      containerClassName="relative w-36 h-36 rounded-xl overflow-hidden bg-white"
+    />
+  );
+
   return (
     <form action={submitStepAction} className="flex flex-col gap-8">
       <input type="hidden" name="materi" value={materi} />
@@ -50,18 +65,13 @@ export default async function Materi5Peta4Step3EksplorasiAR({
           <div className="grid grid-cols-1 md:grid-cols-[170px_1fr] gap-6 items-start">
             <div className="bg-[#F0FDF4] rounded-2xl p-3 flex flex-col items-center gap-2 w-fit mx-auto md:mx-0">
               <span className="text-xs font-bold text-[#15803D] text-center">Scan QR Code AR</span>
-              <EditablePageImage
-                imageKey="M5-P4-L3-1"
-                materi={materi}
-                peta={peta}
-                step={step}
-                urutan="1"
-                src={gambarQr}
-                alt="QR code menuju model bangun ruang Augmented Reality"
-                editable={editFoto}
-                imageClassName="object-contain p-1.5"
-                containerClassName="relative w-36 h-36 rounded-xl overflow-hidden bg-white"
-              />
+              {editFoto ? (
+                qrImage
+              ) : (
+                <a href="https://ar.geo-explore.my.id" target="_blank" rel="noopener noreferrer" aria-label="Buka AR">
+                  {qrImage}
+                </a>
+              )}
               <span className="bg-[#166534] text-white rounded-full py-1 px-3 text-[11px] font-bold">QR AR</span>
             </div>
 

@@ -33,22 +33,15 @@ export default async function Materi5Peta6Step3UjiHubunganAlasan({
       <div className="flex flex-col gap-4">
         <StepHeader materi={materi} currentStep={3} totalSteps={4} />
         <div className="inline-flex items-center bg-[#FDF3C7] text-[#92400E] rounded-full py-1.5 px-3.5 text-xs font-bold tracking-[0.02em] w-fit">
-          Tahap 5
+          Tahap 5 dari 6
         </div>
         <h1 className="m-0 text-2xl sm:text-[32px] font-extrabold text-[#111827]">Ayo Verifikasi</h1>
         <p className="m-0 text-sm font-semibold text-[#2563EB]">Periksa Kembali Hubungan Skala dan Luas</p>
       </div>
 
-      <div className="grid md:grid-cols-5 gap-5 items-center">
-        <div className="md:col-span-3 bg-[#FEF9E7] border border-[#F5E3A0] rounded-[20px] p-6 flex flex-col gap-2">
-          <h2 className="m-0 text-lg font-bold text-[#1D4ED8]">Pengantar</h2>
-          <p className="m-0 text-sm leading-[1.6] text-[#374151]">
-            Sekarang lakukan pemeriksaan terakhir terhadap hubungan yang telah kamu temukan. Pastikan
-            hubungan tersebut benar berdasarkan seluruh bukti yang telah dikumpulkan.
-          </p>
-        </div>
+      <div className="rounded-[24px] overflow-hidden border border-[#E5E7EB]">
         <EditablePageImage
-          imageKey="M5-P6-L1-1"
+          imageKey="M5-P6-L3-1"
           materi={materi}
           peta={peta}
           step={step}
@@ -56,9 +49,19 @@ export default async function Materi5Peta6Step3UjiHubunganAlasan({
           src={heroImage}
           alt="Tiga siswa memeriksa kembali hasil penemuan"
           editable={editFoto}
-          imageClassName="object-contain"
-          containerClassName="relative md:col-span-2 w-full aspect-[5/4] max-h-56 bg-white rounded-[20px] overflow-hidden"
+          natural
+          containerClassName="relative w-full"
         />
+      </div>
+
+      <div className="flex flex-col gap-3">
+        <div className="bg-[#FEF9E7] border border-[#F5E3A0] rounded-[20px] p-6 flex flex-col gap-2">
+          <h2 className="m-0 text-lg font-bold text-[#1D4ED8]">Pengantar</h2>
+          <p className="m-0 text-sm leading-[1.6] text-[#374151]">
+            Sekarang lakukan pemeriksaan terakhir terhadap hubungan yang telah kamu temukan. Pastikan
+            hubungan tersebut benar berdasarkan seluruh bukti yang telah dikumpulkan.
+          </p>
+        </div>
       </div>
 
       <div className="grid lg:grid-cols-2 gap-6 items-start">

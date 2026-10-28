@@ -20,14 +20,6 @@ function SectionTitle({ letter, title }: { letter: string; title: string }) {
 }
 
 
-const poinPenting = [
-  <>Skala memengaruhi ukuran panjang setiap sisi.</>,
-  <>Luas permukaan berubah sebesar kuadrat faktor skala (<b className="text-[#DC2626]"><i>k</i>²</b>).</>,
-  <>Hubungan ini berlaku pada semua bangun ruang sisi datar yang sebangun.</>,
-  <>Satu masalah dapat diselesaikan menggunakan berbagai strategi.</>,
-  <>Jawaban harus disertai alasan matematis yang logis dan benar.</>,
-];
-
 const kataKunci = [
   { icon: "📏", label: "Skala" },
   { icon: "↔️", label: "Faktor Skala k" },
@@ -47,7 +39,11 @@ export default async function Materi5Peta10Step4PetaKonsepKataKunci({
   step = "4",
   editFoto,
 }: StepComponentProps) {
-  const luasImage = await getPageImage("M5-P10-L4-1");
+  const [luasImage, petaKonsepImage, poinImage] = await Promise.all([
+    getPageImage("M5-P10-L4-1"),
+    getPageImage("M5-P10-L4-2"),
+    getPageImage("M5-P10-L4-3"),
+  ]);
 
   return (
     <form action={submitStepAction} className="flex flex-col gap-8">
@@ -62,52 +58,39 @@ export default async function Materi5Peta10Step4PetaKonsepKataKunci({
         </h1>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <div className="flex flex-col gap-4">
-          <SectionTitle letter="G" title="Peta Konsep Mini" />
-          <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-6 shadow-[0_1px_2px_rgba(0,0,0,0.04)] flex flex-col items-center gap-2 flex-1">
-            <div className="rounded-xl border-2 border-[#6366F1] bg-[#EEF2FF] text-[#3730A3] font-bold text-sm px-6 py-2">SKALA</div>
-            <div className="w-px h-4 bg-[#6366F1]" />
-            <div className="rounded-xl border border-[#86EFAC] bg-[#DCFCE7] text-[#14532D] text-sm font-semibold px-5 py-2.5 text-center">
-              Faktor Skala (<i>k</i>)<br />
-              <span className="text-xs font-medium">(Setiap ukuran panjang menjadi <i>k</i> kali)</span>
-            </div>
-            <div className="w-px h-4 bg-[#6366F1]" />
-            <div className="grid grid-cols-2 gap-3 w-full">
-              <div className="rounded-xl border border-[#FED7AA] bg-[#FFF7ED] p-3 text-center text-xs font-semibold text-[#7C2D12]">
-                Setiap Ukuran Panjang menjadi <b className="text-[#DC2626]"><i>k</i></b> kali
-              </div>
-              <div className="rounded-xl border border-[#FED7AA] bg-[#FFF7ED] p-3 text-center text-xs font-semibold text-[#7C2D12]">
-                Luas Permukaan menjadi <b className="text-[#DC2626]"><i>k</i>²</b> kali
-              </div>
-            </div>
-            <div className="w-px h-4 bg-[#6366F1]" />
-            <div className="rounded-xl border border-[#C4B5FD] bg-[#F5F3FF] p-3 text-center text-sm text-[#1F2937] font-medium w-full">
-              Jika setiap ukuran panjang suatu bangun ruang dikalikan dengan faktor skala <i>k</i>,
-              maka luas permukaannya menjadi <b className="text-[#DC2626]"><i>k</i>²</b> kali luas
-              permukaan semula.
-            </div>
-            <div className="bg-[#FEF9E7] border border-[#F5E6A8] rounded-xl px-4 py-2.5 flex items-start gap-2 w-full">
-              <span className="flex-shrink-0">💡</span>
-              <p className="m-0 text-xs text-[#785900] leading-[1.5]">
-                <b>Catatan:</b> berlaku untuk semua nilai <i>k</i> &gt; 0, baik 0 &lt; <i>k</i> &lt; 1
-                (pengecilan) maupun <i>k</i> &gt; 1 (pembesaran).
-              </p>
-            </div>
-          </div>
+      <div className="flex flex-col gap-4">
+        <SectionTitle letter="G" title="Peta Konsep Mini" />
+        <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-4 shadow-[0_1px_2px_rgba(0,0,0,0.04)]">
+          <EditablePageImage
+            imageKey="M5-P10-L4-2"
+            materi={materi}
+            peta={peta}
+            step={step}
+            urutan="2"
+            src={petaKonsepImage}
+            alt="Peta konsep skala: faktor skala k, setiap ukuran panjang menjadi k kali, luas permukaan menjadi k kuadrat kali"
+            editable={editFoto}
+            natural
+            containerClassName="relative w-full max-w-md mx-auto"
+          />
         </div>
+      </div>
 
-        <div className="flex flex-col gap-4">
-          <SectionTitle letter="H" title="Poin Penting" />
-          <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-6 shadow-[0_1px_2px_rgba(0,0,0,0.04)] flex flex-col gap-3 flex-1 justify-center">
-            {poinPenting.map((p, i) => (
-              <div key={i} className="flex items-start gap-3">
-                <span className="w-5 h-5 rounded-full bg-[#1E3A8A] text-white flex items-center justify-center text-[11px] flex-shrink-0 mt-0.5">✓</span>
-                <p className="m-0 text-sm text-[#374151] leading-[1.5]">{p}</p>
-              </div>
-            ))}
-            <div className="self-end text-4xl">🎯</div>
-          </div>
+      <div className="flex flex-col gap-4">
+        <SectionTitle letter="H" title="Poin Penting" />
+        <div className="rounded-[24px] overflow-hidden border border-[#E5E7EB]">
+          <EditablePageImage
+            imageKey="M5-P10-L4-3"
+            materi={materi}
+            peta={peta}
+            step={step}
+            urutan="3"
+            src={poinImage}
+            alt="Poin penting: skala memengaruhi ukuran panjang, luas permukaan berubah k kuadrat kali, berlaku pada bangun ruang sisi datar yang sebangun, satu masalah dapat diselesaikan dengan berbagai strategi, jawaban disertai alasan matematis"
+            editable={editFoto}
+            natural
+            containerClassName="relative w-full"
+          />
         </div>
       </div>
 

@@ -34,12 +34,27 @@ export default async function Materi5Peta9Step1MasalahOpenEnded({
       <input type="hidden" name="peta" value={peta} />
       <input type="hidden" name="step" value="1" />
 
-      <StepHeader materi={materi} currentStep={1} totalSteps={5} />
+      <StepHeader materi={materi} currentStep={1} totalSteps={6} />
 
-      <div className="rounded-[24px] bg-gradient-to-br from-[#EFF4FF] to-[#F5F3FF] border border-[#E5E7EB] p-6 sm:p-8 flex flex-col md:flex-row md:items-center gap-6">
+      <div className="rounded-[24px] overflow-hidden border border-[#E5E7EB]">
+        <EditablePageImage
+          imageKey="M5-P9-L1-1"
+          materi={materi}
+          peta={peta}
+          step={step}
+          urutan="1"
+          src={heroImage}
+          alt="Tiga siswa berdiskusi di depan laptop dengan bangun ruang di sekitarnya"
+          editable={editFoto}
+          natural
+          containerClassName="relative w-full"
+        />
+      </div>
+
+      <div className="rounded-[24px] bg-gradient-to-br from-[#EFF4FF] to-[#F5F3FF] border border-[#E5E7EB] p-6 sm:p-8 flex flex-col gap-3">
         <div className="flex-1 flex flex-col gap-3">
           <h1 className="m-0 text-2xl sm:text-[32px] font-extrabold text-[#111827]">
-            Tantangan Open-Ended
+            Tantangan Terbuka
           </h1>
           <p className="m-0 text-sm font-bold text-[#2563EB]">
             Saatnya menunjukkan berbagai strategimu!
@@ -54,18 +69,6 @@ export default async function Materi5Peta9Step1MasalahOpenEnded({
             </p>
           </div>
         </div>
-        <EditablePageImage
-          imageKey="M5-P9-L1-1"
-          materi={materi}
-          peta={peta}
-          step={step}
-          urutan="1"
-          src={heroImage}
-          alt="Tiga siswa berdiskusi di depan laptop dengan bangun ruang di sekitarnya"
-          editable={editFoto}
-          natural
-          containerClassName="relative w-full md:w-[340px] flex-shrink-0 rounded-2xl overflow-hidden"
-        />
       </div>
 
       <div className="bg-[#EFF4FF] border border-[#BFDBFE] rounded-2xl p-5 flex flex-col gap-2.5">
@@ -88,7 +91,7 @@ export default async function Materi5Peta9Step1MasalahOpenEnded({
             A
           </div>
           <div className="bg-white border border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-full py-2 px-5 text-sm font-bold text-[#2563EB]">
-            Masalah Open-Ended
+            Masalah Terbuka
           </div>
         </div>
 

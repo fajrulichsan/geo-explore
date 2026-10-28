@@ -5,13 +5,6 @@ import StepHeader from "@/app/belajar/_components/StepHeader";
 import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
 import { getPageImage } from "@/lib/pageImages";
 
-const alur = [
-  { label: "GeoGebra & AR", color: "#2563EB" },
-  { label: "Periksa Data", color: "#16A34A" },
-  { label: "Bandingkan", color: "#2563EB" },
-  { label: "Perbaiki", color: "#DC2626" },
-];
-
 const kegiatan = [
   "Buka kembali model bangun ruang pada GeoGebra 3D.",
   "Ubah faktor skala menjadi beberapa nilai (misalnya 2, 3, dan ½).",
@@ -37,7 +30,11 @@ export default async function Materi5Peta6Step1VerifikasiGeoGebraAR({
   const answers = initialAnswers ?? {};
   const getValue = (key: string) => (typeof answers[key] === "string" ? (answers[key] as string) : "");
   const checked = (key: string) => answers[key] === "on" || answers[key] === true;
-  const heroImage = await getPageImage("M5-P6-L1-1");
+  const [heroImage, alurImage, kegiatanImage] = await Promise.all([
+    getPageImage("M5-P6-L1-1"),
+    getPageImage("M5-P6-L1-2"),
+    getPageImage("M5-P6-L1-3"),
+  ]);
 
   return (
     <form action={submitStepAction} className="flex flex-col gap-8">
@@ -48,14 +45,29 @@ export default async function Materi5Peta6Step1VerifikasiGeoGebraAR({
       <div className="flex flex-col gap-4">
         <StepHeader materi={materi} currentStep={1} totalSteps={4} />
         <div className="inline-flex items-center bg-[#FDF3C7] text-[#92400E] rounded-full py-1.5 px-3.5 text-xs font-bold tracking-[0.02em] w-fit">
-          Tahap 5
+          Tahap 5 dari 6
         </div>
         <h1 className="m-0 text-2xl sm:text-[32px] font-extrabold text-[#111827]">Ayo Verifikasi</h1>
         <p className="m-0 text-sm font-semibold text-[#2563EB]">Periksa Kembali Hubungan Skala dan Luas</p>
       </div>
 
-      <div className="grid md:grid-cols-5 gap-5 items-stretch">
-        <div className="md:col-span-3 bg-[#FEF9E7] border border-[#F5E3A0] rounded-[20px] p-6 flex flex-col gap-3">
+      <div className="rounded-[24px] overflow-hidden border border-[#E5E7EB]">
+        <EditablePageImage
+          imageKey="M5-P6-L1-1"
+          materi={materi}
+          peta={peta}
+          step={step}
+          urutan="1"
+          src={heroImage}
+          alt="Tiga siswa memverifikasi hasil penemuan dengan tablet dan buku catatan"
+          editable={editFoto}
+          natural
+          containerClassName="relative w-full"
+        />
+      </div>
+
+      <div className="items-stretch flex flex-col gap-3">
+        <div className="bg-[#FEF9E7] border border-[#F5E3A0] rounded-[20px] p-6 flex flex-col gap-3">
           <h2 className="m-0 text-lg font-bold text-[#1D4ED8]">Pengantar</h2>
           <p className="m-0 text-sm leading-[1.6] text-[#374151]">
             Kamu telah menemukan dugaan tentang{" "}
@@ -68,39 +80,24 @@ export default async function Materi5Peta6Step1VerifikasiGeoGebraAR({
             kelompokmu untuk memastikan bahwa hubungan yang kamu temukan sesuai dengan data.
           </p>
         </div>
-        <EditablePageImage
-          imageKey="M5-P6-L1-1"
-          materi={materi}
-          peta={peta}
-          step={step}
-          urutan="1"
-          src={heroImage}
-          alt="Tiga siswa memverifikasi hasil penemuan dengan tablet dan buku catatan"
-          editable={editFoto}
-          imageClassName="object-contain"
-          containerClassName="relative md:col-span-2 w-full aspect-[5/4] md:aspect-auto md:min-h-[200px] bg-white rounded-[20px] overflow-hidden"
-        />
       </div>
 
       <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-5 shadow-[0_1px_2px_rgba(0,0,0,0.04)] flex flex-col gap-4">
         <p className="m-0 text-sm font-bold text-[#1E3A8A] text-center">Alur Verifikasi</p>
-        <ol className="m-0 p-0 list-none flex flex-wrap items-center justify-center gap-2 sm:gap-3">
-          {alur.map((a, i) => (
-            <li key={a.label} className="flex items-center gap-2 sm:gap-3">
-              <span
-                className="rounded-full px-4 py-2 text-xs sm:text-sm font-bold bg-white border-2"
-                style={{ color: a.color, borderColor: a.color }}
-              >
-                {a.label}
-              </span>
-              {i < alur.length - 1 && (
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1E3A8A" strokeWidth="2.4">
-                  <path d="M5 12h14M13 5l7 7-7 7" />
-                </svg>
-              )}
-            </li>
-          ))}
-        </ol>
+        <div className="rounded-[20px] overflow-hidden border border-[#E5E7EB]">
+          <EditablePageImage
+            imageKey="M5-P6-L1-2"
+            materi={materi}
+            peta={peta}
+            step={step}
+            urutan="2"
+            src={alurImage}
+            alt="Alur verifikasi: GeoGebra dan AR, periksa data, bandingkan, perbaiki"
+            editable={editFoto}
+            natural
+            containerClassName="relative w-full"
+          />
+        </div>
         <div className="bg-[#EFF4FF] border border-[#BFDBFE] rounded-2xl p-3.5 flex items-start gap-2.5">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2563EB" strokeWidth="2" className="flex-shrink-0 mt-0.5">
             <circle cx="12" cy="12" r="9" />
@@ -123,19 +120,33 @@ export default async function Materi5Peta6Step1VerifikasiGeoGebraAR({
           </div>
         </div>
 
-        <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-6 shadow-[0_1px_2px_rgba(0,0,0,0.04)] flex flex-col gap-3">
-          <p className="m-0 text-sm font-semibold text-[#374151]">Lakukan kegiatan berikut.</p>
-          {kegiatan.map((item, idx) => (
-            <label key={item} className="flex items-start gap-3 text-sm text-[#374151] cursor-pointer">
-              <input
-                type="checkbox"
-                name={`answers.kegiatan_${idx}`}
-                defaultChecked={checked(`kegiatan_${idx}`)}
-                className="w-4 h-4 mt-0.5 rounded accent-[#2563EB] flex-shrink-0"
-              />
-              {item}
-            </label>
-          ))}
+        <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-6 shadow-[0_1px_2px_rgba(0,0,0,0.04)] grid grid-cols-1 md:grid-cols-[1fr_300px] gap-6 items-center">
+          <div className="flex flex-col gap-3">
+            <p className="m-0 text-sm font-semibold text-[#374151]">Lakukan kegiatan berikut.</p>
+            {kegiatan.map((item, idx) => (
+              <label key={item} className="flex items-start gap-3 text-sm text-[#374151] cursor-pointer">
+                <input
+                  type="checkbox"
+                  name={`answers.kegiatan_${idx}`}
+                  defaultChecked={checked(`kegiatan_${idx}`)}
+                  className="w-4 h-4 mt-0.5 rounded accent-[#2563EB] flex-shrink-0"
+                />
+                {item}
+              </label>
+            ))}
+          </div>
+          <EditablePageImage
+            imageKey="M5-P6-L1-3"
+            materi={materi}
+            peta={peta}
+            step={step}
+            urutan="3"
+            src={kegiatanImage}
+            alt="Dua siswa memverifikasi kubus pada GeoGebra 3D dan Augmented Reality"
+            editable={editFoto}
+            natural
+            containerClassName="relative w-full"
+          />
         </div>
 
         <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-6 shadow-[0_1px_2px_rgba(0,0,0,0.04)] flex flex-col gap-4">

@@ -15,14 +15,6 @@ const petunjuk = [
   "Cocokkan dengan informasi dinamis GeoGebra.",
 ];
 
-const alurKerja = [
-  { label: "Pilih Model", desc: "Pilih salah satu bangun ruang." },
-  { label: "Ubah Skala", desc: "Geser slider faktor skala (k)." },
-  { label: "Ukur Ukuran", desc: "Ukur ukuran yang diminta (rusuk, panjang, tinggi, apotema, dll)." },
-  { label: "Hitung Luas", desc: "Hitung luas permukaan berdasarkan ukuran." },
-  { label: "Catat Hasil", desc: "Catat pada tabel untuk setiap faktor skala (k)." },
-];
-
 const faktorSkala = ["1/2", "1", "2", "3"];
 
 const inputClass =
@@ -38,10 +30,26 @@ export default async function Materi5Peta4Step2EksplorasiGeoGebra({
   const answers = initialAnswers ?? {};
   const getValue = (key: string) => (typeof answers[key] === "string" ? (answers[key] as string) : "");
 
-  const [gambarQr, gambarGeoGebra] = await Promise.all([
+  const [gambarQr, gambarGeoGebra, gambarAlur] = await Promise.all([
     getPageImage("M5-P4-L2-1"),
     getPageImage("M5-P4-L2-2"),
+    getPageImage("M5-P4-L2-3"),
   ]);
+
+  const qrImage = (
+    <EditablePageImage
+      imageKey="M5-P4-L2-1"
+      materi={materi}
+      peta={peta}
+      step={step}
+      urutan="1"
+      src={gambarQr}
+      alt="QR code menuju model GeoGebra 3D bangun ruang"
+      editable={editFoto}
+      imageClassName="object-contain p-1.5"
+      containerClassName="relative w-32 h-32 rounded-xl overflow-hidden bg-white"
+    />
+  );
 
   return (
     <form action={submitStepAction} className="flex flex-col gap-8">
@@ -68,18 +76,13 @@ export default async function Materi5Peta4Step2EksplorasiGeoGebra({
           <div className="grid grid-cols-1 md:grid-cols-[150px_1fr_280px] gap-5 items-start">
             <div className="bg-[#EFF4FF] rounded-2xl p-3 flex flex-col items-center gap-2 w-fit mx-auto md:mx-0">
               <span className="text-xs font-bold text-[#1D4ED8] text-center">Scan QR Code GeoGebra</span>
-              <EditablePageImage
-                imageKey="M5-P4-L2-1"
-                materi={materi}
-                peta={peta}
-                step={step}
-                urutan="1"
-                src={gambarQr}
-                alt="QR code menuju model GeoGebra 3D bangun ruang"
-                editable={editFoto}
-                imageClassName="object-contain p-1.5"
-                containerClassName="relative w-32 h-32 rounded-xl overflow-hidden bg-white"
-              />
+              {editFoto ? (
+                qrImage
+              ) : (
+                <a href="/geogebra?materi=5" target="_blank" rel="noopener noreferrer" aria-label="Buka GeoGebra 3D">
+                  {qrImage}
+                </a>
+              )}
               <span className="bg-[#1E3A8A] text-white rounded-full py-1 px-3 text-[11px] font-bold">QR GeoGebra 3D</span>
             </div>
 
@@ -132,21 +135,21 @@ export default async function Materi5Peta4Step2EksplorasiGeoGebra({
             </div>
           </div>
 
-          <div>
-            <span className="text-xs font-bold text-[#111827] mb-3 block">Alur Kerja</span>
-            <div className="grid grid-cols-2 sm:grid-cols-5 gap-3">
-              {alurKerja.map((a, i) => (
-                <div
-                  key={a.label}
-                  className="relative bg-[#F9FAFB] border border-[#E5E7EB] rounded-xl p-3 flex flex-col items-center gap-1.5 text-center"
-                >
-                  <div className="w-7 h-7 rounded-full bg-[#2563EB] text-white flex items-center justify-center font-bold text-[11px]">
-                    {i + 1}
-                  </div>
-                  <p className="m-0 text-[11px] font-bold text-[#111827]">{a.label}</p>
-                  <p className="m-0 text-[10px] text-[#6B7280] leading-[1.4]">{a.desc}</p>
-                </div>
-              ))}
+          <div className="flex flex-col gap-3">
+            <span className="text-xs font-bold text-[#111827]">Alur Kerja</span>
+            <div className="rounded-[20px] overflow-hidden border border-[#E5E7EB]">
+              <EditablePageImage
+                imageKey="M5-P4-L2-3"
+                materi={materi}
+                peta={peta}
+                step={step}
+                urutan="3"
+                src={gambarAlur}
+                alt="Alur kerja: pilih model, ubah skala, ukur ukuran, hitung luas, catat hasil"
+                editable={editFoto}
+                natural
+                containerClassName="relative w-full"
+              />
             </div>
           </div>
 

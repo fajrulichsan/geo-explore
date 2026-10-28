@@ -49,7 +49,22 @@ export default async function Materi5Peta10Step1ApaYangDipelajari({
 
       <div className="flex flex-col gap-4">
         <SectionTitle letter="A" title="Apa yang Telah Kamu Pelajari?" />
-        <div className="grid grid-cols-1 md:grid-cols-[1fr_320px] gap-5 items-center bg-white border border-[#E5E7EB] rounded-[20px] p-6 shadow-[0_1px_2px_rgba(0,0,0,0.04)]">
+        <div className="rounded-[24px] overflow-hidden border border-[#E5E7EB]">
+          <EditablePageImage
+            imageKey="M5-P10-L1-1"
+            materi={materi}
+            peta={peta}
+            step={step}
+            urutan="1"
+            src={heroImage}
+            alt="Tiga siswa berdiskusi dengan laptop dan buku catatan"
+            editable={editFoto}
+            natural
+            containerClassName="relative w-full"
+          />
+        </div>
+
+        <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-6 shadow-[0_1px_2px_rgba(0,0,0,0.04)] flex flex-col gap-3">
           <div className="flex flex-col gap-3 text-sm sm:text-[15px] leading-[1.7] text-[#374151]">
             <p className="m-0">
               Pada submateri ini kamu telah menemukan bahwa perubahan skala bangun ruang tidak
@@ -63,18 +78,6 @@ export default async function Materi5Peta10Step1ApaYangDipelajari({
               sisi datar.
             </p>
           </div>
-          <EditablePageImage
-            imageKey="M5-P10-L1-1"
-            materi={materi}
-            peta={peta}
-            step={step}
-            urutan="1"
-            src={heroImage}
-            alt="Tiga siswa berdiskusi dengan laptop dan buku catatan"
-            editable={editFoto}
-            natural
-            containerClassName="relative w-full rounded-xl overflow-hidden"
-          />
         </div>
       </div>
 

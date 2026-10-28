@@ -33,24 +33,25 @@ export default async function Materi5Peta9Step3BandingkanStrategi({
       <input type="hidden" name="step" value="3" />
 
       <div className="flex flex-col gap-4">
-        <StepHeader materi={materi} currentStep={3} totalSteps={5} />
-        <div className="flex items-center justify-between gap-4">
-          <h1 className="m-0 text-2xl sm:text-[32px] font-extrabold text-[#111827]">
-            Tantangan Open-Ended
-          </h1>
-          <EditablePageImage
-            imageKey="M5-P9-L3-1"
-            materi={materi}
-            peta={peta}
-            step={step}
-            urutan="1"
-            src={bannerImage}
-            alt="Limas, kubus, balok, dan prisma dengan lampu ide"
-            editable={editFoto}
-            imageClassName="object-contain"
-            containerClassName="relative w-32 sm:w-44 aspect-[814/507] flex-shrink-0 hidden sm:block rounded-xl overflow-hidden"
-          />
-        </div>
+        <StepHeader materi={materi} currentStep={3} totalSteps={6} />
+        <h1 className="m-0 text-2xl sm:text-[32px] font-extrabold text-[#111827]">
+          Tantangan Terbuka
+        </h1>
+      </div>
+
+      <div className="rounded-[24px] overflow-hidden border border-[#E5E7EB]">
+        <EditablePageImage
+          imageKey="M5-P9-L3-1"
+          materi={materi}
+          peta={peta}
+          step={step}
+          urutan="1"
+          src={bannerImage}
+          alt="Tiga siswa berdiskusi menyelesaikan tantangan terbuka dengan bangun ruang di meja"
+          editable={editFoto}
+          natural
+          containerClassName="relative w-full"
+        />
       </div>
 
       <div className="flex flex-col gap-4">

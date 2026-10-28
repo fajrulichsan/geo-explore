@@ -621,6 +621,23 @@ export type PageImageKey =
   | "M5-P10-L4-1"
   | "M5-P10-L5-1"
   | "M5-P10-L5-2"
+  | "M5-P5-L6-3"
+  | "M5-P5-L5-1"
+  | "M5-P5-L5-2"
+  | "M5-P5-L1-2"
+  | "M5-P2-L5-1"
+  | "M5-P2-L5-2"
+  | "M5-P2-L4-1"
+  | "M5-P3-L4-1"
+  | "M5-P6-L3-1"
+  | "M5-P7-L1-2"
+  | "M5-P4-L2-3"
+  | "M5-P3-L7-5"
+  | "M5-P6-L1-2"
+  | "M5-P6-L1-3"
+  | "M5-P10-L2-3"
+  | "M5-P10-L4-2"
+  | "M5-P10-L4-3"
   | "M5-P9-L1-1"
   | "M5-P9-L1-2"
   | "M5-P9-L3-1"
@@ -1526,6 +1543,23 @@ const DEFAULT_IMAGES: Record<PageImageKey, string> = {
   "M5-P10-L4-1": "https://placehold.co/409x199?text=Luas+Awal+ke+Luas+Baru",
   "M5-P10-L5-1": "https://placehold.co/331x529?text=Siswa+Semangat",
   "M5-P10-L5-2": "https://placehold.co/1222x487?text=Selanjutnya+Volume+k3",
+  "M5-P5-L6-3": "https://placehold.co/800x450?text=Lampu+ide+kotak+Ingat",
+  "M5-P5-L5-1": "https://placehold.co/800x450?text=Empat+bangun+ruang+panel+E",
+  "M5-P5-L5-2": "https://placehold.co/800x450?text=Kotak+Ingat+panel+E",
+  "M5-P5-L1-2": "https://placehold.co/800x450?text=Alur+tahap+olah+informasi",
+  "M5-P2-L5-1": "https://placehold.co/800x450?text=Banner+siswa+kelas+Lanjutkan+Pengamatan",
+  "M5-P2-L5-2": "https://placehold.co/800x450?text=Lampu+ide+catatan+Perhatikan",
+  "M5-P2-L4-1": "https://placehold.co/800x450?text=Banner+Tahukah+Kamu",
+  "M5-P3-L4-1": "https://placehold.co/800x450?text=Banner+siswa+bandingkan+dugaan",
+  "M5-P6-L3-1": "https://placehold.co/800x450?text=Banner+siswa+uji+hubungan",
+  "M5-P7-L1-2": "https://placehold.co/800x450?text=Alur+penemuan",
+  "M5-P4-L2-3": "https://placehold.co/800x450?text=Alur+kerja+GeoGebra",
+  "M5-P3-L7-5": "https://placehold.co/800x450?text=Gambar+kotak+Ingat+refleksi+diskusi",
+  "M5-P6-L1-2": "https://placehold.co/800x450?text=Alur+verifikasi",
+  "M5-P6-L1-3": "https://placehold.co/800x450?text=Siswa+GeoGebra+dan+AR+panel+A",
+  "M5-P10-L2-3": "https://placehold.co/800x450?text=Kubus+diperbesar+k=2+samping+tabel",
+  "M5-P10-L4-2": "https://placehold.co/800x450?text=Peta+konsep+mini+skala",
+  "M5-P10-L4-3": "https://placehold.co/800x450?text=Banner+poin+penting+panel+H",
   "M5-P9-L1-1": "https://placehold.co/871x538?text=Tiga+Siswa+Strategi",
   "M5-P9-L1-2": "https://placehold.co/880x505?text=Diagram+Skala+Limas",
   "M5-P9-L3-1": "https://placehold.co/814x507?text=Bangun+Ruang+Lampu",

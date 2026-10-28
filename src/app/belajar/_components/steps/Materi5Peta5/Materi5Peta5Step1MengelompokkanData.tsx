@@ -19,8 +19,6 @@ const faktorSkala = [
   { key: "3", label: "3" },
 ];
 
-const alur = ["Kelompokkan Data", "Bandingkan Perubahan", "Cari Pola"];
-
 const tips = [
   "Pastikan semua data dimasukkan dengan rapi dan benar.",
   "Bandingkan perubahan pada faktor skala yang sama antar bangun.",
@@ -36,7 +34,7 @@ export default async function Materi5Peta5Step1MengelompokkanData({
 }: StepComponentProps) {
   const answers = initialAnswers ?? {};
   const getValue = (key: string) => (typeof answers[key] === "string" ? (answers[key] as string) : "");
-  const heroImage = await getPageImage("M5-P5-L1-1");
+  const [heroImage, alurImage] = await Promise.all([getPageImage("M5-P5-L1-1"), getPageImage("M5-P5-L1-2")]);
 
   return (
     <form action={submitStepAction} className="flex flex-col gap-8">
@@ -47,22 +45,13 @@ export default async function Materi5Peta5Step1MengelompokkanData({
       <div className="flex flex-col gap-4">
         <StepHeader materi={materi} currentStep={1} totalSteps={6} />
         <div className="inline-flex items-center bg-[#FDF3C7] text-[#92400E] rounded-full py-1.5 px-3.5 text-xs font-bold tracking-[0.02em] w-fit">
-          Tahap 4
+          Tahap 4 dari 6
         </div>
         <h1 className="m-0 text-2xl sm:text-[32px] font-extrabold text-[#111827]">Ayo Mengolah Informasi</h1>
         <p className="m-0 text-sm font-semibold text-[#2563EB]">Temukan Pola Hubungan Skala dan Luas</p>
       </div>
 
-      <div className="grid lg:grid-cols-2 gap-6 items-center">
-        <div className="bg-[#FFF7E6] border border-[#FCD9A0] rounded-[20px] p-6 flex flex-col gap-3">
-          <p className="m-0 text-base font-bold text-[#1E3A8A]">Pengantar</p>
-          <p className="m-0 text-sm leading-[1.7] text-[#374151]">
-            Kamu telah mengumpulkan berbagai data melalui GeoGebra 3D dan Augmented Reality. Sekarang saatnya{" "}
-            <span className="font-bold text-[#1E3A8A]">mengolah</span> data tersebut. Kelompokkan hasil
-            pengamatanmu, bandingkan perubahan ukuran dengan perubahan luas permukaan, kemudian temukan{" "}
-            <span className="font-bold text-[#1E3A8A]">pola hubungan</span> di antara keduanya.
-          </p>
-        </div>
+      <div className="rounded-[24px] overflow-hidden border border-[#E5E7EB]">
         <EditablePageImage
           imageKey="M5-P5-L1-1"
           materi={materi}
@@ -73,31 +62,33 @@ export default async function Materi5Peta5Step1MengelompokkanData({
           alt="Tiga siswa mengolah data hasil eksplorasi GeoGebra dan AR"
           editable={editFoto}
           natural
-          containerClassName="relative w-full rounded-[20px] overflow-hidden"
+          containerClassName="relative w-full"
         />
       </div>
 
-      <div className="flex flex-wrap items-center gap-3 bg-[#FFF7E6] border border-[#FCD9A0] rounded-2xl px-5 py-4">
-        <span className="text-sm font-bold text-[#92400E]">Alur Tahap</span>
-        {alur.map((label, i) => (
-          <div key={label} className="flex items-center gap-3">
-            <div className="flex items-center gap-2">
-              <div
-                className={`w-7 h-7 rounded-full flex items-center justify-center font-bold text-xs flex-shrink-0 ${
-                  i === 0 ? "bg-[#16A34A] text-white" : "bg-[#E5E7EB] text-[#6B7280]"
-                }`}
-              >
-                {i + 1}
-              </div>
-              <span className={`text-sm font-bold ${i === 0 ? "text-[#16A34A]" : "text-[#6B7280]"}`}>{label}</span>
-            </div>
-            {i < alur.length - 1 && (
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#9CA3AF" strokeWidth="2.4">
-                <path d="M5 12h14M13 5l7 7-7 7" />
-              </svg>
-            )}
-          </div>
-        ))}
+      <div className="bg-[#FFF7E6] border border-[#FCD9A0] rounded-[20px] p-6 flex flex-col gap-3">
+        <p className="m-0 text-base font-bold text-[#1E3A8A]">Pengantar</p>
+        <p className="m-0 text-sm leading-[1.7] text-[#374151]">
+          Kamu telah mengumpulkan berbagai data melalui GeoGebra 3D dan Augmented Reality. Sekarang saatnya{" "}
+          <span className="font-bold text-[#1E3A8A]">mengolah</span> data tersebut. Kelompokkan hasil
+          pengamatanmu, bandingkan perubahan ukuran dengan perubahan luas permukaan, kemudian temukan{" "}
+          <span className="font-bold text-[#1E3A8A]">pola hubungan</span> di antara keduanya.
+        </p>
+      </div>
+
+      <div className="rounded-[24px] overflow-hidden border border-[#FCD9A0] bg-white">
+        <EditablePageImage
+          imageKey="M5-P5-L1-2"
+          materi={materi}
+          peta={peta}
+          step={step}
+          urutan="2"
+          src={alurImage}
+          alt="Alur tahap: kelompokkan data, bandingkan perubahan, cari pola"
+          editable={editFoto}
+          natural
+          containerClassName="relative w-full"
+        />
       </div>
 
       <div className="bg-white border border-[#E5E7EB] rounded-[20px] shadow-[0_1px_2px_rgba(0,0,0,0.04)] overflow-hidden">
@@ -146,7 +137,9 @@ export default async function Materi5Peta5Step1MengelompokkanData({
                         name={`answers.luas_${b.key}_k${f.key}`}
                         defaultValue={getValue(`luas_${b.key}_k${f.key}`)}
                         placeholder="..."
-                        required
+                        data-unit-group="panel-a"
+                        data-unit-min="2"
+                        data-unit={b.key}
                         className="w-full rounded-lg border border-[#E5E7EB] bg-[#F9FAFB] px-3 py-2 text-sm text-[#374151] placeholder:text-[#9CA3AF] focus:border-[#16A34A] focus:outline-none focus:bg-white transition-colors"
                       />
                     </td>

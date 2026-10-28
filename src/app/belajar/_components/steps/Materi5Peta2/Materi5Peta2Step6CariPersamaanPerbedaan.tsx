@@ -6,8 +6,11 @@ import StepHeader from "@/app/belajar/_components/StepHeader";
 
 const aspek = [
   { key: "bentuk_bangun", label: "Bentuk bangun" },
-  { key: "jumlah_sisi", label: "Jumlah sisi" },
+  { key: "jumlah_sisi", label: "Banyaknya sisi" },
+  { key: "bentuk_sisi", label: "Bentuk sisi-sisi penyusun" },
   { key: "ukuran_panjang", label: "Ukuran panjang (sisi, rusuk, tinggi, panjang prisma, apotema, dll.)" },
+  { key: "perbandingan_skala", label: "Perbandingan ukuran (skala)" },
+  { key: "luas_permukaan", label: "Luas permukaan bangun ruang" },
 ];
 
 const textareaClass =
@@ -34,7 +37,7 @@ export default async function Materi5Peta2Step6CariPersamaanPerbedaan({
             <circle cx="11" cy="11" r="7" />
             <path d="M21 21l-4.3-4.3" />
           </svg>
-          Tahap 1
+          Tahap 1 dari 6
         </div>
         <h1 className="m-0 text-2xl sm:text-[32px] font-extrabold text-[#111827]">Ayo Mengamati dan Berpikir</h1>
       </div>
@@ -48,7 +51,7 @@ export default async function Materi5Peta2Step6CariPersamaanPerbedaan({
             Cari Persamaan dan Perbedaan
           </div>
         </div>
-        <p className="m-0 text-sm text-[#4B5563]">Lengkapilah tabel berdasarkan hasil pengamatanmu!</p>
+        <p className="m-0 text-sm text-[#4B5563]">Amatilah gambar kubus, balok, prisma segitiga, dan limas segiempat sebelum dan sesudah diperbesar. Bandingkan bentuk, jumlah sisi, dan ukuran pada setiap pasangan bangun ruang. Kemudian, tuliskan persamaan dan perbedaannya pada tabel berdasarkan hasil pengamatanmu!</p>
 
         <div className="flex flex-col gap-4">
           {aspek.map((a) => (

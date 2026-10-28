@@ -36,6 +36,7 @@ export default async function Materi5Peta10Step2HubunganMengapa({
 }: StepComponentProps) {
   const diagram = await getPageImage("M5-P10-L2-1");
   const book = await getPageImage("M5-P10-L2-2");
+  const tabelImage = await getPageImage("M5-P10-L2-3");
 
   return (
     <form action={submitStepAction} className="flex flex-col gap-8">
@@ -56,17 +57,31 @@ export default async function Materi5Peta10Step2HubunganMengapa({
           <p className="m-0 text-sm text-[#4B5563]">
             Tabel berikut merangkum hubungan antara faktor skala (<i>k</i>) dan luas permukaan.
           </p>
-          <div className="overflow-hidden rounded-xl border-2 border-[#1E3A8A] max-w-xl">
-            <div className="grid grid-cols-2 bg-[#1E3A8A] text-white text-sm font-bold text-center">
-              <div className="py-2.5">Faktor Skala (<i>k</i>)</div>
-              <div className="py-2.5">Luas Permukaan Menjadi</div>
-            </div>
-            {[...tabel, ["k", "k² kali"]].map(([k, l]) => (
-              <div key={k} className="grid grid-cols-2 text-center text-[15px] font-semibold text-[#111827] border-t border-[#E5E7EB]">
-                <div className="py-3 border-r border-[#E5E7EB]">{k === "k" ? <i>k</i> : k}</div>
-                <div className="py-3">{l.startsWith("k²") ? <><i>k</i>² kali</> : l}</div>
+          <div className="grid grid-cols-1 md:grid-cols-[1fr_300px] gap-5 items-center">
+            <div className="overflow-hidden rounded-xl border-2 border-[#1E3A8A]">
+              <div className="grid grid-cols-2 bg-[#1E3A8A] text-white text-sm font-bold text-center">
+                <div className="py-2.5">Faktor Skala (<i>k</i>)</div>
+                <div className="py-2.5">Luas Permukaan Menjadi</div>
               </div>
-            ))}
+              {[...tabel, ["k", "k² kali"]].map(([k, l]) => (
+                <div key={k} className="grid grid-cols-2 text-center text-[15px] font-semibold text-[#111827] border-t border-[#E5E7EB]">
+                  <div className="py-3 border-r border-[#E5E7EB]">{k === "k" ? <i>k</i> : k}</div>
+                  <div className="py-3">{l.startsWith("k²") ? <><i>k</i>² kali</> : l}</div>
+                </div>
+              ))}
+            </div>
+            <EditablePageImage
+              imageKey="M5-P10-L2-3"
+              materi={materi}
+              peta={peta}
+              step={step}
+              urutan="3"
+              src={tabelImage}
+              alt="Kubus diperbesar dengan k = 2 sehingga luas satu sisi menjadi 4 kali"
+              editable={editFoto}
+              natural
+              containerClassName="relative w-full"
+            />
           </div>
           <div className="bg-[#FEF9E7] border border-[#F5E6A8] rounded-xl px-4 py-3 flex items-center gap-3">
             <span className="flex-shrink-0">💡</span>

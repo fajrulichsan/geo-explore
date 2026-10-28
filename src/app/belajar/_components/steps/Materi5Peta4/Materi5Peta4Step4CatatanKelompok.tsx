@@ -63,8 +63,9 @@ export default async function Materi5Peta4Step4CatatanKelompok({
             <div className="flex flex-col">
               <span className="text-sm font-bold text-[#2563EB]">Catatan Kelompok</span>
               <span className="text-xs text-[#6B7280]">
-                Lengkapilah tabel berikut berdasarkan data yang telah kamu peroleh dari GeoGebra 3D dan Augmented
-                Reality (AR).
+                Lengkapilah tabel berikut berdasarkan hasil eksplorasi menggunakan GeoGebra 3D dan Augmented Reality
+                (AR). Pilih minimal dua jenis bangun ruang, kemudian catat ukuran dan luas permukaannya untuk setiap
+                faktor skala (k) yang tersedia.
               </span>
             </div>
           </div>
@@ -122,7 +123,9 @@ export default async function Materi5Peta4Step4CatatanKelompok({
                             name={`answers.ukuran_${b.key}_${kSlug}`}
                             defaultValue={getValue(`ukuran_${b.key}_${kSlug}`)}
                             placeholder="..."
-                            required
+                            data-unit-group="catatan"
+                            data-unit-min="2"
+                            data-unit={b.key}
                             className={inputClass}
                           />
                         </td>
@@ -132,7 +135,9 @@ export default async function Materi5Peta4Step4CatatanKelompok({
                             name={`answers.luas_awal_${b.key}_${kSlug}`}
                             defaultValue={getValue(`luas_awal_${b.key}_${kSlug}`)}
                             placeholder="..."
-                            required
+                            data-unit-group="catatan"
+                            data-unit-min="2"
+                            data-unit={b.key}
                             className={inputClass}
                           />
                         </td>
@@ -142,7 +147,9 @@ export default async function Materi5Peta4Step4CatatanKelompok({
                             name={`answers.luas_baru_${b.key}_${kSlug}`}
                             defaultValue={getValue(`luas_baru_${b.key}_${kSlug}`)}
                             placeholder="..."
-                            required
+                            data-unit-group="catatan"
+                            data-unit-min="2"
+                            data-unit={b.key}
                             className={inputClass}
                           />
                         </td>
@@ -193,7 +200,6 @@ export default async function Materi5Peta4Step4CatatanKelompok({
                   type="checkbox"
                   name={`answers.checklist_${i}`}
                   defaultChecked={isChecked(`checklist_${i}`)}
-                  required
                   className="mt-0.5 w-[16px] h-[16px] flex-shrink-0 accent-[#16A34A]"
                 />
                 <span className="text-xs text-[#374151] leading-[1.5] group-has-[:checked]:text-[#111827] group-has-[:checked]:font-semibold">

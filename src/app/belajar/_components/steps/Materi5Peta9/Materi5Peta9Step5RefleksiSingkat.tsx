@@ -43,9 +43,9 @@ export default async function Materi5Peta9Step5RefleksiSingkat({
       <input type="hidden" name="step" value="5" />
 
       <div className="flex flex-col gap-4">
-        <StepHeader materi={materi} currentStep={5} totalSteps={5} />
+        <StepHeader materi={materi} currentStep={5} totalSteps={6} />
         <h1 className="m-0 text-2xl sm:text-[32px] font-extrabold text-[#111827]">
-          Tantangan Open-Ended
+          Tantangan Terbuka
         </h1>
       </div>
 
@@ -63,7 +63,7 @@ export default async function Materi5Peta9Step5RefleksiSingkat({
           <div className="flex-1 flex flex-col gap-3">
             <p className="m-0 text-sm text-[#374151] leading-[1.6]">
               Centang (✓) semua pernyataan yang sesuai dengan pengalamanmu saat menyelesaikan
-              Tantangan Open-Ended.
+              Tantangan Terbuka.
             </p>
             <div className="flex flex-col gap-2.5">
               {pernyataan.map((p) => (
@@ -121,9 +121,9 @@ export default async function Materi5Peta9Step5RefleksiSingkat({
           />
         </div>
         <div className="bg-[#EFF4FF] border border-[#BFDBFE] rounded-2xl p-5 flex flex-col gap-2">
-          <p className="m-0 text-sm font-bold text-[#1E3A8A]">Inti Open-Ended</p>
+          <p className="m-0 text-sm font-bold text-[#1E3A8A]">Inti Tantangan Terbuka</p>
           <p className="m-0 text-xs font-semibold text-[#1D4ED8] leading-[1.5]">
-            Open-Ended bukan sekadar mencari jawaban. Yang paling penting adalah:
+            Tantangan Terbuka bukan sekadar mencari jawaban. Yang paling penting adalah:
           </p>
           <ul className="m-0 p-0 list-none flex flex-col gap-1">
             {intiOpenEnded.map((t) => (
@@ -140,7 +140,7 @@ export default async function Materi5Peta9Step5RefleksiSingkat({
 
       <div className="flex flex-col-reverse sm:flex-row justify-between items-center gap-4">
         <BackLink href={`/belajar/${materi}/${peta}/4`} />
-        <NextStepButton variant="green" icon="check">Selesai</NextStepButton>
+        <NextStepButton />
       </div>
     </form>
   );

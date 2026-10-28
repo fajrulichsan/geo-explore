@@ -5,15 +5,6 @@ import StepHeader from "@/app/belajar/_components/StepHeader";
 import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
 import { getPageImage } from "@/lib/pageImages";
 
-const alur = [
-  { label: "Mengamati", color: "#1D4ED8" },
-  { label: "Berdiskusi", color: "#16A34A" },
-  { label: "Bereksplorasi", color: "#EA580C" },
-  { label: "Mengolah Informasi", color: "#7C3AED" },
-  { label: "Verifikasi", color: "#0EA5E9" },
-  { label: "Menyimpulkan", color: "#DC2626" },
-];
-
 export default async function Materi5Peta7Step1ApaYangKamuTemukan({
   materi,
   peta,
@@ -23,7 +14,7 @@ export default async function Materi5Peta7Step1ApaYangKamuTemukan({
 }: StepComponentProps) {
   const answers = initialAnswers ?? {};
   const getValue = (key: string) => (typeof answers[key] === "string" ? (answers[key] as string) : "");
-  const heroImage = await getPageImage("M5-P7-L1-1");
+  const [heroImage, alurImage] = await Promise.all([getPageImage("M5-P7-L1-1"), getPageImage("M5-P7-L1-2")]);
 
   return (
     <form action={submitStepAction} className="flex flex-col gap-8">
@@ -42,8 +33,22 @@ export default async function Materi5Peta7Step1ApaYangKamuTemukan({
         </p>
       </div>
 
-      <div className="grid lg:grid-cols-12 gap-6 items-stretch">
-        <div className="lg:col-span-6 bg-white border border-[#E5E7EB] rounded-[20px] p-6 shadow-[0_1px_2px_rgba(0,0,0,0.04)] flex flex-col gap-3 justify-center">
+      <div className="rounded-[24px] overflow-hidden border border-[#E5E7EB]">
+        <EditablePageImage
+          imageKey="M5-P7-L1-1"
+          materi={materi}
+          peta={peta}
+          step={step}
+          urutan="1"
+          src={heroImage}
+          alt="Tiga siswa menyusun kesimpulan bersama dengan tablet dan buku"
+          editable={editFoto}
+          natural
+          containerClassName="relative w-full"
+        />
+      </div>
+
+      <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-6 shadow-[0_1px_2px_rgba(0,0,0,0.04)] flex flex-col gap-3">
           <h2 className="m-0 text-lg font-bold text-[#1E3A8A]">Pengantar</h2>
           <p className="m-0 text-sm leading-[1.7] text-[#374151]">
             Kamu telah mengamati, berdiskusi, bereksplorasi, mengolah informasi, dan memverifikasi
@@ -54,42 +59,21 @@ export default async function Materi5Peta7Step1ApaYangKamuTemukan({
             <span className="font-bold text-[#2563EB]">seluruh proses pembelajaran</span> yang telah
             kamu lakukan.
           </p>
-        </div>
-        <div className="lg:col-span-6 relative rounded-[20px] overflow-hidden bg-white border border-[#E5E7EB] min-h-[200px]">
-            <EditablePageImage
-              imageKey="M5-P7-L1-1"
-              materi={materi}
-              peta={peta}
-              step={step}
-              urutan="1"
-              src={heroImage}
-              alt="Tiga siswa menyusun kesimpulan bersama dengan tablet dan buku"
-              editable={editFoto}
-              imageClassName="object-contain"
-              containerClassName="relative w-full h-full min-h-[200px]"
-            />
-        </div>
       </div>
 
-      <div className="bg-[#EFF4FF] border border-[#DBEAFE] rounded-[20px] p-5 flex flex-col gap-3">
-        <p className="m-0 text-sm font-bold text-[#1E3A8A]">Alur Penemuan</p>
-        <div className="flex flex-wrap items-center gap-x-2 gap-y-2">
-          {alur.map((item, idx) => (
-            <div key={item.label} className="flex items-center gap-2">
-              <span
-                className="inline-flex items-center bg-white rounded-full py-1 px-3 text-[11px] font-bold border"
-                style={{ color: item.color, borderColor: item.color }}
-              >
-                {item.label}
-              </span>
-              {idx < alur.length - 1 && (
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#93C5FD" strokeWidth="2.6">
-                  <path d="M5 12h14M13 5l7 7-7 7" />
-                </svg>
-              )}
-            </div>
-          ))}
-        </div>
+      <div className="rounded-[24px] overflow-hidden border border-[#DBEAFE] bg-white">
+        <EditablePageImage
+          imageKey="M5-P7-L1-2"
+          materi={materi}
+          peta={peta}
+          step={step}
+          urutan="2"
+          src={alurImage}
+          alt="Alur penemuan: mengamati, berdiskusi, bereksplorasi, mengolah informasi, verifikasi, menyimpulkan"
+          editable={editFoto}
+          natural
+          containerClassName="relative w-full"
+        />
       </div>
 
       <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-6 shadow-[0_1px_2px_rgba(0,0,0,0.04)] flex flex-col gap-4">
