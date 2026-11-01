@@ -27,9 +27,6 @@ export default async function Materi8Peta8Step2RefleksiPemahaman({
 
       <div className="flex flex-col gap-4">
         <StepHeader materi={materi} currentStep={2} totalSteps={6} />
-        <div className="inline-flex items-center bg-[#FDF3C7] text-[#92400E] rounded-full py-1.5 px-3.5 text-xs font-bold tracking-[0.02em] w-fit">
-          Setelah Tahap 6 – Ayo Menyimpulkan
-        </div>
         <div className="flex items-center gap-3.5">
           <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#2563EB" strokeWidth="2.4" strokeLinejoin="round">
             <path d="M12 3l2.6 5.6 6.1.7-4.5 4.2 1.2 6L12 16.6 6.6 19.5l1.2-6L3.3 9.3l6.1-.7z" />
@@ -51,7 +48,7 @@ export default async function Materi8Peta8Step2RefleksiPemahaman({
         </div>
         <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-5 sm:p-6 shadow-[0_1px_2px_rgba(0,0,0,0.04)]">
           <div className="flex flex-col gap-3">
-            <p className="m-0 text-sm text-[#4B5563]">Centang (✓) semua pernyataan yang sesuai.</p>
+            <p className="m-0 text-sm text-[#4B5563]">Bacalah setiap pernyataan dengan saksama, kemudian berilah tanda centang (✓) pada semua pernyataan yang sesuai dengan pemahamanmu setelah mengikuti kegiatan pembelajaran.</p>
             {pernyataan.map((p) => (
               <label key={p.key} className="flex items-start gap-3 rounded-xl border border-[#E5E7EB] px-4 py-3 text-sm text-[#374151] leading-[1.5] cursor-pointer has-[:checked]:border-[#2563EB] has-[:checked]:bg-[#EFF4FF]">
                 <input type="checkbox" name={`answers.${p.key}`} value="ya" defaultChecked={answers[p.key] === "ya"} className="mt-0.5 accent-[#2563EB]" />

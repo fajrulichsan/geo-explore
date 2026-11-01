@@ -7,16 +7,9 @@ import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
 import { getPageImage } from "@/lib/pageImages";
 
 const PERTANYAAN = [
-  { key: "pertanyaan_1", text: "Apa yang terjadi pada volume bangun ruang ketika faktor skala (k) diubah?" },
-  { key: "pertanyaan_2", text: "Bagaimana hubungan antara faktor skala (k) dengan perubahan volume bangun ruang?" },
-  {
-    key: "pertanyaan_3",
-    text: "Apakah kubus, balok, prisma segitiga, dan limas segiempat memiliki pola perubahan volume yang sama? Jelaskan berdasarkan data yang kamu peroleh.",
-  },
-  {
-    key: "pertanyaan_4",
-    text: "Temukan pola dan tuliskan dengan matematis sementara: Bagaimana hubungan antara faktor skala (k) dan perubahan volume?",
-  },
+  { key: "pertanyaan_1", text: "Berdasarkan hasil eksplorasimu menggunakan GeoGebra 3D dan AR, bagaimana perubahan volume bangun ruang ketika faktor skala (k) diperbesar atau diperkecil? Jelaskan dengan menggunakan beberapa contoh dari data yang kamu peroleh." },
+  { key: "pertanyaan_2", text: "Pilihlah dua atau lebih nilai faktor skala (k) yang telah kamu coba. Bagaimana perbandingan volume awal dan volume hasil skala pada setiap percobaan tersebut? Tunjukkan berdasarkan data atau perhitunganmu." },
+  { key: "pertanyaan_3", text: "Bandingkan perubahan volume pada bangun ruang yang telah kamu eksplorasi ketika menggunakan faktor skala yang sama. Persamaan atau perbedaan apa yang kamu temukan? Jelaskan berdasarkan data hasil eksplorasimu." },
 ] as const;
 
 export default async function Materi8Peta4Step5PertanyaanEksplorasi({

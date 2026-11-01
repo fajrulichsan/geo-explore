@@ -4,6 +4,7 @@ import NextStepButton from "@/app/belajar/_components/NextStepButton";
 import StepHeader from "@/app/belajar/_components/StepHeader";
 import BackLink from "@/app/belajar/_components/BackLink";
 import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
+import QrLink from "@/app/belajar/_components/QrLink";
 import { getPageImage } from "@/lib/pageImages";
 
 export default async function Materi8Peta4Step3EksplorasiAR({
@@ -16,7 +17,7 @@ export default async function Materi8Peta4Step3EksplorasiAR({
   const answers = initialAnswers ?? {};
   const getValue = (key: string) =>
     typeof answers[key] === "string" ? (answers[key] as string) : "";
-  const gambar1 = await getPageImage("M8-P4-L3-1");
+  const gambar1 = await getPageImage("M7-P1-L2-4");
   const gambar2 = await getPageImage("M8-P4-L3-2");
 
   return (
@@ -56,19 +57,7 @@ export default async function Materi8Peta4Step3EksplorasiAR({
       <div className="grid grid-cols-1 sm:grid-cols-[180px_1fr] gap-5">
         <div className="flex flex-col items-center self-start gap-3 bg-[#F0FDF4] border border-[#BBF7D0] rounded-[20px] p-4">
           <p className="m-0 text-sm font-bold text-[#166534] text-center">Scan QR Code AR</p>
-          <EditablePageImage
-            imageKey="M8-P4-L3-1"
-            materi={materi}
-            peta={peta}
-            step={step}
-            urutan="1"
-            src={gambar1}
-            alt="QR code untuk membuka Augmented Reality"
-            editable={editFoto}
-            natural
-            containerClassName="relative w-32 overflow-hidden rounded-xl bg-white"
-          />
-          <span className="rounded-full bg-[#166534] text-white text-xs font-bold py-1.5 px-4">Buka AR</span>
+          <QrLink href="https://ar.geo-explore.my.id" src={gambar1} alt="Kode QR untuk membuka AR Viewer" label="Buka AR Viewer" />
         </div>
 
         <div className="flex flex-col gap-4 bg-white border border-[#BBF7D0] rounded-[20px] p-5 shadow-[0_1px_2px_rgba(0,0,0,0.04)]">

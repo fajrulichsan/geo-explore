@@ -4,6 +4,7 @@ import NextStepButton from "@/app/belajar/_components/NextStepButton";
 import StepHeader from "@/app/belajar/_components/StepHeader";
 import BackLink from "@/app/belajar/_components/BackLink";
 import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
+import QrLink from "@/app/belajar/_components/QrLink";
 import { getPageImage } from "@/lib/pageImages";
 
 export default async function Materi8Peta4Step2EksplorasiGeoGebra3D({
@@ -12,7 +13,7 @@ export default async function Materi8Peta4Step2EksplorasiGeoGebra3D({
   step = "2",
   editFoto,
 }: StepComponentProps) {
-  const gambar1 = await getPageImage("M8-P4-L2-1");
+  const gambar1 = await getPageImage("M7-P1-L2-2");
   const gambar2 = await getPageImage("M8-P4-L2-2");
 
   return (
@@ -52,19 +53,7 @@ export default async function Materi8Peta4Step2EksplorasiGeoGebra3D({
       <div className="grid grid-cols-1 sm:grid-cols-[180px_1fr] gap-5">
         <div className="flex flex-col items-center self-start gap-3 bg-[#EFF4FF] border border-[#DBEAFE] rounded-[20px] p-4">
           <p className="m-0 text-sm font-bold text-[#1E3A8A] text-center">Scan QR Code GeoGebra 3D</p>
-          <EditablePageImage
-            imageKey="M8-P4-L2-1"
-            materi={materi}
-            peta={peta}
-            step={step}
-            urutan="1"
-            src={gambar1}
-            alt="QR code untuk membuka GeoGebra 3D"
-            editable={editFoto}
-            natural
-            containerClassName="relative w-32 overflow-hidden rounded-xl bg-white"
-          />
-          <span className="rounded-full bg-[#1E3A8A] text-white text-xs font-bold py-1.5 px-4">Buka GeoGebra 3D</span>
+          <QrLink href="/geogebra?materi=8" src={gambar1} alt="Kode QR untuk membuka GeoGebra 3D" label="Buka GeoGebra 3D" />
         </div>
 
         <div className="flex flex-col gap-4 bg-white border border-[#DBEAFE] rounded-[20px] p-5 shadow-[0_1px_2px_rgba(0,0,0,0.04)]">

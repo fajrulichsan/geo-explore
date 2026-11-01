@@ -2,7 +2,8 @@ import { submitStepAction } from "@/app/belajar/actions";
 import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
 import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
 import { getPageImage } from "@/lib/pageImages";
-import { HiddenStepFields, RevealImage, SectionTitle, StepFooter, StepTitle, SUBTITLE, TextAreaField, cardClass, readAnswers } from "./Materi8Peta9Parts";
+import GatedReveal from "@/app/belajar/_components/GatedReveal";
+import { HiddenStepFields, SectionTitle, StepFooter, StepTitle, SUBTITLE, TextAreaField, cardClass, readAnswers } from "./Materi8Peta9Parts";
 
 const STEP = 6;
 
@@ -26,8 +27,8 @@ export default async function Materi8Peta9Step6TantanganLanjutan({ materi, peta,
           src={bangun}
           alt="Kubus, balok, prisma segitiga, dan limas segiempat dengan lampu ide"
           editable={editFoto}
-          imageClassName="object-contain"
-          containerClassName="relative w-full aspect-[1192/496] max-h-56 rounded-[20px] bg-white overflow-hidden"
+          natural
+          containerClassName="relative w-full rounded-[20px] bg-white overflow-hidden"
         />
         <div className={`${cardClass} flex flex-col gap-3`}>
           <p className="m-0 text-sm text-[#374151] leading-[1.7]">Perhatikan situasi berikut.</p>
@@ -40,7 +41,12 @@ export default async function Materi8Peta9Step6TantanganLanjutan({ materi, peta,
           <TextAreaField name="transfer_konsep" label="Jawabanmu" value={getValue("transfer_konsep")} rows={6} />
         </div>
 
-        <RevealImage label="Lihat Petunjuk" hint="Butuh petunjuk setelah kamu mencoba? Klik untuk melihat petunjuk tambahan tentang pengaruh faktor skala 4 terhadap volume.">
+        <GatedReveal
+          label="Lihat Petunjuk"
+          hint="Butuh petunjuk setelah kamu mencoba? Klik untuk melihat petunjuk tambahan tentang pengaruh faktor skala 4 terhadap volume."
+          lockedHint="Tuliskan jawabanmu terlebih dahulu untuk membuka petunjuk."
+          watch={["answers.transfer_konsep"]}
+        >
           <EditablePageImage
             imageKey="M8-P9-L6-2"
             materi={materi}
@@ -53,7 +59,7 @@ export default async function Materi8Peta9Step6TantanganLanjutan({ materi, peta,
             natural
             containerClassName="relative w-full overflow-hidden rounded-xl"
           />
-        </RevealImage>
+        </GatedReveal>
       </div>
 
       <StepFooter materi={materi} peta={peta} step={STEP} />

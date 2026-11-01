@@ -1,8 +1,10 @@
 import { submitStepAction } from "@/app/belajar/actions";
 import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
 import NextStepButton from "@/app/belajar/_components/NextStepButton";
+import FileSubmission from "@/components/FileSubmission";
 import StepHeader from "@/app/belajar/_components/StepHeader";
 import BackLink from "@/app/belajar/_components/BackLink";
+import { UnlockImagePanel } from "@/app/belajar/_components/UnlockImagePopup";
 import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
 import { getPageImage } from "@/lib/pageImages";
 
@@ -26,7 +28,14 @@ export default async function Materi8Peta7Step7GeneralisasiKonsep({
   const answers = initialAnswers ?? {};
   const getValue = (key: string) =>
     typeof answers[key] === "string" ? (answers[key] as string) : "";
-  const gambar = await getPageImage("M8-P7-L7-1");
+  const [gambar, gambarKonsep] = await Promise.all([
+    getPageImage("M8-P7-L7-1"),
+    getPageImage("M8-P7-L7-2"),
+  ]);
+  const watch = [
+    ...bangun.flatMap((b) => [`answers.berlaku_${b.key}`, `answers.alasan_${b.key}`]),
+    "answers.syarat_berlaku",
+  ];
 
   return (
     <form action={submitStepAction} className="flex flex-col gap-8">
@@ -60,7 +69,7 @@ export default async function Materi8Peta7Step7GeneralisasiKonsep({
           </div>
         </div>
         <p className="m-0 text-sm text-[#4B5563] leading-[1.6]">
-          Apakah hubungan antara faktor skala dan volume berlaku untuk semua bangun ruang? Berikan tanda (✓) dan jelaskan alasanmu.
+          Berdasarkan hasil eksplorasi dan verifikasi, apakah pola hubungan antara faktor skala (<span className="italic">k</span>) dan perubahan volume berlaku pada setiap bangun ruang sisi datar yang telah kamu kaji? Berikan tanda (✓) atau (✕), kemudian jelaskan alasan matematis yang mendukung jawabanmu.
         </p>
         <div className="bg-white border border-[#DBEAFE] rounded-[20px] overflow-x-auto shadow-[0_1px_2px_rgba(0,0,0,0.04)]">
           <table className="w-full min-w-[440px] border-collapse">
@@ -120,7 +129,7 @@ export default async function Materi8Peta7Step7GeneralisasiKonsep({
             <span className="w-6 h-6 rounded-full bg-[#2563EB] text-white flex items-center justify-center text-xs">?</span>
             Pertanyaan
           </h3>
-          <p className="m-0 text-sm font-semibold text-[#111827]">Apakah ada syarat tertentu agar hubungan ini berlaku?</p>
+          <p className="m-0 text-sm font-semibold text-[#111827]">Menurut kelompokmu, kondisi apa saja yang harus dipenuhi agar pola hubungan antara faktor skala (<span className="italic">k</span>) dan perubahan volume berlaku pada bangun ruang sisi datar? Jelaskan alasanmu dengan menggunakan contoh dari hasil eksplorasi atau verifikasi.</p>
           <textarea
             name="answers.syarat_berlaku"
             defaultValue={getValue("syarat_berlaku")}
@@ -131,6 +140,30 @@ export default async function Materi8Peta7Step7GeneralisasiKonsep({
           />
         </div>
       </div>
+
+      <UnlockImagePanel
+        letter="H"
+        title="Konsep"
+        lockedTitle="Panel Konsep Masih Terkunci"
+        lockedText="Selesaikan terlebih dahulu Panel D, E, F, dan G untuk membuka kesimpulan akhir."
+        src={gambarKonsep}
+        alt="Konsep yang kamu temukan: kesimpulan utama, makna untuk berbagai nilai k, berlaku untuk berbagai bangun ruang, dan inti konsep"
+        watch={watch}
+      />
+      {editFoto && (
+        <EditablePageImage
+          imageKey="M8-P7-L7-2"
+          materi={materi}
+          peta={peta}
+          step={step}
+          urutan="2"
+          src={gambarKonsep}
+          alt="Gambar panel H Konsep yang Kamu Temukan"
+          editable={editFoto}
+          natural
+          containerClassName="relative w-full max-w-[420px] overflow-hidden rounded-xl bg-white"
+        />
+      )}
 
       <div className="bg-[#FFF7ED] border border-[#FED7AA] rounded-[20px] p-5 grid grid-cols-[1fr_110px] sm:grid-cols-[1fr_140px] gap-3 items-center">
         <div className="flex flex-col gap-2">
@@ -154,9 +187,15 @@ export default async function Materi8Peta7Step7GeneralisasiKonsep({
         />
       </div>
 
+      <FileSubmission
+        materi={materi}
+        peta={peta}
+        defaultValue={typeof answers.file_hasil_kerja === "string" ? answers.file_hasil_kerja : undefined}
+      />
+
       <div className="flex flex-col-reverse sm:flex-row justify-between items-center gap-4">
         <BackLink href={`/belajar/${materi}/${peta}/6`} />
-        <NextStepButton variant="green" icon="check">Selesai</NextStepButton>
+        <NextStepButton variant="green" icon="check">Lanjut ke Refleksi Diri</NextStepButton>
       </div>
     </form>
   );

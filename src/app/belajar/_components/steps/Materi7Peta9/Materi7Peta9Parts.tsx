@@ -3,7 +3,7 @@ import StepHeader from "@/app/belajar/_components/StepHeader";
 import BackLink from "@/app/belajar/_components/BackLink";
 import NextStepButton from "@/app/belajar/_components/NextStepButton";
 
-export const TOTAL_STEPS = 7;
+export const TOTAL_STEPS = 8;
 
 export const cardClass =
   "bg-white border border-[#E5E7EB] rounded-[20px] p-5 sm:p-6 shadow-[0_1px_2px_rgba(0,0,0,0.04)]";

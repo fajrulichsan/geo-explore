@@ -3,6 +3,7 @@ import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry"
 import NextStepButton from "@/app/belajar/_components/NextStepButton";
 import StepHeader from "@/app/belajar/_components/StepHeader";
 import BackLink from "@/app/belajar/_components/BackLink";
+import UnlockImagePopup from "@/app/belajar/_components/UnlockImagePopup";
 import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
 import { getPageImage } from "@/lib/pageImages";
 
@@ -16,7 +17,7 @@ export default async function Materi8Peta7Step4AturanUmum({
   const answers = initialAnswers ?? {};
   const getValue = (key: string) =>
     typeof answers[key] === "string" ? (answers[key] as string) : "";
-  const gambar = await Promise.all((["M8-P7-L4-1", "M8-P7-L4-2"] as const).map((k) => getPageImage(k)));
+  const gambar = await Promise.all((["M8-P7-L4-1", "M8-P7-L4-2", "M8-P7-L4-3"] as const).map((k) => getPageImage(k)));
 
   return (
     <form action={submitStepAction} className="flex flex-col gap-8">
@@ -82,9 +83,31 @@ export default async function Materi8Peta7Step4AturanUmum({
             alt="Kubus volume awal diskala dengan faktor k menjadi kubus volume hasil skala"
             editable={editFoto}
             natural
-            containerClassName="relative w-full max-w-[520px] mx-auto overflow-hidden rounded-xl bg-white"
+            containerClassName="relative w-full overflow-hidden rounded-xl bg-white"
           />
         </div>
+
+        <UnlockImagePopup
+          label="Cek Kesimpulan Saya"
+          src={gambar[2]}
+          alt="Cek Kesimpulan Saya: kesimpulan yang diharapkan, mengapa k pangkat 3, contoh sederhana, dan periksa kembali kesimpulanmu"
+          watch={["answers.aturan_umum"]}
+          hint="Tombol akan aktif setelah kamu mengisi jawaban pada Panel C."
+        />
+        {editFoto && (
+          <EditablePageImage
+            imageKey="M8-P7-L4-3"
+            materi={materi}
+            peta={peta}
+            step={step}
+            urutan="3"
+            src={gambar[2]}
+            alt="Gambar popup Cek Kesimpulan Saya"
+            editable={editFoto}
+            natural
+            containerClassName="relative w-full max-w-[420px] overflow-hidden rounded-xl bg-white"
+          />
+        )}
       </div>
 
       <div className="bg-[#FFF7ED] border border-[#FED7AA] rounded-[20px] p-5 grid grid-cols-[1fr_110px] sm:grid-cols-[1fr_140px] gap-3 items-center">

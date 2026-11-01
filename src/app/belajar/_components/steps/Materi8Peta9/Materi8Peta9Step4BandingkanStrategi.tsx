@@ -1,5 +1,7 @@
 import { submitStepAction } from "@/app/belajar/actions";
 import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
+import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
+import { getPageImage } from "@/lib/pageImages";
 import { CellInput, HiddenStepFields, SectionTitle, StepFooter, StepTitle, SUBTITLE, TextAreaField, cardClass, readAnswers } from "./Materi8Peta9Parts";
 
 const STEP = 4;
@@ -13,13 +15,29 @@ const baris = [
   { key: "kurang", label: "Kekurangan" },
 ];
 
-export default async function Materi8Peta9Step4BandingkanStrategi({ materi, peta, initialAnswers }: StepComponentProps) {
+export default async function Materi8Peta9Step4BandingkanStrategi({ materi, peta, editFoto, initialAnswers }: StepComponentProps) {
   const { getValue } = readAnswers(initialAnswers);
+  const banner = await getPageImage("M8-P9-L4-1");
 
   return (
     <form action={submitStepAction} className="flex flex-col gap-8">
       <HiddenStepFields materi={materi} peta={peta} step={STEP} />
       <StepTitle materi={materi} step={STEP} subtitle={SUBTITLE} />
+
+      <div className="rounded-[24px] overflow-hidden border border-[#E5E7EB]">
+        <EditablePageImage
+          imageKey="M8-P9-L4-1"
+          materi={materi}
+          peta={peta}
+          step="4"
+          urutan="1"
+          src={banner}
+          alt="Empat kelompok siswa menyelesaikan lanjutan Tantangan Terbuka bersama guru"
+          editable={editFoto}
+          natural
+          containerClassName="relative w-full"
+        />
+      </div>
 
       <div className="flex flex-col gap-4">
         <SectionTitle letter="C" title="Bandingkan Strategimu" />

@@ -28,8 +28,8 @@ const hitung: Hitung[] = [
     besar: { name: "v_kubus_besar", label: "Kubus besar" },
   },
   {
-    key: "M8-P2-L1-3",
-    imgStep: "1",
+    key: "M8-P2-L5-3",
+    imgStep: "5",
     imgUrutan: "3",
     judul: "Balok",
     alt: "Balok kecil 2 × 3 × 4 dan balok besar 4 × 6 × 8",
@@ -37,8 +37,8 @@ const hitung: Hitung[] = [
     besar: { name: "v_balok_besar", label: "Balok besar" },
   },
   {
-    key: "M8-P2-L1-4",
-    imgStep: "1",
+    key: "M8-P2-L5-4",
+    imgStep: "5",
     imgUrutan: "4",
     judul: "Prisma Segitiga",
     alt: "Prisma segitiga kecil dan prisma segitiga besar hasil skala k = 2",
@@ -46,8 +46,8 @@ const hitung: Hitung[] = [
     besar: { name: "v_prisma_besar", label: "Prisma besar" },
   },
   {
-    key: "M8-P2-L1-5",
-    imgStep: "1",
+    key: "M8-P2-L5-5",
+    imgStep: "5",
     imgUrutan: "5",
     judul: "Limas Segiempat",
     alt: "Limas segiempat kecil dan limas segiempat besar hasil skala k = 2",
@@ -94,21 +94,7 @@ export default async function Materi8Peta2Step5LanjutkanPengamatan({
         </div>
       </div>
 
-      <div className="relative overflow-hidden rounded-[24px] bg-[#FEF9E7] border border-[#F5E3A0] p-5 sm:p-6 grid grid-cols-1 sm:grid-cols-[1fr_240px] gap-5 items-center">
-        <div className="flex flex-col gap-3">
-          <div className="flex items-center gap-2.5">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#D97706" strokeWidth="2.2">
-              <path d="M9 18h6M10 21h4M12 3a6 6 0 00-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0012 3z" />
-            </svg>
-            <h2 className="m-0 text-lg font-extrabold text-[#92400E]">Ingat!</h2>
-          </div>
-          <p className="m-0 text-sm text-[#374151] leading-[1.6]">
-            Faktor skala <span className="font-bold text-[#2563EB]">k = 2</span> berarti setiap ukuran panjang pada bangun hasil skala menjadi <span className="font-bold text-[#2563EB]">2</span> kali ukuran semula.
-          </p>
-          <div className="bg-white border border-[#F5E3A0] rounded-full py-2 px-4 text-sm font-bold text-[#1E3A8A] w-fit">
-            Ukuran baru = <span className="italic">k</span> × ukuran lama (<span className="italic">k</span> = 2)
-          </div>
-        </div>
+      <div className="rounded-[24px] overflow-hidden border border-[#E5E7EB]">
         <EditablePageImage
           imageKey="M8-P2-L5-1"
           materi={materi}
@@ -119,8 +105,23 @@ export default async function Materi8Peta2Step5LanjutkanPengamatan({
           alt="Dua siswa mengamati bangun ruang dengan kaca pembesar"
           editable={editFoto}
           natural
-          containerClassName="relative w-full overflow-hidden rounded-2xl bg-white"
+          containerClassName="relative w-full"
         />
+      </div>
+
+      <div className="relative overflow-hidden rounded-[24px] bg-[#FEF9E7] border border-[#F5E3A0] p-5 sm:p-6 flex flex-col gap-3">
+        <div className="flex items-center gap-2.5">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#D97706" strokeWidth="2.2">
+            <path d="M9 18h6M10 21h4M12 3a6 6 0 00-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0012 3z" />
+          </svg>
+          <h2 className="m-0 text-lg font-extrabold text-[#92400E]">Ingat!</h2>
+        </div>
+        <p className="m-0 text-sm text-[#374151] leading-[1.6]">
+          Faktor skala <span className="font-bold text-[#2563EB]">k = 2</span> berarti setiap ukuran panjang pada bangun hasil skala menjadi <span className="font-bold text-[#2563EB]">2</span> kali ukuran semula.
+        </p>
+        <div className="bg-white border border-[#F5E3A0] rounded-full py-2 px-4 text-sm font-bold text-[#1E3A8A] w-fit">
+          Ukuran baru = <span className="italic">k</span> × ukuran lama (<span className="italic">k</span> = 2)
+        </div>
       </div>
 
       <div className="flex flex-col gap-4">

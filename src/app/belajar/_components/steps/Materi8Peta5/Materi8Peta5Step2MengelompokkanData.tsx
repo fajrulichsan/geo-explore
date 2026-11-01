@@ -3,15 +3,24 @@ import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry"
 import NextStepButton from "@/app/belajar/_components/NextStepButton";
 import StepHeader from "@/app/belajar/_components/StepHeader";
 import BackLink from "@/app/belajar/_components/BackLink";
+import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
+import { getPageImage } from "@/lib/pageImages";
 
 export default async function Materi8Peta5Step2MengelompokkanData({
   materi,
   peta,
+  step = "2",
+  editFoto,
   initialAnswers,
 }: StepComponentProps) {
   const answers = initialAnswers ?? {};
   const getValue = (key: string) =>
     typeof answers[key] === "string" ? (answers[key] as string) : "";
+
+  const gambarBangun = await Promise.all(
+    (["M8-P5-L2-1", "M8-P5-L2-2", "M8-P5-L2-3", "M8-P5-L2-4"] as const).map((k) => getPageImage(k)),
+  );
+  const namaBangun = ["Kubus", "Balok", "Prisma", "Limas"];
 
   return (
     <form action={submitStepAction} className="flex flex-col gap-8">
@@ -53,9 +62,18 @@ export default async function Materi8Peta5Step2MengelompokkanData({
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div className="rounded-2xl p-4 flex flex-col gap-3" style={{ backgroundColor: "#F0FDF4" }}>
             <div className="flex items-center gap-2.5">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#16A34A" strokeWidth="1.8" strokeLinejoin="round">
-                <path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z M4 7.5L12 12l8-4.5 M12 12v9" />
-              </svg>
+              <EditablePageImage
+                imageKey="M8-P5-L2-1"
+                materi={materi}
+                peta={peta}
+                step={step}
+                urutan="1"
+                src={gambarBangun[0]}
+                alt={namaBangun[0]}
+                editable={editFoto}
+                containerClassName="relative w-14 h-12 flex-shrink-0 overflow-hidden"
+                imageClassName="object-contain"
+              />
               <h3 className="m-0 text-sm font-extrabold" style={{ color: "#16A34A" }}>Kubus</h3>
             </div>
             <div className="grid grid-cols-[36px_1fr_1fr] gap-2 text-[11px] font-bold text-[#6B7280] leading-tight">
@@ -79,9 +97,18 @@ export default async function Materi8Peta5Step2MengelompokkanData({
           </div>
           <div className="rounded-2xl p-4 flex flex-col gap-3" style={{ backgroundColor: "#FFF7ED" }}>
             <div className="flex items-center gap-2.5">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#F97316" strokeWidth="1.8" strokeLinejoin="round">
-                <path d="M3 9l4-4h14l-4 4z M3 9v9h14V9 M17 9l4-4v9l-4 4" />
-              </svg>
+              <EditablePageImage
+                imageKey="M8-P5-L2-2"
+                materi={materi}
+                peta={peta}
+                step={step}
+                urutan="2"
+                src={gambarBangun[1]}
+                alt={namaBangun[1]}
+                editable={editFoto}
+                containerClassName="relative w-14 h-12 flex-shrink-0 overflow-hidden"
+                imageClassName="object-contain"
+              />
               <h3 className="m-0 text-sm font-extrabold" style={{ color: "#F97316" }}>Balok</h3>
             </div>
             <div className="grid grid-cols-[36px_1fr_1fr] gap-2 text-[11px] font-bold text-[#6B7280] leading-tight">
@@ -105,9 +132,18 @@ export default async function Materi8Peta5Step2MengelompokkanData({
           </div>
           <div className="rounded-2xl p-4 flex flex-col gap-3" style={{ backgroundColor: "#F5F3FF" }}>
             <div className="flex items-center gap-2.5">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#7C3AED" strokeWidth="1.8" strokeLinejoin="round">
-                <path d="M3 17l7-11 11 3-5 10z M10 6l6 13" />
-              </svg>
+              <EditablePageImage
+                imageKey="M8-P5-L2-3"
+                materi={materi}
+                peta={peta}
+                step={step}
+                urutan="3"
+                src={gambarBangun[2]}
+                alt={namaBangun[2]}
+                editable={editFoto}
+                containerClassName="relative w-14 h-12 flex-shrink-0 overflow-hidden"
+                imageClassName="object-contain"
+              />
               <h3 className="m-0 text-sm font-extrabold" style={{ color: "#7C3AED" }}>Prisma Segitiga</h3>
             </div>
             <div className="grid grid-cols-[36px_1fr_1fr] gap-2 text-[11px] font-bold text-[#6B7280] leading-tight">
@@ -131,9 +167,18 @@ export default async function Materi8Peta5Step2MengelompokkanData({
           </div>
           <div className="rounded-2xl p-4 flex flex-col gap-3" style={{ backgroundColor: "#EFF6FF" }}>
             <div className="flex items-center gap-2.5">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#2563EB" strokeWidth="1.8" strokeLinejoin="round">
-                <path d="M12 3l9 15H3z M12 3l4 15" />
-              </svg>
+              <EditablePageImage
+                imageKey="M8-P5-L2-4"
+                materi={materi}
+                peta={peta}
+                step={step}
+                urutan="4"
+                src={gambarBangun[3]}
+                alt={namaBangun[3]}
+                editable={editFoto}
+                containerClassName="relative w-14 h-12 flex-shrink-0 overflow-hidden"
+                imageClassName="object-contain"
+              />
               <h3 className="m-0 text-sm font-extrabold" style={{ color: "#2563EB" }}>Limas Segiempat</h3>
             </div>
             <div className="grid grid-cols-[36px_1fr_1fr] gap-2 text-[11px] font-bold text-[#6B7280] leading-tight">
@@ -162,7 +207,7 @@ export default async function Materi8Peta5Step2MengelompokkanData({
             <h3 className="m-0 text-sm font-extrabold text-[#166534]">Pertanyaan</h3>
           </div>
           <label htmlFor="alasan_kelompok_bangun" className="text-sm font-bold text-[#111827] leading-[1.5]">
-            Mengapa data perlu dikelompokkan berdasarkan bangun ruang?
+            Bagaimana pengelompokan data berdasarkan jenis bangun ruang membantumu membandingkan volume awal dan volume setelah perubahan skala? Jelaskan berdasarkan data pada tabel.
           </label>
           <textarea
               id="alasan_kelompok_bangun"

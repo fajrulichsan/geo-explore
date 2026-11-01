@@ -50,18 +50,18 @@ export default async function Materi8Peta6Step5JelaskanAlasanMatematis({
           </div>
         </div>
         <div className="border-2 border-dashed border-[#EF4444] rounded-xl px-4 py-3 text-base font-bold text-[#111827]">
-          Mengapa volume berubah sebesar faktor k<sup>3</sup> ?
+          Mengapa perubahan setiap ukuran panjang bangun ruang dengan faktor skala <span className="italic">k</span> menyebabkan perubahan volume seperti yang kamu temukan? Jelaskan alasan matematisnya melalui lebih dari satu cara.
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-[1fr_1fr] gap-4 items-start">
           <div className="flex flex-col gap-3">
             <p className="m-0 text-sm text-[#4B5563]">Jelaskan menggunakan:</p>
             <ul className="m-0 pl-5 flex flex-col gap-1.5 text-sm text-[#374151] list-disc marker:text-[#2563EB]">
-              <li>hasil pengamatan,</li>
-              <li>perhitungan,</li>
-              <li>dan data hasil verifikasimu.</li>
+              <li>Data hasil pengamatan dan verifikasi.</li>
+              <li>Perhitungan atau perbandingan volume sebelum dan setelah skala.</li>
+              <li>Gambar, model bangun ruang, atau cara matematis lain yang mendukung alasanmu.</li>
             </ul>
             <div className="bg-[#FEF9E7] border border-[#F5E3A0] rounded-xl px-4 py-3 text-sm text-[#92400E] leading-[1.5]">
-              <span className="font-extrabold text-[#DC2626]">Petunjuk</span> (jika diperlukan): perhatikan apa yang terjadi pada panjang, lebar, dan tinggi ketika masing-masing berubah dengan faktor k.
+              <span className="font-extrabold text-[#DC2626]">Petunjuk</span> (jika diperlukan): Perhatikan bagaimana ukuran panjang, lebar, dan tinggi berubah ketika setiap ukuran dikalikan dengan faktor skala <span className="italic">k</span>. Hubungkan perubahan tersebut dengan volume bangun ruang.
             </div>
           </div>
           <EditablePageImage

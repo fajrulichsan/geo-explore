@@ -15,17 +15,39 @@ function isFormValid(form: HTMLFormElement): boolean {
   });
   if (!Array.from(groups.values()).every((g) => g.checked >= g.min)) return false;
 
-  const unitGroups = new Map<string, { min: number; units: Map<string, boolean> }>();
+  const conditional = Array.from(form.querySelectorAll<HTMLInputElement>("[data-require-unless]")).every((el) => {
+    const [field, value] = el.dataset.requireUnless!.split("=");
+    const selected = form.querySelector<HTMLInputElement>(`[name="${field}"]:checked`)?.value;
+    return selected === value || el.value.trim() !== "";
+  });
+  if (!conditional) return false;
+
+  const unitGroups = new Map<string, { min: number; units: Map<string, boolean>; parents: Map<string, string>; parentMin: number; perParentMin: number }>();
   form.querySelectorAll<HTMLInputElement>("[data-unit-group]").forEach((el) => {
     const key = el.dataset.unitGroup!;
-    const group = unitGroups.get(key) ?? { min: Number(el.dataset.unitMin ?? 1), units: new Map() };
+    const group = unitGroups.get(key) ?? {
+      min: Number(el.dataset.unitMin ?? 1),
+      units: new Map(),
+      parents: new Map(),
+      parentMin: Number(el.dataset.unitParentMin ?? 0),
+      perParentMin: Number(el.dataset.unitPerParentMin ?? 1),
+    };
     const unit = el.dataset.unit!;
     group.units.set(unit, (group.units.get(unit) ?? true) && el.value.trim() !== "");
+    if (el.dataset.unitParent) group.parents.set(unit, el.dataset.unitParent);
     unitGroups.set(key, group);
   });
-  return Array.from(unitGroups.values()).every(
-    (g) => Array.from(g.units.values()).filter(Boolean).length >= g.min
-  );
+  return Array.from(unitGroups.values()).every((g) => {
+    if (g.parentMin > 0) {
+      const perParent = new Map<string, number>();
+      g.units.forEach((filled, unit) => {
+        const parent = g.parents.get(unit);
+        if (filled && parent) perParent.set(parent, (perParent.get(parent) ?? 0) + 1);
+      });
+      return Array.from(perParent.values()).filter((n) => n >= g.perParentMin).length >= g.parentMin;
+    }
+    return Array.from(g.units.values()).filter(Boolean).length >= g.min;
+  });
 }
 
 export default function SubmitStepButton({

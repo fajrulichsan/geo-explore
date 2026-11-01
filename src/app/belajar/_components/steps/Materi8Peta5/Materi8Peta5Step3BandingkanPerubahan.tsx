@@ -73,7 +73,7 @@ export default async function Materi8Peta5Step3BandingkanPerubahan({
             <h3 className="m-0 text-sm font-extrabold text-[#166534]">Pertanyaan</h3>
           </div>
           <label htmlFor="perbandingan_ukuran_volume" className="text-sm font-bold text-[#111827] leading-[1.5]">
-            Apakah faktor perubahan ukuran selalu sama dengan faktor perubahan volume? Jelaskan berdasarkan data yang kamu peroleh.
+            Bagaimana perbandingan antara faktor perubahan ukuran panjang dan faktor perubahan volume bangun ruang? Jelaskan dengan menggunakan lebih dari satu contoh berdasarkan data pada tabel.
           </label>
           <textarea
               id="perbandingan_ukuran_volume"

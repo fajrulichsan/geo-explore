@@ -12,7 +12,7 @@ export default async function Materi8Peta10Step3MengapaDemikian({
   step = "3",
   editFoto,
 }: StepComponentProps) {
-  const gambar = await Promise.all((["M8-P10-L3-1"] as const).map((k) => getPageImage(k)));
+  const gambar = await Promise.all((["M8-P10-L3-1", "M8-P10-L3-2", "M8-P10-L3-3"] as const).map((k) => getPageImage(k)));
 
   return (
     <form action={submitStepAction} className="flex flex-col gap-8">
@@ -22,9 +22,6 @@ export default async function Materi8Peta10Step3MengapaDemikian({
 
       <div className="flex flex-col gap-4">
         <StepHeader materi={materi} currentStep={3} totalSteps={7} />
-        <div className="inline-flex items-center bg-[#FDF3C7] text-[#92400E] rounded-full py-1.5 px-3.5 text-xs font-bold tracking-[0.02em] w-fit">
-          Halaman 1 dari 2
-        </div>
         <div className="flex items-center gap-3.5">
           <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#2563EB" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
             <path d="M4 5a2 2 0 0 1 2-2h5v17H6a2 2 0 0 0-2 2z M20 5a2 2 0 0 0-2-2h-5v17h5a2 2 0 0 1 2 2z" />
@@ -54,6 +51,18 @@ export default async function Materi8Peta10Step3MengapaDemikian({
           <p className="m-0">sehingga volume berubah sebesar faktor <strong><span className="italic">k</span><sup>3</sup></strong>.</p>
         </div>
 
+        <EditablePageImage
+          imageKey="M8-P10-L3-2"
+          materi={materi}
+          peta={peta}
+          step={step}
+          urutan="2"
+          src={gambar[1]}
+          alt="Balok diperbesar dengan faktor skala k"
+          editable={editFoto}
+          natural
+          containerClassName="relative w-full overflow-hidden rounded-xl bg-white"
+        />
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
           <div className="rounded-[20px] bg-[#EFF4FF] border border-[#DBEAFE] p-4 flex flex-col gap-2 text-sm text-[#111827]">
             <p className="m-0 font-bold text-[#1E3A8A]">Bangun ruang awal (balok)</p>
@@ -84,7 +93,21 @@ export default async function Materi8Peta10Step3MengapaDemikian({
       </div>
 
       <div className="bg-[#FFF7ED] border border-[#FED7AA] rounded-[20px] p-5 flex flex-col gap-3">
-        <h3 className="m-0 text-base font-extrabold text-[#C2410C]">Ingat!</h3>
+        <div className="flex items-center gap-3">
+          <EditablePageImage
+            imageKey="M8-P10-L3-3"
+            materi={materi}
+            peta={peta}
+            step={step}
+            urutan="3"
+            src={gambar[2]}
+            alt="Bola lampu"
+            editable={editFoto}
+            containerClassName="relative w-10 h-10 flex-shrink-0 overflow-hidden"
+            imageClassName="object-contain"
+          />
+          <h3 className="m-0 text-base font-extrabold text-[#C2410C]">Ingat!</h3>
+        </div>
         <ul className="m-0 pl-0 list-none flex flex-col gap-1.5 text-sm text-[#374151] leading-[1.5]">
           <li className="flex items-start gap-2"><span className="text-[#16A34A] font-bold">✓</span>Hubungan ini diperoleh melalui hasil pengamatan, eksplorasi, pembuktian, dan penalaran, bukan sekadar menghafal rumus.</li>
           <li className="flex items-start gap-2"><span className="text-[#16A34A] font-bold">✓</span>Berlaku untuk semua bangun ruang sisi datar yang sebangun, seperti kubus, balok, prisma, dan limas.</li>
@@ -100,7 +123,7 @@ export default async function Materi8Peta10Step3MengapaDemikian({
             editable={editFoto}
             natural
             
-            containerClassName="relative w-full max-w-[360px] mx-auto overflow-hidden rounded-xl"
+            containerClassName="relative w-full overflow-hidden rounded-xl"
           />
       </div>
 

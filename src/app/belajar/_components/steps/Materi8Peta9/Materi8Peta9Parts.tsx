@@ -42,7 +42,7 @@ export function StepTitle({
             <circle cx="12" cy="12" r="1.2" />
           </svg>
           <h1 className="m-0 text-2xl sm:text-[32px] font-extrabold text-[#111827]">
-            Tantangan Open-Ended
+            Tantangan Terbuka
           </h1>
         </div>
         <p className="m-0 text-sm font-semibold text-[#2563EB]">{subtitle}</p>
@@ -176,16 +176,18 @@ export function StepFooter({
   peta,
   step,
   final,
+  finalLabel = "Selesai",
 }: {
   materi: string;
   peta: string;
   step: number;
   final?: boolean;
+  finalLabel?: string;
 }) {
   return (
     <div className="flex flex-col-reverse sm:flex-row justify-between items-center gap-4">
       {step > 1 ? <BackLink href={`/belajar/${materi}/${peta}/${step - 1}`} /> : <span />}
-      {final ? <NextStepButton variant="green" icon="check">Selesai</NextStepButton> : <NextStepButton />}
+      {final ? <NextStepButton variant="green" icon="check">{finalLabel}</NextStepButton> : <NextStepButton />}
     </div>
   );
 }
@@ -213,14 +215,16 @@ export function CheckItem({
   name,
   label,
   checked,
+  group,
 }: {
   name: string;
   label: string;
   checked: boolean;
+  group?: { name: string; min: number };
 }) {
   return (
     <label className="flex items-start gap-2.5 cursor-pointer">
-      <input type="checkbox" name={`answers.${name}`} defaultChecked={checked} className="mt-0.5 w-4 h-4 flex-shrink-0 accent-[#2563EB]" />
+      <input type="checkbox" name={`answers.${name}`} defaultChecked={checked} data-require-group={group?.name} data-require-min={group?.min} className="mt-0.5 w-4 h-4 flex-shrink-0 accent-[#2563EB]" />
       <span className="text-sm text-[#374151] leading-[1.5]">{label}</span>
     </label>
   );

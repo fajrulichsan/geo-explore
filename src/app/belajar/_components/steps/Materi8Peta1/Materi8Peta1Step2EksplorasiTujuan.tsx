@@ -4,12 +4,14 @@ import NextStepButton from "@/app/belajar/_components/NextStepButton";
 import StepHeader from "@/app/belajar/_components/StepHeader";
 import BackLink from "@/app/belajar/_components/BackLink";
 import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
+import QrLink from "@/app/belajar/_components/QrLink";
 import { getPageImage } from "@/lib/pageImages";
 
 const eksplorasi = [
   {
     judul: "Eksplorasi dengan GeoGebra 3D",
     key: "M8-P1-L2-1" as const,
+    qr: { href: "/geogebra?materi=8", alt: "Kode QR untuk membuka GeoGebra 3D", label: "Buka GeoGebra 3D" },
     alt: "Layar GeoGebra 3D dengan slider skala k = 2 yang menampilkan kubus asli dan kubus hasil skala",
     langkah: [
       "Ubah faktor skala menggunakan slider.",
@@ -22,6 +24,7 @@ const eksplorasi = [
   {
     judul: "Eksplorasi dengan Augmented Reality (AR)",
     key: "M8-P1-L2-2" as const,
+    qr: { href: "https://ar.geo-explore.my.id", alt: "Kode QR untuk membuka AR Viewer", label: "Buka AR Viewer" },
     alt: "Tampilan AR kubus asli berusuk 2 cm dan hasil skala k = 2 berusuk 4 cm",
     langkah: [
       "Tampilkan bangun asli.",
@@ -47,12 +50,15 @@ export default async function Materi8Peta1Step2EksplorasiTujuan({
   step = "2",
   editFoto,
 }: StepComponentProps) {
-  const [gambarGeogebra, gambarAr, gambarMaskot] = await Promise.all([
+  const [gambarGeogebra, gambarAr, gambarMaskot, qrGeogebra, qrAr] = await Promise.all([
     getPageImage("M8-P1-L2-1"),
     getPageImage("M8-P1-L2-2"),
     getPageImage("M8-P1-L2-3"),
+    getPageImage("M7-P1-L2-2"),
+    getPageImage("M7-P1-L2-4"),
   ]);
   const gambar = [gambarGeogebra, gambarAr];
+  const qr = [qrGeogebra, qrAr];
 
   return (
     <form action={submitStepAction} className="flex flex-col gap-8">
@@ -111,7 +117,8 @@ export default async function Materi8Peta1Step2EksplorasiTujuan({
                 natural
                 containerClassName="relative w-full min-h-24 rounded-[14px] overflow-hidden"
               />
-              <div className="flex flex-col gap-2">
+              <div className="flex items-center gap-4">
+              <div className="flex flex-col gap-2 flex-1">
                 {e.langkah.map((l) => (
                   <div key={l} className="flex items-start gap-2.5">
                     <svg
@@ -131,6 +138,8 @@ export default async function Materi8Peta1Step2EksplorasiTujuan({
                   </div>
                 ))}
               </div>
+                <QrLink href={e.qr.href} src={qr[i]} alt={e.qr.alt} label={e.qr.label} />
+              </div>
             </div>
           ))}
         </div>
@@ -148,7 +157,7 @@ export default async function Materi8Peta1Step2EksplorasiTujuan({
         <p className="m-0 text-sm text-[#4B5563]">
           Setelah mempelajari submateri ini, kamu diharapkan mampu:
         </p>
-        <div className="flex items-center gap-5">
+        <div className="flex items-stretch gap-5">
           <div className="grid grid-cols-1 gap-3 flex-1">
             {tujuanPembelajaran.map((tujuan, i) => (
               <div
@@ -173,7 +182,7 @@ export default async function Materi8Peta1Step2EksplorasiTujuan({
             src={gambarMaskot}
             alt="Siswa laki-laki tersenyum sambil menulis di buku"
             editable={editFoto}
-            containerClassName="relative w-32 h-40 lg:w-40 lg:h-48 rounded-2xl overflow-hidden bg-white flex-shrink-0 hidden md:block"
+            containerClassName="relative w-40 lg:w-56 self-stretch rounded-2xl overflow-hidden bg-white flex-shrink-0 hidden md:block"
             imageClassName="object-contain"
           />
         </div>

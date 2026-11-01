@@ -2,6 +2,7 @@ import { submitStepAction } from "@/app/belajar/actions";
 import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
 import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
 import { getPageImage } from "@/lib/pageImages";
+import FileSubmission from "@/components/FileSubmission";
 import { CheckItem, HiddenStepFields, SectionTitle, StepFooter, StepTitle, SUBTITLE, readAnswers } from "./Materi8Peta9Parts";
 
 const STEP = 7;
@@ -34,12 +35,12 @@ export default async function Materi8Peta9Step7RefleksiSingkat({ materi, peta, e
       <div className="flex flex-col gap-4">
         <SectionTitle letter="F" title="Refleksi Singkat" color="amber" />
         <p className="m-0 text-sm text-[#4B5563] leading-[1.7]">
-          Centang (✓) semua pernyataan yang sesuai dengan pengalamanmu saat menyelesaikan Tantangan Open-Ended.
+          Centang (✓) semua pernyataan yang sesuai dengan pengalamanmu saat menyelesaikan Tantangan Terbuka.
         </p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-center">
           <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-5 flex flex-col gap-3">
             {pernyataan.map((p) => (
-              <CheckItem key={p.key} name={p.key} label={p.label} checked={getChecked(p.key)} />
+              <CheckItem key={p.key} name={p.key} label={p.label} checked={getChecked(p.key)} group={{ name: "refleksi", min: 3 }} />
             ))}
           </div>
           <EditablePageImage
@@ -58,7 +59,7 @@ export default async function Materi8Peta9Step7RefleksiSingkat({ materi, peta, e
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div className="bg-[#FFF7ED] border border-[#FED7AA] rounded-[20px] p-5 grid grid-cols-[1fr_110px] gap-3 items-center">
+        <div className="bg-[#FFF7ED] border border-[#FED7AA] rounded-[20px] p-5 grid grid-cols-[1fr_150px] sm:grid-cols-[1fr_190px] gap-3 items-center">
           <div className="flex flex-col gap-2">
             <h3 className="m-0 text-base font-extrabold text-[#C2410C]">Teruslah Berpikir Kreatif!</h3>
             <p className="m-0 text-sm text-[#374151] leading-[1.6]">
@@ -82,9 +83,9 @@ export default async function Materi8Peta9Step7RefleksiSingkat({ materi, peta, e
           />
         </div>
         <div className="bg-[#EFF6FF] border border-[#BFDBFE] rounded-[20px] p-5 flex flex-col gap-2.5">
-          <h3 className="m-0 text-base font-extrabold text-[#1E3A8A]">Inti Open-Ended</h3>
+          <h3 className="m-0 text-base font-extrabold text-[#1E3A8A]">Inti dari Tantangan Terbuka</h3>
           <p className="m-0 text-sm text-[#374151] leading-[1.6]">
-            Open-Ended bukan sekadar mencari jawaban. Yang paling penting adalah:
+            Tantangan Terbuka bukan sekadar mencari jawaban yang benar. Hal yang lebih penting adalah:
           </p>
           <ul className="m-0 p-0 list-none flex flex-col gap-2">
             {intiOpenEnded.map((t) => (
@@ -99,7 +100,13 @@ export default async function Materi8Peta9Step7RefleksiSingkat({ materi, peta, e
         </div>
       </div>
 
-      <StepFooter materi={materi} peta={peta} step={STEP} final />
+      <FileSubmission
+        materi={materi}
+        peta={peta}
+        defaultValue={typeof initialAnswers?.file_hasil_kerja === "string" ? initialAnswers.file_hasil_kerja : undefined}
+      />
+
+      <StepFooter materi={materi} peta={peta} step={STEP} final finalLabel="Lanjut ke Quiz" />
     </form>
   );
 }

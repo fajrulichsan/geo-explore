@@ -8,16 +8,31 @@ const STEP = 5;
 
 export default async function Materi8Peta9Step5JelaskanAlasanMatematis({ materi, peta, editFoto, initialAnswers }: StepComponentProps) {
   const { getValue } = readAnswers(initialAnswers);
-  const [maskot, penjelasan] = await Promise.all([getPageImage("M8-P9-L5-1"), getPageImage("M8-P9-L5-2")]);
+  const [maskot, penjelasan, banner] = await Promise.all([getPageImage("M8-P9-L5-1"), getPageImage("M8-P9-L5-2"), getPageImage("M8-P9-L5-3")]);
 
   return (
     <form action={submitStepAction} className="flex flex-col gap-8">
       <HiddenStepFields materi={materi} peta={peta} step={STEP} />
       <StepTitle materi={materi} step={STEP} subtitle={SUBTITLE} />
 
+      <div className="rounded-[24px] overflow-hidden border border-[#E5E7EB] bg-white">
+        <EditablePageImage
+          imageKey="M8-P9-L5-3"
+          materi={materi}
+          peta={peta}
+          step="5"
+          urutan="3"
+          src={banner}
+          alt="Kubus, balok, prisma segitiga, dan limas segiempat dengan lampu ide"
+          editable={editFoto}
+          natural
+          containerClassName="relative w-full max-w-xl mx-auto"
+        />
+      </div>
+
       <div className="flex flex-col gap-4">
         <SectionTitle letter="D" title="Jelaskan Alasan Matematis" />
-        <div className="grid grid-cols-1 md:grid-cols-[1fr_180px] gap-4 items-start">
+        <div className="grid grid-cols-1 md:grid-cols-[1fr_240px] gap-4 items-stretch">
           <div className="flex flex-col gap-4">
             <div className={cardClass}>
               <TextAreaField
@@ -47,8 +62,8 @@ export default async function Materi8Peta9Step5JelaskanAlasanMatematis({ materi,
             src={maskot}
             alt="Siswa menunjuk ke atas dengan lampu ide: bandingkan, jelaskan, dan temukan strategi terbaikmu"
             editable={editFoto}
-            imageClassName="object-contain"
-            containerClassName="relative w-40 md:w-full aspect-[411/592] mx-auto rounded-xl bg-white overflow-hidden"
+            imageClassName="object-contain object-bottom"
+            containerClassName="relative w-48 md:w-full h-72 md:h-full min-h-72 mx-auto rounded-xl bg-white overflow-hidden"
           />
         </div>
 

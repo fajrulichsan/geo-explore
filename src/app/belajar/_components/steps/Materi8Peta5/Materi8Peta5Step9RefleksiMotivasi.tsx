@@ -1,6 +1,7 @@
 import { submitStepAction } from "@/app/belajar/actions";
 import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
 import NextStepButton from "@/app/belajar/_components/NextStepButton";
+import FileSubmission from "@/components/FileSubmission";
 import StepHeader from "@/app/belajar/_components/StepHeader";
 import BackLink from "@/app/belajar/_components/BackLink";
 import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
@@ -18,7 +19,7 @@ export default async function Materi8Peta5Step9RefleksiMotivasi({
     typeof answers[key] === "string" ? (answers[key] as string) : "";
 
   const gambar = await Promise.all(
-    (["M8-P5-L9-1", "M8-P5-L9-2"] as const).map((k) => getPageImage(k)),
+    (["M8-P5-L9-1", "M8-P5-L9-2", "M8-P5-L9-3", "M8-P5-L9-4"] as const).map((k) => getPageImage(k)),
   );
 
   return (
@@ -56,15 +57,15 @@ export default async function Materi8Peta5Step9RefleksiMotivasi({
           <div className="flex flex-col gap-3">
             <p className="m-0 text-sm text-[#4B5563]">Centang (✓) pernyataan yang sesuai dengan pengalaman kegiatan ini.</p>
             <label className="flex items-start gap-3 rounded-xl border border-[#E5E7EB] bg-white px-4 py-3 text-sm text-[#374151] leading-[1.5] cursor-pointer has-[:checked]:border-[#2563EB] has-[:checked]:bg-[#EFF4FF]">
-              <input type="checkbox" name="answers.refleksi_pola" value="ya" defaultChecked={getValue("refleksi_pola") === "ya"} className="mt-0.5 accent-[#2563EB]" />
+              <input type="checkbox" name="answers.refleksi_pola" value="ya" defaultChecked={getValue("refleksi_pola") === "ya"} data-require-group="refleksi" data-require-min="2" className="mt-0.5 accent-[#2563EB]" />
               Saya dapat menemukan pola hubungan faktor skala dan perubahan volume.
             </label>
             <label className="flex items-start gap-3 rounded-xl border border-[#E5E7EB] bg-white px-4 py-3 text-sm text-[#374151] leading-[1.5] cursor-pointer has-[:checked]:border-[#2563EB] has-[:checked]:bg-[#EFF4FF]">
-              <input type="checkbox" name="answers.refleksi_dugaan" value="ya" defaultChecked={getValue("refleksi_dugaan") === "ya"} className="mt-0.5 accent-[#2563EB]" />
+              <input type="checkbox" name="answers.refleksi_dugaan" value="ya" defaultChecked={getValue("refleksi_dugaan") === "ya"} data-require-group="refleksi" data-require-min="2" className="mt-0.5 accent-[#2563EB]" />
               Saya dapat menggunakan data untuk membuat dugaan matematis.
             </label>
             <label className="flex items-start gap-3 rounded-xl border border-[#E5E7EB] bg-white px-4 py-3 text-sm text-[#374151] leading-[1.5] cursor-pointer has-[:checked]:border-[#2563EB] has-[:checked]:bg-[#EFF4FF]">
-              <input type="checkbox" name="answers.refleksi_percaya" value="ya" defaultChecked={getValue("refleksi_percaya") === "ya"} className="mt-0.5 accent-[#2563EB]" />
+              <input type="checkbox" name="answers.refleksi_percaya" value="ya" defaultChecked={getValue("refleksi_percaya") === "ya"} data-require-group="refleksi" data-require-min="2" className="mt-0.5 accent-[#2563EB]" />
               Saya lebih percaya diri menggunakan data untuk menemukan dan menjelaskan pola.
             </label>
           </div>
@@ -103,20 +104,54 @@ export default async function Materi8Peta5Step9RefleksiMotivasi({
             containerClassName="relative w-full overflow-hidden rounded-2xl bg-white"
           />
         </div>
-        <div className="bg-[#FEF9E7] border border-[#F5E3A0] rounded-[20px] p-5 sm:p-6 flex flex-col gap-1.5">
+        <div className="bg-[#FEF9E7] border border-[#F5E3A0] rounded-[20px] p-5 sm:p-6 flex items-start gap-4">
+          <EditablePageImage
+            imageKey="M8-P5-L9-3"
+            materi={materi}
+            peta={peta}
+            step={step}
+            urutan="3"
+            src={gambar[2]}
+            alt="Bola lampu"
+            editable={editFoto}
+            containerClassName="relative w-14 h-14 flex-shrink-0 overflow-hidden"
+            imageClassName="object-contain"
+          />
+          <div className="flex flex-col gap-1.5">
           <h3 className="m-0 text-sm font-extrabold text-[#92400E]">Ingat!</h3>
           <p className="m-0 text-sm text-[#78350F] leading-[1.6]">Hubungan matematika yang kamu tuliskan masih berupa dugaan sementara. Kita akan memverifikasinya pada Tahap 5. Tetap gunakan data dan alasan yang kuat!</p>
+          </div>
         </div>
-        <div className="bg-[#EFF4FF] border border-[#BFDBFE] rounded-[20px] p-5 sm:p-6 flex flex-col gap-1.5">
+        <div className="bg-[#EFF4FF] border border-[#BFDBFE] rounded-[20px] p-5 sm:p-6 flex items-start gap-4">
+          <EditablePageImage
+            imageKey="M8-P5-L9-4"
+            materi={materi}
+            peta={peta}
+            step={step}
+            urutan="4"
+            src={gambar[3]}
+            alt="Clipboard catatan"
+            editable={editFoto}
+            containerClassName="relative w-14 h-16 flex-shrink-0 overflow-hidden"
+            imageClassName="object-contain"
+          />
+          <div className="flex flex-col gap-1.5">
           <h3 className="m-0 text-sm font-extrabold text-[#1E3A8A]">Catatan:</h3>
           <p className="m-0 text-sm text-[#1E40AF] leading-[1.6]">Pola dan strategi yang kamu susun akan menjadi dasar penting untuk melakukan pembuktian pada Tahap 5. Berpikir kritis, bekerja sama, dan percaya diri akan membantumu menemukan hubungan matematika yang lebih kuat!</p>
           <p className="m-0 text-xs font-bold text-[#2563EB]">Data yang baik menghasilkan dugaan yang lebih kuat!</p>
+          </div>
         </div>
       </div>
 
+      <FileSubmission
+        materi={materi}
+        peta={peta}
+        defaultValue={typeof answers.file_hasil_kerja === "string" ? answers.file_hasil_kerja : undefined}
+      />
+
       <div className="flex flex-col-reverse sm:flex-row justify-between items-center gap-4">
         <BackLink href={`/belajar/${materi}/${peta}/8`} />
-        <NextStepButton variant="green" icon="check">Selesai</NextStepButton>
+        <NextStepButton variant="green" icon="check">Lanjut ke Tahap Ayo Verifikasi</NextStepButton>
       </div>
     </form>
   );

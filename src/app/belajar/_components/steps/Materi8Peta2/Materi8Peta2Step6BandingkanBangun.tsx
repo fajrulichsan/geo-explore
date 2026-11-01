@@ -52,7 +52,7 @@ export default async function Materi8Peta2Step6BandingkanBangun({
           </div>
         </div>
         <p className="m-0 text-sm text-[#4B5563] leading-[1.6]">
-          Bandingkan bangun kecil dan bangun hasil skala pada setiap pasangan, kemudian lengkapi tabel berikut berdasarkan hasil pengamatanmu.
+          Amatilah setiap pasangan bangun ruang sebelum dan sesudah diperbesar. Identifikasi persamaan dan perbedaannya berdasarkan aspek yang tersedia, kemudian lengkapi tabel sesuai hasil pengamatanmu. Jika tidak terdapat perbedaan pada suatu aspek, tuliskan alasanmu!
         </p>
 
         <div className="grid grid-cols-1 gap-4">
@@ -86,7 +86,7 @@ export default async function Materi8Peta2Step6BandingkanBangun({
         <div className="bg-[#FEF9E7] border border-[#F5E3A0] rounded-[20px] p-5 sm:p-6 flex flex-col gap-4">
           <div className="flex flex-col gap-2">
             <label htmlFor="dugaan_perubahan_volume" className="text-sm font-bold text-[#111827] leading-[1.5]">
-              Dugaan perubahan volume — menurut dugaanmu, bagaimana perubahan volume ketika setiap ukuran panjang diperbesar 2 kali?
+              Berdasarkan hasil pengamatanmu, bagaimana perubahan volume bangun ruang jika setiap ukuran panjangnya diperbesar dengan faktor skala 2? Jelaskan dugaanmu!
             </label>
             <textarea
               id="dugaan_perubahan_volume"
@@ -100,7 +100,7 @@ export default async function Materi8Peta2Step6BandingkanBangun({
           </div>
           <div className="flex flex-col gap-2">
             <label htmlFor="alasan_dugaan_bukti" className="text-sm font-bold text-[#111827] leading-[1.5]">
-              Alasan dugaan (bukti pengamatan) — tuliskan alasan atau bukti dari hasil pengamatanmu.
+              Apa alasan matematis yang mendukung dugaanmu? Jelaskan berdasarkan hubungan antara ukuran panjang dan volume bangun yang telah kamu amati!
             </label>
             <textarea
               id="alasan_dugaan_bukti"

@@ -3,6 +3,7 @@ import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry"
 import NextStepButton from "@/app/belajar/_components/NextStepButton";
 import StepHeader from "@/app/belajar/_components/StepHeader";
 import BackLink from "@/app/belajar/_components/BackLink";
+import UnlockImagePopup from "@/app/belajar/_components/UnlockImagePopup";
 import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
 import { getPageImage } from "@/lib/pageImages";
 
@@ -16,7 +17,10 @@ export default async function Materi8Peta7Step5MengapaAturanBenar({
   const answers = initialAnswers ?? {};
   const getValue = (key: string) =>
     typeof answers[key] === "string" ? (answers[key] as string) : "";
-  const gambar = await getPageImage("M8-P7-L5-1");
+  const [gambar, gambarPopup] = await Promise.all([
+    getPageImage("M8-P7-L5-1"),
+    getPageImage("M8-P7-L5-2"),
+  ]);
 
   return (
     <form action={submitStepAction} className="flex flex-col gap-8">
@@ -89,6 +93,28 @@ export default async function Materi8Peta7Step5MengapaAturanBenar({
           <p className="m-0 text-sm text-[#4B5563] leading-[1.5]">Tuliskan terlebih dahulu alasanmu pada kolom di atas, lalu bandingkan dengan tiga keadaan pada ilustrasi.</p>
         </div>
       </div>
+
+      <UnlockImagePopup
+        label="Tampilkan Alasan Matematis"
+        src={gambarPopup}
+        alt="Mengapa volume berubah dengan faktor k pangkat 3: contoh balok, perhitungan volume setelah skala, intuisi tiga dimensi, dan kesimpulan"
+        watch={["answers.alasan_matematis"]}
+        hint="Tombol akan aktif setelah kamu mengisi jawaban pada Panel D."
+      />
+      {editFoto && (
+        <EditablePageImage
+          imageKey="M8-P7-L5-2"
+          materi={materi}
+          peta={peta}
+          step={step}
+          urutan="2"
+          src={gambarPopup}
+          alt="Gambar popup Tampilkan Alasan Matematis"
+          editable={editFoto}
+          natural
+          containerClassName="relative w-full max-w-[420px] overflow-hidden rounded-xl bg-white"
+        />
+      )}
 
       <div className="flex flex-col-reverse sm:flex-row justify-between items-center gap-4">
         <BackLink href={`/belajar/${materi}/${peta}/4`} />

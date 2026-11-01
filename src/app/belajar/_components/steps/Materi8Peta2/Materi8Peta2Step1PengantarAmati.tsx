@@ -23,7 +23,7 @@ const bangun: Bangun[] = [
     judul: "1. Kubus",
     alt: "Kubus kecil rusuk 2 cm diperbesar dengan k = 2 menjadi kubus besar rusuk 4 cm",
     tanya: {
-      judul: "Apa yang berubah?",
+      judul: "Apa yang berubah setelah kubus diperbesar dengan faktor skala 2?",
       opsi: [
         { name: "kubus_panjang_rusuk", label: "panjang rusuk" },
         { name: "kubus_jumlah_sisi", label: "jumlah sisi" },
@@ -39,11 +39,14 @@ const bangun: Bangun[] = [
     judul: "2. Balok",
     alt: "Balok kecil 2 × 3 × 4 diperbesar dengan k = 2 menjadi balok besar 4 × 6 × 8",
     tanya: {
-      judul: "Bagian mana yang bertambah?",
+      judul: "Apa yang berubah setelah balok diperbesar dengan faktor skala 2?",
       opsi: [
         { name: "balok_panjang", label: "panjang" },
         { name: "balok_lebar", label: "lebar" },
         { name: "balok_tinggi", label: "tinggi" },
+        { name: "balok_jumlah_sisi", label: "jumlah sisi" },
+        { name: "balok_bentuk", label: "bentuk bangun" },
+        { name: "balok_volume", label: "volume" },
       ],
     },
     catatan: "4 = 2 × 2 ; 6 = 2 × 3 ; 8 = 2 × 4 → Semua ukuran diperbesar 2 kali.",
@@ -53,6 +56,17 @@ const bangun: Bangun[] = [
     urutan: "4",
     judul: "3. Prisma Segitiga",
     alt: "Prisma segitiga kecil diperbesar dengan k = 2",
+    tanya: {
+      judul: "Apa yang berubah setelah prisma diperbesar dengan faktor skala 2?",
+      opsi: [
+        { name: "prisma_panjang_alas", label: "panjang alas" },
+        { name: "prisma_tinggi_alas", label: "tinggi alas" },
+        { name: "prisma_panjang_prisma", label: "panjang prisma" },
+        { name: "prisma_jumlah_sisi", label: "jumlah sisi" },
+        { name: "prisma_bentuk", label: "bentuk bangun" },
+        { name: "prisma_volume", label: "volume" },
+      ],
+    },
     catatan: "Semua ukuran panjang diperbesar 2 kali.",
   },
   {
@@ -60,6 +74,16 @@ const bangun: Bangun[] = [
     urutan: "5",
     judul: "4. Limas Segiempat",
     alt: "Limas segiempat kecil diperbesar dengan k = 2",
+    tanya: {
+      judul: "Apa yang berubah setelah limas diperbesar dengan faktor skala 2?",
+      opsi: [
+        { name: "limas_panjang_sisi_alas", label: "panjang sisi alas" },
+        { name: "limas_tinggi", label: "tinggi limas" },
+        { name: "limas_jumlah_sisi", label: "jumlah sisi" },
+        { name: "limas_bentuk", label: "bentuk bangun" },
+        { name: "limas_volume", label: "volume" },
+      ],
+    },
     catatan: "Semua ukuran panjang diperbesar 2 kali.",
   },
 ];
@@ -101,7 +125,22 @@ export default async function Materi8Peta2Step1PengantarAmati({
         </div>
       </div>
 
-      <div className="relative overflow-hidden rounded-[24px] bg-gradient-to-br from-[#1E3A8A] to-[#2563EB] p-6 sm:p-8 grid grid-cols-1 sm:grid-cols-[1fr_260px] gap-5 items-center">
+      <div className="rounded-[24px] overflow-hidden border border-[#E5E7EB]">
+        <EditablePageImage
+          imageKey="M8-P2-L1-1"
+          materi={materi}
+          peta={peta}
+          step={step}
+          urutan="1"
+          src={gambarHero}
+          alt="Empat kelompok siswa mengamati bangun ruang yang diperbesar dengan faktor skala k = 2"
+          editable={editFoto}
+          natural
+          containerClassName="relative w-full"
+        />
+      </div>
+
+      <div className="relative overflow-hidden rounded-[24px] bg-gradient-to-br from-[#1E3A8A] to-[#2563EB] p-6 sm:p-8">
         <div className="absolute -right-14 -top-16 w-56 h-56 rounded-full bg-white/10" />
         <div className="relative flex flex-col gap-2">
           <h2 className="m-0 text-lg font-extrabold text-white">Pengantar</h2>
@@ -115,18 +154,6 @@ export default async function Materi8Peta2Step1PengantarAmati({
             juga memengaruhi volumenya.
           </p>
         </div>
-        <EditablePageImage
-          imageKey="M8-P2-L1-1"
-          materi={materi}
-          peta={peta}
-          step={step}
-          urutan="1"
-          src={gambarHero}
-          alt="Dua siswa mengamati bangun ruang di atas meja"
-          editable={editFoto}
-          natural
-          containerClassName="relative w-full overflow-hidden rounded-2xl bg-white"
-        />
       </div>
 
       <div className="flex flex-col gap-4">

@@ -3,15 +3,32 @@ import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry"
 import NextStepButton from "@/app/belajar/_components/NextStepButton";
 import StepHeader from "@/app/belajar/_components/StepHeader";
 import BackLink from "@/app/belajar/_components/BackLink";
+import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
+import { getPageImage } from "@/lib/pageImages";
 
 export default async function Materi8Peta3Step2BandingkanHasilPengamatan({
   materi,
   peta,
+  step = "2",
+  editFoto,
   initialAnswers,
 }: StepComponentProps) {
   const answers = initialAnswers ?? {};
   const getValue = (key: string) =>
     typeof answers[key] === "string" ? (answers[key] as string) : "";
+
+  const [gKubus, gBalok, gPrisma, gLimas] = await Promise.all([
+    getPageImage("M8-P3-L2-1"),
+    getPageImage("M8-P3-L2-2"),
+    getPageImage("M8-P3-L2-3"),
+    getPageImage("M8-P3-L2-4"),
+  ]);
+  const gambar = [
+    { key: "M8-P3-L2-1", src: gKubus, alt: "Kubus" },
+    { key: "M8-P3-L2-2", src: gBalok, alt: "Balok" },
+    { key: "M8-P3-L2-3", src: gPrisma, alt: "Prisma" },
+    { key: "M8-P3-L2-4", src: gLimas, alt: "Limas" },
+  ] as const;
 
   return (
     <form action={submitStepAction} className="flex flex-col gap-8">
@@ -60,9 +77,18 @@ export default async function Materi8Peta3Step2BandingkanHasilPengamatan({
               <tr className="border-t border-[#DBEAFE]">
                 <th scope="row" className="p-2 text-left align-middle">
                   <span className="flex items-center gap-2 text-sm font-bold text-[#111827]">
-                    <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#16A34A" strokeWidth="1.8" strokeLinejoin="round">
-                      <path d="M12 3l8 4v10l-8 4-8-4V7z M4 7l8 4 8-4 M12 11v10" />
-                    </svg>
+                    <EditablePageImage
+                      imageKey={gambar[0].key}
+                      materi={materi}
+                      peta={peta}
+                      step={step}
+                      urutan="1"
+                      src={gambar[0].src}
+                      alt={gambar[0].alt}
+                      editable={editFoto}
+                      containerClassName="relative w-16 h-14 flex-shrink-0 overflow-hidden"
+                      imageClassName="object-contain"
+                    />
                     Kubus
                   </span>
                 </th>
@@ -100,9 +126,18 @@ export default async function Materi8Peta3Step2BandingkanHasilPengamatan({
               <tr className="border-t border-[#DBEAFE]">
                 <th scope="row" className="p-2 text-left align-middle">
                   <span className="flex items-center gap-2 text-sm font-bold text-[#111827]">
-                    <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" strokeWidth="1.8" strokeLinejoin="round">
-                      <path d="M3 9l5-4h13v9l-5 5H3z M3 9h13v10 M16 9l5-4" />
-                    </svg>
+                    <EditablePageImage
+                      imageKey={gambar[1].key}
+                      materi={materi}
+                      peta={peta}
+                      step={step}
+                      urutan="2"
+                      src={gambar[1].src}
+                      alt={gambar[1].alt}
+                      editable={editFoto}
+                      containerClassName="relative w-16 h-14 flex-shrink-0 overflow-hidden"
+                      imageClassName="object-contain"
+                    />
                     Balok
                   </span>
                 </th>
@@ -140,9 +175,18 @@ export default async function Materi8Peta3Step2BandingkanHasilPengamatan({
               <tr className="border-t border-[#DBEAFE]">
                 <th scope="row" className="p-2 text-left align-middle">
                   <span className="flex items-center gap-2 text-sm font-bold text-[#111827]">
-                    <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#9333EA" strokeWidth="1.8" strokeLinejoin="round">
-                      <path d="M12 3L4 19h16z M12 3l3 16" />
-                    </svg>
+                    <EditablePageImage
+                      imageKey={gambar[2].key}
+                      materi={materi}
+                      peta={peta}
+                      step={step}
+                      urutan="3"
+                      src={gambar[2].src}
+                      alt={gambar[2].alt}
+                      editable={editFoto}
+                      containerClassName="relative w-16 h-14 flex-shrink-0 overflow-hidden"
+                      imageClassName="object-contain"
+                    />
                     Prisma
                   </span>
                 </th>
@@ -180,9 +224,18 @@ export default async function Materi8Peta3Step2BandingkanHasilPengamatan({
               <tr className="border-t border-[#DBEAFE]">
                 <th scope="row" className="p-2 text-left align-middle">
                   <span className="flex items-center gap-2 text-sm font-bold text-[#111827]">
-                    <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#2563EB" strokeWidth="1.8" strokeLinejoin="round">
-                      <path d="M12 3L3 19h18z M12 3v16" />
-                    </svg>
+                    <EditablePageImage
+                      imageKey={gambar[3].key}
+                      materi={materi}
+                      peta={peta}
+                      step={step}
+                      urutan="4"
+                      src={gambar[3].src}
+                      alt={gambar[3].alt}
+                      editable={editFoto}
+                      containerClassName="relative w-16 h-14 flex-shrink-0 overflow-hidden"
+                      imageClassName="object-contain"
+                    />
                     Limas
                   </span>
                 </th>

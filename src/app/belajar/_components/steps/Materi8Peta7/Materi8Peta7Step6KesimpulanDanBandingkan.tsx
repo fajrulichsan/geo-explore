@@ -113,10 +113,11 @@ export default async function Materi8Peta7Step6KesimpulanDanBandingkan({
             ))}
           </div>
           <label className="flex flex-col gap-2">
-            <span className="text-sm font-semibold text-[#111827]">Jika berbeda, apa penyebabnya?</span>
+            <span className="text-sm font-semibold text-[#111827]">Jika hampir sama atau berbeda, apa penyebabnya?</span>
             <textarea
               name="answers.penyebab_berbeda"
               defaultValue={getValue("penyebab_berbeda")}
+              data-require-unless="answers.bandingkan_kelompok=sama"
               rows={3}
               className="w-full rounded-xl border border-[#E5E7EB] bg-white p-3 text-sm text-[#374151] focus:border-[#2563EB] focus:outline-none transition-colors resize-y"
             />
@@ -131,7 +132,7 @@ export default async function Materi8Peta7Step6KesimpulanDanBandingkan({
             alt="Tiga siswa saling membandingkan kesimpulan"
             editable={editFoto}
             natural
-            containerClassName="relative w-full max-w-[420px] mx-auto overflow-hidden rounded-xl"
+            containerClassName="relative w-full overflow-hidden rounded-xl"
           />
         </div>
       </div>

@@ -185,7 +185,7 @@ export default async function Materi8Peta1Step3IngatSiapEksplorasi({
 
       <div className="flex flex-col-reverse sm:flex-row justify-between items-center gap-4">
         <BackLink href={`/belajar/${materi}/${peta}/2`} />
-        <NextStepButton variant="green" icon="check">Selesai</NextStepButton>
+        <NextStepButton variant="green" icon="check">Lanjutkan ke Tahap Ayo Mengamati dan Berpikir</NextStepButton>
       </div>
     </form>
   );

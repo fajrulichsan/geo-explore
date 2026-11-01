@@ -29,7 +29,7 @@ export default async function Materi8Peta9Step2MasalahOpenEnded({ materi, peta, 
       <StepTitle materi={materi} step={STEP} subtitle={SUBTITLE} />
 
       <div className="flex flex-col gap-4">
-        <SectionTitle letter="A" title="Masalah Open-Ended" />
+        <SectionTitle letter="A" title="Masalah Terbuka" />
         <div className="grid grid-cols-1 md:grid-cols-[1fr_320px] gap-4">
           <div className={`${cardClass} flex flex-col gap-4`}>
             <p className="m-0 text-sm text-[#374151] leading-[1.7]">

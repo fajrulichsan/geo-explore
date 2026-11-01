@@ -67,7 +67,7 @@ export default async function Materi8Peta5Step4CariPola({
             <h3 className="m-0 text-sm font-extrabold text-[#166534]">Pertanyaan</h3>
           </div>
           <label htmlFor="hubungan_skala_volume" className="text-sm font-bold text-[#111827] leading-[1.5]">
-            Apa hubungan antara faktor skala (k) dan faktor perubahan volume? Tuliskan dugaanmu berdasarkan pola yang kamu temukan.
+            Pola apa yang kamu temukan antara faktor skala (k) dan faktor perubahan volume pada berbagai bangun ruang? Jelaskan bagaimana pola tersebut dapat ditunjukkan melalui data atau perhitungan matematis.
           </label>
           <textarea
               id="hubungan_skala_volume"

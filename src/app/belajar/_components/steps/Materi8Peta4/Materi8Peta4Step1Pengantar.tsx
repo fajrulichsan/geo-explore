@@ -36,7 +36,22 @@ export default async function Materi8Peta4Step1Pengantar({
         </div>
       </div>
 
-      <div className="relative overflow-hidden rounded-[24px] bg-gradient-to-br from-[#1E3A8A] to-[#2563EB] p-6 sm:p-8 grid grid-cols-1 sm:grid-cols-[1fr_340px] gap-5 items-center">
+      <div className="rounded-[24px] overflow-hidden border border-[#E5E7EB]">
+        <EditablePageImage
+            imageKey="M8-P4-L1-1"
+            materi={materi}
+            peta={peta}
+            step={step}
+            urutan="1"
+            src={gambar1}
+            alt="Tiga siswa bereksplorasi dengan GeoGebra 3D dan AR di meja berisi bangun ruang dan tabel pengamatan"
+            editable={editFoto}
+            natural
+            containerClassName="relative w-full"
+          />
+      </div>
+
+      <div className="relative overflow-hidden rounded-[24px] bg-gradient-to-br from-[#1E3A8A] to-[#2563EB] p-6 sm:p-8">
         <div className="absolute -right-14 -top-16 w-56 h-56 rounded-full bg-white/10" />
         <div className="relative flex flex-col gap-2">
           <p className="m-0 text-xs font-bold tracking-[0.04em] text-[#FDE68A]">
@@ -53,18 +68,6 @@ export default async function Materi8Peta4Step1Pengantar({
             Amati perubahan ukuran setiap bangun, hitung volumenya, kemudian catat semua hasil pengamatan sebagai data yang akan digunakan pada tahap berikutnya untuk mengolah dan menguji dugaanmu.
           </p>
         </div>
-        <EditablePageImage
-            imageKey="M8-P4-L1-1"
-            materi={materi}
-            peta={peta}
-            step={step}
-            urutan="1"
-            src={gambar1}
-            alt="Tiga siswa bereksplorasi dengan GeoGebra 3D dan AR di meja berisi bangun ruang dan tabel pengamatan"
-            editable={editFoto}
-            natural
-            containerClassName="relative w-full overflow-hidden rounded-2xl bg-white"
-          />
       </div>
 
       <div className="flex items-start gap-3 bg-[#FEF9E7] border border-[#FDE68A] rounded-2xl px-4 py-3.5">

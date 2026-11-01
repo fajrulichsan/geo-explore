@@ -81,7 +81,7 @@ export default async function Materi8Peta6Step6PerbaikiDugaan({
             alt="Siswa laki-laki menunjuk ke atas dengan lampu ide"
             editable={editFoto}
             natural
-            containerClassName="relative w-full max-w-[140px] mx-auto overflow-hidden"
+            containerClassName="relative w-full max-w-[240px] mx-auto overflow-hidden"
           />
         </div>
       </div>

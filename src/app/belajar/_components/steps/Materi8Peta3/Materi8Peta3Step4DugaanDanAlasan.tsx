@@ -3,15 +3,24 @@ import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry"
 import NextStepButton from "@/app/belajar/_components/NextStepButton";
 import StepHeader from "@/app/belajar/_components/StepHeader";
 import BackLink from "@/app/belajar/_components/BackLink";
+import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
+import { getPageImage } from "@/lib/pageImages";
 
 export default async function Materi8Peta3Step4DugaanDanAlasan({
   materi,
   peta,
+  step = "4",
+  editFoto,
   initialAnswers,
 }: StepComponentProps) {
   const answers = initialAnswers ?? {};
   const getValue = (key: string) =>
     typeof answers[key] === "string" ? (answers[key] as string) : "";
+
+  const [lampuC, lampuD] = await Promise.all([
+    getPageImage("M8-P3-L4-1"),
+    getPageImage("M8-P3-L4-2"),
+  ]);
 
   return (
     <form action={submitStepAction} className="flex flex-col gap-8">
@@ -46,9 +55,18 @@ export default async function Materi8Peta3Step4DugaanDanAlasan({
         </div>
           <p className="m-0 text-sm text-[#4B5563] leading-[1.6]">Tuliskan dugaan kelompokmu.</p>
           <div className="flex items-start gap-2.5 bg-[#FEF9E7] border border-[#F5E3A0] rounded-xl px-4 py-3">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D97706" strokeWidth="2" className="flex-shrink-0 mt-0.5">
-              <path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z" />
-            </svg>
+            <EditablePageImage
+              imageKey="M8-P3-L4-1"
+              materi={materi}
+              peta={peta}
+              step={step}
+              urutan="1"
+              src={lampuC}
+              alt="Bola lampu"
+              editable={editFoto}
+              containerClassName="relative w-8 h-8 flex-shrink-0 mt-0.5 overflow-hidden"
+              imageClassName="object-contain"
+            />
             <p className="m-0 text-sm text-[#374151] leading-[1.6]"><span className="font-bold">Kalimat bantu:</span> Menurut kelompok kami, jika setiap ukuran panjang suatu bangun diperbesar dengan faktor skala k, maka volume bangun akan menjadi ....</p>
           </div>
           <textarea
@@ -71,9 +89,18 @@ export default async function Materi8Peta3Step4DugaanDanAlasan({
         </div>
           <p className="m-0 text-sm text-[#4B5563] leading-[1.6]">Mengapa kelompokmu memiliki dugaan tersebut?</p>
           <div className="flex items-start gap-2.5 bg-[#FEF9E7] border border-[#F5E3A0] rounded-xl px-4 py-3">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D97706" strokeWidth="2" className="flex-shrink-0 mt-0.5">
-              <path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z" />
-            </svg>
+            <EditablePageImage
+              imageKey="M8-P3-L4-2"
+              materi={materi}
+              peta={peta}
+              step={step}
+              urutan="2"
+              src={lampuD}
+              alt="Bola lampu"
+              editable={editFoto}
+              containerClassName="relative w-8 h-8 flex-shrink-0 mt-0.5 overflow-hidden"
+              imageClassName="object-contain"
+            />
             <p className="m-0 text-sm text-[#374151] leading-[1.6]"><span className="font-bold">Kalimat bantu:</span> Tuliskan alasan berdasarkan hasil pengamatan pada Tahap 1.</p>
           </div>
           <textarea

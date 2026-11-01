@@ -3,15 +3,21 @@ import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry"
 import NextStepButton from "@/app/belajar/_components/NextStepButton";
 import StepHeader from "@/app/belajar/_components/StepHeader";
 import BackLink from "@/app/belajar/_components/BackLink";
+import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
+import { getPageImage } from "@/lib/pageImages";
 
 export default async function Materi8Peta4Step6TemukanPolanya({
   materi,
   peta,
+  step = "6",
+  editFoto,
   initialAnswers,
 }: StepComponentProps) {
   const answers = initialAnswers ?? {};
   const getValue = (key: string) =>
     typeof answers[key] === "string" ? (answers[key] as string) : "";
+
+  const gambarKaca = await getPageImage("M8-P4-L6-1");
 
   return (
     <form action={submitStepAction} className="flex flex-col gap-8">
@@ -43,21 +49,47 @@ export default async function Materi8Peta4Step6TemukanPolanya({
           <div className="bg-white border border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-full py-2 px-5 text-sm font-bold text-[#2563EB]">
             Temukan Polanya!
           </div>
+        </div>
+
+        <div className="flex items-center gap-3">
+          <EditablePageImage
+            imageKey="M8-P4-L6-1"
+            materi={materi}
+            peta={peta}
+            step={step}
+            urutan="1"
+            src={gambarKaca}
+            alt="Kaca pembesar"
+            editable={editFoto}
+            containerClassName="relative w-14 h-14 flex-shrink-0 overflow-hidden"
+            imageClassName="object-contain"
+          />
           <span className="rounded-full bg-[#16A34A] text-white text-xs font-bold py-1.5 px-3.5">Ayo Menduga!</span>
         </div>
         <p className="m-0 text-sm text-[#4B5563] leading-[1.6]">
-          Gunakan pola yang kamu temukan pada tabel untuk menyusun dugaan kelompokmu.
+          Gunakan hasil eksplorasi dan perbandingan yang telah kamu lakukan untuk menemukan pola perubahan volume. Diskusikan bersama kelompokmu, kemudian susun dugaan matematis sementara tentang hubungan faktor skala (<span className="italic">k</span>) dan volume bangun ruang.
         </p>
 
         <div className="flex flex-col gap-3 bg-[#FEF9E7] border border-[#FDE68A] rounded-[20px] p-5">
           <label htmlFor="dugaan_pola" className="text-sm font-semibold text-[#78350F] leading-[1.6]">
-            Berdasarkan data yang telah kami kumpulkan, dugaan kami tentang hubungan antara faktor skala (<span className="italic">k</span>) dan perubahan volume bangun ruang sisi datar adalah:
+            Berdasarkan pola yang kami temukan dari hasil eksplorasi, dugaan kelompok kami tentang hubungan antara faktor skala (<span className="italic">k</span>) dan perubahan volume bangun ruang sisi datar adalah:
           </label>
           <textarea
             id="dugaan_pola"
             name="answers.dugaan_pola"
             defaultValue={getValue("dugaan_pola")}
             rows={5}
+            required
+            className="w-full rounded-xl border border-[#FDE68A] bg-white p-3 text-sm text-[#374151] leading-[1.6] focus:border-[#2563EB] focus:outline-none transition-colors resize-y"
+          />
+          <label htmlFor="alasan_dugaan_pola" className="text-sm font-semibold text-[#78350F] leading-[1.6]">
+            Alasan yang mendukung dugaan kami:
+          </label>
+          <textarea
+            id="alasan_dugaan_pola"
+            name="answers.alasan_dugaan_pola"
+            defaultValue={getValue("alasan_dugaan_pola")}
+            rows={3}
             required
             className="w-full rounded-xl border border-[#FDE68A] bg-white p-3 text-sm text-[#374151] leading-[1.6] focus:border-[#2563EB] focus:outline-none transition-colors resize-y"
           />

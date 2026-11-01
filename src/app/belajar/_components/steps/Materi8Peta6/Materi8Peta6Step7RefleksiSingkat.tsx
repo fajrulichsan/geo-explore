@@ -1,6 +1,7 @@
 import { submitStepAction } from "@/app/belajar/actions";
 import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
 import NextStepButton from "@/app/belajar/_components/NextStepButton";
+import FileSubmission from "@/components/FileSubmission";
 import StepHeader from "@/app/belajar/_components/StepHeader";
 import BackLink from "@/app/belajar/_components/BackLink";
 import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
@@ -52,19 +53,19 @@ export default async function Materi8Peta6Step7RefleksiSingkat({
           <div className="flex flex-col gap-3">
             <p className="m-0 text-sm text-[#4B5563]">Centang (✓) pernyataan yang sesuai.</p>
             <label className="flex items-start gap-3 rounded-xl border border-[#E5E7EB] px-4 py-3 text-sm text-[#374151] leading-[1.5] cursor-pointer has-[:checked]:border-[#2563EB] has-[:checked]:bg-[#EFF4FF]">
-              <input type="checkbox" name="answers.refleksi_memeriksa" value="ya" defaultChecked={isChecked("refleksi_memeriksa")} className="mt-0.5 accent-[#2563EB]" />
+              <input type="checkbox" name="answers.refleksi_memeriksa" value="ya" defaultChecked={isChecked("refleksi_memeriksa")} data-require-group="refleksi" data-require-min="3" className="mt-0.5 accent-[#2563EB]" />
               Saya dapat memeriksa kembali hasil perhitungan.
             </label>
             <label className="flex items-start gap-3 rounded-xl border border-[#E5E7EB] px-4 py-3 text-sm text-[#374151] leading-[1.5] cursor-pointer has-[:checked]:border-[#2563EB] has-[:checked]:bg-[#EFF4FF]">
-              <input type="checkbox" name="answers.refleksi_menjelaskan" value="ya" defaultChecked={isChecked("refleksi_menjelaskan")} className="mt-0.5 accent-[#2563EB]" />
+              <input type="checkbox" name="answers.refleksi_menjelaskan" value="ya" defaultChecked={isChecked("refleksi_menjelaskan")} data-require-group="refleksi" data-require-min="3" className="mt-0.5 accent-[#2563EB]" />
               Saya dapat menjelaskan hubungan faktor skala dan perubahan volume berdasarkan data.
             </label>
             <label className="flex items-start gap-3 rounded-xl border border-[#E5E7EB] px-4 py-3 text-sm text-[#374151] leading-[1.5] cursor-pointer has-[:checked]:border-[#2563EB] has-[:checked]:bg-[#EFF4FF]">
-              <input type="checkbox" name="answers.refleksi_memperbaiki" value="ya" defaultChecked={isChecked("refleksi_memperbaiki")} className="mt-0.5 accent-[#2563EB]" />
+              <input type="checkbox" name="answers.refleksi_memperbaiki" value="ya" defaultChecked={isChecked("refleksi_memperbaiki")} data-require-group="refleksi" data-require-min="3" className="mt-0.5 accent-[#2563EB]" />
               Saya bersedia memperbaiki jawaban jika ditemukan kesalahan.
             </label>
             <label className="flex items-start gap-3 rounded-xl border border-[#E5E7EB] px-4 py-3 text-sm text-[#374151] leading-[1.5] cursor-pointer has-[:checked]:border-[#2563EB] has-[:checked]:bg-[#EFF4FF]">
-              <input type="checkbox" name="answers.refleksi_yakin" value="ya" defaultChecked={isChecked("refleksi_yakin")} className="mt-0.5 accent-[#2563EB]" />
+              <input type="checkbox" name="answers.refleksi_yakin" value="ya" defaultChecked={isChecked("refleksi_yakin")} data-require-group="refleksi" data-require-min="3" className="mt-0.5 accent-[#2563EB]" />
               Saya yakin hubungan yang ditemukan sesuai berdasarkan hasil verifikasi.
             </label>
           </div>
@@ -132,9 +133,15 @@ export default async function Materi8Peta6Step7RefleksiSingkat({
         </div>
       </div>
 
+      <FileSubmission
+        materi={materi}
+        peta={peta}
+        defaultValue={typeof answers.file_hasil_kerja === "string" ? answers.file_hasil_kerja : undefined}
+      />
+
       <div className="flex flex-col-reverse sm:flex-row justify-between items-center gap-4">
         <BackLink href={`/belajar/${materi}/${peta}/6`} />
-        <NextStepButton variant="green" icon="check">Selesai</NextStepButton>
+        <NextStepButton variant="green" icon="check">Lanjut ke Tahap Ayo Menyimpulkan</NextStepButton>
       </div>
     </form>
   );

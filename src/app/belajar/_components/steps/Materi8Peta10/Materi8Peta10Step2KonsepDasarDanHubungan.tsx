@@ -16,9 +16,6 @@ export default async function Materi8Peta10Step2KonsepDasarDanHubungan({
 
       <div className="flex flex-col gap-4">
         <StepHeader materi={materi} currentStep={2} totalSteps={7} />
-        <div className="inline-flex items-center bg-[#FDF3C7] text-[#92400E] rounded-full py-1.5 px-3.5 text-xs font-bold tracking-[0.02em] w-fit">
-          Halaman 1 dari 2
-        </div>
         <div className="flex items-center gap-3.5">
           <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#2563EB" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
             <path d="M4 5a2 2 0 0 1 2-2h5v17H6a2 2 0 0 0-2 2z M20 5a2 2 0 0 0-2-2h-5v17h5a2 2 0 0 1 2 2z" />

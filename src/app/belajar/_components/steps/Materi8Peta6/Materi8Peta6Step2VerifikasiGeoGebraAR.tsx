@@ -231,17 +231,17 @@ export default async function Materi8Peta6Step2VerifikasiGeoGebraAR({
             Pertanyaan
           </h3>
           <div className="flex flex-col gap-2">
-            <p className="m-0 text-sm font-semibold text-[#111827] leading-[1.5]">1. Apakah hasil GeoGebra dan AR sesuai dengan dugaan kelompokmu?</p>
+            <p className="m-0 text-sm font-semibold text-[#111827] leading-[1.5]">1. Bandingkan dugaan kelompokmu dengan hasil verifikasi menggunakan GeoGebra 3D dan AR. Persamaan atau perbedaan apa yang kamu temukan? Jelaskan berdasarkan data yang diperoleh.</p>
             <textarea
             name="answers.hasil_sesuai_dugaan"
             defaultValue={getValue("hasil_sesuai_dugaan")}
             rows={3} required
-            aria-label="Apakah hasil GeoGebra dan AR sesuai dengan dugaan kelompokmu"
+            aria-label="Perbandingan dugaan kelompok dengan hasil verifikasi"
             className="w-full rounded-xl border border-[#E5E7EB] bg-white p-3 text-sm text-[#374151] focus:border-[#2563EB] focus:outline-none transition-colors resize-y"
           />
           </div>
           <div className="flex flex-col gap-2">
-            <p className="m-0 text-sm font-semibold text-[#111827] leading-[1.5]">2. Jika belum sesuai, bagian mana yang harus diperbaiki?</p>
+            <p className="m-0 text-sm font-semibold text-[#111827] leading-[1.5]">2. Berdasarkan hasil perbandingan tersebut, bagian mana dari dugaan kelompokmu yang perlu dipertahankan atau diperbaiki? Jelaskan alasan matematis yang mendukung keputusanmu.</p>
             <textarea
             name="answers.bagian_diperbaiki"
             defaultValue={getValue("bagian_diperbaiki")}

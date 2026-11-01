@@ -50,24 +50,24 @@ export default async function Materi8Peta3Step3RumuskanPermasalahan({
         <div className="bg-[#FEF9E7] border border-[#F5E3A0] rounded-[20px] p-5 sm:p-6 flex flex-col gap-3">
           <h3 className="m-0 text-sm font-extrabold text-[#1E3A8A]">Contoh pertanyaan:</h3>
           <label key="faktor_sama" className="flex items-start gap-3 rounded-xl border border-[#E5E7EB] bg-white px-4 py-3 text-sm text-[#374151] leading-[1.5] cursor-pointer has-[:checked]:border-[#2563EB] has-[:checked]:bg-[#EFF4FF]">
-            <input type="checkbox" name="answers.pertanyaan_faktor_sama" value="ya" defaultChecked={isChecked("pertanyaan_faktor_sama")} className="mt-0.5 accent-[#2563EB]" />
+            <input type="checkbox" name="answers.pertanyaan_faktor_sama" value="ya" defaultChecked={isChecked("pertanyaan_faktor_sama")} data-require-group="pertanyaan" data-require-min="3" className="mt-0.5 accent-[#2563EB]" />
             Apakah faktor perubahan volume setiap bangun sama?
           </label>
           <label key="hubungan_skala" className="flex items-start gap-3 rounded-xl border border-[#E5E7EB] bg-white px-4 py-3 text-sm text-[#374151] leading-[1.5] cursor-pointer has-[:checked]:border-[#2563EB] has-[:checked]:bg-[#EFF4FF]">
-            <input type="checkbox" name="answers.pertanyaan_hubungan_skala" value="ya" defaultChecked={isChecked("pertanyaan_hubungan_skala")} className="mt-0.5 accent-[#2563EB]" />
+            <input type="checkbox" name="answers.pertanyaan_hubungan_skala" value="ya" defaultChecked={isChecked("pertanyaan_hubungan_skala")} data-require-group="pertanyaan" data-require-min="3" className="mt-0.5 accent-[#2563EB]" />
             Bagaimana hubungan faktor skala dengan perubahan volume bangun ruang?
           </label>
           <label key="pola_sama" className="flex items-start gap-3 rounded-xl border border-[#E5E7EB] bg-white px-4 py-3 text-sm text-[#374151] leading-[1.5] cursor-pointer has-[:checked]:border-[#2563EB] has-[:checked]:bg-[#EFF4FF]">
-            <input type="checkbox" name="answers.pertanyaan_pola_sama" value="ya" defaultChecked={isChecked("pertanyaan_pola_sama")} className="mt-0.5 accent-[#2563EB]" />
+            <input type="checkbox" name="answers.pertanyaan_pola_sama" value="ya" defaultChecked={isChecked("pertanyaan_pola_sama")} data-require-group="pertanyaan" data-require-min="3" className="mt-0.5 accent-[#2563EB]" />
             Apakah kubus, balok, prisma, dan limas memiliki pola perubahan volume yang sama?
           </label>
           <label key="lebih_cepat" className="flex items-start gap-3 rounded-xl border border-[#E5E7EB] bg-white px-4 py-3 text-sm text-[#374151] leading-[1.5] cursor-pointer has-[:checked]:border-[#2563EB] has-[:checked]:bg-[#EFF4FF]">
-            <input type="checkbox" name="answers.pertanyaan_lebih_cepat" value="ya" defaultChecked={isChecked("pertanyaan_lebih_cepat")} className="mt-0.5 accent-[#2563EB]" />
+            <input type="checkbox" name="answers.pertanyaan_lebih_cepat" value="ya" defaultChecked={isChecked("pertanyaan_lebih_cepat")} data-require-group="pertanyaan" data-require-min="3" className="mt-0.5 accent-[#2563EB]" />
             Mengapa volume bertambah lebih cepat daripada ukuran panjang?
           </label>
           <div className="flex flex-col gap-2 rounded-xl border border-[#E5E7EB] bg-white px-4 py-3">
             <label className="flex items-center gap-3 text-sm text-[#374151]">
-              <input type="checkbox" name="answers.pertanyaan_lain_dipilih" value="ya" defaultChecked={isChecked("pertanyaan_lain_dipilih")} className="accent-[#2563EB]" />
+              <input type="checkbox" name="answers.pertanyaan_lain_dipilih" value="ya" defaultChecked={isChecked("pertanyaan_lain_dipilih")} data-require-group="pertanyaan" data-require-min="3" className="accent-[#2563EB]" />
               Pertanyaan lain:
             </label>
             <textarea

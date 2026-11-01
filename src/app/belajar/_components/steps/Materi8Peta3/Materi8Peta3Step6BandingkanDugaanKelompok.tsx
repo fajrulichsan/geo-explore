@@ -40,7 +40,22 @@ export default async function Materi8Peta3Step6BandingkanDugaanKelompok({
         </div>
       </div>
 
-      <div className="relative overflow-hidden rounded-[24px] bg-gradient-to-br from-[#1E3A8A] to-[#2563EB] p-6 sm:p-8 grid grid-cols-1 sm:grid-cols-[1fr_320px] gap-5 items-center">
+      <div className="rounded-[24px] overflow-hidden border border-[#E5E7EB]">
+        <EditablePageImage
+          imageKey="M8-P3-L6-1"
+          materi={materi}
+          peta={peta}
+          step={step}
+          urutan="1"
+          src={gambarHero}
+          alt="Tiga siswa berdiskusi dengan tabel hasil pengamatan Kelompok A dan Kelompok B"
+          editable={editFoto}
+          natural
+          containerClassName="relative w-full"
+        />
+      </div>
+
+      <div className="relative overflow-hidden rounded-[24px] bg-gradient-to-br from-[#1E3A8A] to-[#2563EB] p-6 sm:p-8">
         <div className="absolute -right-14 -top-16 w-56 h-56 rounded-full bg-white/10" />
         <div className="relative flex flex-col gap-2">
           <h2 className="m-0 text-lg font-extrabold text-white">Ingat!</h2>
@@ -54,18 +69,6 @@ export default async function Materi8Peta3Step6BandingkanDugaanKelompok({
             Apakah ada pola tertentu antara perubahan ukuran panjang dan perubahan volume? Simpan dugaanmu, karena pada tahap berikutnya kita akan membuktikannya dengan GeoGebra 3D dan <span className="italic">Augmented Reality</span> (AR).
           </p>
         </div>
-        <EditablePageImage
-          imageKey="M8-P3-L6-1"
-          materi={materi}
-          peta={peta}
-          step={step}
-          urutan="1"
-          src={gambarHero}
-          alt="Tiga siswa berdiskusi dengan tabel hasil pengamatan Kelompok A dan Kelompok B"
-          editable={editFoto}
-          natural
-          containerClassName="relative w-full overflow-hidden rounded-2xl bg-white"
-        />
       </div>
 
       <div className="flex flex-col gap-4">

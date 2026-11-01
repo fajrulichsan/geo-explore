@@ -1,6 +1,7 @@
 import { submitStepAction } from "@/app/belajar/actions";
 import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
 import NextStepButton from "@/app/belajar/_components/NextStepButton";
+import FileSubmission from "@/components/FileSubmission";
 import StepHeader from "@/app/belajar/_components/StepHeader";
 import BackLink from "@/app/belajar/_components/BackLink";
 import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
@@ -22,7 +23,9 @@ export default async function Materi8Peta8Step6PesanUntukDiriku({
   initialAnswers,
 }: StepComponentProps) {
   const answers = (initialAnswers ?? {}) as Record<string, string | undefined>;
-  const gambar = await getPageImage("M8-P8-L6-1");
+  const gambar = await Promise.all(
+    (["M8-P8-L6-1", "M8-P8-L6-2", "M8-P8-L6-3"] as const).map((k) => getPageImage(k)),
+  );
 
   return (
     <form action={submitStepAction} className="flex flex-col gap-8">
@@ -32,9 +35,6 @@ export default async function Materi8Peta8Step6PesanUntukDiriku({
 
       <div className="flex flex-col gap-4">
         <StepHeader materi={materi} currentStep={6} totalSteps={6} />
-        <div className="inline-flex items-center bg-[#FDF3C7] text-[#92400E] rounded-full py-1.5 px-3.5 text-xs font-bold tracking-[0.02em] w-fit">
-          Setelah Tahap 6 – Ayo Menyimpulkan
-        </div>
         <div className="flex items-center gap-3.5">
           <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#2563EB" strokeWidth="2.4" strokeLinejoin="round">
             <path d="M12 3l2.6 5.6 6.1.7-4.5 4.2 1.2 6L12 16.6 6.6 19.5l1.2-6L3.3 9.3l6.1-.7z" />
@@ -82,7 +82,7 @@ export default async function Materi8Peta8Step6PesanUntukDiriku({
           peta={peta}
           step={step}
           urutan="1"
-          src={gambar}
+          src={gambar[0]}
           alt="Siswi mengepalkan tangan dikelilingi bintang"
           editable={editFoto}
           natural
@@ -92,11 +92,25 @@ export default async function Materi8Peta8Step6PesanUntukDiriku({
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div className="bg-[#F0FDF4] border border-[#BBF7D0] rounded-[20px] p-5 flex flex-col gap-3">
-            <h3 className="m-0 text-base font-extrabold text-[#166534]">Target Belajarku</h3>
+            <div className="flex items-center gap-3">
+              <EditablePageImage
+                imageKey="M8-P8-L6-2"
+                materi={materi}
+                peta={peta}
+                step={step}
+                urutan="2"
+                src={gambar[1]}
+                alt="Ikon target belajar"
+                editable={editFoto}
+                containerClassName="relative w-12 h-12 flex-shrink-0 overflow-hidden"
+                imageClassName="object-contain"
+              />
+              <h3 className="m-0 text-base font-extrabold text-[#166534]">Target Belajarku</h3>
+            </div>
             <p className="m-0 text-sm text-[#374151]">Pilih satu atau dua kemampuan yang paling ingin kamu tingkatkan.</p>
             {target.map((t) => (
               <label key={t.key} className="flex items-start gap-2.5 text-sm text-[#374151] leading-[1.5] cursor-pointer">
-                <input type="checkbox" name={`answers.${t.key}`} value="ya" defaultChecked={answers[t.key] === "ya"} className="mt-0.5 accent-[#16A34A]" />
+                <input type="checkbox" name={`answers.${t.key}`} value="ya" defaultChecked={answers[t.key] === "ya"} data-require-group="target" data-require-min="1" className="mt-0.5 accent-[#16A34A]" />
                 {t.teks}
               </label>
             ))}
@@ -105,20 +119,40 @@ export default async function Materi8Peta8Step6PesanUntukDiriku({
               <input type="text" name="answers.target_lainnya" defaultValue={answers.target_lainnya ?? ""} className="flex-1 min-w-0 border-b border-dashed border-[#9CA3AF] bg-transparent px-1 py-0.5 outline-none focus:border-[#16A34A]" />
             </label>
           </div>
-          <div className="bg-[#EFF4FF] border border-[#DBEAFE] rounded-[20px] p-5 flex flex-col gap-3 justify-center">
+          <div className="bg-[#EFF4FF] border border-[#DBEAFE] rounded-[20px] p-5 grid grid-cols-[1fr_96px] gap-3 items-center">
+            <div className="flex flex-col gap-3 justify-center">
             <h3 className="m-0 text-base font-extrabold text-[#1E3A8A]">Ingat!</h3>
             <p className="m-0 text-sm text-[#374151] leading-[1.6]">Belajar matematika bukan sekadar menghafal bahwa</p>
             <div className="self-start bg-[#FEF9E7] border border-[#F5E3A0] rounded-xl px-4 py-2 text-base font-bold text-[#111827]">
               V<sub>hasil skala</sub> = k³ V<sub>awal</sub>
             </div>
             <p className="m-0 text-sm text-[#374151] leading-[1.6]">tetapi memahami mengapa setiap ukuran panjang yang diperbesar atau diperkecil dengan faktor skala k menyebabkan volume berubah sebesar faktor k³.</p>
+            </div>
+            <EditablePageImage
+              imageKey="M8-P8-L6-3"
+              materi={materi}
+              peta={peta}
+              step={step}
+              urutan="3"
+              src={gambar[2]}
+              alt="Ilustrasi kotak Ingat"
+              editable={editFoto}
+              natural
+              containerClassName="relative w-full overflow-hidden"
+            />
           </div>
         </div>
       </div>
 
+      <FileSubmission
+        materi={materi}
+        peta={peta}
+        defaultValue={answers.file_hasil_kerja}
+      />
+
       <div className="flex flex-col-reverse sm:flex-row justify-between items-center gap-4">
         <BackLink href={`/belajar/${materi}/${peta}/5`} />
-        <NextStepButton variant="green" icon="check">Selesai</NextStepButton>
+        <NextStepButton variant="green" icon="check">Lanjut ke Tantangan Terbuka</NextStepButton>
       </div>
     </form>
   );

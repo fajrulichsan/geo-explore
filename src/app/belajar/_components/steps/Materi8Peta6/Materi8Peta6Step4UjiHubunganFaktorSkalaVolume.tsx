@@ -51,13 +51,7 @@ export default async function Materi8Peta6Step4UjiHubunganFaktorSkalaVolume({
             Uji Hubungan Faktor Skala dan Volume
           </div>
         </div>
-        <p className="m-0 text-sm text-[#4B5563] leading-[1.6]">Lengkapilah tabel berikut.</p>
-        <div className="flex items-start gap-2.5 bg-[#FEF9E7] border border-[#F5E3A0] rounded-xl px-4 py-3">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mt-0.5 flex-shrink-0">
-            <path d="M9 18h6 M10 21h4 M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z" />
-          </svg>
-          <p className="m-0 text-sm text-[#92400E] leading-[1.5]">Gunakan hasil verifikasi GeoGebra dan AR untuk memeriksa apakah hubungan tersebut selalu berlaku.</p>
-        </div>
+        <p className="m-0 text-sm text-[#4B5563] leading-[1.6]">Lengkapilah tabel berikut berdasarkan hasil eksplorasi menggunakan GeoGebra 3D dan AR. Untuk setiap faktor skala, catat volume awal dan volume setelah skala, kemudian bandingkan hasilnya dengan dugaan hubungan matematis yang telah kelompokmu susun. Tentukan kesesuaiannya berdasarkan data yang diperoleh.</p>
         <div className="bg-white border border-[#BBF7D0] rounded-[20px] overflow-x-auto shadow-[0_1px_2px_rgba(0,0,0,0.04)]">
           <table className="w-full min-w-[620px] border-collapse">
             <thead>
@@ -65,7 +59,7 @@ export default async function Materi8Peta6Step4UjiHubunganFaktorSkalaVolume({
                 <th className="p-3 font-bold">Faktor Skala (k)</th>
                 <th className="p-3 font-bold">Volume Awal (cm³)</th>
                 <th className="p-3 font-bold">Volume Baru (cm³)</th>
-                <th className="p-3 font-bold">Apakah V<sub>baru</sub> = k³ × V<sub>awal</sub> sesuai dengan hasil verifikasi?</th>
+                <th className="p-3 font-bold">Apakah hasil verifikasi sesuai dengan dugaan kelompokmu?</th>
               </tr>
             </thead>
             <tbody>
@@ -217,7 +211,7 @@ export default async function Materi8Peta6Step4UjiHubunganFaktorSkalaVolume({
             <span className="w-6 h-6 rounded-full bg-[#16A34A] text-white flex items-center justify-center text-xs">?</span>
             Pertanyaan
           </h3>
-          <p className="m-0 text-sm font-semibold text-[#111827] leading-[1.5]">Apa yang kamu temukan setelah melakukan pemeriksaan ini?</p>
+          <p className="m-0 text-sm font-semibold text-[#111827] leading-[1.5]">Berdasarkan hasil pemeriksaan pada tabel, bagaimana kesesuaian antara dugaan hubungan faktor skala dan perubahan volume dengan hasil verifikasi yang kamu peroleh? Jelaskan menggunakan bukti matematis dari beberapa nilai faktor skala.</p>
           <textarea
             name="answers.temuan_pemeriksaan"
             defaultValue={getValue("temuan_pemeriksaan")}

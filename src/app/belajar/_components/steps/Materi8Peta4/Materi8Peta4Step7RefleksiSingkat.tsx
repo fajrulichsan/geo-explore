@@ -1,6 +1,7 @@
 import { submitStepAction } from "@/app/belajar/actions";
 import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
 import NextStepButton from "@/app/belajar/_components/NextStepButton";
+import FileSubmission from "@/components/FileSubmission";
 import StepHeader from "@/app/belajar/_components/StepHeader";
 import BackLink from "@/app/belajar/_components/BackLink";
 import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
@@ -58,7 +59,7 @@ export default async function Materi8Peta4Step7RefleksiSingkat({
           </div>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-[1fr_150px] gap-5 items-end bg-white border border-[#E5E7EB] rounded-[20px] p-5 sm:p-6 shadow-[0_1px_2px_rgba(0,0,0,0.04)]">
+        <div className="grid grid-cols-1 sm:grid-cols-[1fr_230px] gap-5 items-end bg-white border border-[#E5E7EB] rounded-[20px] p-5 sm:p-6 shadow-[0_1px_2px_rgba(0,0,0,0.04)]">
           <div className="flex flex-col gap-3">
             <p className="m-0 text-sm text-[#4B5563]">Centang (✓) sesuai dengan pengalamanmu selama kegiatan ini.</p>
             {REFLEKSI.map((r) => (
@@ -66,7 +67,7 @@ export default async function Materi8Peta4Step7RefleksiSingkat({
                 key={r.key}
                 className="flex items-center gap-3 rounded-xl border border-[#E5E7EB] px-4 py-3 text-sm text-[#374151] leading-[1.5] cursor-pointer has-[:checked]:border-[#2563EB] has-[:checked]:bg-[#EFF4FF]"
               >
-                <input type="checkbox" name={`answers.${r.key}`} value="ya" defaultChecked={isChecked(r.key)} className="accent-[#2563EB]" />
+                <input type="checkbox" name={`answers.${r.key}`} value="ya" defaultChecked={isChecked(r.key)} data-require-group="refleksi" data-require-min="4" className="accent-[#2563EB]" />
                 {r.text}
               </label>
             ))}
@@ -80,15 +81,21 @@ export default async function Materi8Peta4Step7RefleksiSingkat({
             src={gambar1}
             alt="Siswi mengepalkan tangan dengan gelembung ucapan: Kerja bagus! Terus bereksplorasi!"
             editable={editFoto}
-            natural
-            containerClassName="relative w-full max-w-[150px] justify-self-center overflow-hidden rounded-2xl bg-white"
+            containerClassName="relative w-full h-72 sm:h-[24rem] justify-self-center overflow-hidden"
+            imageClassName="object-contain object-bottom"
           />
         </div>
       </div>
 
+      <FileSubmission
+        materi={materi}
+        peta={peta}
+        defaultValue={typeof answers.file_hasil_kerja === "string" ? answers.file_hasil_kerja : undefined}
+      />
+
       <div className="flex flex-col-reverse sm:flex-row justify-between items-center gap-4">
         <BackLink href={`/belajar/${materi}/${peta}/6`} />
-        <NextStepButton variant="green" icon="check">Selesai</NextStepButton>
+        <NextStepButton variant="green" icon="check">Lanjut ke Tahap Ayo Mengolah Informasi</NextStepButton>
       </div>
     </form>
   );

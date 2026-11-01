@@ -5,11 +5,11 @@ import StepHeader from "@/app/belajar/_components/StepHeader";
 import BackLink from "@/app/belajar/_components/BackLink";
 
 const pertanyaan = [
-  { name: "beda_utama", teks: "Apa perbedaan utama antara kedua bangun pada setiap pasangan?" },
-  { name: "bentuk_berubah", teks: "Apakah bentuk bangunnya berubah?" },
-  { name: "perubahan_ukuran", teks: "Bagaimana perubahan setiap ukuran panjang pada bangun?" },
-  { name: "volume_berubah", teks: "Menurutmu, apakah volume bangun juga berubah?" },
-  { name: "volume_faktor_skala", teks: "Apakah volume bertambah sebesar faktor skala?" },
+  { name: "beda_utama", teks: "Perbedaan apa saja yang dapat kamu temukan antara bangun awal dan bangun hasil pembesaran pada setiap pasangan? Jelaskan berdasarkan hasil pengamatanmu." },
+  { name: "bentuk_berubah", teks: "Bagaimana kamu menjelaskan hubungan bentuk bangun awal dengan bangun hasil pembesaran? Gunakan ciri-ciri bangun untuk mendukung jawabanmu." },
+  { name: "perubahan_ukuran", teks: "Temukan beberapa hubungan antara ukuran panjang bangun awal dan bangun hasil pembesaran. Jelaskan bagaimana kamu memperoleh hubungan tersebut." },
+  { name: "volume_berubah", teks: "Bagaimana dugaanmu tentang perubahan volume bangun setelah diperbesar? Jelaskan dugaanmu menggunakan lebih dari satu cara atau alasan matematis." },
+  { name: "volume_faktor_skala", teks: "Berdasarkan hasil pengamatanmu, apa saja yang perlu diperhatikan untuk memperkirakan perubahan volume bangun setelah diperbesar? Jelaskan alasanmu." },
 ];
 
 export default async function Materi8Peta2Step3PertanyaanPengamatan({

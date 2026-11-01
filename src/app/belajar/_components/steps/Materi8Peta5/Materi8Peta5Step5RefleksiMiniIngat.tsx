@@ -17,7 +17,11 @@ export default async function Materi8Peta5Step5RefleksiMiniIngat({
   const getValue = (key: string) =>
     typeof answers[key] === "string" ? (answers[key] as string) : "";
 
-  const gambarSiswa = await getPageImage("M8-P5-L5-1");
+  const [gambarSiswa, gambarLampu, gambarClipboard] = await Promise.all([
+    getPageImage("M8-P5-L5-1"),
+    getPageImage("M8-P5-L5-2"),
+    getPageImage("M8-P5-L5-3"),
+  ]);
 
   return (
     <form action={submitStepAction} className="flex flex-col gap-8">
@@ -70,14 +74,42 @@ export default async function Materi8Peta5Step5RefleksiMiniIngat({
             />
           </div>
         </div>
-        <div className="bg-[#FEF9E7] border border-[#F5E3A0] rounded-[20px] p-5 sm:p-6 flex flex-col gap-1.5">
+        <div className="bg-[#FEF9E7] border border-[#F5E3A0] rounded-[20px] p-5 sm:p-6 flex items-start gap-4">
+          <EditablePageImage
+            imageKey="M8-P5-L5-2"
+            materi={materi}
+            peta={peta}
+            step={step}
+            urutan="2"
+            src={gambarLampu}
+            alt="Bola lampu"
+            editable={editFoto}
+            containerClassName="relative w-14 h-14 flex-shrink-0 overflow-hidden"
+            imageClassName="object-contain"
+          />
+          <div className="flex flex-col gap-1.5">
           <h3 className="m-0 text-sm font-extrabold text-[#92400E]">Ingat!</h3>
           <p className="m-0 text-sm text-[#78350F] leading-[1.6]">Jangan langsung menggunakan rumus. Temukan terlebih dahulu pola hubungan berdasarkan data hasil pengamatanmu.</p>
+          </div>
         </div>
-        <div className="bg-[#EFF4FF] border border-[#BFDBFE] rounded-[20px] p-5 sm:p-6 flex flex-col gap-1.5">
+        <div className="bg-[#EFF4FF] border border-[#BFDBFE] rounded-[20px] p-5 sm:p-6 flex items-start gap-4">
+          <EditablePageImage
+            imageKey="M8-P5-L5-3"
+            materi={materi}
+            peta={peta}
+            step={step}
+            urutan="3"
+            src={gambarClipboard}
+            alt="Clipboard catatan"
+            editable={editFoto}
+            containerClassName="relative w-14 h-16 flex-shrink-0 overflow-hidden"
+            imageClassName="object-contain"
+          />
+          <div className="flex flex-col gap-1.5">
           <h3 className="m-0 text-sm font-extrabold text-[#1E3A8A]">Catatan:</h3>
           <p className="m-0 text-sm text-[#1E40AF] leading-[1.6]">Pola dan data yang kamu olah akan menjadi dasar penting untuk menyusun hubungan matematis sementara sebelum dilakukan pembuktian pada tahap berikutnya!</p>
           <p className="m-0 text-xs font-bold text-[#2563EB]">Data yang baik menghasilkan dugaan yang kuat!</p>
+          </div>
         </div>
       </div>
 

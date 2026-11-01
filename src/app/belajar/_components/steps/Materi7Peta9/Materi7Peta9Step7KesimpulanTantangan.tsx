@@ -115,7 +115,7 @@ export default async function Materi7Peta9Step7KesimpulanTantangan({
         defaultValue={typeof fileHasilKerja === "string" ? fileHasilKerja : undefined}
       />
 
-      <StepFooter materi={materi} peta={peta} step={STEP} final="Lanjut ke Quiz" />
+      <StepFooter materi={materi} peta={peta} step={STEP} />
     </form>
   );
 }

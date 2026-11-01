@@ -1,6 +1,7 @@
 import { submitStepAction } from "@/app/belajar/actions";
 import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
 import NextStepButton from "@/app/belajar/_components/NextStepButton";
+import FileSubmission from "@/components/FileSubmission";
 import StepHeader from "@/app/belajar/_components/StepHeader";
 import BackLink from "@/app/belajar/_components/BackLink";
 import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
@@ -66,6 +67,8 @@ export default async function Materi8Peta2Step8RefleksiSingkat({
                   name={`answers.refleksi_${r.value}`}
                   value="ya"
                   defaultChecked={getValue(`refleksi_${r.value}`) === "ya"}
+                  data-require-group="refleksi"
+                  data-require-min="2"
                   className="mt-0.5 accent-[#2563EB]"
                 />
                 {r.label}
@@ -95,9 +98,15 @@ export default async function Materi8Peta2Step8RefleksiSingkat({
         </div>
       </div>
 
+      <FileSubmission
+        materi={materi}
+        peta={peta}
+        defaultValue={getValue("file_hasil_kerja") || undefined}
+      />
+
       <div className="flex flex-col-reverse sm:flex-row justify-between items-center gap-4">
         <BackLink href={`/belajar/${materi}/${peta}/7`} />
-        <NextStepButton variant="green" icon="check">Selesai</NextStepButton>
+        <NextStepButton variant="green" icon="check">Lanjut ke Tahap Ayo Berdiskusi</NextStepButton>
       </div>
     </form>
   );

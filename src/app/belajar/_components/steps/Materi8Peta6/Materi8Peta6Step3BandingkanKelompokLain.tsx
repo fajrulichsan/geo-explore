@@ -3,15 +3,21 @@ import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry"
 import NextStepButton from "@/app/belajar/_components/NextStepButton";
 import StepHeader from "@/app/belajar/_components/StepHeader";
 import BackLink from "@/app/belajar/_components/BackLink";
+import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
+import { getPageImage } from "@/lib/pageImages";
 
 export default async function Materi8Peta6Step3BandingkanKelompokLain({
   materi,
   peta,
+  step = "3",
+  editFoto,
   initialAnswers,
 }: StepComponentProps) {
   const answers = initialAnswers ?? {};
   const getValue = (key: string) =>
     typeof answers[key] === "string" ? (answers[key] as string) : "";
+
+  const gambarLampu = await getPageImage("M8-P6-L3-1");
 
   return (
     <form action={submitStepAction} className="flex flex-col gap-8">
@@ -83,9 +89,18 @@ export default async function Materi8Peta6Step3BandingkanKelompokLain({
         </div>
 
         <div className="bg-[#FEF9E7] border border-[#F5E3A0] rounded-[20px] p-5 sm:p-6 flex items-center gap-4">
-          <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="flex-shrink-0">
-            <path d="M9 18h6 M10 21h4 M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z" />
-          </svg>
+          <EditablePageImage
+            imageKey="M8-P6-L3-1"
+            materi={materi}
+            peta={peta}
+            step={step}
+            urutan="1"
+            src={gambarLampu}
+            alt="Bola lampu"
+            editable={editFoto}
+            containerClassName="relative w-16 h-16 flex-shrink-0 overflow-hidden"
+            imageClassName="object-contain"
+          />
           <div className="flex flex-col gap-1.5">
             <h3 className="m-0 text-base font-extrabold text-[#92400E]">Ingat!</h3>
             <p className="m-0 text-sm text-[#374151] leading-[1.6]">Jika terdapat perbedaan hasil, telusuri kembali:</p>
