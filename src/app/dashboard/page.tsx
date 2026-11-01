@@ -107,7 +107,7 @@ export default async function DashboardPage({
             </div>
             <div className="relative w-48 h-32 sm:w-64 sm:h-44 md:w-80 md:h-56 flex-shrink-0">
               <Image
-                src="/images/materi-1/maskot-ayo-lanjutkan.png"
+                src="/images/materi-1/maskot-ayo-lanjutkan-2.png"
                 alt="Maskot siswi bersemangat membawa buku"
                 fill
                 sizes="(min-width: 768px) 320px, 256px"
@@ -176,7 +176,7 @@ export default async function DashboardPage({
                     Selesai
                   </div>
                 )}
-                <div className={`h-32 relative overflow-hidden flex items-center justify-center ${item.status === "locked" ? "bg-slate-200" : "bg-surface"}`}>
+                <div className={`aspect-video relative overflow-hidden flex items-center justify-center ${item.status === "locked" ? "bg-slate-200" : "bg-surface"}`}>
                   {item.status === "locked" ? (
                     <span className="material-symbols-outlined text-4xl text-slate-500">lock</span>
                   ) : (

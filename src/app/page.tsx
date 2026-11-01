@@ -120,7 +120,7 @@ export default async function Home(props: PageProps<"/">) {
             <span className="text-primary font-bold italic">GeoGebra</span> dan{" "}
             <span className="text-primary font-bold italic">Augmented Reality</span>
             <br />
-            dalam <span className="text-primary font-bold italic">Discovery Learning</span>
+            dalam <span className="text-primary font-bold italic">Discovery Learning Model</span>
           </p>
 
           <div className="flex flex-col sm:flex-row items-center gap-4">

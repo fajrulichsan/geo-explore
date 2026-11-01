@@ -2111,10 +2111,18 @@ const DEFAULT_IMAGES: Record<PageImageKey, string> = {
  * instead of each re-fetching the whole table.
  */
 export const getPageImages = cache(async (): Promise<Record<PageImageKey, string>> => {
-  const { data } = await supabase.from("page_images").select("nama, url");
   const images = { ...DEFAULT_IMAGES };
-  for (const row of data ?? []) {
-    if (row.nama in images) images[row.nama as PageImageKey] = row.url;
+  const pageSize = 1000;
+  for (let from = 0; ; from += pageSize) {
+    const { data } = await supabase
+      .from("page_images")
+      .select("nama, url")
+      .order("nama")
+      .range(from, from + pageSize - 1);
+    for (const row of data ?? []) {
+      if (row.nama in images) images[row.nama as PageImageKey] = row.url;
+    }
+    if (!data || data.length < pageSize) break;
   }
   return images;
 });
