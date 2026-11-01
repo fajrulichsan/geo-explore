@@ -19,9 +19,6 @@ export function StepTitle({ materi, step }: { materi: string; step: number }) {
             <path d="M9 9h6M9 12h4" />
           </svg>
           <h1 className="m-0 text-2xl sm:text-[32px] font-extrabold text-[#111827]">Rangkuman</h1>
-          <span className="rounded-full bg-[#1E3A8A] px-3.5 py-1 text-xs font-bold text-white">
-            Halaman {step} dari {TOTAL_STEPS}
-          </span>
         </div>
         <p className="m-0 text-sm font-semibold text-[#2563EB]">Merangkum Konsep Volume Limas</p>
       </div>
@@ -117,22 +114,37 @@ export function ArrowDown() {
   );
 }
 
-export function HebatBanner({ children, nextTitle }: { children: ReactNode; nextTitle: ReactNode }) {
+export function HebatBanner({
+  children,
+  nextTitle,
+  pialaImage,
+  lampuImage,
+}: {
+  children: ReactNode;
+  nextTitle: ReactNode;
+  pialaImage?: ReactNode;
+  lampuImage?: ReactNode;
+}) {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
       <div className="bg-[#FEF9E7] border border-[#FDE68A] rounded-[20px] px-5 py-4 flex items-start gap-4">
-        <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="#D97706" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="flex-shrink-0" aria-hidden>
-          <path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0z" />
-          <path d="M7 6H4a3 3 0 0 0 3 5M17 6h3a3 3 0 0 1-3 5" />
-        </svg>
+        {pialaImage ?? (
+          <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="#D97706" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="flex-shrink-0" aria-hidden>
+            <path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0z" />
+            <path d="M7 6H4a3 3 0 0 0 3 5M17 6h3a3 3 0 0 1-3 5" />
+          </svg>
+        )}
         <div className="text-sm text-[#92400E] leading-[1.6]">
           <span className="block font-extrabold text-xl mb-1">Hebat!</span>
           {children}
         </div>
       </div>
-      <div className="bg-[#EFF4FF] border border-[#BFDBFE] rounded-[20px] px-5 py-4 text-sm text-[#1E3A8A] leading-[1.6]">
-        <span className="block font-extrabold text-xl mb-1 text-[#2563EB]">Selanjutnya</span>
-        {nextTitle}
+      <div className="bg-[#EFF4FF] border border-[#BFDBFE] rounded-[20px] px-5 py-4 flex items-start gap-4">
+        {lampuImage}
+        <div className="text-sm text-[#1E3A8A] leading-[1.6]">
+          <span className="block font-extrabold text-xl mb-1 text-[#2563EB]">Selanjutnya</span>
+          {nextTitle}
+        </div>
       </div>
     </div>
   );
@@ -147,12 +159,12 @@ export function StepFooter({
   materi: string;
   peta: string;
   step: number;
-  final?: boolean;
+  final?: string;
 }) {
   return (
     <div className="flex flex-col-reverse sm:flex-row justify-between items-center gap-4">
       {step > 1 ? <BackLink href={`/belajar/${materi}/${peta}/${step - 1}`} /> : <span />}
-      {final ? <NextStepButton variant="green" icon="check">Selesai</NextStepButton> : <NextStepButton />}
+      {final ? <NextStepButton variant="green" icon="check">{final}</NextStepButton> : <NextStepButton />}
     </div>
   );
 }

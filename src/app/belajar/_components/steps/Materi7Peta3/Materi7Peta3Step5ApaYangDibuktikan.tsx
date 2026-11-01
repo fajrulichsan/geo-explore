@@ -19,10 +19,10 @@ export default async function Materi7Peta3Step5ApaYangDibuktikan({
     <form action={submitStepAction} className="flex flex-col gap-8">
       <input type="hidden" name="materi" value={materi} />
       <input type="hidden" name="peta" value={peta} />
-      <input type="hidden" name="step" value="5" />
+      <input type="hidden" name="step" value="4" />
 
       <div className="flex flex-col gap-4">
-        <StepHeader materi={materi} currentStep={5} totalSteps={6} />
+        <StepHeader materi={materi} currentStep={4} totalSteps={5} />
         <div className="inline-flex items-center bg-[#FDF3C7] text-[#92400E] rounded-full py-1.5 px-3.5 text-xs font-bold tracking-[0.02em] w-fit">
           Tahap 2 dari 6
         </div>
@@ -42,7 +42,7 @@ export default async function Materi7Peta3Step5ApaYangDibuktikan({
       <div className="flex flex-col gap-4">
         <div className="flex items-center gap-3">
           <div className="w-[34px] h-[34px] rounded-full bg-[#2563EB] text-white flex items-center justify-center font-bold text-[15px] flex-shrink-0">
-            H
+            F
           </div>
           <div className="bg-white border border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-full py-2 px-5 text-sm font-bold text-[#2563EB]">
             Apa yang Akan Dibuktikan?
@@ -96,7 +96,7 @@ export default async function Materi7Peta3Step5ApaYangDibuktikan({
       </div>
 
       <div className="flex flex-col-reverse sm:flex-row justify-between items-center gap-4">
-        <BackLink href={`/belajar/${materi}/${peta}/4`} />
+        <BackLink href={`/belajar/${materi}/${peta}/3`} />
         <NextStepButton />
       </div>
     </form>

@@ -47,7 +47,7 @@ export default async function Materi7Peta6Step4RefleksiHalaman2({
       <div className="flex flex-col gap-4">
         <SectionTitle letter="E" title="Refleksi Singkat" color="amber" />
         <p className="m-0 text-sm text-[#4B5563]">Beri tanda centang pada pernyataan yang sesuai dengan dirimu.</p>
-        <div className="grid grid-cols-1 sm:grid-cols-[1fr_190px] gap-5 items-end">
+        <div className="grid grid-cols-1 sm:grid-cols-[1fr_190px] gap-5 items-stretch">
           <div className={`${cardClass} flex flex-col gap-3`}>
             {refleksi.map((r) => (
               <CheckItem key={r.key} name={r.key} label={r.label} checked={getChecked(r.key)} />
@@ -63,7 +63,7 @@ export default async function Materi7Peta6Step4RefleksiHalaman2({
             alt="Maskot perempuan: Setiap data membantu kita menuju kesimpulan yang lebih kuat!"
             editable={editFoto}
             imageClassName="object-contain"
-            containerClassName="relative w-40 sm:w-full aspect-[379/601] mx-auto"
+            containerClassName="relative w-40 h-56 sm:w-full sm:h-full sm:min-h-56 mx-auto"
           />
         </div>
       </div>
@@ -71,7 +71,7 @@ export default async function Materi7Peta6Step4RefleksiHalaman2({
       <div className="flex flex-col gap-4">
         <SectionTitle letter="F" title="Persiapan Halaman 2" color="green" />
         <p className="m-0 text-sm text-[#4B5563]">Pada halaman berikutnya, kamu akan:</p>
-        <div className="grid grid-cols-1 sm:grid-cols-[1fr_170px] gap-5 items-end">
+        <div className="grid grid-cols-1 sm:grid-cols-[1fr_170px] gap-5 items-stretch">
           <div className="flex flex-col gap-4">
             <div className={`${cardClass} flex flex-col gap-3`}>
               {persiapan.map((p, i) => (
@@ -92,7 +92,7 @@ export default async function Materi7Peta6Step4RefleksiHalaman2({
             alt="Maskot laki-laki dengan tangan terkepal semangat"
             editable={editFoto}
             imageClassName="object-contain"
-            containerClassName="relative w-36 sm:w-full aspect-[592/610] mx-auto"
+            containerClassName="relative w-40 h-56 sm:w-full sm:h-full sm:min-h-56 mx-auto"
           />
         </div>
       </div>

@@ -59,7 +59,7 @@ const fakta = [
 export default async function Materi6Peta2Step6RefleksiTahukahKamu({
   materi,
   peta,
-  step = "6",
+  step = "7",
   editFoto,
   initialAnswers,
 }: StepComponentProps) {
@@ -75,12 +75,12 @@ export default async function Materi6Peta2Step6RefleksiTahukahKamu({
     <form action={submitStepAction} className="flex flex-col gap-8">
       <input type="hidden" name="materi" value={materi} />
       <input type="hidden" name="peta" value={peta} />
-      <input type="hidden" name="step" value="6" />
+      <input type="hidden" name="step" value="7" />
 
       <div className="flex flex-col gap-4">
-        <StepHeader materi={materi} currentStep={6} totalSteps={7} />
+        <StepHeader materi={materi} currentStep={7} totalSteps={8} />
         <div className="inline-flex items-center bg-[#FDF3C7] text-[#92400E] rounded-full py-1.5 px-3.5 text-xs font-bold tracking-[0.02em] w-fit">
-          Tahap 1
+          Tahap 1 dari 6
         </div>
         <div className="flex items-center gap-3.5">
           <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#2563EB" strokeWidth="2.4">
@@ -192,7 +192,7 @@ export default async function Materi6Peta2Step6RefleksiTahukahKamu({
       </div>
 
       <div className="flex flex-col-reverse sm:flex-row justify-between items-center gap-4">
-        <BackLink href={`/belajar/${materi}/${peta}/5`} />
+        <BackLink href={`/belajar/${materi}/${peta}/6`} />
         <NextStepButton />
       </div>
     </form>

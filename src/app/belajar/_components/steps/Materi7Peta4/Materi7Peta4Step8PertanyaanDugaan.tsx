@@ -47,7 +47,7 @@ export default async function Materi7Peta4Step8PertanyaanDugaan({
 
       <div className="flex flex-col gap-4">
         <SectionTitle letter="N" title="Pertanyaan Eksplorasi" />
-        <div className="grid grid-cols-1 sm:grid-cols-[1fr_180px] gap-5 items-end">
+        <div className="grid grid-cols-1 sm:grid-cols-[1fr_180px] gap-5 items-stretch">
           <div className={`${cardClass} flex flex-col gap-4`}>
             {pertanyaan.map((q, i) => (
               <NumberedQuestion key={q} n={i + 1}>
@@ -65,7 +65,7 @@ export default async function Materi7Peta4Step8PertanyaanDugaan({
             alt="Maskot siswa laki-laki berpikir dengan tanda tanya"
             editable={editFoto}
             imageClassName="object-contain"
-            containerClassName="relative w-32 h-40 sm:w-full sm:h-48 mx-auto"
+            containerClassName="relative w-32 h-48 sm:w-full sm:h-full sm:min-h-48 mx-auto"
           />
         </div>
       </div>

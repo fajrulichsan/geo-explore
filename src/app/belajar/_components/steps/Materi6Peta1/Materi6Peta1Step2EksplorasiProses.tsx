@@ -4,6 +4,7 @@ import NextStepButton from "@/app/belajar/_components/NextStepButton";
 import StepHeader from "@/app/belajar/_components/StepHeader";
 import BackLink from "@/app/belajar/_components/BackLink";
 import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
+import QrLink from "@/app/belajar/_components/QrLink";
 import { getPageImage } from "@/lib/pageImages";
 
 const tujuanPembelajaran = [
@@ -43,9 +44,9 @@ export default async function Materi6Peta1Step2EksplorasiProses({
   ] = await Promise.all([
     getPageImage("M6-P1-L2-1"),
     getPageImage("M6-P1-L2-2"),
-    getPageImage("M6-P1-L2-3"),
+    getPageImage("qr-geogebra"),
     getPageImage("M6-P1-L2-4"),
-    getPageImage("M6-P1-L2-5"),
+    getPageImage("qr-ar"),
     getPageImage("M6-P1-L2-9"),
     ...lapisan.map((l) => getPageImage(l.key)),
   ]);
@@ -163,23 +164,7 @@ export default async function Materi6Peta1Step2EksplorasiProses({
               natural
               containerClassName="relative w-full min-h-24 rounded-[14px] overflow-hidden bg-[#F3F4F6]"
             />
-            <div className="flex items-center gap-4">
-              <EditablePageImage
-                imageKey="M6-P1-L2-3"
-                materi={materi}
-                peta={peta}
-                step={step}
-                urutan="3"
-                src={qrGeoGebra}
-                alt="Kode QR untuk membuka GeoGebra 3D"
-                editable={editFoto}
-                containerClassName="relative w-24 h-24 rounded-xl overflow-hidden bg-white border border-[#E5E7EB] flex-shrink-0"
-                imageClassName="object-contain"
-              />
-              <span className="text-xs font-bold text-[#1D4ED8]">
-                Scan di sini (GeoGebra 3D)
-              </span>
-            </div>
+            <QrLink href="/geogebra?materi=6" src={qrGeoGebra} alt="Kode QR untuk membuka GeoGebra 3D" label="Scan atau klik: GeoGebra 3D" />
           </div>
 
           <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-5 sm:p-6 shadow-[0_1px_2px_rgba(0,0,0,0.04)] flex flex-col gap-4">
@@ -217,23 +202,7 @@ export default async function Materi6Peta1Step2EksplorasiProses({
               natural
               containerClassName="relative w-full min-h-24 rounded-[14px] overflow-hidden bg-[#F3F4F6]"
             />
-            <div className="flex items-center gap-4">
-              <EditablePageImage
-                imageKey="M6-P1-L2-5"
-                materi={materi}
-                peta={peta}
-                step={step}
-                urutan="5"
-                src={qrAR}
-                alt="Kode QR untuk membuka AR 3D Viewer"
-                editable={editFoto}
-                containerClassName="relative w-24 h-24 rounded-xl overflow-hidden bg-white border border-[#E5E7EB] flex-shrink-0"
-                imageClassName="object-contain"
-              />
-              <span className="text-xs font-bold text-[#1D4ED8]">
-                Scan di sini (AR 3D Viewer)
-              </span>
-            </div>
+            <QrLink href="https://ar.geo-explore.my.id" src={qrAR} alt="Kode QR untuk membuka AR 3D Viewer" label="Scan atau klik: AR 3D Viewer" />
           </div>
         </div>
       </div>
@@ -329,7 +298,7 @@ export default async function Materi6Peta1Step2EksplorasiProses({
 
       <div className="flex flex-col-reverse sm:flex-row justify-between items-center gap-4">
         <BackLink href={`/belajar/${materi}/${peta}/1`} />
-        <NextStepButton variant="green" icon="check">Selesai</NextStepButton>
+        <NextStepButton variant="green" icon="check">Lanjut ke Tahap Ayo Mengamati dan Berpikir</NextStepButton>
       </div>
     </form>
   );

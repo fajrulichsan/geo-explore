@@ -1,5 +1,6 @@
 import { submitStepAction } from "@/app/belajar/actions";
 import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
+import FileSubmission from "@/components/FileSubmission";
 import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
 import { getPageImage } from "@/lib/pageImages";
 import {
@@ -30,7 +31,12 @@ export default async function Materi7Peta9Step7KesimpulanTantangan({
   initialAnswers,
 }: StepComponentProps) {
   const { getValue, getChecked } = readAnswers(initialAnswers);
-  const maskot = await getPageImage("M7-P9-L7-1");
+  const [maskot, lampu, piala] = await Promise.all([
+    getPageImage("M7-P9-L7-1"),
+    getPageImage("M7-P9-L7-2"),
+    getPageImage("M7-P9-L7-3"),
+  ]);
+  const fileHasilKerja = initialAnswers?.file_hasil_kerja;
 
   return (
     <form action={submitStepAction} className="flex flex-col gap-8">
@@ -40,7 +46,7 @@ export default async function Materi7Peta9Step7KesimpulanTantangan({
       <div className="flex flex-col gap-4">
         <SectionTitle letter="G" title="Kesimpulan Tantangan" color="amber" />
         <p className="m-0 text-sm text-[#4B5563]">Lengkapilah pernyataan berikut.</p>
-        <div className="grid grid-cols-1 md:grid-cols-[1fr_1fr_140px] gap-4 items-end">
+        <div className="grid grid-cols-1 md:grid-cols-[1fr_1fr_140px] gap-4 items-stretch">
           <div className={`${cardClass} flex flex-col gap-3`}>
             {pernyataan.map((p) => (
               <CheckItem key={p.key} name={p.key} label={p.label} checked={getChecked(p.key)} />
@@ -59,23 +65,57 @@ export default async function Materi7Peta9Step7KesimpulanTantangan({
             alt="Maskot laki-laki mengepalkan tangan dengan semangat"
             editable={editFoto}
             imageClassName="object-contain"
-            containerClassName="relative w-36 md:w-full aspect-[417/601] mx-auto"
+            containerClassName="relative w-36 h-52 md:w-full md:h-full md:min-h-52 mx-auto"
           />
         </div>
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-        <div className="bg-[#FEF9E7] border border-[#FDE68A] rounded-xl px-4 py-3 text-sm text-[#92400E] leading-[1.6]">
-          <span className="font-extrabold text-lg">Hebat! </span>
-          Kamu telah menggunakan rumus volume limas, menjelajahi berbagai strategi, dan memberikan alasan yang logis. Teruslah berpikir kreatif!
+        <div className="bg-[#FEF9E7] border border-[#FDE68A] rounded-xl px-4 py-3 text-sm text-[#92400E] leading-[1.6] flex items-start gap-3">
+          <EditablePageImage
+            imageKey="M7-P9-L7-3"
+            materi={materi}
+            peta={peta}
+            step="7"
+            urutan="3"
+            src={piala}
+            alt="Piala"
+            editable={editFoto}
+            imageClassName="object-contain"
+            containerClassName="relative w-14 h-14 flex-shrink-0"
+          />
+          <div>
+            <span className="block font-extrabold text-lg">Hebat!</span>
+            Kamu telah menggunakan rumus volume limas, menjelajahi berbagai strategi, dan memberikan alasan yang logis. Teruslah berpikir kreatif!
+          </div>
         </div>
-        <div className="bg-[#FEF9E7] border border-[#FDE68A] rounded-xl px-4 py-3 text-sm text-[#92400E] leading-[1.6]">
-          <span className="font-extrabold text-lg">Selanjutnya </span>
-          Pada bagian berikutnya, kamu akan mengerjakan Latihan Open-Ended untuk memperdalam pemahamanmu tentang volume limas.
+        <div className="bg-[#FEF9E7] border border-[#FDE68A] rounded-xl px-4 py-3 text-sm text-[#92400E] leading-[1.6] flex items-start gap-3">
+          <EditablePageImage
+            imageKey="M7-P9-L7-2"
+            materi={materi}
+            peta={peta}
+            step="7"
+            urutan="2"
+            src={lampu}
+            alt="Lampu ide"
+            editable={editFoto}
+            imageClassName="object-contain"
+            containerClassName="relative w-14 h-14 flex-shrink-0"
+          />
+          <div>
+            <span className="block font-extrabold text-lg">Selanjutnya</span>
+            Pada bagian berikutnya, kamu akan mengerjakan Quiz untuk mengukur pemahamanmu tentang volume limas setelah menyelesaikan kegiatan Tantangan Terbuka.
+          </div>
         </div>
       </div>
 
-      <StepFooter materi={materi} peta={peta} step={STEP} final />
+      <FileSubmission
+        materi={materi}
+        peta={peta}
+        defaultValue={typeof fileHasilKerja === "string" ? fileHasilKerja : undefined}
+      />
+
+      <StepFooter materi={materi} peta={peta} step={STEP} final="Lanjut ke Quiz" />
     </form>
   );
 }

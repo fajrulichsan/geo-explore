@@ -1,5 +1,6 @@
 import { submitStepAction } from "@/app/belajar/actions";
 import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
+import FileSubmission from "@/components/FileSubmission";
 import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
 import { getPageImage } from "@/lib/pageImages";
 import {
@@ -21,7 +22,8 @@ export default async function Materi7Peta8Step4TargetBelajar({
   initialAnswers,
 }: StepComponentProps) {
   const { getValue } = readAnswers(initialAnswers);
-  const maskot = await getPageImage("M7-P8-L4-1");
+  const [maskot, piala] = await Promise.all([getPageImage("M7-P8-L4-1"), getPageImage("M7-P8-L4-2")]);
+  const fileHasilKerja = initialAnswers?.file_hasil_kerja;
 
   return (
     <form action={submitStepAction} className="flex flex-col gap-8">
@@ -47,10 +49,18 @@ export default async function Materi7Peta8Step4TargetBelajar({
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div className="bg-[#FEF9E7] border border-[#FDE68A] rounded-[20px] px-5 py-4 flex items-start gap-4">
-          <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="#D97706" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="flex-shrink-0" aria-hidden>
-            <path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0z" />
-            <path d="M7 6H4a3 3 0 0 0 3 5M17 6h3a3 3 0 0 1-3 5" />
-          </svg>
+          <EditablePageImage
+            imageKey="M7-P8-L4-2"
+            materi={materi}
+            peta={peta}
+            step="4"
+            urutan="1"
+            src={piala}
+            alt="Piala"
+            editable={editFoto}
+            imageClassName="object-contain"
+            containerClassName="relative w-16 h-16 flex-shrink-0"
+          />
           <div className="text-sm text-[#92400E] leading-[1.6]">
             <span className="block font-extrabold text-xl mb-1">Hebat!</span>
             Kamu telah berhasil menemukan sendiri rumus volume limas melalui proses penemuan dan siap menerapkannya dalam masalah
@@ -61,15 +71,14 @@ export default async function Materi7Peta8Step4TargetBelajar({
         <div className="bg-[#EFF4FF] border border-[#BFDBFE] rounded-[20px] px-5 py-4 flex items-end gap-3">
           <div className="text-sm text-[#1E3A8A] leading-[1.6]">
             <span className="block font-extrabold text-xl mb-1 text-[#2563EB]">Selanjutnya</span>
-            Pada bagian berikutnya, kamu akan mengerjakan Latihan Open-Ended untuk menerapkan rumus volume limas dalam situasi nyata
-            dan menemukan lebih dari satu strategi penyelesaian untuk masalah Open-Ended.
+            Setelah menyelesaikan kegiatan Refleksi Diri, kamu akan melanjutkan ke kegiatan Tantangan Terbuka. Pada kegiatan ini, kamu akan menerapkan pemahaman tentang volume limas untuk menyelesaikan berbagai masalah kontekstual dengan lebih dari satu kemungkinan jawaban atau strategi penyelesaian yang benar, disertai alasan matematis yang logis.
           </div>
           <EditablePageImage
             imageKey="M7-P8-L4-1"
             materi={materi}
             peta={peta}
             step="4"
-            urutan="1"
+            urutan="2"
             src={maskot}
             alt="Maskot laki-laki mengepalkan tangan semangat"
             editable={editFoto}
@@ -79,7 +88,13 @@ export default async function Materi7Peta8Step4TargetBelajar({
         </div>
       </div>
 
-      <StepFooter materi={materi} peta={peta} step={STEP} final />
+      <FileSubmission
+        materi={materi}
+        peta={peta}
+        defaultValue={typeof fileHasilKerja === "string" ? fileHasilKerja : undefined}
+      />
+
+      <StepFooter materi={materi} peta={peta} step={STEP} final="Lanjut ke Tantangan Terbuka" />
     </form>
   );
 }

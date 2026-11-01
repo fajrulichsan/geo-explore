@@ -37,7 +37,7 @@ export default async function Materi6Peta10Step1PengantarKonsep({
         <div className={`${cardCls} flex flex-col gap-4`}>
           <p className="m-0 text-sm text-[#374151] leading-[1.7]">
             Selama Submateri 6, kamu telah mengamati, berdiskusi, mengeksplorasi, mengolah informasi, memverifikasi, dan
-            menyimpulkan melalui kegiatan Open-Ended. Sekarang, rangkum kembali konsep-konsep penting yang telah kamu
+            menyimpulkan melalui Tantangan Terbuka. Sekarang, rangkum kembali konsep-konsep penting yang telah kamu
             temukan.
           </p>
           <Tip>

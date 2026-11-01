@@ -65,7 +65,7 @@ export default async function Materi6Peta5Step1KelompokkanData({
       <div className="flex flex-col gap-4">
         <StepHeader materi={materi} currentStep={1} totalSteps={6} />
         <div className="inline-flex items-center bg-[#FDF3C7] text-[#92400E] rounded-full py-1.5 px-3.5 text-xs font-bold tracking-[0.02em] w-fit">
-          Tahap 4
+          Tahap 4 dari 6
         </div>
         <div className="flex items-center gap-3.5">
           <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#2563EB" strokeWidth="2.4">
@@ -77,7 +77,7 @@ export default async function Materi6Peta5Step1KelompokkanData({
         <p className="m-0 text-sm font-semibold text-[#2563EB]">Mengolah Data Hasil GeoGebra 3D dan Augmented Reality</p>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-[360px_1fr] gap-5 items-start">
+      <div className="flex flex-col-reverse gap-5">
         <div className="bg-[#EFF4FF] border border-[#BFDBFE] rounded-[20px] p-5 flex flex-col gap-3">
           <span className="w-fit rounded-full bg-[#2563EB] text-white text-xs font-bold px-4 py-1">Pengantar</span>
           <p className="m-0 text-sm leading-[1.6] text-[#374151]">

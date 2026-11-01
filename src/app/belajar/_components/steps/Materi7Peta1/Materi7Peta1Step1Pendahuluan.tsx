@@ -9,18 +9,21 @@ const contohLimas = [
   {
     key: "M7-P1-L1-3" as const,
     label: "Atap rumah",
+    bentuk: "(Berbentuk limas)",
     catatan: "Memperkirakan ruang di dalam atap.",
     alt: "Rumah dengan atap berbentuk limas",
   },
   {
     key: "M7-P1-L1-4" as const,
     label: "Tenda",
+    bentuk: "(Berbentuk limas)",
     catatan: "Memperkirakan kapasitas ruangnya.",
     alt: "Tenda berbentuk limas di area berumput",
   },
   {
     key: "M7-P1-L1-5" as const,
     label: "Piramida Mesir",
+    bentuk: "(Berbentuk limas)",
     catatan: "Contoh limas yang terkenal.",
     alt: "Piramida Mesir di gurun",
   },
@@ -37,10 +40,9 @@ export default async function Materi7Peta1Step1Pendahuluan({
   const getValue = (key: string) =>
     typeof answers[key] === "string" ? (answers[key] as string) : "";
 
-  const [gambarHero, gambarStrip, gambarJenis, ...gambarContoh] =
+  const [gambarHero, gambarJenis, ...gambarContoh] =
     await Promise.all([
       getPageImage("M7-P1-L1-1"),
-      getPageImage("M7-P1-L1-2"),
       getPageImage("M7-P1-L1-6"),
       ...contohLimas.map((c) => getPageImage(c.key)),
     ]);
@@ -74,13 +76,7 @@ export default async function Materi7Peta1Step1Pendahuluan({
         </div>
       </div>
 
-      <div className="relative overflow-hidden rounded-[24px] bg-gradient-to-br from-[#1E3A8A] to-[#2563EB] p-5 sm:p-7 flex flex-col gap-5">
-        <div className="absolute -right-14 -top-16 w-56 h-56 rounded-full bg-white/10" />
-        <p className="relative m-0 text-sm sm:text-base font-semibold text-white/95 leading-[1.6] max-w-2xl">
-          Kita akan menemukan sendiri rumus volume limas melalui pengamatan dan
-          perbandingan limas prisma yang memiliki luas alas dan tinggi yang
-          sama.
-        </p>
+      <div className="rounded-[24px] overflow-hidden border border-[#E5E7EB] bg-white">
         <EditablePageImage
           imageKey="M7-P1-L1-1"
           materi={materi}
@@ -91,53 +87,7 @@ export default async function Materi7Peta1Step1Pendahuluan({
           alt="Tiga siswa di perpustakaan sedang berdiskusi tentang hubungan volume limas dan prisma"
           editable={editFoto}
           natural
-          containerClassName="relative w-full min-h-24 rounded-[16px] overflow-hidden bg-[#EFF4FF]"
-        />
-        <div className="relative grid grid-cols-1 sm:grid-cols-3 gap-3">
-          <div className="bg-white rounded-2xl py-3.5 px-4 flex flex-col gap-2">
-            <span className="text-sm font-extrabold text-[#D97706]">
-              Ayo, Pikirkan!
-            </span>
-            <p className="m-0 text-sm font-semibold text-[#374151] leading-[1.5]">
-              Menurutmu, bagaimana cara menentukan banyak ruang di dalam limas?
-              Apa yang bisa kita lakukan untuk menemukannya?
-            </p>
-            <span className="text-sm font-bold text-[#D97706]">
-              Ayo, kita eksplorasi bersama!
-            </span>
-          </div>
-          <div className="bg-white rounded-2xl py-3.5 px-4 flex flex-col justify-center gap-2">
-            <p className="m-0 text-base font-extrabold text-[#1D4ED8] leading-[1.4]">
-              Apakah ada hubungan antara volume limas dan prisma?
-            </p>
-          </div>
-          <div className="bg-white rounded-2xl py-3.5 px-4 flex flex-col gap-2">
-            <span className="text-sm font-extrabold text-[#DC2626]">
-              Ingat!
-            </span>
-            <p className="m-0 text-sm font-semibold text-[#374151] leading-[1.5]">
-              Saat membandingkan volume limas dan prisma, pastikan luas alas
-              sama (L) dan tinggi sama (t).
-            </p>
-            <span className="text-sm font-bold text-[#6D28D9]">
-              Apa hubungan volumenya? Yuk, kita temukan!
-            </span>
-          </div>
-        </div>
-      </div>
-
-      <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-4 sm:p-5 shadow-[0_1px_2px_rgba(0,0,0,0.04)]">
-        <EditablePageImage
-          imageKey="M7-P1-L1-2"
-          materi={materi}
-          peta={peta}
-          step={step}
-          urutan="2"
-          src={gambarStrip}
-          alt="Limas di dalam prisma dan tiga limas dengan luas alas L dan tinggi t yang sama dibandingkan dengan satu prisma"
-          editable={editFoto}
-          natural
-          containerClassName="relative w-full min-h-24 overflow-hidden"
+          containerClassName="relative w-full"
         />
       </div>
 
@@ -169,7 +119,7 @@ export default async function Materi7Peta1Step1Pendahuluan({
                   materi={materi}
                   peta={peta}
                   step={step}
-                  urutan={String(i + 3)}
+                  urutan={String(i + 2)}
                   src={gambarContoh[i]}
                   alt={c.alt}
                   editable={editFoto}
@@ -183,6 +133,9 @@ export default async function Materi7Peta1Step1Pendahuluan({
               <div className="flex flex-col items-center gap-0.5 text-center">
                 <p className="m-0 text-sm font-bold text-[#1D4ED8]">
                   {c.label}
+                </p>
+                <p className="m-0 text-xs font-semibold text-[#1D4ED8]">
+                  {c.bentuk}
                 </p>
                 <p className="m-0 text-xs text-[#6B7280]">{c.catatan}</p>
               </div>
@@ -231,7 +184,7 @@ export default async function Materi7Peta1Step1Pendahuluan({
             materi={materi}
             peta={peta}
             step={step}
-            urutan="6"
+            urutan="5"
             src={gambarJenis}
             alt="Tiga jenis limas: limas segiempat, limas segitiga, dan limas segi-n beserta cirinya"
             editable={editFoto}

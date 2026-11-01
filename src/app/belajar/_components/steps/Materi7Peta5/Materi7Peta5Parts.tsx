@@ -178,12 +178,12 @@ export function StepFooter({
   materi: string;
   peta: string;
   step: number;
-  final?: boolean;
+  final?: string;
 }) {
   return (
     <div className="flex flex-col-reverse sm:flex-row justify-between items-center gap-4">
       {step > 1 ? <BackLink href={`/belajar/${materi}/${peta}/${step - 1}`} /> : <span />}
-      {final ? <NextStepButton variant="green" icon="check">Selesai</NextStepButton> : <NextStepButton />}
+      {final ? <NextStepButton variant="green" icon="check">{final}</NextStepButton> : <NextStepButton />}
     </div>
   );
 }
@@ -259,14 +259,16 @@ export function CheckItem({
   name,
   label,
   checked,
+  requireGroup,
 }: {
   name: string;
   label: string;
   checked: boolean;
+  requireGroup?: { name: string; min: number };
 }) {
   return (
     <label className="flex items-start gap-2.5 cursor-pointer">
-      <input type="checkbox" name={`answers.${name}`} defaultChecked={checked} className="mt-0.5 w-4 h-4 flex-shrink-0 accent-[#2563EB]" />
+      <input type="checkbox" name={`answers.${name}`} defaultChecked={checked} data-require-group={requireGroup?.name} data-require-min={requireGroup?.min} className="mt-0.5 w-4 h-4 flex-shrink-0 accent-[#2563EB]" />
       <span className="text-sm text-[#374151] leading-[1.5]">{label}</span>
     </label>
   );

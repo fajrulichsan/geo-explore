@@ -1,3 +1,4 @@
+import FileSubmission from "@/components/FileSubmission";
 import { submitStepAction } from "@/app/belajar/actions";
 import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
 import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
@@ -28,6 +29,7 @@ export default async function Materi7Peta4Step9SintesisPersiapan({
   initialAnswers,
 }: StepComponentProps) {
   const { getChecked } = readAnswers(initialAnswers);
+  const fileHasilKerja = initialAnswers?.file_hasil_kerja;
   const [gambarPersamaan, gambarSiap] = await Promise.all([
     getPageImage("M7-P4-L9-1"),
     getPageImage("M7-P4-L9-2"),
@@ -69,7 +71,7 @@ export default async function Materi7Peta4Step9SintesisPersiapan({
       <div className="flex flex-col gap-4">
         <SectionTitle letter="Q" title="Persiapan ke Tahap 4 – Ayo Mengolah Informasi" color="green" />
         <p className="m-0 text-sm text-[#4B5563]">Setelah mengumpulkan dan membandingkan data, kamu akan mengolah informasi untuk membuktikan dugaanmu. Yang perlu kamu siapkan:</p>
-        <div className="grid grid-cols-1 sm:grid-cols-[1fr_220px] gap-5 items-end">
+        <div className="grid grid-cols-1 sm:grid-cols-[1fr_220px] gap-5 items-stretch">
           <div className={`${cardClass} flex flex-col gap-3`}>
             {persiapan.map((p) => (
               <label key={p.key} className="flex items-start gap-2.5 cursor-pointer">
@@ -88,12 +90,18 @@ export default async function Materi7Peta4Step9SintesisPersiapan({
             alt="Dua siswa bersemangat: Siap ke Tahap 4!"
             editable={editFoto}
             imageClassName="object-contain"
-            containerClassName="relative w-full aspect-[961/621] max-w-[260px] mx-auto"
+            containerClassName="relative w-full h-64 sm:h-full sm:min-h-64 max-w-[260px] mx-auto"
           />
         </div>
       </div>
 
-      <StepFooter materi={materi} peta={peta} step={STEP} final />
+      <FileSubmission
+        materi={materi}
+        peta={peta}
+        defaultValue={typeof fileHasilKerja === "string" ? fileHasilKerja : undefined}
+      />
+
+      <StepFooter materi={materi} peta={peta} step={STEP} final="Lanjut ke Tahap Ayo Mengolah Informasi" />
     </form>
   );
 }

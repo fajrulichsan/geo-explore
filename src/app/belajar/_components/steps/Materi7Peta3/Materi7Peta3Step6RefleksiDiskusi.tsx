@@ -1,5 +1,6 @@
 import { submitStepAction } from "@/app/belajar/actions";
 import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
+import FileSubmission from "@/components/FileSubmission";
 import NextStepButton from "@/app/belajar/_components/NextStepButton";
 import StepHeader from "@/app/belajar/_components/StepHeader";
 import BackLink from "@/app/belajar/_components/BackLink";
@@ -25,10 +26,10 @@ export default async function Materi7Peta3Step6RefleksiDiskusi({
     <form action={submitStepAction} className="flex flex-col gap-8">
       <input type="hidden" name="materi" value={materi} />
       <input type="hidden" name="peta" value={peta} />
-      <input type="hidden" name="step" value="6" />
+      <input type="hidden" name="step" value="5" />
 
       <div className="flex flex-col gap-4">
-        <StepHeader materi={materi} currentStep={6} totalSteps={6} />
+        <StepHeader materi={materi} currentStep={5} totalSteps={5} />
         <div className="inline-flex items-center bg-[#FDF3C7] text-[#92400E] rounded-full py-1.5 px-3.5 text-xs font-bold tracking-[0.02em] w-fit">
           Tahap 2 dari 6
         </div>
@@ -48,7 +49,7 @@ export default async function Materi7Peta3Step6RefleksiDiskusi({
       <div className="flex flex-col gap-4">
         <div className="flex items-center gap-3">
           <div className="w-[34px] h-[34px] rounded-full bg-[#2563EB] text-white flex items-center justify-center font-bold text-[15px] flex-shrink-0">
-            I
+            G
           </div>
           <div className="bg-white border border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-full py-2 px-5 text-sm font-bold text-[#2563EB]">
             Refleksi Diskusi
@@ -95,7 +96,7 @@ export default async function Materi7Peta3Step6RefleksiDiskusi({
       <div className="flex flex-col gap-4">
         <div className="flex items-center gap-3">
           <div className="w-[34px] h-[34px] rounded-full bg-[#16A34A] text-white flex items-center justify-center font-bold text-[15px] flex-shrink-0">
-            J
+            H
           </div>
           <div className="bg-white border border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-full py-2 px-5 text-sm font-bold text-[#16A34A]">
             Refleksi Singkat
@@ -104,7 +105,7 @@ export default async function Materi7Peta3Step6RefleksiDiskusi({
         <p className="m-0 text-sm text-[#4B5563]">
           Berilah tanda centang (✓) pada pernyataan yang sesuai dengan pengalamanmu selama kegiatan diskusi pada tahap ini.
         </p>
-        <div className="grid grid-cols-1 sm:grid-cols-[1fr_260px] gap-5 items-end">
+        <div className="grid grid-cols-1 sm:grid-cols-[1fr_260px] gap-5 items-stretch">
           <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-5 sm:p-6 shadow-[0_1px_2px_rgba(0,0,0,0.04)] flex flex-col gap-3">
             {[
               { key: "refleksi_b_1", label: "Saya berani menyampaikan pendapat." },
@@ -129,14 +130,20 @@ export default async function Materi7Peta3Step6RefleksiDiskusi({
               alt="Maskot siswa perempuan menunjuk ke atas: Diskusi yang baik membuat kita lebih siap membuktikan dugaan!"
               editable={editFoto}
               imageClassName="object-contain"
-              containerClassName="relative w-full aspect-[3/2] max-w-[280px] mx-auto"
+              containerClassName="relative w-full h-64 sm:h-full min-h-64 max-w-[280px] mx-auto"
             />
         </div>
       </div>
 
+      <FileSubmission
+        materi={materi}
+        peta={peta}
+        defaultValue={typeof answers.file_hasil_kerja === "string" ? answers.file_hasil_kerja : undefined}
+      />
+
       <div className="flex flex-col-reverse sm:flex-row justify-between items-center gap-4">
-        <BackLink href={`/belajar/${materi}/${peta}/5`} />
-        <NextStepButton variant="green" icon="check">Selesai</NextStepButton>
+        <BackLink href={`/belajar/${materi}/${peta}/4`} />
+        <NextStepButton variant="green" icon="check">Lanjut ke Tahap Ayo Bereksplorasi</NextStepButton>
       </div>
     </form>
   );

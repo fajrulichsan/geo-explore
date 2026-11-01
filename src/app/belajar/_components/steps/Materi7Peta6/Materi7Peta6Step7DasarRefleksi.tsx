@@ -48,7 +48,7 @@ export default async function Materi7Peta6Step7DasarRefleksi({
         <p className="m-0 text-sm text-[#4B5563]">
           Gunakan seluruh hasil verifikasi sebagai dasar penjelasanmu. Tuliskan jawabanmu dengan runtut dan jelas.
         </p>
-        <div className="grid grid-cols-1 sm:grid-cols-[1fr_180px] gap-5 items-end">
+        <div className="grid grid-cols-1 sm:grid-cols-[1fr_180px] gap-5 items-stretch">
           <div className="flex flex-col gap-4">
             <div className="bg-[#FEF9E7] border border-[#FDE68A] rounded-xl px-4 py-3 text-sm text-[#92400E] leading-[1.6]">
               <span className="font-extrabold">Petunjuk:</span>
@@ -72,7 +72,7 @@ export default async function Materi7Peta6Step7DasarRefleksi({
             alt="Maskot laki-laki: Gunakan data, pola, dan model untuk menjelaskan alasanmu!"
             editable={editFoto}
             imageClassName="object-contain"
-            containerClassName="relative w-40 sm:w-full aspect-[384/558] mx-auto"
+            containerClassName="relative w-40 h-56 sm:w-full sm:h-full sm:min-h-56 mx-auto"
           />
         </div>
       </div>
@@ -80,7 +80,7 @@ export default async function Materi7Peta6Step7DasarRefleksi({
       <div className="flex flex-col gap-4">
         <SectionTitle letter="J" title="Refleksi" color="green" />
         <p className="m-0 text-sm text-[#4B5563]">Beri tanda centang pada pernyataan yang sesuai dengan dirimu.</p>
-        <div className="grid grid-cols-1 sm:grid-cols-[1fr_180px] gap-5 items-end">
+        <div className="grid grid-cols-1 sm:grid-cols-[1fr_180px] gap-5 items-stretch">
           <div className={`${cardClass} flex flex-col gap-3`}>
             {refleksi.map((r) => (
               <CheckItem key={r.key} name={r.key} label={r.label} checked={getChecked(r.key)} />
@@ -96,7 +96,7 @@ export default async function Materi7Peta6Step7DasarRefleksi({
             alt="Maskot perempuan: Terus semangat! Kemampuan berpikir ilmiahmu semakin berkembang!"
             editable={editFoto}
             imageClassName="object-contain"
-            containerClassName="relative w-40 sm:w-full aspect-[381/577] mx-auto"
+            containerClassName="relative w-40 h-56 sm:w-full sm:h-full sm:min-h-56 mx-auto"
           />
         </div>
       </div>

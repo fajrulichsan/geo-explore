@@ -26,6 +26,8 @@ const verifikasi = [
     terdiri: "Terdiri dari 4 × 4 × 4 = 64 kubus satuan",
     rumus: ["Volume = luas alas × tinggi", "= 16 × 4"],
     model: "Sisi 4 satuan — tampilkan satuan volume.",
+    gg: { k: "M6-P6-L1-4" as const, urutan: "5" },
+    ar: { k: "M6-P6-L1-5" as const, urutan: "6" },
     petunjuk: null,
   },
   {
@@ -36,6 +38,8 @@ const verifikasi = [
     terdiri: "Terdiri dari 5 × 3 × 6 = 90 kubus satuan",
     rumus: ["Volume = luas alas × tinggi", "= 15 × 6"],
     model: "5 × 3 × 6 satuan — tampilkan satuan volume.",
+    gg: { k: "M6-P6-L1-6" as const, urutan: "7" },
+    ar: { k: "M6-P6-L1-7" as const, urutan: "8" },
     petunjuk: "Untuk balok, luas alas = p × l dan tinggi = t.",
   },
 ];
@@ -137,7 +141,7 @@ export default async function Materi6Peta6Step1VerifikasiKubusBalok({
 
             <div className={`${cardCls} flex flex-col gap-3`}>
               <span className="text-sm font-bold text-[#111827]">Model pada GeoGebra 3D / AR</span>
-              <ModelPanel>{v.model}</ModelPanel>
+              <ModelPanel gg={v.gg} ar={v.ar} img={img} ctx={ctx}>{v.model}</ModelPanel>
             </div>
           </div>
           <div className="flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-[#BFDBFE] bg-[#EFF4FF] px-5 py-3.5">

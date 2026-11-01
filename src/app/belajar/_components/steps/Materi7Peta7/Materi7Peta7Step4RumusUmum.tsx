@@ -12,7 +12,7 @@ import {
   TipBox,
 } from "./Materi7Peta7Parts";
 
-const STEP = 4;
+const STEP = 3;
 
 const keterangan = [
   { simbol: <>V</>, arti: "volume limas", satuan: "satuan³" },
@@ -21,7 +21,7 @@ const keterangan = [
 ];
 
 export default async function Materi7Peta7Step4RumusUmum({ materi, peta, editFoto }: StepComponentProps) {
-  const hero = await getPageImage("M7-P7-L1-1");
+  const hero = await getPageImage("M7-P7-L4-1");
 
   return (
     <form action={submitStepAction} className="flex flex-col gap-8">
@@ -29,10 +29,10 @@ export default async function Materi7Peta7Step4RumusUmum({ materi, peta, editFot
       <StepTitle materi={materi} step={STEP} subtitle="Menuliskan Rumus Umum Volume Limas" />
 
       <EditablePageImage
-        imageKey="M7-P7-L1-1"
+        imageKey="M7-P7-L4-1"
         materi={materi}
         peta={peta}
-        step="1"
+        step="3"
         urutan="1"
         src={hero}
         alt="Tiga siswa menuliskan rumus umum volume limas dengan GeoGebra 3D dan AR"
@@ -60,7 +60,7 @@ export default async function Materi7Peta7Step4RumusUmum({ materi, peta, editFot
       <TipBox>Ingat! Limas dan prisma yang dibandingkan memiliki luas alas dan tinggi yang sama.</TipBox>
 
       <div className="flex flex-col gap-4">
-        <SectionTitle letter="E" title="Rumus Umum Volume Limas" />
+        <SectionTitle letter="C" title="Rumus Umum Volume Limas" />
         <p className="m-0 text-sm text-[#4B5563]">
           Berdasarkan <span className="font-bold">hasil verifikasi</span> pada Tahap 5, diperoleh:
         </p>

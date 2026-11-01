@@ -1,6 +1,8 @@
 import { submitStepAction } from "@/app/belajar/actions";
 import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
-import { HiddenFields, Nav, SectionTitle, TahapHeader, answerText, cardCls, inputCls } from "./Materi6Peta4Parts";
+import { getPageImages } from "@/lib/pageImages";
+import { Foto, HiddenFields, Nav, SectionTitle, TahapHeader, answerText, cardCls, inputCls } from "./Materi6Peta4Parts";
+import FileSubmission from "@/components/FileSubmission";
 
 const refleksi = [
   { key: "refleksi_1", label: "Saya dapat membandingkan hasil GeoGebra 3D dan AR." },
@@ -17,7 +19,9 @@ const perasaan = [
   { nilai: "perlu-belajar-lagi", emoji: "😟", label: "Perlu Belajar Lagi" },
 ];
 
-export default async function Materi6Peta4Step12RefleksiMini({ materi, peta, initialAnswers }: StepComponentProps) {
+export default async function Materi6Peta4Step12RefleksiMini({ materi, peta, step = "12", editFoto, initialAnswers }: StepComponentProps) {
+  const img = await getPageImages();
+  const ctx = { materi, peta, step, editFoto };
   const terpilih = answerText(initialAnswers, "perasaan");
 
   return (
@@ -27,18 +31,29 @@ export default async function Materi6Peta4Step12RefleksiMini({ materi, peta, ini
 
       <div className="flex flex-col gap-4">
         <SectionTitle huruf="M" judul="Refleksi Mini" hint="Centang (✓) pernyataan yang sesuai dengan pengalamanmu selama kegiatan ini." />
-        <div className={`${cardCls} flex flex-col gap-3.5`}>
-          {refleksi.map((r) => (
-            <label key={r.key} className="flex items-start gap-2.5 cursor-pointer">
-              <input
-                type="checkbox"
-                name={`answers.${r.key}`}
-                defaultChecked={Boolean(initialAnswers?.[r.key])}
-                className="mt-0.5 w-4 h-4 flex-shrink-0 accent-[#2563EB]"
-              />
-              <span className="text-sm text-[#374151] leading-[1.5]">{r.label}</span>
-            </label>
-          ))}
+        <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_minmax(0,380px)] gap-5 items-stretch">
+          <div className={`${cardCls} flex flex-col gap-3.5`}>
+            {refleksi.map((r) => (
+              <label key={r.key} className="flex items-start gap-2.5 cursor-pointer">
+                <input
+                  type="checkbox"
+                  name={`answers.${r.key}`}
+                  defaultChecked={Boolean(initialAnswers?.[r.key])}
+                  className="mt-0.5 w-4 h-4 flex-shrink-0 accent-[#2563EB]"
+                />
+                <span className="text-sm text-[#374151] leading-[1.5]">{r.label}</span>
+              </label>
+            ))}
+          </div>
+          <Foto
+            k="M6-P4-L12-1"
+            img={img}
+            ctx={ctx}
+            urutan="1"
+            natural
+            alt="Tiga siswa berdiskusi sambil membandingkan hasil GeoGebra 3D dan AR"
+            className="relative w-full min-h-24 rounded-[20px] overflow-hidden"
+          />
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
@@ -87,7 +102,13 @@ export default async function Materi6Peta4Step12RefleksiMini({ materi, peta, ini
         </div>
       </div>
 
-      <Nav materi={materi} peta={peta} step={12} last />
+      <FileSubmission
+        materi={materi}
+        peta={peta}
+        defaultValue={typeof initialAnswers?.file_hasil_kerja === "string" ? initialAnswers.file_hasil_kerja : undefined}
+      />
+
+      <Nav materi={materi} peta={peta} step={12} last lastLabel="Lanjut ke Tahap Ayo Mengolah Informasi" />
     </form>
   );
 }

@@ -32,14 +32,14 @@ export default async function Materi6Peta7Step5RefleksiEvaluasi({
       <HiddenFields materi={materi} peta={peta} step={5} />
       <TahapHeader materi={materi} step={5} />
 
-      <div className="grid grid-cols-1 lg:grid-cols-[1fr_320px] gap-5 items-start">
+      <div className="grid grid-cols-1 lg:grid-cols-[1fr_420px] gap-5 items-stretch">
         <div className="flex flex-col gap-4">
           <SectionTitle
             huruf="K"
             judul="Refleksi dan Evaluasi"
             hint="Berilah tanda centang (✓) pada pernyataan berikut sesuai dengan dirimu setelah mempelajari submateri ini."
           />
-          <div className={`${cardCls} flex flex-col gap-4`}>
+          <div className={`${cardCls} flex flex-col gap-4 flex-1`}>
             {pernyataan.map((t, i) => {
               const nama = `refleksi_${i + 1}`;
               const nilai = answerText(initialAnswers, nama);
@@ -79,14 +79,16 @@ export default async function Materi6Peta7Step5RefleksiEvaluasi({
             alt="Tiga siswa berkata Yuk, tulis kesimpulanmu dengan kata-katamu sendiri"
             className="relative w-full min-h-24 rounded-[20px] overflow-hidden"
           />
-          <div className="flex flex-col gap-3">
+          <div className="flex flex-col gap-3 flex-1">
             <SectionTitle huruf="L" judul="Kesimpulan Pribadi" warna="#C2410C" />
-            <div className={`${cardCls} flex flex-col gap-3`} style={{ borderColor: "#FED7AA" }}>
+            <div className={`${cardCls} flex flex-col gap-3 flex-1`} style={{ borderColor: "#FED7AA" }}>
               <p className="m-0 text-sm text-[#374151] leading-[1.5]">
                 Jelaskan dengan bahasamu sendiri bagaimana kamu menemukan rumus volume bangun ruang sisi datar pada
                 submateri ini.
               </p>
-              <Tulis name="kesimpulan_pribadi" answers={initialAnswers} rows={6} label="Kesimpulan pribadi" />
+              <div className="flex flex-1 flex-col [&>textarea]:flex-1">
+                <Tulis name="kesimpulan_pribadi" answers={initialAnswers} rows={6} label="Kesimpulan pribadi" />
+              </div>
             </div>
           </div>
         </div>

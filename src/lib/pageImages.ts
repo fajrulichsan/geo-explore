@@ -677,6 +677,16 @@ export type PageImageKey =
   | "M6-P2-L6-4"
   | "M6-P2-L6-5"
   | "M6-P2-L7-1"
+  | "M6-P2-L8-1"
+  | "M6-P2-L8-2"
+  | "M6-P2-L8-3"
+  | "M6-P2-L8-4"
+  | "M6-P2-L8-5"
+  | "M6-P2-L8-6"
+  | "M6-P2-L8-7"
+  | "M6-P4-L12-1"
+  | "M6-P5-L4-1"
+  | "M6-P5-L4-2"
   | "M6-P3-L1-1"
   | "M6-P3-L2-1"
   | "M6-P3-L3-1"
@@ -703,6 +713,9 @@ export type PageImageKey =
   | "M6-P4-L3-13"
   | "M6-P4-L3-14"
   | "M6-P4-L3-15"
+  | "M6-P4-L6-1"
+  | "M6-P4-L6-2"
+  | "M6-P4-L6-3"
   | "M6-P4-L5-1"
   | "M6-P4-L5-2"
   | "M6-P4-L8-1"
@@ -722,8 +735,15 @@ export type PageImageKey =
   | "M6-P6-L1-1"
   | "M6-P6-L1-2"
   | "M6-P6-L1-3"
+  | "M6-P6-L1-4"
+  | "M6-P6-L1-5"
+  | "M6-P6-L1-6"
+  | "M6-P6-L1-7"
   | "M6-P6-L3-1"
   | "M6-P6-L3-2"
+  | "M6-P6-L3-3"
+  | "M6-P6-L3-4"
+  | "M6-P6-L2-1"
   | "M6-P6-L4-1"
   | "M6-P6-L5-1"
   | "M6-P6-L6-1"
@@ -731,7 +751,11 @@ export type PageImageKey =
   | "M6-P7-L2-1"
   | "M6-P7-L2-2"
   | "M6-P7-L3-1"
+  | "M6-P7-L3-2"
+  | "M6-P7-L3-3"
+  | "M6-P7-L3-4"
   | "M6-P7-L4-1"
+  | "M6-P7-L4-2"
   | "M6-P7-L5-1"
   | "M6-P7-L6-1"
   | "M6-P7-L6-2"
@@ -740,18 +764,34 @@ export type PageImageKey =
   | "M6-P7-L6-5"
   | "M6-P7-L6-6"
   | "M6-P9-L1-1"
+  | "M6-P9-L1-3"
+  | "M6-P9-L1-4"
+  | "M6-P9-L1-5"
+  | "M6-P9-L1-6"
   | "M6-P9-L2-1"
   | "M6-P9-L4-1"
   | "M6-P9-L4-2"
+  | "M6-P9-L4-3"
   | "M6-P9-L5-1"
   | "M6-P9-L5-2"
+  | "M6-P9-L5-3"
   | "M6-P8-L1-1"
   | "M6-P8-L2-1"
+  | "M6-P8-L2-2"
   | "M6-P10-L1-1"
   | "M6-P10-L2-1"
   | "M6-P10-L2-2"
   | "M6-P10-L2-3"
   | "M6-P10-L2-4"
+  | "M6-P10-L2-5"
+  | "M6-P10-L2-6"
+  | "M6-P10-L3-1"
+  | "M6-P10-L3-2"
+  | "M6-P10-L3-3"
+  | "M6-P10-L4-1"
+  | "M6-P10-L4-2"
+  | "M6-P10-L4-3"
+  | "M6-P10-L5-3"
   | "M6-P10-L5-1"
   | "M6-P10-L5-2"
   | "M7-P1-L1-1"
@@ -861,8 +901,13 @@ export type PageImageKey =
   | "M7-P3-L3-1"
   | "M7-P3-L4-1"
   | "M7-P4-L1-1"
+  | "M7-P4-L1-2"
+  | "M7-P4-L1-3"
+  | "M7-P4-L1-4"
   | "M7-P4-L2-1"
   | "M7-P4-L2-2"
+  | "M7-P4-L2-3"
+  | "M7-P4-L4-2"
   | "M7-P4-L4-1"
   | "M7-P4-L7-1"
   | "M7-P4-L8-1"
@@ -896,30 +941,48 @@ export type PageImageKey =
   | "M7-P9-L1-2"
   | "M7-P9-L1-3"
   | "M7-P9-L1-4"
+  | "M7-P9-L1-5"
   | "M7-P9-L4-1"
   | "M7-P9-L5-1"
   | "M7-P9-L6-1"
+  | "M7-P9-L6-2"
   | "M7-P9-L7-1"
+  | "M7-P9-L7-2"
+  | "M7-P9-L7-3"
   | "M7-P7-L1-1"
   | "M7-P7-L2-1"
   | "M7-P7-L3-1"
   | "M7-P7-L3-2"
   | "M7-P7-L5-1"
   | "M7-P7-L5-2"
+  | "M7-P7-L4-1"
   | "M7-P7-L6-1"
+  | "M7-P7-L6-2"
   | "M7-P8-L1-1"
   | "M7-P8-L4-1"
+  | "M7-P8-L4-2"
   | "M7-P10-L1-1"
   | "M7-P10-L1-2"
   | "M7-P10-L1-3"
   | "M7-P10-L1-4"
   | "M7-P10-L1-5"
   | "M7-P10-L1-6"
+  | "M7-P10-L1-7"
+  | "M7-P10-L1-8"
+  | "M7-P10-L1-9"
+  | "M7-P10-L1-10"
+  | "M7-P10-L1-11"
+  | "M7-P10-L1-12"
   | "M7-P10-L2-1"
   | "M7-P10-L2-2"
   | "M7-P10-L2-3"
   | "M7-P10-L2-4"
   | "M7-P10-L2-5"
+  | "M7-P10-L2-6"
+  | "M7-P10-L2-7"
+  | "M7-P10-L2-8"
+  | "M7-P10-L2-9"
+  | "M7-P10-L2-10"
   | "M5-P6-L1-1"
   | "M5-P6-L4-1"
   | "M5-P6-L4-2"
@@ -1618,6 +1681,16 @@ const DEFAULT_IMAGES: Record<PageImageKey, string> = {
   "M6-P2-L6-4": "https://placehold.co/196x175?text=Penampang+Prisma",
   "M6-P2-L6-5": "https://placehold.co/1444x318?text=Penampang+Beberapa+Posisi",
   "M6-P2-L7-1": "https://placehold.co/373x504?text=Maskot+Menulis",
+  "M6-P2-L8-1": "https://placehold.co/1379x920?text=Hero+Amati+Bangun",
+  "M6-P2-L8-2": "https://placehold.co/424x400?text=Kubus",
+  "M6-P2-L8-3": "https://placehold.co/424x300?text=Balok",
+  "M6-P2-L8-4": "https://placehold.co/424x230?text=Prisma",
+  "M6-P2-L8-5": "https://placehold.co/420x343?text=Maskot+Berpikir",
+  "M6-P2-L8-6": "https://placehold.co/420x190?text=Kubus+Satuan",
+  "M6-P2-L8-7": "https://placehold.co/408x420?text=Maskot+Hijab",
+  "M6-P4-L12-1": "https://placehold.co/1379x920?text=Hero+Refleksi+Mini",
+  "M6-P5-L4-1": "https://placehold.co/196x179?text=Lampu+Petunjuk+G",
+  "M6-P5-L4-2": "https://placehold.co/196x179?text=Lampu+Petunjuk+H",
   "M6-P3-L1-1": "https://placehold.co/939x625?text=Hero+Diskusi+Tahap+2",
   "M6-P3-L2-1": "https://placehold.co/463x213?text=Tiga+Siswa+Kelompok",
   "M6-P3-L3-1": "https://placehold.co/808x535?text=Memilih+Dugaan",
@@ -1644,6 +1717,9 @@ const DEFAULT_IMAGES: Record<PageImageKey, string> = {
   "M6-P4-L3-13": "https://placehold.co/228x141?text=Prisma+t1",
   "M6-P4-L3-14": "https://placehold.co/313x282?text=Prisma+t2",
   "M6-P4-L3-15": "https://placehold.co/213x219?text=Prisma+t3",
+  "M6-P4-L6-1": "https://placehold.co/397x265?text=AR+Kubus",
+  "M6-P4-L6-2": "https://placehold.co/405x270?text=AR+Balok",
+  "M6-P4-L6-3": "https://placehold.co/408x272?text=AR+Prisma",
   "M6-P4-L5-1": "https://placehold.co/1300x544?text=Hero+Eksplorasi+AR",
   "M6-P4-L5-2": "https://placehold.co/300x300?text=QR+AR",
   "M6-P4-L8-1": "https://placehold.co/514x234?text=Maskot+Gunakan+Hasil",
@@ -1663,8 +1739,15 @@ const DEFAULT_IMAGES: Record<PageImageKey, string> = {
   "M6-P6-L1-1": "https://placehold.co/1164x628?text=Hero+Verifikasi+Kubus+Balok",
   "M6-P6-L1-2": "https://placehold.co/508x505?text=Kubus",
   "M6-P6-L1-3": "https://placehold.co/436x528?text=Balok",
+  "M6-P6-L1-4": "https://placehold.co/652x435?text=GeoGebra+Kubus",
+  "M6-P6-L1-5": "https://placehold.co/634x423?text=AR+Kubus",
+  "M6-P6-L1-6": "https://placehold.co/526x350?text=GeoGebra+Balok",
+  "M6-P6-L1-7": "https://placehold.co/523x349?text=AR+Balok",
   "M6-P6-L3-1": "https://placehold.co/1164x625?text=Hero+Verifikasi+Prisma",
   "M6-P6-L3-2": "https://placehold.co/1375x592?text=Prisma+Segitiga",
+  "M6-P6-L3-3": "https://placehold.co/592x395?text=GeoGebra+Prisma",
+  "M6-P6-L3-4": "https://placehold.co/596x397?text=AR+Prisma",
+  "M6-P6-L2-1": "https://placehold.co/425x411?text=Piala",
   "M6-P6-L4-1": "https://placehold.co/783x598?text=Maskot+Lanjut+Halaman",
   "M6-P6-L5-1": "https://placehold.co/1162x628?text=Hero+Rekap+Hasil",
   "M6-P6-L6-1": "https://placehold.co/669x615?text=Maskot+Lanjut+Tahap+6",
@@ -1672,7 +1755,11 @@ const DEFAULT_IMAGES: Record<PageImageKey, string> = {
   "M6-P7-L2-1": "https://placehold.co/1374x579?text=Prisma+Segitiga",
   "M6-P7-L2-2": "https://placehold.co/816x621?text=Maskot+Rumus+Umum",
   "M6-P7-L3-1": "https://placehold.co/1164x628?text=Banner+Rumus",
+  "M6-P7-L3-2": "https://placehold.co/520x480?text=Kubus+s",
+  "M6-P7-L3-3": "https://placehold.co/520x290?text=Balok+p+l+t",
+  "M6-P7-L3-4": "https://placehold.co/704x293?text=Prisma+Segitiga",
   "M6-P7-L4-1": "https://placehold.co/819x624?text=Maskot+Tantangan",
+  "M6-P7-L4-2": "https://placehold.co/425x411?text=Piala",
   "M6-P7-L5-1": "https://placehold.co/939x624?text=Hero+Kesimpulan",
   "M6-P7-L6-1": "https://placehold.co/844x553?text=Kubus+8+cm",
   "M6-P7-L6-2": "https://placehold.co/1050x495?text=Balok+12x7x5",
@@ -1681,18 +1768,34 @@ const DEFAULT_IMAGES: Record<PageImageKey, string> = {
   "M6-P7-L6-5": "https://placehold.co/894x565?text=Tenda",
   "M6-P7-L6-6": "https://placehold.co/814x616?text=Maskot+Refleksi+Diri",
   "M6-P9-L1-1": "https://placehold.co/1246x625?text=Hero+Tantangan",
+  "M6-P9-L1-3": "https://placehold.co/579x571?text=Kubus",
+  "M6-P9-L1-4": "https://placehold.co/850x436?text=Balok",
+  "M6-P9-L1-5": "https://placehold.co/1374x579?text=Prisma+Segitiga",
+  "M6-P9-L1-6": "https://placehold.co/634x422?text=Ingat+Volume",
   "M6-P9-L2-1": "https://placehold.co/666x624?text=Maskot+Berpikir",
   "M6-P9-L4-1": "https://placehold.co/934x625?text=Hero+Analisis+Strategi",
   "M6-P9-L4-2": "https://placehold.co/936x624?text=Diskusi+Open-Ended",
+  "M6-P9-L4-3": "https://placehold.co/581x760?text=Ingat+Jawaban+Terbuka",
   "M6-P9-L5-1": "https://placehold.co/592x604?text=Maskot+Kesimpulan",
-  "M6-P9-L5-2": "https://placehold.co/687x601?text=Maskot+Selanjutnya",
+  "M6-P9-L5-2": "https://placehold.co/687x601?text=Lampu",
+  "M6-P9-L5-3": "https://placehold.co/687x601?text=Maskot+Selanjutnya",
   "M6-P8-L1-1": "https://placehold.co/939x621?text=Hero+Refleksi+Diri",
   "M6-P8-L2-1": "https://placehold.co/822x624?text=Maskot+Capai+Target",
+  "M6-P8-L2-2": "https://placehold.co/1379x920?text=Hero+Refleksi+Diri",
   "M6-P10-L1-1": "https://placehold.co/1504x625?text=Hero+Rangkuman",
   "M6-P10-L2-1": "https://placehold.co/937x343?text=Hubungan+Ketiga+Bangun",
   "M6-P10-L2-2": "https://placehold.co/963x427?text=Prisma+Segitiga",
   "M6-P10-L2-3": "https://placehold.co/451x417?text=Prisma+Segi-n",
   "M6-P10-L2-4": "https://placehold.co/700x612?text=Maskot+Selanjutnya",
+  "M6-P10-L2-5": "https://placehold.co/484x484?text=Kubus",
+  "M6-P10-L2-6": "https://placehold.co/685x457?text=Balok",
+  "M6-P10-L3-1": "https://placehold.co/598x598?text=Kubus",
+  "M6-P10-L3-2": "https://placehold.co/820x547?text=Balok",
+  "M6-P10-L3-3": "https://placehold.co/688x405?text=Prisma+Segitiga",
+  "M6-P10-L4-1": "https://placehold.co/490x490?text=Kubus",
+  "M6-P10-L4-2": "https://placehold.co/698x465?text=Balok",
+  "M6-P10-L4-3": "https://placehold.co/422x391?text=Prisma+Segi+n",
+  "M6-P10-L5-3": "https://placehold.co/502x376?text=Buku",
   "M6-P10-L5-1": "https://placehold.co/697x358?text=Generalisasi+Prisma",
   "M6-P10-L5-2": "https://placehold.co/1608x601?text=Pesan+Akhir",
   "M7-P1-L1-1": "https://placehold.co/1104x619?text=Hero+Tiga+Siswa+Limas",
@@ -1802,6 +1905,11 @@ const DEFAULT_IMAGES: Record<PageImageKey, string> = {
   "M7-P3-L3-1": "https://placehold.co/928x616?text=Maskot+perempuan+diskusi+yang+baik",
   "M7-P3-L4-1": "https://placehold.co/952x622?text=Tiga+siswa+dan+buku+Amati+Buktikan",
   "M7-P4-L1-1": "https://placehold.co/954x625?text=Hero+tiga+siswa+GeoGebra+3D",
+  "M7-P4-L1-2": "https://placehold.co/369x316?text=M7+P4+L1+2",
+  "M7-P4-L1-3": "https://placehold.co/338x309?text=M7+P4+L1+3",
+  "M7-P4-L1-4": "https://placehold.co/341x336?text=M7+P4+L1+4",
+  "M7-P4-L2-3": "https://placehold.co/852x480?text=M7+P4+L2+3",
+  "M7-P4-L4-2": "https://placehold.co/738x416?text=M7+P4+L4+2",
   "M7-P4-L2-1": "https://placehold.co/882x559?text=Diagram+Bagian+1+luas+alas+berubah",
   "M7-P4-L2-2": "https://placehold.co/990x481?text=Diagram+Bagian+2+tinggi+berubah",
   "M7-P4-L4-1": "https://placehold.co/1189x624?text=Hero+tiga+siswa+AR",
@@ -1837,19 +1945,26 @@ const DEFAULT_IMAGES: Record<PageImageKey, string> = {
   "M7-P9-L1-2": "https://placehold.co/400x300?text=Limas+persegi+ungu",
   "M7-P9-L1-3": "https://placehold.co/651x600?text=Limas+segitiga+oranye",
   "M7-P9-L1-4": "https://placehold.co/469x424?text=Limas+segilima+biru",
+  "M7-P9-L1-5": "https://placehold.co/504x756?text=M7+P9+L1+5",
   "M7-P9-L4-1": "https://placehold.co/591x196?text=Tiga+limas+persegi+segitiga+segilima",
   "M7-P9-L5-1": "https://placehold.co/1063x619?text=Tiga+siswa+analisis+strategi",
   "M7-P9-L6-1": "https://placehold.co/1063x622?text=Tiga+siswa+diskusi+open-ended",
+  "M7-P9-L6-2": "https://placehold.co/695x1042?text=M7+P9+L6+2",
   "M7-P9-L7-1": "https://placehold.co/417x601?text=Maskot+laki-laki+semangat",
+  "M7-P9-L7-2": "https://placehold.co/197x169?text=M7+P9+L7+2",
+  "M7-P9-L7-3": "https://placehold.co/257x248?text=M7+P9+L7+3",
   "M7-P7-L1-1": "https://placehold.co/1171x651?text=Hero+tiga+siswa+menyimpulkan+rumus",
   "M7-P7-L2-1": "https://placehold.co/1543x279?text=Ilustrasi+tiga+limas+memenuhi+prisma",
   "M7-P7-L3-1": "https://placehold.co/357x567?text=Maskot+laki-laki+gunakan+data+pola+gambar",
   "M7-P7-L3-2": "https://placehold.co/340x607?text=Maskot+perempuan+kesimpulan+halaman+berikutnya",
   "M7-P7-L5-1": "https://placehold.co/481x589?text=Limas+segiempat+biru+contoh+1",
   "M7-P7-L5-2": "https://placehold.co/430x600?text=Tenda+limas+cokelat+contoh+2",
+  "M7-P7-L4-1": "https://placehold.co/1376x764?text=M7+P7+L4+1",
   "M7-P7-L6-1": "https://placehold.co/555x595?text=Maskot+laki-laki+bersemangat",
+  "M7-P7-L6-2": "https://placehold.co/213x192?text=M7+P7+L6+2",
   "M7-P8-L1-1": "https://placehold.co/1063x621?text=Hero+tiga+siswa+lembar+refleksi+diri",
   "M7-P8-L4-1": "https://placehold.co/568x594?text=Maskot+laki-laki+semangat",
+  "M7-P8-L4-2": "https://placehold.co/355x343?text=M7+P8+L4+2",
   "M7-P10-L1-1": "https://placehold.co/1063x624?text=Hero+tiga+siswa+merangkum",
   "M7-P10-L1-2": "https://placehold.co/540x240?text=Alas+segitiga",
   "M7-P10-L1-3": "https://placehold.co/192x186?text=Alas+persegi",
@@ -1861,6 +1976,17 @@ const DEFAULT_IMAGES: Record<PageImageKey, string> = {
   "M7-P10-L2-3": "https://placehold.co/259x249?text=Kubus+kuning",
   "M7-P10-L2-4": "https://placehold.co/199x249?text=Prisma+ungu+hijau",
   "M7-P10-L2-5": "https://placehold.co/1060x627?text=Hero+pesan+akhir+tiga+siswa",
+  "M7-P10-L1-7": "https://placehold.co/792x819?text=M7+P10+L1+7",
+  "M7-P10-L1-8": "https://placehold.co/738x881?text=M7+P10+L1+8",
+  "M7-P10-L1-9": "https://placehold.co/399x399?text=M7+P10+L1+9",
+  "M7-P10-L1-10": "https://placehold.co/489x408?text=M7+P10+L1+10",
+  "M7-P10-L1-11": "https://placehold.co/495x421?text=M7+P10+L1+11",
+  "M7-P10-L1-12": "https://placehold.co/859x249?text=M7+P10+L1+12",
+  "M7-P10-L2-6": "https://placehold.co/1125x1398?text=M7+P10+L2+6",
+  "M7-P10-L2-7": "https://placehold.co/481x589?text=M7+P10+L2+7",
+  "M7-P10-L2-8": "https://placehold.co/346x316?text=M7+P10+L2+8",
+  "M7-P10-L2-9": "https://placehold.co/257x248?text=M7+P10+L2+9",
+  "M7-P10-L2-10": "https://placehold.co/243x208?text=M7+P10+L2+10",
 };
 
 /**

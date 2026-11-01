@@ -74,7 +74,19 @@ export default async function Materi6Peta7Step4KesimpulanIntisari({
         </div>
       </div>
 
-      <Hebat>
+      <Hebat
+        piala={
+          <Foto
+            k="M6-P7-L4-2"
+            src={img["M6-P7-L4-2"]}
+            ctx={ctx}
+            urutan="2"
+            natural
+            alt="Piala emas"
+            className="relative w-14 flex-shrink-0 overflow-hidden"
+          />
+        }
+      >
         Kamu telah menyusun rumus volume bangun ruang sisi datar berdasarkan hasil verifikasi. Teruslah berpikir kritis
         dan teliti!
       </Hebat>
@@ -90,7 +102,6 @@ export default async function Materi6Peta7Step4KesimpulanIntisari({
           className="relative w-44 flex-shrink-0 overflow-hidden"
         />
         <div className="flex flex-col gap-1">
-          <span className="text-lg font-extrabold text-[#1E3A8A]">Lanjut ke Halaman 3</span>
           <p className="m-0 text-sm text-[#374151] leading-[1.6]">
             Pada halaman berikutnya, kita akan menguji pemahaman dan menerapkan rumus volume untuk menyelesaikan berbagai
             masalah.

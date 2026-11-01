@@ -4,6 +4,7 @@ import NextStepButton from "@/app/belajar/_components/NextStepButton";
 import StepHeader from "@/app/belajar/_components/StepHeader";
 import BackLink from "@/app/belajar/_components/BackLink";
 import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
+import Materi6Peta3DugaanSamaFields from "./Materi6Peta3DugaanSamaFields";
 import { getPageImage } from "@/lib/pageImages";
 
 
@@ -28,7 +29,7 @@ export default async function Materi6Peta3Step3MenentukanDugaan({
       <div className="flex flex-col gap-4">
         <StepHeader materi={materi} currentStep={3} totalSteps={6} />
         <div className="inline-flex items-center bg-[#FDF3C7] text-[#92400E] rounded-full py-1.5 px-3.5 text-xs font-bold tracking-[0.02em] w-fit">
-          Tahap 2
+          Tahap 2 dari 6
         </div>
         <div className="flex items-center gap-3.5">
           <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#2563EB" strokeWidth="2.4">
@@ -53,51 +54,11 @@ export default async function Materi6Peta3Step3MenentukanDugaan({
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_320px] gap-5 items-end">
           <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-5 sm:p-6 shadow-[0_1px_2px_rgba(0,0,0,0.04)] flex flex-col gap-5">
-            <div className="flex flex-col gap-2.5">
-              <span className="text-sm font-bold text-[#111827]">Apakah semua anggota kelompok memiliki dugaan yang sama?</span>
-              <div className="flex flex-wrap gap-3">
-                {["Ya", "Tidak, ada perbedaan"].map((opsi) => (
-                  <label key={opsi} className="cursor-pointer">
-                    <input
-                      type="radio"
-                      name="answers.dugaan_sama"
-                      value={opsi}
-                      defaultChecked={getValue("dugaan_sama") === opsi}
-                      required
-                      className="peer sr-only"
-                    />
-                    <span className="inline-flex rounded-full border border-[#E5E7EB] bg-[#F9FAFB] px-5 py-2 text-sm font-semibold text-[#374151] peer-checked:bg-[#2563EB] peer-checked:text-white peer-checked:border-[#2563EB] peer-focus-visible:ring-2 peer-focus-visible:ring-[#93C5FD]">
-                      {opsi}
-                    </span>
-                  </label>
-                ))}
-              </div>
-            </div>
-            <div className="flex flex-col gap-2">
-              <label className="text-sm font-bold text-[#111827] leading-[1.5]">Jika berbeda, apa yang menyebabkan perbedaan tersebut?</label>
-              <textarea
-                  name={`answers.penyebab_beda`}
-                  defaultValue={getValue("penyebab_beda")}
-                  rows={3}
-                  placeholder="Jika tidak ada perbedaan, tulis tanda strip (-)"
-                  required
-                  className="w-full rounded-xl border border-[#E5E7EB] bg-[#F9FAFB] px-3.5 py-2.5 text-sm text-[#374151] placeholder:text-[#9CA3AF] focus:border-[#2563EB] focus:outline-none focus:bg-white transition-colors resize-y"
-                />
-            </div>
-            <div className="flex flex-col gap-2">
-              <label className="text-sm font-bold text-[#111827] leading-[1.5]">
-                Dari berbagai dugaan yang muncul, dugaan mana yang akan dipilih kelompokmu untuk diuji pada Tahap 3
-                melalui eksplorasi menggunakan GeoGebra 3D dan Augmented Reality (AR)? Jelaskan alasan pemilihannya.
-              </label>
-              <textarea
-                  name={`answers.dugaan_dipilih`}
-                  defaultValue={getValue("dugaan_dipilih")}
-                  rows={4}
-                  placeholder="Ketik jawabanmu di sini..."
-                  required
-                  className="w-full rounded-xl border border-[#E5E7EB] bg-[#F9FAFB] px-3.5 py-2.5 text-sm text-[#374151] placeholder:text-[#9CA3AF] focus:border-[#2563EB] focus:outline-none focus:bg-white transition-colors resize-y"
-                />
-            </div>
+            <Materi6Peta3DugaanSamaFields
+              dugaanSama={getValue("dugaan_sama")}
+              penyebabBeda={getValue("penyebab_beda")}
+              dugaanDipilih={getValue("dugaan_dipilih")}
+            />
           </div>
           <EditablePageImage
           imageKey="M6-P3-L3-1"

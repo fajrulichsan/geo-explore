@@ -2,6 +2,7 @@ import type { ReactNode } from "react";
 import NextStepButton from "@/app/belajar/_components/NextStepButton";
 import StepHeader from "@/app/belajar/_components/StepHeader";
 import BackLink from "@/app/belajar/_components/BackLink";
+import QrLink from "@/app/belajar/_components/QrLink";
 import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
 import type { PageImageKey } from "@/lib/pageImages";
 
@@ -69,7 +70,7 @@ export function TahapHeader({ materi, step }: { materi: string; step: number }) 
     <div className="flex flex-col gap-4">
       <StepHeader materi={materi} currentStep={step} totalSteps={TOTAL_STEPS} />
       <div className="inline-flex items-center bg-[#FDF3C7] text-[#92400E] rounded-full py-1.5 px-3.5 text-xs font-bold tracking-[0.02em] w-fit">
-        Tahap 5
+        Tahap 5 dari 6
       </div>
       <div className="flex items-center gap-3.5">
         <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#16A34A" strokeWidth="2.4">
@@ -106,7 +107,7 @@ export function SectionTitle({ huruf, judul, hint, warna = "#2563EB" }: { huruf:
 
 export function Pengantar({ children, kutipan, hero }: { children: ReactNode; kutipan?: string; hero: ReactNode }) {
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-[360px_1fr] gap-5 items-stretch">
+    <div className="flex flex-col-reverse gap-5">
       <div className="bg-[#FEF9E7] border border-[#F5E3A0] rounded-[20px] p-5 flex flex-col gap-3">
         <span className="w-fit rounded-full bg-[#F59E0B] text-white text-xs font-bold px-4 py-1">Pengantar</span>
         {children}
@@ -121,12 +122,14 @@ export function Pengantar({ children, kutipan, hero }: { children: ReactNode; ku
   );
 }
 
-export function Hebat({ children }: { children: ReactNode }) {
+export function Hebat({ children, piala, fill }: { children: ReactNode; piala?: ReactNode; fill?: boolean }) {
   return (
-    <div className="flex items-start gap-4 bg-[#FEF9E7] border border-[#F5E3A0] rounded-[20px] p-5">
-      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" strokeWidth="1.8" className="flex-shrink-0">
-        <path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 01-10 0V4zM7 6H4v1a3 3 0 003 3M17 6h3v1a3 3 0 01-3 3" />
-      </svg>
+    <div className={`flex items-start gap-4 bg-[#FEF9E7] border border-[#F5E3A0] rounded-[20px] p-5${fill ? " h-full" : ""}`}>
+      {piala ?? (
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" strokeWidth="1.8" className="flex-shrink-0">
+          <path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 01-10 0V4zM7 6H4v1a3 3 0 003 3M17 6h3v1a3 3 0 01-3 3" />
+        </svg>
+      )}
       <div className="flex flex-col gap-1">
         <span className="text-lg font-extrabold text-[#92400E]">Hebat!</span>
         <p className="m-0 text-sm text-[#374151] leading-[1.6]">{children}</p>
@@ -152,11 +155,11 @@ export function YaTidak({ name, value, label }: { name: string; value: string; l
   );
 }
 
-export function Nav({ materi, peta, step, last }: { materi: string; peta: string; step: number; last?: boolean }) {
+export function Nav({ materi, peta, step, last, lastLabel = "Selesai" }: { materi: string; peta: string; step: number; last?: boolean; lastLabel?: string }) {
   return (
     <div className={`flex items-center gap-4 ${step > 1 ? "flex-col-reverse sm:flex-row justify-between" : "justify-end"}`}>
       {step > 1 && <BackLink href={`/belajar/${materi}/${peta}/${step - 1}`} />}
-      {last ? <NextStepButton variant="green" icon="check">Selesai</NextStepButton> : <NextStepButton />}
+      {last ? <NextStepButton variant="green" icon="check">{lastLabel}</NextStepButton> : <NextStepButton />}
     </div>
   );
 }
@@ -188,15 +191,33 @@ export function BangunLabel({ b, icons, ctx }: { b: Bangun; icons: Record<string
   );
 }
 
-export function ModelPanel({ children }: { children: ReactNode }) {
+type ModelFoto = { k: PageImageKey; urutan: string };
+
+export function ModelPanel({
+  gg,
+  ar,
+  img,
+  ctx,
+  children,
+}: {
+  gg: ModelFoto;
+  ar: ModelFoto;
+  img: Record<PageImageKey, string>;
+  ctx: Ctx;
+  children: ReactNode;
+}) {
   return (
     <div className="grid grid-cols-2 gap-3">
-      <div className="rounded-2xl border border-[#BFDBFE] bg-[#EFF4FF] p-3 flex flex-col gap-1.5 text-center">
+      <div className="rounded-2xl border border-[#BFDBFE] bg-[#EFF4FF] p-3 flex flex-col items-center gap-2 text-center">
         <span className="mx-auto rounded-full bg-[#1E3A8A] text-white text-xs font-bold px-3 py-1">GeoGebra 3D</span>
+        <Foto k={gg.k} src={img[gg.k]} ctx={ctx} urutan={gg.urutan} natural alt="Model GeoGebra 3D" className="relative w-full min-h-16 overflow-hidden" />
+        <QrLink href="/geogebra?materi=6" src={img["qr-geogebra"]} alt="Kode QR GeoGebra 3D" label="Scan atau klik: GeoGebra 3D" />
         <span className="text-xs text-[#374151] leading-[1.4]">{children}</span>
       </div>
-      <div className="rounded-2xl border border-[#D1D5DB] bg-[#F9FAFB] p-3 flex flex-col gap-1.5 text-center">
+      <div className="rounded-2xl border border-[#D1D5DB] bg-[#F9FAFB] p-3 flex flex-col items-center gap-2 text-center">
         <span className="mx-auto rounded-full bg-[#16A34A] text-white text-xs font-bold px-3 py-1">AR</span>
+        <Foto k={ar.k} src={img[ar.k]} ctx={ctx} urutan={ar.urutan} natural alt="Model AR" className="relative w-full min-h-16 overflow-hidden" />
+        <QrLink href="https://ar.geo-explore.my.id" src={img["qr-ar"]} alt="Kode QR AR" label="Scan atau klik: AR" />
         <span className="text-xs text-[#374151] leading-[1.4]">Lihat model AR dan bandingkan.</span>
       </div>
     </div>

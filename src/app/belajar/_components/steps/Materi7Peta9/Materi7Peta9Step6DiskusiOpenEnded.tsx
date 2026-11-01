@@ -28,7 +28,7 @@ export default async function Materi7Peta9Step6DiskusiOpenEnded({
   initialAnswers,
 }: StepComponentProps) {
   const { getValue } = readAnswers(initialAnswers);
-  const scene = await getPageImage("M7-P9-L6-1");
+  const [scene, ingat] = await Promise.all([getPageImage("M7-P9-L6-1"), getPageImage("M7-P9-L6-2")]);
 
   return (
     <form action={submitStepAction} className="flex flex-col gap-8">
@@ -36,7 +36,7 @@ export default async function Materi7Peta9Step6DiskusiOpenEnded({
       <StepTitle materi={materi} step={STEP} subtitle="Saatnya Menunjukkan Berbagai Strategimu!" />
 
       <div className="flex flex-col gap-4">
-        <SectionTitle letter="F" title="Diskusi Open-Ended" color="green" />
+        <SectionTitle letter="F" title="Diskusi Tantangan Terbuka" color="green" />
         <EditablePageImage
           imageKey="M7-P9-L6-1"
           materi={materi}
@@ -59,10 +59,18 @@ export default async function Materi7Peta9Step6DiskusiOpenEnded({
             </ul>
             <TextAreaField name="kesimpulan_kelompok" label="Tuliskan kesimpulan kelompok." value={getValue("kesimpulan_kelompok")} rows={4} />
           </div>
-          <div className="bg-[#FEF9E7] border border-[#FDE68A] rounded-[20px] p-5 text-sm text-[#92400E] leading-[1.6]">
-            <span className="block font-extrabold text-base mb-1">Ingat!</span>
-            Tidak ada satu <strong>jawaban tunggal</strong> pada soal terbuka. Lebih dari satu jawaban dapat benar selama memenuhi semua syarat pada masalah.
-          </div>
+          <EditablePageImage
+            imageKey="M7-P9-L6-2"
+            materi={materi}
+            peta={peta}
+            step="6"
+            urutan="2"
+            src={ingat}
+            alt="Catatan Ingat: tidak ada satu jawaban tunggal pada soal terbuka"
+            editable={editFoto}
+            imageClassName="object-contain"
+            containerClassName="relative w-full max-w-[260px] aspect-[2/3] mx-auto"
+          />
         </div>
       </div>
 

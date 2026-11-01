@@ -20,6 +20,7 @@ const media = [
     judul: "GeoGebra 3D",
     warna: "#1D4ED8",
     aksi: "Buka GeoGebra 3D",
+    href: "/geogebra?materi=7",
     fitur: [
       "Memanipulasi limas dan prisma",
       "Mengamati luas alas dan tinggi",
@@ -39,6 +40,7 @@ const media = [
     judul: "Augmented Reality (AR)",
     warna: "#2B3D44",
     aksi: "Mulai AR Viewer",
+    href: "https://ar.geo-explore.my.id",
     fitur: [
       "Melihat model 3D dari berbagai arah",
       "Mengamati hubungan limas–prisma",
@@ -64,6 +66,21 @@ export default async function Materi7Peta1Step2TujuanMedia({
 }: StepComponentProps) {
   const gambar = await Promise.all(
     media.flatMap((m) => [getPageImage(m.layar.key), getPageImage(m.qr.key)]),
+  );
+
+  const qrImage = (m: (typeof media)[number], i: number) => (
+    <EditablePageImage
+      imageKey={m.qr.key}
+      materi={materi}
+      peta={peta}
+      step={step}
+      urutan={String(i * 2 + 2)}
+      src={gambar[i * 2 + 1]}
+      alt={m.qr.alt}
+      editable={editFoto}
+      containerClassName="relative w-24 h-24 rounded-xl overflow-hidden bg-white border border-[#E5E7EB] flex-shrink-0"
+      imageClassName="object-contain"
+    />
   );
 
   return (
@@ -156,21 +173,26 @@ export default async function Materi7Peta1Step2TujuanMedia({
                 containerClassName="relative w-full min-h-24 rounded-[14px] overflow-hidden bg-[#F3F4F6]"
               />
               <div className="flex items-center gap-4">
-                <EditablePageImage
-                  imageKey={m.qr.key}
-                  materi={materi}
-                  peta={peta}
-                  step={step}
-                  urutan={String(i * 2 + 2)}
-                  src={gambar[i * 2 + 1]}
-                  alt={m.qr.alt}
-                  editable={editFoto}
-                  containerClassName="relative w-24 h-24 rounded-xl overflow-hidden bg-white border border-[#E5E7EB] flex-shrink-0"
-                  imageClassName="object-contain"
-                />
-                <span className="text-xs font-bold text-[#1D4ED8]">
+                {editFoto ? (
+                  qrImage(m, i)
+                ) : (
+                  <a
+                    href={m.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={m.aksi}
+                  >
+                    {qrImage(m, i)}
+                  </a>
+                )}
+                <a
+                  href={m.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-xs font-bold text-[#1D4ED8] underline"
+                >
                   {m.aksi}
-                </span>
+                </a>
               </div>
               <div className="flex flex-col gap-2">
                 {m.fitur.map((f) => (

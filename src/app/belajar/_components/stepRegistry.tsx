@@ -1,6 +1,7 @@
 import type { ComponentType } from "react";
 import Materi6Peta1Step1Pendahuluan from "./steps/Materi6Peta1/Materi6Peta1Step1Pendahuluan";
 import Materi6Peta1Step2EksplorasiProses from "./steps/Materi6Peta1/Materi6Peta1Step2EksplorasiProses";
+import Materi6Peta2Step0AmatiBangun from "./steps/Materi6Peta2/Materi6Peta2Step0AmatiBangun";
 import Materi6Peta2Step1AmatiLapisan from "./steps/Materi6Peta2/Materi6Peta2Step1AmatiLapisan";
 import Materi6Peta2Step2HasilPengamatanAwal from "./steps/Materi6Peta2/Materi6Peta2Step2HasilPengamatanAwal";
 import Materi6Peta2Step3TelitiDugaanAwal from "./steps/Materi6Peta2/Materi6Peta2Step3TelitiDugaanAwal";
@@ -31,10 +32,8 @@ import Materi6Peta7Step2PrismaPersamaan from "./steps/Materi6Peta7/Materi6Peta7S
 import Materi6Peta7Step3RumusVolume from "./steps/Materi6Peta7/Materi6Peta7Step3RumusVolume";
 import Materi6Peta7Step4KesimpulanIntisari from "./steps/Materi6Peta7/Materi6Peta7Step4KesimpulanIntisari";
 import Materi6Peta9Step1TantanganOpenEnded from "./steps/Materi6Peta9/Materi6Peta9Step1TantanganOpenEnded";
-import Materi6Peta9Step2RancangBandingkan from "./steps/Materi6Peta9/Materi6Peta9Step2RancangBandingkan";
-import Materi6Peta9Step3AlternatifPenyelesaian from "./steps/Materi6Peta9/Materi6Peta9Step3AlternatifPenyelesaian";
-import Materi6Peta9Step4AnalisisDiskusi from "./steps/Materi6Peta9/Materi6Peta9Step4AnalisisDiskusi";
-import Materi6Peta9Step5KesimpulanPerasaan from "./steps/Materi6Peta9/Materi6Peta9Step5KesimpulanPerasaan";
+import Materi6Peta9Step2AlternatifDiskusi from "./steps/Materi6Peta9/Materi6Peta9Step2AlternatifDiskusi";
+import Materi6Peta9Step3HasilTantangan from "./steps/Materi6Peta9/Materi6Peta9Step3HasilTantangan";
 import Materi6Peta7Step5RefleksiEvaluasi from "./steps/Materi6Peta7/Materi6Peta7Step5RefleksiEvaluasi";
 import Materi6Peta7Step6UjiPemahaman from "./steps/Materi6Peta7/Materi6Peta7Step6UjiPemahaman";
 import Materi6Peta8Step1PengantarPemahamanStrategi from "./steps/Materi6Peta8/Materi6Peta8Step1PengantarPemahamanStrategi";
@@ -56,7 +55,6 @@ import Materi7Peta2Step5MenurutPengamatanmu from "./steps/Materi7Peta2/Materi7Pe
 import Materi7Peta2Step6RefleksiPertanyaan from "./steps/Materi7Peta2/Materi7Peta2Step6RefleksiPertanyaan";
 import Materi7Peta3Step1BandingkanHasil from "./steps/Materi7Peta3/Materi7Peta3Step1BandingkanHasil";
 import Materi7Peta3Step2DugaanKelompok from "./steps/Materi7Peta3/Materi7Peta3Step2DugaanKelompok";
-import Materi7Peta3Step3MenentukanDugaan from "./steps/Materi7Peta3/Materi7Peta3Step3MenentukanDugaan";
 import Materi7Peta3Step4RumuskanMasalah from "./steps/Materi7Peta3/Materi7Peta3Step4RumuskanMasalah";
 import Materi7Peta3Step5ApaYangDibuktikan from "./steps/Materi7Peta3/Materi7Peta3Step5ApaYangDibuktikan";
 import Materi7Peta3Step6RefleksiDiskusi from "./steps/Materi7Peta3/Materi7Peta3Step6RefleksiDiskusi";
@@ -93,7 +91,6 @@ import Materi7Peta9Step6DiskusiOpenEnded from "./steps/Materi7Peta9/Materi7Peta9
 import Materi7Peta9Step7KesimpulanTantangan from "./steps/Materi7Peta9/Materi7Peta9Step7KesimpulanTantangan";
 import Materi7Peta7Step1MenyimpulkanHubungan from "./steps/Materi7Peta7/Materi7Peta7Step1MenyimpulkanHubungan";
 import Materi7Peta7Step2MenyusunRumus from "./steps/Materi7Peta7/Materi7Peta7Step2MenyusunRumus";
-import Materi7Peta7Step3AlasanKesimpulanSementara from "./steps/Materi7Peta7/Materi7Peta7Step3AlasanKesimpulanSementara";
 import Materi7Peta7Step4RumusUmum from "./steps/Materi7Peta7/Materi7Peta7Step4RumusUmum";
 import Materi7Peta7Step5MenggunakanRumus from "./steps/Materi7Peta7/Materi7Peta7Step5MenggunakanRumus";
 import Materi7Peta7Step6AlasanKesimpulan from "./steps/Materi7Peta7/Materi7Peta7Step6AlasanKesimpulan";
@@ -668,13 +665,14 @@ export const stepRegistry: Record<string, ComponentType<StepComponentProps>> = {
   "4-4-6": Materi4Peta4Step6DugaanRefleksi,
   "6-1-1": Materi6Peta1Step1Pendahuluan,
   "6-1-2": Materi6Peta1Step2EksplorasiProses,
-  "6-2-1": Materi6Peta2Step1AmatiLapisan,
-  "6-2-2": Materi6Peta2Step2HasilPengamatanAwal,
-  "6-2-3": Materi6Peta2Step3TelitiDugaanAwal,
-  "6-2-4": Materi6Peta2Step4BandingkanPengamatan,
-  "6-2-5": Materi6Peta2Step5DugaanIndividu,
-  "6-2-6": Materi6Peta2Step6RefleksiTahukahKamu,
-  "6-2-7": Materi6Peta2Step7PeriksaKembaliDugaan,
+  "6-2-1": Materi6Peta2Step0AmatiBangun,
+  "6-2-2": Materi6Peta2Step1AmatiLapisan,
+  "6-2-3": Materi6Peta2Step2HasilPengamatanAwal,
+  "6-2-4": Materi6Peta2Step3TelitiDugaanAwal,
+  "6-2-5": Materi6Peta2Step4BandingkanPengamatan,
+  "6-2-6": Materi6Peta2Step5DugaanIndividu,
+  "6-2-7": Materi6Peta2Step6RefleksiTahukahKamu,
+  "6-2-8": Materi6Peta2Step7PeriksaKembaliDugaan,
   "6-3-1": Materi6Peta3Step1BandingkanHasil,
   "6-3-2": Materi6Peta3Step2DugaanAlasan,
   "6-3-3": Materi6Peta3Step3MenentukanDugaan,
@@ -789,10 +787,9 @@ export const stepRegistry: Record<string, ComponentType<StepComponentProps>> = {
   "7-2-6": Materi7Peta2Step6RefleksiPertanyaan,
   "7-3-1": Materi7Peta3Step1BandingkanHasil,
   "7-3-2": Materi7Peta3Step2DugaanKelompok,
-  "7-3-3": Materi7Peta3Step3MenentukanDugaan,
-  "7-3-4": Materi7Peta3Step4RumuskanMasalah,
-  "7-3-5": Materi7Peta3Step5ApaYangDibuktikan,
-  "7-3-6": Materi7Peta3Step6RefleksiDiskusi,
+  "7-3-3": Materi7Peta3Step4RumuskanMasalah,
+  "7-3-4": Materi7Peta3Step5ApaYangDibuktikan,
+  "7-3-5": Materi7Peta3Step6RefleksiDiskusi,
   "7-4-1": Materi7Peta4Step1PengantarHipotesis,
   "7-4-2": Materi7Peta4Step2LangkahGeogebra,
   "7-4-3": Materi7Peta4Step3DataGeogebra,
@@ -826,10 +823,9 @@ export const stepRegistry: Record<string, ComponentType<StepComponentProps>> = {
   "7-9-7": Materi7Peta9Step7KesimpulanTantangan,
   "7-7-1": Materi7Peta7Step1MenyimpulkanHubungan,
   "7-7-2": Materi7Peta7Step2MenyusunRumus,
-  "7-7-3": Materi7Peta7Step3AlasanKesimpulanSementara,
-  "7-7-4": Materi7Peta7Step4RumusUmum,
-  "7-7-5": Materi7Peta7Step5MenggunakanRumus,
-  "7-7-6": Materi7Peta7Step6AlasanKesimpulan,
+  "7-7-3": Materi7Peta7Step4RumusUmum,
+  "7-7-4": Materi7Peta7Step5MenggunakanRumus,
+  "7-7-5": Materi7Peta7Step6AlasanKesimpulan,
   "7-8-1": Materi7Peta8Step1RefleksiPemahaman,
   "7-8-2": Materi7Peta8Step2RefleksiStrategi,
   "7-8-3": Materi7Peta8Step3RefleksiKeyakinan,
@@ -850,10 +846,8 @@ export const stepRegistry: Record<string, ComponentType<StepComponentProps>> = {
   "6-4-11": Materi6Peta4Step11DugaanAwalKelompok,
   "6-4-12": Materi6Peta4Step12RefleksiMini,
   "6-9-1": Materi6Peta9Step1TantanganOpenEnded,
-  "6-9-2": Materi6Peta9Step2RancangBandingkan,
-  "6-9-3": Materi6Peta9Step3AlternatifPenyelesaian,
-  "6-9-4": Materi6Peta9Step4AnalisisDiskusi,
-  "6-9-5": Materi6Peta9Step5KesimpulanPerasaan,
+  "6-9-2": Materi6Peta9Step2AlternatifDiskusi,
+  "6-9-3": Materi6Peta9Step3HasilTantangan,
   "5-1-1": Materi5Peta1Step1TahukahKamu,
   "5-1-2": Materi5Peta1Step2AlurEksplorasi,
   "5-1-3": Materi5Peta1Step3TujuanSiap,

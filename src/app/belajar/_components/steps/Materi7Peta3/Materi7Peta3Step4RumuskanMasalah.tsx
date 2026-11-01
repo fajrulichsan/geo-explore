@@ -16,19 +16,16 @@ export default async function Materi7Peta3Step4RumuskanMasalah({
   const getValue = (key: string) =>
     typeof answers[key] === "string" ? (answers[key] as string) : "";
 
-  const [gambarHero, gambarMaskot] = await Promise.all([
-    getPageImage("M7-P3-L4-1"),
-    getPageImage("M7-P3-L2-1"),
-  ]);
+  const gambarHero = await getPageImage("M7-P3-L4-1");
 
   return (
     <form action={submitStepAction} className="flex flex-col gap-8">
       <input type="hidden" name="materi" value={materi} />
       <input type="hidden" name="peta" value={peta} />
-      <input type="hidden" name="step" value="4" />
+      <input type="hidden" name="step" value="3" />
 
       <div className="flex flex-col gap-4">
-        <StepHeader materi={materi} currentStep={4} totalSteps={6} />
+        <StepHeader materi={materi} currentStep={3} totalSteps={5} />
         <div className="inline-flex items-center bg-[#FDF3C7] text-[#92400E] rounded-full py-1.5 px-3.5 text-xs font-bold tracking-[0.02em] w-fit">
           Tahap 2 dari 6
         </div>
@@ -45,31 +42,19 @@ export default async function Materi7Peta3Step4RumuskanMasalah({
         </div>
       </div>
 
-      <div className="relative overflow-hidden rounded-[24px] bg-gradient-to-br from-[#1E3A8A] to-[#2563EB] px-5 py-6 sm:px-8 sm:py-8 flex flex-col gap-5">
-        <div className="absolute -right-14 -top-16 w-56 h-56 rounded-full bg-white/10" />
-        <div className="relative flex flex-col gap-2">
-          <h2 className="m-0 text-lg sm:text-xl font-extrabold text-white">Sekarang, rumuskan masalah dan tentukan dugaan yang akan dibuktikan</h2>
-          <p className="m-0 text-sm text-white/90 max-w-2xl leading-[1.6]">melalui GeoGebra 3D dan Augmented Reality (AR)!</p>
-        </div>
-        <div className="relative bg-white rounded-2xl p-3 sm:p-4">
-          <EditablePageImage
-              imageKey="M7-P3-L4-1"
-              materi={materi}
-              peta={peta}
-              step="4"
-              urutan="1"
-              src={gambarHero}
-              alt="Tiga siswa berdiskusi dengan tiga limas identik, satu prisma, dan tumpukan buku Amati, Diskusikan, Rumuskan, Buktikan"
-              editable={editFoto}
-              natural
-              containerClassName="relative w-full min-h-24 overflow-hidden"
-            />
-        </div>
-        <div className="relative flex flex-wrap gap-2">
-          <span className="rounded-2xl rounded-bl-sm bg-white/95 text-[#1E3A8A] text-xs sm:text-[13px] font-semibold px-3 py-2 leading-[1.4]">Apa masalah yang perlu kita rumuskan dari hasil pengamatan ini?</span>
-          <span className="rounded-2xl rounded-bl-sm bg-white/95 text-[#1E3A8A] text-xs sm:text-[13px] font-semibold px-3 py-2 leading-[1.4]">Menurut kalian, bagaimana hubungan volume satu limas dengan volume prisma yang luas alas dan tingginya sama?</span>
-          <span className="rounded-2xl rounded-bl-sm bg-white/95 text-[#1E3A8A] text-xs sm:text-[13px] font-semibold px-3 py-2 leading-[1.4]">Dugaan kita nanti akan dibuktikan menggunakan GeoGebra 3D dan AR pada Tahap 3.</span>
-        </div>
+      <div className="rounded-[24px] overflow-hidden border border-[#E5E7EB] bg-white">
+        <EditablePageImage
+          imageKey="M7-P3-L4-1"
+          materi={materi}
+          peta={peta}
+          step="3"
+          urutan="1"
+          src={gambarHero}
+          alt="Tiga siswa berdiskusi dengan tiga limas identik, satu prisma, dan tumpukan buku Amati, Diskusikan, Rumuskan, Buktikan"
+          editable={editFoto}
+          natural
+          containerClassName="relative w-full"
+        />
       </div>
 
       <div className="flex flex-col gap-3 bg-[#EFF4FF] border border-[#DBE7FF] rounded-[20px] p-5 sm:p-6">
@@ -87,7 +72,7 @@ export default async function Materi7Peta3Step4RumuskanMasalah({
       <div className="flex flex-col gap-4">
         <div className="flex items-center gap-3">
           <div className="w-[34px] h-[34px] rounded-full bg-[#2563EB] text-white flex items-center justify-center font-bold text-[15px] flex-shrink-0">
-            F
+            D
           </div>
           <div className="bg-white border border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-full py-2 px-5 text-sm font-bold text-[#2563EB]">
             Rumuskan Masalah
@@ -118,27 +103,13 @@ export default async function Materi7Peta3Step4RumuskanMasalah({
       </div>
 
       <div className="flex flex-col gap-4">
-        <div className="flex items-center justify-between gap-3">
         <div className="flex items-center gap-3">
           <div className="w-[34px] h-[34px] rounded-full bg-[#D97706] text-white flex items-center justify-center font-bold text-[15px] flex-shrink-0">
-            G
+            E
           </div>
           <div className="bg-white border border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-full py-2 px-5 text-sm font-bold text-[#D97706]">
             Dugaan / Hipotesis Kelompok
           </div>
-        </div>
-          <EditablePageImage
-              imageKey="M7-P3-L2-1"
-              materi={materi}
-              peta={peta}
-              step="2"
-              urutan="1"
-              src={gambarMaskot}
-              alt="Tiga siswa maskot tersenyum"
-              editable={editFoto}
-              imageClassName="object-contain"
-              containerClassName="relative w-36 sm:w-52 aspect-[517/244] flex-shrink-0 overflow-hidden rounded-xl"
-            />
         </div>
         <div className="bg-[#FEF9E7] border border-[#FDE68A] rounded-[20px] p-5 sm:p-6 flex flex-col gap-3">
           <p className="m-0 text-sm font-bold text-[#92400E] underline">Menurut kelompok kami,</p>
@@ -157,7 +128,7 @@ export default async function Materi7Peta3Step4RumuskanMasalah({
       </div>
 
       <div className="flex flex-col-reverse sm:flex-row justify-between items-center gap-4">
-        <BackLink href={`/belajar/${materi}/${peta}/3`} />
+        <BackLink href={`/belajar/${materi}/${peta}/2`} />
         <NextStepButton />
       </div>
     </form>

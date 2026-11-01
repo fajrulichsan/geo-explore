@@ -4,7 +4,7 @@ import NextStepButton from "@/app/belajar/_components/NextStepButton";
 import StepHeader from "@/app/belajar/_components/StepHeader";
 import BackLink from "@/app/belajar/_components/BackLink";
 import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
-import { getPageImage, type PageImageKey } from "@/lib/pageImages";
+import { getPageImage } from "@/lib/pageImages";
 
 const bangun: {
   nama: string;
@@ -13,9 +13,6 @@ const bangun: {
   warna: string;
   bg: string;
   border: string;
-  imageKey: PageImageKey;
-  urutan: string;
-  alt: string;
   alas: string;
   rows: string[][];
 }[] = [
@@ -26,9 +23,6 @@ const bangun: {
     warna: "#2563EB",
     bg: "#EFF4FF",
     border: "#BFDBFE",
-    imageKey: "M6-P5-L3-2",
-    urutan: "2",
-    alt: "Kubus biru",
     alas: "kubus pada alas",
     rows: [
       ["3 × 3 = 9", "1", "9"],
@@ -44,9 +38,6 @@ const bangun: {
     warna: "#16A34A",
     bg: "#F0FDF4",
     border: "#BBF7D0",
-    imageKey: "M6-P5-L3-3",
-    urutan: "3",
-    alt: "Balok hijau",
     alas: "balok pada alas",
     rows: [
       ["5 × 2 = 10", "1", "10"],
@@ -68,7 +59,6 @@ export default async function Materi6Peta5Step3PolaKubusBalok({
   const getValue = (key: string) => (typeof answers[key] === "string" ? (answers[key] as string) : "");
 
   const gambarHero = await getPageImage("M6-P5-L3-1");
-  const gambarBangun = await Promise.all(bangun.map((b) => getPageImage(b.imageKey)));
 
   return (
     <form action={submitStepAction} className="flex flex-col gap-8">
@@ -79,7 +69,7 @@ export default async function Materi6Peta5Step3PolaKubusBalok({
       <div className="flex flex-col gap-4">
         <StepHeader materi={materi} currentStep={3} totalSteps={6} />
         <div className="inline-flex items-center bg-[#FDF3C7] text-[#92400E] rounded-full py-1.5 px-3.5 text-xs font-bold tracking-[0.02em] w-fit">
-          Tahap 4
+          Tahap 4 dari 6
         </div>
         <div className="flex items-center gap-3.5">
           <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#2563EB" strokeWidth="2.4">
@@ -91,7 +81,7 @@ export default async function Materi6Peta5Step3PolaKubusBalok({
         <p className="m-0 text-sm font-semibold text-[#2563EB]">Mengolah Data Hasil GeoGebra 3D dan Augmented Reality</p>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-[360px_1fr] gap-5 items-start">
+      <div className="flex flex-col-reverse gap-5">
         <div className="bg-[#EFF4FF] border border-[#BFDBFE] rounded-[20px] p-5 flex flex-col gap-3">
           <span className="w-fit rounded-full bg-[#2563EB] text-white text-xs font-bold px-4 py-1">Pengantar</span>
           <p className="m-0 text-sm leading-[1.6] text-[#374151]">
@@ -121,7 +111,7 @@ export default async function Materi6Peta5Step3PolaKubusBalok({
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
-        {bangun.map((b, i) => (
+        {bangun.map((b) => (
           <div key={b.nama} className="flex flex-col gap-4">
             <div className="flex items-center gap-3">
               <div
@@ -136,18 +126,6 @@ export default async function Materi6Peta5Step3PolaKubusBalok({
               >
                 {b.judul}
               </div>
-              <EditablePageImage
-                imageKey={b.imageKey}
-                materi={materi}
-                peta={peta}
-                step={step}
-                urutan={b.urutan}
-                src={gambarBangun[i]}
-                alt={b.alt}
-                editable={editFoto}
-                imageClassName="object-contain"
-                containerClassName="relative w-12 aspect-square ml-auto flex-shrink-0 overflow-hidden"
-              />
             </div>
             <p className="m-0 text-sm text-[#4B5563]">
               Perhatikan tabel hasil pengamatan {b.nama}. Apa pola yang kamu temukan?

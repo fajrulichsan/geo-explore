@@ -27,7 +27,7 @@ export default async function Materi7Peta3Step2DugaanKelompok({
       <input type="hidden" name="step" value="2" />
 
       <div className="flex flex-col gap-4">
-        <StepHeader materi={materi} currentStep={2} totalSteps={6} />
+        <StepHeader materi={materi} currentStep={2} totalSteps={5} />
         <div className="inline-flex items-center bg-[#FDF3C7] text-[#92400E] rounded-full py-1.5 px-3.5 text-xs font-bold tracking-[0.02em] w-fit">
           Tahap 2 dari 6
         </div>
@@ -45,7 +45,20 @@ export default async function Materi7Peta3Step2DugaanKelompok({
       </div>
 
       <div className="flex flex-col gap-4">
-        <div className="flex items-center justify-between gap-3">
+        <div className="rounded-[24px] overflow-hidden border border-[#E5E7EB] bg-white">
+          <EditablePageImage
+            imageKey="M7-P3-L2-1"
+            materi={materi}
+            peta={peta}
+            step="2"
+            urutan="1"
+            src={gambarMaskot}
+            alt="Siswa berdiskusi kelompok dan menunjukkan dugaan kelompok tentang limas dan prisma"
+            editable={editFoto}
+            natural
+            containerClassName="relative w-full"
+          />
+        </div>
         <div className="flex items-center gap-3">
           <div className="w-[34px] h-[34px] rounded-full bg-[#2563EB] text-white flex items-center justify-center font-bold text-[15px] flex-shrink-0">
             B
@@ -53,19 +66,6 @@ export default async function Materi7Peta3Step2DugaanKelompok({
           <div className="bg-white border border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-full py-2 px-5 text-sm font-bold text-[#2563EB]">
             Dugaan Kelompok
           </div>
-        </div>
-          <EditablePageImage
-              imageKey="M7-P3-L2-1"
-              materi={materi}
-              peta={peta}
-              step="2"
-              urutan="1"
-              src={gambarMaskot}
-              alt="Tiga siswa maskot tersenyum"
-              editable={editFoto}
-              imageClassName="object-contain"
-              containerClassName="relative w-36 sm:w-52 aspect-[517/244] flex-shrink-0 overflow-hidden rounded-xl"
-            />
         </div>
         <p className="m-0 text-sm text-[#4B5563]">Diskusikan dengan anggota kelompokmu.</p>
         <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-5 sm:p-6 shadow-[0_1px_2px_rgba(0,0,0,0.04)] flex flex-col gap-3">

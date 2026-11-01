@@ -38,8 +38,9 @@ export default async function Materi7Peta9Step1TantanganOpenEnded({
   initialAnswers,
 }: StepComponentProps) {
   const { getChecked } = readAnswers(initialAnswers);
-  const [hero, ...gambarBentuk] = await Promise.all([
+  const [hero, ingat, ...gambarBentuk] = await Promise.all([
     getPageImage("M7-P9-L1-1"),
+    getPageImage("M7-P9-L1-5"),
     getPageImage("M7-P9-L1-2"),
     getPageImage("M7-P9-L1-3"),
     getPageImage("M7-P9-L1-4"),
@@ -75,7 +76,7 @@ export default async function Materi7Peta9Step1TantanganOpenEnded({
       </div>
 
       <div className="flex flex-col gap-4">
-        <SectionTitle letter="A" title="Tantangan Open-Ended" />
+        <SectionTitle letter="A" title="Tantangan Terbuka" />
         <p className="m-0 text-sm text-[#4B5563] leading-[1.7]">
           Sebuah perusahaan akan membuat wadah berbentuk limas dengan volume <strong>120 cm³</strong>. Wadah tersebut dapat dibuat dalam beberapa bentuk berikut. Centang bentuk yang kamu pilih.
         </p>
@@ -114,16 +115,18 @@ export default async function Materi7Peta9Step1TantanganOpenEnded({
               ))}
             </ul>
           </div>
-          <div className="bg-[#FEF9E7] border border-[#FDE68A] rounded-[20px] p-5 flex flex-col items-center gap-3 text-[#92400E]">
-            <span className="text-sm font-extrabold">Ingat!</span>
-            <span className="text-lg font-extrabold italic">V = ⅓ × L<sub>alas</sub> × t</span>
-            <svg width="120" height="120" viewBox="0 0 120 120" fill="none" stroke="#92400E" strokeWidth="1.6" strokeLinejoin="round" aria-label="Limas segilima dengan tinggi t dan luas alas">
-              <path d="M60 8 L16 84 L44 104 L86 104 L108 80 Z" fill="#FDE68A" fillOpacity="0.4" />
-              <path d="M60 8 L44 104 M60 8 L86 104" />
-              <path d="M16 84 L60 92 L108 80 M60 92 L60 8" strokeDasharray="4 3" />
-            </svg>
-            <span className="text-xs">t = tinggi limas · L<sub>alas</sub> = luas alas</span>
-          </div>
+          <EditablePageImage
+            imageKey="M7-P9-L1-5"
+            materi={materi}
+            peta={peta}
+            step="1"
+            urutan="5"
+            src={ingat}
+            alt="Catatan Ingat: V = 1/3 × L alas × t dengan gambar limas segilima"
+            editable={editFoto}
+            imageClassName="object-contain"
+            containerClassName="relative w-full max-w-[260px] aspect-[2/3] mx-auto"
+          />
         </div>
 
         <div className="bg-[#FEF9E7] border border-[#FDE68A] rounded-xl px-4 py-3">

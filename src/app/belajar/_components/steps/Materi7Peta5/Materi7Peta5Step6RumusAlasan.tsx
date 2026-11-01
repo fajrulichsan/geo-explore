@@ -54,7 +54,7 @@ export default async function Materi7Peta5Step6RumusAlasan({
 
       <div className="flex flex-col gap-4">
         <SectionTitle letter="J" title="Alasan Dugaan" color="amber" />
-        <div className="grid grid-cols-1 sm:grid-cols-[1fr_190px] gap-5 items-end">
+        <div className="grid grid-cols-1 sm:grid-cols-[1fr_190px] gap-5 items-stretch">
           <div className={`${cardClass} flex flex-col gap-4`}>
             <p className="m-0 text-sm text-[#374151] leading-[1.6]">
               Tuliskan alasan atau argumen kelompokmu. Mengapa kamu menduga rumus tersebut benar? Gunakan data, pola, dan hasil analisis yang telah kamu temukan.
@@ -71,7 +71,7 @@ export default async function Materi7Peta5Step6RumusAlasan({
             alt="Maskot laki-laki: Gunakan data, pola, dan hasil analisis untuk mendukung alasanmu!"
             editable={editFoto}
             imageClassName="object-contain"
-            containerClassName="relative w-40 sm:w-full aspect-[354/601] mx-auto"
+            containerClassName="relative w-40 h-56 sm:w-full sm:h-full sm:min-h-56 mx-auto"
           />
         </div>
       </div>

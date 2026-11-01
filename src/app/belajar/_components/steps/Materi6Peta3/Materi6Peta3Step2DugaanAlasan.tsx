@@ -45,7 +45,7 @@ export default async function Materi6Peta3Step2DugaanAlasan({
       <div className="flex flex-col gap-4">
         <StepHeader materi={materi} currentStep={2} totalSteps={6} />
         <div className="inline-flex items-center bg-[#FDF3C7] text-[#92400E] rounded-full py-1.5 px-3.5 text-xs font-bold tracking-[0.02em] w-fit">
-          Tahap 2
+          Tahap 2 dari 6
         </div>
         <div className="flex items-center gap-3.5">
           <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#2563EB" strokeWidth="2.4">

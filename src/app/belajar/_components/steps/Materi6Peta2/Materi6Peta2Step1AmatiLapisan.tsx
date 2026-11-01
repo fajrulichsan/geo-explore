@@ -1,6 +1,7 @@
 import { submitStepAction } from "@/app/belajar/actions";
 import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
 import NextStepButton from "@/app/belajar/_components/NextStepButton";
+import BackLink from "@/app/belajar/_components/BackLink";
 import StepHeader from "@/app/belajar/_components/StepHeader";
 import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
 import { getPageImage } from "@/lib/pageImages";
@@ -55,7 +56,7 @@ const bangun = [
 export default async function Materi6Peta2Step1AmatiLapisan({
   materi,
   peta,
-  step = "1",
+  step = "2",
   editFoto,
   initialAnswers,
 }: StepComponentProps) {
@@ -71,12 +72,12 @@ export default async function Materi6Peta2Step1AmatiLapisan({
     <form action={submitStepAction} className="flex flex-col gap-8">
       <input type="hidden" name="materi" value={materi} />
       <input type="hidden" name="peta" value={peta} />
-      <input type="hidden" name="step" value="1" />
+      <input type="hidden" name="step" value="2" />
 
       <div className="flex flex-col gap-4">
-        <StepHeader materi={materi} currentStep={1} totalSteps={7} />
+        <StepHeader materi={materi} currentStep={2} totalSteps={8} />
         <div className="inline-flex items-center bg-[#FDF3C7] text-[#92400E] rounded-full py-1.5 px-3.5 text-xs font-bold tracking-[0.02em] w-fit">
-          Tahap 1
+          Tahap 1 dari 6
         </div>
         <div className="flex items-center gap-3.5">
           <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#2563EB" strokeWidth="2.4">
@@ -93,7 +94,7 @@ export default async function Materi6Peta2Step1AmatiLapisan({
         </p>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-[1fr_360px] gap-5 items-stretch">
+      <div className="flex flex-col gap-5">
         <EditablePageImage
           imageKey="M6-P2-L1-1"
           materi={materi}
@@ -213,7 +214,8 @@ export default async function Materi6Peta2Step1AmatiLapisan({
         </div>
       </div>
 
-      <div className="flex justify-end">
+      <div className="flex flex-col-reverse sm:flex-row justify-between items-center gap-4">
+        <BackLink href={`/belajar/${materi}/${peta}/1`} />
         <NextStepButton />
       </div>
     </form>

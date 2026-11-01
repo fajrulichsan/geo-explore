@@ -5,7 +5,7 @@ import BackLink from "@/app/belajar/_components/BackLink";
 import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
 import type { PageImageKey } from "@/lib/pageImages";
 
-export const TOTAL_STEPS = 5;
+export const TOTAL_STEPS = 3;
 
 export type Ctx = { materi: string; peta: string; step: string; editFoto?: boolean };
 
@@ -69,7 +69,7 @@ export function TahapHeader({ materi, step }: { materi: string; step: number }) 
     <div className="flex flex-col gap-4">
       <StepHeader materi={materi} currentStep={step} totalSteps={TOTAL_STEPS} />
       <div className="inline-flex items-center bg-[#FDF3C7] text-[#92400E] rounded-full py-1.5 px-3.5 text-xs font-bold tracking-[0.02em] w-fit">
-        Open-Ended
+        Tantangan Terbuka
       </div>
       <div className="flex items-center gap-3.5">
         <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#DC2626" strokeWidth="2.2">
@@ -77,7 +77,7 @@ export function TahapHeader({ materi, step }: { materi: string; step: number }) 
           <circle cx="12" cy="12" r="5" />
           <circle cx="12" cy="12" r="1.5" />
         </svg>
-        <h1 className="m-0 text-2xl sm:text-[32px] font-extrabold text-[#111827]">Tantangan Open-Ended</h1>
+        <h1 className="m-0 text-2xl sm:text-[32px] font-extrabold text-[#111827]">Tantangan Terbuka</h1>
       </div>
       <p className="m-0 text-sm font-semibold text-[#2563EB]">Saatnya Menunjukkan Berbagai Strategimu!</p>
     </div>

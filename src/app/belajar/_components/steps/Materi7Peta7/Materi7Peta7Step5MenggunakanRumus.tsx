@@ -5,7 +5,7 @@ import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
 import { getPageImage, type PageImageKey } from "@/lib/pageImages";
 import { HiddenStepFields, SectionTitle, StepFooter, StepTitle, cardClass } from "./Materi7Peta7Parts";
 
-const STEP = 5;
+const STEP = 4;
 
 const Frac = () => (
   <span className="inline-flex flex-col items-center leading-none text-xs align-middle">
@@ -52,16 +52,16 @@ const contoh: Contoh[] = [
     judul: "Contoh 2 (Kontekstual)",
     imageKey: "M7-P7-L5-2",
     urutan: "2",
-    aspect: "aspect-[430/600]",
+    aspect: "aspect-[3/2]",
     alt: "Tenda berbentuk limas berwarna cokelat",
-    soal: "Sebuah tenda berbentuk limas memiliki luas alas 54 m² dan tinggi 10 m. Berapa volume ruang di dalam tenda tersebut?",
+    soal: "Sebuah tenda berbentuk limas memiliki luas alas 7,5 m² dan tinggi 1,6 m. Berapa volume ruang di dalam tenda tersebut?",
     langkah: [
       <span key="m1"><Frac /> × <Lalas /> × t</span>,
-      <span key="m2"><Frac /> × 54 × 10</span>,
-      <span key="m3">18 × 10</span>,
-      <span key="l8" className="font-extrabold text-[#DC2626]">180 m³</span>,
+      <span key="m2"><Frac /> × 7,5 × 1,6</span>,
+      <span key="m3">2,5 × 1,6</span>,
+      <span key="l8" className="font-extrabold text-[#DC2626]">4 m³</span>,
     ],
-    jadi: <>Jadi, volume ruang dalam tenda (volume limas) = <span className="font-extrabold text-[#DC2626]">180</span> m³</>,
+    jadi: <>Jadi, volume ruang dalam tenda (volume limas) = <span className="font-extrabold text-[#DC2626]">4</span> m³</>,
   },
 ];
 
@@ -74,7 +74,7 @@ export default async function Materi7Peta7Step5MenggunakanRumus({ materi, peta, 
       <StepTitle materi={materi} step={STEP} subtitle="Menuliskan Rumus Umum Volume Limas" />
 
       <div className="flex flex-col gap-4">
-        <SectionTitle letter="F" title="Menggunakan Rumus Volume Limas" color="amber" />
+        <SectionTitle letter="D" title="Menggunakan Rumus Volume Limas" color="amber" />
         <p className="m-0 text-sm text-[#4B5563]">
           Coba selesaikan masalah berikut menggunakan rumus yang telah kamu peroleh.
         </p>
@@ -87,7 +87,7 @@ export default async function Materi7Peta7Step5MenggunakanRumus({ materi, peta, 
                   imageKey={c.imageKey}
                   materi={materi}
                   peta={peta}
-                  step="5"
+                  step="4"
                   urutan={c.urutan}
                   src={gambar[i]}
                   alt={c.alt}

@@ -1,5 +1,6 @@
 import { submitStepAction } from "@/app/belajar/actions";
 import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
+import FileSubmission from "@/components/FileSubmission";
 import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
 import { getPageImage } from "@/lib/pageImages";
 import {
@@ -13,21 +14,23 @@ import {
   readAnswers,
 } from "./Materi7Peta7Parts";
 
-const STEP = 6;
+const STEP = 5;
 
 const petunjuk = [
-  "gunakan hasil verifikasi bahwa tiga kali isi satu limas dapat mengisi satu prisma;",
-  "perhatikan perbandingan volume satu limas dan prisma;",
-  "hubungkan dengan luas alas dan tinggi yang sama;",
-  "jelaskan bagaimana hubungan tersebut menghasilkan rumus volume limas.",
+  "Gunakan hasil verifikasi bahwa tiga kali isi satu limas dapat memenuhi satu prisma.",
+  "Perhatikan hubungan volume limas dan prisma yang memiliki luas alas dan tinggi yang sama.",
+  "Jelaskan bagaimana hubungan tersebut menghasilkan rumus volume limas.",
+  "Gunakan data, pola, atau model untuk mendukung alasanmu!",
 ];
 
 const kesimpulan = [
-  { key: "akhir_sepertiga", label: "Volume satu limas = ⅓ × volume prisma yang memiliki luas alas dan tinggi yang sama." },
-  { key: "akhir_diperoleh", label: "Rumus volume limas diperoleh dari hasil verifikasi pengisian satu limas yang dilakukan berulang tiga kali hingga memenuhi prisma yang memiliki luas alas dan tinggi yang sama." },
-  { key: "akhir_sehari", label: "Volume satu limas dapat digunakan untuk menyelesaikan masalah dalam kehidupan sehari-hari." },
-  { key: "akhir_jelaskan", label: "Saya dapat menjelaskan alasan rumus volume satu limas dengan kata-kata saya sendiri." },
+  { key: "akhir_sepertiga", label: "Volume satu limas adalah sepertiga volume prisma yang memiliki luas alas dan tinggi yang sama." },
+  { key: "akhir_diperoleh", label: "Rumus volume limas diperoleh berdasarkan hubungan volume limas dan prisma yang telah diverifikasi." },
+  { key: "akhir_sehari", label: "Volume limas dapat ditentukan menggunakan luas alas dan tinggi limas." },
+  { key: "akhir_jelaskan", label: "Rumus volume limas dapat digunakan untuk menyelesaikan berbagai masalah dalam kehidupan sehari-hari." },
 ];
+
+const GRUP_KESIMPULAN = { name: "kesimpulan-akhir", min: 2 };
 
 export default async function Materi7Peta7Step6AlasanKesimpulan({
   materi,
@@ -36,11 +39,13 @@ export default async function Materi7Peta7Step6AlasanKesimpulan({
   initialAnswers,
 }: StepComponentProps) {
   const { getValue, getChecked } = readAnswers(initialAnswers);
-  const [laki, perempuan, hebat] = await Promise.all([
+  const [laki, perempuan, hebat, ikonBalon] = await Promise.all([
     getPageImage("M7-P7-L3-1"),
     getPageImage("M7-P7-L3-2"),
     getPageImage("M7-P7-L6-1"),
+    getPageImage("M7-P7-L6-2"),
   ]);
+  const fileHasilKerja = initialAnswers?.file_hasil_kerja;
 
   return (
     <form action={submitStepAction} className="flex flex-col gap-8">
@@ -49,35 +54,50 @@ export default async function Materi7Peta7Step6AlasanKesimpulan({
 
       <div className="flex flex-col gap-4">
         <SectionTitle letter="G" title="Mengapa Rumus Itu Benar?" color="amber" />
-        <p className="m-0 text-sm text-[#4B5563]">
-          Tuliskan alasanmu berdasarkan hasil verifikasi pada Tahap 5. Gunakan petunjuk berikut jika perlu:
+        <p className="m-0 text-sm font-semibold text-[#111827]">
+          Jelaskan dengan alasan matematis mengapa volume limas dapat ditentukan menggunakan rumus yang telah kamu temukan!
         </p>
-        <div className="grid grid-cols-1 sm:grid-cols-[1fr_150px] gap-5 items-center">
+        <div className="grid grid-cols-1 sm:grid-cols-[1fr_150px] gap-5 items-stretch">
           <div className="bg-[#FDF2F8] border border-[#FBCFE8] rounded-[20px] p-5 flex flex-col gap-2">
             <h3 className="m-0 text-sm font-extrabold text-[#BE185D]">Petunjuk:</h3>
             <ul className="m-0 pl-5 list-disc text-sm text-[#374151] leading-[1.6]">
-              {petunjuk.map((t) => (
+              {petunjuk.slice(0, 3).map((t) => (
                 <li key={t}>{t}</li>
               ))}
             </ul>
+            <div className="flex items-center gap-2.5 mt-1">
+              <EditablePageImage
+                imageKey="M7-P7-L6-2"
+                materi={materi}
+                peta={peta}
+                step="5"
+                urutan="4"
+                src={ikonBalon}
+                alt="Ikon balon percakapan"
+                editable={editFoto}
+                containerClassName="relative w-9 h-8 flex-shrink-0"
+                imageClassName="object-contain"
+              />
+              <span className="text-sm font-bold text-[#BE185D]">{petunjuk[3]}</span>
+            </div>
           </div>
           <EditablePageImage
             imageKey="M7-P7-L3-1"
             materi={materi}
             peta={peta}
-            step="3"
+            step="5"
             urutan="1"
             src={laki}
             alt="Maskot laki-laki: Gunakan data, pola, atau gambar untuk menjelaskan alasanmu!"
             editable={editFoto}
             imageClassName="object-contain"
-            containerClassName="relative w-32 sm:w-full aspect-[357/567] mx-auto"
+            containerClassName="relative w-32 h-48 sm:w-full sm:h-full sm:min-h-48 mx-auto"
           />
         </div>
         <div className={cardClass}>
           <TextAreaField
             name="alasan_rumus_umum"
-            label="Mengapa rumus umum volume limas tersebut benar?"
+            label="Tuliskan alasan matematis kelompokmu!"
             value={getValue("alasan_rumus_umum")}
             rows={5}
           />
@@ -87,25 +107,51 @@ export default async function Materi7Peta7Step6AlasanKesimpulan({
       <div className="flex flex-col gap-4">
         <SectionTitle letter="H" title="Kesimpulan" color="green" />
         <p className="m-0 text-sm text-[#4B5563]">
-          Berdasarkan seluruh pembahasan pada halaman ini, beri tanda centang (✓) pada pernyataan yang sesuai dengan dirimu.
+          Berdasarkan seluruh kegiatan yang telah kamu lakukan, berilah tanda centang (✓) pada setiap pernyataan yang sesuai dengan hasil pembelajaranmu!
         </p>
-        <div className="grid grid-cols-1 sm:grid-cols-[1fr_150px] gap-5 items-center">
+        <div className="grid grid-cols-1 sm:grid-cols-[1fr_150px] gap-5 items-stretch">
           <div className={`${cardClass} flex flex-col gap-3`}>
             {kesimpulan.map((k) => (
-              <CheckItem key={k.key} name={k.key} label={k.label} checked={getChecked(k.key)} />
+              <CheckItem key={k.key} name={k.key} label={k.label} checked={getChecked(k.key)} requireGroup={GRUP_KESIMPULAN} />
             ))}
           </div>
           <EditablePageImage
             imageKey="M7-P7-L3-2"
             materi={materi}
             peta={peta}
-            step="3"
+            step="5"
             urutan="2"
             src={perempuan}
             alt="Maskot perempuan: Kesimpulan ini akan kita gunakan pada tahap berikutnya!"
             editable={editFoto}
             imageClassName="object-contain"
-            containerClassName="relative w-32 sm:w-full aspect-[340/607] mx-auto"
+            containerClassName="relative w-32 h-48 sm:w-full sm:h-full sm:min-h-48 mx-auto"
+          />
+        </div>
+      </div>
+
+      <div className="flex flex-col gap-4">
+        <div className="flex items-center gap-2.5">
+          <EditablePageImage
+            imageKey="M7-P7-L6-2"
+            materi={materi}
+            peta={peta}
+            step="5"
+            urutan="5"
+            src={ikonBalon}
+            alt="Ikon balon percakapan"
+            editable={editFoto}
+            containerClassName="relative w-10 h-9 flex-shrink-0"
+            imageClassName="object-contain"
+          />
+          <h3 className="m-0 text-base font-extrabold text-[#111827]">Refleksi singkat</h3>
+        </div>
+        <div className={cardClass}>
+          <TextAreaField
+            name="refleksi_singkat"
+            label="Jelaskan dengan kata-katamu sendiri hal terpenting yang kamu pelajari tentang volume limas."
+            value={getValue("refleksi_singkat")}
+            rows={3}
           />
         </div>
       </div>
@@ -119,17 +165,17 @@ export default async function Materi7Peta7Step6AlasanKesimpulan({
             <span className="font-extrabold text-lg">Hebat! </span>
             Kamu telah berhasil menuliskan rumus umum volume limas dengan sangat baik!
           </p>
-          <p className="m-0">
-            <span className="font-extrabold text-lg">Lanjut ke Tantangan </span>
-            Sekarang kamu siap menyelesaikan berbagai masalah yang lebih menantang!
+          <p className="m-0 flex flex-col">
+            <span className="font-extrabold text-lg">Lanjut ke Tantangan</span>
+            <span>Sekarang kamu siap menyelesaikan berbagai masalah yang lebih menantang!</span>
           </p>
         </div>
         <EditablePageImage
           imageKey="M7-P7-L6-1"
           materi={materi}
           peta={peta}
-          step="6"
-          urutan="1"
+          step="5"
+          urutan="3"
           src={hebat}
           alt="Maskot laki-laki bersemangat mengepalkan tangan"
           editable={editFoto}
@@ -138,7 +184,13 @@ export default async function Materi7Peta7Step6AlasanKesimpulan({
         />
       </div>
 
-      <StepFooter materi={materi} peta={peta} step={STEP} final />
+      <FileSubmission
+        materi={materi}
+        peta={peta}
+        defaultValue={typeof fileHasilKerja === "string" ? fileHasilKerja : undefined}
+      />
+
+      <StepFooter materi={materi} peta={peta} step={STEP} final="Lanjut ke Refleksi Diri" />
     </form>
   );
 }

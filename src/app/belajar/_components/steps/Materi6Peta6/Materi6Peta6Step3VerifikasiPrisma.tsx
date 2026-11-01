@@ -108,7 +108,7 @@ export default async function Materi6Peta6Step3VerifikasiPrisma({
 
           <div className={`${cardCls} flex flex-col gap-3`}>
             <span className="text-sm font-bold text-[#111827]">Model pada GeoGebra 3D / AR</span>
-            <ModelPanel>5 lapisan (masing-masing luas 6 satuan²) — tampilkan satuan volume.</ModelPanel>
+            <ModelPanel gg={{ k: "M6-P6-L3-3", urutan: "3" }} ar={{ k: "M6-P6-L3-4", urutan: "4" }} img={img} ctx={ctx}>5 lapisan (masing-masing luas 6 satuan²) — tampilkan satuan volume.</ModelPanel>
           </div>
         </div>
         <div className="flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-[#BFDBFE] bg-[#EFF4FF] px-5 py-3.5">

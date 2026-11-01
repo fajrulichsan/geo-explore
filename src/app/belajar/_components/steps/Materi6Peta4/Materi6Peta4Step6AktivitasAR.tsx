@@ -27,9 +27,11 @@ const kegiatan = {
   ],
 };
 
-export default async function Materi6Peta4Step6AktivitasAR({ materi, peta, step = "6" }: StepComponentProps) {
+const tampilanAR = { kubus: "M6-P4-L6-1", balok: "M6-P4-L6-2", prisma: "M6-P4-L6-3" } as const;
+
+export default async function Materi6Peta4Step6AktivitasAR({ materi, peta, step = "6", editFoto }: StepComponentProps) {
   const img = await getPageImages();
-  const ctx = { materi, peta, step, editFoto: false };
+  const ctx = { materi, peta, step, editFoto };
 
   return (
     <form action={submitStepAction} className="flex flex-col gap-8">
@@ -39,7 +41,7 @@ export default async function Materi6Peta4Step6AktivitasAR({ materi, peta, step 
       <div className="flex flex-col gap-4">
         <SectionTitle huruf="F" judul="Aktivitas di AR" hint="Lakukan kegiatan berikut pada marker setiap bangun ruang." />
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
-          {BANGUN.map((b) => (
+          {BANGUN.map((b, i) => (
             <div key={b.nama} className={`${cardCls} flex flex-col gap-4 overflow-hidden`}>
               <span className="w-fit rounded-full text-white text-xs font-bold px-4 py-1" style={{ backgroundColor: b.warna }}>
                 {b.judul}
@@ -55,7 +57,7 @@ export default async function Materi6Peta4Step6AktivitasAR({ materi, peta, step 
                 ))}
               </ul>
               <div className="rounded-2xl bg-[#1F2937] p-3 flex items-center justify-center">
-                <Foto k={b.icon} img={img} ctx={ctx} alt={`Tampilan AR ${b.iconAlt}`} className="relative w-full h-28 rounded-xl bg-white" />
+                <Foto k={tampilanAR[b.nama]} img={img} ctx={ctx} urutan={String(i + 1)} natural alt={`Tampilan AR ${b.iconAlt}`} className="relative w-full min-h-28 rounded-xl bg-white overflow-hidden" />
               </div>
             </div>
           ))}

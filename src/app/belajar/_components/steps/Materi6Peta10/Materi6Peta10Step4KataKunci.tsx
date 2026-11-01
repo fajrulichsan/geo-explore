@@ -1,7 +1,7 @@
 import { submitStepAction } from "@/app/belajar/actions";
 import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
 import { getPageImages } from "@/lib/pageImages";
-import { Balok, Foto, HiddenFields, Kubus, Nav, RangkumanHeader, SectionTitle } from "./Materi6Peta10Parts";
+import { Foto, HiddenFields, Kubus, Nav, RangkumanHeader, SectionTitle } from "./Materi6Peta10Parts";
 
 export default async function Materi6Peta10Step4KataKunci({
   materi,
@@ -47,24 +47,37 @@ export default async function Materi6Peta10Step4KataKunci({
             </p>
           </div>
           <div className={kartu}>
-            <Kubus className="w-14 h-14" />
+            <Foto
+              k="M6-P10-L4-1"
+              urutan="1"
+              src={img["M6-P10-L4-1"]}
+              ctx={ctx}
+              alt="Kubus"
+              className="relative w-20 min-h-14"
+            />
             <span className={judul}>Kubus</span>
             <p className={isi}>Bangun ruang sisi datar dengan 6 sisi berbentuk persegi yang sama besar.</p>
           </div>
           <div className={kartu}>
-            <Balok className="w-16 h-14" />
+            <Foto
+              k="M6-P10-L4-2"
+              urutan="2"
+              src={img["M6-P10-L4-2"]}
+              ctx={ctx}
+              alt="Balok"
+              className="relative w-24 min-h-14"
+            />
             <span className={judul}>Balok</span>
             <p className={isi}>Bangun ruang sisi datar dengan 6 sisi berbentuk persegi atau persegi panjang.</p>
           </div>
           <div className={kartu}>
             <Foto
-              k="M6-P10-L2-2"
-              urutan="2"
-              src={img["M6-P10-L2-2"]}
+              k="M6-P10-L4-3"
+              urutan="3"
+              src={img["M6-P10-L4-3"]}
               ctx={ctx}
-              editable={false}
               alt="Prisma segi-n"
-              className="relative w-28"
+              className="relative w-24 min-h-14"
             />
             <span className={judul}>Prisma segi-n</span>
             <p className={isi}>

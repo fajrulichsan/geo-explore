@@ -39,38 +39,31 @@ export default async function Materi7Peta4Step1PengantarHipotesis({
   initialAnswers,
 }: StepComponentProps) {
   const { getValue } = readAnswers(initialAnswers);
-  const gambarHero = await getPageImage("M7-P4-L1-1");
+  const [gambarHero, ...gambarKotak] = await Promise.all([
+    getPageImage("M7-P4-L1-1"),
+    getPageImage("M7-P4-L1-2"),
+    getPageImage("M7-P4-L1-3"),
+    getPageImage("M7-P4-L1-4"),
+  ]);
 
   return (
     <form action={submitStepAction} className="flex flex-col gap-8">
       <HiddenStepFields materi={materi} peta={peta} step={STEP} />
       <StepTitle materi={materi} step={STEP} subtitle="Eksplorasi Menggunakan GeoGebra 3D" />
 
-      <div className="relative overflow-hidden rounded-[24px] bg-gradient-to-br from-[#1E3A8A] to-[#2563EB] px-5 py-6 sm:px-8 sm:py-8 flex flex-col gap-5">
-        <div className="absolute -right-14 -top-16 w-56 h-56 rounded-full bg-white/10" />
-        <div className="relative flex flex-col gap-2">
-          <h2 className="m-0 text-lg sm:text-xl font-extrabold text-white">Mari menguji dugaanmu dengan GeoGebra 3D!</h2>
-          <p className="m-0 text-sm text-white/90 max-w-2xl leading-[1.6]">Ubah luas alas dan tinggi, amati perubahan volume limas dan volume prisma yang memiliki luas alas dan tinggi yang sama.</p>
-        </div>
-        <div className="relative bg-white rounded-2xl p-3 sm:p-4">
-          <EditablePageImage
-            imageKey="M7-P4-L1-1"
-            materi={materi}
-            peta={peta}
-            step="1"
-            urutan="1"
-            src={gambarHero}
-            alt="Tiga siswa berdiskusi di depan laptop GeoGebra 3D dengan prisma dan tiga limas di atas meja"
-            editable={editFoto}
-            natural
-            containerClassName="relative w-full min-h-24 overflow-hidden"
-          />
-        </div>
-        <div className="relative flex flex-wrap gap-2">
-          <span className="rounded-2xl rounded-bl-sm bg-white/95 text-[#1E3A8A] text-xs sm:text-[13px] font-semibold px-3 py-2 leading-[1.4]">Kalau luas alasnya diperbesar, apa yang terjadi dengan volumenya?</span>
-          <span className="rounded-2xl rounded-bl-sm bg-white/95 text-[#1E3A8A] text-xs sm:text-[13px] font-semibold px-3 py-2 leading-[1.4]">Kalau tingginya lebih besar, apakah volumenya juga bertambah?</span>
-          <span className="rounded-2xl rounded-bl-sm bg-white/95 text-[#1E3A8A] text-xs sm:text-[13px] font-semibold px-3 py-2 leading-[1.4]">Ayo ubah ukurannya di GeoGebra 3D dan catat hasilnya!</span>
-        </div>
+      <div className="rounded-[24px] overflow-hidden border border-[#E5E7EB] bg-white">
+        <EditablePageImage
+          imageKey="M7-P4-L1-1"
+          materi={materi}
+          peta={peta}
+          step="1"
+          urutan="1"
+          src={gambarHero}
+          alt="Tiga siswa berdiskusi di depan laptop GeoGebra 3D dengan prisma dan tiga limas di atas meja"
+          editable={editFoto}
+          natural
+          containerClassName="relative w-full"
+        />
       </div>
 
       <div className="flex flex-col gap-3 bg-[#EFF4FF] border border-[#DBE7FF] rounded-[20px] p-5 sm:p-6">
@@ -82,11 +75,23 @@ export default async function Materi7Peta4Step1PengantarHipotesis({
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         {[
-          { t: "Model yang digunakan", d: "Satu prisma dan satu limas dengan bentuk serta luas alas yang sama dan tinggi yang sama." },
-          { t: "Tujuan eksplorasi", d: "Menyelidiki hubungan volume satu limas dengan volume prisma yang memiliki luas alas dan tinggi yang sama." },
-          { t: "Hasil pengamatan", d: "Catat semua hasil pengamatanmu pada tabel dan gunakan untuk menjawab pertanyaan berikutnya." },
-        ].map((k) => (
+          { t: "Model yang digunakan", key: "M7-P4-L1-2" as const, d: "Satu prisma dan satu limas dengan bentuk serta luas alas yang sama dan tinggi yang sama." },
+          { t: "Tujuan eksplorasi", key: "M7-P4-L1-3" as const, d: "Menyelidiki hubungan volume satu limas dengan volume prisma yang memiliki luas alas dan tinggi yang sama." },
+          { t: "Hasil pengamatan", key: "M7-P4-L1-4" as const, d: "Catat semua hasil pengamatanmu pada tabel dan gunakan untuk menjawab pertanyaan berikutnya." },
+        ].map((k, i) => (
           <div key={k.t} className={`${cardClass} !p-4 flex flex-col gap-1.5`}>
+            <EditablePageImage
+              imageKey={k.key}
+              materi={materi}
+              peta={peta}
+              step="1"
+              urutan={String(i + 2)}
+              src={gambarKotak[i]}
+              alt={k.t}
+              editable={editFoto}
+              containerClassName="relative w-full aspect-[4/3] overflow-hidden"
+              imageClassName="object-contain"
+            />
             <h3 className="m-0 text-sm font-extrabold text-[#1E3A8A]">{k.t}</h3>
             <p className="m-0 text-sm text-[#4B5563] leading-[1.5]">{k.d}</p>
           </div>

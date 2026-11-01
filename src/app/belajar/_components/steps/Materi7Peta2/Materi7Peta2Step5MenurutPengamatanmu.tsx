@@ -73,8 +73,8 @@ export default async function Materi7Peta2Step5MenurutPengamatanmu({
               src={gambarSatu}
               alt="Prisma berisi pasir setinggi sebagian setelah satu kali penuangan, masih ada ruang kosong"
               editable={editFoto}
-              natural
-              containerClassName="relative w-full min-h-24 overflow-hidden"
+              containerClassName="relative w-full aspect-[8/5] overflow-hidden"
+              imageClassName="object-contain"
             />
             <p className="m-0 text-xs font-semibold text-[#DC2626]">Masih ada ruang kosong.</p>
           </div>
@@ -93,8 +93,8 @@ export default async function Materi7Peta2Step5MenurutPengamatanmu({
               src={gambarDua}
               alt="Prisma berisi pasir lebih tinggi setelah dua kali penuangan, masih ada ruang kosong"
               editable={editFoto}
-              natural
-              containerClassName="relative w-full min-h-24 overflow-hidden"
+              containerClassName="relative w-full aspect-[8/5] overflow-hidden"
+              imageClassName="object-contain"
             />
             <p className="m-0 text-xs font-semibold text-[#DC2626]">Masih ada ruang kosong.</p>
           </div>
@@ -113,12 +113,12 @@ export default async function Materi7Peta2Step5MenurutPengamatanmu({
               src={gambarTiga}
               alt="Prisma yang terisi penuh dengan pasir dan tanda tanya merah"
               editable={editFoto}
-              natural
-              containerClassName="relative w-full min-h-24 overflow-hidden"
+              containerClassName="relative w-full aspect-[8/5] overflow-hidden"
+              imageClassName="object-contain"
             />
           </div>
         </div>
-        <div className="flex items-center gap-4 bg-[#EFF4FF] border border-[#DBE7FF] rounded-[20px] p-4 sm:p-5">
+        <div className="flex flex-col sm:flex-row items-stretch gap-4 bg-[#EFF4FF] border border-[#DBE7FF] rounded-[20px] p-4 sm:p-5">
           <EditablePageImage
             imageKey="M7-P2-L5-4"
             materi={materi}
@@ -126,14 +126,17 @@ export default async function Materi7Peta2Step5MenurutPengamatanmu({
             step={step}
             urutan="4"
             src={gambarMaskot}
-            alt="Maskot siswa laki-laki berpikir: Apakah setelah tiga kali tuang, prisma akan penuh? Mengapa ya?"
+            alt="Siswa laki-laki berpikir: Apakah setelah tiga kali tuang, prisma akan penuh? Mengapa ya?"
             editable={editFoto}
-            containerClassName="relative w-40 h-44 sm:w-52 sm:h-56 flex-shrink-0"
+            containerClassName="relative w-40 h-56 sm:w-44 sm:h-60 flex-shrink-0 mx-auto sm:mx-0"
             imageClassName="object-contain"
           />
-          <p className="m-0 text-sm text-[#374151] leading-[1.6]">
-            Apakah setelah tiga kali tuang, prisma akan penuh? <span className="font-bold text-[#2563EB]">Mengapa ya?</span>
-          </p>
+          <div className="flex-1 flex flex-col justify-center gap-2">
+            <label htmlFor="jawaban_tiga_tuang" className="text-sm font-bold text-[#111827]">
+              Apakah setelah tiga kali tuang, prisma akan penuh? Mengapa ya?
+            </label>
+            <textarea id="jawaban_tiga_tuang" name="answers.jawaban_tiga_tuang" defaultValue={getValue("jawaban_tiga_tuang")} rows={4} placeholder="Ketik jawabanmu di sini..." required className="w-full rounded-xl border border-[#E5E7EB] bg-white px-3.5 py-2.5 text-sm text-[#374151] placeholder:text-[#9CA3AF] focus:border-[#2563EB] focus:outline-none transition-colors resize-y" />
+          </div>
         </div>
       </div>
 

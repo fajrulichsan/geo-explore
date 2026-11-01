@@ -69,7 +69,7 @@ export function TahapHeader({ materi, step }: { materi: string; step: number }) 
     <div className="flex flex-col gap-4">
       <StepHeader materi={materi} currentStep={step} totalSteps={TOTAL_STEPS} />
       <div className="inline-flex items-center bg-[#FDF3C7] text-[#92400E] rounded-full py-1.5 px-3.5 text-xs font-bold tracking-[0.02em] w-fit">
-        Tahap 6
+        Tahap 6 dari 6
       </div>
       <div className="flex items-center gap-3.5">
         <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#16A34A" strokeWidth="2.4">
@@ -106,7 +106,7 @@ export function SectionTitle({ huruf, judul, hint, warna = "#2563EB" }: { huruf:
 
 export function Pengantar({ children, kutipan, hero }: { children: ReactNode; kutipan?: string; hero: ReactNode }) {
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-[360px_1fr] gap-5 items-stretch">
+    <div className="flex flex-col-reverse gap-5">
       <div className="bg-[#FEF9E7] border border-[#F5E3A0] rounded-[20px] p-5 flex flex-col gap-3">
         <span className="w-fit rounded-full bg-[#F59E0B] text-white text-xs font-bold px-4 py-1">Pengantar</span>
         {children}
@@ -121,12 +121,14 @@ export function Pengantar({ children, kutipan, hero }: { children: ReactNode; ku
   );
 }
 
-export function Hebat({ children }: { children: ReactNode }) {
+export function Hebat({ children, piala, fill }: { children: ReactNode; piala?: ReactNode; fill?: boolean }) {
   return (
-    <div className="flex items-start gap-4 bg-[#FEF9E7] border border-[#F5E3A0] rounded-[20px] p-5">
-      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" strokeWidth="1.8" className="flex-shrink-0">
-        <path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 01-10 0V4zM7 6H4v1a3 3 0 003 3M17 6h3v1a3 3 0 01-3 3" />
-      </svg>
+    <div className={`flex items-start gap-4 bg-[#FEF9E7] border border-[#F5E3A0] rounded-[20px] p-5${fill ? " h-full" : ""}`}>
+      {piala ?? (
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" strokeWidth="1.8" className="flex-shrink-0">
+          <path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 01-10 0V4zM7 6H4v1a3 3 0 003 3M17 6h3v1a3 3 0 01-3 3" />
+        </svg>
+      )}
       <div className="flex flex-col gap-1">
         <span className="text-lg font-extrabold text-[#92400E]">Hebat!</span>
         <p className="m-0 text-sm text-[#374151] leading-[1.6]">{children}</p>
@@ -135,11 +137,11 @@ export function Hebat({ children }: { children: ReactNode }) {
   );
 }
 
-export function Nav({ materi, peta, step, last }: { materi: string; peta: string; step: number; last?: boolean }) {
+export function Nav({ materi, peta, step, last, lastLabel = "Selesai" }: { materi: string; peta: string; step: number; last?: boolean; lastLabel?: string }) {
   return (
     <div className={`flex items-center gap-4 ${step > 1 ? "flex-col-reverse sm:flex-row justify-between" : "justify-end"}`}>
       {step > 1 && <BackLink href={`/belajar/${materi}/${peta}/${step - 1}`} />}
-      {last ? <NextStepButton variant="green" icon="check">Selesai</NextStepButton> : <NextStepButton />}
+      {last ? <NextStepButton variant="green" icon="check">{lastLabel}</NextStepButton> : <NextStepButton />}
     </div>
   );
 }

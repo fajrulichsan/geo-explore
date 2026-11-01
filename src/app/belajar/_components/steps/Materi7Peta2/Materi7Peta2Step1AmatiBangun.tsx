@@ -46,32 +46,19 @@ export default async function Materi7Peta2Step1AmatiBangun({
         </div>
       </div>
 
-      <div className="relative overflow-hidden rounded-[24px] bg-gradient-to-br from-[#1E3A8A] to-[#2563EB] px-5 py-6 sm:px-8 sm:py-8 flex flex-col gap-5">
-        <div className="absolute -right-14 -top-16 w-56 h-56 rounded-full bg-white/10" />
-        <div className="relative flex flex-col gap-2">
-          <h2 className="m-0 text-lg sm:text-xl font-extrabold text-white">
-            Amati dengan teliti tiga limas identik dan satu prisma
-          </h2>
-          <p className="m-0 text-sm text-white/90 max-w-2xl leading-[1.6]">
-            Perhatikan luas alas, tinggi, dan kemungkinan hubungan volumenya. Di depan kita ada tiga
-            limas identik dengan ukuran yang sama. Apakah volume tiga limas sama dengan volume satu
-            prisma?
-          </p>
-        </div>
-        <div className="relative bg-white rounded-2xl p-3 sm:p-4">
-          <EditablePageImage
-            imageKey="M7-P2-L1-1"
-            materi={materi}
-            peta={peta}
-            step={step}
-            urutan="1"
-            src={gambarHero}
-            alt="Tiga limas identik dengan luas alas L dan tinggi t yang sama dibandingkan dengan satu prisma yang memiliki luas alas L dan tinggi t"
-            editable={editFoto}
-            natural
-            containerClassName="relative w-full min-h-24 overflow-hidden"
-          />
-        </div>
+      <div className="rounded-[24px] overflow-hidden border border-[#E5E7EB] bg-white">
+        <EditablePageImage
+          imageKey="M7-P2-L1-1"
+          materi={materi}
+          peta={peta}
+          step={step}
+          urutan="1"
+          src={gambarHero}
+          alt="Tiga siswa di perpustakaan mengamati tiga limas identik dan satu prisma"
+          editable={editFoto}
+          natural
+          containerClassName="relative w-full"
+        />
       </div>
 
       <div className="flex flex-col gap-3 bg-[#EFF4FF] border border-[#DBE7FF] rounded-[20px] p-5 sm:p-6">

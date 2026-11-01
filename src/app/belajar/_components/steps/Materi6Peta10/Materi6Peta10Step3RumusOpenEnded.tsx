@@ -1,7 +1,7 @@
 import { submitStepAction } from "@/app/belajar/actions";
 import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
 import { getPageImages } from "@/lib/pageImages";
-import { Balok, Foto, HiddenFields, Kubus, Nav, RangkumanHeader, SectionTitle, Tip, cardCls } from "./Materi6Peta10Parts";
+import { Foto, HiddenFields, Nav, RangkumanHeader, SectionTitle, Tip, cardCls } from "./Materi6Peta10Parts";
 
 const pelajaran = [
   "Satu soal dapat memiliki lebih dari satu jawaban yang benar.",
@@ -35,7 +35,14 @@ export default async function Materi6Peta10Step3RumusOpenEnded({
               <b className="text-[#1E3A8A]">Kubus</b>
               <div className="text-xs text-[#4B5563]">(balok khusus)</div>
             </div>
-            <Kubus className="w-24 h-24" />
+            <Foto
+              k="M6-P10-L3-1"
+              urutan="1"
+              src={img["M6-P10-L3-1"]}
+              ctx={ctx}
+              alt="Kubus"
+              className="relative w-28"
+            />
             <div className={`${rumus} bg-[#DBEAFE] text-[#1E3A8A]`}>V = s<sup>3</sup></div>
             <p className="m-0 text-sm text-[#374151]">s = panjang rusuk kubus</p>
           </div>
@@ -44,7 +51,14 @@ export default async function Materi6Peta10Step3RumusOpenEnded({
               <b className="text-[#166534]">Balok</b>
               <div className="text-xs text-[#4B5563]">(prisma segiempat)</div>
             </div>
-            <Balok className="w-28 h-24" />
+            <Foto
+              k="M6-P10-L3-2"
+              urutan="2"
+              src={img["M6-P10-L3-2"]}
+              ctx={ctx}
+              alt="Balok"
+              className="relative w-32"
+            />
             <div className={`${rumus} bg-[#BBF7D0] text-[#166534]`}>V = p × l × t</div>
             <p className="m-0 text-sm text-[#374151]">p = panjang balok<br />l = lebar balok<br />t = tinggi balok</p>
           </div>
@@ -54,11 +68,10 @@ export default async function Materi6Peta10Step3RumusOpenEnded({
               <div className="text-xs text-[#4B5563]">(contoh: prisma segitiga)</div>
             </div>
             <Foto
-              k="M6-P10-L2-2"
-              urutan="2"
-              src={img["M6-P10-L2-2"]}
+              k="M6-P10-L3-3"
+              urutan="3"
+              src={img["M6-P10-L3-3"]}
               ctx={ctx}
-              editable={false}
               alt="Prisma segitiga"
               className="relative w-36"
             />
@@ -75,7 +88,7 @@ export default async function Materi6Peta10Step3RumusOpenEnded({
       </div>
 
       <div className="flex flex-col gap-4">
-        <SectionTitle huruf="F" judul="Apa yang Dipelajari dari Open-Ended?" warna="#F59E0B" />
+        <SectionTitle huruf="F" judul="Apa yang Dipelajari dari Tantangan terbuka?" warna="#F59E0B" />
         <ol className={`${cardCls} m-0 list-none flex flex-col gap-4 bg-[#FFFBEB] border-[#F5E3A0]`}>
           {pelajaran.map((p, i) => (
             <li key={p} className="flex items-start gap-3.5 text-sm text-[#374151] leading-[1.6]">

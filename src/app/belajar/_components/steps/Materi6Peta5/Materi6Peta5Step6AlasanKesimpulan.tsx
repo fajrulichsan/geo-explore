@@ -5,6 +5,7 @@ import StepHeader from "@/app/belajar/_components/StepHeader";
 import BackLink from "@/app/belajar/_components/BackLink";
 import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
 import { getPageImage } from "@/lib/pageImages";
+import FileSubmission from "@/components/FileSubmission";
 
 const alasan = [
   { key: "alasan_luas_alas", q: "Data atau pola apa yang mendukung dugaanmu tentang hubungan volume dengan luas alas?" },
@@ -39,7 +40,7 @@ export default async function Materi6Peta5Step6AlasanKesimpulan({
       <div className="flex flex-col gap-4">
         <StepHeader materi={materi} currentStep={6} totalSteps={6} />
         <div className="inline-flex items-center bg-[#FDF3C7] text-[#92400E] rounded-full py-1.5 px-3.5 text-xs font-bold tracking-[0.02em] w-fit">
-          Tahap 4
+          Tahap 4 dari 6
         </div>
         <div className="flex items-center gap-3.5">
           <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#2563EB" strokeWidth="2.4">
@@ -51,7 +52,7 @@ export default async function Materi6Peta5Step6AlasanKesimpulan({
         <p className="m-0 text-sm font-semibold text-[#2563EB]">Mengolah Data Hasil GeoGebra 3D dan Augmented Reality</p>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 items-start">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 items-stretch">
         <div className="flex flex-col gap-4">
           <div className="flex items-center gap-3">
             <div className="w-[34px] h-[34px] rounded-full bg-[#1E3A8A] text-white flex items-center justify-center font-bold text-[15px] flex-shrink-0">
@@ -64,7 +65,7 @@ export default async function Materi6Peta5Step6AlasanKesimpulan({
           <p className="m-0 text-sm text-[#4B5563]">
             Gunakan data pada halaman 1 dan 2 untuk memberikan alasan dari dugaanmu. Lengkapi jawaban berikut.
           </p>
-          <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-5 shadow-[0_1px_2px_rgba(0,0,0,0.04)] flex flex-col gap-4">
+          <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-5 shadow-[0_1px_2px_rgba(0,0,0,0.04)] flex flex-col gap-4 flex-1">
             {alasan.map((a, i) => (
               <div key={a.key} className="flex items-start gap-2.5 rounded-2xl bg-[#EFF4FF] border border-[#BFDBFE] p-3">
                 <span className="mt-0.5 w-6 h-6 rounded-full bg-[#2563EB] text-white flex items-center justify-center text-xs flex-shrink-0">
@@ -101,7 +102,7 @@ export default async function Materi6Peta5Step6AlasanKesimpulan({
           <p className="m-0 text-sm text-[#4B5563]">
             Tuliskan kesimpulan sementara berdasarkan seluruh kegiatan pada Tahap 4. Gunakan kata-katamu sendiri.
           </p>
-          <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-5 shadow-[0_1px_2px_rgba(0,0,0,0.04)] flex flex-col gap-2">
+          <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-5 shadow-[0_1px_2px_rgba(0,0,0,0.04)] flex flex-col gap-2 flex-1">
             <label htmlFor="kesimpulan" className="text-sm font-bold text-[#7C3AED]">
               Kesimpulan Sementara Saya:
             </label>
@@ -112,13 +113,13 @@ export default async function Materi6Peta5Step6AlasanKesimpulan({
               rows={9}
               placeholder="Ketik kesimpulanmu di sini..."
               required
-              className="w-full rounded-xl border border-[#E5E7EB] bg-[#F5F3FF] px-3.5 py-2.5 text-sm text-[#374151] placeholder:text-[#9CA3AF] focus:border-[#7C3AED] focus:outline-none focus:bg-white transition-colors resize-y"
+              className="w-full flex-1 rounded-xl border border-[#E5E7EB] bg-[#F5F3FF] px-3.5 py-2.5 text-sm text-[#374151] placeholder:text-[#9CA3AF] focus:border-[#7C3AED] focus:outline-none focus:bg-white transition-colors resize-y"
             />
           </div>
         </div>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-[1fr_240px] gap-5 items-end">
+      <div className="grid grid-cols-1 lg:grid-cols-[1fr_280px] gap-5 items-stretch">
         <div className="flex flex-col gap-4">
           <div className="bg-[#FEF9E7] border border-[#F5E3A0] rounded-2xl px-5 py-4 flex flex-col gap-2">
             <span className="text-sm font-extrabold text-[#111827]">Ingat!</span>
@@ -136,6 +137,7 @@ export default async function Materi6Peta5Step6AlasanKesimpulan({
             </p>
           </div>
         </div>
+        <div className="flex items-center justify-center rounded-2xl bg-white border border-[#E5E7EB] p-3">
         <EditablePageImage
           imageKey="M6-P5-L6-1"
           materi={materi}
@@ -148,11 +150,18 @@ export default async function Materi6Peta5Step6AlasanKesimpulan({
           natural
           containerClassName="relative w-48 mx-auto lg:w-full min-h-24 overflow-hidden"
         />
+        </div>
       </div>
+
+      <FileSubmission
+        materi={materi}
+        peta={peta}
+        defaultValue={typeof initialAnswers?.file_hasil_kerja === "string" ? initialAnswers.file_hasil_kerja : undefined}
+      />
 
       <div className="flex flex-col-reverse sm:flex-row justify-between items-center gap-4">
         <BackLink href={`/belajar/${materi}/${peta}/5`} />
-        <NextStepButton variant="green" icon="check">Selesai</NextStepButton>
+        <NextStepButton variant="green" icon="check">Lanjut ke Tahap Ayo Verifikasi</NextStepButton>
       </div>
     </form>
   );

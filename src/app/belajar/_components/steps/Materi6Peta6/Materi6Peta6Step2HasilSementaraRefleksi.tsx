@@ -4,6 +4,7 @@ import { getPageImages } from "@/lib/pageImages";
 import {
   BANGUN,
   BangunLabel,
+  Foto,
   Hebat,
   HiddenFields,
   Nav,
@@ -70,10 +71,10 @@ export default async function Materi6Peta6Step2HasilSementaraRefleksi({
         </div>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 items-start">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 items-stretch">
         <div className="flex flex-col gap-4">
           <SectionTitle huruf="D" judul="Refleksi" warna="#B45309" />
-          <div className={`${cardCls} flex flex-col gap-2.5`}>
+          <div className={`${cardCls} flex flex-col gap-2.5 flex-1`}>
             <label htmlFor="refleksi_faktor" className="text-sm text-[#374151] leading-[1.5]">
               Berdasarkan hasil verifikasi kubus dan balok, faktor apa yang tampaknya berkaitan dengan volume?
             </label>
@@ -88,7 +89,20 @@ export default async function Materi6Peta6Step2HasilSementaraRefleksi({
             />
           </div>
         </div>
-        <Hebat>
+        <Hebat
+          fill
+          piala={
+            <Foto
+              k="M6-P6-L2-1"
+              src={img["M6-P6-L2-1"]}
+              ctx={ctx}
+              urutan="1"
+              natural
+              alt="Piala emas"
+              className="relative w-14 flex-shrink-0 overflow-hidden"
+            />
+          }
+        >
           Kamu telah memverifikasi dugaan volume pada kubus dan balok. Pada halaman selanjutnya, kita akan memverifikasi
           apakah pola yang sama juga berlaku pada prisma segitiga.
         </Hebat>

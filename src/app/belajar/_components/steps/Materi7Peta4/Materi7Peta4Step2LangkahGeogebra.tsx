@@ -1,3 +1,4 @@
+import QrLink from "@/app/belajar/_components/QrLink";
 import { submitStepAction } from "@/app/belajar/actions";
 import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
 import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
@@ -27,9 +28,11 @@ export default async function Materi7Peta4Step2LangkahGeogebra({
   peta,
   editFoto,
 }: StepComponentProps) {
-  const [gambarBagian1, gambarBagian2] = await Promise.all([
+  const [gambarBagian1, gambarBagian2, gambarPanel, gambarQr] = await Promise.all([
     getPageImage("M7-P4-L2-1"),
     getPageImage("M7-P4-L2-2"),
+    getPageImage("M7-P4-L2-3"),
+    getPageImage("M7-P1-L2-2"),
   ]);
 
   return (
@@ -39,14 +42,31 @@ export default async function Materi7Peta4Step2LangkahGeogebra({
 
       <div className="flex flex-col gap-4">
         <SectionTitle letter="C" title="Petunjuk GeoGebra 3D" />
-        <div className={`${cardClass} flex flex-col gap-3`}>
-          {petunjuk.map((t, i) => (
-            <div key={t} className="flex items-start gap-3">
-              <span className="w-6 h-6 rounded-full bg-[#2563EB] text-white flex items-center justify-center text-xs font-bold flex-shrink-0">{i + 1}</span>
-              <p className="m-0 text-sm text-[#374151] leading-[1.6]">{t}</p>
-            </div>
-          ))}
-          <TipBox>Scan QR pada lembar worksheet, atau gunakan tautan GeoGebra 3D di e-module, untuk membuka model.</TipBox>
+        <div className={`${cardClass} grid grid-cols-1 md:grid-cols-[1fr_320px] gap-5 items-start`}>
+          <div className="flex flex-col gap-3">
+            {petunjuk.map((t, i) => (
+              <div key={t} className="flex items-start gap-3">
+                <span className="w-6 h-6 rounded-full bg-[#2563EB] text-white flex items-center justify-center text-xs font-bold flex-shrink-0">{i + 1}</span>
+                <p className="m-0 text-sm text-[#374151] leading-[1.6]">{t}</p>
+              </div>
+            ))}
+            <TipBox>Scan QR pada lembar worksheet, atau gunakan tautan GeoGebra 3D di e-module, untuk membuka model.</TipBox>
+          </div>
+          <div className="flex flex-col items-center gap-3">
+            <EditablePageImage
+              imageKey="M7-P4-L2-3"
+              materi={materi}
+              peta={peta}
+              step="2"
+              urutan="3"
+              src={gambarPanel}
+              alt="Tampilan GeoGebra 3D dengan slider luas alas dan tinggi"
+              editable={editFoto}
+              natural
+              containerClassName="relative w-full rounded-xl overflow-hidden"
+            />
+            <QrLink href="/geogebra?materi=7" src={gambarQr} alt="Kode QR untuk membuka GeoGebra 3D" label="Buka GeoGebra 3D" />
+          </div>
         </div>
       </div>
 

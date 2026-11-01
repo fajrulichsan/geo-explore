@@ -76,13 +76,13 @@ export default async function Materi6Peta6Step4BandingkanPola({
         </div>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 items-start">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 items-stretch">
         <div className="flex flex-col gap-4">
           <SectionTitle huruf="G" judul="Apa yang Kamu Temukan?" />
-          <div className={`${cardCls} flex flex-col gap-4`}>
+          <div className={`${cardCls} flex flex-col gap-4 flex-1`}>
             {temuan.map((t, i) => (
               <div key={t.key} className="flex flex-col gap-2">
-                <label htmlFor={t.key} className="flex items-start gap-3 text-sm text-[#374151] leading-[1.5]">
+                <label htmlFor={t.key} className="flex items-stretch gap-3 text-sm text-[#374151] leading-[1.5]">
                   <span className="w-6 h-6 rounded-full bg-[#1E3A8A] text-white flex items-center justify-center text-xs font-bold flex-shrink-0">
                     {i + 1}
                   </span>
@@ -104,7 +104,7 @@ export default async function Materi6Peta6Step4BandingkanPola({
 
         <div className="flex flex-col gap-4">
           <SectionTitle huruf="H" judul="Jika Berbeda" warna="#B45309" />
-          <div className={`${cardCls} flex flex-col gap-3`}>
+          <div className={`${cardCls} flex flex-col gap-3 flex-1`}>
             <label htmlFor="jika_berbeda" className="text-sm text-[#374151] leading-[1.5]">
               Jika hasil perhitunganmu berbeda dengan model, apa yang perlu diperbaiki?
             </label>
@@ -121,7 +121,7 @@ export default async function Materi6Peta6Step4BandingkanPola({
               <span className="text-sm font-bold text-[#166534]">Periksa kembali:</span>
               <ul className="m-0 p-0 list-none flex flex-col gap-1">
                 {periksa.map((p) => (
-                  <li key={p} className="flex items-start gap-2 text-sm text-[#374151] leading-[1.5]">
+                  <li key={p} className="flex items-stretch gap-2 text-sm text-[#374151] leading-[1.5]">
                     <span className="text-[#16A34A] font-bold">✓</span>
                     {p}
                   </li>

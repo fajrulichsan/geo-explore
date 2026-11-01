@@ -28,6 +28,7 @@ export default function BangunDaftarTabel({
   columns,
   entryTitle,
   bangunList = BANGUN,
+  rowHeader = "Aspek yang Diamati",
 }: {
   answerKey: string;
   initialValue: unknown;
@@ -36,6 +37,7 @@ export default function BangunDaftarTabel({
   columns: Item[];
   entryTitle: string;
   bangunList?: string[];
+  rowHeader?: string;
 }) {
   const [entries, setEntries] = useState<Entry[]>(() => parseEntries(initialValue));
   const [bangun, setBangun] = useState("");
@@ -100,7 +102,7 @@ export default function BangunDaftarTabel({
           {columns.length > 1 && (
             <thead>
               <tr className="bg-[#EFF4FF]">
-                <th className="text-left text-xs font-bold text-[#1D4ED8] p-4 w-[22%]">Aspek yang Diamati</th>
+                <th className="text-left text-xs font-bold text-[#1D4ED8] p-4 w-[22%]">{rowHeader}</th>
                 {columns.map((c) => (
                   <th key={c.key} className="text-left text-xs font-bold text-[#1D4ED8] p-4">
                     {c.label}
@@ -170,7 +172,7 @@ export default function BangunDaftarTabel({
                   {columns.length > 1 && (
                     <thead>
                       <tr className="text-left text-[#6B7280]">
-                        <th className="py-1.5 pr-3 font-semibold">Aspek</th>
+                        <th className="py-1.5 pr-3 font-semibold">{rowHeader}</th>
                         {columns.map((c) => (
                           <th key={c.key} className="py-1.5 pr-3 font-semibold">
                             {c.label}

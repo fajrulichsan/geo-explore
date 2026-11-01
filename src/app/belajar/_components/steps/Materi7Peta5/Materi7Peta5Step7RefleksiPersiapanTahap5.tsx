@@ -1,3 +1,4 @@
+import FileSubmission from "@/components/FileSubmission";
 import { submitStepAction } from "@/app/belajar/actions";
 import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
 import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
@@ -31,6 +32,8 @@ const persiapan = [
   { key: "siap_rumus", label: "Dugaan rumus volume limas dan alasan/catatan hasil analisis" },
 ];
 
+const GRUP_CENTANG = { name: "refleksi-persiapan-tahap-5", min: 3 };
+
 export default async function Materi7Peta5Step7RefleksiPersiapanTahap5({
   materi,
   peta,
@@ -38,6 +41,7 @@ export default async function Materi7Peta5Step7RefleksiPersiapanTahap5({
   initialAnswers,
 }: StepComponentProps) {
   const { getChecked } = readAnswers(initialAnswers);
+  const fileHasilKerja = initialAnswers?.file_hasil_kerja;
   const maskot = await getPageImage("M7-P5-L7-1");
 
   return (
@@ -48,10 +52,10 @@ export default async function Materi7Peta5Step7RefleksiPersiapanTahap5({
       <div className="flex flex-col gap-4">
         <SectionTitle letter="K" title="Refleksi Singkat" color="amber" />
         <p className="m-0 text-sm text-[#4B5563]">Beri tanda centang pada pernyataan yang sesuai.</p>
-        <div className="grid grid-cols-1 sm:grid-cols-[1fr_190px] gap-5 items-end">
+        <div className="grid grid-cols-1 sm:grid-cols-[1fr_190px] gap-5 items-stretch">
           <div className={`${cardClass} flex flex-col gap-3`}>
             {refleksi.map((r) => (
-              <CheckItem key={r.key} name={r.key} label={r.label} checked={getChecked(r.key)} />
+              <CheckItem key={r.key} name={r.key} label={r.label} checked={getChecked(r.key)} requireGroup={GRUP_CENTANG} />
             ))}
           </div>
           <EditablePageImage
@@ -64,7 +68,7 @@ export default async function Materi7Peta5Step7RefleksiPersiapanTahap5({
             alt="Maskot perempuan: Setiap langkah membuatmu lebih dekat pada pemahaman yang lebih baik!"
             editable={editFoto}
             imageClassName="object-contain"
-            containerClassName="relative w-40 sm:w-full aspect-[370/616] mx-auto"
+            containerClassName="relative w-40 h-56 sm:w-full sm:h-full sm:min-h-56 mx-auto"
           />
         </div>
       </div>
@@ -74,7 +78,7 @@ export default async function Materi7Peta5Step7RefleksiPersiapanTahap5({
         <p className="m-0 text-sm text-[#4B5563]">Pastikan kamu sudah menyiapkan hal-hal berikut:</p>
         <div className={`${cardClass} flex flex-col gap-3`}>
           {persiapan.map((p) => (
-            <CheckItem key={p.key} name={p.key} label={p.label} checked={getChecked(p.key)} />
+            <CheckItem key={p.key} name={p.key} label={p.label} checked={getChecked(p.key)} requireGroup={GRUP_CENTANG} />
           ))}
         </div>
         <div className="bg-[#FEF9E7] border border-[#FDE68A] rounded-xl px-4 py-3 text-sm text-[#92400E] leading-[1.6]">
@@ -83,7 +87,13 @@ export default async function Materi7Peta5Step7RefleksiPersiapanTahap5({
         </div>
       </div>
 
-      <StepFooter materi={materi} peta={peta} step={STEP} final />
+      <FileSubmission
+        materi={materi}
+        peta={peta}
+        defaultValue={typeof fileHasilKerja === "string" ? fileHasilKerja : undefined}
+      />
+
+      <StepFooter materi={materi} peta={peta} step={STEP} final="Lanjut ke Tahap Ayo Verifikasi" />
     </form>
   );
 }

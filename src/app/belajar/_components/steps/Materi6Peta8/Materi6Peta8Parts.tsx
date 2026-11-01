@@ -26,12 +26,14 @@ export function Foto({
   ctx,
   alt,
   className,
+  urutan = "1",
 }: {
   k: PageImageKey;
   src: string;
   ctx: Ctx;
   alt: string;
   className: string;
+  urutan?: string;
 }) {
   return (
     <EditablePageImage
@@ -39,7 +41,7 @@ export function Foto({
       materi={ctx.materi}
       peta={ctx.peta}
       step={ctx.step}
-      urutan="1"
+      urutan={urutan}
       src={src}
       alt={alt}
       editable={ctx.editFoto}
@@ -60,24 +62,29 @@ export function HiddenFields({ materi, peta, step }: { materi: string; peta: str
   );
 }
 
-export function RefleksiHeader({ materi, step }: { materi: string; step: number }) {
+export function RefleksiHeader({ materi, step, foto }: { materi: string; step: number; foto?: ReactNode }) {
   return (
     <div className="flex flex-col gap-4">
       <StepHeader materi={materi} currentStep={step} totalSteps={TOTAL_STEPS} />
       <div className="inline-flex items-center bg-[#FDF3C7] text-[#92400E] rounded-full py-1.5 px-3.5 text-xs font-bold tracking-[0.02em] w-fit">
         Refleksi
       </div>
-      <div className="flex items-center gap-3.5">
-        <div className="w-9 h-9 rounded-full bg-[#2563EB] text-white flex items-center justify-center flex-shrink-0">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="#fff">
-            <path d="M12 2l2.6 6.5L21 9l-5 4.4L17.4 21 12 17.3 6.6 21 8 13.4 3 9l6.4-.5z" />
-          </svg>
+      <div className={foto ? "grid grid-cols-1 lg:grid-cols-[1fr_420px] gap-5 items-center" : "flex flex-col gap-4"}>
+        <div className="flex flex-col gap-4">
+          <div className="flex items-center gap-3.5">
+            <div className="w-9 h-9 rounded-full bg-[#2563EB] text-white flex items-center justify-center flex-shrink-0">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="#fff">
+                <path d="M12 2l2.6 6.5L21 9l-5 4.4L17.4 21 12 17.3 6.6 21 8 13.4 3 9l6.4-.5z" />
+              </svg>
+            </div>
+            <h1 className="m-0 text-2xl sm:text-[32px] font-extrabold text-[#111827]">Refleksi Diri</h1>
+          </div>
+          <p className="m-0 text-sm font-semibold text-[#2563EB]">
+            Merefleksikan Pemahaman dan Keyakinan Setelah Menemukan Rumus Volume
+          </p>
         </div>
-        <h1 className="m-0 text-2xl sm:text-[32px] font-extrabold text-[#111827]">Refleksi Diri</h1>
+        {foto}
       </div>
-      <p className="m-0 text-sm font-semibold text-[#2563EB]">
-        Merefleksikan Pemahaman dan Keyakinan Setelah Menemukan Rumus Volume
-      </p>
     </div>
   );
 }
@@ -172,11 +179,11 @@ export function TabelCentang({
   );
 }
 
-export function Nav({ materi, peta, step, last }: { materi: string; peta: string; step: number; last?: boolean }) {
+export function Nav({ materi, peta, step, last, lastLabel = "Selesai" }: { materi: string; peta: string; step: number; last?: boolean; lastLabel?: string }) {
   return (
     <div className={`flex items-center gap-4 ${step > 1 ? "flex-col-reverse sm:flex-row justify-between" : "justify-end"}`}>
       {step > 1 && <BackLink href={`/belajar/${materi}/${peta}/${step - 1}`} />}
-      {last ? <NextStepButton variant="green" icon="check">Selesai</NextStepButton> : <NextStepButton />}
+      {last ? <NextStepButton variant="green" icon="check">{lastLabel}</NextStepButton> : <NextStepButton />}
     </div>
   );
 }

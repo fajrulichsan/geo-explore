@@ -27,7 +27,7 @@ export default async function Materi6Peta8Step1PengantarPemahamanStrategi({
       <HiddenFields materi={materi} peta={peta} step={1} />
       <RefleksiHeader materi={materi} step={1} />
 
-      <div className="grid grid-cols-1 lg:grid-cols-[360px_1fr] gap-5 items-stretch">
+      <div className="flex flex-col-reverse gap-5">
         <div className="bg-[#FEF9E7] border border-[#F5E3A0] rounded-[20px] p-5 flex flex-col gap-3">
           <span className="w-fit rounded-full bg-[#F59E0B] text-white text-xs font-bold px-4 py-1">Pengantar</span>
           <p className="m-0 text-sm text-[#374151] leading-[1.6]">
@@ -76,20 +76,20 @@ export default async function Materi6Peta8Step1PengantarPemahamanStrategi({
               <span className="w-6 h-6 rounded-full bg-[#166534] text-white flex items-center justify-center text-xs font-bold flex-shrink-0">
                 1
               </span>
-              Strategi apa yang paling membantumu menemukan sendiri rumus volume?
+              Strategi apa yang paling membantumu menemukan sendiri rumus volume? (boleh memilih lebih dari satu)
             </legend>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-              {strategi.map((s) => (
+              {strategi.map((s, i) => (
                 <label
                   key={s}
                   className="cursor-pointer rounded-full border border-[#D1D5DB] bg-white px-4 py-2 text-sm font-semibold text-[#4B5563] has-[:checked]:bg-[#166534] has-[:checked]:border-[#166534] has-[:checked]:text-white"
                 >
                   <input
-                    type="radio"
-                    name="answers.strategi_terbantu"
+                    type="checkbox"
+                    name={`answers.strategi_terbantu_${i + 1}`}
                     value={s}
-                    defaultChecked={answerText(initialAnswers, "strategi_terbantu") === s}
-                    required
+                    defaultChecked={answerText(initialAnswers, `strategi_terbantu_${i + 1}`) === s}
+                    data-require-group="strategi_terbantu"
                     className="sr-only"
                   />
                   {s}

@@ -5,6 +5,7 @@ import StepHeader from "@/app/belajar/_components/StepHeader";
 import BackLink from "@/app/belajar/_components/BackLink";
 import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
 import { getPageImage } from "@/lib/pageImages";
+import FileSubmission from "@/components/FileSubmission";
 
 const refleksi = [
   { key: "refleksi_1", label: "Saya berani menyampaikan pendapat." },
@@ -36,7 +37,7 @@ export default async function Materi6Peta3Step6RefleksiSingkat({
       <div className="flex flex-col gap-4">
         <StepHeader materi={materi} currentStep={6} totalSteps={6} />
         <div className="inline-flex items-center bg-[#FDF3C7] text-[#92400E] rounded-full py-1.5 px-3.5 text-xs font-bold tracking-[0.02em] w-fit">
-          Tahap 2
+          Tahap 2 dari 6
         </div>
         <div className="flex items-center gap-3.5">
           <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#2563EB" strokeWidth="2.4">
@@ -129,9 +130,15 @@ export default async function Materi6Peta3Step6RefleksiSingkat({
         <p className="m-0 text-sm text-[#374151] leading-[1.5]"><span className="font-bold text-[#111827]">Setiap dugaan belum tentu benar.</span> Melalui GeoGebra 3D dan AR, kelompokmu akan mengumpulkan data dan menguji dugaan tersebut.</p>
       </div>
 
+      <FileSubmission
+        materi={materi}
+        peta={peta}
+        defaultValue={typeof initialAnswers?.file_hasil_kerja === "string" ? initialAnswers.file_hasil_kerja : undefined}
+      />
+
       <div className="flex flex-col-reverse sm:flex-row justify-between items-center gap-4">
         <BackLink href={`/belajar/${materi}/${peta}/5`} />
-        <NextStepButton variant="green" icon="check">Selesai</NextStepButton>
+        <NextStepButton variant="green" icon="check">Lanjut ke Tahap Ayo Bereksplorasi</NextStepButton>
       </div>
     </form>
   );

@@ -3,6 +3,7 @@ import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry"
 import { getPageImages } from "@/lib/pageImages";
 import type { PageImageKey } from "@/lib/pageImages";
 import { Foto, Hebat, HiddenFields, Mascot, Nav, SectionTitle, TahapHeader, Tulis, cardCls } from "./Materi6Peta7Parts";
+import FileSubmission from "@/components/FileSubmission";
 
 const soal: {
   no: number;
@@ -126,7 +127,7 @@ export default async function Materi6Peta7Step6UjiPemahaman({
           {penerapan.map((p, i) => (
             <div key={p.no} className={`${cardCls} flex flex-col gap-4`} style={{ borderColor: "#BBF7D0" }}>
               <span className="w-fit rounded-full bg-[#1E3A8A] text-white text-xs font-bold px-4 py-1">Pilihan {p.no}</span>
-              <div className="grid grid-cols-1 sm:grid-cols-[1fr_200px] gap-4 items-center">
+              <div className="grid grid-cols-1 sm:grid-cols-[1fr_280px] gap-4 items-center">
                 <p className="m-0 text-sm text-[#374151] leading-[1.6]">{p.teks}</p>
                 <Foto
                   k={p.key}
@@ -175,7 +176,13 @@ export default async function Materi6Peta7Step6UjiPemahaman({
         </div>
       </Mascot>
 
-      <Nav materi={materi} peta={peta} step={6} last />
+      <FileSubmission
+        materi={materi}
+        peta={peta}
+        defaultValue={typeof initialAnswers?.file_hasil_kerja === "string" ? initialAnswers.file_hasil_kerja : undefined}
+      />
+
+      <Nav materi={materi} peta={peta} step={6} last lastLabel="Lanjut ke Refleksi Diri" />
     </form>
   );
 }

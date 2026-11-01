@@ -60,9 +60,6 @@ export function RangkumanHeader({ materi, step }: { materi: string; step: number
   return (
     <div className="flex flex-col gap-4">
       <StepHeader materi={materi} currentStep={step} totalSteps={TOTAL_STEPS} />
-      <div className="inline-flex items-center bg-[#DBEAFE] text-[#1E3A8A] rounded-full py-1.5 px-3.5 text-xs font-bold tracking-[0.02em] w-fit">
-        Rangkuman
-      </div>
       <div className="flex items-center gap-3.5">
         <div className="w-9 h-9 rounded-full bg-[#2563EB] text-white flex items-center justify-center flex-shrink-0">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="#fff">
@@ -133,11 +130,11 @@ export function Balok({ warna = "#16A34A", className = "w-16 h-14" }: { warna?: 
   );
 }
 
-export function Nav({ materi, peta, step, last }: { materi: string; peta: string; step: number; last?: boolean }) {
+export function Nav({ materi, peta, step, last, lastLabel = "Selesai" }: { materi: string; peta: string; step: number; last?: boolean; lastLabel?: string }) {
   return (
     <div className={`flex items-center gap-4 ${step > 1 ? "flex-col-reverse sm:flex-row justify-between" : "justify-end"}`}>
       {step > 1 && <BackLink href={`/belajar/${materi}/${peta}/${step - 1}`} />}
-      {last ? <NextStepButton variant="green" icon="check">Selesai</NextStepButton> : <NextStepButton />}
+      {last ? <NextStepButton variant="green" icon="check">{lastLabel}</NextStepButton> : <NextStepButton />}
     </div>
   );
 }

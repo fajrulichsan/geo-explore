@@ -66,7 +66,7 @@ export function TahapHeader({ materi, step, subtitle }: { materi: string; step: 
     <div className="flex flex-col gap-4">
       <StepHeader materi={materi} currentStep={step} totalSteps={TOTAL_STEPS} />
       <div className="inline-flex items-center bg-[#FDF3C7] text-[#92400E] rounded-full py-1.5 px-3.5 text-xs font-bold tracking-[0.02em] w-fit">
-        Tahap 3
+        Tahap 3 dari 6
       </div>
       <div className="flex items-center gap-3.5">
         <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#2563EB" strokeWidth="2.4">
@@ -128,11 +128,11 @@ export function LangkahList({ items }: { items: string[] }) {
   );
 }
 
-export function Nav({ materi, peta, step, last }: { materi: string; peta: string; step: number; last?: boolean }) {
+export function Nav({ materi, peta, step, last, lastLabel = "Selesai" }: { materi: string; peta: string; step: number; last?: boolean; lastLabel?: string }) {
   return (
     <div className={`flex items-center gap-4 ${step > 1 ? "flex-col-reverse sm:flex-row justify-between" : "justify-end"}`}>
       {step > 1 && <BackLink href={`/belajar/${materi}/${peta}/${step - 1}`} />}
-      {last ? <NextStepButton variant="green" icon="check">Selesai</NextStepButton> : <NextStepButton />}
+      {last ? <NextStepButton variant="green" icon="check">{lastLabel}</NextStepButton> : <NextStepButton />}
     </div>
   );
 }
@@ -298,7 +298,9 @@ export function TabelData({
                   name={`answers.${prefix}_${b.nama}_t${n + 1}`}
                   defaultValue={getValue(`${prefix}_${b.nama}_t${n + 1}`)}
                   placeholder={t}
-                  required={n < 3}
+                  data-unit-group={`${prefix}_${b.nama}`}
+                  data-unit={`t${n + 1}`}
+                  data-unit-min="2"
                   className={inputCls}
                 />
               ))}
@@ -311,7 +313,6 @@ export function TabelData({
               defaultValue={getValue(`${prefix}_${b.nama}_pola`)}
               rows={3}
               placeholder="Ketik jawabanmu di sini..."
-              required
               className={`${inputCls} resize-y`}
             />
           </div>
@@ -322,7 +323,6 @@ export function TabelData({
               defaultValue={getValue(`${prefix}_${b.nama}_dugaan`)}
               rows={3}
               placeholder="Ketik jawabanmu di sini..."
-              required
               className={`${inputCls} resize-y`}
             />
           </div>

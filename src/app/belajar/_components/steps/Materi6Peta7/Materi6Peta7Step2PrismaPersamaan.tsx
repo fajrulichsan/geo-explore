@@ -24,7 +24,7 @@ export default async function Materi6Peta7Step2PrismaPersamaan({
       <HiddenFields materi={materi} peta={peta} step={2} />
       <TahapHeader materi={materi} step={2} />
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 items-start">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 items-stretch">
         <div className="flex flex-col gap-4">
           <SectionTitle
             huruf="C"
@@ -32,7 +32,7 @@ export default async function Materi6Peta7Step2PrismaPersamaan({
             hint="Tuliskan hubungan volume prisma segitiga berdasarkan hasil verifikasimu."
             warna="#B91C1C"
           />
-          <div className={`${cardCls} flex flex-col gap-4`} style={{ borderColor: "#FECACA" }}>
+          <div className={`${cardCls} flex flex-col gap-4 flex-1`} style={{ borderColor: "#FECACA" }}>
             <label className="flex flex-col gap-2 rounded-2xl border border-[#FECACA] bg-[#FEF2F2] p-3">
               <span className="text-sm font-bold text-[#B91C1C]">Volume prisma segitiga diperoleh dari</span>
               <Tulis name="prisma_diperoleh" answers={initialAnswers} rows={3} label="Volume prisma segitiga diperoleh dari" />
@@ -65,7 +65,7 @@ export default async function Materi6Peta7Step2PrismaPersamaan({
 
         <div className="flex flex-col gap-4">
           <SectionTitle huruf="D" judul="Apa Persamaannya?" hint="Lengkapilah." warna="#C2410C" />
-          <div className={`${cardCls} flex flex-col gap-4`} style={{ borderColor: "#FED7AA" }}>
+          <div className={`${cardCls} flex flex-col gap-4 flex-1`} style={{ borderColor: "#FED7AA" }}>
             <div className="flex flex-col gap-3 rounded-2xl border border-[#FDE68A] bg-[#FEF9E7] p-4">
               {persamaan.map((p) => (
                 <div key={p.nama} className="grid grid-cols-[64px_1fr] sm:grid-cols-[72px_84px_1fr] items-center gap-2 text-sm">
@@ -80,7 +80,7 @@ export default async function Materi6Peta7Step2PrismaPersamaan({
               ))}
             </div>
             <label className="flex flex-col gap-2 text-sm text-[#374151] leading-[1.5]">
-              <span className="flex items-start gap-2">
+              <span className="flex items-stretch gap-2">
                 <span className="w-6 h-6 rounded-full bg-[#F59E0B] text-white flex items-center justify-center text-xs font-bold flex-shrink-0">
                   ?
                 </span>
@@ -108,7 +108,6 @@ export default async function Materi6Peta7Step2PrismaPersamaan({
           className="relative w-44 flex-shrink-0 overflow-hidden"
         />
         <div className="flex flex-col gap-1">
-          <span className="text-lg font-extrabold text-[#1E3A8A]">Lanjut ke Halaman 2</span>
           <p className="m-0 text-sm text-[#374151] leading-[1.6]">
             Pada halaman berikutnya, kita akan menuliskan rumus volume secara lebih rinci dan melihat keterkaitannya.
           </p>

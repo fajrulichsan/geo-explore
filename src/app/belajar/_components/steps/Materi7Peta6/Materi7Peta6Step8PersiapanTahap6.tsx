@@ -1,3 +1,4 @@
+import FileSubmission from "@/components/FileSubmission";
 import { submitStepAction } from "@/app/belajar/actions";
 import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
 import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
@@ -29,6 +30,7 @@ export default async function Materi7Peta6Step8PersiapanTahap6({
   initialAnswers,
 }: StepComponentProps) {
   const { getValue, getChecked } = readAnswers(initialAnswers);
+  const fileHasilKerja = initialAnswers?.file_hasil_kerja;
   const maskot = await getPageImage("M7-P6-L8-1");
 
   return (
@@ -51,7 +53,7 @@ export default async function Materi7Peta6Step8PersiapanTahap6({
       <div className="flex flex-col gap-4">
         <SectionTitle letter="L" title="Persiapan Tahap 6 – Ayo Menyimpulkan" color="green" />
         <p className="m-0 text-sm text-[#4B5563]">Sebelum melanjutkan, pastikan kamu sudah melakukan hal berikut:</p>
-        <div className="grid grid-cols-1 sm:grid-cols-[1fr_170px] gap-5 items-end">
+        <div className="grid grid-cols-1 sm:grid-cols-[1fr_170px] gap-5 items-stretch">
           <div className={`${cardClass} flex flex-col gap-3`}>
             {persiapan.map((p) => (
               <CheckItem key={p.key} name={p.key} label={p.label} checked={getChecked(p.key)} />
@@ -67,7 +69,7 @@ export default async function Materi7Peta6Step8PersiapanTahap6({
             alt="Maskot laki-laki: Kamu sudah hebat! Lanjut ke tahap berikutnya!"
             editable={editFoto}
             imageClassName="object-contain"
-            containerClassName="relative w-40 sm:w-full aspect-[382/583] mx-auto"
+            containerClassName="relative w-40 h-56 sm:w-full sm:h-full sm:min-h-56 mx-auto"
           />
         </div>
 
@@ -83,7 +85,13 @@ export default async function Materi7Peta6Step8PersiapanTahap6({
         </div>
       </div>
 
-      <StepFooter materi={materi} peta={peta} step={STEP} final />
+      <FileSubmission
+        materi={materi}
+        peta={peta}
+        defaultValue={typeof fileHasilKerja === "string" ? fileHasilKerja : undefined}
+      />
+
+      <StepFooter materi={materi} peta={peta} step={STEP} final="Lanjut ke Tahap Ayo Menyimpulkan" />
     </form>
   );
 }

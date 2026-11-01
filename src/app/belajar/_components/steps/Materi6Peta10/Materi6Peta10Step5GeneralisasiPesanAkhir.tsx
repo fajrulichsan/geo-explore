@@ -65,9 +65,14 @@ export default async function Materi6Peta10Step5GeneralisasiPesanAkhir({
       <div className="flex flex-col gap-4">
         <SectionTitle huruf="J" judul="Persiapan Melanjutkan Pembelajaran" warna="#0891B2" />
         <div className={`${cardCls} flex items-start gap-4`}>
-          <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#2563EB" strokeWidth="1.7" className="flex-shrink-0">
-            <path d="M12 6c-2-1.3-4.5-2-8-2v14c3.5 0 6 .7 8 2 2-1.3 4.5-2 8-2V4c-3.5 0-6 .7-8 2zM12 6v14" />
-          </svg>
+          <Foto
+            k="M6-P10-L5-3"
+            urutan="3"
+            src={img["M6-P10-L5-3"]}
+            ctx={ctx}
+            alt="Buku terbuka dengan panah naik"
+            className="relative w-20 flex-shrink-0"
+          />
           <p className="m-0 text-sm text-[#374151] leading-[1.7]">
             Pada submateri berikutnya, kamu akan menggunakan konsep-konsep yang telah dipelajari untuk memahami hubungan
             volume pada bangun ruang sisi datar secara lebih luas melalui berbagai permasalahan kontekstual.
@@ -75,7 +80,7 @@ export default async function Materi6Peta10Step5GeneralisasiPesanAkhir({
         </div>
       </div>
 
-      <Nav materi={materi} peta={peta} step={5} last />
+      <Nav materi={materi} peta={peta} step={5} last lastLabel="Lanjut ke Submateri 7" />
     </form>
   );
 }

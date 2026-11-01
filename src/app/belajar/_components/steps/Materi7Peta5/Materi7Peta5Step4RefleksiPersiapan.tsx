@@ -46,7 +46,7 @@ export default async function Materi7Peta5Step4RefleksiPersiapan({
       <div className="flex flex-col gap-4">
         <SectionTitle letter="E" title="Refleksi Singkat" color="amber" />
         <p className="m-0 text-sm text-[#4B5563]">Beri tanda centang pada pernyataan yang sesuai dengan dirimu.</p>
-        <div className="grid grid-cols-1 sm:grid-cols-[1fr_190px] gap-5 items-end">
+        <div className="grid grid-cols-1 sm:grid-cols-[1fr_190px] gap-5 items-stretch">
           <div className={`${cardClass} flex flex-col gap-3`}>
             {refleksi.map((r) => (
               <CheckItem key={r.key} name={r.key} label={r.label} checked={getChecked(r.key)} />
@@ -62,7 +62,7 @@ export default async function Materi7Peta5Step4RefleksiPersiapan({
             alt="Maskot perempuan: Setiap data dapat membawamu lebih dekat ke kesimpulan!"
             editable={editFoto}
             imageClassName="object-contain"
-            containerClassName="relative w-40 sm:w-full aspect-[403/616] mx-auto"
+            containerClassName="relative w-40 h-56 sm:w-full sm:h-full sm:min-h-56 mx-auto"
           />
         </div>
       </div>

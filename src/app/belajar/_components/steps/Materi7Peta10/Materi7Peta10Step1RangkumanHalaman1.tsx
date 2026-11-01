@@ -8,7 +8,6 @@ import {
   Frac,
   HebatBanner,
   HiddenStepFields,
-  PyramidIcon,
   SectionTitle,
   StepFooter,
   StepTitle,
@@ -30,14 +29,21 @@ export default async function Materi7Peta10Step1RangkumanHalaman1({
   peta,
   editFoto,
 }: StepComponentProps) {
-  const [hero, segitiga, persegi, segilima, tigaLimas, segiN] = await Promise.all([
-    getPageImage("M7-P10-L1-1"),
-    getPageImage("M7-P10-L1-2"),
-    getPageImage("M7-P10-L1-3"),
-    getPageImage("M7-P10-L1-4"),
-    getPageImage("M7-P10-L1-6"),
-    getPageImage("M7-P10-L1-5"),
-  ]);
+  const [hero, segitiga, persegi, segilima, tigaLimas, segiN, hubungan, catatan, limasSegitiga, limasSegiempat, limasSegilima, penuangan] =
+    await Promise.all([
+      getPageImage("M7-P10-L1-1"),
+      getPageImage("M7-P10-L1-2"),
+      getPageImage("M7-P10-L1-3"),
+      getPageImage("M7-P10-L1-4"),
+      getPageImage("M7-P10-L1-6"),
+      getPageImage("M7-P10-L1-5"),
+      getPageImage("M7-P10-L1-7"),
+      getPageImage("M7-P10-L1-8"),
+      getPageImage("M7-P10-L1-9"),
+      getPageImage("M7-P10-L1-10"),
+      getPageImage("M7-P10-L1-11"),
+      getPageImage("M7-P10-L1-12"),
+    ]);
 
   const img = (
     imageKey: PageImageKey,
@@ -63,9 +69,9 @@ export default async function Materi7Peta10Step1RangkumanHalaman1({
   );
 
   const bentukAlas = [
-    { limas: "#8B5CF6", nama: "Limas Segitiga", src: segitiga, key: "M7-P10-L1-2" as const, urutan: "2", cls: "w-16 aspect-[540/240]", alt: "Alas segitiga", ciri: "Segitiga (3 sisi)" },
-    { limas: "#F59E0B", nama: "Limas Persegi", src: persegi, key: "M7-P10-L1-3" as const, urutan: "3", cls: "w-10 aspect-[192/186]", alt: "Alas persegi", ciri: "Persegi (4 sisi)" },
-    { limas: "#3B82F6", nama: "Limas Segilima", src: segilima, key: "M7-P10-L1-4" as const, urutan: "4", cls: "w-11 aspect-[247/226]", alt: "Alas segilima", ciri: "Segilima (5 sisi)" },
+    { nama: "Limas Segitiga", limasSrc: limasSegitiga, limasKey: "M7-P10-L1-9" as const, limasUrutan: "8", limasCls: "w-14 aspect-square", src: segitiga, key: "M7-P10-L1-2" as const, urutan: "2", cls: "w-20 aspect-[345/171]", alt: "Alas segitiga", ciri: "Segitiga (3 sisi)" },
+    { nama: "Limas Persegi", limasSrc: limasSegiempat, limasKey: "M7-P10-L1-10" as const, limasUrutan: "9", limasCls: "w-14 aspect-[489/408]", src: persegi, key: "M7-P10-L1-3" as const, urutan: "3", cls: "w-14 aspect-[251/245]", alt: "Alas persegi", ciri: "Persegi (4 sisi)" },
+    { nama: "Limas Segilima", limasSrc: limasSegilima, limasKey: "M7-P10-L1-11" as const, limasUrutan: "10", limasCls: "w-14 aspect-[495/421]", src: segilima, key: "M7-P10-L1-4" as const, urutan: "4", cls: "w-14 aspect-[268/245]", alt: "Alas segilima", ciri: "Segilima (5 sisi)" },
   ];
 
   return (
@@ -92,7 +98,7 @@ export default async function Materi7Peta10Step1RangkumanHalaman1({
           <p className="m-0 text-sm text-[#374151] leading-[1.7]">
             Pada Submateri 7, kamu telah mengamati hubungan limas dan prisma, berdiskusi, mengeksplorasi menggunakan GeoGebra dan
             Augmented Reality, memverifikasi bahwa <strong>tiga kali isi satu limas dapat memenuhi satu prisma</strong> yang memiliki
-            luas alas dan tinggi yang sama, menyimpulkan rumus volume limas, serta menyelesaikan Tantangan Open-Ended.
+            luas alas dan tinggi yang sama, menyimpulkan rumus volume limas, serta menyelesaikan Tantangan Terbuka.
           </p>
           <p className="m-0 text-sm font-semibold text-[#92400E] bg-[#FEF9E7] border border-[#FDE68A] rounded-xl px-4 py-3">
             Sekarang rangkum kembali konsep-konsep penting yang telah kamu temukan.
@@ -103,33 +109,8 @@ export default async function Materi7Peta10Step1RangkumanHalaman1({
       <div className="flex flex-col gap-4">
         <SectionTitle letter="B" title="Hubungan Luas Alas, Tinggi, dan Volume" color="amber" />
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div className={`${cardClass} flex flex-col gap-2`}>
-            <div className="grid grid-cols-2 gap-3">
-              <FlowBox color="yellow">
-                Luas Alas
-                <span className="block text-xs font-medium">(<em>L</em><Sub>alas</Sub>)</span>
-              </FlowBox>
-              <FlowBox color="green">
-                Tinggi Limas
-                <span className="block text-xs font-medium">(<em>t</em>)</span>
-              </FlowBox>
-            </div>
-            <ArrowDown />
-            <FlowBox color="blue">
-              Volume Prisma
-              <span className="block text-xs font-medium">(dengan alas dan tinggi yang sama)</span>
-              <span className="block"><em>V</em><Sub>prisma</Sub> = <em>L</em><Sub>alas</Sub> × <em>t</em></span>
-            </FlowBox>
-            <ArrowDown />
-            <FlowBox color="purple">
-              Diambil Sepertiga
-              <span className="block text-xs font-medium"><Frac n="1" d="3" /> × dari volume prisma</span>
-            </FlowBox>
-            <ArrowDown />
-            <FlowBox color="red">
-              Volume Limas
-              <span className="block">{rumus}</span>
-            </FlowBox>
+          <div className={`${cardClass} flex items-center justify-center`}>
+            {img("M7-P10-L1-7", "7", hubungan, "Hubungan luas alas, tinggi, volume prisma, dan volume limas", "relative w-full max-w-[420px]", true)}
           </div>
 
           <div className="flex flex-col gap-3">
@@ -171,7 +152,7 @@ export default async function Materi7Peta10Step1RangkumanHalaman1({
                   <tr key={b.nama} className="bg-[#F8FAFF]">
                     <td className="rounded-l-xl px-3 py-2">
                       <span className="flex items-center gap-2 font-semibold text-[#374151]">
-                        <PyramidIcon color={b.limas} size={28} />
+                        {img(b.limasKey, b.limasUrutan, b.limasSrc, b.nama, `relative ${b.limasCls} flex-shrink-0`)}
                         {b.nama}
                       </span>
                     </td>
@@ -190,7 +171,7 @@ export default async function Materi7Peta10Step1RangkumanHalaman1({
                   </td>
                   <td className="px-3 py-2">
                     <div className="flex justify-center">
-                      {img("M7-P10-L1-5", "5", segiN, "Limas dengan alas segi-n", "relative w-16 aspect-[718/592]")}
+                      {img("M7-P10-L1-5", "5", segiN, "Limas dengan alas segi-n", "relative w-16 aspect-[283/249]")}
                     </div>
                   </td>
                   <td className="px-3 py-2 text-center text-[#374151]">Segi-n (n sisi)</td>
@@ -203,12 +184,7 @@ export default async function Materi7Peta10Step1RangkumanHalaman1({
             </p>
           </div>
 
-          <div className="rounded-[20px] border border-[#FDE68A] bg-[#FEF9E7] px-5 py-4 shadow-[0_4px_10px_rgba(217,119,6,0.12)]">
-            <h3 className="m-0 mb-1 text-lg font-extrabold text-[#DC2626]">Catatan Penting</h3>
-            <p className="m-0 text-sm text-[#92400E] leading-[1.6]">
-              Bentuk alas boleh berbeda-beda, tetapi rumus volume limasnya sama, selama luas alas dan tingginya sama.
-            </p>
-          </div>
+          {img("M7-P10-L1-8", "8", catatan, "Catatan penting: bentuk alas boleh berbeda, rumus volume limas sama selama luas alas dan tinggi sama", "relative w-full max-w-[240px] mx-auto aspect-[738/881]")}
         </div>
       </div>
 
@@ -232,7 +208,7 @@ export default async function Materi7Peta10Step1RangkumanHalaman1({
             <p className="m-0 text-sm text-[#92400E] leading-[1.6]">
               Tiga kali isi satu limas dengan luas alas dan tinggi yang sama dapat memenuhi tepat satu prisma tersebut.
             </p>
-            <div className="text-center text-xl font-bold text-[#111827]">
+            <div className="flex flex-1 items-center justify-center text-center text-3xl sm:text-4xl font-bold text-[#111827] py-2">
               <em>V</em><Sub>limas</Sub> = <Frac n="1" d="3" /> × <em>V</em><Sub>prisma</Sub>
             </div>
           </div>
@@ -242,6 +218,7 @@ export default async function Materi7Peta10Step1RangkumanHalaman1({
           <p className="m-0 text-center text-sm text-[#374151] leading-[1.6]">
             Tiga kali isi satu limas (dengan luas alas dan tinggi yang sama) dapat memenuhi tepat satu prisma.
           </p>
+          {img("M7-P10-L1-12", "11", penuangan, "Penuangan isi tiga limas ke dalam wadah prisma hingga penuh", "relative w-full max-w-[640px]", true)}
         </div>
       </div>
 

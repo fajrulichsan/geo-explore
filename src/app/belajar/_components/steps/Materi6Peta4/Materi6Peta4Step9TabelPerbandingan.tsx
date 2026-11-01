@@ -28,7 +28,7 @@ export default async function Materi6Peta4Step9TabelPerbandingan({ materi, peta,
       <HiddenFields materi={materi} peta={peta} step={9} />
       <TahapHeader materi={materi} step={9} subtitle="Ayo Bereksplorasi 3 — Bandingkan Hasil dan Susun Dugaan Awal" />
 
-      <div className="grid grid-cols-1 lg:grid-cols-[360px_1fr] gap-5 items-stretch">
+      <div className="flex flex-col-reverse gap-5">
         <Pengantar>
           <p className="m-0 text-sm leading-[1.6] text-[#374151]">Sekarang, bandingkan hasil pengamatan dari GeoGebra 3D dan Augmented Reality (AR).</p>
           <p className="m-0 text-sm leading-[1.6] text-[#374151]">

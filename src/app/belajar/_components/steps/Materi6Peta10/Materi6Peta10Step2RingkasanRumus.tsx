@@ -1,7 +1,7 @@
 import { submitStepAction } from "@/app/belajar/actions";
 import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
 import { getPageImages } from "@/lib/pageImages";
-import { Balok, Foto, HiddenFields, Kubus, Nav, RangkumanHeader, Rumus, SectionTitle, cardCls } from "./Materi6Peta10Parts";
+import { Foto, HiddenFields, Nav, RangkumanHeader, Rumus, SectionTitle, cardCls } from "./Materi6Peta10Parts";
 
 const sub = (t: string) => <sub>{t}</sub>;
 
@@ -35,13 +35,27 @@ export default async function Materi6Peta10Step2RingkasanRumus({
             </thead>
             <tbody>
               <tr>
-                <td className={td}><Kubus className="w-12 h-12" /></td>
+                <td className={td}><Foto
+                  k="M6-P10-L2-5"
+                  urutan="5"
+                  src={img["M6-P10-L2-5"]}
+                  ctx={ctx}
+                  alt="Kubus"
+                  className="relative w-20 min-h-12"
+                /></td>
                 <td className={`${td} font-semibold`}>Kubus</td>
                 <td className={`${td} italic`}>V = s<sup>3</sup></td>
                 <td className={td}>s = panjang rusuk kubus</td>
               </tr>
               <tr>
-                <td className={td}><Balok className="w-14 h-12" /></td>
+                <td className={td}><Foto
+                  k="M6-P10-L2-6"
+                  urutan="6"
+                  src={img["M6-P10-L2-6"]}
+                  ctx={ctx}
+                  alt="Balok"
+                  className="relative w-24 min-h-12"
+                /></td>
                 <td className={`${td} font-semibold`}>Balok</td>
                 <td className={`${td} italic`}>V = p × l × t</td>
                 <td className={td}>p = panjang balok<br />l = lebar balok<br />t = tinggi balok</td>
@@ -135,7 +149,7 @@ export default async function Materi6Peta10Step2RingkasanRumus({
           <span className="text-lg font-extrabold text-[#1E3A8A]">Selanjutnya</span>
           <p className="m-0 text-sm text-[#374151] leading-[1.6]">
             Lanjutkan ke halaman berikutnya untuk melihat peta konsep, kata kunci, dan hal-hal penting lainnya dari
-            kegiatan Open-Ended.
+            Tantangan Terbuka.
           </p>
         </div>
         <Foto

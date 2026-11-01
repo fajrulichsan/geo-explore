@@ -48,7 +48,7 @@ export default async function Materi6Peta5Step2ApaYangBerubah({
       <div className="flex flex-col gap-4">
         <StepHeader materi={materi} currentStep={2} totalSteps={6} />
         <div className="inline-flex items-center bg-[#FDF3C7] text-[#92400E] rounded-full py-1.5 px-3.5 text-xs font-bold tracking-[0.02em] w-fit">
-          Tahap 4
+          Tahap 4 dari 6
         </div>
         <div className="flex items-center gap-3.5">
           <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#2563EB" strokeWidth="2.4">
@@ -143,7 +143,7 @@ export default async function Materi6Peta5Step2ApaYangBerubah({
         </div>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-[1fr_240px] gap-5 items-end">
+      <div className="grid grid-cols-1 lg:grid-cols-[1fr_280px] gap-5 items-stretch">
         <div className="flex flex-col gap-4">
           <div className="bg-[#FEF9E7] border border-[#F5E3A0] rounded-2xl px-5 py-4 flex flex-col gap-2">
             <span className="text-sm font-extrabold text-[#111827]">Ingat!</span>
@@ -161,6 +161,7 @@ export default async function Materi6Peta5Step2ApaYangBerubah({
             </p>
           </div>
         </div>
+        <div className="flex items-center justify-center rounded-2xl bg-white border border-[#E5E7EB] p-3">
         <EditablePageImage
           imageKey="M6-P5-L2-1"
           materi={materi}
@@ -173,6 +174,7 @@ export default async function Materi6Peta5Step2ApaYangBerubah({
           natural
           containerClassName="relative w-48 mx-auto lg:w-full min-h-24 overflow-hidden"
         />
+        </div>
       </div>
 
       <div className="flex flex-col-reverse sm:flex-row justify-between items-center gap-4">

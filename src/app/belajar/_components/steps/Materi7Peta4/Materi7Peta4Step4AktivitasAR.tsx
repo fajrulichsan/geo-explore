@@ -1,3 +1,4 @@
+import QrLink from "@/app/belajar/_components/QrLink";
 import { submitStepAction } from "@/app/belajar/actions";
 import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
 import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
@@ -65,38 +66,30 @@ export default async function Materi7Peta4Step4AktivitasAR({
   initialAnswers,
 }: StepComponentProps) {
   const { getValue } = readAnswers(initialAnswers);
-  const gambarHero = await getPageImage("M7-P4-L4-1");
+  const [gambarHero, gambarPanel, gambarQr] = await Promise.all([
+    getPageImage("M7-P4-L4-1"),
+    getPageImage("M7-P4-L4-2"),
+    getPageImage("M7-P1-L2-4"),
+  ]);
 
   return (
     <form action={submitStepAction} className="flex flex-col gap-8">
       <HiddenStepFields materi={materi} peta={peta} step={STEP} />
       <StepTitle materi={materi} step={STEP} subtitle="Eksplorasi Menggunakan Augmented Reality (AR)" />
 
-      <div className="relative overflow-hidden rounded-[24px] bg-gradient-to-br from-[#1E3A8A] to-[#2563EB] px-5 py-6 sm:px-8 sm:py-8 flex flex-col gap-5">
-        <div className="absolute -right-14 -top-16 w-56 h-56 rounded-full bg-white/10" />
-        <div className="relative flex flex-col gap-2">
-          <h2 className="m-0 text-lg sm:text-xl font-extrabold text-white">Amati, ubah, dan selidiki hubungan volume satu limas dengan volume prisma!</h2>
-          <p className="m-0 text-sm text-white/90 max-w-2xl leading-[1.6]">Gunakan Augmented Reality (AR) untuk mengamati satu prisma dan satu limas dengan bentuk serta luas alas dan tinggi yang sama.</p>
-        </div>
-        <div className="relative bg-white rounded-2xl p-3 sm:p-4">
-          <EditablePageImage
-            imageKey="M7-P4-L4-1"
-            materi={materi}
-            peta={peta}
-            step="4"
-            urutan="1"
-            src={gambarHero}
-            alt="Tiga siswa memegang tablet AR dengan prisma dan tiga limas di atas meja"
-            editable={editFoto}
-            natural
-            containerClassName="relative w-full min-h-24 overflow-hidden"
-          />
-        </div>
-        <div className="relative flex flex-wrap gap-2">
-          <span className="rounded-2xl rounded-bl-sm bg-white/95 text-[#1E3A8A] text-xs sm:text-[13px] font-semibold px-3 py-2 leading-[1.4]">Saya mengamati satu prisma dan satu limas dengan bentuk yang sama.</span>
-          <span className="rounded-2xl rounded-bl-sm bg-white/95 text-[#1E3A8A] text-xs sm:text-[13px] font-semibold px-3 py-2 leading-[1.4]">Saya menuangkan limas berulang ke dalam prisma untuk melihat berapa kali isi limas dibutuhkan.</span>
-          <span className="rounded-2xl rounded-bl-sm bg-white/95 text-[#1E3A8A] text-xs sm:text-[13px] font-semibold px-3 py-2 leading-[1.4]">Saya mengubah ukuran keduanya dan melihat apakah hasilnya tetap sama.</span>
-        </div>
+      <div className="rounded-[24px] overflow-hidden border border-[#E5E7EB] bg-white">
+        <EditablePageImage
+          imageKey="M7-P4-L4-1"
+          materi={materi}
+          peta={peta}
+          step="4"
+          urutan="1"
+          src={gambarHero}
+          alt="Tiga siswa memegang tablet AR dengan prisma dan tiga limas di atas meja"
+          editable={editFoto}
+          natural
+          containerClassName="relative w-full"
+        />
       </div>
 
       <div className="flex flex-col gap-3 bg-[#EFF4FF] border border-[#DBE7FF] rounded-[20px] p-5 sm:p-6">
@@ -118,13 +111,30 @@ export default async function Materi7Peta4Step4AktivitasAR({
 
       <div className="flex flex-col gap-4">
         <SectionTitle letter="H" title="Aktivitas di AR" />
-        <div className={`${cardClass} flex flex-col gap-3`}>
-          {langkahAR.map((t, i) => (
-            <div key={t} className="flex items-start gap-3">
-              <span className="w-6 h-6 rounded-full bg-[#2563EB] text-white flex items-center justify-center text-xs font-bold flex-shrink-0">{i + 1}</span>
-              <p className="m-0 text-sm text-[#374151] leading-[1.6]">{t}</p>
-            </div>
-          ))}
+        <div className={`${cardClass} grid grid-cols-1 md:grid-cols-[1fr_320px] gap-5 items-start`}>
+          <div className="flex flex-col gap-3">
+            {langkahAR.map((t, i) => (
+              <div key={t} className="flex items-start gap-3">
+                <span className="w-6 h-6 rounded-full bg-[#2563EB] text-white flex items-center justify-center text-xs font-bold flex-shrink-0">{i + 1}</span>
+                <p className="m-0 text-sm text-[#374151] leading-[1.6]">{t}</p>
+              </div>
+            ))}
+          </div>
+          <div className="flex flex-col items-center gap-3">
+            <EditablePageImage
+              imageKey="M7-P4-L4-2"
+              materi={materi}
+              peta={peta}
+              step="4"
+              urutan="2"
+              src={gambarPanel}
+              alt="Tampilan Augmented Reality dengan prisma dan limas pada tablet"
+              editable={editFoto}
+              natural
+              containerClassName="relative w-full rounded-xl overflow-hidden"
+            />
+            <QrLink href="https://ar.geo-explore.my.id" src={gambarQr} alt="Kode QR untuk membuka AR Viewer" label="Buka AR Viewer" />
+          </div>
         </div>
       </div>
 

@@ -2,6 +2,7 @@ import { submitStepAction } from "@/app/belajar/actions";
 import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
 import { getPageImages } from "@/lib/pageImages";
 import { Foto, HiddenFields, Nav, RefleksiHeader, SectionTitle, TabelCentang, answerText, cardCls, inputCls } from "./Materi6Peta8Parts";
+import FileSubmission from "@/components/FileSubmission";
 
 const keyakinan = [
   "Saya yakin dapat menghitung volume kubus.",
@@ -23,7 +24,20 @@ export default async function Materi6Peta8Step2KeyakinanTarget({
   return (
     <form action={submitStepAction} className="flex flex-col gap-8">
       <HiddenFields materi={materi} peta={peta} step={2} />
-      <RefleksiHeader materi={materi} step={2} />
+      <RefleksiHeader
+        materi={materi}
+        step={2}
+        foto={
+          <Foto
+            k="M6-P8-L2-2"
+            src={img["M6-P8-L2-2"]}
+            ctx={ctx}
+            urutan="2"
+            alt="Siswa-siswa di kelas merefleksikan pembelajaran setelah menemukan rumus volume"
+            className="relative w-full overflow-hidden rounded-[20px]"
+          />
+        }
+      />
 
       <div className="flex flex-col gap-4">
         <SectionTitle
@@ -86,7 +100,7 @@ export default async function Materi6Peta8Step2KeyakinanTarget({
         <div className="flex flex-col gap-2">
           <span className="text-lg font-extrabold text-[#1E3A8A]">Selanjutnya</span>
           <p className="m-0 text-sm text-[#374151] leading-[1.6]">
-            Pada bagian berikutnya, kamu akan mengerjakan Latihan Open-Ended yang menerapkan rumus volume dalam berbagai
+            Pada bagian berikutnya, kamu akan mengerjakan Tantangan Terbuka yang menerapkan rumus volume dalam berbagai
             situasi dan menyelesaikan masalah dengan lebih dari satu strategi.
           </p>
         </div>
@@ -99,7 +113,13 @@ export default async function Materi6Peta8Step2KeyakinanTarget({
         />
       </div>
 
-      <Nav materi={materi} peta={peta} step={2} last />
+      <FileSubmission
+        materi={materi}
+        peta={peta}
+        defaultValue={typeof initialAnswers?.file_hasil_kerja === "string" ? initialAnswers.file_hasil_kerja : undefined}
+      />
+
+      <Nav materi={materi} peta={peta} step={2} last lastLabel="Lanjut ke Tantangan Terbuka" />
     </form>
   );
 }

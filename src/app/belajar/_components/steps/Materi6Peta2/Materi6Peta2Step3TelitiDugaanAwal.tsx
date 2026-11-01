@@ -15,7 +15,7 @@ const dugaan = [
 export default async function Materi6Peta2Step3TelitiDugaanAwal({
   materi,
   peta,
-  step = "3",
+  step = "4",
   editFoto,
   initialAnswers,
 }: StepComponentProps) {
@@ -32,12 +32,12 @@ export default async function Materi6Peta2Step3TelitiDugaanAwal({
     <form action={submitStepAction} className="flex flex-col gap-8">
       <input type="hidden" name="materi" value={materi} />
       <input type="hidden" name="peta" value={peta} />
-      <input type="hidden" name="step" value="3" />
+      <input type="hidden" name="step" value="4" />
 
       <div className="flex flex-col gap-4">
-        <StepHeader materi={materi} currentStep={3} totalSteps={7} />
+        <StepHeader materi={materi} currentStep={4} totalSteps={8} />
         <div className="inline-flex items-center bg-[#FDF3C7] text-[#92400E] rounded-full py-1.5 px-3.5 text-xs font-bold tracking-[0.02em] w-fit">
-          Tahap 1
+          Tahap 1 dari 6
         </div>
         <div className="flex items-center gap-3.5">
           <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#2563EB" strokeWidth="2.4">
@@ -176,7 +176,7 @@ export default async function Materi6Peta2Step3TelitiDugaanAwal({
       </div>
 
       <div className="flex flex-col-reverse sm:flex-row justify-between items-center gap-4">
-        <BackLink href={`/belajar/${materi}/${peta}/2`} />
+        <BackLink href={`/belajar/${materi}/${peta}/3`} />
         <NextStepButton />
       </div>
     </form>

@@ -1,5 +1,6 @@
 import { submitStepAction } from "@/app/belajar/actions";
 import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
+import QrLink from "@/app/belajar/_components/QrLink";
 import { getPageImages } from "@/lib/pageImages";
 import { Foto, HiddenFields, LangkahList, Nav, Pengantar, SectionTitle, TahapHeader, cardCls } from "./Materi6Peta4Parts";
 
@@ -20,7 +21,7 @@ export default async function Materi6Peta4Step1PetunjukGeoGebra({ materi, peta, 
       <HiddenFields materi={materi} peta={peta} step={1} />
       <TahapHeader materi={materi} step={1} subtitle="Ayo Bereksplorasi 1 — Eksplorasi Menggunakan GeoGebra 3D" />
 
-      <div className="grid grid-cols-1 lg:grid-cols-[360px_1fr] gap-5 items-stretch">
+      <div className="flex flex-col-reverse gap-5">
         <Pengantar>
           <p className="m-0 text-sm leading-[1.6] text-[#374151]">Pada tahap ini kamu akan mengumpulkan data menggunakan GeoGebra 3D.</p>
           <p className="m-0 text-sm leading-[1.6] text-[#374151]">Untuk kubus dan balok, amati banyaknya kubus satuan pada setiap lapisan.</p>
@@ -43,10 +44,7 @@ export default async function Materi6Peta4Step1PetunjukGeoGebra({ materi, peta, 
       <div className="flex flex-col gap-4">
         <SectionTitle huruf="A" judul="Petunjuk GeoGebra 3D" hint="Scan kode QR, lalu ikuti langkah-langkah berikut." />
         <div className={`${cardCls} grid grid-cols-1 sm:grid-cols-[180px_1fr] gap-6 items-center`}>
-          <div className="flex flex-col items-center gap-2">
-            <Foto k="M6-P4-L1-2" img={img} ctx={ctx} urutan="2" alt="Kode QR GeoGebra 3D" className="relative w-36 h-36" />
-            <span className="text-xs font-semibold text-center text-[#2563EB]">Scan untuk membuka GeoGebra 3D</span>
-          </div>
+          <QrLink href="/geogebra?materi=6" src={img["qr-geogebra"]} alt="Kode QR GeoGebra 3D" label="Scan atau klik: GeoGebra 3D" />
           <LangkahList items={langkah} />
         </div>
       </div>

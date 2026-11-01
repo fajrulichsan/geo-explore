@@ -19,15 +19,6 @@ const diingat = [
   "Gunakan pola pada tabel data untuk menemukan hubungan ketiga besaran (luas alas, tinggi/panjang, dan volume).",
 ];
 
-function PrismaIcon() {
-  return (
-    <svg width="40" height="32" viewBox="0 0 40 32" fill="none" role="img" aria-label="Prisma segitiga" className="flex-shrink-0">
-      <path d="M4 26L14 8l22 6-10 18z" fill="#FED7AA" stroke="#DC2626" strokeWidth="1.8" strokeLinejoin="round" />
-      <path d="M4 26L14 8 26 32z" fill="#FDBA74" stroke="#DC2626" strokeWidth="1.8" strokeLinejoin="round" />
-    </svg>
-  );
-}
-
 export default async function Materi6Peta5Step4PolaPrismaBandingkan({
   materi,
   peta,
@@ -38,16 +29,16 @@ export default async function Materi6Peta5Step4PolaPrismaBandingkan({
   const answers = initialAnswers ?? {};
   const getValue = (key: string) => (typeof answers[key] === "string" ? (answers[key] as string) : "");
 
-  const [gambarKubus, gambarBalok, gambarMaskot] = await Promise.all([
-    getPageImage("M6-P5-L3-2"),
-    getPageImage("M6-P5-L3-3"),
+  const [gambarLampuG, gambarLampuH, gambarMaskot] = await Promise.all([
+    getPageImage("M6-P5-L4-1"),
+    getPageImage("M6-P5-L4-2"),
     getPageImage("M6-P5-L2-1"),
   ]);
 
   const perbandingan = [
-    { nama: "kubus", judul: "Kubus", warna: "#2563EB", ikon: <EditablePageImage imageKey="M6-P5-L3-2" materi={materi} peta={peta} step={step} urutan="1" src={gambarKubus} alt="Kubus biru" editable={editFoto} imageClassName="object-contain" containerClassName="relative w-10 aspect-square overflow-hidden flex-shrink-0" /> },
-    { nama: "balok", judul: "Balok", warna: "#16A34A", ikon: <EditablePageImage imageKey="M6-P5-L3-3" materi={materi} peta={peta} step={step} urutan="2" src={gambarBalok} alt="Balok hijau" editable={editFoto} imageClassName="object-contain" containerClassName="relative w-10 aspect-square overflow-hidden flex-shrink-0" /> },
-    { nama: "prisma", judul: "Prisma Segitiga", warna: "#DC2626", ikon: <PrismaIcon /> },
+    { nama: "kubus", judul: "Kubus", warna: "#2563EB" },
+    { nama: "balok", judul: "Balok", warna: "#16A34A" },
+    { nama: "prisma", judul: "Prisma Segitiga", warna: "#DC2626" },
   ];
 
   return (
@@ -59,7 +50,7 @@ export default async function Materi6Peta5Step4PolaPrismaBandingkan({
       <div className="flex flex-col gap-4">
         <StepHeader materi={materi} currentStep={4} totalSteps={6} />
         <div className="inline-flex items-center bg-[#FDF3C7] text-[#92400E] rounded-full py-1.5 px-3.5 text-xs font-bold tracking-[0.02em] w-fit">
-          Tahap 4
+          Tahap 4 dari 6
         </div>
         <div className="flex items-center gap-3.5">
           <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#2563EB" strokeWidth="2.4">
@@ -80,7 +71,6 @@ export default async function Materi6Peta5Step4PolaPrismaBandingkan({
             <div className="bg-white border border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-full py-2 px-5 text-sm font-bold text-[#DC2626]">
               Pola pada Prisma Segitiga
             </div>
-            <div className="ml-auto"><PrismaIcon /></div>
           </div>
           <p className="m-0 text-sm text-[#4B5563]">Perhatikan tabel hasil pengamatan prisma segitiga. Apa pola yang kamu temukan?</p>
           <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-4 sm:p-5 shadow-[0_1px_2px_rgba(0,0,0,0.04)] flex flex-col gap-4">
@@ -126,7 +116,21 @@ export default async function Materi6Peta5Step4PolaPrismaBandingkan({
               />
             </div>
             <details className="rounded-2xl bg-[#FEF9E7] border border-[#F5E3A0] px-4 py-3">
-              <summary className="cursor-pointer text-sm font-bold text-[#92400E]">Petunjuk (opsional)</summary>
+              <summary className="cursor-pointer flex items-center gap-2.5 text-sm font-bold text-[#92400E]">
+                <EditablePageImage
+                  imageKey="M6-P5-L4-1"
+                  materi={materi}
+                  peta={peta}
+                  step={step}
+                  urutan="1"
+                  src={gambarLampuG}
+                  alt="Lampu menyala tanda petunjuk"
+                  editable={editFoto}
+                  imageClassName="object-contain"
+                  containerClassName="relative w-8 h-8 flex-shrink-0"
+                />
+                Petunjuk (opsional)
+              </summary>
               <ul className="m-0 mt-2 pl-5 flex flex-col gap-1 text-sm text-[#374151] leading-[1.5] list-disc">
                 <li>Bentuk dan luas penampang segitiga sebagai alas tetap pada setiap posisi.</li>
                 <li>Perhatikan bagaimana volume berubah saat panjang prisma bertambah.</li>
@@ -151,7 +155,6 @@ export default async function Materi6Peta5Step4PolaPrismaBandingkan({
             {perbandingan.map((b) => (
               <div key={b.nama} className="flex flex-col gap-1.5 rounded-2xl border border-[#E5E7EB] bg-[#F9FAFB] p-3">
                 <div className="flex items-center gap-2.5">
-                  {b.ikon}
                   <label htmlFor={`hubungan-${b.nama}`} className="text-sm font-bold" style={{ color: b.warna }}>
                     {b.judul} — pola hubungan yang ditemukan
                   </label>
@@ -191,6 +194,27 @@ export default async function Materi6Peta5Step4PolaPrismaBandingkan({
                 </div>
               </div>
             ))}
+            <details className="rounded-2xl bg-[#FEF9E7] border border-[#F5E3A0] px-4 py-3">
+              <summary className="cursor-pointer flex items-center gap-2.5 text-sm font-bold text-[#92400E]">
+                <EditablePageImage
+                  imageKey="M6-P5-L4-2"
+                  materi={materi}
+                  peta={peta}
+                  step={step}
+                  urutan="2"
+                  src={gambarLampuH}
+                  alt="Lampu menyala tanda petunjuk"
+                  editable={editFoto}
+                  imageClassName="object-contain"
+                  containerClassName="relative w-8 h-8 flex-shrink-0"
+                />
+                Petunjuk (opsional)
+              </summary>
+              <ul className="m-0 mt-2 pl-5 flex flex-col gap-1 text-sm text-[#374151] leading-[1.5] list-disc">
+                <li>Bandingkan hubungan luas alas, tinggi atau panjang, dan volume pada ketiga bangun.</li>
+                <li>Cari bagian yang selalu sama pada ketiga pola tersebut.</li>
+              </ul>
+            </details>
           </div>
         </div>
       </div>

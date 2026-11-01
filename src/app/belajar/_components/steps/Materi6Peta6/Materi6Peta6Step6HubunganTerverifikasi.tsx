@@ -2,6 +2,7 @@ import { submitStepAction } from "@/app/belajar/actions";
 import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
 import { getPageImages } from "@/lib/pageImages";
 import { Foto, Hebat, HiddenFields, Nav, SectionTitle, TahapHeader, answerText, cardCls, inputCls } from "./Materi6Peta6Parts";
+import FileSubmission from "@/components/FileSubmission";
 
 const temuan = [
   { key: "temuan_kesamaan", tanya: "Apa kesamaan hasil perhitungan dan hasil model pada ketiga bangun?" },
@@ -26,13 +27,13 @@ export default async function Materi6Peta6Step6HubunganTerverifikasi({
       <HiddenFields materi={materi} peta={peta} step={6} />
       <TahapHeader materi={materi} step={6} />
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 items-start">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 items-stretch">
         <div className="flex flex-col gap-4">
           <SectionTitle huruf="J" judul="Apa yang Kamu Temukan?" />
-          <div className={`${cardCls} flex flex-col gap-4`}>
+          <div className={`${cardCls} flex flex-col gap-4 flex-1`}>
             {temuan.map((t, i) => (
               <div key={t.key} className="flex flex-col gap-2">
-                <label htmlFor={t.key} className="flex items-start gap-3 text-sm text-[#374151] leading-[1.5]">
+                <label htmlFor={t.key} className="flex items-stretch gap-3 text-sm text-[#374151] leading-[1.5]">
                   <span className="w-6 h-6 rounded-full bg-[#1E3A8A] text-white flex items-center justify-center text-xs font-bold flex-shrink-0">
                     {i + 1}
                   </span>
@@ -54,7 +55,7 @@ export default async function Materi6Peta6Step6HubunganTerverifikasi({
 
         <div className="flex flex-col gap-4">
           <SectionTitle huruf="K" judul="Hubungan yang Terverifikasi" warna="#B45309" />
-          <div className={`${cardCls} flex flex-col gap-3`}>
+          <div className={`${cardCls} flex flex-col gap-3 flex-1`}>
             <label htmlFor="hubungan_terverifikasi" className="text-sm text-[#374151] leading-[1.5]">
               Berdasarkan hasil verifikasi, tuliskan dengan kata-katamu hubungan yang sama pada kubus, balok, dan prisma
               segitiga.
@@ -131,7 +132,13 @@ export default async function Materi6Peta6Step6HubunganTerverifikasi({
         menjadi bekal penting untuk menyusun rumus umum pada tahap berikutnya.
       </Hebat>
 
-      <Nav materi={materi} peta={peta} step={6} last />
+      <FileSubmission
+        materi={materi}
+        peta={peta}
+        defaultValue={typeof initialAnswers?.file_hasil_kerja === "string" ? initialAnswers.file_hasil_kerja : undefined}
+      />
+
+      <Nav materi={materi} peta={peta} step={6} last lastLabel="Lanjut ke Tahap Ayo Menyimpulkan" />
     </form>
   );
 }

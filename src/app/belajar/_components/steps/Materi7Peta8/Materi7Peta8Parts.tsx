@@ -206,12 +206,12 @@ export function StepFooter({
   materi: string;
   peta: string;
   step: number;
-  final?: boolean;
+  final?: string;
 }) {
   return (
     <div className="flex flex-col-reverse sm:flex-row justify-between items-center gap-4">
       {step > 1 ? <BackLink href={`/belajar/${materi}/${peta}/${step - 1}`} /> : <span />}
-      {final ? <NextStepButton variant="green" icon="check">Selesai</NextStepButton> : <NextStepButton />}
+      {final ? <NextStepButton variant="green" icon="check">{final}</NextStepButton> : <NextStepButton />}
     </div>
   );
 }
