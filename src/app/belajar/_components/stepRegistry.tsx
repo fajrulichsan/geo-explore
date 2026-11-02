@@ -433,6 +433,7 @@ import Materi8Peta9Step4BandingkanStrategi from "@/app/belajar/_components/steps
 import Materi8Peta9Step5JelaskanAlasanMatematis from "@/app/belajar/_components/steps/Materi8Peta9/Materi8Peta9Step5JelaskanAlasanMatematis";
 import Materi8Peta9Step6TantanganLanjutan from "@/app/belajar/_components/steps/Materi8Peta9/Materi8Peta9Step6TantanganLanjutan";
 import Materi8Peta9Step7RefleksiSingkat from "@/app/belajar/_components/steps/Materi8Peta9/Materi8Peta9Step7RefleksiSingkat";
+import Materi8Peta9Step8HasilTantangan from "@/app/belajar/_components/steps/Materi8Peta9/Materi8Peta9Step8HasilTantangan";
 import Materi8Peta8Step1Pengantar from "@/app/belajar/_components/steps/Materi8Peta8/Materi8Peta8Step1Pengantar";
 import Materi8Peta8Step2RefleksiPemahaman from "@/app/belajar/_components/steps/Materi8Peta8/Materi8Peta8Step2RefleksiPemahaman";
 import Materi8Peta8Step3RefleksiPengalamanBelajar from "@/app/belajar/_components/steps/Materi8Peta8/Materi8Peta8Step3RefleksiPengalamanBelajar";
@@ -765,6 +766,7 @@ export const stepRegistry: Record<string, ComponentType<StepComponentProps>> = {
   "8-9-5": Materi8Peta9Step5JelaskanAlasanMatematis,
   "8-9-6": Materi8Peta9Step6TantanganLanjutan,
   "8-9-7": Materi8Peta9Step7RefleksiSingkat,
+  "8-9-8": Materi8Peta9Step8HasilTantangan,
   "8-8-1": Materi8Peta8Step1Pengantar,
   "8-8-2": Materi8Peta8Step2RefleksiPemahaman,
   "8-8-3": Materi8Peta8Step3RefleksiPengalamanBelajar,

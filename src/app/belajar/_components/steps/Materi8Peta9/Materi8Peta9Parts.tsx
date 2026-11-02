@@ -3,7 +3,7 @@ import StepHeader from "@/app/belajar/_components/StepHeader";
 import BackLink from "@/app/belajar/_components/BackLink";
 import NextStepButton from "@/app/belajar/_components/NextStepButton";
 
-export const TOTAL_STEPS = 7;
+export const TOTAL_STEPS = 8;
 
 export const SUBTITLE = "Saatnya Menunjukkan Berbagai Strategimu!";
 

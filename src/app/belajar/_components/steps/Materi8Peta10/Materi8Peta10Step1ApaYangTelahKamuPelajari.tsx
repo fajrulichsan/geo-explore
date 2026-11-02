@@ -63,6 +63,7 @@ export default async function Materi8Peta10Step1ApaYangTelahKamuPelajari({
             Melalui kegiatan mengamati, berdiskusi, bereksplorasi menggunakan GeoGebra 3D dan <span className="italic">Augmented Reality</span> (AR), mengolah informasi, memverifikasi, dan menyimpulkan, kamu menemukan bahwa jika setiap ukuran panjang (rusuk/sisi yang bersesuaian) diperbesar atau diperkecil dengan faktor skala <span className="italic">k</span>, maka volumenya berubah sebesar <strong><span className="italic">k</span><sup>3</sup></strong>.
           </p>
         </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 items-center">
         <div className="rounded-[20px] bg-[#EFF4FF] border border-[#DBEAFE] p-3 sm:p-4">
           <EditablePageImage
             imageKey="M8-P10-L1-1"
@@ -75,7 +76,7 @@ export default async function Materi8Peta10Step1ApaYangTelahKamuPelajari({
             editable={editFoto}
             natural
             
-            containerClassName="relative w-full max-w-[520px] mx-auto overflow-hidden rounded-xl"
+            containerClassName="relative w-full mx-auto overflow-hidden rounded-xl"
           />
         </div>
         <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-5 sm:p-6 shadow-[0_1px_2px_rgba(0,0,0,0.04)] !p-3">
@@ -90,8 +91,9 @@ export default async function Materi8Peta10Step1ApaYangTelahKamuPelajari({
             editable={editFoto}
             natural
             
-            containerClassName="relative w-full max-w-[440px] mx-auto overflow-hidden rounded-xl bg-white"
+            containerClassName="relative w-full mx-auto overflow-hidden rounded-xl bg-white"
           />
+        </div>
         </div>
       </div>
 

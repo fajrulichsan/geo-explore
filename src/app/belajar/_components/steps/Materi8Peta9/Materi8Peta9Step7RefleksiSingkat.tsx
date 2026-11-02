@@ -106,7 +106,7 @@ export default async function Materi8Peta9Step7RefleksiSingkat({ materi, peta, e
         defaultValue={typeof initialAnswers?.file_hasil_kerja === "string" ? initialAnswers.file_hasil_kerja : undefined}
       />
 
-      <StepFooter materi={materi} peta={peta} step={STEP} final finalLabel="Lanjut ke Quiz" />
+      <StepFooter materi={materi} peta={peta} step={STEP} />
     </form>
   );
 }

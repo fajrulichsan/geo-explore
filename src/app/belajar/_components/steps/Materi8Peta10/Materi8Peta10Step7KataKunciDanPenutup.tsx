@@ -3,7 +3,6 @@ import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry"
 import NextStepButton from "@/app/belajar/_components/NextStepButton";
 import StepHeader from "@/app/belajar/_components/StepHeader";
 import BackLink from "@/app/belajar/_components/BackLink";
-import FinishPopup from "@/app/belajar/_components/FinishPopup";
 import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
 import { getPageImage } from "@/lib/pageImages";
 import type { PageImageKey } from "@/lib/pageImages";
@@ -184,94 +183,97 @@ export default async function Materi8Peta10Step7KataKunciDanPenutup({
         </div>
       </div>
 
+      <div className="flex flex-col gap-6">
+      <EditablePageImage
+        imageKey="M8-P10-L7-5"
+        materi={materi}
+        peta={peta}
+        step={step}
+        urutan="5"
+        src={gambar[4]}
+        alt="Selamat! Kamu hebat! Kamu telah berhasil menuntaskan seluruh pembelajaran Bangun Ruang Sisi Datar"
+        editable={editFoto}
+        natural
+        containerClassName="relative w-full overflow-hidden rounded-[20px]"
+      />
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div className="bg-[#FFF7ED] border border-[#FED7AA] rounded-[20px] p-5 flex flex-col gap-3">
+          <div className="flex items-center gap-2">
+            <EditablePageImage
+              imageKey="M8-P10-L7-3"
+              materi={materi}
+              peta={peta}
+              step={step}
+              urutan="3"
+              src={gambar[2]}
+              alt="Piala"
+              editable={editFoto}
+              containerClassName="relative w-9 h-11 flex-shrink-0 overflow-hidden"
+              imageClassName="object-contain"
+            />
+            <h3 className="m-0 text-base font-extrabold text-[#C2410C]">Hebat!</h3>
+          </div>
+          <div className="grid grid-cols-[3fr_2fr] gap-3 items-center">
+            <div className="flex flex-col gap-2">
+              <p className="m-0 text-sm text-[#374151] leading-[1.6]">
+                Kamu telah menemukan sendiri bahwa ketika setiap ukuran panjang (rusuk/sisi yang bersesuaian) diperbesar atau diperkecil dengan faktor skala <span className="italic">k</span>, volume bangun ruang berubah sebesar faktor <strong><span className="italic">k</span><sup>3</sup></strong>.
+              </p>
+              <p className="m-0 text-sm text-[#374151] leading-[1.6]">Teruslah berpikir kritis, menggunakan berbagai strategi, dan memberikan alasan matematis yang tepat!</p>
+            </div>
+            <EditablePageImage
+              imageKey="M8-P10-L7-1"
+              materi={materi}
+              peta={peta}
+              step={step}
+              urutan="1"
+              src={gambar[0]}
+              alt="Siswa mengepalkan tangan tanda semangat"
+              editable={editFoto}
+              natural
+              containerClassName="relative w-full overflow-hidden"
+            />
+          </div>
+        </div>
+        <div className="bg-[#EFF4FF] border border-[#DBEAFE] rounded-[20px] p-5 flex flex-col gap-3">
+          <div className="flex items-center gap-2">
+            <EditablePageImage
+              imageKey="M8-P10-L7-4"
+              materi={materi}
+              peta={peta}
+              step={step}
+              urutan="4"
+              src={gambar[3]}
+              alt="Roket"
+              editable={editFoto}
+              containerClassName="relative w-9 h-11 flex-shrink-0 overflow-hidden"
+              imageClassName="object-contain"
+            />
+            <h3 className="m-0 text-base font-extrabold text-[#1E3A8A]">Akhir Perjalanan Belajar</h3>
+          </div>
+          <div className="grid grid-cols-[3fr_2fr] gap-3 items-center">
+            <p className="m-0 text-sm text-[#374151] leading-[1.6]">
+              Selamat! Kamu telah menyelesaikan seluruh materi Bangun Ruang Sisi Datar. Kini kamu memahami sifat-sifat bangun ruang, luas permukaan, volume, serta hubungan faktor skala terhadap luas permukaan (<span className="italic">k</span><sup>2</sup>) dan volume (<span className="italic">k</span><sup>3</sup>). Terus gunakan penalaran adaptif, berbagai strategi penyelesaian, serta alasan matematis dalam menghadapi berbagai permasalahan geometri!
+            </p>
+            <EditablePageImage
+              imageKey="M8-P10-L7-2"
+              materi={materi}
+              peta={peta}
+              step={step}
+              urutan="2"
+              src={gambar[1]}
+              alt="Bangun ruang dengan tulisan Matematika membuatmu lebih hebat!"
+              editable={editFoto}
+              natural
+              containerClassName="relative w-full overflow-hidden rounded-xl"
+            />
+          </div>
+        </div>
+      </div>
+      </div>
+
       <div className="flex flex-col-reverse sm:flex-row justify-between items-center gap-4">
         <BackLink href={`/belajar/${materi}/${peta}/6`} />
-        <FinishPopup label="Tuntaskan Pembelajaran" showInline={editFoto}>
-          <EditablePageImage
-            imageKey="M8-P10-L7-5"
-            materi={materi}
-            peta={peta}
-            step={step}
-            urutan="5"
-            src={gambar[4]}
-            alt="Selamat! Kamu hebat! Kamu telah berhasil menuntaskan seluruh pembelajaran Bangun Ruang Sisi Datar"
-            editable={editFoto}
-            natural
-            containerClassName="relative w-full overflow-hidden rounded-[20px]"
-          />
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div className="bg-[#FFF7ED] border border-[#FED7AA] rounded-[20px] p-5 grid grid-cols-[1fr_110px] gap-3 items-end">
-              <div className="flex flex-col gap-2">
-                <div className="flex items-center gap-2">
-                  <EditablePageImage
-                    imageKey="M8-P10-L7-3"
-                    materi={materi}
-                    peta={peta}
-                    step={step}
-                    urutan="3"
-                    src={gambar[2]}
-                    alt="Piala"
-                    editable={editFoto}
-                    containerClassName="relative w-9 h-11 flex-shrink-0 overflow-hidden"
-                    imageClassName="object-contain"
-                  />
-                  <h3 className="m-0 text-base font-extrabold text-[#C2410C]">Hebat!</h3>
-                </div>
-                <p className="m-0 text-sm text-[#374151] leading-[1.6]">
-                  Kamu telah menemukan sendiri bahwa ketika setiap ukuran panjang (rusuk/sisi yang bersesuaian) diperbesar atau diperkecil dengan faktor skala <span className="italic">k</span>, volume bangun ruang berubah sebesar faktor <strong><span className="italic">k</span><sup>3</sup></strong>.
-                </p>
-                <p className="m-0 text-sm text-[#374151] leading-[1.6]">Teruslah berpikir kritis, menggunakan berbagai strategi, dan memberikan alasan matematis yang tepat!</p>
-              </div>
-              <EditablePageImage
-                imageKey="M8-P10-L7-1"
-                materi={materi}
-                peta={peta}
-                step={step}
-                urutan="1"
-                src={gambar[0]}
-                alt="Siswa mengepalkan tangan tanda semangat"
-                editable={editFoto}
-                natural
-                containerClassName="relative w-full overflow-hidden"
-              />
-            </div>
-            <div className="bg-[#EFF4FF] border border-[#DBEAFE] rounded-[20px] p-5 flex flex-col gap-3">
-              <div className="flex items-center gap-2">
-                <EditablePageImage
-                  imageKey="M8-P10-L7-4"
-                  materi={materi}
-                  peta={peta}
-                  step={step}
-                  urutan="4"
-                  src={gambar[3]}
-                  alt="Roket"
-                  editable={editFoto}
-                  containerClassName="relative w-9 h-11 flex-shrink-0 overflow-hidden"
-                  imageClassName="object-contain"
-                />
-                <h3 className="m-0 text-base font-extrabold text-[#1E3A8A]">Akhir Perjalanan Belajar</h3>
-              </div>
-              <p className="m-0 text-sm text-[#374151] leading-[1.6]">
-                Selamat! Kamu telah menyelesaikan seluruh materi Bangun Ruang Sisi Datar. Kini kamu memahami sifat-sifat bangun ruang, luas permukaan, volume, serta hubungan faktor skala terhadap luas permukaan (<span className="italic">k</span><sup>2</sup>) dan volume (<span className="italic">k</span><sup>3</sup>). Terus gunakan penalaran adaptif, berbagai strategi penyelesaian, serta alasan matematis dalam menghadapi berbagai permasalahan geometri!
-              </p>
-              <EditablePageImage
-                imageKey="M8-P10-L7-2"
-                materi={materi}
-                peta={peta}
-                step={step}
-                urutan="2"
-                src={gambar[1]}
-                alt="Bangun ruang dengan tulisan Matematika membuatmu lebih hebat!"
-                editable={editFoto}
-                natural
-                containerClassName="relative w-full max-w-[300px] mx-auto overflow-hidden rounded-xl"
-              />
-            </div>
-          </div>
-          <div className="flex justify-end">
-            <NextStepButton variant="green" icon="check">Selesai</NextStepButton>
-          </div>
-        </FinishPopup>
+        <NextStepButton variant="green" icon="check">Selesai</NextStepButton>
       </div>
     </form>
   );
