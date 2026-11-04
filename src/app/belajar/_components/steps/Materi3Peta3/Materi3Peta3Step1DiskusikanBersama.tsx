@@ -12,10 +12,10 @@ const jaring = [
 ];
 
 const pertanyaan = [
-  { n: 1, label: "Jika semua sisi dibuka menjadi jaring-jaring, apa yang sebenarnya harus dihitung?" },
-  { n: 2, label: "Apakah luas permukaan cukup dihitung dari satu sisi saja? Mengapa?" },
-  { n: 3, label: "Mengapa semua sisi harus diperhatikan?" },
-  { n: 4, label: "Menurut kelompokmu, bagaimana cara memperoleh luas permukaan?" },
+  { n: 1, label: "Jika bangun ruang dibuka menjadi jaring-jaring, bagian mana saja yang perlu dihitung luasnya untuk menentukan luas seluruh permukaannya? Mengapa?" },
+  { n: 2, label: "Menurut kelompokmu, apakah luas satu sisi saja cukup untuk menentukan luas seluruh permukaan bangun ruang? Jelaskan alasan sementara kalian!" },
+  { n: 3, label: "Bagaimana perbedaan bentuk dan ukuran sisi-sisi kubus, balok, dan prisma dapat memengaruhi cara menentukan luas permukaannya?" },
+  { n: 4, label: "Menurut kelompokmu, cara apa saja yang mungkin digunakan untuk menentukan luas permukaan kubus, balok, dan prisma? Jelaskan dugaan kalian!" },
 ];
 
 export default async function Materi3Peta3Step1DiskusikanBersama({
@@ -44,7 +44,7 @@ export default async function Materi3Peta3Step1DiskusikanBersama({
         <div className="flex flex-col gap-5">
           <div className="flex flex-col gap-4">
         <div className="inline-flex items-center bg-[#FDF3C7] text-[#92400E] rounded-full py-1.5 px-3.5 text-xs font-bold tracking-[0.02em] w-fit">
-          Tahap 2 dari 6 &ndash; Ayo Berdiskusi
+          Tahap 2 dari 6
         </div>
         <h1 className="m-0 text-2xl sm:text-[32px] font-extrabold text-[#111827]">Ayo Berdiskusi</h1>
             <p className="m-0 text-lg font-bold text-[#2563EB]">Dari Mana Luas Permukaan Berasal?</p>
@@ -113,7 +113,7 @@ export default async function Materi3Peta3Step1DiskusikanBersama({
           ))}
         </div>
 
-        <p className="m-0 text-sm font-bold text-[#111827] mt-2">Diskusikan pertanyaan berikut.</p>
+        <p className="m-0 text-sm font-bold text-[#111827] mt-2">Diskusikan hasil pengamatan bersama kelompokmu, kemudian tuliskan dugaan dan alasan sementara kalian.</p>
         <div className="grid sm:grid-cols-2 gap-4">
           {pertanyaan.map((p) => (
             <div key={p.n} className="bg-white border border-[#E5E7EB] rounded-[20px] p-5 shadow-[0_1px_2px_rgba(0,0,0,0.04)] focus-within:border-[#2563EB] transition-colors">

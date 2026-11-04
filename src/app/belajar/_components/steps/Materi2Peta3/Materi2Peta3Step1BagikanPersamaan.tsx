@@ -3,6 +3,7 @@ import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry"
 import NextStepButton from "@/app/belajar/_components/NextStepButton";
 import StepHeader from "@/app/belajar/_components/StepHeader";
 import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
+import GambarJawaban from "@/components/GambarJawaban";
 import { getPageImage } from "@/lib/pageImages";
 
 const teman = [
@@ -108,29 +109,33 @@ export default async function Materi2Peta3Step1BagikanPersamaan({
                 <span className="inline-flex w-fit items-center gap-2 rounded-full bg-[#2563EB] text-white text-xs font-bold py-1 px-3">
                   {t.label}
                 </span>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                  <div className="flex flex-col gap-1.5">
-                    <label className="text-xs font-semibold text-[#6B7280]">Susunan yang dianggap jaring-jaring</label>
-                    <input
-                      type="text"
-                      name={`answers.teman_${t.n}_susunan`}
-                      defaultValue={getValue(`teman_${t.n}_susunan`)}
-                      placeholder="Ketik di sini..."
-                      required
-                      className={inputClass}
-                    />
-                  </div>
-                  <div className="flex flex-col gap-1.5">
-                    <label className="text-xs font-semibold text-[#6B7280]">Alasannya</label>
-                    <input
-                      type="text"
-                      name={`answers.teman_${t.n}_alasan`}
-                      defaultValue={getValue(`teman_${t.n}_alasan`)}
-                      placeholder="Ketik di sini..."
-                      required
-                      className={inputClass}
-                    />
-                  </div>
+                <div className="flex flex-col gap-1.5">
+                  <label className="text-xs font-bold text-[#111827]">Susunan yang dianggap jaring-jaring</label>
+                  <input
+                    type="text"
+                    name={`answers.teman_${t.n}_susunan`}
+                    defaultValue={getValue(`teman_${t.n}_susunan`)}
+                    placeholder="Tuliskan kode atau nomor gambar..."
+                    required
+                    className={inputClass}
+                  />
+                </div>
+                <GambarJawaban
+                  name={`answers.teman_${t.n}_gambar`}
+                  materi={materi}
+                  peta={peta}
+                  defaultValue={getValue(`teman_${t.n}_gambar`)}
+                />
+                <div className="flex flex-col gap-1.5">
+                  <label className="text-xs font-bold text-[#111827]">Alasannya</label>
+                  <textarea
+                    name={`answers.teman_${t.n}_alasan`}
+                    defaultValue={getValue(`teman_${t.n}_alasan`)}
+                    placeholder="Tuliskan alasan berdasarkan hasil pengamatan..."
+                    required
+                    rows={3}
+                    className={`${inputClass} resize-y`}
+                  />
                 </div>
               </div>
             ))}

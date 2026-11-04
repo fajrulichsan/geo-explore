@@ -93,7 +93,7 @@ export default async function Materi2Peta7Step1KesimpulanGeneralisasi({
           </div>
           <p className="m-0 text-sm text-[#4B5563]">Lengkapilah kalimat berikut.</p>
           {kesimpulanIndividu.map((k, i) => (
-            <label key={k.key} className="flex flex-col gap-2">
+            <label key={k.key} className="flex flex-col gap-2 flex-1">
               <span className="flex items-start gap-3 text-sm font-semibold text-[#1F2937]">
                 <span className="w-6 h-6 rounded-full bg-[#2563EB] text-white flex items-center justify-center text-xs font-bold flex-shrink-0">{i + 1}</span>
                 {k.label}
@@ -102,8 +102,8 @@ export default async function Materi2Peta7Step1KesimpulanGeneralisasi({
                 name={`answers.${k.key}`}
                 defaultValue={getValue(k.key)}
                 required
-                rows={2}
-                className="w-full rounded-xl border border-[#E5E7EB] px-3.5 py-2.5 text-sm text-[#374151] focus:border-[#2563EB] focus:outline-none resize-y"
+                rows={4}
+                className="w-full flex-1 min-h-[7.5rem] rounded-xl border border-[#E5E7EB] px-3.5 py-2.5 text-sm text-[#374151] focus:border-[#2563EB] focus:outline-none resize-y"
               />
             </label>
           ))}

@@ -53,7 +53,7 @@ export default function Materi3Peta8Step4RefleksiPenalaran({ materi, peta, initi
             D
           </div>
           <div className="bg-white border border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-full py-2 px-5 text-sm font-bold text-[#B45309]">
-            Refleksi Penalaran
+            Ayo Periksa Cara Berpikirmu
           </div>
         </div>
 

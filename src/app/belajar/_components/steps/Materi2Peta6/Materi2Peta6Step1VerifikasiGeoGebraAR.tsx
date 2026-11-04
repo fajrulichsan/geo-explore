@@ -64,12 +64,13 @@ export default async function Materi2Peta6Step1VerifikasiGeoGebraAR({
 }: StepComponentProps) {
   const answers = initialAnswers ?? {};
   const checked = (key: string) => answers[key] === "on" || answers[key] === true;
-  const [mascot, geogebra, qrGeogebra, arStrip, qrAr] = await Promise.all([
+  const [mascot, geogebra, qrGeogebra, arStrip, qrAr, banner] = await Promise.all([
     getPageImage("M2-P6-L1-1"),
     getPageImage("M2-P6-L1-2"),
     getPageImage("qr-geogebra"),
     getPageImage("M2-P6-L1-4"),
     getPageImage("qr-ar"),
+    getPageImage("M2-P6-L1-6"),
   ]);
 
   return (
@@ -84,6 +85,21 @@ export default async function Materi2Peta6Step1VerifikasiGeoGebraAR({
           Tahap 5 dari 6
         </div>
         <h1 className="m-0 text-2xl sm:text-[32px] font-extrabold text-[#111827]">Ayo Verifikasi</h1>
+      </div>
+
+      <div className="rounded-[24px] overflow-hidden border border-[#BFDBFE]">
+        <EditablePageImage
+          imageKey="M2-P6-L1-6"
+          materi={materi}
+          peta={peta}
+          step={step}
+          urutan="6"
+          src={banner}
+          alt="Siswa berkelompok memverifikasi jaring-jaring bangun ruang di kelas"
+          editable={editFoto}
+          natural
+          containerClassName="relative w-full"
+        />
       </div>
 
       <div className="grid md:grid-cols-5 gap-5">

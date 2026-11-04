@@ -6,12 +6,7 @@ import StepHeader from "@/app/belajar/_components/StepHeader";
 import FileSubmission from "@/components/FileSubmission";
 import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
 import { getPageImage } from "@/lib/pageImages";
-
-const perbandinganOptions = [
-  { value: "sama", label: "Sama" },
-  { value: "hampir_sama", label: "Hampir sama" },
-  { value: "berbeda", label: "Berbeda" },
-];
+import Materi3Peta7BandingkanFields from "./Materi3Peta7BandingkanFields";
 
 export default async function Materi3Peta7Step4BandingkanPesanPenting({
   materi,
@@ -53,38 +48,11 @@ export default async function Materi3Peta7Step4BandingkanPesanPenting({
           </div>
           <h2 className="m-0 text-lg font-bold text-[#111827]">Bandingkan dengan Kelompok Lain</h2>
         </div>
-        <p className="m-0 text-sm text-[#4B5563]">Apakah kesimpulan kelompokmu sama dengan kelompok lain?</p>
-        <div className="flex flex-wrap gap-3">
-          {perbandinganOptions.map((opt) => (
-            <label
-              key={opt.value}
-              className="flex items-center gap-2 bg-[#F9FAFB] border border-[#E5E7EB] rounded-full px-4 py-2.5 cursor-pointer has-[:checked]:bg-[#F5F3FF] has-[:checked]:border-[#7C3AED] transition-colors"
-            >
-              <input
-                type="radio"
-                name="answers.perbandingan_kelompok"
-                value={opt.value}
-                defaultChecked={getValue("perbandingan_kelompok") === opt.value}
-                required
-                className="w-4 h-4 accent-[#7C3AED]"
-              />
-              <span className="text-sm font-semibold text-[#374151]">{opt.label}</span>
-            </label>
-          ))}
-        </div>
-        <div className="flex flex-col gap-1.5">
-          <label htmlFor="bagian_berbeda" className="text-sm text-[#4B5563]">
-            Jika berbeda, bagian mana yang berbeda dan apa penyebabnya?
-          </label>
-          <textarea
-            id="bagian_berbeda"
-            name="answers.bagian_berbeda"
-            defaultValue={getValue("bagian_berbeda")}
-            rows={3}
-            placeholder="Jawabanmu (jika ada)..."
-            className="w-full rounded-xl border border-[#E5E7EB] bg-[#F9FAFB] px-3.5 py-2.5 text-sm text-[#374151] placeholder:text-[#9CA3AF] focus:border-[#7C3AED] focus:outline-none transition-colors resize-none"
-          />
-        </div>
+        <Materi3Peta7BandingkanFields
+          perbandingan={getValue("perbandingan_kelompok")}
+          lanjutan={getValue("bagian_berbeda")}
+          perbaikan={getValue("perlu_diperbaiki")}
+        />
       </div>
 
       <div className="flex flex-col gap-4">

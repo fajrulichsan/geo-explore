@@ -62,7 +62,7 @@ export default async function Materi3Peta3Step3BandingkanPendapat({
         <div className="flex flex-col gap-5">
           <div className="flex flex-col gap-4">
         <div className="inline-flex items-center bg-[#FDF3C7] text-[#92400E] rounded-full py-1.5 px-3.5 text-xs font-bold tracking-[0.02em] w-fit">
-          Tahap 2 dari 6 &ndash; Ayo Berdiskusi
+          Tahap 2 dari 6
         </div>
         <h1 className="m-0 text-2xl sm:text-[32px] font-extrabold text-[#111827]">Ayo Berdiskusi</h1>
             <p className="m-0 text-lg font-bold text-[#2563EB]">&ldquo;Membandingkan Berbagai Pendapat&rdquo;</p>

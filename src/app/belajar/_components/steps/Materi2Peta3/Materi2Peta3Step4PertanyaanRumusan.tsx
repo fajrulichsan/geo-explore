@@ -10,7 +10,7 @@ const opsi = [
   { key: "1", label: "Mengapa ada susunan bidang datar yang dapat dilipat menjadi bangun ruang?" },
   { key: "2", label: "Mengapa ada susunan bidang datar yang tidak dapat dilipat menjadi bangun ruang?" },
   { key: "3", label: "Mengapa satu bangun ruang dapat memiliki lebih dari satu jaring-jaring?" },
-  { key: "4", label: "Apakah semua susunan enam persegi dapat menjadi jaring kubus?" },
+  { key: "4", label: "Bagaimana kemungkinan susunan enam persegi yang dapat dan tidak dapat membentuk jaring-jaring kubus? Jelaskan dugaanmu!" },
 ];
 
 export default async function Materi2Peta3Step4PertanyaanRumusan({

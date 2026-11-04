@@ -69,6 +69,8 @@ export default async function Materi3Peta4Step8RefleksiIndividu({
               >
                 <input
                   type="checkbox"
+                  data-require-group="refleksi"
+                  data-require-min="3"
                   name={`answers.${p.key}`}
                   defaultChecked={isChecked(p.key)}
                   className="w-4 h-4 mt-0.5 accent-[#7C3AED] flex-shrink-0"

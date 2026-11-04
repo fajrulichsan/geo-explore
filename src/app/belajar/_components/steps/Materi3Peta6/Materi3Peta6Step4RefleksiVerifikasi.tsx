@@ -42,7 +42,7 @@ export default async function Materi3Peta6Step4RefleksiVerifikasi({
         <p className="m-0 text-sm font-semibold text-[#2563EB]">Periksa Kembali Hasil Penemuanmu</p>
       </div>
 
-      <div className="bg-white border border-[#DDD6FE] rounded-[20px] overflow-hidden grid md:grid-cols-2">
+      <div className="bg-white border border-[#DDD6FE] rounded-[20px] overflow-hidden grid md:grid-cols-[2fr_3fr] md:items-start">
         <div className="p-6 flex flex-col gap-3">
           <div className="flex items-center gap-3">
           <div className="w-9 h-9 rounded-full bg-[#4338CA] text-white flex items-center justify-center font-bold text-sm flex-shrink-0">E</div>
@@ -54,6 +54,8 @@ export default async function Materi3Peta6Step4RefleksiVerifikasi({
               <label key={r.key} className="flex items-start gap-3 bg-white border border-[#E5E7EB] rounded-xl px-4 py-3 cursor-pointer">
                 <input
                   type="checkbox"
+                  data-require-group="refleksi"
+                  data-require-min="3"
                   name={`answers.${r.key}`}
                   defaultChecked={checked(r.key)}
                   className="mt-0.5 w-4 h-4 accent-[#4338CA]"
@@ -63,6 +65,7 @@ export default async function Materi3Peta6Step4RefleksiVerifikasi({
             ))}
           </div>
         </div>
+        <div className="p-6 pt-0 md:pt-6 md:pl-0">
         <EditablePageImage
           imageKey="M3-P6-L4-1"
           materi={materi}
@@ -73,8 +76,9 @@ export default async function Materi3Peta6Step4RefleksiVerifikasi({
           alt="Tiga siswa mengamati jaring-jaring dengan kaca pembesar"
           editable={editFoto}
           natural
-          containerClassName="relative w-full self-end"
+          containerClassName="relative w-full overflow-hidden rounded-2xl"
         />
+        </div>
       </div>
 
       <div className="grid md:grid-cols-2 gap-4">

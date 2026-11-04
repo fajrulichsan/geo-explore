@@ -34,18 +34,18 @@ export default async function Materi3Peta5Step5RumusSementara({
           <div className="w-9 h-9 rounded-full bg-[#2563EB] text-white flex items-center justify-center font-bold text-sm flex-shrink-0">
             E
           </div>
-          <h2 className="m-0 text-lg font-bold text-[#111827]">Rumus Sementara</h2>
+          <h2 className="m-0 text-lg font-bold text-[#111827]">Merumuskan Dugaan Matematis</h2>
         </div>
         <div className="flex flex-col gap-1">
-          <p className="m-0 text-sm font-bold text-[#2563EB]">Lengkapilah kalimat berikut.</p>
+          <p className="m-0 text-sm font-bold text-[#2563EB]">Tuliskan dugaan kelompokmu.</p>
           <p className="m-0 text-xs italic text-[#6B7280]">
-            Gunakan hasil pengelompokan dan perhitungan yang telah kamu lakukan.
+            Gunakan hasil pengelompokan sisi, perhitungan luas, dan pola yang telah kamu temukan.
           </p>
         </div>
 
         <div className="flex flex-col gap-2 bg-[#EFF4FF] border border-[#BFDBFE] rounded-2xl p-4">
           <label htmlFor="rumus_sementara" className="text-sm font-bold text-[#111827] leading-[1.6]">
-            Menurut kelompok kami, luas permukaan diperoleh dengan
+            Menurut kelompok kami, luas permukaan suatu bangun ruang dapat ditentukan dengan ...
           </label>
           <textarea
             id="rumus_sementara"
@@ -53,7 +53,7 @@ export default async function Materi3Peta5Step5RumusSementara({
             defaultValue={getValue("rumus_sementara")}
             rows={3}
             required
-            placeholder="Lanjutkan kalimatnya..."
+            placeholder="Tuliskan dugaan kelompokmu berdasarkan pola yang ditemukan..."
             className="w-full rounded-xl border border-[#BFDBFE] bg-white px-3.5 py-2.5 text-sm text-[#374151] placeholder:text-[#9CA3AF] focus:border-[#2563EB] focus:outline-none transition-colors resize-y"
           />
         </div>
@@ -67,7 +67,7 @@ export default async function Materi3Peta5Step5RumusSementara({
             Pertanyaan
           </p>
           <label htmlFor="berlaku_umum" className="text-sm font-semibold text-[#374151]">
-            Apakah menurutmu cara tersebut berlaku untuk kubus, balok, dan berbagai prisma? Jelaskan.
+            Bagaimana dugaan cara menentukan luas permukaan tersebut dapat digunakan pada kubus, balok, dan berbagai jenis prisma? Jelaskan alasan kelompokmu!
           </label>
           <textarea
             id="berlaku_umum"
@@ -75,7 +75,7 @@ export default async function Materi3Peta5Step5RumusSementara({
             defaultValue={getValue("berlaku_umum")}
             rows={3}
             required
-            placeholder="Jawabanmu..."
+            placeholder="Tuliskan penjelasan dan alasan sementara kelompokmu..."
             className="w-full rounded-xl border border-[#E5E7EB] bg-white px-3.5 py-2.5 text-sm text-[#374151] placeholder:text-[#9CA3AF] focus:border-[#2563EB] focus:outline-none transition-colors resize-y"
           />
         </div>
@@ -85,7 +85,7 @@ export default async function Materi3Peta5Step5RumusSementara({
             <path d="M9 18h6M10 21h4M12 3a6 6 0 00-4 10.5c.7.7 1 1.5 1 2.5h6c0-1 .3-1.8 1-2.5A6 6 0 0012 3z" />
           </svg>
           <p className="m-0 text-sm font-bold text-[#1E3A8A] leading-[1.6]">
-            Tuliskan dalam bentuk kalimat terlebih dahulu sebelum menggunakan simbol matematika.
+            Tuliskan dugaanmu dalam bentuk kalimat terlebih dahulu sebelum menggunakan simbol matematika.
           </p>
         </div>
       </div>

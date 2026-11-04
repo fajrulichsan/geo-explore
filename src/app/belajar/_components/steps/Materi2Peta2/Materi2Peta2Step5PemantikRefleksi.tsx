@@ -8,16 +8,17 @@ import StepHeader from "@/app/belajar/_components/StepHeader";
 const pertanyaan = [
   {
     n: 1,
-    label: "Mengapa beberapa susunan dapat dilipat menjadi bangun ruang, tetapi yang lain tidak?",
+    label:
+      "Menurut dugaanmu, mengapa beberapa susunan bidang datar dapat dilipat menjadi bangun ruang, sedangkan susunan lainnya tidak?",
   },
   {
     n: 2,
-    label: "Apakah posisi suatu bidang datar mempengaruhi hasil lipatan?",
+    label: "Apakah perubahan posisi suatu bidang datar dapat memengaruhi hasil lipatan? Jelaskan dugaanmu!",
   },
   {
     n: 3,
     label:
-      "Menurut dugaanmu, apakah hubungan antarbidang atau jumlah bidang lebih berpengaruh terhadap kemungkinan terbentuknya jaring-jaring? Jelaskan alasan sementaramu.",
+      "Menurutmu, bagaimana jumlah dan susunan bidang datar memengaruhi kemungkinan terbentuknya jaring-jaring bangun ruang? Jelaskan alasan sementaramu!",
   },
 ];
 
@@ -71,6 +72,9 @@ export default async function Materi2Peta2Step5PemantikRefleksi({
           </div>
         </div>
 
+        <p className="m-0 text-sm text-[#374151] leading-[1.6]">
+          Pikirkan kembali hasil pengamatanmu, kemudian tuliskan dugaan awal beserta alasannya.
+        </p>
         <div className="flex flex-col gap-4">
           {pertanyaan.map((q) => (
             <div

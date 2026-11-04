@@ -36,7 +36,7 @@ export default async function Materi3Peta3Step6RefleksiDiskusi({
       <div className="flex flex-col gap-4">
         <StepHeader materi={materi} currentStep={6} totalSteps={6} />
         <div className="inline-flex items-center bg-[#FDF3C7] text-[#92400E] rounded-full py-1.5 px-3.5 text-xs font-bold tracking-[0.02em] w-fit">
-          Tahap 2 dari 6 &ndash; Ayo Berdiskusi
+          Tahap 2 dari 6
         </div>
         <h1 className="m-0 text-2xl sm:text-[32px] font-extrabold text-[#111827]">Ayo Berdiskusi</h1>
       </div>
@@ -62,6 +62,8 @@ export default async function Materi3Peta3Step6RefleksiDiskusi({
               >
                 <input
                   type="checkbox"
+                  data-require-group="refleksi"
+                  data-require-min="3"
                   name={`answers.refleksi_${p.key}`}
                   defaultChecked={getChecked(`refleksi_${p.key}`)}
                   className="w-4 h-4 accent-[#2563EB] flex-shrink-0"

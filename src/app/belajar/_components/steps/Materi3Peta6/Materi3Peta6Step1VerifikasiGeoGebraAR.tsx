@@ -20,7 +20,7 @@ const alur = ["GeoGebra & AR", "Periksa Kembali", "Bandingkan", "Revisi"];
 const bangunRuang = [
   { key: "kubus", label: "Kubus" },
   { key: "balok", label: "Balok" },
-  { key: "prisma", label: "Prisma" },
+  { key: "prisma", label: "Prisma Segitiga" },
 ];
 
 export default async function Materi3Peta6Step1VerifikasiGeoGebraAR({
@@ -136,35 +136,40 @@ export default async function Materi3Peta6Step1VerifikasiGeoGebraAR({
             {bangunRuang.map((b) => (
               <div key={b.key} className="border border-[#D1E7D6] rounded-2xl p-4 flex flex-col gap-3 bg-[#F7FCF8]">
                 <p className="m-0 text-sm font-extrabold text-[#166534]">{b.label}</p>
-                <div className="flex flex-wrap items-center gap-2">
-                  <span className="text-xs font-semibold text-[#6B7280]">Sudah sesuai?</span>
+                <p className="m-0 text-sm text-[#374151]">
+                  Apakah dugaan dan hasil perhitungan kelompokmu sesuai dengan hasil pemeriksaan?
+                </p>
+                <div className="flex flex-wrap items-center gap-5">
                   {(
                     [
-                      { value: "sesuai", label: "✓ Sesuai" },
+                      { value: "sesuai", label: "Sesuai" },
                       { value: "perlu_diperbaiki", label: "Perlu diperbaiki" },
                     ] as const
                   ).map((opt) => (
-                    <label key={opt.value} className="cursor-pointer">
+                    <label key={opt.value} className="flex cursor-pointer items-center gap-2 text-sm text-[#111827]">
                       <input
                         type="radio"
                         name={`answers.sudah_sesuai_${b.key}`}
                         value={opt.value}
                         defaultChecked={getValue(`sudah_sesuai_${b.key}`) === opt.value}
                         required
-                        className="peer sr-only"
+                        className="h-4 w-4 accent-[#16A34A]"
                       />
-                      <span className="inline-block rounded-full border border-[#D1D5DB] bg-white px-3.5 py-1.5 text-xs font-semibold text-[#4B5563] peer-checked:bg-[#16A34A] peer-checked:text-white peer-checked:border-[#16A34A] peer-focus-visible:ring-2 peer-focus-visible:ring-[#16A34A]">
-                        {opt.label}
-                      </span>
+                      {opt.label}
                     </label>
                   ))}
                 </div>
-                <input
-                  type="text"
-                  name={`answers.perbaikan_${b.key}`}
-                  defaultValue={getValue(`perbaikan_${b.key}`)}
-                  placeholder="Jika belum, apa yang diperbaiki?"
-                  className="w-full rounded-lg border border-[#E5E7EB] bg-white px-3 py-2 text-sm text-[#374151] placeholder:text-[#9CA3AF] focus:border-[#16A34A] focus:outline-none transition-colors"
+                <label htmlFor={`bukti_${b.key}`} className="text-xs font-bold text-[#6B7280]">
+                  Apa bukti yang mendukung hasil pemeriksaanmu?
+                </label>
+                <textarea
+                  id={`bukti_${b.key}`}
+                  name={`answers.bukti_${b.key}`}
+                  defaultValue={getValue(`bukti_${b.key}`)}
+                  rows={3}
+                  required
+                  placeholder="Tuliskan hasil pemeriksaan dan alasan matematis kelompokmu..."
+                  className="w-full rounded-xl border border-[#E5E7EB] bg-white px-3 py-2 text-sm text-[#374151] placeholder:text-[#9CA3AF] focus:border-[#16A34A] focus:outline-none transition-colors resize-y"
                 />
               </div>
             ))}

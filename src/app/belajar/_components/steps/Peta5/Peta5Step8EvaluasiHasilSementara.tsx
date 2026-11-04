@@ -46,6 +46,7 @@ export default async function Peta5Step8EvaluasiHasilSementara({ materi, peta, i
             Evaluasi Proses Pengolahan Data
           </div>
         </div>
+          <p className="m-0 text-sm font-semibold text-[#374151]">Tinjau kembali cara kamu mengolah data dan menemukan pola, kemudian jawablah pertanyaan berikut.</p>
           {evaluasi.map((e, i) => (
             <div key={e.name} className="bg-white border border-[#E5E7EB] rounded-[20px] p-5 shadow-[0_1px_2px_rgba(0,0,0,0.04)] flex flex-col gap-3">
               <div className="flex items-start gap-3">

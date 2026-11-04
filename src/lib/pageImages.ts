@@ -306,6 +306,7 @@ export type PageImageKey =
   | "M2-P6-L1-3"
   | "M2-P6-L1-4"
   | "M2-P6-L1-5"
+  | "M2-P6-L1-6"
   | "M2-P6-L4-1"
   | "M2-P6-L4-2"
   | "M2-P3-L7-2"
@@ -1357,6 +1358,7 @@ const DEFAULT_IMAGES: Record<PageImageKey, string> = {
   "M2-P6-L1-3": "https://placehold.co/220x220?text=QR+GeoGebra",
   "M2-P6-L1-4": "https://placehold.co/480x220?text=Proses+AR",
   "M2-P6-L1-5": "https://placehold.co/220x220?text=QR+AR",
+  "M2-P6-L1-6": "https://placehold.co/1382x907?text=Siswa+Verifikasi",
   "M2-P6-L4-1": "https://placehold.co/300x400?text=Siswi+Ide",
   "M2-P6-L4-2": "https://placehold.co/200x200?text=Kotak+Ingat",
   "M2-P3-L7-2": "https://placehold.co/80x80?text=Bintang",

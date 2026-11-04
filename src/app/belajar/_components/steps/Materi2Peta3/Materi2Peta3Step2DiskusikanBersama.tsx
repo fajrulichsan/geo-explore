@@ -5,10 +5,10 @@ import BackLink from "@/app/belajar/_components/BackLink";
 import StepHeader from "@/app/belajar/_components/StepHeader";
 
 const pertanyaan = [
-  "Mengapa ada susunan bidang datar yang dapat dilipat menjadi bangun ruang, tetapi tidak oleh yang lain?",
-  "Bagian mana yang paling menentukan apakah suatu susunan dapat menjadi jaring-jaring?",
-  "Apakah jumlah sisi saja sudah cukup untuk menentukan jaring-jaring?",
-  "Apakah posisi setiap bidang datar memengaruhi hasil lipatan?",
+  "Apa persamaan dan perbedaan dugaan anggota kelompokmu tentang susunan bidang datar yang dapat menjadi jaring-jaring? Jelaskan!",
+  "Menurut dugaan kelompokmu, ciri atau sifat apa saja yang perlu diperhatikan agar suatu susunan bidang datar dapat menjadi jaring-jaring bangun ruang?",
+  "Apakah jumlah bidang datar yang sesuai sudah cukup untuk memastikan suatu susunan dapat menjadi jaring-jaring? Jelaskan alasan sementara kelompokmu!",
+  "Menurut dugaan kelompokmu, bagaimana perubahan posisi salah satu bidang datar dapat memengaruhi kemungkinan terbentuknya jaring-jaring? Jelaskan!",
 ];
 
 export default async function Materi2Peta3Step2DiskusikanBersama({

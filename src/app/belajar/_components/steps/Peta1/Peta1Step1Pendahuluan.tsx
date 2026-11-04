@@ -6,9 +6,9 @@ import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
 import { getPageImage } from "@/lib/pageImages";
 
 const menurutmu = [
-  "Apakah benda-benda pada gambar memiliki bentuk yang sama?",
-  "Bagaimana kamu akan mengelompokkannya?",
-  "Apakah benda-benda tersebut dapat dikelompokkan dengan lebih dari satu cara? Jelaskan alasan matematismu.",
+  "Apa persamaan dan perbedaan bentuk benda-benda pada gambar?",
+  "Bagaimana kamu akan mengelompokkan benda-benda tersebut?",
+  "Mungkinkah benda-benda tersebut dikelompokkan dengan lebih dari satu cara? Mengapa?",
 ];
 
 export default async function Peta1Step1Pendahuluan({ materi, peta, editFoto }: StepComponentProps) {

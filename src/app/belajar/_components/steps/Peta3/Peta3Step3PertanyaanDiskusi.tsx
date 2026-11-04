@@ -5,10 +5,10 @@ import BackLink from "@/app/belajar/_components/BackLink";
 import StepHeader from "@/app/belajar/_components/StepHeader";
 
 const questions = [
-  { n: 1, label: "Apa persamaan dan perbedaan dasar pengelompokan yang digunakan oleh Kelompok A, B, dan C?" },
-  { n: 2, label: "Apakah semua bangun telah dikelompokkan secara konsisten sesuai dasar pengelompokan masing-masing? Jelaskan." },
-  { n: 3, label: "Menurutmu, apakah lebih dari satu cara pengelompokan dapat dianggap benar? Mengapa?" },
-  { n: 4, label: "Informasi apa yang masih perlu diketahui agar kamu yakin bahwa suatu pengelompokan benar?" },
+  { n: 1, label: "Apa persamaan dan perbedaan kriteria pengelompokan bangun ruang yang digunakan oleh Kelompok A, B, dan C? Jelaskan berdasarkan ciri atau sifat bangun ruang yang diamati!" },
+  { n: 2, label: "Apakah setiap kelompok telah mengelompokkan bangun ruang secara konsisten berdasarkan kriteria yang digunakan? Berikan contoh dan jelaskan alasanmu!" },
+  { n: 3, label: "Menurutmu, mungkinkah beberapa cara pengelompokan bangun ruang sama-sama tepat meskipun menggunakan kriteria yang berbeda? Jelaskan alasanmu!" },
+  { n: 4, label: "Hal apa yang perlu kamu selidiki lebih lanjut untuk memastikan kesesuaian pengelompokan bangun ruang dengan kriteria yang digunakan?" },
 ];
 
 export default async function Peta3Step3PertanyaanDiskusi({ materi, peta, initialAnswers }: StepComponentProps) {

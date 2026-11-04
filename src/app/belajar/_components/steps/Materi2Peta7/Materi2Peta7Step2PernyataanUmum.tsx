@@ -77,7 +77,7 @@ export default function Materi2Peta7Step2PernyataanUmum({ materi, peta, initialA
               <path d="M9 18h6M10 21h4M12 3a6 6 0 00-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0012 3z" />
             </svg>
           </div>
-          <div className="bg-[#FEF9E7] border border-[#F5E3A0] rounded-2xl p-5 flex flex-col gap-3">
+          <div className="flex-1 bg-[#FEF9E7] border border-[#F5E3A0] rounded-2xl p-5 flex flex-col gap-3">
             <p className="m-0 text-base font-extrabold text-[#B45309]">Kesimpulan</p>
             <p className="m-0 text-sm leading-[1.6] text-[#92400E]">
               Suatu susunan bidang datar merupakan jaring-jaring bangun ruang yang valid apabila ...
@@ -87,7 +87,7 @@ export default function Materi2Peta7Step2PernyataanUmum({ materi, peta, initialA
               defaultValue={getValue("kesimpulan_konsep")}
               required
               rows={5}
-              className="w-full rounded-xl border border-[#F5E3A0] bg-white px-3.5 py-2.5 text-sm text-[#374151] focus:border-[#D97706] focus:outline-none resize-y"
+              className="w-full flex-1 min-h-[16rem] rounded-xl border border-[#F5E3A0] bg-white px-3.5 py-2.5 text-sm text-[#374151] focus:border-[#D97706] focus:outline-none resize-y"
             />
           </div>
         </div>

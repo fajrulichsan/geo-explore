@@ -104,7 +104,7 @@ export default async function Materi2Peta6Step4RevisiRefleksi({
             alt="Siswi mengacungkan jari dengan ide lampu"
             editable={editFoto}
             imageClassName="object-contain"
-            containerClassName="relative w-24 h-32 sm:w-28 sm:h-36 flex-shrink-0"
+            containerClassName="relative w-28 h-40 sm:w-40 sm:h-56 flex-shrink-0"
           />
         </div>
         <ol className="m-0 p-0 list-none flex flex-col gap-4">
@@ -127,32 +127,32 @@ export default async function Materi2Peta6Step4RevisiRefleksi({
         </ol>
       </div>
 
-      <div className="bg-[#FEF9E7] border border-[#F5E3A0] rounded-2xl p-5 flex flex-col gap-3">
-        <div className="flex items-center justify-between gap-3">
+      <div className="bg-[#FEF9E7] border border-[#F5E3A0] rounded-2xl p-5 flex items-center justify-between gap-4">
+        <div className="flex flex-col gap-3">
           <p className="m-0 text-base font-extrabold text-[#92400E]">Kotak Ingat</p>
-          <EditablePageImage
-            imageKey="M2-P6-L4-2"
-            materi={materi}
-            peta={peta}
-            step={step}
-            urutan="2"
-            src={ingatImage}
-            alt="Papan catatan dengan tanda centang dan pensil"
-            editable={editFoto}
-            imageClassName="object-contain"
-            containerClassName="relative w-16 h-16 flex-shrink-0"
-          />
+          <ul className="m-0 p-0 list-none flex flex-col gap-2">
+            {kotakIngat.map((item) => (
+              <li key={item} className="flex items-start gap-2 text-xs leading-[1.5] text-[#92400E]">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#2563EB" strokeWidth="2.8" className="mt-0.5 flex-shrink-0">
+                  <path d="M5 13l4 4L19 7" />
+                </svg>
+                {item}
+              </li>
+            ))}
+          </ul>
         </div>
-        <ul className="m-0 p-0 list-none flex flex-col gap-2">
-          {kotakIngat.map((item) => (
-            <li key={item} className="flex items-start gap-2 text-xs leading-[1.5] text-[#92400E]">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#2563EB" strokeWidth="2.8" className="mt-0.5 flex-shrink-0">
-                <path d="M5 13l4 4L19 7" />
-              </svg>
-              {item}
-            </li>
-          ))}
-        </ul>
+        <EditablePageImage
+          imageKey="M2-P6-L4-2"
+          materi={materi}
+          peta={peta}
+          step={step}
+          urutan="2"
+          src={ingatImage}
+          alt="Papan catatan dengan tanda centang dan pensil"
+          editable={editFoto}
+          imageClassName="object-contain"
+          containerClassName="relative w-20 h-20 sm:w-24 sm:h-24 flex-shrink-0"
+        />
       </div>
 
       <div className="grid md:grid-cols-2 gap-4">

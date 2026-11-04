@@ -5,10 +5,10 @@ import StepHeader from "@/app/belajar/_components/StepHeader";
 import BackLink from "@/app/belajar/_components/BackLink";
 
 const pertanyaan = [
-  "Mengapa ada kelompok yang memiliki cara berpikir berbeda?",
-  "Apakah semua pendapat dapat diterima? Mengapa?",
-  "Bagaimana menentukan dugaan yang paling tepat?",
-  "Informasi apa yang masih perlu kita periksa atau uji?",
+  "Apa persamaan dan perbedaan strategi yang dikemukakan untuk menentukan luas permukaan kubus, balok, dan prisma?",
+  "Apakah setiap cara yang dikemukakan memiliki alasan matematis yang masuk akal? Jelaskan pendapat kelompokmu!",
+  "Bagaimana kelompokmu dapat memeriksa apakah dugaan tentang cara menentukan luas permukaan sudah tepat?",
+  "Informasi apa saja yang masih perlu diselidiki untuk menguji dugaan kelompokmu tentang cara menentukan luas permukaan?",
 ];
 
 export default async function Materi3Peta3Step4PertanyaanDugaanSementara({
@@ -28,7 +28,7 @@ export default async function Materi3Peta3Step4PertanyaanDugaanSementara({
       <div className="flex flex-col gap-4">
         <StepHeader materi={materi} currentStep={4} totalSteps={6} />
         <div className="inline-flex items-center bg-[#FDF3C7] text-[#92400E] rounded-full py-1.5 px-3.5 text-xs font-bold tracking-[0.02em] w-fit">
-          Tahap 2 dari 6 &ndash; Ayo Berdiskusi
+          Tahap 2 dari 6
         </div>
         <h1 className="m-0 text-2xl sm:text-[32px] font-extrabold text-[#111827]">Ayo Berdiskusi</h1>
       </div>
@@ -42,6 +42,9 @@ export default async function Materi3Peta3Step4PertanyaanDugaanSementara({
             Pertanyaan Diskusi
           </div>
         </div>
+        <p className="m-0 text-sm leading-[1.6] text-[#4B5563]">
+          Bandingkan dugaan dan strategi yang telah dikemukakan, kemudian diskusikan pertanyaan berikut bersama kelompokmu.
+        </p>
         <div className="grid sm:grid-cols-2 gap-4">
           {pertanyaan.map((label, i) => (
             <div key={i} className="bg-white border border-[#E5E7EB] rounded-[20px] p-5 shadow-[0_1px_2px_rgba(0,0,0,0.04)] focus-within:border-[#2563EB] transition-colors">

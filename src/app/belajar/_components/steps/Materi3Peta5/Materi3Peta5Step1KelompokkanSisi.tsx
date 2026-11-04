@@ -182,7 +182,7 @@ export default async function Materi3Peta5Step1KelompokkanSisi({
             Pertanyaan
           </p>
           <label htmlFor="manfaat_mengelompokkan" className="text-sm text-[#374151]">
-            Apa manfaat mengelompokkan sisi-sisi yang sama bentuk dan ukurannya?
+            Bagaimana pengelompokan sisi-sisi yang memiliki bentuk dan ukuran yang sama dapat membantu menentukan luas permukaan bangun ruang? Jelaskan!
           </label>
           <textarea
             id="manfaat_mengelompokkan"

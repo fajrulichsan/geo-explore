@@ -39,7 +39,7 @@ export default async function Peta5Step4TemukanPolanya({ materi, peta, initialAn
             Temukan Polanya
           </div>
         </div>
-          <p className="m-0 text-sm font-semibold text-[#374151]">Tuliskan pola yang kamu temukan dari data di atas.</p>
+          <p className="m-0 text-sm font-semibold text-[#374151]">Amati kembali data hasil pengamatanmu, kemudian tuliskan pola atau hubungan antarciri bangun ruang yang kamu temukan.</p>
           <div className="flex flex-col gap-4">
             <div className="rounded-[20px] border p-5 flex flex-col gap-3 border-[#BBF7D0] bg-[#F0FDF4]">
               <div className="flex items-center gap-2.5">

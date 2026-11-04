@@ -5,16 +5,25 @@ import BackLink from "@/app/belajar/_components/BackLink";
 import StepHeader from "@/app/belajar/_components/StepHeader";
 
 const bangunRuang = [
-  { key: "kubus", label: "Kubus" },
-  { key: "balok", label: "Balok" },
-  { key: "prisma", label: "Prisma" },
+  { key: "kubus", label: "Kubus", kelompok: 1 },
+  { key: "balok", label: "Balok", kelompok: 3 },
+  { key: "prisma", label: "Prisma Segitiga", kelompok: 4 },
 ];
 
+const baris = bangunRuang.flatMap((b) =>
+  Array.from({ length: b.kelompok }, (_, i) => ({
+    key: `${b.key}_${i + 1}`,
+    nomor: i + 1,
+    label: i === 0 ? b.label : "",
+    nama: b.label,
+  })),
+);
+
 const kolom = [
-  { key: "kelompok", label: "Kelompok Sisi", hint: "sisi-sisi yang sama bentuk dan ukurannya", type: "text", placeholder: "Ketik..." },
-  { key: "banyak", label: "Banyak Sisi", hint: "satuan", type: "number", placeholder: "0" },
-  { key: "luas_satu", label: "Luas Satu Sisi", hint: "satuan luas", type: "text", placeholder: "0" },
-  { key: "total", label: "Total Luas Kelompok", hint: "satuan luas", type: "text", placeholder: "0" },
+  { key: "kelompok", label: "Kelompok Sisi", hint: "Bentuk dan ukuran yang sama", type: "text", placeholder: "" },
+  { key: "banyak", label: "Banyak Sisi", hint: "satuan", type: "number", placeholder: "–" },
+  { key: "luas_satu", label: "Luas Satu Sisi", hint: "satuan luas", type: "text", placeholder: "–" },
+  { key: "total", label: "Total Luas Kelompok", hint: "satuan luas", type: "text", placeholder: "–" },
 ];
 
 const inputClass =
@@ -50,9 +59,9 @@ export default async function Materi3Peta5Step2HitungLuasSisi({
           <div className="w-9 h-9 rounded-full bg-[#2563EB] text-white flex items-center justify-center font-bold text-sm flex-shrink-0">
             B
           </div>
-          <h2 className="m-0 text-lg font-bold text-[#111827]">Hitung Luas Setiap Sisi</h2>
+          <h2 className="m-0 text-lg font-bold text-[#111827]">Hitung Luas Berdasarkan Kelompok Sisi</h2>
         </div>
-        <p className="m-0 px-6 pt-2 text-sm text-[#4B5563]">Lengkapilah tabel berikut.</p>
+        <p className="m-0 px-6 pt-2 text-sm text-[#4B5563]">Berdasarkan hasil pengelompokan sebelumnya, tentukan banyak sisi dan luas satu sisi pada setiap kelompok, kemudian hitung total luasnya. Gunakan ukuran bangun ruang dari hasil eksplorasimu.</p>
 
         <div className="px-6 pt-4 overflow-x-auto">
           <table className="w-full min-w-[720px] text-left border-collapse">
@@ -75,7 +84,7 @@ export default async function Materi3Peta5Step2HitungLuasSisi({
               </tr>
             </thead>
             <tbody className="divide-y divide-[#E5E7EB]">
-              {bangunRuang.map((b) => (
+              {baris.map((b) => (
                 <tr key={b.key}>
                   <td className="px-4 py-3 text-sm font-bold text-[#111827] align-top">{b.label}</td>
                   {kolom.map((k) => (
@@ -84,9 +93,9 @@ export default async function Materi3Peta5Step2HitungLuasSisi({
                         type={k.type}
                         name={`answers.${k.key}_${b.key}`}
                         defaultValue={getValue(`${k.key}_${b.key}`)}
-                        placeholder={k.placeholder}
+                        placeholder={k.key === "kelompok" ? `Kelompok ${b.nomor}` : k.placeholder}
                         required
-                        aria-label={`${k.label} ${b.label}`}
+                        aria-label={`${k.label} ${b.nama} kelompok ${b.nomor}`}
                         className={inputClass}
                       />
                     </td>
@@ -106,7 +115,7 @@ export default async function Materi3Peta5Step2HitungLuasSisi({
             Pertanyaan
           </p>
           <label htmlFor="hitung_satu_per_satu" className="text-sm text-[#374151]">
-            Apakah semua sisi harus dihitung satu per satu? Mengapa?
+            Bagaimana cara menghitung luas seluruh sisi bangun ruang tanpa harus menghitung setiap sisi satu per satu? Jelaskan berdasarkan hasil pengelompokanmu!
           </label>
           <textarea
             id="hitung_satu_per_satu"

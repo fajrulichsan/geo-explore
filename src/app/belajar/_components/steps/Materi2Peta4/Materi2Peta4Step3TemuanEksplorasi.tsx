@@ -3,14 +3,24 @@ import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry"
 import NextStepButton from "@/app/belajar/_components/NextStepButton";
 import BackLink from "@/app/belajar/_components/BackLink";
 import StepHeader from "@/app/belajar/_components/StepHeader";
+import GambarJawaban from "@/components/GambarJawaban";
 
 const pertanyaan = [
   {
     n: 1,
-    label: "Apakah satu bangun ruang hanya memiliki satu bentuk jaring-jaring? Jelaskan berdasarkan hasil eksplorasimu.",
+    label: "Bentuk jaring-jaring apa saja yang kamu temukan untuk bangun ruang yang sama? Berikan beberapa contoh berdasarkan hasil eksplorasimu!",
+    lampiran: true,
   },
-  { n: 2, label: "Apa hubungan posisi sisi dengan hasil lipatan?" },
-  { n: 3, label: "Apa yang menyebabkan suatu susunan bidang datar tidak dapat dilipat menjadi bangun ruang?" },
+  {
+    n: 2,
+    label: "Apa yang terjadi pada hasil lipatan ketika posisi salah satu bidang datar diubah? Jelaskan berdasarkan hasil eksplorasimu!",
+    lampiran: false,
+  },
+  {
+    n: 3,
+    label: "Susunan bidang datar seperti apa yang tidak dapat membentuk bangun ruang yang dimaksud? Berikan contoh berdasarkan hasil eksplorasimu!",
+    lampiran: true,
+  },
 ];
 
 const textareaClass =
@@ -49,7 +59,7 @@ export default async function Materi2Peta4Step3TemuanEksplorasi({
             </div>
           </div>
           <p className="m-0 text-sm text-[#4B5563]">
-            Jawablah pertanyaan berikut berdasarkan hasil eksplorasimu.
+            Jawablah pertanyaan berikut berdasarkan hasil eksplorasimu menggunakan GeoGebra 3D. Kamu dapat melampirkan gambar untuk mendukung jawabanmu.
           </p>
           {pertanyaan.map((q) => (
             <div
@@ -73,6 +83,17 @@ export default async function Materi2Peta4Step3TemuanEksplorasi({
                 required
                 className={textareaClass}
               />
+              {q.lampiran && (
+                <div className="mt-3 flex flex-col gap-1.5">
+                  <GambarJawaban
+                    name={`answers.temuan_${q.n}_gambar`}
+                    materi={materi}
+                    peta={peta}
+                    defaultValue={getValue(`temuan_${q.n}_gambar`)}
+                  />
+                  <span className="text-xs text-[#6B7280]">Lampiran gambar bersifat opsional.</span>
+                </div>
+              )}
             </div>
           ))}
         </div>

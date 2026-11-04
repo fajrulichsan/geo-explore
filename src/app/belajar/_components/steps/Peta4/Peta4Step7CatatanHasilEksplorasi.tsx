@@ -49,13 +49,14 @@ export default async function Peta4Step7CatatanHasilEksplorasi({ materi, peta, i
             Catatan Hasil Eksplorasi
           </div>
         </div>
+        <p className="m-0 text-sm font-semibold text-[#374151]">Catat hasil pengamatanmu menggunakan AR dan hal yang masih perlu diselidiki.</p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="rounded-2xl border border-[#E5E7EB] bg-white p-4 flex flex-col gap-3">
             <label htmlFor="q1" className="flex items-center gap-3 text-sm font-bold text-[#111827]">
               <span className="w-9 h-9 rounded-full bg-[#DCFCE7] flex items-center justify-center flex-shrink-0">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#166534" strokeWidth="2.4"><circle cx="11" cy="11" r="7" /><path d="M20 20l-4-4" /></svg>
               </span>
-              Informasi baru apa yang kamu peroleh melalui AR?
+              Apa yang kamu temukan melalui AR? Apakah ada kesamaan atau perbedaan dengan hasil eksplorasi GeoGebra?
             </label>
             <textarea
               id="q1"

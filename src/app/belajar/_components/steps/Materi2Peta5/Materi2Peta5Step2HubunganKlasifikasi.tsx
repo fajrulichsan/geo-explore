@@ -3,17 +3,18 @@ import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry"
 import NextStepButton from "@/app/belajar/_components/NextStepButton";
 import BackLink from "@/app/belajar/_components/BackLink";
 import StepHeader from "@/app/belajar/_components/StepHeader";
+import GambarJawaban from "@/components/GambarJawaban";
 
 const pertanyaan = [
   { key: "persamaan", text: "Apa persamaan yang kalian temukan pada susunan bidang datar yang berhasil membentuk bangun ruang?" },
   { key: "perbedaan", text: "Apa perbedaan antara susunan bidang datar yang berhasil dan yang tidak berhasil membentuk bangun ruang?" },
   {
     key: "penentu",
-    text: "Menurut kelompokmu, apa yang membuat suatu susunan bidang datar dapat membentuk jaring-jaring yang valid?",
+    text: "Menurut kelompokmu, ciri atau sifat apa saja yang menentukan apakah suatu susunan bidang datar dapat menjadi jaring-jaring yang valid? Jelaskan berdasarkan data!",
   },
   {
     key: "jumlah_sisi",
-    text: "Apakah susunan bidang datar dengan jumlah dan bentuk sisi yang sama selalu dapat membentuk bangun ruang yang sama? Jelaskan alasanmu.",
+    text: "Bagaimana perbedaan susunan bidang datar yang memiliki jumlah dan bentuk bidang penyusun yang sama dapat memengaruhi terbentuknya jaring-jaring bangun ruang? Jelaskan dengan contoh berdasarkan hasil eksplorasimu!",
   },
 ];
 
@@ -81,11 +82,33 @@ export default async function Materi2Peta5Step2HubunganKlasifikasi({
                   <label htmlFor={`c-${q.key}`} className="text-sm font-semibold leading-[1.5] text-[#111827]">
                     {q.text}
                   </label>
+                  {q.key === "jumlah_sisi" && (
+                    <>
+                      <p className="m-0 text-sm text-[#4B5563]">
+                        Lampirkan atau gambarkan dua contoh susunan bidang datar yang berbeda untuk mendukung penjelasanmu.
+                      </p>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        {[1, 2].map((n) => (
+                          <div key={n} className="rounded-2xl border border-[#E5E7EB] bg-white p-4 flex flex-col gap-2">
+                            <span className="text-sm font-bold text-[#111827]">Susunan {n}</span>
+                            <GambarJawaban
+                              name={`answers.hubungan_susunan_${n}_gambar`}
+                              materi={materi}
+                              peta={peta}
+                              variant="area"
+                              defaultValue={getValue(`hubungan_susunan_${n}_gambar`)}
+                            />
+                          </div>
+                        ))}
+                      </div>
+                      <span className="text-sm font-bold text-[#111827]">Penjelasan kelompokmu</span>
+                    </>
+                  )}
                   <textarea
                     id={`c-${q.key}`}
                     name={`answers.hubungan_${q.key}`}
                     defaultValue={getValue(`hubungan_${q.key}`)}
-                    placeholder="Tulis jawabanmu..."
+                    placeholder={q.key === "jumlah_sisi" ? "Jelaskan perbedaan susunan dan pengaruhnya terhadap hasil lipatan..." : "Tulis jawabanmu..."}
                     required
                     rows={3}
                     className={textareaClass}

@@ -9,7 +9,7 @@ import { getPageImage } from "@/lib/pageImages";
 
 const pertanyaan = [
   {
-    label: "Apakah semua hasil klasifikasimu sudah didukung oleh data?",
+    label: "Apakah hasil klasifikasi bangun ruang yang kamu buat sudah sesuai dengan data hasil pengamatan? Berikan contoh bukti yang mendukung jawabanmu!",
     rows: 3,
     color: "#16A34A",
     icon: (
@@ -20,7 +20,7 @@ const pertanyaan = [
     ),
   },
   {
-    label: "Bagian mana dari dugaanmu yang masih memerlukan perbaikan?",
+    label: "Setelah melakukan verifikasi, apakah ada dugaan awal yang perlu diperbaiki? Jelaskan alasanmu berdasarkan hasil verifikasi!",
     rows: 3,
     color: "#2563EB",
     icon: (
@@ -31,7 +31,7 @@ const pertanyaan = [
     ),
   },
   {
-    label: "Mengapa bukti sangat penting sebelum membuat kesimpulan?",
+    label: "Mengapa bukti hasil pengamatan penting untuk menentukan ketepatan pengelompokan bangun ruang? Jelaskan dengan contoh!",
     rows: 3,
     color: "#D97706",
     icon: (
@@ -134,7 +134,7 @@ export default async function Peta6Step4EvaluasiVerifikasi({ materi, peta, step 
           </div>
         </div>
         <p className="m-0 text-[15px] leading-[1.6] text-[#374151] max-w-2xl">
-          Renungkan proses verifikasimu.
+          Tinjau kembali hasil verifikasimu, kemudian jawablah pertanyaan berikut berdasarkan bukti dan alasan matematis.
         </p>
       </div>
 

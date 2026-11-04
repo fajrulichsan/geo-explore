@@ -8,7 +8,7 @@ const pertanyaan = [
   {
     n: 1,
     key: "lebih_dari_satu_kelompok",
-    text: "Apakah satu bangun ruang dapat termasuk ke dalam lebih dari satu kelompok? Jelaskan dengan contoh.",
+    text: "Dapatkah satu bangun ruang termasuk ke dalam lebih dari satu kelompok berdasarkan kriteria yang berbeda? Berikan contoh dan jelaskan alasanmu!",
     icon: (
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2563EB" strokeWidth="2">
         <path d="M21 12a8 8 0 01-11.6 7.1L4 20l1-4.6A8 8 0 1121 12z" />
@@ -18,7 +18,7 @@ const pertanyaan = [
   {
     n: 2,
     key: "pengaruh_dasar_pengelompokan",
-    text: "Bagaimana dasar pengelompokan yang digunakan memengaruhi kelompok bangun ruang yang terbentuk?",
+    text: "Bagaimana perbedaan kriteria pengelompokan memengaruhi kelompok bangun ruang yang terbentuk? Jelaskan dengan contoh!",
     icon: (
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2563EB" strokeWidth="2">
         <rect x="3" y="3" width="12" height="12" rx="1.5" />
@@ -29,7 +29,7 @@ const pertanyaan = [
   {
     n: 3,
     key: "syarat_klasifikasi_diterima",
-    text: "Apa syarat agar suatu cara pengelompokan bangun ruang dapat diterima?",
+    text: "Apa saja syarat agar suatu pengelompokan bangun ruang dapat dianggap tepat? Jelaskan berdasarkan hasil yang telah kamu verifikasi!",
     icon: (
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D97706" strokeWidth="2">
         <path d="M9 18h6M10 22h4M12 2a7 7 0 00-4 12.7c.6.5 1 1.2 1 2.3h6c0-1.1.4-1.8 1-2.3A7 7 0 0012 2z" />
@@ -61,7 +61,7 @@ export default function Peta7Step4PertanyaanGeneralisasi({ materi, peta, initial
           Tahap 6 dari 6 – Discovery Learning
         </div>
         <p className="m-0 text-[15px] leading-[1.6] text-[#374151] max-w-2xl">
-          Diskusikan bersama kelompokmu. Gunakan data dan hasil verifikasi untuk mendukung jawabanmu.
+          Berdasarkan hasil eksplorasi, pengolahan data, dan verifikasi, jawablah pertanyaan berikut untuk merumuskan kesimpulan umum tentang pengelompokan bangun ruang.
         </p>
       </div>
 

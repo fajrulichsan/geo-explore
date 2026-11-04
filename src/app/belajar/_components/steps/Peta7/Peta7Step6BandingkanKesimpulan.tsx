@@ -143,25 +143,26 @@ export default async function Peta7Step6BandingkanKesimpulan({
             </svg>
             <h3 className="m-0 text-sm font-bold text-[#111827]">Catatan Hasil Diskusi</h3>
           </div>
+          <p className="m-0 text-sm text-[#6B7280]">Catat persamaan dan perbedaan pendapat yang ditemukan selama diskusi kelompok.</p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="flex flex-col gap-2">
-              <label className="text-xs font-semibold text-[#6B7280]">Persamaan pemikiran kami</label>
+              <label className="text-xs font-semibold text-[#6B7280]">Persamaan pendapat kami</label>
               <textarea
                 name="answers.persamaan_pemikiran"
                 defaultValue={getValue("persamaan_pemikiran")}
                 rows={3}
-                placeholder="Tulis persamaan pemikiran kelompok..."
+                placeholder="Tuliskan kesamaan pendapat anggota kelompok..."
                 required
                 className="w-full rounded-lg border border-[#E5E7EB] bg-white p-2.5 text-sm text-[#374151] placeholder:text-[#9CA3AF] focus:border-[#2563EB] focus:outline-none transition-colors resize-none"
               />
             </div>
             <div className="flex flex-col gap-2">
-              <label className="text-xs font-semibold text-[#6B7280]">Hal yang perlu kami sepakati</label>
+              <label className="text-xs font-semibold text-[#6B7280]">Perbedaan pendapat yang perlu kami diskusikan</label>
               <textarea
                 name="answers.hal_perlu_disepakati"
                 defaultValue={getValue("hal_perlu_disepakati")}
                 rows={3}
-                placeholder="Tulis hal yang perlu disepakati..."
+                placeholder="Tuliskan perbedaan pendapat beserta alasan yang perlu dipertimbangkan..."
                 required
                 className="w-full rounded-lg border border-[#E5E7EB] bg-white p-2.5 text-sm text-[#374151] placeholder:text-[#9CA3AF] focus:border-[#2563EB] focus:outline-none transition-colors resize-none"
               />

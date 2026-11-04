@@ -39,12 +39,12 @@ export default async function Materi3Peta6Step2Bandingkan({
             Bandingkan dengan Kelompok Lain
           </div>
         </div>
-        <p className="m-0 -mt-2 text-sm text-[#4B5563]">Diskusikan hasilmu dengan satu kelompok lain.</p>
+        <p className="m-0 -mt-2 text-sm text-[#4B5563]">Bandingkan strategi dan hasil perhitungan luas permukaan kelompokmu dengan satu kelompok lain. Catat persamaan dan perbedaannya berdasarkan hasil diskusi.</p>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div className="bg-[#ECFDF5] border border-[#A7F3D0] rounded-2xl p-5 flex flex-col gap-2">
             <p className="m-0 text-sm font-bold text-[#047857]">Persamaan</p>
-            <p className="m-0 text-xs text-[#4B5563] mb-1">Tuliskan hasil yang sama.</p>
+            <p className="m-0 text-xs text-[#4B5563] mb-1">Tuliskan persamaan strategi dan hasil perhitungan kedua kelompok.</p>
             <textarea
               name="answers.persamaan"
               defaultValue={getValue("persamaan")}
@@ -56,7 +56,7 @@ export default async function Materi3Peta6Step2Bandingkan({
           </div>
           <div className="bg-[#FEF2F2] border border-[#FECACA] rounded-2xl p-5 flex flex-col gap-2">
             <p className="m-0 text-sm font-bold text-[#B91C1C]">Perbedaan</p>
-            <p className="m-0 text-xs text-[#4B5563] mb-1">Tuliskan hasil yang berbeda.</p>
+            <p className="m-0 text-xs text-[#4B5563] mb-1">Tuliskan perbedaan strategi atau hasil perhitungan kedua kelompok, jika ada.</p>
             <textarea
               name="answers.perbedaan"
               defaultValue={getValue("perbedaan")}
@@ -69,7 +69,7 @@ export default async function Materi3Peta6Step2Bandingkan({
         </div>
 
         <div className="bg-[#EFF4FF] border border-[#BFDBFE] rounded-2xl p-5 flex flex-col gap-2">
-          <p className="m-0 text-sm font-bold text-[#2563EB]">Menurutmu, mengapa hasil tersebut bisa berbeda?</p>
+          <p className="m-0 text-sm font-bold text-[#2563EB]">Bagaimana perbedaan strategi yang digunakan kedua kelompok dapat menghasilkan luas permukaan yang sama atau berbeda? Jelaskan berdasarkan hasil perhitungan dan alasan matematis!</p>
             <textarea
               name="answers.penyebab_perbedaan"
               defaultValue={getValue("penyebab_perbedaan")}

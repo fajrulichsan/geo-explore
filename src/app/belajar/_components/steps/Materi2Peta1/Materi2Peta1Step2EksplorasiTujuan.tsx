@@ -22,21 +22,11 @@ const pengingat = [
 ];
 
 export default async function Materi2Peta1Step2EksplorasiTujuan({ materi, peta, editFoto }: StepComponentProps) {
-  const [gambarGeoGebra, gambarAR, kubus, balok, prisma, limas] = await Promise.all([
+  const [gambarGeoGebra, gambarAR, bangunRuang] = await Promise.all([
     getPageImage("M2-P1-L2-1"),
     getPageImage("M2-P1-L2-2"),
     getPageImage("M2-P1-L2-3"),
-    getPageImage("M2-P1-L2-4"),
-    getPageImage("M2-P1-L2-5"),
-    getPageImage("M2-P1-L2-6"),
   ]);
-
-  const bangunRuang = [
-    { key: "M2-P1-L2-3", urutan: "3", src: kubus, alt: "Kubus" },
-    { key: "M2-P1-L2-4", urutan: "4", src: balok, alt: "Balok" },
-    { key: "M2-P1-L2-5", urutan: "5", src: prisma, alt: "Prisma segitiga" },
-    { key: "M2-P1-L2-6", urutan: "6", src: limas, alt: "Limas segiempat" },
-  ] as const;
 
   return (
     <form action={submitStepAction} className="flex flex-col gap-8">
@@ -173,23 +163,18 @@ export default async function Materi2Peta1Step2EksplorasiTujuan({ materi, peta, 
             </p>
           </div>
         </div>
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-          {bangunRuang.map((b) => (
-            <EditablePageImage
-              key={b.key}
-              imageKey={b.key}
-              materi={materi}
-              peta={peta}
-              step="2"
-              urutan={b.urutan}
-              src={b.src}
-              alt={b.alt}
-              editable={editFoto}
-              imageClassName="object-contain"
-              containerClassName="relative w-full aspect-[4/3]"
-            />
-          ))}
-        </div>
+        <EditablePageImage
+          imageKey="M2-P1-L2-3"
+          materi={materi}
+          peta={peta}
+          step="2"
+          urutan="3"
+          src={bangunRuang}
+          alt="Kubus, balok, prisma segitiga, dan limas segiempat"
+          editable={editFoto}
+          natural
+          containerClassName="relative w-full"
+        />
       </div>
 
       <div className="flex flex-col-reverse sm:flex-row justify-between items-center gap-4">

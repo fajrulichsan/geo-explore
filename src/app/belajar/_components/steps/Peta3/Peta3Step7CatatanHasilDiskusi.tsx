@@ -73,7 +73,7 @@ export default async function Peta3Step7CatatanHasilDiskusi({ materi, peta, init
             Catatan Hasil Diskusi
           </div>
         </div>
-          <p className="m-0 text-sm font-semibold text-[#374151]">Ringkas hasil diskusi kelompokmu.</p>
+          <p className="m-0 text-sm font-semibold text-[#374151]">Tuliskan hasil diskusi kelompokmu mengenai dasar pengelompokan, alasan sementara, dan hal yang masih perlu diselidiki</p>
           {catatan.map((c) => (
             <div key={c.name} className={`border rounded-[20px] p-5 flex flex-col gap-3 ${c.box}`}>
               <div className="flex items-center gap-3">

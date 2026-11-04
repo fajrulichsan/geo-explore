@@ -7,10 +7,12 @@ import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
 import { getPageImage } from "@/lib/pageImages";
 
 const pertanyaan = [
-  { n: 1, label: "Menurutmu, gambar manakah yang dapat dilipat menjadi bangun ruang?" },
-  { n: 2, label: "Gambar manakah yang menurutmu tidak dapat dilipat?" },
-  { n: 3, label: "Apakah semua gambar memiliki jumlah sisi yang sama?" },
-  { n: 4, label: "Apa perbedaan susunan bidang datar pada setiap gambar?" },
+  {
+    n: 1,
+    label: "Menurut dugaanmu, gambar mana saja yang dapat dan tidak dapat dilipat menjadi bangun ruang yang dimaksud? Jelaskan alasanmu!",
+  },
+  { n: 2, label: "Apakah semua gambar memiliki jumlah bidang datar penyusun yang sama? Jelaskan berdasarkan pengamatanmu!" },
+  { n: 3, label: "Perbedaan apa saja yang kamu temukan pada susunan bidang datar dalam gambar-gambar tersebut?" },
 ];
 
 const textareaClass =
@@ -57,6 +59,9 @@ export default async function Materi2Peta2Step2PengamatanDugaan({
             </div>
           </div>
 
+          <p className="m-0 text-sm text-[#374151] leading-[1.6]">
+            Jawablah pertanyaan berikut berdasarkan hasil pengamatan dan dugaan awalmu.
+          </p>
           <div className="bg-[#EFF4FF] rounded-[20px] p-5 sm:p-6 flex flex-col gap-5">
             {pertanyaan.map((q) => (
               <div key={q.n} className="flex flex-col gap-2.5">

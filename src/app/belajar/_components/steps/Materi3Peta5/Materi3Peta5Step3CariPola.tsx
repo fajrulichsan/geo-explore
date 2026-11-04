@@ -48,7 +48,7 @@ export default async function Materi3Peta5Step3CariPola({
           <h2 className="m-0 text-lg font-bold text-[#111827]">Cari Pola</h2>
         </div>
         <p className="m-0 px-6 pt-2 text-sm text-[#4B5563]">
-          Perhatikan hasil perhitunganmu. Lengkapilah tabel berikut.
+          Perhatikan hasil perhitungan pada kegiatan sebelumnya. Temukan pola untuk menentukan luas permukaan setiap bangun ruang, kemudian tuliskan hasil temuan kelompokmu.
         </p>
 
         <div className="px-6 pt-4 flex flex-col gap-3">
@@ -79,8 +79,7 @@ export default async function Materi3Peta5Step3CariPola({
             Pertanyaan
           </p>
           <label htmlFor="hubungan_luas" className="text-sm font-semibold text-[#374151]">
-            Pola apa yang kamu temukan tentang hubungan antara luas setiap sisi dan luas permukaan
-            berdasarkan hasil perhitunganmu?
+            Apa persamaan dan perbedaan pola yang kelompokmu temukan dalam menentukan luas permukaan kubus, balok, dan prisma? Jelaskan berdasarkan hasil perhitunganmu!
           </label>
           <textarea
             id="hubungan_luas"

@@ -64,6 +64,8 @@ export default async function Materi3Peta5Step6RefleksiSingkat({
               >
                 <input
                   type="checkbox"
+                  data-require-group="refleksi"
+                  data-require-min="3"
                   name={`answers.${p.key}`}
                   defaultChecked={getChecked(p.key)}
                   className="w-4 h-4 accent-[#4C1D95] flex-shrink-0"

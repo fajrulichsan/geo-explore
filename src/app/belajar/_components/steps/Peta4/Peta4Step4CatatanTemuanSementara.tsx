@@ -39,6 +39,7 @@ export default function Peta4Step4CatatanTemuanSementara({ materi, peta, initial
             Catatan Temuan Sementara
           </div>
         </div>
+          <p className="m-0 text-sm font-semibold text-[#374151]">Tuliskan temuan dan hal yang masih perlu kamu pahami berdasarkan hasil eksplorasi.</p>
           <div className="rounded-2xl border border-[#E5E7EB] bg-white p-4 flex flex-col gap-3">
             <label htmlFor="q1" className="flex items-center gap-3 text-sm font-bold text-[#111827]">
               <span className="w-9 h-9 rounded-full bg-[#DCFCE7] flex items-center justify-center flex-shrink-0">
@@ -61,7 +62,7 @@ export default function Peta4Step4CatatanTemuanSementara({ materi, peta, initial
               <span className="w-9 h-9 rounded-full bg-[#FFEDD5] flex items-center justify-center flex-shrink-0">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C2410C" strokeWidth="2.6" strokeLinecap="round"><path d="M9 9a3 3 0 1 1 4.5 2.6c-1 .6-1.5 1.2-1.5 2.4M12 18h.01" /></svg>
               </span>
-              Bagian mana yang masih belum jelas?
+              Hal apa saja yang masih perlu kamu selidiki tentang ciri atau sifat bangun ruang? Jelaskan alasanmu!
             </label>
             <textarea
               id="q2"

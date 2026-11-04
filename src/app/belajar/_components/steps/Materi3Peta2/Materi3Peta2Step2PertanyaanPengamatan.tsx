@@ -7,10 +7,10 @@ import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
 import { getPageImage } from "@/lib/pageImages";
 
 const questions = [
-  "Apa yang terjadi ketika bangun ruang pada gambar dibuka?",
-  "Apa yang tampak pada jaring-jaring setiap bangun ruang?",
-  "Menurutmu, bagian mana yang nantinya akan dihitung jika ingin mengetahui luas seluruh permukaan bangun ruang?",
-  "Apakah seluruh sisi pada setiap bangun ruang memiliki bentuk yang sama? Mengapa demikian?",
+  "Apa yang terjadi pada susunan sisi-sisi bangun ruang ketika bangun tersebut dibuka menjadi jaring-jaring?",
+  "Apa saja bentuk bidang datar yang kamu temukan pada jaring-jaring kubus, balok, dan prisma?",
+  "Menurutmu, bagian mana saja yang perlu diperhatikan untuk menentukan luas seluruh permukaan suatu bangun ruang? Mengapa?",
+  "Menurutmu, apakah perbedaan bentuk dan ukuran sisi-sisi bangun ruang dapat memengaruhi cara menentukan luas seluruh permukaannya? Mengapa?",
 ];
 
 export default async function Materi3Peta2Step2PertanyaanPengamatan({
@@ -50,6 +50,10 @@ export default async function Materi3Peta2Step2PertanyaanPengamatan({
           Pertanyaan Pengamatan
         </div>
       </div>
+
+      <p className="m-0 -mt-4 text-sm leading-[1.6] text-[#4B5563]">
+        Amati gambar bangun ruang dan jaring-jaringnya, kemudian jawablah pertanyaan berikut berdasarkan hasil pengamatan dan pemikiran awalmu.
+      </p>
 
       <div className="grid lg:grid-cols-[1fr_220px] gap-6 items-start">
         <ol className="m-0 p-0 list-none flex flex-col gap-5 rounded-[24px] bg-[#FEF9E7] border border-[#F5E3A0] p-6">

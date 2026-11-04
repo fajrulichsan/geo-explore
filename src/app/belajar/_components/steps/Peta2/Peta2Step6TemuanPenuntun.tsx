@@ -5,16 +5,16 @@ import BackLink from "@/app/belajar/_components/BackLink";
 import StepHeader from "@/app/belajar/_components/StepHeader";
 
 const temuan = [
-  "Bangun ruang mana yang menurutmu memiliki bentuk hampir sama? Mengapa?",
-  "Bangun ruang mana yang paling berbeda? Mengapa?",
-  "Apakah menurutmu satu bangun dapat dimasukkan ke lebih dari satu kelompok? Jelaskan!",
+  "Bangun ruang mana saja yang menurutmu memiliki ciri atau bentuk yang hampir sama? Apa kesamaan yang kamu amati?",
+  "Bangun ruang mana saja yang menurutmu memiliki ciri atau bentuk yang berbeda? Apa perbedaan yang kamu amati?",
+  "Menurut dugaanmu, mungkinkah satu bangun ruang dimasukkan ke dalam lebih dari satu kelompok? Mengapa demikian?",
 ];
 
 const penuntun = [
-  "Menurutmu, apakah semua bangun ruang dapat dikelompokkan hanya dengan satu cara?",
-  "Informasi apa yang perlu diketahui agar pengelompokan menjadi lebih tepat?",
-  "Apakah cukup jika kita hanya melihat bentuk luarnya saja?",
-  "Informasi apa lagi yang ingin kamu ketahui agar alasan pengelompokkanmu semakin kuat?",
+  "Menurutmu, apakah bangun ruang yang diamati dapat dikelompokkan dengan lebih dari satu cara? Mengapa?",
+  "Ciri atau sifat apa saja yang menurutmu perlu diperhatikan untuk mengelompokkan bangun ruang?",
+  "Apakah bentuk luar yang tampak saja sudah cukup untuk menentukan kelompok suatu bangun ruang? Mengapa?",
+  "Hal apa yang masih ingin kamu ketahui untuk memastikan apakah bangun ruang yang kamu amati dapat dikelompokkan berdasarkan ciri atau sifat tertentu?",
 ];
 
 const textareaClass =

@@ -5,10 +5,10 @@ import BackLink from "@/app/belajar/_components/BackLink";
 import StepHeader from "@/app/belajar/_components/StepHeader";
 
 const pertanyaan = [
-  { name: "c_ciri_sama", teks: "Bangun ruang mana yang memiliki beberapa ciri yang sama? Ciri apa yang sama?", warna: "#15803D" },
-  { name: "c_paling_berbeda", teks: "Bangun ruang mana yang memiliki ciri paling berbeda? Jelaskan berdasarkan datamu.", warna: "#6D28D9" },
-  { name: "c_prisma_limas", teks: "Ciri apa yang dapat digunakan untuk membedakan prisma dengan limas?", warna: "#EA580C" },
-  { name: "c_kesamaan_lebih_satu", teks: "Apakah satu bangun dapat memiliki kesamaan dengan bangun lain berdasarkan lebih dari satu ciri? Jelaskan.", warna: "#1E3A8A" },
+  { name: "c_ciri_sama", teks: "Bangun ruang mana saja yang memiliki beberapa ciri atau sifat yang sama? Jelaskan persamaannya berdasarkan data hasil pengamatanmu!", warna: "#15803D" },
+  { name: "c_paling_berbeda", teks: "Pilih dua bangun ruang yang memiliki ciri atau sifat berbeda. Apa perbedaannya? Jelaskan berdasarkan data hasil pengamatanmu!", warna: "#6D28D9" },
+  { name: "c_prisma_limas", teks: "Ciri atau sifat apa saja yang dapat digunakan untuk membedakan prisma dan limas? Jelaskan berdasarkan data hasil pengamatanmu!", warna: "#EA580C" },
+  { name: "c_kesamaan_lebih_satu", teks: "Dapatkah satu bangun ruang memiliki kesamaan dengan bangun ruang lain berdasarkan lebih dari satu ciri atau sifat? Berikan contoh dan jelaskan berdasarkan data hasil pengamatanmu!", warna: "#1E3A8A" },
 ];
 
 export default async function Peta5Step3ApaYangKamuTemukan({ materi, peta, initialAnswers }: StepComponentProps) {
@@ -44,7 +44,7 @@ export default async function Peta5Step3ApaYangKamuTemukan({ materi, peta, initi
             Apa yang Kamu Temukan?
           </div>
         </div>
-        <p className="m-0 text-sm font-semibold text-[#374151]">Bandingkan data pada tabel. Tuliskan persamaan dan perbedaan yang kamu temukan.</p>
+        <p className="m-0 text-sm font-semibold text-[#374151]">Bandingkan data hasil pengamatan pada tabel. Identifikasi persamaan, perbedaan, dan hubungan antarciri bangun ruang, kemudian jelaskan berdasarkan data yang kamu peroleh.</p>
 
         <div className="flex flex-col gap-4">
           {pertanyaan.map((p, i) => (
