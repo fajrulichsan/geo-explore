@@ -5,15 +5,15 @@ import BackLink from "@/app/belajar/_components/BackLink";
 import StepHeader from "@/app/belajar/_components/StepHeader";
 
 const pertanyaan = [
-  { key: "pemantik_1", label: "Mengapa alas pada setiap limas hanya ada satu?" },
-  { key: "pemantik_2", label: "Mengapa semua sisi tegak harus diperhatikan?" },
+  { key: "pemantik_1", label: "Apa perbedaan antara sisi alas dan sisi-sisi tegak pada limas yang kamu amati?" },
+  { key: "pemantik_2", label: "Mengapa seluruh sisi tegak perlu diperhatikan ketika menentukan luas permukaan limas?" },
   {
     key: "pemantik_3",
-    label: "Bagian mana dari jaring-jaring yang menurutmu dijumlahkan untuk mendapatkan luas permukaannya?",
+    label: "Bagian mana saja dari jaring-jaring limas yang menurutmu perlu dihitung luasnya? Jelaskan!",
   },
   {
     key: "pemantik_4",
-    label: "Apakah luas permukaan limas dapat ditentukan dengan cara yang sama seperti prisma? Jelaskan dugaan awalmu.",
+    label: "Bagaimana persamaan dan perbedaan cara menentukan luas permukaan limas dan prisma menurut dugaan awalmu?",
   },
 ] as const;
 
@@ -53,7 +53,7 @@ export default async function Materi4Peta2Step5PertanyaanPemantik({
           </div>
         </div>
         <p className="m-0 text-xs text-[#6B7280] -mt-2">
-          Pikirkan pertanyaan berikut. Tuliskan jawaban awalmu berdasarkan pengamatan.
+          Jawablah pertanyaan berikut berdasarkan hasil pengamatanmu
         </p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {pertanyaan.map((p, i) => (

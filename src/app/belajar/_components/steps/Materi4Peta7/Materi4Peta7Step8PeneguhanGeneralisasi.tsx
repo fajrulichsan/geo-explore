@@ -12,10 +12,7 @@ export default async function Materi4Peta7Step8PeneguhanGeneralisasi({
   step = "8",
   editFoto,
 }: StepComponentProps) {
-  const shape1 = await getPageImage("M4-P7-L8-1");
-  const shape2 = await getPageImage("M4-P7-L8-2");
-  const shape3 = await getPageImage("M4-P7-L8-3");
-  const shape4 = await getPageImage("M4-P7-L8-4");
+  const shapes = await getPageImage("M4-P7-L8-5");
 
   return (
     <form action={submitStepAction} className="flex flex-col gap-8">
@@ -55,72 +52,18 @@ export default async function Materi4Peta7Step8PeneguhanGeneralisasi({
           </div>
           <div className="bg-white border border-[#E5E7EB] rounded-2xl p-5 flex flex-col gap-4">
             <p className="m-0 text-sm font-bold text-[#111827]">Limas dapat memiliki alas berbentuk:</p>
-            <div className="grid grid-cols-2 sm:grid-cols-5 gap-3 items-end">
-          <div className="flex flex-col items-center gap-2">
             <EditablePageImage
-            imageKey="M4-P7-L8-1"
-            materi={materi}
-            peta={peta}
-            step={step}
-            urutan="1"
-            src={shape1}
-            alt="Limas beralas segitiga"
-            editable={editFoto}
-            imageClassName="object-contain"
-            containerClassName="relative w-full aspect-[4/3]"
-          />
-            <p className="m-0 text-xs font-semibold text-[#374151]">Segitiga</p>
-          </div>
-          <div className="flex flex-col items-center gap-2">
-            <EditablePageImage
-            imageKey="M4-P7-L8-2"
-            materi={materi}
-            peta={peta}
-            step={step}
-            urutan="2"
-            src={shape2}
-            alt="Limas beralas persegi"
-            editable={editFoto}
-            imageClassName="object-contain"
-            containerClassName="relative w-full aspect-[4/3]"
-          />
-            <p className="m-0 text-xs font-semibold text-[#374151]">Persegi</p>
-          </div>
-          <div className="flex flex-col items-center gap-2">
-            <EditablePageImage
-            imageKey="M4-P7-L8-3"
-            materi={materi}
-            peta={peta}
-            step={step}
-            urutan="3"
-            src={shape3}
-            alt="Limas beralas segilima"
-            editable={editFoto}
-            imageClassName="object-contain"
-            containerClassName="relative w-full aspect-[4/3]"
-          />
-            <p className="m-0 text-xs font-semibold text-[#374151]">Segilima</p>
-          </div>
-          <div className="flex flex-col items-center gap-2">
-            <EditablePageImage
-            imageKey="M4-P7-L8-4"
-            materi={materi}
-            peta={peta}
-            step={step}
-            urutan="4"
-            src={shape4}
-            alt="Limas beralas segienam"
-            editable={editFoto}
-            imageClassName="object-contain"
-            containerClassName="relative w-full aspect-[4/3]"
-          />
-            <p className="m-0 text-xs font-semibold text-[#374151]">Segienam</p>
-          </div>
-              <div className="flex flex-col items-center gap-2 col-span-2 sm:col-span-1">
-                <p className="m-0 text-2xl font-extrabold text-[#2563EB] leading-none">…</p>
-                <p className="m-0 text-xs font-semibold text-[#374151]">Segi-n</p>
-              </div>
-            </div>
+              imageKey="M4-P7-L8-5"
+              materi={materi}
+              peta={peta}
+              step={step}
+              urutan="5"
+              src={shapes}
+              alt="Limas beralas segitiga, persegi, segilima, segienam, hingga segi-n"
+              editable={editFoto}
+              natural
+              containerClassName="relative w-full"
+            />
             <p className="m-0 text-xs text-[#1E3A8A] bg-[#EFF4FF] border border-[#BFDBFE] rounded-xl px-4 py-3 leading-[1.6]">
               <span className="font-bold">Hubungan LP = L<sub>a</sub> + L<sub>s</sub></span> berlaku untuk berbagai jenis limas, karena luas permukaan selalu diperoleh dari luas alas dan jumlah luas seluruh sisi tegaknya.
             </p>

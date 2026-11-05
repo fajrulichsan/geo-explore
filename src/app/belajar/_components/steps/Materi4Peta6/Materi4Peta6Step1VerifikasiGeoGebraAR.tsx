@@ -22,7 +22,22 @@ const kegiatan = [
 
 const bangun = [
   { key: "limas_segiempat", label: "Limas Segiempat", note: "Wajib", required: true },
-  { key: "limas_segitiga", label: "Limas Segitiga", note: "Opsional bila digunakan sebagai pembanding", required: false },
+  { key: "limas_segitiga", label: "Limas Segitiga", note: "Opsional sebagai pembanding", required: false },
+];
+
+const opsi = [{ value: "Sudah sesuai" }, { value: "Perlu diperbaiki" }, { value: "Tidak diperiksa" }];
+
+const perbaikan = [
+  {
+    key: "perbaikan_bagian",
+    label: "Bagian mana dari hasil perhitunganmu yang perlu diperbaiki? Jelaskan alasannya!",
+    placeholder: "Tuliskan bagian yang perlu diperbaiki...",
+  },
+  {
+    key: "perbaikan_cara",
+    label: "Bagaimana kamu memperbaiki hasil tersebut berdasarkan pemeriksaan menggunakan GeoGebra 3D dan AR?",
+    placeholder: "Tuliskan langkah perbaikan dan hasilnya...",
+  },
 ];
 
 const inputClass =
@@ -56,8 +71,8 @@ export default async function Materi4Peta6Step1VerifikasiGeoGebraAR({
         <h1 className="m-0 text-2xl sm:text-[32px] font-extrabold text-[#111827]">Ayo Verifikasi</h1>
       </div>
 
-      <div className="grid sm:grid-cols-5 gap-5 items-center bg-white border border-[#E5E7EB] rounded-[20px] p-5 sm:p-6">
-        <div className="sm:col-span-3 flex flex-col gap-3">
+      <div className="grid sm:grid-cols-2 gap-5 items-center bg-white border border-[#E5E7EB] rounded-[20px] p-5 sm:p-6">
+        <div className="flex flex-col gap-3">
           <p className="m-0 text-sm leading-[1.7] text-[#374151]">
             Sekarang saatnya memeriksa kembali apakah strategi dan hasil yang diperoleh{" "}
             <span className="font-bold text-[#2563EB]">sesuai dengan bukti</span>.
@@ -77,7 +92,7 @@ export default async function Materi4Peta6Step1VerifikasiGeoGebraAR({
           alt="Tiga siswa memverifikasi hasil penemuan dengan laptop dan AR"
           editable={editFoto}
           natural
-          containerClassName="relative sm:col-span-2 w-full rounded-2xl overflow-hidden bg-white"
+          containerClassName="relative w-full rounded-2xl overflow-hidden bg-white"
         />
       </div>
 
@@ -134,34 +149,71 @@ export default async function Materi4Peta6Step1VerifikasiGeoGebraAR({
 
       <div className="flex flex-col gap-3">
         <h2 className="m-0 text-lg font-bold text-[#111827]">Tabel Hasil Verifikasi</h2>
-        <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-4 sm:p-6 flex flex-col gap-4">
-          {bangun.map((b) => (
-            <div key={b.key} className="grid sm:grid-cols-3 gap-3 items-start">
-              <div className="flex flex-col">
-                <span className="text-sm font-bold text-[#111827]">{b.label}</span>
-                <span className="text-xs font-semibold text-[#2563EB]">({b.note})</span>
+        <p className="m-0 text-sm text-[#4B5563] leading-[1.6]">
+          Catat hasil pemeriksaan menggunakan GeoGebra 3D dan AR pada tabel berikut. Tentukan apakah hasil perhitungan
+          kelompokmu sudah sesuai, kemudian tuliskan bukti atau bagian yang perlu diperbaiki.
+        </p>
+        <div className="flex flex-col gap-4">
+          {bangun.map((b) => {
+            const pilihan = b.required ? opsi.filter((o) => o.value !== "Tidak diperiksa") : opsi;
+            return (
+              <div key={b.key} className="group/b bg-white border border-[#E5E7EB] rounded-[20px] p-4 sm:p-6 flex flex-col gap-4">
+                <div className="flex items-center justify-between gap-3">
+                  <span className="text-base font-bold text-[#111827]">{b.label}</span>
+                  <span className="text-xs text-[#6B7280]">{b.note}</span>
+                </div>
+                <fieldset className="m-0 p-0 border-0 flex flex-col gap-2.5">
+                  <legend className="mb-1 p-0 text-xs font-bold text-[#6B7280]">Hasil Pemeriksaan</legend>
+                  {pilihan.map((o) => (
+                    <label key={o.value} className="flex items-center gap-3 text-sm text-[#111827] cursor-pointer">
+                      <input
+                        type="radio"
+                        name={`answers.${b.key}_status`}
+                        value={o.value}
+                        defaultChecked={getValue(`${b.key}_status`) === o.value}
+                        required={b.required}
+                        className="w-[18px] h-[18px] accent-[#2563EB]"
+                      />
+                      {o.value}
+                    </label>
+                  ))}
+                </fieldset>
+
+                <div className="hidden group-has-[input[value='Sudah_sesuai']:checked]/b:flex flex-col gap-2">
+                  <label htmlFor={`${b.key}_bukti`} className="text-xs font-bold text-[#6B7280]">
+                    Bukti Hasil Verifikasi
+                  </label>
+                  <textarea
+                    id={`${b.key}_bukti`}
+                    name={`answers.${b.key}_bukti`}
+                    defaultValue={getValue(`${b.key}_bukti`)}
+                    rows={3}
+                    placeholder="Tuliskan bukti perhitungan yang menunjukkan hasilmu sudah sesuai..."
+                    className={`${inputClass} resize-y`}
+                  />
+                </div>
+
+                <div className="hidden group-has-[input[value='Perlu_diperbaiki']:checked]/b:flex flex-col gap-4 pl-2">
+                  <span className="text-sm font-bold text-[#111827]">Catatan Perbaikan</span>
+                  {perbaikan.map((p, i) => (
+                    <div key={p.key} className="flex flex-col gap-2">
+                      <label htmlFor={`${b.key}_${p.key}`} className="text-xs font-bold text-[#4B5563] leading-[1.5]">
+                        {i + 1}. {p.label}
+                      </label>
+                      <textarea
+                        id={`${b.key}_${p.key}`}
+                        name={`answers.${b.key}_${p.key}`}
+                        defaultValue={getValue(`${b.key}_${p.key}`)}
+                        rows={3}
+                        placeholder={p.placeholder}
+                        className={`${inputClass} resize-y`}
+                      />
+                    </div>
+                  ))}
+                </div>
               </div>
-              <select
-                name={`answers.${b.key}_status`}
-                defaultValue={getValue(`${b.key}_status`)}
-                required={b.required}
-                aria-label={`Status verifikasi ${b.label}`}
-                className={inputClass}
-              >
-                <option value="">Sudah sesuai?</option>
-                <option value="Sudah sesuai">&#10003; Sudah sesuai</option>
-                <option value="Perlu diperbaiki">Perlu diperbaiki</option>
-              </select>
-              <textarea
-                name={`answers.${b.key}_perbaikan`}
-                defaultValue={getValue(`${b.key}_perbaikan`)}
-                rows={2}
-                placeholder="Jika belum, apa yang diperbaiki?"
-                aria-label={`Perbaikan ${b.label}`}
-                className={`${inputClass} resize-y`}
-              />
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
 

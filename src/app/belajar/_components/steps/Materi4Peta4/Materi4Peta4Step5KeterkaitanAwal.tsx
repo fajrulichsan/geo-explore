@@ -5,12 +5,12 @@ import BackLink from "@/app/belajar/_components/BackLink";
 import StepHeader from "@/app/belajar/_components/StepHeader";
 
 const pertanyaan = [
-  { key: "temuan_jaring", text: "Apa yang kamu temukan setelah limas dibuka menjadi jaring-jaring?" },
-  { key: "bagian_luas", text: "Bagian mana yang membentuk luas permukaan limas?" },
-  { key: "mengapa_semua_sisi", text: "Mengapa luas semua sisi yang membatasi limas perlu diperhitungkan?" },
+  { key: "temuan_jaring", text: "Apa hubungan antara sisi-sisi limas dan bidang datar yang terbentuk ketika limas dibuka menjadi jaring-jaring?" },
+  { key: "bagian_luas", text: "Bagaimana hubungan antara luas alas, luas sisi-sisi tegak, dan luas seluruh permukaan limas berdasarkan hasil pengamatanmu?" },
+  { key: "mengapa_semua_sisi", text: "Apa persamaan atau perbedaan bentuk dan ukuran sisi-sisi tegak pada limas yang kamu amati? Bagaimana hal tersebut dapat membantu menentukan luasnya?" },
   {
     key: "cara_menentukan",
-    text: "Berdasarkan hasil pengamatanmu, bagaimana kemungkinan cara menentukan luas permukaan limas?",
+    text: "Berdasarkan hasil eksplorasimu, cara apa saja yang mungkin digunakan untuk menentukan luas permukaan limas? Jelaskan dugaan awalmu!",
   },
 ];
 
@@ -35,7 +35,7 @@ export default async function Materi4Peta4Step5KeterkaitanAwal({ materi, peta, i
         </div>
         <div className="flex flex-col">
           <span className="text-sm font-bold text-[#EA580C]">Temukan Keterkaitan Awal</span>
-          <span className="text-xs text-[#6B7280]">Jawablah pertanyaan berikut berdasarkan hasil pengamatanmu.</span>
+          <span className="text-xs text-[#6B7280]">Jawablah pertanyaan berikut berdasarkan hasil eksplorasi GeoGebra 3D dan data pengamatan yang telah kamu catat.</span>
         </div>
       </div>
 

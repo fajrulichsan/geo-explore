@@ -45,7 +45,7 @@ export default async function Materi4Peta3Step5HipotesisKelompok({
             </div>
           </div>
           <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-6 shadow-[0_1px_2px_rgba(0,0,0,0.04)] flex flex-col gap-4">
-            <p className="m-0 text-sm text-[#4B5563]">Rangkum hasil diskusimu.</p>
+            <p className="m-0 text-sm text-[#4B5563]">Bandingkan berbagai dugaan dan cara menentukan luas permukaan limas yang telah didiskusikan bersama kelompokmu. Tuliskan persamaan dan perbedaannya pada kolom berikut.</p>
             <div className="flex flex-col gap-2">
               <label htmlFor="persamaan" className="text-sm font-bold text-[#15803D]">
                 Persamaan
@@ -54,7 +54,7 @@ export default async function Materi4Peta3Step5HipotesisKelompok({
                 id="persamaan"
                 name="answers.persamaan"
                 defaultValue={getValue("persamaan")}
-                rows={4}
+                rows={7}
                 placeholder="Tuliskan persamaan..."
                 required
                 className={textareaClass}
@@ -68,7 +68,7 @@ export default async function Materi4Peta3Step5HipotesisKelompok({
                 id="perbedaan"
                 name="answers.perbedaan"
                 defaultValue={getValue("perbedaan")}
-                rows={4}
+                rows={7}
                 placeholder="Tuliskan perbedaan..."
                 required
                 className={textareaClass}
@@ -110,7 +110,7 @@ export default async function Materi4Peta3Step5HipotesisKelompok({
               id="hipotesis"
               name="answers.hipotesis"
               defaultValue={getValue("hipotesis")}
-              rows={4}
+              rows={9}
               placeholder="Tuliskan hipotesis kelompokmu..."
               required
               className={textareaClass}

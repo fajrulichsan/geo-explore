@@ -43,7 +43,7 @@ export default async function Materi4Peta7Step3ContohPenerapan({
         <p className="m-0 text-sm text-[#4B5563] leading-[1.6]">
           Sebuah limas segiempat memiliki alas berbentuk persegi dengan sisi 8 cm. Setiap sisi tegaknya berbentuk segitiga sama kaki dengan alas 8 cm dan tinggi sisi tegak 10 cm.
         </p>
-        <div className="grid grid-cols-1 md:grid-cols-[minmax(0,1fr)_minmax(0,1.3fr)] gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-[minmax(0,1fr)_minmax(0,1.3fr)] gap-4 items-stretch">
           <EditablePageImage
             imageKey="M4-P7-L3-1"
             materi={materi}
@@ -54,7 +54,7 @@ export default async function Materi4Peta7Step3ContohPenerapan({
             alt="Limas segiempat dengan alas 8 cm dan tinggi sisi tegak 10 cm"
             editable={editFoto}
             imageClassName="object-contain"
-            containerClassName="relative w-full aspect-[4/3] rounded-2xl overflow-hidden bg-white border border-[#E5E7EB]"
+            containerClassName="relative w-full aspect-[4/3] md:aspect-auto md:h-full md:min-h-72 rounded-2xl overflow-hidden bg-white border border-[#E5E7EB]"
           />
           <div className="bg-white border border-[#E5E7EB] rounded-2xl p-5 flex flex-col gap-4">
             <p className="m-0 text-sm font-bold text-[#111827]">Lengkapi perhitungan berikut.</p>

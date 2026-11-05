@@ -68,7 +68,7 @@ export default async function Materi4Peta4Step3AugmentedReality({ materi, peta, 
             alt="Model limas segiempat pada tampilan AR"
             editable={editFoto}
             natural
-            containerClassName="relative w-full max-w-[220px] mx-auto"
+            containerClassName="relative w-full max-w-[340px] mx-auto"
           />
           <div className="flex flex-col gap-3">
             {istilah.map((i) => (
@@ -89,7 +89,7 @@ export default async function Materi4Peta4Step3AugmentedReality({ materi, peta, 
         </div>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-start">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-stretch">
         <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-5 sm:p-6 flex flex-col gap-4">
           <span className="text-sm font-bold text-[#111827]">Langkah Kegiatan</span>
           {langkah.map((l, i) => (

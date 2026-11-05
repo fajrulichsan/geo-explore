@@ -9,12 +9,6 @@ import { getPageImage } from "@/lib/pageImages";
 const inputClass =
   "w-full rounded-2xl border border-[#E5E7EB] bg-[#F9FAFB] p-4 text-sm text-[#374151] placeholder:text-[#9CA3AF] focus:border-[#2563EB] focus:outline-none transition-colors resize-y";
 
-const kemungkinan = [
-  "Cara menghitung yang digunakan berbeda.",
-  "Ada sisi yang terlewat atau belum dihitung.",
-  "Strategi yang digunakan berbeda.",
-];
-
 export default async function Materi4Peta6Step2BandingkanKelompok({
   materi,
   peta,
@@ -47,7 +41,7 @@ export default async function Materi4Peta6Step2BandingkanKelompok({
         <div className="flex flex-col">
           <span className="text-sm font-bold text-[#2563EB]">Bandingkan dengan Kelompok Lain</span>
           <span className="text-xs text-[#6B7280]">
-            Diskusikan hasil kelompokmu dengan kelompok lain, lalu tuliskan persamaan dan perbedaannya.
+            Bandingkan strategi dan hasil perhitungan luas permukaan limas kelompokmu dengan satu kelompok lain yang menggunakan limas dengan bentuk dan ukuran yang sama. Tuliskan persamaan dan perbedaannya.
           </span>
         </div>
       </div>
@@ -56,13 +50,13 @@ export default async function Materi4Peta6Step2BandingkanKelompok({
         <div className="bg-white border border-[#E5E7EB] rounded-[20px] overflow-hidden focus-within:border-[#2563EB] transition-colors">
           <div className="bg-[#1E3A8A] text-white px-5 py-3 text-center">
             <div className="text-sm font-bold">Persamaan</div>
-            <div className="text-xs opacity-80">(Apa yang sama?)</div>
+            <div className="text-xs opacity-80">(Strategi dan hasil perhitungan yang sama)</div>
           </div>
           <div className="p-4">
             <textarea
               name="answers.persamaan"
               defaultValue={getValue("persamaan")}
-              rows={6}
+              rows={8}
               placeholder="Tulis persamaannya di sini..."
               required
               aria-label="Persamaan"
@@ -73,13 +67,13 @@ export default async function Materi4Peta6Step2BandingkanKelompok({
         <div className="bg-white border border-[#E5E7EB] rounded-[20px] overflow-hidden focus-within:border-[#2563EB] transition-colors">
           <div className="bg-[#1E3A8A] text-white px-5 py-3 text-center">
             <div className="text-sm font-bold">Perbedaan</div>
-            <div className="text-xs opacity-80">(Apa yang berbeda?)</div>
+            <div className="text-xs opacity-80">(Strategi atau hasil perhitungan yang berbeda)</div>
           </div>
           <div className="p-4">
             <textarea
               name="answers.perbedaan"
               defaultValue={getValue("perbedaan")}
-              rows={6}
+              rows={8}
               placeholder="Tulis perbedaannya di sini..."
               required
               aria-label="Perbedaan"
@@ -96,14 +90,8 @@ export default async function Materi4Peta6Step2BandingkanKelompok({
           </span>
           <div className="flex flex-col gap-2">
             <label htmlFor="mengapa_beda" className="text-sm font-bold text-[#1E3A8A] leading-[1.5]">
-              Mengapa hasil tersebut bisa berbeda?
+              Bagaimana kamu menjelaskan persamaan atau perbedaan strategi dan hasil perhitungan kedua kelompok? Gunakan bukti perhitungan untuk mendukung alasanmu!
             </label>
-            <p className="m-0 text-sm font-semibold text-[#374151]">Kemungkinan penyebabnya:</p>
-            <ul className="m-0 pl-5 list-disc text-sm text-[#374151] leading-[1.6]">
-              {kemungkinan.map((k) => (
-                <li key={k}>{k}</li>
-              ))}
-            </ul>
           </div>
         </div>
         <textarea

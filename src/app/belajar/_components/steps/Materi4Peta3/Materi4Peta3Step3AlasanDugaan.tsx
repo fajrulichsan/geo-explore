@@ -64,7 +64,7 @@ export default async function Materi4Peta3Step3AlasanDugaan({
 
       <div className="grid grid-cols-1 lg:grid-cols-5 gap-5">
         <div className="lg:col-span-3 bg-[#FEF9E7] border border-[#F5E3A0] rounded-[20px] p-5 flex flex-col sm:flex-row gap-4 sm:items-center">
-          <div className="flex-1 flex flex-col gap-3">
+          <div className="sm:w-1/2 flex flex-col gap-3">
             <div className="flex items-center gap-2">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D97706" strokeWidth="2">
                 <path d="M9 18h6M10 22h4M12 2a7 7 0 00-4 12.7c.6.5 1 1.2 1 2.3h6c0-1.1.4-1.8 1-2.3A7 7 0 0012 2z" />
@@ -93,7 +93,7 @@ export default async function Materi4Peta3Step3AlasanDugaan({
             alt="Laptop dan ponsel menampilkan limas pada GeoGebra 3D dan AR"
             editable={editFoto}
             imageClassName="object-contain"
-            containerClassName="relative w-full sm:w-44 aspect-[4/3] flex-shrink-0"
+            containerClassName="relative w-full sm:w-1/2 aspect-[4/3] flex-shrink-0"
           />
         </div>
 

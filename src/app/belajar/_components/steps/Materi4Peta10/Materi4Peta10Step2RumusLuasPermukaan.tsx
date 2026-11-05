@@ -12,7 +12,7 @@ export default async function Materi4Peta10Step2RumusLuasPermukaan({
   step = "2",
   editFoto,
 }: StepComponentProps) {
-  const [limasImage, rumusImage] = await Promise.all([getPageImage("M4-P10-L2-1"), getPageImage("M4-P10-L2-2")]);
+  const limasImage = await getPageImage("M4-P10-L2-1");
 
   return (
     <form action={submitStepAction} className="flex flex-col gap-8">
@@ -69,20 +69,17 @@ export default async function Materi4Peta10Step2RumusLuasPermukaan({
             <span className="text-xs font-extrabold text-white/80 uppercase tracking-wide">
               Rumus Umum
             </span>
-            <EditablePageImage
-              imageKey="M4-P10-L2-2"
-              materi={materi}
-              peta={peta}
-              step={step}
-              urutan="2"
-              src={rumusImage}
-              alt="Rumus umum: La ditambah Ls sama dengan LP"
-              editable={editFoto}
-              natural
-              containerClassName="relative w-full max-w-[320px] rounded-xl overflow-hidden bg-white"
-            />
+            <p className="m-0 w-fit bg-white rounded-xl px-5 py-2.5 text-2xl font-extrabold text-[#1E3A8A]">
+              LP = L<sub>a</sub> + L<sub>s</sub>
+            </p>
           </div>
           <div className="flex flex-col gap-1.5 text-sm text-white/95 sm:ml-auto">
+            <p className="m-0">
+              <span className="font-extrabold">Keterangan:</span>
+            </p>
+            <p className="m-0">
+              <span className="font-extrabold">LP</span> = luas permukaan limas
+            </p>
             <p className="m-0">
               <span className="font-extrabold">L<sub>a</sub></span> = luas alas
             </p>

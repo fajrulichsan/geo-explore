@@ -35,7 +35,7 @@ export default async function Materi4Peta6Step4HasilVerifikasi({ materi, peta, i
         </div>
       </div>
 
-      <div className="grid sm:grid-cols-5 gap-5 items-center bg-[#F0FDF4] border border-[#BBF7D0] rounded-[20px] p-5 sm:p-6">
+      <div className="grid sm:grid-cols-5 gap-5 items-stretch bg-[#F0FDF4] border border-[#BBF7D0] rounded-[20px] p-5 sm:p-6">
         <div className="sm:col-span-3 flex flex-col gap-2 focus-within:[&_textarea]:border-[#16A34A]">
           <label htmlFor="hasil_verifikasi" className="text-sm font-bold text-[#166534] leading-[1.5]">
             Berdasarkan hasil verifikasi, hasil yang kami peroleh adalah ...
@@ -44,13 +44,13 @@ export default async function Materi4Peta6Step4HasilVerifikasi({ materi, peta, i
             id="hasil_verifikasi"
             name="answers.hasil_verifikasi"
             defaultValue={getValue("hasil_verifikasi")}
-            rows={6}
+            rows={10}
             placeholder="Tulis hasil verifikasi kelompokmu di sini..."
             required
-            className="w-full rounded-2xl border border-[#BBF7D0] bg-white p-4 text-sm text-[#374151] placeholder:text-[#9CA3AF] focus:outline-none transition-colors resize-y"
+            className="w-full flex-1 rounded-2xl border border-[#BBF7D0] bg-white p-4 text-sm text-[#374151] placeholder:text-[#9CA3AF] focus:outline-none transition-colors resize-y"
           />
         </div>
-        <div className="sm:col-span-2 flex flex-col items-center gap-3">
+        <div className="sm:col-span-2 flex flex-col items-center justify-center gap-3">
           <EditablePageImage imageKey="M4-P6-L4-1" materi={materi} peta={peta} step={step} urutan="1" src={gambarLimas} alt="Ilustrasi limas segiempat" editable={editFoto} imageClassName="object-contain" containerClassName="relative w-36 aspect-[439/532]" />
           <p className="m-0 text-xs text-[#374151] bg-white border border-[#BBF7D0] rounded-2xl px-3 py-2 leading-[1.5]">
             Ingat hubungan antara luas alas, luas seluruh sisi tegak, dan luas permukaan limas.

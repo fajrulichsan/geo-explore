@@ -7,10 +7,10 @@ import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
 import { getPageImage } from "@/lib/pageImages";
 
 const pertanyaan = [
-  { key: "q1", label: "Bagian mana saja yang menurut kelompokmu harus dihitung untuk menentukan luas permukaan limas?" },
-  { key: "q2", label: "Apakah luas alas cukup dihitung satu kali? Mengapa?" },
-  { key: "q3", label: "Mengapa semua sisi tegak perlu diperhitungkan?" },
-  { key: "q4", label: "Apakah luas permukaan limas dapat ditentukan dengan cara yang sama seperti prisma? Jelaskan dugaan kelompokmu." },
+  { key: "q1", label: "Bagaimana cara yang mungkin digunakan untuk menentukan luas permukaan limas? Jelaskan dugaan kelompokmu!" },
+  { key: "q2", label: "Bagaimana persamaan atau perbedaan bentuk dan ukuran sisi-sisi limas dapat membantu kelompokmu menentukan luas permukaannya? Jelaskan dugaan kelompokmu!" },
+  { key: "q3", label: "Bagaimana cara kelompokmu memastikan bahwa seluruh sisi limas telah diperhitungkan tanpa ada yang terlewat atau dihitung lebih dari satu kali?" },
+  { key: "q4", label: "Informasi apa saja yang masih perlu diselidiki untuk menguji dugaan kelompokmu tentang cara menentukan luas permukaan limas?" },
 ];
 
 const textareaClass =
@@ -41,7 +41,7 @@ export default async function Materi4Peta3Step2PertanyaanDugaan({
         <h1 className="m-0 text-2xl sm:text-[32px] font-extrabold text-[#111827]">Ayo Berdiskusi</h1>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-5 gap-6 items-start">
+      <div className="grid grid-cols-1 lg:grid-cols-5 gap-6 items-stretch">
         <div className="lg:col-span-3 flex flex-col gap-4">
           <div className="flex items-center gap-3">
             <div className="w-[34px] h-[34px] rounded-full bg-[#2563EB] text-white flex items-center justify-center font-bold text-[15px] flex-shrink-0">
@@ -81,7 +81,7 @@ export default async function Materi4Peta3Step2PertanyaanDugaan({
           </div>
         </div>
 
-        <div className="lg:col-span-2 flex flex-col gap-4">
+        <div className="lg:col-span-2 flex flex-col gap-4 h-full">
           <div className="flex items-center gap-3">
             <div className="w-[34px] h-[34px] rounded-full bg-[#16A34A] text-white flex items-center justify-center font-bold text-[15px] flex-shrink-0">
               C
@@ -90,7 +90,7 @@ export default async function Materi4Peta3Step2PertanyaanDugaan({
               Dugaan Kelompok
             </div>
           </div>
-          <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-5 shadow-[0_1px_2px_rgba(0,0,0,0.04)] flex flex-col gap-3 lg:sticky lg:top-6">
+          <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-5 shadow-[0_1px_2px_rgba(0,0,0,0.04)] flex flex-col gap-3 flex-1">
             <EditablePageImage
               imageKey="M4-P3-L2-1"
               materi={materi}
@@ -111,10 +111,10 @@ export default async function Materi4Peta3Step2PertanyaanDugaan({
               id="dugaan_kelompok"
               name="answers.dugaan_kelompok"
               defaultValue={getValue("dugaan_kelompok")}
-              rows={4}
+              rows={8}
               placeholder="Lanjutkan kalimat di atas..."
               required
-              className={textareaClass}
+              className={`${textareaClass} flex-1 min-h-40`}
             />
           </div>
         </div>

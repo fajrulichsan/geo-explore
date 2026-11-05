@@ -38,9 +38,10 @@ const tips = [
 const tahapTransisi = ["Limas segiempat", "Sedikit terbuka", "Lebih terbuka", "Jaring-jaring limas"];
 
 export default async function Materi4Peta4Step2GeoGebra3D({ materi, peta, step = "2", editFoto }: StepComponentProps) {
-  const [gambarTransisi, gambarQr] = await Promise.all([
+  const [gambarTransisi, gambarQr, gambarLaptop] = await Promise.all([
     Promise.all(tahapTransisi.map((_, i) => getPageImage(`M4-P4-L2-${i + 1}` as PageImageKey))),
     getPageImage("qr-geogebra"),
+    getPageImage("M4-P4-L2-5"),
   ]);
 
   return (
@@ -65,7 +66,7 @@ export default async function Materi4Peta4Step2GeoGebra3D({ materi, peta, step =
 
       <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-5 sm:p-6 flex flex-col gap-3">
         <span className="text-sm font-bold text-[#1D4ED8]">Transisi Limas &rarr; Jaring-Jaring</span>
-        <div className="flex flex-col sm:flex-row sm:items-start gap-3">
+        <div className="flex flex-col sm:flex-row sm:items-center gap-3">
           {tahapTransisi.map((t, i) => (
             <Fragment key={t}>
               <div className="flex-1 flex flex-col items-center gap-2">
@@ -91,7 +92,7 @@ export default async function Materi4Peta4Step2GeoGebra3D({ materi, peta, step =
         </div>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-start">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-stretch">
         <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-5 sm:p-6 flex flex-col gap-4">
           <span className="text-sm font-bold text-[#111827]">Langkah Kegiatan</span>
           <div className="flex flex-col gap-3">
@@ -120,6 +121,18 @@ export default async function Materi4Peta4Step2GeoGebra3D({ materi, peta, step =
               {y}
             </div>
           ))}
+          <EditablePageImage
+            imageKey="M4-P4-L2-5"
+            materi={materi}
+            peta={peta}
+            step={step}
+            urutan="5"
+            src={gambarLaptop}
+            alt="Laptop menampilkan GeoGebra 3D limas"
+            editable={editFoto}
+            imageClassName="object-contain"
+            containerClassName="relative w-full flex-1 min-h-40 mt-auto"
+          />
         </div>
       </div>
 

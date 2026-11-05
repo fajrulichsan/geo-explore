@@ -34,7 +34,7 @@ export default async function Materi4Peta4Step1AyoBereksplorasi({
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-[1fr_320px] gap-6 items-center rounded-[28px] bg-gradient-to-br from-[#1E3A8A] to-[#2563EB] p-6 sm:p-9">
+      <div className="grid grid-cols-1 md:grid-cols-[1fr_440px] gap-6 items-center rounded-[28px] bg-gradient-to-br from-[#1E3A8A] to-[#2563EB] p-6 sm:p-9">
         <div className="flex flex-col gap-3">
           <h1 className="m-0 text-2xl sm:text-[32px] font-extrabold text-white">Ayo Bereksplorasi</h1>
           <p className="m-0 text-sm sm:text-base font-bold text-white/95">
@@ -76,7 +76,11 @@ export default async function Materi4Peta4Step1AyoBereksplorasi({
             </span>
             <p className="m-0 text-sm text-[#4B5563] leading-[1.5]">{a.desc}</p>
           </div>
-          {i < alur.length - 1 && <FlowConnector kind="arrow" />}
+          {i < alur.length - 1 && (
+            <div className="hidden lg:flex">
+              <FlowConnector kind="arrow" />
+            </div>
+          )}
           </Fragment>
         ))}
       </div>

@@ -1,4 +1,3 @@
-import PhotoUpload from "@/components/PhotoUpload";
 import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
 import { getPageImage } from "@/lib/pageImages";
 import { submitStepAction } from "@/app/belajar/actions";
@@ -111,14 +110,6 @@ export default async function Materi4Peta8Step4KesanDanSaran({ materi, peta, ste
             />
           </div>
         </div>
-      </div>
-
-      <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-6 shadow-[0_1px_2px_rgba(0,0,0,0.04)]">
-        <PhotoUpload
-          name="answers.foto_bukti"
-          label="Unggah foto jurnal refleksimu (opsional)"
-          defaultValue={getValue("foto_bukti")}
-        />
       </div>
 
       <FileSubmission

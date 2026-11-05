@@ -45,7 +45,7 @@ export default async function Materi4Peta5Step2HitungLuasSisi({ materi, peta, in
         </div>
         <div className="flex flex-col">
           <span className="text-sm font-bold text-[#16A34A]">Hitung Luas Setiap Sisi</span>
-          <span className="text-xs text-[#6B7280]">Hitung luas alas dan setiap sisi tegak, lalu isikan hasilnya.</span>
+          <span className="text-xs text-[#6B7280]">Hitung luas alas dan setiap sisi tegak berdasarkan data hasil pengamatanmu, lalu lengkapi tabel berikut.</span>
         </div>
       </div>
 
@@ -104,7 +104,7 @@ export default async function Materi4Peta5Step2HitungLuasSisi({ materi, peta, in
           <span className="w-6 h-6 rounded-full bg-[#16A34A] text-white flex items-center justify-center text-xs flex-shrink-0">
             ?
           </span>
-          Apakah luas alas dan luas sisi tegak dihitung dengan cara yang sama? Mengapa?
+          Bagaimana cara menghitung luas alas dan sisi-sisi tegak limas berdasarkan bentuk dan ukurannya? Jelaskan strategi yang kamu gunakan!
         </label>
         <textarea
           id="cara_sama"

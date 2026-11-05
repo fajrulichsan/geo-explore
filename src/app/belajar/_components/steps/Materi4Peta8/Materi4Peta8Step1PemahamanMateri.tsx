@@ -44,7 +44,7 @@ export default async function Materi4Peta8Step1PemahamanMateri({ materi, peta, s
         </div>
       </div>
 
-      <div className="rounded-[24px] bg-gradient-to-br from-[#EFF4FF] to-[#FEF9E7] border border-[#DBEAFE] p-5 sm:p-6 grid grid-cols-1 md:grid-cols-[1fr_300px] gap-5 items-center">
+      <div className="rounded-[24px] bg-gradient-to-br from-[#EFF4FF] to-[#FEF9E7] border border-[#DBEAFE] p-5 sm:p-6 grid grid-cols-1 md:grid-cols-[1fr_460px] gap-5 items-center">
         <div className="flex flex-col gap-2">
           <p className="m-0 text-sm text-[#374151] leading-[1.7]">
             Setelah melakukan seluruh kegiatan pada{" "}
@@ -63,7 +63,7 @@ export default async function Materi4Peta8Step1PemahamanMateri({ materi, peta, s
           alt="Tiga siswa belajar dengan laptop, buku, dan tablet berisi limas"
           editable={editFoto}
           natural
-          containerClassName="relative w-full max-w-[300px] mx-auto overflow-hidden"
+          containerClassName="relative w-full max-w-[460px] mx-auto overflow-hidden"
         />
       </div>
 

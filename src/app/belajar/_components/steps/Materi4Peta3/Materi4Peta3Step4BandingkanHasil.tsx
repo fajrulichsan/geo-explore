@@ -13,8 +13,8 @@ const baris = [
 ];
 
 const kolom = [
-  { key: "kami", label: "Kelompok Kami" },
-  { key: "lain", label: "Kelompok Lain" },
+  { key: "kami", label: "Kelompok kami" },
+  { key: "lain", label: "Kelompok lain" },
 ];
 
 const textareaClass =
@@ -95,7 +95,7 @@ export default async function Materi4Peta3Step4BandingkanHasil({
               <div className="grid sm:grid-cols-2 gap-4 p-5">
                 {kolom.map((k) => (
                   <div key={k.key} className="flex flex-col gap-2">
-                    <label htmlFor={`${b.key}_${k.key}`} className="text-xs font-bold text-[#1E3A8A] uppercase tracking-[0.04em]">
+                    <label htmlFor={`${b.key}_${k.key}`} className="text-xs font-bold text-[#1E3A8A] tracking-[0.02em]">
                       {k.label}
                     </label>
                     <textarea

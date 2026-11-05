@@ -74,7 +74,7 @@ export default async function Materi4Peta4Step4TabelPengamatan({
         </div>
         <div className="flex flex-col">
           <span className="text-sm font-bold text-[#2563EB]">Ringkas Hasil Pengamatanmu</span>
-          <span className="text-xs text-[#6B7280]">Lengkapilah tabel berikut berdasarkan hasil eksplorasimu.</span>
+          <span className="text-sm text-[#4B5563]">Pilih jenis limas yang telah kamu eksplorasi menggunakan GeoGebra 3D, kemudian lengkapi tabel berikut berdasarkan hasil pengamatanmu</span>
         </div>
       </div>
 

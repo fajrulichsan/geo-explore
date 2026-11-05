@@ -538,6 +538,9 @@ export type PageImageKey =
   | "M4-P4-L2-2"
   | "M4-P4-L2-3"
   | "M4-P4-L2-4"
+  | "M4-P4-L2-5"
+  | "M4-P7-L8-5"
+  | "M4-P3-L6-3"
   | "M4-P4-L3-3"
   | "M4-P4-L4-1"
   | "M4-P4-L4-2"
@@ -1570,6 +1573,9 @@ const DEFAULT_IMAGES: Record<PageImageKey, string> = {
   "M4-P4-L2-2": "https://placehold.co/402x508?text=M4+P4+L2+2",
   "M4-P4-L2-3": "https://placehold.co/670x457?text=M4+P4+L2+3",
   "M4-P4-L2-4": "https://placehold.co/364x328?text=M4+P4+L2+4",
+  "M4-P7-L8-5": "https://placehold.co/919x192?text=M4+P7+L8+5",
+  "M4-P4-L2-5": "https://placehold.co/676x451?text=M4+P4+L2+5",
+  "M4-P3-L6-3": "https://placehold.co/1378x775?text=M4+P3+L6+3",
   "M4-P4-L3-3": "https://placehold.co/200x200?text=M4+P4+L3+3",
   "M4-P4-L4-1": "https://placehold.co/332x498?text=M4+P4+L4+1",
   "M4-P4-L4-2": "https://placehold.co/332x498?text=M4+P4+L4+2",

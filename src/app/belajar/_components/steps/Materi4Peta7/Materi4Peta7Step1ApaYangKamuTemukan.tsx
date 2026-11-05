@@ -50,7 +50,7 @@ export default async function Materi4Peta7Step1ApaYangKamuTemukan({
             alt="Tiga siswa menyimpulkan dengan laptop dan tablet"
             editable={editFoto}
             imageClassName="object-contain"
-            containerClassName="relative w-full sm:w-72 aspect-[2/1] flex-shrink-0 rounded-2xl overflow-hidden"
+            containerClassName="relative w-full sm:w-[26rem] aspect-[2/1] flex-shrink-0 rounded-2xl overflow-hidden"
           />
       </div>
 

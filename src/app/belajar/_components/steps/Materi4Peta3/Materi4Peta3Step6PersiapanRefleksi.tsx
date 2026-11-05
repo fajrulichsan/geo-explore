@@ -33,7 +33,11 @@ export default async function Materi4Peta3Step6PersiapanRefleksi({
   const answers = initialAnswers ?? {};
   const isChecked = (key: string) => answers[key] === "on" || answers[key] === "true";
 
-  const [mascot, perangkat] = await Promise.all([getPageImage("M4-P3-L6-2"), getPageImage("M4-P3-L6-1")]);
+  const [mascot, perangkat, persiapan] = await Promise.all([
+    getPageImage("M4-P3-L6-2"),
+    getPageImage("M4-P3-L6-1"),
+    getPageImage("M4-P3-L6-3"),
+  ]);
 
   return (
     <form action={submitStepAction} className="flex flex-col gap-8">
@@ -60,6 +64,18 @@ export default async function Materi4Peta3Step6PersiapanRefleksi({
             </div>
           </div>
           <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-6 shadow-[0_1px_2px_rgba(0,0,0,0.04)] flex flex-col gap-3">
+            <EditablePageImage
+              imageKey="M4-P3-L6-3"
+              materi={materi}
+              peta={peta}
+              step={step}
+              urutan="3"
+              src={persiapan}
+              alt="Siswa bersiap melakukan eksplorasi dengan GeoGebra 3D dan AR"
+              editable={editFoto}
+              natural
+              containerClassName="relative w-full"
+            />
             <p className="m-0 text-sm text-[#4B5563]">Centang kegiatan yang akan dilakukan pada Tahap 3.</p>
             {kegiatan.map((k) => (
               <label

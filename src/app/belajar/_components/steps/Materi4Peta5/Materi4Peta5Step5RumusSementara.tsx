@@ -38,13 +38,13 @@ export default async function Materi4Peta5Step5RumusSementara({
         <div className="flex flex-col">
           <span className="text-sm font-bold text-[#EA580C]">Rumus Sementara</span>
           <span className="text-xs text-[#6B7280]">
-            Berdasarkan strategi dan pola yang kamu temukan, tuliskan rumus sementara luas permukaan limas dalam bentuk
-            kalimat.
+            Berdasarkan hasil perhitungan dan pola yang kamu temukan, tuliskan dugaan sementara tentang cara menentukan
+            luas permukaan limas dalam bentuk kalimat.
           </span>
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-[1fr_280px] gap-6 items-start">
+      <div className="grid grid-cols-1 md:grid-cols-[1fr_280px] gap-6 items-stretch">
         <div className="flex flex-col gap-5">
           <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-5 sm:p-6 flex flex-col gap-3 focus-within:border-[#EA580C] transition-colors">
             <label htmlFor="rumus_sementara" className="text-sm font-bold text-[#111827]">
@@ -64,7 +64,7 @@ export default async function Materi4Peta5Step5RumusSementara({
           <div className="bg-[#FEF9E7] border border-[#F5E3A0] rounded-[20px] p-5 flex flex-col gap-1.5">
             <span className="text-sm font-extrabold text-[#D97706]">Catatan</span>
             <p className="m-0 text-sm text-[#78350F] leading-[1.6]">
-              Tuliskan dalam bentuk kalimat terlebih dahulu, belum menggunakan simbol matematika.
+              Tuliskan dugaan dalam bentuk kalimat terlebih dahulu, tanpa menggunakan simbol matematika.
             </p>
           </div>
 
@@ -73,8 +73,8 @@ export default async function Materi4Peta5Step5RumusSementara({
               <span className="w-6 h-6 rounded-full bg-[#EA580C] text-white flex items-center justify-center text-xs flex-shrink-0">
                 ?
               </span>
-              Apakah menurutmu cara tersebut berlaku untuk semua jenis limas? Jelaskan alasanmu berdasarkan hasil
-              pengamatan dan keterkaitan awal yang kamu temukan.
+              Menurut kelompokmu, apakah dugaan rumus tersebut dapat digunakan untuk berbagai jenis limas? Jelaskan
+              alasanmu berdasarkan hasil pengolahan data dan pola yang kamu temukan!
             </label>
             <textarea
               id="berlaku_semua"
@@ -88,7 +88,7 @@ export default async function Materi4Peta5Step5RumusSementara({
           </div>
         </div>
 
-        <div className="flex flex-col gap-3 items-center bg-white border border-[#E5E7EB] rounded-[20px] p-5">
+        <div className="flex flex-col gap-3 items-center justify-center bg-white border border-[#E5E7EB] rounded-[20px] p-5">
           <p className="m-0 text-sm font-semibold text-[#2563EB] text-center leading-[1.5]">
             Bagaimana hubungan antara luas alas, luas seluruh sisi tegak, dan luas permukaan limas menurutmu?
           </p>

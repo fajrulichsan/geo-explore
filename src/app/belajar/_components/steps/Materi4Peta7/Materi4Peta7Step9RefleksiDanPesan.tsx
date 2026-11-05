@@ -33,7 +33,7 @@ export default async function Materi4Peta7Step9RefleksiDanPesan({
         <h1 className="m-0 text-2xl sm:text-[32px] font-extrabold text-[#111827]">Ayo Menyimpulkan</h1>
       </div>
 
-<div className="grid grid-cols-1 lg:grid-cols-2 gap-4 items-start">
+<div className="grid grid-cols-1 lg:grid-cols-2 gap-4 items-stretch">
         <div className="bg-[#F8FAFF] border border-[#DBE7FF] rounded-2xl p-5 flex flex-col gap-4">
           <div className="flex items-center gap-3">
           <div className="w-[34px] h-[34px] rounded-full bg-[#2563EB] text-white flex items-center justify-center font-bold text-[15px] flex-shrink-0">
