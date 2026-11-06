@@ -29,7 +29,7 @@ export default async function Materi4Peta10Step1KonsepDasar({
         </h1>
       </div>
 
-      <div className="relative overflow-hidden rounded-[20px] bg-gradient-to-br from-[#1E3A8A] to-[#2563EB] p-6 grid grid-cols-1 md:grid-cols-[1fr_460px] gap-5 items-center">
+      <div className="relative overflow-hidden rounded-[20px] bg-gradient-to-br from-[#1E3A8A] to-[#2563EB] p-6 flex flex-col gap-5">
         <div className="absolute -right-10 -top-10 w-40 h-40 rounded-full bg-white/10" />
         <div className="relative flex flex-col gap-3">
           <p className="m-0 text-sm sm:text-[15px] leading-[1.7] text-white/95 font-medium">
@@ -45,6 +45,9 @@ export default async function Materi4Peta10Step1KonsepDasar({
             dengan lebih mendalam.
           </p>
         </div>
+      </div>
+
+      <div>
         <EditablePageImage
           imageKey="M4-P10-L1-1"
           materi={materi}

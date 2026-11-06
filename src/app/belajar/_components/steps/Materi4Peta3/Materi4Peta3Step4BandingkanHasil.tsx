@@ -68,7 +68,7 @@ export default async function Materi4Peta3Step4BandingkanHasil({
           alt="Tiga siswa berdiskusi di meja belajar"
           editable={editFoto}
           imageClassName="object-contain"
-          containerClassName="relative w-full sm:w-56 aspect-[4/3] flex-shrink-0"
+          containerClassName="relative w-full sm:w-1/2 aspect-[4/3] flex-shrink-0"
         />
       </div>
 

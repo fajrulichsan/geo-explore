@@ -64,7 +64,8 @@ export default async function Materi4Peta10Step2RumusLuasPermukaan({
           </div>
         </div>
 
-        <div className="rounded-[20px] bg-gradient-to-br from-[#1E3A8A] to-[#2563EB] p-6 flex flex-col sm:flex-row sm:items-center gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-stretch">
+        <div className="rounded-[20px] bg-gradient-to-br from-[#1E3A8A] to-[#2563EB] p-6 flex flex-col gap-4">
           <div className="flex flex-col gap-1">
             <span className="text-xs font-extrabold text-white/80 uppercase tracking-wide">
               Rumus Umum
@@ -73,7 +74,7 @@ export default async function Materi4Peta10Step2RumusLuasPermukaan({
               LP = L<sub>a</sub> + L<sub>s</sub>
             </p>
           </div>
-          <div className="flex flex-col gap-1.5 text-sm text-white/95 sm:ml-auto">
+          <div className="flex flex-col gap-1.5 text-sm text-white/95">
             <p className="m-0">
               <span className="font-extrabold">Keterangan:</span>
             </p>
@@ -90,13 +91,14 @@ export default async function Materi4Peta10Step2RumusLuasPermukaan({
           </div>
         </div>
 
-        <div className="bg-[#F0FDF4] border border-[#BBF7D0] rounded-2xl px-5 py-4 flex flex-col gap-1.5">
+        <div className="bg-[#F0FDF4] border border-[#BBF7D0] rounded-2xl px-5 py-4 flex flex-col justify-center gap-1.5">
           <p className="m-0 text-sm font-extrabold text-[#166534]">Mengapa rumus ini benar?</p>
           <p className="m-0 text-sm text-[#374151] leading-[1.6]">
             Jika limas dibuka menjadi jaring-jaring, semua sisinya (alas dan sisi tegak) terlihat
             dan tidak saling tumpang tindih. Luas permukaannya adalah jumlah luas alas ditambah
             jumlah luas seluruh sisi tegaknya.
           </p>
+        </div>
         </div>
       </div>
 

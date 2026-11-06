@@ -147,6 +147,7 @@ export default async function Materi4Peta10Step3StrategiPenutup({
                 <p className="m-0 text-sm font-extrabold text-[#111827] leading-[1.3]">{s.judul}</p>
               </div>
               <p className="m-0 text-xs text-[#4B5563] leading-[1.5]">{s.teks}</p>
+              <div className="flex-1 flex flex-col items-center justify-center gap-2.5">
               {s.no === 3 && (
                 <EditablePageImage
                   imageKey="M4-P10-L3-2"
@@ -158,7 +159,7 @@ export default async function Materi4Peta10Step3StrategiPenutup({
                   alt="Jaring-jaring limas segiempat"
                   editable={editFoto}
                   natural
-                  containerClassName="relative w-28 mx-auto"
+                  containerClassName="relative w-full max-w-[220px] mx-auto"
                 />
               )}
               {s.gambarKey && strategiImages[i] && (
@@ -175,6 +176,7 @@ export default async function Materi4Peta10Step3StrategiPenutup({
                   containerClassName="relative w-full"
                 />
               )}
+              </div>
               {s.rumus && (
                 <div className="bg-[#FEF9E7] border border-[#F5E6A8] rounded-lg px-3 py-2">
                   <p className="m-0 text-[11px] font-bold text-[#785900] whitespace-pre-line leading-[1.6]">

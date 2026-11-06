@@ -95,11 +95,8 @@ export default async function Materi4Peta7Step4TemuanUtama({
             alt="Dua siswa memberi jempol tanda semangat"
             editable={editFoto}
             imageClassName="object-contain"
-            containerClassName="relative w-32 h-16 sm:w-40 sm:h-20 flex-shrink-0 rounded-xl overflow-hidden bg-[#EEF4FF]"
+            containerClassName="relative w-48 h-28 sm:w-64 sm:h-36 flex-shrink-0"
           />
-        <p className="m-0 hidden sm:block bg-[#EFF4FF] text-[#2563EB] rounded-xl px-4 py-3 text-xs font-semibold leading-[1.5] max-w-[190px]">
-          Teruslah berpikir kritis dan yakin pada kemampuanmu!
-        </p>
       </div>
 
       <div className="flex flex-col-reverse sm:flex-row justify-between items-center gap-4">

@@ -34,7 +34,7 @@ export default async function Materi4Peta3Step5HipotesisKelompok({
         <h1 className="m-0 text-2xl sm:text-[32px] font-extrabold text-[#111827]">Ayo Berdiskusi</h1>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-start">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-stretch">
         <div className="flex flex-col gap-4">
           <div className="flex items-center gap-3">
             <div className="w-[34px] h-[34px] rounded-full bg-[#2563EB] text-white flex items-center justify-center font-bold text-[15px] flex-shrink-0">
@@ -44,9 +44,9 @@ export default async function Materi4Peta3Step5HipotesisKelompok({
               Persamaan dan Perbedaan
             </div>
           </div>
-          <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-6 shadow-[0_1px_2px_rgba(0,0,0,0.04)] flex flex-col gap-4">
+          <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-6 shadow-[0_1px_2px_rgba(0,0,0,0.04)] flex flex-col gap-4 flex-1">
             <p className="m-0 text-sm text-[#4B5563]">Bandingkan berbagai dugaan dan cara menentukan luas permukaan limas yang telah didiskusikan bersama kelompokmu. Tuliskan persamaan dan perbedaannya pada kolom berikut.</p>
-            <div className="flex flex-col gap-2">
+            <div className="flex flex-col gap-2 flex-1">
               <label htmlFor="persamaan" className="text-sm font-bold text-[#15803D]">
                 Persamaan
               </label>
@@ -57,10 +57,10 @@ export default async function Materi4Peta3Step5HipotesisKelompok({
                 rows={7}
                 placeholder="Tuliskan persamaan..."
                 required
-                className={textareaClass}
+                className={`${textareaClass} flex-1 min-h-40`}
               />
             </div>
-            <div className="flex flex-col gap-2">
+            <div className="flex flex-col gap-2 flex-1">
               <label htmlFor="perbedaan" className="text-sm font-bold text-[#DC2626]">
                 Perbedaan
               </label>
@@ -71,7 +71,7 @@ export default async function Materi4Peta3Step5HipotesisKelompok({
                 rows={7}
                 placeholder="Tuliskan perbedaan..."
                 required
-                className={textareaClass}
+                className={`${textareaClass} flex-1 min-h-40`}
               />
             </div>
           </div>
@@ -86,7 +86,7 @@ export default async function Materi4Peta3Step5HipotesisKelompok({
               Hipotesis Kelompok
             </div>
           </div>
-          <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-6 shadow-[0_1px_2px_rgba(0,0,0,0.04)] flex flex-col gap-3">
+          <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-6 shadow-[0_1px_2px_rgba(0,0,0,0.04)] flex flex-col gap-3 flex-1">
             <p className="m-0 text-sm text-[#4B5563] leading-[1.6]">
               Setelah membandingkan dugaan, susun hipotesis kelompok yang akan dibuktikan pada Tahap 3
               menggunakan GeoGebra 3D dan Augmented Reality (AR).
@@ -113,7 +113,7 @@ export default async function Materi4Peta3Step5HipotesisKelompok({
               rows={9}
               placeholder="Tuliskan hipotesis kelompokmu..."
               required
-              className={textareaClass}
+              className={`${textareaClass} flex-1 min-h-40`}
             />
           </div>
         </div>

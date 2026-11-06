@@ -30,7 +30,7 @@ export default async function Materi4Peta7Step1ApaYangKamuTemukan({
         <h1 className="m-0 text-2xl sm:text-[32px] font-extrabold text-[#111827]">Ayo Menyimpulkan</h1>
       </div>
 
-<div className="flex flex-col sm:flex-row items-center gap-5 bg-[#EFF4FF] border border-[#BFDBFE] rounded-2xl p-5">
+<div className="flex flex-col gap-5 bg-[#EFF4FF] border border-[#BFDBFE] rounded-2xl p-5">
         <div className="flex-1 flex flex-col gap-2">
           <p className="m-0 text-sm text-[#374151] leading-[1.6]">
             Kamu telah melalui tahap mengamati, berdiskusi, bereksplorasi, mengolah informasi, dan memverifikasi.
@@ -40,6 +40,9 @@ export default async function Materi4Peta7Step1ApaYangKamuTemukan({
           </p>
           <p className="m-0 text-sm font-semibold text-[#111827]">Tuliskan temuanmu dan rumus umum luas permukaan limas beserta alasannya.</p>
         </div>
+      </div>
+
+      <div>
         <EditablePageImage
             imageKey="M4-P7-L1-1"
             materi={materi}
@@ -49,8 +52,8 @@ export default async function Materi4Peta7Step1ApaYangKamuTemukan({
             src={heroImage}
             alt="Tiga siswa menyimpulkan dengan laptop dan tablet"
             editable={editFoto}
-            imageClassName="object-contain"
-            containerClassName="relative w-full sm:w-[26rem] aspect-[2/1] flex-shrink-0 rounded-2xl overflow-hidden"
+            natural
+            containerClassName="relative w-full rounded-2xl overflow-hidden"
           />
       </div>
 

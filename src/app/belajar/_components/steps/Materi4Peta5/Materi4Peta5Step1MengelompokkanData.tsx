@@ -45,7 +45,7 @@ export default async function Materi4Peta5Step1MengelompokkanData({
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-[1fr_440px] gap-6 items-center rounded-[28px] bg-gradient-to-br from-[#1E3A8A] to-[#2563EB] p-6 sm:p-9">
+      <div className="flex flex-col gap-3 rounded-[28px] bg-gradient-to-br from-[#1E3A8A] to-[#2563EB] p-6 sm:p-9">
         <div className="flex flex-col gap-3">
           <h1 className="m-0 text-2xl sm:text-[32px] font-extrabold text-white">Ayo Mengolah Informasi</h1>
           <p className="m-0 text-sm sm:text-base font-bold text-white/95">
@@ -58,6 +58,9 @@ export default async function Materi4Peta5Step1MengelompokkanData({
             diperoleh.
           </p>
         </div>
+      </div>
+
+      <div>
         <EditablePageImage
           imageKey="M4-P5-L1-1"
           materi={materi}

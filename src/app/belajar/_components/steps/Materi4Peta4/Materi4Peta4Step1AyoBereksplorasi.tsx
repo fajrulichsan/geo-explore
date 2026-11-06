@@ -2,7 +2,6 @@ import { submitStepAction } from "@/app/belajar/actions";
 import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
 import NextStepButton from "@/app/belajar/_components/NextStepButton";
 import { Fragment } from "react";
-import FlowConnector from "@/app/belajar/_components/FlowConnector";
 import StepHeader from "@/app/belajar/_components/StepHeader";
 import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
 import { getPageImage } from "@/lib/pageImages";
@@ -34,7 +33,7 @@ export default async function Materi4Peta4Step1AyoBereksplorasi({
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-[1fr_440px] gap-6 items-center rounded-[28px] bg-gradient-to-br from-[#1E3A8A] to-[#2563EB] p-6 sm:p-9">
+      <div className="flex flex-col gap-6 rounded-[28px] bg-gradient-to-br from-[#1E3A8A] to-[#2563EB] p-6 sm:p-9">
         <div className="flex flex-col gap-3">
           <h1 className="m-0 text-2xl sm:text-[32px] font-extrabold text-white">Ayo Bereksplorasi</h1>
           <p className="m-0 text-sm sm:text-base font-bold text-white/95">
@@ -47,6 +46,9 @@ export default async function Materi4Peta4Step1AyoBereksplorasi({
             permukaan limas.
           </p>
         </div>
+      </div>
+
+      <div>
         <EditablePageImage
           imageKey="M4-P4-L1-1"
           materi={materi}
@@ -76,11 +78,6 @@ export default async function Materi4Peta4Step1AyoBereksplorasi({
             </span>
             <p className="m-0 text-sm text-[#4B5563] leading-[1.5]">{a.desc}</p>
           </div>
-          {i < alur.length - 1 && (
-            <div className="hidden lg:flex">
-              <FlowConnector kind="arrow" />
-            </div>
-          )}
           </Fragment>
         ))}
       </div>

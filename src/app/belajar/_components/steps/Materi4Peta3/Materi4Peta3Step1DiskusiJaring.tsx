@@ -45,7 +45,7 @@ export default async function Materi4Peta3Step1DiskusiJaring({
         <h1 className="m-0 text-2xl sm:text-[32px] font-extrabold text-[#111827]">Ayo Berdiskusi</h1>
       </div>
 
-      <div className="flex flex-col sm:flex-row items-center gap-5 rounded-[20px] bg-gradient-to-br from-[#EFF4FF] to-[#F5F3FF] border border-[#DBE4FF] p-5">
+      <div className="flex flex-col gap-5 rounded-[20px] bg-gradient-to-br from-[#EFF4FF] to-[#F5F3FF] border border-[#DBE4FF] p-5">
         <div className="flex-1 flex flex-col gap-3">
           <p className="m-0 text-lg sm:text-xl font-extrabold text-[#1E3A8A]">
             Bagaimana Luas Permukaan Limas Dapat Ditentukan?
@@ -58,6 +58,9 @@ export default async function Materi4Peta3Step1DiskusiJaring({
             </p>
           </div>
         </div>
+      </div>
+
+      <div>
         <EditablePageImage
           imageKey="M4-P3-L1-1"
           materi={materi}
@@ -67,8 +70,8 @@ export default async function Materi4Peta3Step1DiskusiJaring({
           src={mascot}
           alt="Tiga siswa berdiskusi di meja belajar"
           editable={editFoto}
-          imageClassName="object-contain"
-          containerClassName="relative w-full sm:w-64 aspect-[4/3] flex-shrink-0"
+          natural
+          containerClassName="relative w-full"
         />
       </div>
 

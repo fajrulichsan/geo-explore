@@ -89,7 +89,9 @@ export default async function Materi4Peta7Step9RefleksiDanPesan({
             Pesan Penting
           </div>
         </div>
-          <EditablePageImage imageKey="M4-P7-L9-2" materi={materi} peta={peta} step={step} urutan="2" src={pesanImage} alt="Pesan penting: luas permukaan limas bukan sekadar rumus yang dihafal, tetapi jumlah luas seluruh sisi yang membatasi bangun" editable={editFoto} natural containerClassName="relative w-full max-w-xs mx-auto" />
+          <div className="flex-1 flex items-center justify-center">
+            <EditablePageImage imageKey="M4-P7-L9-2" materi={materi} peta={peta} step={step} urutan="2" src={pesanImage} alt="Pesan penting: luas permukaan limas bukan sekadar rumus yang dihafal, tetapi jumlah luas seluruh sisi yang membatasi bangun" editable={editFoto} natural containerClassName="relative w-full max-w-xs" />
+          </div>
         </div>
       </div>
 

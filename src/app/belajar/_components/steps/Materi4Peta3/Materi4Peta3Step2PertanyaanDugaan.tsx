@@ -111,10 +111,10 @@ export default async function Materi4Peta3Step2PertanyaanDugaan({
               id="dugaan_kelompok"
               name="answers.dugaan_kelompok"
               defaultValue={getValue("dugaan_kelompok")}
-              rows={8}
+              rows={14}
               placeholder="Lanjutkan kalimat di atas..."
               required
-              className={`${textareaClass} flex-1 min-h-40`}
+              className={`${textareaClass} flex-1 min-h-[22rem]`}
             />
           </div>
         </div>
