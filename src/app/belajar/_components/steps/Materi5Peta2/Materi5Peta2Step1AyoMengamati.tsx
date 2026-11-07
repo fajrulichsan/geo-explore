@@ -16,7 +16,6 @@ type Bangun = {
   alt: string;
   pertanyaan?: string;
   opsi?: { value: string; label: string }[];
-  multi?: boolean;
   petunjuk: string;
 };
 
@@ -31,7 +30,6 @@ const bangunList: Bangun[] = [
     urutan: "2",
     alt: "Kubus kecil dengan rusuk 4 cm diperbesar dengan k = 2 menjadi kubus besar dengan rusuk 8 cm",
     pertanyaan: "Apa yang berubah?",
-    multi: true,
     opsi: [
       { value: "panjang_rusuk", label: "panjang rusuk" },
       { value: "jumlah_sisi", label: "jumlah sisi" },
@@ -104,7 +102,6 @@ export default async function Materi5Peta2Step1AyoMengamati({
     ...bangunList.map((b) => getPageImage(b.imageKey)),
   ]);
   const answers = initialAnswers ?? {};
-  const getValue = (key: string) => (typeof answers[key] === "string" ? (answers[key] as string) : "");
 
   return (
     <form action={submitStepAction} className="flex flex-col gap-8">
@@ -191,23 +188,12 @@ export default async function Materi5Peta2Step1AyoMengamati({
                     <legend className="px-1 text-xs font-bold text-[#374151]">{b.pertanyaan}</legend>
                     {b.opsi.map((o) => (
                       <label key={o.value} className="flex items-center gap-2 text-sm text-[#374151] cursor-pointer">
-                        {b.multi ? (
-                          <input
-                            type="checkbox"
-                            name={`answers.${b.key}_berubah_${o.value}`}
-                            defaultChecked={answers[`${b.key}_berubah_${o.value}`] === "on"}
-                            className="accent-[#2563EB]"
-                          />
-                        ) : (
-                          <input
-                            type="radio"
-                            name={`answers.${b.key}_berubah`}
-                            value={o.value}
-                            defaultChecked={getValue(`${b.key}_berubah`) === o.value}
-                            required
-                            className="accent-[#2563EB]"
-                          />
-                        )}
+                        <input
+                          type="checkbox"
+                          name={`answers.${b.key}_berubah_${o.value}`}
+                          defaultChecked={answers[`${b.key}_berubah_${o.value}`] === "on"}
+                          className="accent-[#2563EB]"
+                        />
                         {o.label}
                       </label>
                     ))}
