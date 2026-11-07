@@ -40,7 +40,7 @@ export default async function Materi5Peta5Step2BandingkanPerubahan({
           </div>
           <h2 className="m-0 text-lg font-bold text-[#2563EB]">Bandingkan Perubahan</h2>
         </div>
-        <p className="m-0 px-6 pt-2 text-sm text-[#4B5563]">Lengkapilah tabel berikut.</p>
+        <p className="m-0 px-6 pt-2 text-sm text-[#4B5563]">Berdasarkan data yang telah kamu kelompokkan pada Panel A, tentukan faktor perubahan ukuran panjang dan luas permukaan dibandingkan dengan bangun awal (k = 1), kemudian lengkapilah tabel berikut.</p>
 
         <div className="px-6 pt-4 overflow-x-auto">
           <table className="w-full text-left border-collapse min-w-[480px]">
@@ -76,7 +76,7 @@ export default async function Materi5Peta5Step2BandingkanPerubahan({
         <div className="m-6 mt-5 bg-[#EFF4FF] border border-[#BFDBFE] rounded-2xl p-4 flex flex-col gap-2">
           <p className="m-0 text-sm font-bold text-[#2563EB]">Pertanyaan</p>
           <label htmlFor="sama_perubahan" className="text-sm text-[#374151]">
-            Apakah perubahan setiap ukuran panjang sama dengan perubahan luas permukaan? Mengapa?
+            Bagaimana hubungan antara faktor perubahan ukuran panjang dan faktor perubahan luas permukaan? Jelaskan dengan lebih dari satu cara berdasarkan data pada tabel!
           </label>
           <textarea
             id="sama_perubahan"

@@ -5,10 +5,10 @@ import BackLink from "@/app/belajar/_components/BackLink";
 import StepHeader from "@/app/belajar/_components/StepHeader";
 
 const pertanyaan = [
-  { n: 1, label: "Apa perbedaan utama antara kedua bangun pada setiap pasangan?" },
-  { n: 2, label: "Apakah jumlah sisi kedua bangun berubah? Mengapa?" },
-  { n: 3, label: "Bagaimana perubahan ukuran panjang pada setiap pasangan bangun?" },
-  { n: 4, label: "Menurutmu, bagaimana perubahan luas setiap sisi ketika semua ukuran panjang diperbesar 2 kali?" },
+  { n: 1, label: "Apa persamaan dan perbedaan bentuk serta ukuran kedua bangun pada setiap pasangan?" },
+  { n: 2, label: "Bagaimana perbandingan jumlah sisi kedua bangun pada setiap pasangan? Jelaskan berdasarkan pengamatanmu!" },
+  { n: 3, label: "Bagaimana hubungan antara ukuran panjang bangun awal dan bangun hasil perubahan pada setiap pasangan?" },
+  { n: 4, label: "Menurutmu, bagaimana luas setiap sisi berubah ketika seluruh ukuran panjang bangun diperbesar dua kali? Jelaskan dugaanmu!" },
 ];
 
 export default async function Materi5Peta2Step3PertanyaanPengamatan({

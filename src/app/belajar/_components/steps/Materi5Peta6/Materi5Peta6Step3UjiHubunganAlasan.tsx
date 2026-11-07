@@ -3,13 +3,10 @@ import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry"
 import NextStepButton from "@/app/belajar/_components/NextStepButton";
 import BackLink from "@/app/belajar/_components/BackLink";
 import StepHeader from "@/app/belajar/_components/StepHeader";
+import UjiHubunganPanel from "./UjiHubunganPanel";
 import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
 import { getPageImage } from "@/lib/pageImages";
 
-const faktorSkala = ["2", "3", "½"];
-
-const cellInput =
-  "w-full rounded-lg border border-[#E5E7EB] bg-[#F9FAFB] px-3 py-2 text-sm text-[#374151] placeholder:text-[#9CA3AF] focus:border-[#7C3AED] focus:outline-none focus:bg-white transition-colors";
 const textArea =
   "w-full rounded-xl border border-[#E5E7EB] bg-white px-3.5 py-2.5 text-sm text-[#374151] placeholder:text-[#9CA3AF] focus:border-[#7C3AED] focus:outline-none transition-colors resize-none";
 
@@ -74,85 +71,7 @@ export default async function Materi5Peta6Step3UjiHubunganAlasan({
               Uji Hubungan Skala dan Luas
             </div>
           </div>
-          <p className="m-0 text-sm text-[#4B5563]">Lengkapilah tabel berikut.</p>
-
-          <div className="bg-[#F5F3FF] border border-[#DDD6FE] rounded-2xl p-3.5 flex items-start gap-2.5">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#7C3AED" strokeWidth="2" className="flex-shrink-0 mt-0.5">
-              <path d="M9 18h6M10 21h4M12 3a6 6 0 00-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0012 3z" />
-            </svg>
-            <p className="m-0 text-xs text-[#5B21B6] leading-[1.6]">
-              Gunakan hasil verifikasi GeoGebra dan AR untuk memeriksa apakah hubungan tersebut konsisten
-              pada bangun dan faktor skala yang telah diamati.
-            </p>
-          </div>
-
-          <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-4 shadow-[0_1px_2px_rgba(0,0,0,0.04)] overflow-x-auto">
-            <table className="w-full text-left border-collapse min-w-[440px]">
-              <thead>
-                <tr className="bg-[#7C3AED] text-white text-xs font-bold">
-                  <th className="px-3 py-3 rounded-l-lg">Faktor Skala (k)</th>
-                  <th className="px-3 py-3 border-l border-white/20">Luas Awal (cm²)</th>
-                  <th className="px-3 py-3 border-l border-white/20">Luas Baru (cm²)</th>
-                  <th className="px-3 py-3 border-l border-white/20 rounded-r-lg">Apakah Luas = k² × Luas Awal? (✓/✗)</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-[#E5E7EB]">
-                {faktorSkala.map((k, idx) => (
-                  <tr key={k}>
-                    <td className="px-3 py-3 text-sm font-bold text-[#111827]">{k}</td>
-                    {(["luas_awal", "luas_baru"] as const).map((field) => (
-                      <td key={field} className="px-3 py-3">
-                        <input
-                          type="text"
-                          name={`answers.${field}_${idx}`}
-                          defaultValue={getValue(`${field}_${idx}`)}
-                          required
-                          placeholder="..."
-                          className={cellInput}
-                        />
-                      </td>
-                    ))}
-                    <td className="px-3 py-3">
-                      <div className="flex items-center gap-4">
-                        {(["sesuai", "tidak_sesuai"] as const).map((opt) => (
-                          <label key={opt} className="flex items-center gap-1.5 cursor-pointer text-sm font-semibold text-[#374151]">
-                            <input
-                              type="radio"
-                              name={`answers.uji_sesuai_${idx}`}
-                              value={opt}
-                              defaultChecked={getValue(`uji_sesuai_${idx}`) === opt}
-                              required
-                              className="accent-[#7C3AED]"
-                            />
-                            {opt === "sesuai" ? "✓" : "✗"}
-                          </label>
-                        ))}
-                      </div>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-
-          <div className="bg-[#EFF4FF] border border-[#BFDBFE] rounded-[20px] p-5 flex flex-col gap-2">
-            <div className="flex items-center gap-2">
-              <div className="w-6 h-6 rounded-full bg-[#2563EB] text-white flex items-center justify-center text-xs font-bold">?</div>
-              <p className="m-0 text-sm font-bold text-[#1D4ED8]">Pertanyaan</p>
-            </div>
-            <label htmlFor="temuan_pemeriksaan" className="text-sm font-semibold text-[#374151]">
-              Apa yang kamu temukan setelah melakukan pemeriksaan ini?
-            </label>
-            <textarea
-              id="temuan_pemeriksaan"
-              name="answers.temuan_pemeriksaan"
-              defaultValue={getValue("temuan_pemeriksaan")}
-              rows={3}
-              required
-              placeholder="Jawabanmu..."
-              className={textArea}
-            />
-          </div>
+          <UjiHubunganPanel answers={answers} />
         </div>
 
         <div className="flex flex-col gap-4">

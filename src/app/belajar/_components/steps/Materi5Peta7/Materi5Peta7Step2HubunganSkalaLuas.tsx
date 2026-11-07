@@ -44,7 +44,7 @@ export default async function Materi5Peta7Step2HubunganSkalaLuas({
             <h2 className="m-0 text-lg font-bold text-[#111827]">Hubungan Skala dengan Luas</h2>
           </div>
         <p className="m-0 -mt-2 text-sm text-[#4B5563]">
-          Perhatikan kembali hasil eksplorasimu. Lengkapilah tabel berikut.
+          Berdasarkan hasil pengolahan data dan verifikasi yang telah kamu lakukan, lengkapilah tabel berikut untuk menunjukkan perubahan luas permukaan pada setiap faktor skala.
         </p>
 
         <div className="rounded-2xl border border-[#BFDBFE] overflow-hidden">
@@ -78,7 +78,7 @@ export default async function Materi5Peta7Step2HubunganSkalaLuas({
         </p>
           <div className="flex flex-col gap-2">
             <label htmlFor="pola_ditemukan" className="text-sm font-semibold text-[#111827]">
-              1. Pola apa yang kamu temukan?
+              1. Berdasarkan pola pada tabel dan hasil verifikasi, bagaimana hubungan antara faktor skala dan perubahan luas permukaan?
             </label>
             <textarea
               id="pola_ditemukan"
@@ -92,7 +92,7 @@ export default async function Materi5Peta7Step2HubunganSkalaLuas({
           </div>
           <div className="flex flex-col gap-2">
             <label htmlFor="pola_berlaku_penskalaan" className="text-sm font-semibold text-[#111827]">
-              2. Mengapa pola tersebut berlaku pada bangun hasil penskalaan?
+              2. Mengapa hubungan tersebut berlaku pada berbagai jenis bangun ruang? Jelaskan alasanmu berdasarkan hasil perhitungan dan verifikasi!
             </label>
             <textarea
               id="pola_berlaku_penskalaan"

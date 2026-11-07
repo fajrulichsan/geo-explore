@@ -2,6 +2,7 @@ import { submitStepAction } from "@/app/belajar/actions";
 import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
 import NextStepButton from "@/app/belajar/_components/NextStepButton";
 import StepHeader from "@/app/belajar/_components/StepHeader";
+import RadioFollowUp from "@/app/belajar/_components/RadioFollowUp";
 import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
 import { getPageImage } from "@/lib/pageImages";
 
@@ -9,8 +10,10 @@ const kegiatan = [
   "Buka kembali model bangun ruang pada GeoGebra 3D.",
   "Ubah faktor skala menjadi beberapa nilai (misalnya 2, 3, dan ½).",
   "Periksa kembali luas permukaan yang diperoleh.",
+  "Amati kembali perubahan ukuran bangun menggunakan AR.",
   "Bandingkan dengan hubungan yang telah kamu temukan.",
   "Pastikan semua data telah dihitung dengan benar.",
+  "Catat hasil verifikasi dan perbaiki dugaan jika diperlukan.",
 ];
 
 const faktorSkala = ["2", "3", "½"];
@@ -150,13 +153,13 @@ export default async function Materi5Peta6Step1VerifikasiGeoGebraAR({
         </div>
 
         <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-6 shadow-[0_1px_2px_rgba(0,0,0,0.04)] flex flex-col gap-4">
-          <p className="m-0 text-sm font-bold text-[#1E3A8A]">Hasil Verifikasi</p>
+          <p className="m-0 text-sm font-bold text-[#1E3A8A]">Tabel Hasil Verifikasi</p>
           <div className="overflow-x-auto">
             <table className="w-full text-left border-collapse min-w-[600px]">
               <thead>
                 <tr className="bg-[#1E3A8A] text-white text-xs font-bold">
                   <th className="px-3 py-3 rounded-l-lg">Faktor Skala (k)</th>
-                  <th className="px-3 py-3 border-l border-white/20">Prediksi Luas (k² × Luas Awal) (cm²)</th>
+                  <th className="px-3 py-3 border-l border-white/20">Prediksi Luas Permukaan (cm²)</th>
                   <th className="px-3 py-3 border-l border-white/20">Hasil GeoGebra (cm²)</th>
                   <th className="px-3 py-3 border-l border-white/20">Hasil AR (Visual)</th>
                   <th className="px-3 py-3 border-l border-white/20 rounded-r-lg">Sesuai Dugaan? (✓/✗)</th>
@@ -218,7 +221,7 @@ export default async function Materi5Peta6Step1VerifikasiGeoGebraAR({
           </div>
           <div className="flex flex-col gap-2">
             <label htmlFor="pertanyaan_sesuai" className="text-sm font-semibold text-[#374151]">
-              1. Apakah hasil GeoGebra sesuai dengan dugaan kelompokmu?
+              1. Bagaimana kesesuaian dugaan kelompokmu dengan hasil perhitungan dan eksplorasi menggunakan GeoGebra 3D serta AR? Jelaskan dengan bukti berdasarkan data yang kamu peroleh!
             </label>
             <textarea
               id="pertanyaan_sesuai"
@@ -226,22 +229,39 @@ export default async function Materi5Peta6Step1VerifikasiGeoGebraAR({
               defaultValue={getValue("pertanyaan_sesuai")}
               rows={3}
               required
-              placeholder="Jawabanmu..."
+              placeholder="Tuliskan hasil pemeriksaan dan bukti matematis..."
               className={textArea}
             />
           </div>
-          <div className="flex flex-col gap-2">
-            <label htmlFor="pertanyaan_perbaikan" className="text-sm font-semibold text-[#374151]">
-              2. Jika belum sesuai, bagian mana yang harus diperbaiki?
-            </label>
-            <textarea
-              id="pertanyaan_perbaikan"
-              name="answers.pertanyaan_perbaikan"
-              defaultValue={getValue("pertanyaan_perbaikan")}
-              rows={3}
-              required
-              placeholder="Jawabanmu..."
-              className={textArea}
+          <div className="flex flex-col gap-3">
+            <p className="m-0 text-sm font-semibold text-[#374151]">
+              2. Apakah terdapat hasil yang belum sesuai dengan dugaan kelompokmu?
+            </p>
+            <RadioFollowUp
+              name="status_verifikasi"
+              defaultValue={getValue("status_verifikasi")}
+              defaultFollowUps={{
+                pertanyaan_perbaikan: getValue("pertanyaan_perbaikan"),
+                bukti_sesuai: getValue("bukti_sesuai"),
+              }}
+              textareaClassName={textArea}
+              options={[
+                { value: "ada_belum_sesuai", label: "Ada hasil yang belum sesuai" },
+                { value: "semua_sesuai", label: "Semua hasil sudah sesuai" },
+                { value: "belum_diperiksa", label: "Belum selesai diperiksa" },
+              ]}
+              followUps={{
+                ada_belum_sesuai: {
+                  label: "Bagian mana yang perlu diperbaiki? Jelaskan penyebab ketidaksesuaian dan bagaimana kelompokmu memperbaikinya!",
+                  field: "pertanyaan_perbaikan",
+                  placeholder: "Tuliskan bagian yang diperbaiki, alasan, dan hasil perbaikannya...",
+                },
+                semua_sesuai: {
+                  label: "Bukti apa yang menunjukkan bahwa dugaan kelompokmu sudah sesuai?",
+                  field: "bukti_sesuai",
+                  placeholder: "Tuliskan contoh data atau perhitungan pendukung...",
+                },
+              }}
             />
           </div>
         </div>

@@ -52,7 +52,7 @@ export default async function Materi5Peta2Step9RefleksiSingkat({
         </div>
 
         <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-5 sm:p-6 shadow-[0_1px_2px_rgba(0,0,0,0.04)] flex flex-col gap-5">
-          <p className="m-0 text-sm text-[#4B5563]">Centang (✓) sesuai dengan kondisi dirimu.</p>
+          <p className="m-0 text-sm text-[#4B5563]">Setelah mengamati dan membuat dugaan awal, centang (✓) pernyataan yang sesuai dengan pemahaman dan kondisi dirimu saat ini.</p>
           {pernyataan.map((p) => (
             <label
               key={p.key}
@@ -62,6 +62,8 @@ export default async function Materi5Peta2Step9RefleksiSingkat({
                 type="checkbox"
                 name={`answers.${p.key}`}
                 value="ya"
+                data-require-group="refleksi"
+                data-require-min="2"
                 defaultChecked={answers[p.key] === "ya"}
                 className="w-5 h-5 accent-[#2563EB] flex-shrink-0"
               />

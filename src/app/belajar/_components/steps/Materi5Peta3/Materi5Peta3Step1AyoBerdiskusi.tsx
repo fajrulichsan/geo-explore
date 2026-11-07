@@ -13,10 +13,10 @@ const bangunList: { nama: string; color: string; imageKey: PageImageKey; urutan:
 ];
 
 const pertanyaan = [
-  { key: "ukuran_berubah", label: "Apa saja ukuran yang berubah ketika faktor skala k = 2 diterapkan?" },
-  { key: "bentuk_berubah", label: "Apakah bentuk bangunnya berubah setelah diskala?" },
-  { key: "jumlah_sisi_berubah", label: "Apakah jumlah sisi berubah? Jelaskan." },
-  { key: "semua_ukuran_sama", label: "Menurut kelompokku, apakah semua ukuran berubah dengan faktor yang sama? Jelaskan." },
+  { key: "ukuran_berubah", label: "Bagaimana perbandingan ukuran panjang bangun awal dan bangun hasil skala pada setiap pasangan? Berikan contohnya!" },
+  { key: "bentuk_berubah", label: "Apa persamaan bentuk dan jumlah sisi antara bangun awal dan bangun hasil skala? Jelaskan!" },
+  { key: "jumlah_sisi_berubah", label: "Bagaimana dugaan kelompokmu tentang perubahan luas salah satu sisi ketika seluruh ukuran panjang bangun diperbesar dua kali? Jelaskan alasanmu!" },
+  { key: "semua_ukuran_sama", label: "Menurut kelompokmu, apakah semua ukuran panjang yang bersesuaian berubah dengan faktor yang sama? Jelaskan berdasarkan gambar!" },
 ];
 
 export default async function Materi5Peta3Step1AyoBerdiskusi({
@@ -98,7 +98,7 @@ export default async function Materi5Peta3Step1AyoBerdiskusi({
           </div>
         </div>
         <p className="m-0 text-sm text-[#4B5563]">
-          Perhatikan kembali hasil pengamatan pada Tahap 1. Fokus kita pada kasus k = 2.
+          Amati kembali keempat pasangan bangun ruang dengan faktor skala k = 2. Diskusikan persamaan, perbedaan, dan perubahan ukurannya bersama kelompokmu, kemudian jawablah pertanyaan berikut.
         </p>
 
         <div className="grid sm:grid-cols-2 gap-4">

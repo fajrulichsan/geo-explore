@@ -53,8 +53,8 @@ export default async function Materi5Peta7Step6GeneralisasiIntiKonsep({
             <h2 className="m-0 text-lg font-bold text-[#111827]">Generalisasi Konsep</h2>
           </div>
           <p className="m-0 -mt-2 text-sm text-[#4B5563]">
-            Apakah hubungan antara faktor skala dan luas permukaan berlaku untuk bangun ruang
-            berikut ketika setiap ukuran panjangnya diubah dengan faktor skala yang sama?
+            Apakah hubungan antara faktor skala dan luas permukaan yang telah kamu simpulkan berlaku
+            pada bangun ruang berikut jika seluruh ukuran panjangnya dikalikan dengan faktor skala yang sama?
           </p>
 
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
@@ -91,7 +91,7 @@ export default async function Materi5Peta7Step6GeneralisasiIntiKonsep({
           </div>
           <div className="flex flex-col gap-2">
             <label htmlFor="alasan_generalisasi" className="text-sm font-semibold text-[#111827]">
-              Jika ya, tuliskan dengan yang telah kamu simpulkan.
+              Jelaskan mengapa hubungan tersebut berlaku atau tidak berlaku pada bangun ruang yang kamu pilih. Gunakan hasil perhitungan atau verifikasi untuk mendukung alasanmu!
             </label>
             <textarea
               id="alasan_generalisasi"

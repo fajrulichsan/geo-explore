@@ -108,6 +108,8 @@ export default async function Materi5Peta6Step4PerbaikiRefleksi({
               <label key={r.key} className="flex items-start gap-3 text-sm text-[#374151] cursor-pointer">
                 <input
                   type="checkbox"
+                  data-require-group="refleksi"
+                  data-require-min="2"
                   name={`answers.refleksi_${r.key}`}
                   defaultChecked={checked(`refleksi_${r.key}`)}
                   className="w-4 h-4 mt-0.5 rounded accent-[#7C3AED] flex-shrink-0"

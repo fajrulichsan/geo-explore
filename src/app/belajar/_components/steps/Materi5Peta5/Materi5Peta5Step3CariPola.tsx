@@ -48,7 +48,7 @@ export default async function Materi5Peta5Step3CariPola({
         <p className="m-0 px-6 pt-2 text-sm text-[#4B5563]">Tuliskan pola yang kamu temukan.</p>
 
         <div className="mx-6 mt-4 bg-[#F5F3FF] border border-dashed border-[#C4B5FD] rounded-xl px-4 py-3 text-sm text-[#5B21B6]">
-          Tuliskan hubungan berdasarkan hasil pengamatan kelompokmu.
+          Berdasarkan hasil perbandingan pada Panel B, amati pola perubahan luas permukaan pada setiap faktor skala, kemudian lengkapilah tabel berikut.
         </div>
 
         <div className="px-6 pt-4 overflow-x-auto">
@@ -56,7 +56,7 @@ export default async function Materi5Peta5Step3CariPola({
             <thead>
               <tr className="bg-[#7C3AED] text-white text-sm font-bold">
                 <th className="px-4 py-3 rounded-tl-lg w-36">Faktor Skala (k)</th>
-                <th className="px-4 py-3 border-l border-white/20 rounded-tr-lg">Hubungan dengan Luas</th>
+                <th className="px-4 py-3 border-l border-white/20 rounded-tr-lg">Pola Perubahan Luas Permukaan</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-[#EDE9FE]">
@@ -82,7 +82,7 @@ export default async function Materi5Peta5Step3CariPola({
         <div className="m-6 mt-5 bg-[#F5F3FF] border border-[#DDD6FE] rounded-2xl p-4 flex flex-col gap-2">
           <p className="m-0 text-sm font-bold text-[#7C3AED]">Pertanyaan</p>
           <label htmlFor="hubungan_skala_luas" className="text-sm text-[#374151]">
-            Apa hubungan antara faktor skala dan perubahan luas permukaan?
+            Pola apa yang kamu temukan antara faktor skala dan perubahan luas permukaan? Jelaskan pola tersebut dengan lebih dari satu cara berdasarkan hasil perhitunganmu!
           </label>
           <textarea
             id="hubungan_skala_luas"

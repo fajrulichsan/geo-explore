@@ -71,7 +71,7 @@ export default async function Materi5Peta10Step4PetaKonsepKataKunci({
             alt="Peta konsep skala: faktor skala k, setiap ukuran panjang menjadi k kali, luas permukaan menjadi k kuadrat kali"
             editable={editFoto}
             natural
-            containerClassName="relative w-full max-w-md mx-auto"
+            containerClassName="relative w-full max-w-3xl mx-auto"
           />
         </div>
       </div>

@@ -52,7 +52,7 @@ export default async function Materi5Peta8Step1PengantarPemahaman({
 
       <div className="grid grid-cols-1 sm:grid-cols-[1fr_auto] gap-4 items-center bg-white border border-[#DBEAFE] rounded-[20px] p-4 sm:p-5">
         <h2 className="m-0 text-lg font-extrabold text-[#1E3A8A]">
-          Apa yang Kamu Pelajari tentang Skala dan Luas Hari Ini?
+          Apa yang kamu pelajari tentang skala dan luas hari ini?
         </h2>
         <EditablePageImage
           imageKey="M5-P8-L1-1"
@@ -109,7 +109,7 @@ export default async function Materi5Peta8Step1PengantarPemahaman({
           <div className="w-8 h-8 rounded-full bg-[#16A34A] text-white flex items-center justify-center font-bold text-sm flex-shrink-0">A</div>
           <h2 className="m-0 text-lg font-extrabold text-[#111827]">Refleksi Pemahaman</h2>
         </div>
-        <p className="m-0 text-sm text-[#6B7280]">Centang (✓) semua pernyataan yang sesuai.</p>
+        <p className="m-0 text-sm text-[#6B7280]">Centang (✓) semua pernyataan yang sesuai dengan pemahamanmu setelah mengikuti pembelajaran.</p>
 
         <div className="flex flex-col gap-3">
           {checklist.map((c) => (

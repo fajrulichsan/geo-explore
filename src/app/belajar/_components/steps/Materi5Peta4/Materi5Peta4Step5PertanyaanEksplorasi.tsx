@@ -5,12 +5,12 @@ import BackLink from "@/app/belajar/_components/BackLink";
 import StepHeader from "@/app/belajar/_components/StepHeader";
 
 const pertanyaan = [
-  { key: "ukuran_berubah", text: "Ukuran apa saja yang berubah ketika faktor skala diubah?", rows: 3 },
-  { key: "bentuk_sisi", text: "Apakah bentuk dan jumlah sisi bangun berubah?", rows: 3 },
-  { key: "luas_tiap_skala", text: "Berapa luas permukaan yang kamu peroleh untuk setiap faktor skala?", rows: 3 },
+  { key: "ukuran_berubah", text: "Ukuran panjang apa saja yang berubah ketika faktor skala diubah? Berikan contoh berdasarkan hasil eksplorasimu!", rows: 3 },
+  { key: "bentuk_sisi", text: "Apa yang kamu amati pada ukuran panjang dan luas permukaan bangun ketika faktor skala diperbesar atau diperkecil?", rows: 3 },
+  { key: "luas_tiap_skala", text: "Bagaimana perbedaan luas permukaan bangun pada faktor skala k = 1/2, k = 1, k = 2, dan k = 3? Jelaskan berdasarkan data yang kamu peroleh!", rows: 3 },
   {
     key: "konsistensi",
-    text: "Apakah hasil pengamatan pada GeoGebra 3D dan AR menunjukkan data yang konsisten? Jelaskan berdasarkan pengamatanmu.",
+    text: "Apakah hasil pengamatan menggunakan GeoGebra 3D dan AR menunjukkan ukuran serta luas permukaan yang sama untuk bangun dan faktor skala yang sama? Jelaskan berdasarkan hasil pengamatanmu!",
     rows: 4,
   },
 ];
@@ -42,7 +42,7 @@ export default async function Materi5Peta4Step5PertanyaanEksplorasi({
           <div className="flex flex-col">
             <span className="text-sm font-bold text-[#2563EB]">Pertanyaan Eksplorasi</span>
             <span className="text-xs text-[#6B7280]">
-              Jawablah berdasarkan hasil pengamatan dan data pada tabel yang telah kamu isi.
+              Jawablah pertanyaan berikut berdasarkan hasil eksplorasi menggunakan GeoGebra 3D dan Augmented Reality (AR), serta data yang telah kamu catat pada Panel C.
             </span>
           </div>
         </div>

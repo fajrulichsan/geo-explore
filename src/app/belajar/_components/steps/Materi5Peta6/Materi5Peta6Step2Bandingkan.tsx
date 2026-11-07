@@ -39,31 +39,33 @@ export default async function Materi5Peta6Step2Bandingkan({
             Bandingkan dengan Kelompok Lain
           </div>
         </div>
-        <p className="m-0 text-sm text-[#4B5563]">Diskusikan hasil verifikasimu dengan kelompok lain.</p>
+        <p className="m-0 text-sm text-[#4B5563]">Bandingkan hasil verifikasi kelompokmu dengan kelompok lain. Diskusikan persamaan dan perbedaan hasil perhitungan, strategi, serta alasan yang digunakan, kemudian tuliskan hasilnya.</p>
       </div>
 
       <div className="grid md:grid-cols-2 gap-5">
         <div className="bg-[#F0FDF4] border border-[#BBF7D0] rounded-[20px] p-5 flex flex-col gap-2">
           <label htmlFor="persamaan" className="text-sm font-bold text-[#15803D]">Persamaan</label>
+          <p className="m-0 text-sm text-[#374151]">Apa persamaan hasil dan cara yang digunakan?</p>
           <textarea
             id="persamaan"
             name="answers.persamaan"
             defaultValue={getValue("persamaan")}
             rows={4}
             required
-            placeholder="Apa persamaan hasil verifikasimu dengan kelompok lain?"
+            placeholder="Tuliskan jawabanmu..."
             className={textArea}
           />
         </div>
         <div className="bg-[#EFF4FF] border border-[#BFDBFE] rounded-[20px] p-5 flex flex-col gap-2">
           <label htmlFor="perbedaan" className="text-sm font-bold text-[#1D4ED8]">Perbedaan</label>
+          <p className="m-0 text-sm text-[#374151]">Apa perbedaan hasil atau cara yang digunakan?</p>
           <textarea
             id="perbedaan"
             name="answers.perbedaan"
             defaultValue={getValue("perbedaan")}
             rows={4}
             required
-            placeholder="Apa perbedaan hasil verifikasimu dengan kelompok lain?"
+            placeholder="Tuliskan jawabanmu..."
             className={textArea}
           />
         </div>
@@ -75,7 +77,7 @@ export default async function Materi5Peta6Step2Bandingkan({
           <p className="m-0 text-sm font-bold text-[#1D4ED8]">Pertanyaan</p>
         </div>
         <label htmlFor="mengapa_berbeda" className="text-sm font-semibold text-[#374151]">
-          Mengapa hasil verifikasi antarkelompok dapat berbeda?
+          Apa yang menyebabkan adanya persamaan atau perbedaan hasil verifikasi antarkelompok? Jelaskan berdasarkan cara penyelesaian dan bukti matematis yang digunakan!
         </label>
         <textarea
           id="mengapa_berbeda"

@@ -65,7 +65,7 @@ export default async function Materi5Peta2Step2LuasSalahSatuSisi({
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D97706" strokeWidth="2" className="mt-0.5 flex-shrink-0">
               <path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-4 10.5c.7.7 1 1.5 1 2.5h6c0-1 .3-1.8 1-2.5A6 6 0 0 0 12 3z" />
             </svg>
-            Apakah perubahan luas sisi sama dengan perubahan panjang sisinya? Jelaskan dugaanmu.
+            Bagaimana hubungan antara perubahan panjang rusuk kubus dan perubahan luas salah satu sisinya? Jelaskan dugaanmu berdasarkan gambar!
           </label>
           <textarea
             id="pertanyaan_luas_sisi"

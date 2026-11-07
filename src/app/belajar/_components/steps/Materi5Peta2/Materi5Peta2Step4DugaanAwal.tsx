@@ -6,6 +6,12 @@ import StepHeader from "@/app/belajar/_components/StepHeader";
 import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
 import { getPageImage } from "@/lib/pageImages";
 
+const pertanyaan = [
+  { key: "pola_panjang_rusuk", label: "Bagaimana perubahan panjang rusuk kubus kecil menjadi kubus besar?" },
+  { key: "pola_luas_sisi", label: "Bagaimana perubahan luas salah satu sisi kubus kecil menjadi kubus besar?" },
+  { key: "pola_hubungan", label: "Apa hubungan yang kamu temukan antara perubahan panjang rusuk dan luas salah satu sisi kubus?" },
+];
+
 export default async function Materi5Peta2Step4DugaanAwal({
   materi,
   peta,
@@ -41,29 +47,41 @@ export default async function Materi5Peta2Step4DugaanAwal({
             D
           </div>
           <div className="bg-white border border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-full py-2 px-5 text-sm font-bold text-[#2563EB]">
-            Dugaan Awal
+            Mengidentifikasi Pola Awal
           </div>
         </div>
 
         <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-5 sm:p-6 shadow-[0_1px_2px_rgba(0,0,0,0.04)] flex flex-col gap-5">
-          <div className="flex flex-wrap items-center gap-2 text-sm leading-[1.9] text-[#374151]">
-            <span>Berdasarkan pengamatanmu untuk</span>
-            <span className="font-bold text-[#2563EB]">k = 2</span>
-            <span>, menurutmu luas permukaan bangun menjadi</span>
-            <input
-              type="text"
-              name="answers.dugaan_kelipatan"
-              defaultValue={getValue("dugaan_kelipatan")}
-              required
-              aria-label="Kelipatan luas permukaan"
-              className="w-20 rounded-lg border border-[#93C5FD] bg-[#EFF6FF] py-1 px-2 text-center text-sm font-bold text-[#1D4ED8] focus:border-[#2563EB] focus:outline-none"
-            />
-            <span>kali luas permukaan semula.</span>
-          </div>
-          <div className="flex flex-col gap-2">
+          <p className="m-0 text-sm leading-[1.7] text-[#374151]">
+            Berdasarkan pengamatanmu terhadap kubus kecil dan kubus besar dengan faktor skala{" "}
+            <span className="font-bold text-[#2563EB]">k = 2</span>, jawablah pertanyaan berikut.
+          </p>
+          {pertanyaan.map((p, i) => (
+            <div key={p.key} className="flex flex-col gap-2">
+              <label htmlFor={p.key} className="flex items-start gap-3 text-sm font-bold text-[#111827] leading-[1.5]">
+                <span className="w-6 h-6 rounded-full bg-[#FFEDD5] text-[#C2410C] text-xs font-bold flex items-center justify-center flex-shrink-0">
+                  {i + 1}
+                </span>
+                {p.label}
+              </label>
+              <textarea
+                id={p.key}
+                name={`answers.${p.key}`}
+                defaultValue={getValue(p.key)}
+                rows={2}
+                required
+                placeholder="Tuliskan hasil pengamatanmu..."
+                className="w-full rounded-xl border border-[#E5E7EB] bg-white p-3 text-sm text-[#374151] placeholder:text-[#9CA3AF] focus:border-[#2563EB] focus:outline-none transition-colors resize-y"
+              />
+            </div>
+          ))}
+          <div className="bg-[#FFF7ED] border border-[#FED7AA] rounded-2xl p-4 flex flex-col gap-2">
             <label htmlFor="dugaan_alasan" className="text-sm font-bold text-[#111827]">
-              Alasan:
+              Alasan berdasarkan hasil pengamatan
             </label>
+            <p className="m-0 text-xs text-[#4B5563]">
+              Jelaskan alasanmu berdasarkan ukuran dan luas sisi kedua kubus yang kamu amati.
+            </p>
             <textarea
               id="dugaan_alasan"
               name="answers.dugaan_alasan"
@@ -71,7 +89,7 @@ export default async function Materi5Peta2Step4DugaanAwal({
               rows={4}
               required
               placeholder="Tuliskan alasanmu..."
-              className="w-full rounded-2xl border border-[#E5E7EB] bg-[#F9FAFB] p-4 text-sm text-[#374151] placeholder:text-[#9CA3AF] focus:border-[#2563EB] focus:outline-none transition-colors resize-y"
+              className="w-full rounded-xl border border-[#FED7AA] bg-white p-3 text-sm text-[#374151] placeholder:text-[#9CA3AF] focus:border-[#2563EB] focus:outline-none transition-colors resize-y"
             />
           </div>
         </div>

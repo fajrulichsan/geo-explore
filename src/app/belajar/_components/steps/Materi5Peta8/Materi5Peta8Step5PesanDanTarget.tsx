@@ -1,4 +1,3 @@
-import PhotoUpload from "@/components/PhotoUpload";
 import { submitStepAction } from "@/app/belajar/actions";
 import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry";
 import NextStepButton from "@/app/belajar/_components/NextStepButton";
@@ -168,14 +167,6 @@ export default async function Materi5Peta8Step5PesanDanTarget({
           menemukan jawaban yang benar, tetapi juga memahami mengapa jawaban tersebut benar, berani
           mencoba berbagai strategi, dan terus memperbaiki cara berpikir berdasarkan bukti.
         </p>
-      </div>
-
-      <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-6 shadow-[0_1px_2px_rgba(0,0,0,0.04)]">
-        <PhotoUpload
-          name="answers.foto_bukti"
-          label="Unggah foto jurnal refleksimu (opsional)"
-          defaultValue={getValue("foto_bukti")}
-        />
       </div>
 
       <FileSubmission

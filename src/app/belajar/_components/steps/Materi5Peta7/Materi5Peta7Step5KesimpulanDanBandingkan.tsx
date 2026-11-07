@@ -3,6 +3,7 @@ import type { StepComponentProps } from "@/app/belajar/_components/stepRegistry"
 import NextStepButton from "@/app/belajar/_components/NextStepButton";
 import BackLink from "@/app/belajar/_components/BackLink";
 import StepHeader from "@/app/belajar/_components/StepHeader";
+import RadioFollowUp from "@/app/belajar/_components/RadioFollowUp";
 import EditablePageImage from "@/app/belajar/_components/EditablePageImage";
 import { getPageImage } from "@/lib/pageImages";
 
@@ -90,39 +91,37 @@ export default async function Materi5Peta7Step5KesimpulanDanBandingkan({
             <h2 className="m-0 text-lg font-bold text-[#111827]">Bandingkan Kesimpulan</h2>
           </div>
           <p className="m-0 -mt-2 text-sm text-[#4B5563]">
-            Apakah kesimpulan kelompokmu sama dengan kelompok lain?
+            Bandingkan kesimpulan kelompokmu dengan kelompok lain tentang hubungan faktor skala dan luas permukaan.
           </p>
-          <div className="flex gap-2 flex-wrap">
-            {opsiBandingkan.map((o) => (
-              <label
-                key={o.value}
-                className="flex items-center gap-1.5 bg-[#F9FAFB] border border-[#E5E7EB] rounded-full py-1.5 px-3.5 text-xs font-semibold text-[#374151] cursor-pointer has-[:checked]:bg-[#F3E8FF] has-[:checked]:border-[#7C3AED] has-[:checked]:text-[#7C3AED] transition-colors"
-              >
-                <input
-                  type="radio"
-                  name="answers.perbandingan_kesimpulan"
-                  value={o.value}
-                  defaultChecked={getValue("perbandingan_kesimpulan") === o.value}
-                  required
-                  className="accent-[#7C3AED]"
-                />
-                {o.label}
-              </label>
-            ))}
-          </div>
-          <div className="flex flex-col gap-2">
-            <label htmlFor="penyebab_berbeda" className="text-sm font-semibold text-[#111827]">
-              Jika berbeda, apa penyebabnya?
-            </label>
-            <textarea
-              id="penyebab_berbeda"
-              name="answers.penyebab_berbeda"
-              defaultValue={getValue("penyebab_berbeda")}
-              rows={3}
-              placeholder="Jawabanmu (kosongkan jika sama)..."
-              className="w-full rounded-xl border border-[#E5E7EB] bg-[#F9FAFB] px-3.5 py-2.5 text-sm text-[#374151] placeholder:text-[#9CA3AF] focus:border-[#7C3AED] focus:outline-none transition-colors resize-y"
-            />
-          </div>
+          <p className="m-0 text-sm font-bold text-[#111827]">Apakah kesimpulan kelompokmu sama dengan kelompok lain?</p>
+          <RadioFollowUp
+            name="perbandingan_kesimpulan"
+            defaultValue={getValue("perbandingan_kesimpulan")}
+            defaultFollowUps={{
+              alasan_sama: getValue("alasan_sama"),
+              penyebab_hampir_sama: getValue("penyebab_hampir_sama"),
+              penyebab_berbeda: getValue("penyebab_berbeda"),
+            }}
+            textareaClassName="w-full rounded-xl border border-[#E5E7EB] bg-[#F9FAFB] px-3.5 py-2.5 text-sm text-[#374151] placeholder:text-[#9CA3AF] focus:border-[#7C3AED] focus:outline-none transition-colors resize-y"
+            options={opsiBandingkan}
+            followUps={{
+              sama: {
+                label: "Apa alasan matematis yang menunjukkan bahwa kesimpulan kedua kelompok sudah sesuai?",
+                field: "alasan_sama",
+                placeholder: "Tuliskan alasan berdasarkan hasil verifikasi...",
+              },
+              hampir_sama: {
+                label: "Bagian mana yang berbeda? Jelaskan penyebabnya dan apakah kesimpulan kelompokmu perlu diperbaiki!",
+                field: "penyebab_hampir_sama",
+                placeholder: "Tuliskan perbedaan, alasan, dan perbaikan jika diperlukan...",
+              },
+              berbeda: {
+                label: "Apa yang menyebabkan perbedaan kesimpulan tersebut? Periksa kembali bukti matematisnya, kemudian jelaskan kesimpulan yang tepat!",
+                field: "penyebab_berbeda",
+                placeholder: "Tuliskan penyebab perbedaan dan kesimpulan yang tepat...",
+              },
+            }}
+          />
           <div className="relative w-full mt-auto">
             <EditablePageImage
               imageKey="M5-P7-L5-2"

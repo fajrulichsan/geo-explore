@@ -99,7 +99,7 @@ export default async function Materi5Peta5Step1MengelompokkanData({
           <h2 className="m-0 text-lg font-bold text-[#16A34A]">Mengelompokkan Data</h2>
         </div>
         <p className="m-0 px-6 pt-2 text-sm text-[#4B5563]">
-          Lengkapilah tabel berikut dengan data yang telah kamu peroleh pada Tahap 3.
+          Lengkapilah tabel berikut menggunakan data hasil eksplorasi pada Tahap 3. Kelompokkan luas permukaan setiap bangun ruang berdasarkan faktor skalanya.
         </p>
 
         <div className="px-6 pt-4 overflow-x-auto">
@@ -153,7 +153,7 @@ export default async function Materi5Peta5Step1MengelompokkanData({
         <div className="m-6 mt-5 bg-[#EFFDF4] border border-[#BBF0D3] rounded-2xl p-4 flex flex-col gap-2">
           <p className="m-0 text-sm font-bold text-[#16A34A]">Pertanyaan</p>
           <label htmlFor="manfaat_mengelompokkan" className="text-sm text-[#374151]">
-            Apa manfaat mengelompokkan data berdasarkan faktor skala?
+            Apa persamaan dan perbedaan perubahan luas permukaan pada berbagai bangun ruang ketika menggunakan faktor skala yang sama? Jelaskan berdasarkan data pada tabel!
           </label>
           <textarea
             id="manfaat_mengelompokkan"

@@ -37,11 +37,27 @@ export default async function Materi5Peta2Step7DugaanSementara({ materi, peta, i
         </div>
 
         <div className="bg-white border border-[#E5E7EB] rounded-[20px] p-5 sm:p-6 shadow-[0_1px_2px_rgba(0,0,0,0.04)] flex flex-col gap-4">
-          <p className="m-0 text-sm text-[#4B5563]">Tuliskan dugaanmu.</p>
-          <p className="m-0 text-sm leading-[1.7] text-[#374151]">
-            Berdasarkan pengamatan untuk <span className="font-bold text-[#2563EB]">k = 2</span>, menurutmu luas
-            permukaan bangun menjadi ............ kali luas permukaan semula.
+          <p className="m-0 text-sm font-bold leading-[1.7] text-[#111827]">
+            Berdasarkan hasil pengamatan dan perbandingan keempat pasangan bangun ruang dengan faktor skala{" "}
+            <span className="font-bold text-[#2563EB]">k = 2</span>, bagaimana dugaanmu tentang perubahan luas
+            permukaannya?
           </p>
+          <div className="bg-[#EFF4FF] border border-[#BFDBFE] rounded-2xl p-4 flex flex-col gap-3">
+            <p className="m-0 text-sm font-bold text-[#2563EB]">Dugaanku:</p>
+            <label htmlFor="dugaan_kelipatan_sementara" className="text-sm text-[#374151]">
+              Menurut dugaanku, luas permukaan bangun hasil skala menjadi:
+            </label>
+            <input
+              id="dugaan_kelipatan_sementara"
+              type="text"
+              name="answers.dugaan_kelipatan_sementara"
+              defaultValue={typeof answers.dugaan_kelipatan_sementara === "string" ? answers.dugaan_kelipatan_sementara : ""}
+              required
+              placeholder="..."
+              className="w-full rounded-full border border-[#BFDBFE] bg-white py-2.5 px-4 text-sm text-[#374151] placeholder:text-[#9CA3AF] focus:border-[#2563EB] focus:outline-none"
+            />
+            <span className="text-sm text-[#374151]">kali luas permukaan semula.</span>
+          </div>
           <label htmlFor="dugaan_sementara" className="text-sm font-bold text-[#111827]">
             Alasan:
           </label>
@@ -51,7 +67,7 @@ export default async function Materi5Peta2Step7DugaanSementara({ materi, peta, i
             defaultValue={dugaan}
             rows={5}
             required
-            placeholder="Tuliskan dugaan dan alasanmu..."
+            placeholder="Jelaskan alasan dugaanmu berdasarkan hasil pengamatan dan perbandingan keempat pasangan bangun ruang..."
             className="w-full rounded-2xl border border-[#E5E7EB] bg-[#F9FAFB] p-4 text-sm text-[#374151] placeholder:text-[#9CA3AF] focus:border-[#2563EB] focus:outline-none transition-colors resize-y"
           />
         </div>
